@@ -75,7 +75,7 @@
       <span class="ln"><span>What I'm</span></span>
       <span class="ln"><span class="accent">building.</span></span>
     </h1>
-    <p class="proj-sub">I build AI systems that have to survive contact with real work: a video pipeline with per-run cost receipts, voice scoring with a QA gate, agents that refuse to answer without a citation. Most are shipped and public. One runs my job search, with around fifty scheduled agents at a time.</p>
+    <p class="proj-sub">These are the systems I build and operate: video pipelines, writing-quality gates, verification agents, and the automation stack running my own job search. Everything here is working software with logs, tests, and honest status labels.</p>
   </div>
 </header>
 
@@ -90,9 +90,9 @@
 
       <div class="pcard flagship reveal">
         <div class="top"><span class="name">broll-pipeline</span><span class="chip-status">SHIPPED</span></div>
-        <h3>Script in, captioned short out</h3>
-        <p class="body">Turning raw footage into publish-ready b-roll is slow, manual, multi-tool work with no visibility into cost. This seven-stage pipeline takes a script in and produces a captioned short out, with per-run manifest costing so every output has a receipt. Production-operations thinking, not a demo script.</p>
-        <div class="proof">7 stages · 15.4s captioned demo at $0.025 audio spend · ElevenLabs stack</div>
+        <h3>Script in, captioned video out, cost logged</h3>
+        <p class="body">A seven-stage video pipeline in Node and ffmpeg, built on the ElevenLabs stack. Feed it a plain-text script and it produces a finished, captioned short. Every API call is logged to a costed run manifest, so each run is auditable down to the cent.</p>
+        <div class="proof">7 stages · Node + ffmpeg · ElevenLabs stack · demo: 15.4s short at $0.025 audio spend</div>
         <div class="row">
           <a class="go" href="broll-pipeline.html">Case study</a>
           <span class="tags">ElevenLabs · Node · ffmpeg</span>
@@ -101,9 +101,9 @@
 
       <div class="pcard reveal">
         <div class="top"><span class="name">voice-os</span><span class="chip-status">SHIPPED</span></div>
-        <h3>Voice fidelity you can measure</h3>
-        <p class="body">Most LLM voice matching is vibes-based prompting that cannot say how close a draft is to the target. This Python pipeline scores drafts against a voice corpus on six stylistic axes, with dual-persona routing and a QA gate that blocks output below threshold. Fidelity is quantified, not asserted.</p>
-        <div class="proof">6.9M+ word calibration corpus · pytest suite · deterministic offline mode</div>
+        <h3>Scores drafts against a target voice</h3>
+        <p class="body">A Python pipeline, built on Claude, that scores a draft against a target writing voice on six stylistic axes and blocks anything below a QA threshold. "Sounds like me" is not a spec, so this makes it one: calibrated on 6.9M+ words of executive communication, with dual-persona review and a deterministic offline mode.</p>
+        <div class="proof">6 stylistic axes · calibrated on 6.9M+ words · deterministic offline mode · pytest</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/voice-os" rel="noopener">View repo</a>
           <span class="tags">Python · Claude · RAG</span>
@@ -112,9 +112,9 @@
 
       <div class="pcard reveal">
         <div class="top"><span class="name">career-ops</span><span class="chip-status">IN PRODUCTION</span></div>
-        <h3>Fifty agents running the job search</h3>
-        <p class="body">A serious job search generates more evaluation, tailoring, and tracking work than a human can execute consistently. This production fork of santifer/career-ops is extended into a full AI pipeline: ATS scanning, LLM evaluation, CV generation, batch processing, multi-model council orchestration. A maintained multi-agent system with scheduling and budgets, not a one-shot script.</p>
-        <div class="proof">740+ role evaluations · ~50 scheduled launchd agents · multi-vendor council orchestration</div>
+        <h3>Job-search automation, in production</h3>
+        <p class="body">A job-search automation system: ATS portal scanning, LLM role evaluation, CV generation, and batch processing, running as a production fork of the open-source santifer/career-ops. It orchestrates multiple models across roughly 50 scheduled agents on macOS launchd and has powered 740+ role evaluations. Operated software, not a demo.</p>
+        <div class="proof">740+ role evaluations · ~50 launchd agents · multi-model orchestration · private repo</div>
         <div class="row">
           <a class="go" href="mailto:mitwilli@gmail.com?subject=career-ops%20walkthrough">Details on request</a>
           <span class="tags">Node · multi-agent · launchd</span>
@@ -123,9 +123,9 @@
 
       <div class="pcard reveal">
         <div class="top"><span class="name">tax-verification-agent</span><span class="chip-status">SHIPPED</span></div>
-        <h3>No citation, no answer</h3>
-        <p class="body">Consumer tax software optimizes for completion and defends its own math. This Claude agent verifies filings against a four-layer knowledge base: federal code, state statutes, IRS publications, precedents. It refuses any verdict without a citation chain.</p>
-        <div class="proof">Caught a ~$19K pre-filled multi-state allocation error the filing software defended</div>
+        <h3>A tax checker that must cite or stay silent</h3>
+        <p class="body">A Claude-based agent that checks tax filings against a four-layer knowledge base: federal code, state statutes, IRS publications, and precedents. It refuses to answer without citations, because a confident wrong answer about taxes is worse than none. In practice it caught a roughly $19K error that commercial filing software had pre-filled and defended.</p>
+        <div class="proof">4-layer knowledge base · citation-gated answers · caught a ~$19K pre-filled error</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/tax-verification-agent" rel="noopener">View repo</a>
           <span class="tags">Claude · RAG · citation gating</span>
@@ -134,9 +134,9 @@
 
       <div class="pcard reveal">
         <div class="top"><span class="name">comms-triage-agent</span><span class="chip-status">SHIPPED</span></div>
-        <h3>Triage that knows when to stop</h3>
-        <p class="body">Internal comms intake from senior engineers is high volume and judgment-heavy. This agent triages, revises, and escalates on Google Apps Script and Gemini: three sequential prompts, conditional KB loading, and a confidence threshold that holds low-confidence items for human review. Scoped prompts with defined escape hatches, not one mega-prompt. Published as a sanitized public demo.</p>
-        <div class="proof">Three-prompt architecture · dry-run harness · per-submission decision logging</div>
+        <h3>Triage agent for internal comms requests</h3>
+        <p class="body">A sanitized public demo of an internal-communications triage agent, built on Google Apps Script and Gemini. It classifies incoming requests, drafts revisions, and escalates the rest through three sequential prompts with conditional knowledge-base loading. A confidence threshold routes anything the model is unsure about to a human instead of letting it guess.</p>
+        <div class="proof">Apps Script + Gemini · 3 sequential prompts · low confidence routes to a human</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/comms-triage-agent" rel="noopener">View repo</a>
           <span class="tags">Apps Script · Gemini</span>
@@ -145,9 +145,9 @@
 
       <div class="pcard reveal">
         <div class="top"><span class="name">monolith</span><span class="chip-status">SHIPPED</span></div>
-        <h3>Guardrails a model cannot talk past</h3>
-        <p class="body">Prompt-engineered guardrails can be talked out of their own rules. This deterministic wardrobe architect and budget controller is a TypeScript PWA where the LLM only does perception; three code-level constraint gates issue the verdict. Unknown yields INSUFFICIENT_DATA instead of a guess, on an append-only audit log.</p>
-        <div class="proof">Three-gate verdict pipeline · 50 pure-function tests · runs without an API key</div>
+        <h3>Budget-gated wardrobe recommendations</h3>
+        <p class="body">A TypeScript PWA that recommends wardrobe purchases under a real budget. The LLM only extracts product data from a page; three deterministic code gates (budget, climate, aesthetic rules) issue the verdict, and unknown data returns INSUFFICIENT_DATA instead of a guess. An append-only audit log keeps the whole decision path inspectable.</p>
+        <div class="proof">3 deterministic gates · INSUFFICIENT_DATA over guessing · 50 pure-function tests</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/monolith" rel="noopener">View repo</a>
           <span class="tags">TypeScript · PWA · constraint gates</span>
@@ -168,22 +168,22 @@
     <div class="compact-list">
       <div class="crow reveal">
         <span class="cname">mission-control</span>
-        <span class="cdesc">Ops dashboard: one next action on deck, content pipeline, agent fleet health. Zero-dependency Node PWA.</span>
+        <span class="cdesc">Personal ops dashboard, a zero-dependency Node PWA: one next action, the content pipeline, and agent-fleet health on one screen.</span>
         <span class="cstat">SHIPPED · PRIVATE</span>
       </div>
       <div class="crow reveal">
         <span class="cname">mcp-agent-router</span>
-        <span class="cdesc">MCP router coordinating six specialist agents behind a single conversational interface.</span>
+        <span class="cdesc">An MCP router that puts six specialist agents behind one conversational interface.</span>
         <span class="cstat">SHIPPED · PRIVATE</span>
       </div>
       <div class="crow reveal">
         <span class="cname">finance-cli</span>
-        <span class="cdesc">Personal finance CLI with custom MCP servers; natural-language queries against real transaction data.</span>
+        <span class="cdesc">A CLI with custom MCP servers that lets Claude Desktop answer questions about real transaction data.</span>
         <span class="cstat">IN PRODUCTION · PRIVATE</span>
       </div>
       <div class="crow reveal">
         <span class="cname">content-ops</span>
-        <span class="cdesc">Content-repurposing pipeline with a Qodo PR quality gate wired in first. In active development.</span>
+        <span class="cdesc">A content-repurposing pipeline, in progress; the quality gate was built first.</span>
         <span class="cstat">BUILDING</span>
       </div>
     </div>

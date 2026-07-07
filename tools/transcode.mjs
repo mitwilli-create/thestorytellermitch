@@ -18,7 +18,9 @@ const OUT_DIR = resolve(SITE, 'media');
 mkdirSync(OUT_DIR, { recursive: true });
 
 const manifest = JSON.parse(readFileSync(resolve(SITE, 'assets/site-data/clips.json'), 'utf8'));
-const jobs = manifest.clips.filter((c) => c.published && c.sourceFile);
+// shortest-first so the bulk of the archive becomes playable soonest
+const jobs = manifest.clips.filter((c) => c.published && c.sourceFile)
+  .sort((a, b) => a.durationSec - b.durationSec);
 
 const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
 
