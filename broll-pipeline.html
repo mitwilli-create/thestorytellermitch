@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>broll-pipeline · an ElevenLabs-native production workflow</title>
+  <meta name="description" content="A Forward Deployed Creative case study: one script in, a produced, captioned short out, with every ElevenLabs API call costed in a transparent run manifest.">
+  <meta property="og:title" content="broll-pipeline: ElevenLabs-native production workflow">
+  <meta property="og:description" content="Script in, produced short out. Every generation step costed and reproducible. A forward-deployed reference workflow on the ElevenLabs stack.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "broll-pipeline",
+    "headline": "An ElevenLabs-native production workflow: script in, produced short out",
+    "about": "Forward Deployed Creative workflow orchestrating ElevenLabs Text-to-Speech, Eleven Music v2, Sound Effects, and Dubbing into a costed, reproducible short-form video pipeline.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/broll-pipeline",
+    "keywords": "ElevenLabs, forward deployed creative, AI creative workflow, Music v2, text-to-speech, dubbing, creative pipeline"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-stage{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:start}
+    .cs-video{position:relative;border:1px solid var(--line-2);overflow:hidden;background:#000;
+      aspect-ratio:9/16;max-width:300px}
+    .cs-video video{width:100%;height:100%;display:block;object-fit:cover}
+    .cs-video-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);margin-top:10px;line-height:1.6}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .badge-legend{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);line-height:1.7;
+      max-width:760px;margin:26px 0 6px;border:1px solid var(--line);padding:14px 18px}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-h .badge{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;
+      font-weight:700;padding:2px 8px;margin-left:10px;vertical-align:middle}
+    .badge.live{color:var(--blood-soft);border:1px solid var(--blood-soft)}
+    .badge.wired{color:var(--mute);border:1px solid var(--line-2)}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .manifest{max-width:760px;border:1px solid var(--line);overflow:hidden}
+    .manifest table{width:100%;border-collapse:collapse;font-size:14px}
+    .manifest th,.manifest td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line)}
+    .manifest th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;
+      color:var(--dim);background:var(--surface)}
+    .manifest td{color:var(--bone-soft)}
+    .manifest td.mono,.manifest th.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+    .manifest tr:last-child td{border-bottom:none}
+    .manifest tr.total td{background:var(--surface);color:var(--bone);font-weight:700}
+    .manifest .caption{font-size:12px;color:var(--dim);padding:12px 18px;background:var(--surface);
+      border-top:1px solid var(--line);line-height:1.6}
+    .manifest .caption a{color:var(--mute);border-bottom:1px solid var(--line-2)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stage{grid-template-columns:1fr;gap:28px}
+      .cs-video{max-width:260px;margin:0 auto}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+      .manifest th,.manifest td{padding:10px 12px;font-size:13px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · a Forward Deployed Creative workflow on the ElevenLabs stack</div>
+    <h1 class="cs-title">One script in, a produced short out.<span class="mono">broll-pipeline</span></h1>
+    <p class="cs-standfirst">A reusable production workflow for newsroom and brand content teams shipping short-form video on the ElevenLabs stack. Built as a working answer to the Forward Deployed Creative brief: forward-deployed meaning <strong>an embedded builder who ships inside the customer's own stack</strong>, not a designer for hire. It takes a plain-text script and orchestrates narration, score, sound, and an optional dub into a finished, captioned cut, and it <strong>logs every generation step</strong> to a costed, reproducible run manifest.</p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">ElevenLabs Text-to-Speech</span>
+      <span class="cs-tag">Eleven Music v2</span>
+      <span class="cs-tag">Sound Effects</span>
+      <span class="cs-tag">Dubbing</span>
+      <span class="cs-tag">Node.js · ffmpeg</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="cs-stage">
+      <div>
+        <div class="cs-video">
+          <video controls playsinline preload="metadata" poster="assets/broll-poster.jpg">
+            <source src="assets/broll-short.mp4" type="video/mp4">
+            <track kind="captions" src="assets/broll-short.srt" srclang="en" label="English" default>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p class="cs-video-cap">Pipeline output. 1080×1920, 15.4s. Narration generated live through the ElevenLabs API; captions burned from the pipeline's own timing.</p>
+      </div>
+      <div>
+        <div class="cs-h2">What the run produced</div>
+        <div class="cs-stat-grid">
+          <div class="cs-stat"><div class="n">7</div><div class="l">pipeline stages orchestrated</div></div>
+          <div class="cs-stat"><div class="n">$0.025</div><div class="l">audio spend, this run</div></div>
+          <div class="cs-stat"><div class="n">15.4s</div><div class="l">finished, captioned cut</div></div>
+          <div class="cs-stat"><div class="n">100%</div><div class="l">of executed API calls logged + costed</div></div>
+        </div>
+        <div class="cs-compare">
+          <div class="col">
+            <div class="c-k">The manual version</div>
+            <div class="c-b">A scripter, a voice session, an editor cutting b-roll, a captioning pass. Short-form teams measure it in hours per finished minute, across several people.</div>
+          </div>
+          <div class="col after">
+            <div class="c-k">This run</div>
+            <div class="c-b">One command from one operator. The narration for this cut cost $0.025 and every step is logged, so the "what does a finished minute cost" question has a receipt instead of a guess.</div>
+          </div>
+        </div>
+        <div class="cs-callout" style="margin-top:22px;">
+          <p>The point is not the 15 seconds. The point is the <em>loop</em>: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can copy it. That loop is the job.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">The teardown</div>
+    <div class="cs-body">
+      <p><strong>The problem, in business terms.</strong> A comms or newsroom team needs to ship short explainers on a daily cadence without burning out editors. Today that means a scripter, a voice artist, an editor cutting b-roll (the supporting footage laid over a narration), and a captioning pass, measured in hours per finished minute. The question a forward-deployed creative gets asked is not "can AI make a video," it is "can you turn our existing pipeline into one a small team runs before lunch, and can you prove what it costs."</p>
+
+      <p><strong>The shape of the answer.</strong> One input file, <code>input/script.md</code>, holds the whole brief: one beat per block, each with a line of voiceover, a visual prompt, and a target duration. The orchestrator parses that into beats and fans them across the ElevenLabs modalities, then ffmpeg cuts everything to the voiceover's timing and burns the caption track. Every stage caches its output keyed by a content hash, so a re-run only regenerates what actually changed. That is the difference between a demo and a workflow a team will keep using.</p>
+
+      <p><strong>Model choices, and one honest constraint.</strong> The audio stack runs end-to-end through the API: Text-to-Speech for narration, Eleven Music v2 for a licensed, commercially-cleared score, the Sound Effects API for accent beats, and Dubbing for a localized cut. ElevenLabs' 2026 image and video generation lives in ElevenCreative Studio and has no public REST endpoint, so the pipeline treats the visual step as a <em>product-in-the-loop</em> stage: it generates the prompts programmatically, hands them to Studio, and pulls the results back through a capture shim (a small utility that grabs Studio's rendered output back into the pipeline). Building a clean workflow <em>around</em> a real product boundary, rather than routing to a competitor's video API, is deliberate. It stays inside the customer's stack and demonstrates the exact instinct the role calls for.</p>
+
+      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. On the run that produced the short above, live narration across three beats cost <strong>$0.025</strong>; the visual, score, and sound stages are wired and activate the moment a video credit plan is attached. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
+
+      <p><strong>Where a human still touches it.</strong> Script approval, brand and legal sign-off, voice selection, and a caption QA pass all stay human. Naming those seams is not a weakness to hide; it is what separates an enterprise-realistic workflow from a toy. The pipeline removes the mechanical hours and leaves the judgment where it belongs.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">The pipeline</div>
+    <div class="diagram" role="img" aria-label="Pipeline flow: script.md parses into beats, which fan out to voiceover, visuals, score, and sound effects, then assemble into a captioned mp4 with an optional dub.">
+<span class="node">input/script.md</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[1] parseScript</span>   <span class="arrow">→</span> beats: [{ vo, visualPrompt, seconds }]
+   <span class="arrow">│</span>
+   <span class="arrow">├─▶</span> <span class="node">[2] voiceover</span>  <span class="api">(ElevenLabs TTS API)</span>            <span class="arrow">→</span> .cache/vo/*.mp3
+   <span class="arrow">├─▶</span> <span class="node">[3] visuals</span>    <span class="prod">(ElevenCreative Studio + shim)</span>  <span class="arrow">→</span> .cache/broll/*.mp4
+   <span class="arrow">├─▶</span> <span class="node">[4] score</span>      <span class="api">(Eleven Music v2)</span>               <span class="arrow">→</span> .cache/music.mp3
+   <span class="arrow">└─▶</span> <span class="node">[5] sfx</span>        <span class="api">(Sound Effects API, optional)</span>   <span class="arrow">→</span> .cache/sfx/*.mp3
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[6] assemble</span>  <span class="arrow">(ffmpeg: cut b-roll to VO timing, mix stems, burn captions)</span> <span class="arrow">→</span> output/short.mp4
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[7] dub</span>       <span class="api">(Dubbing API → target language, optional)</span> <span class="arrow">→</span> output/short.&lt;lang&gt;.mp4
+    </div>
+
+    <div class="badge-legend"><span style="color:var(--blood-soft)">LIVE</span> = this stage executed against the paid API to produce the cut above. <span style="color:var(--bone-soft)">WIRED</span> = the code path is complete and tested; it activates the moment the account's credit plan covers it. "Stems" below = the separate audio layers (voice, music, effects) mixed into the final track.</div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Voiceover <span class="badge live">live</span></div>
+          <div class="stage-d">Each beat's narration is generated through <code>POST /v1/text-to-speech/{voice_id}</code>. A cloned voice makes the whole short sound like one presenter.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Visuals <span class="badge wired">Studio-in-the-loop</span></div>
+          <div class="stage-d">Prompts are built programmatically per beat and handed to ElevenCreative Studio, then pulled back through the capture shim. No public video endpoint yet, so the workflow wraps the product boundary instead of leaving the stack.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Score <span class="badge wired">wired</span></div>
+          <div class="stage-d">Eleven Music v2, text-to-music or video-to-music against the rough cut. Trained on licensed data and cleared for commercial use, which removes the sync-fee and clearance friction that stops brand teams from shipping.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Sound effects <span class="badge wired">wired</span></div>
+          <div class="stage-d">Optional accent beats generated per cue through the Sound Effects API and mixed under the voiceover.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">06</div>
+        <div>
+          <div class="stage-h">Assemble <span class="badge live">live</span></div>
+          <div class="stage-d">ffmpeg cuts each b-roll clip to its voiceover length, mixes the stems, and burns the caption track from the pipeline's own timing. Deterministic and free.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">07</div>
+        <div>
+          <div class="stage-h">Dub <span class="badge wired">wired</span></div>
+          <div class="stage-d">One command produces a localized cut through the Dubbing API. The localization proof a media customer asks for first.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Cost model · ElevenLabs API, 2026</div>
+    <div class="manifest">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Rate</th><th class="mono">~60s short</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Voiceover (TTS Multilingual v2/v3)</td><td class="mono">$0.10 / 1k chars</td><td class="mono">~$0.02</td></tr>
+          <tr><td>Score (Eleven Music v2)</td><td class="mono">$0.15 / min</td><td class="mono">~$0.15</td></tr>
+          <tr><td>Sound effects</td><td class="mono">$0.12 / min</td><td class="mono">~$0.05</td></tr>
+          <tr><td>Dubbing (per target language)</td><td class="mono">$0.33–0.50 / min</td><td class="mono">~$0.40</td></tr>
+          <tr><td>Visuals (ElevenCreative Studio)</td><td class="mono">credit-based</td><td class="mono">plan-dependent</td></tr>
+          <tr class="total"><td>Audio stack, per short</td><td class="mono">n/a</td><td class="mono">a few dollars</td></tr>
+        </tbody>
+      </table>
+      <div class="caption">Rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>, accessed 2026-07-07; per-short figures are estimates for a ~180-word, 60-second piece. Visual generation is the real cost driver and is credit-metered, so a Pro or Scale plan is the budget line to watch. The actual run that produced the short above logged $0.025 in live narration spend to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why this maps to the role</div>
+    <div class="cs-body">
+      <p>A forward-deployed creative is a creative solutions architect and an enablement lead, not a designer for hire. The job is to embed with a customer, understand their production pipeline, prototype an AI-native replacement, package it as a template, and teach it. That is the loop this artifact runs. It is also the loop I ran for <a href="timeline.html">eight years in live newsrooms</a> and three years <a href="projects.html">building production AI enablement at Google</a> for a community of 1,000+ senior engineers, which is the half of the role a pure-VFX applicant cannot credibly claim.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>Understand the pipeline. Prototype the replacement. Package it so it travels. Teach it. The short is proof of craft; the manifest and the template are proof I can hand it to a customer and have it still work after I leave.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create"><span>See the code on GitHub</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=Forward%20Deployed%20Creative%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The standalone repo publishes at <span style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</span>; until it is live, the full template and run manifest are available on request.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Targeting Forward Deployed Creative / Engineer, AI Solutions Architect, AI Enablement at AI-native companies.</div>
+  </div>
+</footer>
+
+<script>
+  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
+</script>
+</body>
+</html>

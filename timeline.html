@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timeline · Mitchell Williams</title>
+  <meta name="description" content="Sixteen years, one arc: live global broadcast to viral social to production AI. Scroll the trajectory.">
+  <meta property="og:title" content="Timeline · Mitchell Williams">
+  <meta property="og:description" content="The Stream to HuffPost Live to Fusion to AJ+ to Google to AI builder. Scroll the arc.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <style>
+    .tl-hero{padding:170px 0 56px}
+    .tl-hero .display{font-size:clamp(42px,7.4vw,110px)}
+    .tl-sub{margin-top:26px;max-width:620px;font-size:18px;color:var(--bone-soft);line-height:1.6}
+
+    .tl{position:relative;max-width:900px;margin:0 auto;padding:40px 0 80px}
+    .tl-rail{position:absolute;left:29px;top:0;bottom:0;width:1px;background:var(--line)}
+    .tl-fill{position:absolute;left:29px;top:0;width:1px;height:0;background:var(--blood-soft);
+      transition:height .15s linear}
+    .era{position:relative;padding:0 0 88px 92px}
+    .era:last-child{padding-bottom:20px}
+    .era-dot{position:absolute;left:22px;top:6px;width:15px;height:15px;border:1px solid var(--line-2);
+      background:var(--bg);transform:rotate(45deg);transition:all .6s var(--ease)}
+    .era.in .era-dot{border-color:var(--blood-soft);background:var(--blood)}
+    .era-years{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;
+      color:var(--blood-soft);margin-bottom:12px;text-transform:uppercase}
+    .era-org{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,4vw,44px);
+      letter-spacing:-0.02em;text-transform:uppercase;line-height:1.0;color:var(--bone)}
+    .era-role{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--mute);margin-top:10px}
+    .era-body{margin-top:16px;max-width:560px;font-size:15px;line-height:1.65;color:var(--bone-soft)}
+    .era-metrics{display:flex;gap:26px;margin-top:20px;flex-wrap:wrap}
+    .em{border-left:2px solid var(--blood-soft);padding-left:14px}
+    .em .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:var(--bone);
+      letter-spacing:-0.01em}
+    .em .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--mute);margin-top:3px;max-width:170px;line-height:1.5}
+    .era-clips{display:flex;gap:10px;margin-top:22px}
+    .era-clips a{display:block;width:180px;aspect-ratio:16/10;overflow:hidden;position:relative;
+      border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease)}
+    .era-clips a:hover{border-color:var(--line-2);transform:translateY(-2px)}
+    .era-clips img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.4)}
+    .era-clips a:hover img{filter:grayscale(0)}
+    .era-clips .cl{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;
+      font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--bone);background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
+    .era .reveal-child{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .era.in .reveal-child{opacity:1;transform:none}
+    .era.in .reveal-child:nth-child(2){transition-delay:.08s}
+    .era.in .reveal-child:nth-child(3){transition-delay:.14s}
+    .era.in .reveal-child:nth-child(4){transition-delay:.2s}
+    .era.in .reveal-child:nth-child(5){transition-delay:.26s}
+    .era.in .reveal-child:nth-child(6){transition-delay:.32s}
+    .no-js .era .reveal-child,.no-js .era-dot{opacity:1;transform:none}
+    .no-js .era-dot{transform:rotate(45deg)}
+    .no-js .tl-fill{height:100%}
+    @media (prefers-reduced-motion: reduce){
+      .era .reveal-child{opacity:1 !important;transform:none !important;transition:none !important}
+      .tl-fill{height:100% !important;transition:none}
+      .era-dot{transition:none}
+    }
+    @media(max-width:860px){
+      .tl-hero{padding:130px 0 40px}
+      .tl-rail,.tl-fill{left:7px}
+      .era{padding-left:44px}
+      .era-dot{left:0}
+      .era-clips{flex-wrap:wrap}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="tl-hero">
+  <div class="wrap">
+    <div class="kicker">2010 to now · scroll the arc</div>
+    <h1 class="display">
+      <span class="ln"><span>One</span></span>
+      <span class="ln"><span class="accent">trajectory.</span></span>
+    </h1>
+    <p class="tl-sub">Live global broadcast, then viral social at planetary scale, then production AI inside Google, then building AI-native systems solo. The line fills as you scroll; every era anchors to real work in the archive.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tl" id="tl">
+    <div class="tl-rail"></div>
+    <div class="tl-fill" id="tl-fill"></div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2010 · 2012</div>
+      <h2 class="era-org reveal-child">Al Jazeera English<br>The Stream</h2>
+      <div class="era-role reveal-child">Founding-team Associate Producer</div>
+      <p class="era-body reveal-child">Launch night, May 2, 2011: the planned rundown abandoned when the bin Laden raid broke, and the man who unknowingly live-tweeted it booked on air while his follower count climbed from 751 to 59,000. Social-data journalism before that was a category.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">250M</div><div class="l">households at launch</div></div>
+        <div class="em"><div class="n">RTS 2012</div><div class="l">Most Innovative Programme</div></div>
+      </div>
+      <div class="era-clips reveal-child">
+        <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Bin Laden night · 45m</span></a>
+        <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2012 · 2013</div>
+      <h2 class="era-org reveal-child">HuffPost Live</h2>
+      <div class="era-role reveal-child">Segment Producer</div>
+      <p class="era-body reveal-child">Streaming-first live news before streaming-first was normal. I originated and produced panels that were years ahead of their policy fights: PrEP six months after FDA approval, transgender service members before the Pentagon moved.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">2012</div><div class="l">Mashable Biggest Innovation in Media</div></div>
+        <div class="em"><div class="n">2013</div><div class="l">Webby honors era</div></div>
+      </div>
+      <div class="era-clips reveal-child">
+        <a href="work.html#live-panels"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Trans military panel</span></a>
+        <a href="work.html#live-panels"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><span class="cl">Truvada panel · 2013</span></a>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2013 · 2015</div>
+      <h2 class="era-org reveal-child">Fusion</h2>
+      <div class="era-role reveal-child">Senior Producer · America With Jorge Ramos</div>
+      <p class="era-body reveal-child">Weekly primetime on the ABC/Univision joint venture, produced end to end: full episodes, election specials, field segments, and the 44-minute live special on Mandela's death built on a rebuilt rundown.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">179%</div><div class="l">primetime growth window</div></div>
+        <div class="em"><div class="n">40M</div><div class="l">household distribution</div></div>
+      </div>
+      <div class="era-clips reveal-child">
+        <a href="work.html#interviews-longform"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos showreel" loading="lazy"><span class="cl">The showreel · 44m</span></a>
+        <a href="work.html#interviews-longform"><img src="assets/posters/fusion-2013-america-with-jorge-ramos-macing-it.jpg" alt="Jorge Ramos gets pepper-sprayed" loading="lazy"><span class="cl">Macing it · segment</span></a>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2016</div>
+      <h2 class="era-org reveal-child">CNN · New Day</h2>
+      <div class="era-role reveal-child">Writer / Producer · election cycle</div>
+      <p class="era-body reveal-child">Network morning television through the 2016 election cycle. One shot to land a story, no second take.</p>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2016 · 2018</div>
+      <h2 class="era-org reveal-child">AJ+</h2>
+      <div class="era-role reveal-child">Senior Producer</div>
+      <p class="era-body reveal-child">Viral social news at the top of its category-defining era. I ran a team during the years AJ+ reached 500 million weekly viewers, field-produced San Juan's mayor during active Hurricane Maria conditions, and made one piece that reached 50 million views on its own.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">500M</div><div class="l">weekly viewers, team era</div></div>
+        <div class="em"><div class="n">50M</div><div class="l">views, one piece of my own</div></div>
+      </div>
+      <div class="era-clips reveal-child">
+        <a href="work.html#social-video"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">The 50M measles piece</span></a>
+        <a href="work.html#field-documentary"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><span class="cl">Hurricane Maria · field</span></a>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2018 · 2024</div>
+      <h2 class="era-org reveal-child">Google<br>Corporate Engineering</h2>
+      <div class="era-role reveal-child">Senior Communications &amp; Content Strategist</div>
+      <p class="era-body reveal-child">Six years turning dense internal engineering into communication people actually watched. Video-first internal comms at a scale most newsrooms never touch.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">75,000+</div><div class="l">employees reached</div></div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2024 · 2026</div>
+      <h2 class="era-org reveal-child">Google<br>Cross-Google Engineering</h2>
+      <div class="era-role reveal-child">Internal Communications Lead</div>
+      <p class="era-body reveal-child">Communications for the community of 1,000+ Principal, Distinguished, and Fellow engineers. This is where I stopped writing about the systems and started building them: two production AI agents, built and deployed solo.</p>
+      <div class="era-metrics reveal-child">
+        <div class="em"><div class="n">1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
+        <div class="em"><div class="n">~70%</div><div class="l">less VP review back-and-forth, digital-twin system</div></div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">2026 · Now</div>
+      <h2 class="era-org reveal-child">AI-native<br>builder</h2>
+      <div class="era-role reveal-child">Forward Deployed Creative / Engineer, in the making</div>
+      <p class="era-body reveal-child">Building full time: an ElevenLabs production pipeline with per-run cost receipts, measurable voice scoring, citation-gated verification, and a fifty-agent job-search fleet. The newsroom instinct, shipped as software.</p>
+      <div class="era-clips reveal-child">
+        <a href="broll-pipeline.html"><img src="assets/broll-poster.jpg" alt="broll pipeline case study" loading="lazy"><span class="cl">broll pipeline · case study</span></a>
+      </div>
+      <div class="era-metrics reveal-child" style="margin-top:26px">
+        <a class="btn solid" href="projects.html"><span>See what I'm building</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Targeting Forward Deployed Creative / Engineer, AI Solutions Architect, AI Enablement at AI-native companies.</div>
+  </div>
+</footer>
+
+<script>
+  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
+  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
+
+  // era activation
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.25});
+  document.querySelectorAll('.era').forEach(el=>io.observe(el));
+
+  // scroll-driven rail fill
+  const tl=document.getElementById('tl'), fill=document.getElementById('tl-fill');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ fill.style.height='100%'; }
+  else{
+    let ticking=false;
+    function update(){
+      const r=tl.getBoundingClientRect();
+      const vh=innerHeight;
+      const progress=Math.min(1,Math.max(0,(vh*0.7-r.top)/r.height));
+      fill.style.height=(progress*100)+'%';
+      ticking=false;
+    }
+    addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } },{passive:true});
+    update();
+  }
+</script>
+</body>
+</html>

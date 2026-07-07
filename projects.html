@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · Mitchell Williams</title>
+  <meta name="description" content="Production AI systems built and operated solo: a costed video pipeline, measurable voice scoring, citation-gated verification, and a fifty-agent job-search fleet.">
+  <meta property="og:title" content="Projects · Mitchell Williams">
+  <meta property="og:description" content="Production AI systems that survive contact with real work. Most shipped and public.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <style>
+    .proj-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
+    .proj-hero .display{font-size:clamp(42px,7.4vw,110px)}
+    .proj-sub{margin-top:26px;max-width:680px;font-size:18px;line-height:1.65;color:var(--bone-soft)}
+    .card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .pcard{background:var(--surface);border:1px solid var(--line);padding:30px 28px;display:flex;
+      flex-direction:column;gap:14px;transition:border-color .4s var(--ease),transform .5s var(--ease)}
+    .pcard:hover{border-color:var(--line-2);transform:translateY(-3px)}
+    .pcard.flagship{grid-column:span 2;border-left:2px solid var(--blood-soft)}
+    .pcard .top{display:flex;align-items:center;gap:12px}
+    .pcard .name{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+      text-transform:lowercase;color:var(--blood-soft)}
+    .pcard .chip-status{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      padding:3px 8px;border:1px solid var(--line-2);color:var(--mute);margin-left:auto}
+    .pcard .chip-status.building{color:var(--bone-soft);border-color:var(--bone-soft)}
+    .pcard h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,28px);
+      letter-spacing:-0.02em;text-transform:uppercase;line-height:1.05}
+    .pcard .body{font-size:15px;line-height:1.65;color:var(--bone-soft);max-width:640px}
+    .pcard .proof{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;
+      color:var(--mute);border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+    .pcard .row{display:flex;gap:14px;align-items:center;margin-top:2px}
+    .pcard .go{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
+    .pcard .go:hover{color:var(--blood-soft)}
+    .pcard .tags{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      letter-spacing:0.06em;text-align:right}
+    .compact-list{border-top:1px solid var(--line)}
+    .crow{display:grid;grid-template-columns:220px 1fr auto;gap:24px;align-items:baseline;
+      padding:20px 0;border-bottom:1px solid var(--line)}
+    .crow .cname{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--bone)}
+    .crow .cdesc{font-size:14px;color:var(--mute);line-height:1.6}
+    .crow .cstat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--dim)}
+    section{padding:80px 0}
+    @media(max-width:860px){
+      .proj-hero{padding:130px 0 44px}
+      .card-grid{grid-template-columns:1fr}
+      .pcard.flagship{grid-column:span 1}
+      .crow{grid-template-columns:1fr;gap:6px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <div class="kicker">Production AI systems, built and operated solo</div>
+    <h1 class="display">
+      <span class="ln"><span>What I'm</span></span>
+      <span class="ln"><span class="accent">building.</span></span>
+    </h1>
+    <p class="proj-sub">I build AI systems that have to survive contact with real work: a video pipeline with per-run cost receipts, voice scoring with a QA gate, agents that refuse to answer without a citation. Most are shipped and public. One runs my job search, with around fifty scheduled agents at a time.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Featured</h2>
+      <span class="sec-note">Six systems an evaluator can inspect</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="pcard flagship reveal">
+        <div class="top"><span class="name">broll-pipeline</span><span class="chip-status">SHIPPED</span></div>
+        <h3>Script in, captioned short out</h3>
+        <p class="body">Turning raw footage into publish-ready b-roll is slow, manual, multi-tool work with no visibility into cost. This seven-stage pipeline takes a script in and produces a captioned short out, with per-run manifest costing so every output has a receipt. Production-operations thinking, not a demo script.</p>
+        <div class="proof">7 stages · 15.4s captioned demo at $0.025 audio spend · ElevenLabs stack</div>
+        <div class="row">
+          <a class="go" href="broll-pipeline.html">Case study</a>
+          <span class="tags">ElevenLabs · Node · ffmpeg</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">voice-os</span><span class="chip-status">SHIPPED</span></div>
+        <h3>Voice fidelity you can measure</h3>
+        <p class="body">Most LLM voice matching is vibes-based prompting that cannot say how close a draft is to the target. This Python pipeline scores drafts against a voice corpus on six stylistic axes, with dual-persona routing and a QA gate that blocks output below threshold. Fidelity is quantified, not asserted.</p>
+        <div class="proof">6.9M+ word calibration corpus · pytest suite · deterministic offline mode</div>
+        <div class="row">
+          <a class="go" href="https://github.com/mitwilli-create/voice-os" rel="noopener">View repo</a>
+          <span class="tags">Python · Claude · RAG</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">career-ops</span><span class="chip-status">IN PRODUCTION</span></div>
+        <h3>Fifty agents running the job search</h3>
+        <p class="body">A serious job search generates more evaluation, tailoring, and tracking work than a human can execute consistently. This production fork of santifer/career-ops is extended into a full AI pipeline: ATS scanning, LLM evaluation, CV generation, batch processing, multi-model council orchestration. A maintained multi-agent system with scheduling and budgets, not a one-shot script.</p>
+        <div class="proof">740+ role evaluations · ~50 scheduled launchd agents · multi-vendor council orchestration</div>
+        <div class="row">
+          <a class="go" href="mailto:mitwilli@gmail.com?subject=career-ops%20walkthrough">Details on request</a>
+          <span class="tags">Node · multi-agent · launchd</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">tax-verification-agent</span><span class="chip-status">SHIPPED</span></div>
+        <h3>No citation, no answer</h3>
+        <p class="body">Consumer tax software optimizes for completion and defends its own math. This Claude agent verifies filings against a four-layer knowledge base: federal code, state statutes, IRS publications, precedents. It refuses any verdict without a citation chain.</p>
+        <div class="proof">Caught a ~$19K pre-filled multi-state allocation error the filing software defended</div>
+        <div class="row">
+          <a class="go" href="https://github.com/mitwilli-create/tax-verification-agent" rel="noopener">View repo</a>
+          <span class="tags">Claude · RAG · citation gating</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">comms-triage-agent</span><span class="chip-status">SHIPPED</span></div>
+        <h3>Triage that knows when to stop</h3>
+        <p class="body">Internal comms intake from senior engineers is high volume and judgment-heavy. This agent triages, revises, and escalates on Google Apps Script and Gemini: three sequential prompts, conditional KB loading, and a confidence threshold that holds low-confidence items for human review. Scoped prompts with defined escape hatches, not one mega-prompt. Published as a sanitized public demo.</p>
+        <div class="proof">Three-prompt architecture · dry-run harness · per-submission decision logging</div>
+        <div class="row">
+          <a class="go" href="https://github.com/mitwilli-create/comms-triage-agent" rel="noopener">View repo</a>
+          <span class="tags">Apps Script · Gemini</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">monolith</span><span class="chip-status">SHIPPED</span></div>
+        <h3>Guardrails a model cannot talk past</h3>
+        <p class="body">Prompt-engineered guardrails can be talked out of their own rules. This deterministic wardrobe architect and budget controller is a TypeScript PWA where the LLM only does perception; three code-level constraint gates issue the verdict. Unknown yields INSUFFICIENT_DATA instead of a guess, on an append-only audit log.</p>
+        <div class="proof">Three-gate verdict pipeline · 50 pure-function tests · runs without an API key</div>
+        <div class="row">
+          <a class="go" href="https://github.com/mitwilli-create/monolith" rel="noopener">View repo</a>
+          <span class="tags">TypeScript · PWA · constraint gates</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Also on the bench</h2>
+      <span class="sec-note">Private builds, described honestly</span>
+    </div>
+    <div class="compact-list">
+      <div class="crow reveal">
+        <span class="cname">mission-control</span>
+        <span class="cdesc">Ops dashboard: one next action on deck, content pipeline, agent fleet health. Zero-dependency Node PWA.</span>
+        <span class="cstat">SHIPPED · PRIVATE</span>
+      </div>
+      <div class="crow reveal">
+        <span class="cname">mcp-agent-router</span>
+        <span class="cdesc">MCP router coordinating six specialist agents behind a single conversational interface.</span>
+        <span class="cstat">SHIPPED · PRIVATE</span>
+      </div>
+      <div class="crow reveal">
+        <span class="cname">finance-cli</span>
+        <span class="cdesc">Personal finance CLI with custom MCP servers; natural-language queries against real transaction data.</span>
+        <span class="cstat">IN PRODUCTION · PRIVATE</span>
+      </div>
+      <div class="crow reveal">
+        <span class="cname">content-ops</span>
+        <span class="cdesc">Content-repurposing pipeline with a Qodo PR quality gate wired in first. In active development.</span>
+        <span class="cstat">BUILDING</span>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:40px;font-size:15px;color:var(--mute);max-width:640px;">Every featured project will carry a short demo video here as the library grows. Until then, the repos and the <a href="broll-pipeline.html" style="color:var(--bone);border-bottom:1px solid var(--blood-soft)">broll case study</a> are the walkthrough.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Targeting Forward Deployed Creative / Engineer, AI Solutions Architect, AI Enablement at AI-native companies.</div>
+  </div>
+</footer>
+
+<script>
+  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
+  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.07)+'s'; io.observe(el); });
+</script>
+</body>
+</html>
