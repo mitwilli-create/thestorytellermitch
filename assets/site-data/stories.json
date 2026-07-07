@@ -10,7 +10,12 @@
         "That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It proved the thing I trust most in how I work: when the story changes, move first."
       ],
       "pull": "Breaking news doesn't care what market you're in.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "still": {
+        "src": "assets/stills/bhutto-1989-pd.jpg",
+        "cap": "Benazir Bhutto, 1989 · public domain, US Dept. of Defense",
+        "alt": "Benazir Bhutto speaking to press, 1989"
+      }
     },
     {
       "id": "stream-launch-night",
@@ -25,7 +30,12 @@
       "clipSlugs": [
         "aje-stream-2011-global-reactions-bin-laden-death-bahrain",
         "aje-stream-2011-what-is-the-way-forward-in-bahrain"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/stream-launch-night.jpg",
+        "cap": "From the broadcast · The Stream, 2011",
+        "alt": "Launch night, rewritten by breaking news"
+      }
     },
     {
       "id": "trans-navy-panel",
@@ -39,7 +49,12 @@
       "pull": "The story had aged into primary source documentation.",
       "clipSlugs": [
         "huffpost-2012-the-few-the-proud-trans-military-panel"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/trans-navy-panel.jpg",
+        "cap": "From the broadcast · HuffPost Live, 2012",
+        "alt": "The panel that aged into evidence"
+      }
     },
     {
       "id": "kim-k-bahrain",
@@ -53,7 +68,12 @@
       "pull": "Celebrity news was the doorway. The uprising was the story.",
       "clipSlugs": [
         "huffpost-2012-kim-kardashian-milkshake-bahrain"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/kim-k-bahrain.jpg",
+        "cap": "From the broadcast · HuffPost Live, 2012",
+        "alt": "Kim Kardashian, a milkshake shop, and an uprising"
+      }
     },
     {
       "id": "prep-origination",
@@ -67,7 +87,12 @@
       "pull": "Origination first, execution second, credit optional.",
       "clipSlugs": [
         "huffpost-2013-hiv-prevention-pill-truvada-in-stores"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/prep-origination.jpg",
+        "cap": "From the broadcast · HuffPost Live, 2013",
+        "alt": "Bringing PrEP to air months ahead of the coverage"
+      }
     },
     {
       "id": "scientology-live-coverage",
@@ -93,7 +118,12 @@
       "pull": "Find the story early, then build the container that lets it be told safely.",
       "clipSlugs": [
         "huffpost-or-aje-2012-jazz-growing-up-trans-youth"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/jazz-jennings.jpg",
+        "cap": "From the broadcast · HuffPost Live, 2013",
+        "alt": "A full hour with Jazz, two years before TLC"
+      }
     },
     {
       "id": "mandela-special",
@@ -108,7 +138,12 @@
       "clipSlugs": [
         "fusion-2013-america-with-jorge-ramos-december-5",
         "fusion-2013-america-with-jorge-ramos"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/mandela-special.jpg",
+        "cap": "From the broadcast · Fusion, December 5, 2013",
+        "alt": "Rebuilding primetime in real time: the Mandela special"
+      }
     },
     {
       "id": "macing-it",
@@ -122,7 +157,12 @@
       "pull": "When a principal puts their own body in the story, the producer owes them a segment that earns it.",
       "clipSlugs": [
         "fusion-2013-america-with-jorge-ramos-macing-it"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/macing-it.jpg",
+        "cap": "From the segment · America With Jorge Ramos",
+        "alt": "The day Jorge Ramos volunteered to be pepper-sprayed"
+      }
     },
     {
       "id": "mong-kok-backpack-live",
@@ -136,7 +176,12 @@
       "pull": "\"We're coming to you live from a backpack on the back of my producer.\"",
       "clipSlugs": [
         "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/mong-kok-backpack-live.jpg",
+        "cap": "From the field feed · Hong Kong, 2014",
+        "alt": "Live from a backpack in Mong Kok"
+      }
     },
     {
       "id": "fusion-ramos-lawsuit",
@@ -151,7 +196,12 @@
       "clipSlugs": [
         "fusion-2013-america-with-jorge-ramos",
         "fusion-2014-midterm-mayhem-october-12-election-coverage"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg",
+        "cap": "Jorge Ramos, 2016 · photo: Gage Skidmore · CC BY-SA 2.0",
+        "alt": "Jorge Ramos speaking, 2016"
+      }
     },
     {
       "id": "hurricane-maria-field",
@@ -166,7 +216,12 @@
       "clipSlugs": [
         "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria",
         "ajp-2017-hurricane-maria-puerto-rico-aftermath"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/hurricane-maria-field.jpg",
+        "cap": "From the field tape · San Juan, 2017",
+        "alt": "Getting the Mayor of San Juan on record in the storm"
+      }
     },
     {
       "id": "aj-plus-50m-views",
@@ -181,7 +236,12 @@
       "clipSlugs": [
         "ajp-2017-measles-outbreaks-usa-viral-50m-views",
         "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/aj-plus-50m-views.jpg",
+        "cap": "From the piece · AJ+, 2017",
+        "alt": "Fifty million views in two minutes"
+      }
     },
     {
       "id": "talent-pipeline",
@@ -195,7 +255,12 @@
       "pull": "The output you measure is the content. The output that compounds is the people.",
       "clipSlugs": [
         "ajp-2017-measles-outbreaks-usa-viral-50m-views"
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/talent-pipeline.jpg",
+        "cap": "From the proof-of-concept piece · AJ+, 2017",
+        "alt": "Coaching producers from behind the camera to on air"
+      }
     },
     {
       "id": "comms-triage-build",
