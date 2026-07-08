@@ -4,7 +4,7 @@ The gap between having a tool and getting value from it is where the work lives.
 
 2
 00:00:05,000 --> 00:00:12,152
-This short was produced by a pipeline — voice, score, and sound, generated and assembled from one script.
+This short was produced by a pipeline: voice, score, and sound, generated and assembled from one script.
 
 3
 00:00:12,152 --> 00:00:17,152
