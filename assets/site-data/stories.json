@@ -406,7 +406,8 @@
       "still": {
         "src": "assets/stills/mara-vanells-oncamera.jpg",
         "cap": "Mara Van Ells presenting the proof-of-concept piece · AJ+, 2017",
-        "alt": "Mara Van Ells on camera in the AJ+ newsroom"
+        "alt": "Mara Van Ells on camera in the AJ+ newsroom",
+        "pos": "center 15%"
       },
       "media": [
         {

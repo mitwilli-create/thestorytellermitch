@@ -26,7 +26,7 @@ function clipTile(slug) {
 
 const articles = stories.map((s) => {
   const still = s.still
-    ? `          <figure class="still reveal"><img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"><figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`
+    ? `          <figure class="still reveal"><img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"${s.still.pos ? ` style="object-position:${esc(s.still.pos)}"` : ""}><figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`
     : '';
   const mediaRow = s.media?.length
     ? `          <div class="media-row reveal">\n${s.media.map((m) => {
