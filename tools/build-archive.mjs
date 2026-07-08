@@ -83,7 +83,7 @@ const usedEras = new Set(pub.map((c) => c.era));
 const chipGroup = (group, label, items) => `    <div class="chip-group" data-filter-group="${group}" role="group" aria-label="Filter by ${label}">
       <span class="cg-label">${label}</span>
       <button class="chip is-active" data-value="*" aria-pressed="true">All</button>
-${items.map((i) => `      <button class="chip" data-value="${i.key}" aria-pressed="false">${esc(i.label)}</button>`).join('\n')}
+${items.map((i) => `      <button class="chip" data-value="${esc(i.key)}" aria-pressed="false">${esc(i.label)}</button>`).join('\n')}
     </div>`;
 const filtersHtml = [
   chipGroup('outlet', 'Outlet', m.outlets.filter((o) => usedOutlets.has(o.key))),
@@ -92,12 +92,17 @@ const filtersHtml = [
 
 // ---- splice ----
 let page = readFileSync(PAGE, 'utf8');
-page = page.replace(/<!-- ARCHIVE:START -->[\s\S]*?<!-- ARCHIVE:END -->/,
-  `<!-- ARCHIVE:START -->\n${startHtml}\n\n${sectionsHtml}\n<!-- ARCHIVE:END -->`);
-page = page.replace(/<!-- FILTERS:START -->[\s\S]*?<!-- FILTERS:END -->/,
-  `<!-- FILTERS:START -->\n${filtersHtml}\n    <!-- FILTERS:END -->`);
-page = page.replace(/<body data-playback="[^"]*" data-stream-code="[^"]*">/,
-  `<body data-playback="${m.playback}" data-stream-code="${m.streamCustomerCode ?? ''}">`);
+// fail loud if any splice target is missing: a silent no-op ships a stale archive
+function splice(src, re, replacement, what) {
+  if (!re.test(src)) throw new Error(`build-archive: ${what} not found in work.html: refusing to write a stale bake`);
+  return src.replace(re, replacement);
+}
+page = splice(page, /<!-- ARCHIVE:START -->[\s\S]*?<!-- ARCHIVE:END -->/,
+  `<!-- ARCHIVE:START -->\n${startHtml}\n\n${sectionsHtml}\n<!-- ARCHIVE:END -->`, 'ARCHIVE markers');
+page = splice(page, /<!-- FILTERS:START -->[\s\S]*?<!-- FILTERS:END -->/,
+  `<!-- FILTERS:START -->\n${filtersHtml}\n    <!-- FILTERS:END -->`, 'FILTERS markers');
+page = splice(page, /<body data-playback="[^"]*" data-stream-code="[^"]*">/,
+  `<body data-playback="${m.playback}" data-stream-code="${m.streamCustomerCode ?? ''}">`, 'body playback attributes');
 writeFileSync(PAGE, page);
 
 console.log(`baked work.html: ${start.length} start-here + ${pub.length} published tiles across ${m.buckets.length} buckets (playback=${m.playback})`);
