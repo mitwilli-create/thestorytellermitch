@@ -222,6 +222,7 @@
       <span class="sec-num">02</span>
       <h2 class="sec-title">Social Video</h2>
       <span class="sec-count">35 pieces</span>
+      <span class="sec-note">Advocacy-era social journalism, produced to platform spec</span>
     </div>
     <div class="film-grid">
   <a class="film third reveal" href="media/ajp-or-fusion-2015-the-bare-necessities.mp4"
@@ -1128,12 +1129,8 @@
   </div>
 </footer>
 
+<script src="shared/reveal.js"></script>
 <script>
-  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
-  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.07)+'s'; io.observe(el); });
-
   /* ---------- filtering ---------- */
   const state={outlet:'*',era:'*'};
   const tiles=[...document.querySelectorAll('.film[data-clip]')];

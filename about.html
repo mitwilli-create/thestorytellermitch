@@ -129,6 +129,9 @@
       <h2 class="reveal">The through line</h2>
       <p class="reveal">Systems under pressure. Whether the system is a live control room or an LLM orchestration layer, the discipline is the same: identify what matters, build the structure that gets it out, and measure what happened. The full trajectory is on the <a href="timeline.html">Timeline</a>, and the stories behind the biggest nights are on <a href="stories.html">Stories</a>.</p>
 
+      <h2 class="reveal">The comms seat, concretely</h2>
+      <p class="reveal">At Google xGE I was the communications lead for a community of 1,000+ Principal, Distinguished, and Fellow engineers: I owned communications for the annual senior-IC summit (600+ attendees) and quarterly forums (300+ each), authored the org's three-tier communications operating model, ran the recurring approval-intake prioritization meetings, and wrote directly for a VP. Earlier, at Corporate Engineering, I wrote executive communications for Google's then-CIO. At AJ+ I led 10+ producers and coached three of them into on-camera principals with Emmy and Webby wins of their own. The communications-first view of this career lives on the <a href="comms.html">comms page</a>, with the craft demonstrations in the <a href="writing.html">writing room</a>.</p>
+
       <h2 class="reveal">What I'm targeting</h2>
       <ul class="reveal">
         <li><strong>Build &amp; deploy</strong>AI Solutions Architect · Forward Deployed Engineer / Creative · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager</li>
@@ -180,11 +183,6 @@
   </div>
 </footer>
 
-<script>
-  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
-  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.07)+'s'; io.observe(el); });
-</script>
+<script src="shared/reveal.js"></script>
 </body>
 </html>

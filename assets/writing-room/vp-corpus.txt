@@ -1,0 +1,11 @@
+--- 2025-09-04 | email | platform-eng ---
+We're shutting down the legacy queue. Last run is April 12. I know three teams still depend on it, and I'd rather hear about a fourth now than in May.
+Here's the call I made and why. Keeping both schedulers costs us the on-call rotation you keep escalating to me. One had to go, and the one that stayed is the one with a failure mode we can actually reason about.
+Tell me by Friday if your service can't make the date. I will extend a deadline; I won't debug a surprise in production.
+
+--- 2025-10-16 | email | platform-eng ---
+The postmortem is unedited. The part where we missed the alert for forty minutes stays in, because the fix only makes sense if the failure is visible.
+Budget review lands Thursday. Two asks got cut, including one of mine. The criteria were the same for everyone: does it reduce pages, or does it reduce cost per run.
+
+--- 2025-11-20 | chat | platform-eng ---
+Short version: the migration slipped a week and that's on me, I approved the scope add. New date is the 19th. If that breaks your quarter planning, reply here today and I'll take the escalation myself.

@@ -258,13 +258,10 @@
   </div>
 </footer>
 
+<script src="shared/reveal.js"></script>
 <script>
-  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
-  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-
-  // era activation
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
-  document.querySelectorAll('.era').forEach(el=>io.observe(el));
+  // era activation (shared observer from reveal.js)
+  document.querySelectorAll('.era').forEach(el=>window.__revealObserve(el));
 
   // scroll-driven rail fill
   const tl=document.getElementById('tl'), fill=document.getElementById('tl-fill');

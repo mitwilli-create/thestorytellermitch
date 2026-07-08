@@ -11,7 +11,8 @@
     {
       "key": "social-video",
       "label": "Social Video",
-      "num": "02"
+      "num": "02",
+      "note": "Advocacy-era social journalism, produced to platform spec"
     },
     {
       "key": "field-documentary",
