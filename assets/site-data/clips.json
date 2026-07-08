@@ -1973,32 +1973,6 @@
       "sourceFile": null
     },
     {
-      "slug": "google-lifeatgoogle-2019-interview-prep-cognitive",
-      "published": false,
-      "bucket": "social-video",
-      "outlet": "google",
-      "outletLabel": "Google · Life at Google",
-      "year": "2019",
-      "era": "2022-2023",
-      "type": "Interview Prep",
-      "title": "Prepare for your Google interview: cognitive ability",
-      "subtitle": "Part of Google's official interview-prep series for candidates.",
-      "duration": "YouTube",
-      "durationSec": 0,
-      "poster": "https://i.ytimg.com/vi/eIMR82oO2Dc/hqdefault.jpg",
-      "hoverPreview": null,
-      "previewStart": 0,
-      "media": {
-        "local": null,
-        "streamId": null,
-        "youtubeId": "eIMR82oO2Dc"
-      },
-      "startHere": false,
-      "startHereRank": null,
-      "caseStudy": null,
-      "sourceFile": null
-    },
-    {
       "slug": "google-lifeatgoogle-2019-interview-prep-coding",
       "published": true,
       "bucket": "social-video",
