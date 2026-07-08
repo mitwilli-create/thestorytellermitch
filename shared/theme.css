@@ -72,7 +72,7 @@
     /* ---------- hero ---------- */
     .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
       padding:140px 0 64px;position:relative}
-    .hero .wrap{width:100%}
+    .hero .wrap{width:100%;position:relative;z-index:1}
     .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.28em;
       text-transform:uppercase;color:var(--mute);margin-bottom:34px;
       display:flex;align-items:center;gap:16px}
