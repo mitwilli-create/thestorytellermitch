@@ -63,8 +63,9 @@ const sectionsHtml = m.buckets.map((b) => {
     .sort((a, b2) => String(a.year).localeCompare(String(b2.year)) || a.title.localeCompare(b2.title));
   if (!clips.length) return '';
   // optional on-camera figure rendered above the bucket's section head
-  if (b.oncam && (!b.oncam.src || !b.oncam.alt)) {
-    console.error(`bucket ${b.key}: oncam entry missing src or alt`); process.exit(1);
+  const okStr = (v) => typeof v === 'string' && v.trim().length > 0;
+  if (b.oncam && (!okStr(b.oncam.src) || !okStr(b.oncam.alt))) {
+    console.error(`bucket ${b.key}: oncam src and alt must be non-empty strings`); process.exit(1);
   }
   const oncam = b.oncam
     ? `    <figure class="oncam oncam--divider reveal" style="margin:0 0 48px">
