@@ -28,25 +28,30 @@ const articles = stories.map((s) => {
   const still = s.still
     ? `          <figure class="still reveal"><img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"${s.still.pos ? ` style="object-position:${esc(s.still.pos)}"` : ""}><figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`
     : '';
-  const soloImg = s.media?.length === 1 && (!s.media[0].type || s.media[0].type === 'img');
-  const mediaRow = s.media?.length
-    ? `          <div class="media-row reveal${soloImg ? ' solo' : ''}">\n${s.media.map((m) => {
+  // media rows: each entry may set after:<paragraph index> (default 1)
+  function renderRow(items) {
+    if (!items.length) return '';
+    const soloImg = items.length === 1 && (!items[0].type || items[0].type === 'img');
+    return `          <div class="media-row reveal${soloImg ? ' solo' : ''}">\n${items.map((m) => {
         if (m.type === 'headline')
           return `            <a class="clipcard" href="${esc(m.url)}" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span>${m.excerpt ? `<span class="ce">${esc(m.excerpt)}</span>` : ''}<span class="cd">${esc(m.date)} ↗</span></a>`;
         if (m.type === 'chips')
           return `            <div class="chipscard"><span class="co">${esc(m.title)}</span><div class="chipset">${m.items.map((i) => `<span class="orgchip">${esc(i)}</span>`).join('')}</div></div>`;
         if (m.type === 'term')
           return `            <div class="termcard"><span class="tc-bar">${esc(m.title)}</span><pre class="tc-body">${esc(m.lines.join('\n'))}</pre></div>`;
-        return `            <figure class="mcard${soloImg ? ' wide' : ''}"><img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"><figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
-      }).join('\n')}\n          </div>\n`
-    : '';
+        const cls = ['mcard', soloImg ? 'wide' : '', m.fit === 'contain' ? 'book' : '', m.tall ? 'tall' : ''].filter(Boolean).join(' ');
+        const style = m.pos ? ` style="object-position:${esc(m.pos)}"` : '';
+        return `            <figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"${style}><figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
+      }).join('\n')}\n          </div>\n`;
+  }
+  const rowsAfter = (idx) => renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === idx));
   const paras = s.body.map((p, i) => {
     const para = (i === s.body.length - 1 && s.pull)
       ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="reveal">${esc(p)}</p>`
       : `          <p class="reveal">${esc(p)}</p>`;
-    if (i === 0) return `${para}\n${still}`;
-    if (i === 1) return `${para}\n${mediaRow}`;
-    return para;
+    const row = rowsAfter(i);
+    if (i === 0) return `${para}\n${still}${row}`;
+    return row ? `${para}\n${row}` : para;
   }).join('\n');
   const clipsHtml = s.clipSlugs?.length
     ? `\n          <div class="clips reveal">\n${s.clipSlugs.map(clipTile).filter(Boolean).join('\n')}\n          </div>`

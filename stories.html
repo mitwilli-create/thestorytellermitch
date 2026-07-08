@@ -52,6 +52,9 @@
     .media-row.solo{margin-top:16px}
     .mcard.wide{flex-basis:100%;max-width:100%}
     .mcard.wide img{max-height:400px}
+    .mcard.wide.tall img{max-height:540px}
+    .mcard.book{flex:0 1 240px;max-width:260px}
+    .mcard.book img{object-fit:contain;min-height:0;max-height:380px;background:var(--surface);padding:10px}
     .mcard img{width:100%;height:100%;min-height:200px;max-height:260px;object-fit:cover;
       object-position:center 22%;display:block;
       filter:grayscale(0.3) contrast(1.05);transition:filter .4s var(--ease)}
@@ -250,12 +253,15 @@
           <div class="kick reveal">HuffPost Live · 2013</div>
           <h2 class="reveal">Covering Scientology, live, under legal scrutiny</h2>
           <p class="reveal">In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network that had been covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. I produced Jenna Miscavige Hill's on-record break with the church, the niece of its leader telling her story live. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking existed under the shadow of multi-million-dollar litigation scrutiny. That was not background noise. It was the operating condition for the work.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-scientology-bigblue-2009.jpg" alt="Church of Scientology building, Los Angeles" loading="lazy"><figcaption class="mcap">Scientology's &quot;Big Blue,&quot; Los Angeles · PictorialEvidence · CC BY-SA</figcaption></figure>
+            <a class="clipcard" href="https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/" rel="noopener"><span class="co">Journalism.co.uk</span><span class="ch">HuffPost Live and NY Times among Webby Award winners</span><span class="ce">News organisations such as the New York Times, BBC and Forbes joined digital-only news outlets including Pitchfork, The Daily Beast and the Huffington Post...</span><span class="cd">Apr 30, 2013 ↗</span></a>
+          </div>
 
           <p class="reveal">The format made it harder. HuffPost Live ran on live audience engagement, with viewer comments feeding directly into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony presented as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.</p>
           <div class="media-row reveal">
-            <figure class="mcard"><img src="assets/stills/mc-scientology-bigblue-2009.jpg" alt="Church of Scientology building, Los Angeles" loading="lazy"><figcaption class="mcap">Scientology's &quot;Big Blue,&quot; Los Angeles · PictorialEvidence · CC BY-SA</figcaption></figure>
-            <a class="clipcard" href="https://www.kirkusreviews.com/book-reviews/jenna-miscavige-hill/beyond-belief-my-secret-life/" rel="noopener"><span class="co">The memoir · Kirkus Reviews</span><span class="ch">Beyond Belief: My Secret Life Inside Scientology and My Harrowing Escape</span><span class="cd">2013 ↗</span></a>
-            <a class="clipcard" href="https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/" rel="noopener"><span class="co">Journalism.co.uk</span><span class="ch">HuffPost Live and NY Times among Webby Award winners</span><span class="ce">News organisations such as the New York Times, BBC and Forbes joined digital-only news outlets including Pitchfork, The Daily Beast and the Huffington Post...</span><span class="cd">Apr 30, 2013 ↗</span></a>
+            <figure class="mcard book"><img src="assets/stills/beyond-belief-cover.jpg" alt="Beyond Belief book cover" loading="lazy"><figcaption class="mcap">Beyond Belief · HarperCollins, 2013 · cover shown for identification</figcaption></figure>
+            <a class="clipcard" href="https://www.huffpost.com/entry/jenna-miscavige-hill-take_b_2625734" rel="noopener"><span class="co">HuffPost · Tony Ortega</span><span class="ch">Jenna Miscavige Hill Takes Aim at Scientology -- Run By Her Uncle -- in Her Memoir, Beyond Belief</span><span class="ce">&quot;...a system that makes it nearly impossible for you to think for yourself.&quot;</span><span class="cd">Feb 11, 2013 ↗</span></a>
           </div>
 
           <div class="pull reveal">That's not caution. That's architecture.</div>
@@ -270,7 +276,7 @@
 
           <p class="reveal">Alongside Jazz we booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air during the broadcast. The episode covered a roughly 50 percent attempted suicide rate for transgender youth at a moment when most outlets were not having that conversation at all. I Am Jazz was greenlit in 2015 and ran for more than seven seasons.</p>
           <div class="media-row reveal solo">
-            <figure class="mcard wide"><img src="assets/stills/mc-jazz-jennings-2016.jpg" alt="Jazz Jennings at the 2016 NYC Pride Parade" loading="lazy"><figcaption class="mcap">Jazz Jennings, 2016 · Steven Pisano · CC BY</figcaption></figure>
+            <figure class="mcard wide tall"><img src="assets/stills/mc-jazz-jennings-2016.jpg" alt="Jazz Jennings at the 2016 NYC Pride Parade" loading="lazy" style="object-position:center 32%"><figcaption class="mcap">Jazz Jennings, 2016 · Steven Pisano · CC BY</figcaption></figure>
           </div>
 
           <div class="pull reveal">Find the story early, then build the container that lets it be told safely.</div>
@@ -284,7 +290,7 @@
           <div class="kick reveal">Fusion · 2013</div>
           <h2 class="reveal">Rebuilding primetime in real time: the Mandela special</h2>
           <p class="reveal">On December 5, 2013, I was producing Fusion's primetime flagship when Nelson Mandela died at 8:50 PM. The rundown had been built for a different night. We threw it out and rebuilt the broadcast from scratch, live, with anchor Mariana Atencio carrying it solo from our studio and ABC's Lindsay Janis co-anchoring from theirs. Fusion was a young ABC and Univision joint venture, and this was the night it had to perform like a legacy network.</p>
-          <figure class="still reveal"><img src="assets/stills/mandela-special.jpg" alt="Rebuilding primetime in real time: the Mandela special" loading="lazy"><figcaption class="cap">From the broadcast · Fusion, December 5, 2013</figcaption></figure>
+          <figure class="still reveal"><img src="assets/stills/mandela-special.jpg" alt="Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board" loading="lazy"><figcaption class="cap">Mariana Atencio opening the special · from the broadcast, Dec 5, 2013</figcaption></figure>
 
           <p class="reveal">The 44 minutes that aired integrated ABC News field packages from Karen Travers and Jim Avila, President Obama's statement in full, President Zuma's official South African government statement, four consecutive live phone experts, a real-time Twitter reaction segment, and archival footage, closing on Mandela's 1990 prison-release speech. Three newsrooms, ABC, Univision, and Fusion, feeding one rebuilt rundown, reaching 40 million households.</p>
           <div class="media-row reveal">
@@ -404,7 +410,6 @@
           <figure class="still reveal"><img src="assets/stills/illo-triage-agent.jpg" alt="Diagram-style illustration of a message triage pipeline with a human escalation desk" loading="lazy"><figcaption class="cap">The triage pipeline · system illustration, generated</figcaption></figure>
 
           <p class="reveal">The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was designed to auto-handle roughly 60 percent of inbound requests and projected to recapture around 160 operational hours a year, both design targets I documented rather than trophies I claimed.</p>
-
           <div class="pull reveal">I build systems that survive my own departure.</div>
           <p class="reveal">The part I am proudest of is the exit. I documented the system end to end and handed it off with a full operator runbook, so it belongs to the team, not to me. A sanitized public demo of the architecture is on my GitHub. What it proves: I build systems that survive my own departure, and I report their numbers the way an engineer would, targets as targets.</p>
         </article>
@@ -416,7 +421,6 @@
           <figure class="still reveal"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><figcaption class="cap">Voice as infrastructure · system illustration, generated</figcaption></figure>
 
           <p class="reveal">I built the writing system solo. It encoded the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase checklist of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human ever saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.</p>
-
           <div class="pull reveal">I treat voice as infrastructure, not magic.</div>
           <p class="reveal">The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. What the project proves about how I work: I treat voice as infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere.</p>
         </article>

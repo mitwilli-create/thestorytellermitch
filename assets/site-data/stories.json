@@ -184,14 +184,8 @@
           "type": "img",
           "src": "assets/stills/mc-scientology-bigblue-2009.jpg",
           "cap": "Scientology's \"Big Blue,\" Los Angeles · PictorialEvidence · CC BY-SA",
-          "alt": "Church of Scientology building, Los Angeles"
-        },
-        {
-          "type": "headline",
-          "headline": "Beyond Belief: My Secret Life Inside Scientology and My Harrowing Escape",
-          "outlet": "The memoir · Kirkus Reviews",
-          "date": "2013",
-          "url": "https://www.kirkusreviews.com/book-reviews/jenna-miscavige-hill/beyond-belief-my-secret-life/"
+          "alt": "Church of Scientology building, Los Angeles",
+          "after": 0
         },
         {
           "type": "headline",
@@ -199,7 +193,25 @@
           "outlet": "Journalism.co.uk",
           "date": "Apr 30, 2013",
           "url": "https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/",
-          "excerpt": "News organisations such as the New York Times, BBC and Forbes joined digital-only news outlets including Pitchfork, The Daily Beast and the Huffington Post..."
+          "excerpt": "News organisations such as the New York Times, BBC and Forbes joined digital-only news outlets including Pitchfork, The Daily Beast and the Huffington Post...",
+          "after": 0
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/beyond-belief-cover.jpg",
+          "cap": "Beyond Belief · HarperCollins, 2013 · cover shown for identification",
+          "alt": "Beyond Belief book cover",
+          "fit": "contain",
+          "after": 1
+        },
+        {
+          "type": "headline",
+          "headline": "Jenna Miscavige Hill Takes Aim at Scientology -- Run By Her Uncle -- in Her Memoir, Beyond Belief",
+          "outlet": "HuffPost · Tony Ortega",
+          "date": "Feb 11, 2013",
+          "url": "https://www.huffpost.com/entry/jenna-miscavige-hill-take_b_2625734",
+          "excerpt": "\"...a system that makes it nearly impossible for you to think for yourself.\"",
+          "after": 1
         }
       ]
     },
@@ -226,7 +238,9 @@
           "type": "img",
           "src": "assets/stills/mc-jazz-jennings-2016.jpg",
           "cap": "Jazz Jennings, 2016 · Steven Pisano · CC BY",
-          "alt": "Jazz Jennings at the 2016 NYC Pride Parade"
+          "alt": "Jazz Jennings at the 2016 NYC Pride Parade",
+          "tall": true,
+          "pos": "center 32%"
         }
       ]
     },
@@ -246,8 +260,8 @@
       ],
       "still": {
         "src": "assets/stills/mandela-special.jpg",
-        "cap": "From the broadcast · Fusion, December 5, 2013",
-        "alt": "Rebuilding primetime in real time: the Mandela special"
+        "cap": "Mariana Atencio opening the special · from the broadcast, Dec 5, 2013",
+        "alt": "Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board"
       },
       "media": [
         {
