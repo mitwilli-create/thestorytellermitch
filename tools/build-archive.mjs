@@ -19,8 +19,9 @@ function nojsHref(c) {
   return c.media.local;
 }
 
-function tile(c, sizeClass) {
+function tile(c, sizeClass, inBucket) {
   const tag = `${c.outletLabel} · ${c.type} · ${c.year}`;
+  const pick = inBucket && c.startHere ? '<span class="pick-mark">start-here pick</span>' : '';
   const preview = c.hoverPreview
     ? `\n    <video class="preview" preload="none" muted loop playsinline data-src="${esc(c.hoverPreview)}" poster="${esc(c.poster)}"></video>`
     : '';
@@ -31,7 +32,7 @@ function tile(c, sizeClass) {
     <img class="thumb" src="${esc(c.poster)}" alt="${esc(c.title)}" loading="lazy" decoding="async">${preview}
     <div class="play-o"></div>
     <div class="meta">
-      <div class="m-tag">${esc(tag)}</div>
+      <div class="m-tag">${esc(tag)}${pick}</div>
       <div class="m-title">${esc(c.title)}</div>
       <div class="m-stat">${esc(c.duration)}</div>
     </div>
@@ -69,7 +70,7 @@ const sectionsHtml = m.buckets.map((b) => {
       <span class="sec-count">${clips.length}${clips.length === 1 ? ' piece' : ' pieces'}</span>
     </div>
     <div class="film-grid">
-${clips.map((c) => tile(c, 'third')).join('\n')}
+${clips.map((c) => tile(c, 'third', true)).join('\n')}
     </div>
   </div>
 </section>`;
