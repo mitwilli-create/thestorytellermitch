@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Impact · Mitchell Williams</title>
-  <meta name="description" content="Industry impact with receipts: an RTS-awarded launch, a Webby-winning newsroom, 179% primetime growth, planetary-scale social video, and a journalist brought home.">
+  <meta name="description" content="Industry impact with receipts: an RTS-awarded launch, a Webby-winning newsroom, a flagship weekly through Fusion's steepest growth window, planetary-scale social video, and a journalist brought home.">
   <meta property="og:title" content="Impact · Mitchell Williams">
   <meta property="og:description" content="The work, the numbers, and the sources that back them.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,9 +125,9 @@
       </div>
       <div>
         <div class="kick reveal">Fusion · America With Jorge Ramos · 2013 to 2015</div>
-        <div class="big-n reveal">+179%</div>
-        <div class="big-l reveal">Primetime viewership growth, year to date, at Fusion's two-year mark</div>
-        <p class="narr reveal">Senior Producer on the flagship weekly of the ABC/Univision joint venture through its steepest growth window, as the network's distribution reached nearly 40 million households. Full episodes, election specials, and the 44-minute live Mandela special, produced end to end.</p>
+        <div class="big-n reveal">44 min</div>
+        <div class="big-l reveal">Live Mandela special on the night of his death, produced end to end</div>
+        <p class="narr reveal">Senior Producer on the flagship weekly of the ABC/Univision joint venture through its steepest growth window: network primetime viewership grew 179% year to date at Fusion's two-year mark, a network-level figure, as distribution reached nearly 40 million households. Full episodes, election specials, and the live Mandela special, produced end to end.</p>
         <div class="src reveal">Source: <a href="https://www.adweek.com/tvnewser/fusion-celebrates-2-years-we-are-reaching-our-target-audience-and-growing/" rel="noopener">Adweek TVNewser, 2015 ↗</a></div>
       </div>
     </div>
@@ -225,7 +225,7 @@
 <script>
   requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
   document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.15});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.08)+'s'; io.observe(el); });
 </script>
 </body>

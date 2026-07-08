@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stories · Mitchell Williams</title>
-  <meta name="description" content="The story bank from nineteen years of production: launch night rewritten by breaking news, litigation-shadowed live coverage, a panel that aged into evidence, fifty million views, and a coalition that brought a journalist home.">
+  <meta name="description" content="The story bank from sixteen years of production: launch night rewritten by breaking news, litigation-shadowed live coverage, a panel that aged into evidence, fifty million views, and a coalition that brought a journalist home.">
   <meta property="og:title" content="Stories · Mitchell Williams">
   <meta property="og:description" content="The stories behind the biggest nights, told for people who weren't in the room.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -538,7 +538,7 @@ $ launchctl list | grep career-ops | head -8
 <script>
   requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
   document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.1});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%3)*0.07)+'s'; io.observe(el); });
 
   // sticky index highlight: click wins immediately, spy resumes after the scroll settles

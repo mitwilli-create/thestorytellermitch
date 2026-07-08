@@ -70,7 +70,7 @@
     </h1>
     <p class="contact-sub">Email is the fastest path to a real conversation. I read every recruiter email myself, and the resume is one click away.</p>
     <div class="hero-cta">
-      <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Role%20at%20%7BCompany%7D%20%C2%B7%20Mitchell%20Williams"><span>Email me</span></a>
+      <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Role%20conversation%20%C2%B7%20Mitchell%20Williams"><span>Email me</span></a>
       <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Download resume (PDF)</span></a>
     </div>
   </div>
@@ -100,9 +100,9 @@
   <div class="wrap">
     <h2 class="mini reveal">How to reach me</h2>
     <div class="contact-links">
-      <a class="clink primary reveal" href="mailto:mitwilli@gmail.com?subject=Role%20at%20%7BCompany%7D%20%C2%B7%20Mitchell%20Williams">
+      <a class="clink primary reveal" href="mailto:mitwilli@gmail.com?subject=Role%20conversation%20%C2%B7%20Mitchell%20Williams">
         <strong>mitwilli@gmail.com</strong>
-        <span>Pre-filled subject template ready. Fill in {Company} and send.</span>
+        <span>Subject line pre-filled. One click, send.</span>
       </a>
       <a class="clink reveal" href="https://linkedin.com/in/mitwilli">
         <strong>linkedin.com/in/mitwilli</strong>
@@ -125,7 +125,7 @@
     <h2 class="mini reveal">What helps me move fast on your end</h2>
     <div class="helper reveal">
       <p><strong>If you're a recruiter:</strong> include the team, reporting line, location flexibility, and comp band in the first message. I will respond within 24 hours.</p>
-      <p><strong>If you're a hiring manager:</strong> I'm happy to skip the recruiter screen if mutually preferred. The <a href="projects.html">Projects page</a> has the artifacts; the resume is one click away.</p>
+      <p><strong>If you're a hiring manager:</strong> happy to move fast, whatever process works on your end. The <a href="projects.html">Projects page</a> has the artifacts; the resume is one click away.</p>
       <p><strong>If you're a builder peer:</strong> DMs open on LinkedIn.</p>
     </div>
   </div>
@@ -143,7 +143,7 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div class="big">Let's<br>build.</div>
+      <div class="big">Let's<br>talk.</div>
       <div class="foot-links">
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
         <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
@@ -158,7 +158,7 @@
 <script>
   requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
   document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.07)+'s'; io.observe(el); });
 </script>
 </body>

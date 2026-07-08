@@ -135,8 +135,8 @@
       color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;max-width:240px;text-align:right}
 
     /* reveal-on-scroll */
-    .reveal{opacity:0;transform:translateY(34px);
-      transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .reveal{opacity:0;transform:translateY(20px);
+      transition:opacity .5s var(--ease),transform .5s var(--ease)}
     .reveal.in{opacity:1;transform:none}
 
     /* ---------- video showcase ---------- */

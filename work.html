@@ -17,7 +17,7 @@
     .bucket{padding:72px 0}
     .starthere{padding:56px 0 20px}
     .film .m-title{font-size:15px}
-    .film{aspect-ratio:16/10}
+    .film{aspect-ratio:16/10;content-visibility:auto;contain-intrinsic-size:auto 300px}
   </style>
 </head>
 <body data-playback="local" data-stream-code="">
@@ -45,7 +45,7 @@
       <span class="ln"><span>The</span></span>
       <span class="ln"><span class="accent">work.</span></span>
     </h1>
-    <p class="archive-sub">Sixteen years of production, from live global broadcast to viral social to AI-native pipelines. Filter by outlet or era, or start with the pieces that explain the whole arc.</p>
+    <p class="archive-sub">Sixteen years of production, from live global broadcast to viral social to AI-native pipelines. The archive opens in 2010; the 2007 newsroom origin before it lives on the timeline. Filter by outlet or era, or start with the pieces that explain the whole arc.</p>
   </div>
 </header>
 
@@ -1131,7 +1131,7 @@
 <script>
   requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
   document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.1});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%4)*0.07)+'s'; io.observe(el); });
 
   /* ---------- filtering ---------- */
