@@ -67,7 +67,8 @@ const sectionsHtml = m.buckets.map((b) => {
     <div class="sec-head reveal">
       <span class="sec-num">${b.num}</span>
       <h2 class="sec-title">${esc(b.label)}</h2>
-      <span class="sec-count">${clips.length}${clips.length === 1 ? ' piece' : ' pieces'}</span>
+      <span class="sec-count">${clips.length}${clips.length === 1 ? ' piece' : ' pieces'}</span>${b.note ? `
+      <span class="sec-note">${esc(b.note)}</span>` : ''}
     </div>
     <div class="film-grid">
 ${clips.map((c) => tile(c, 'third', true)).join('\n')}
