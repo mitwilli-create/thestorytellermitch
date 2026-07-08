@@ -31,7 +31,11 @@ const articles = stories.map((s) => {
   const mediaRow = s.media?.length
     ? `          <div class="media-row reveal">\n${s.media.map((m) => {
         if (m.type === 'headline')
-          return `            <a class="clipcard" href="${esc(m.url)}" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span><span class="cd">${esc(m.date)} ↗</span></a>`;
+          return `            <a class="clipcard" href="${esc(m.url)}" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span>${m.excerpt ? `<span class="ce">${esc(m.excerpt)}</span>` : ''}<span class="cd">${esc(m.date)} ↗</span></a>`;
+        if (m.type === 'chips')
+          return `            <div class="chipscard"><span class="co">${esc(m.title)}</span><div class="chipset">${m.items.map((i) => `<span class="orgchip">${esc(i)}</span>`).join('')}</div></div>`;
+        if (m.type === 'term')
+          return `            <div class="termcard"><span class="tc-bar">${esc(m.title)}</span><pre class="tc-body">${esc(m.lines.join('\n'))}</pre></div>`;
         return `            <figure class="mcard"><img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"><figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
       }).join('\n')}\n          </div>\n`
     : '';

@@ -436,7 +436,12 @@
         "The part I am proudest of is the exit. I documented the system end to end and handed it off with a full operator runbook, so it belongs to the team, not to me. A sanitized public demo of the architecture is on my GitHub. What it proves: I build systems that survive my own departure, and I report their numbers the way an engineer would, targets as targets."
       ],
       "pull": "I build systems that survive my own departure.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "still": {
+        "src": "assets/stills/illo-triage-agent.jpg",
+        "cap": "The triage pipeline · system illustration, generated",
+        "alt": "Diagram-style illustration of a message triage pipeline with a human escalation desk"
+      }
     },
     {
       "id": "digital-twin",
@@ -448,7 +453,12 @@
         "The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. What the project proves about how I work: I treat voice as infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere."
       ],
       "pull": "I treat voice as infrastructure, not magic.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "still": {
+        "src": "assets/stills/illo-digital-twin.jpg",
+        "cap": "Voice as infrastructure · system illustration, generated",
+        "alt": "Diagram-style illustration of a waveform passing through six measuring gates"
+      }
     },
     {
       "id": "freeahmed-coalition",
@@ -469,6 +479,23 @@
           "alt": "Ahmed Shihab-Eldin speaking in 2014"
         },
         {
+          "type": "img",
+          "src": "assets/stills/mc-kuwait-skyline.jpg",
+          "cap": "Kuwait City · boulanger.IE · CC BY",
+          "alt": "Kuwait City skyline"
+        },
+        {
+          "type": "chips",
+          "title": "The coalition, aligned",
+          "items": [
+            "Committee to Protect Journalists",
+            "International Federation of Journalists",
+            "Amnesty International",
+            "His international legal team",
+            "The HuffPost Live + AJ+ producer network"
+          ]
+        },
+        {
           "type": "headline",
           "headline": "US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges",
           "outlet": "Committee to Protect Journalists",
@@ -487,7 +514,31 @@
         "The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation. That's rundown discipline, applied to software. It's the same job I've always done."
       ],
       "pull": "Unclear thinking ships faster and breaks harder. So I draw the boundaries first.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "still": {
+        "src": "assets/stills/illo-agent-fleet.jpg",
+        "cap": "The fleet · system illustration, generated",
+        "alt": "Constellation-style diagram of fifty agent nodes around one orchestrator"
+      },
+      "media": [
+        {
+          "type": "term",
+          "title": "launchctl · the fleet, live",
+          "lines": [
+            "$ launchctl list | grep career-ops | wc -l",
+            "      51",
+            "$ launchctl list | grep career-ops | head -8",
+            "  ...career-ops.batch",
+            "  ...career-ops.bug-resolver",
+            "  ...career-ops.builder-log",
+            "  ...career-ops.audit",
+            "  ...career-ops.background-sweep-daily",
+            "  ...career-ops.alignment-watcher",
+            "  ...career-ops.buttons-smoke",
+            "  ...career-ops.batch-midday"
+          ]
+        }
+      ]
     }
   ]
 }

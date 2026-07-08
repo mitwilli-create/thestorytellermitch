@@ -65,8 +65,20 @@
       text-transform:uppercase;color:var(--blood-soft)}
     .clipcard .ch{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;line-height:1.25;
       letter-spacing:-0.01em;color:var(--bone)}
+    .clipcard .ce{font-size:13px;line-height:1.6;color:var(--mute);font-style:italic}
     .clipcard .cd{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:9px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
+    .chipscard{flex:1 1 240px;max-width:440px;padding:18px;background:var(--surface);
+      border:1px solid var(--line);border-top:2px solid var(--blood-soft)}
+    .chipscard .chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .orgchip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--bone-soft);border:1px solid var(--line-2);padding:7px 12px}
+    .termcard{flex:1 1 300px;max-width:460px;background:#050506;border:1px solid var(--line-2);overflow:hidden}
+    .termcard .tc-bar{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;
+      letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);padding:10px 14px;
+      border-bottom:1px solid var(--line);background:var(--surface)}
+    .termcard .tc-body{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.75;
+      color:var(--bone-soft);padding:14px;margin:0;overflow-x:auto}
     .story .clips{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
     .story .clips a{display:block;width:200px;aspect-ratio:16/10;overflow:hidden;position:relative;
       border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease)}
@@ -386,6 +398,7 @@
           <div class="kick reveal">Google xGE · 2025-2026</div>
           <h2 class="reveal">Building the triage agent, then handing over the keys</h2>
           <p class="reveal">The communications intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers arriving faster than a human first-pass could honestly serve. Most of that first pass did not need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that, solo, inside the tools the team already ran on.</p>
+          <figure class="still reveal"><img src="assets/stills/illo-triage-agent.jpg" alt="Diagram-style illustration of a message triage pipeline with a human escalation desk" loading="lazy"><figcaption class="cap">The triage pipeline · system illustration, generated</figcaption></figure>
 
           <p class="reveal">The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was designed to auto-handle roughly 60 percent of inbound requests and projected to recapture around 160 operational hours a year, both design targets I documented rather than trophies I claimed.</p>
 
@@ -397,6 +410,7 @@
           <div class="kick reveal">Google xGE · 2024-2026</div>
           <h2 class="reveal">Teaching a system to write in an executive's voice</h2>
           <p class="reveal">At Google Cross-Google Engineering I wrote for a vice president whose words reached the company's most senior engineers, the Principal, Distinguished, and Fellow community of more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round costs days. I decided the voice itself was the system to build.</p>
+          <figure class="still reveal"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><figcaption class="cap">Voice as infrastructure · system illustration, generated</figcaption></figure>
 
           <p class="reveal">I built the writing system solo. It encoded the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase checklist of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human ever saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.</p>
 
@@ -412,6 +426,8 @@
           <p class="reveal">I joined that coalition, drawn largely from the former HuffPost Live and AJ+ producer networks, and helped amplify the #FreeAhmed campaign across US and international channels. The effort ran alongside CPJ, the International Federation of Journalists, Amnesty International, and Ahmed's international legal team. Because a detention case carries real risk for the person at its center, the work demanded discretion: knowing what to say publicly, what to keep contained, and never becoming a vector for additional harm. I will not detail the mechanics here, deliberately.</p>
           <div class="media-row reveal">
             <figure class="mcard"><img src="assets/stills/mc-ahmed-2014.jpg" alt="Ahmed Shihab-Eldin speaking in 2014" loading="lazy"><figcaption class="mcap">Ahmed Shihab-Eldin, 2014 · UN DPI / J. Gillespie · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-kuwait-skyline.jpg" alt="Kuwait City skyline" loading="lazy"><figcaption class="mcap">Kuwait City · boulanger.IE · CC BY</figcaption></figure>
+            <div class="chipscard"><span class="co">The coalition, aligned</span><div class="chipset"><span class="orgchip">Committee to Protect Journalists</span><span class="orgchip">International Federation of Journalists</span><span class="orgchip">Amnesty International</span><span class="orgchip">His international legal team</span><span class="orgchip">The HuffPost Live + AJ+ producer network</span></div></div>
             <a class="clipcard" href="https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/" rel="noopener"><span class="co">Committee to Protect Journalists</span><span class="ch">US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges</span><span class="cd">Apr 23, 2026 ↗</span></a>
           </div>
 
@@ -423,8 +439,22 @@
           <div class="kick reveal">Independent build · 2026</div>
           <h2 class="reveal">From newsrooms to a fleet of fifty agents</h2>
           <p class="reveal">After two decades in newsrooms and communications, I turned the production instinct on my own job search. I forked an open-source project called career-ops, which was a scaffold, and extended it into a production pipeline: my personal writing corpus wired into every generated output, zero-token portal scanning that reads Greenhouse, Ashby, and Lever APIs directly and filters listings before a single token is spent, and parallel workers under a single orchestrator.</p>
+          <figure class="still reveal"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><figcaption class="cap">The fleet · system illustration, generated</figcaption></figure>
 
           <p class="reveal">It grew into a fleet of roughly fifty scheduled agents running unattended on launchd: scanning portals, triaging postings, batch-evaluating roles, rebuilding a live dashboard, and reporting dead-man heartbeats so silence never masquerades as health. Production deployment went live in April 2026, and the repo is public. Running it taught me that the hard problem isn't generation quality. It's coherence at scale, catching outputs that silently drift from the source.</p>
+          <div class="media-row reveal">
+            <div class="termcard"><span class="tc-bar">launchctl · the fleet, live</span><pre class="tc-body">$ launchctl list | grep career-ops | wc -l
+      51
+$ launchctl list | grep career-ops | head -8
+  ...career-ops.batch
+  ...career-ops.bug-resolver
+  ...career-ops.builder-log
+  ...career-ops.audit
+  ...career-ops.background-sweep-daily
+  ...career-ops.alignment-watcher
+  ...career-ops.buttons-smoke
+  ...career-ops.batch-midday</pre></div>
+          </div>
 
           <div class="pull reveal">Unclear thinking ships faster and breaks harder. So I draw the boundaries first.</div>
           <p class="reveal">The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation. That's rundown discipline, applied to software. It's the same job I've always done.</p>
