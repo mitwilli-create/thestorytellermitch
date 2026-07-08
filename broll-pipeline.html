@@ -162,15 +162,15 @@
             Your browser does not support the video tag.
           </video>
         </div>
-        <p class="cs-video-cap">Pipeline output. 1080×1920, 15.4s. Narration generated live through the ElevenLabs API; captions burned from the pipeline's own timing.</p>
+        <p class="cs-video-cap">Pipeline output. 1080×1920, 50.4s. Narration, score, and sound effects generated live through the ElevenLabs API and mixed by the pipeline; a Spanish dub came from the same run. Captions from the pipeline's own timing.</p>
       </div>
       <div>
         <div class="cs-h2">What the run produced</div>
         <div class="cs-stat-grid">
           <div class="cs-stat"><div class="n">7</div><div class="l">pipeline stages orchestrated</div></div>
-          <div class="cs-stat"><div class="n">$0.025</div><div class="l">audio spend, this run</div></div>
-          <div class="cs-stat"><div class="n">15.4s</div><div class="l">finished, captioned cut</div></div>
-          <div class="cs-stat"><div class="n">2 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
+          <div class="cs-stat"><div class="n">$0.70</div><div class="l">full audio stack + dub, this run</div></div>
+          <div class="cs-stat"><div class="n">50.4s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
+          <div class="cs-stat"><div class="n">6 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
         </div>
         <div class="cs-compare">
           <div class="col">
@@ -179,11 +179,11 @@
           </div>
           <div class="col after">
             <div class="c-k">This run</div>
-            <div class="c-b">One command from one operator. The narration for this cut cost $0.025 and every step is logged, so the "what does a finished minute cost" question has a receipt instead of a guess.</div>
+            <div class="c-b">One command from one operator. This cut, narration, score, sound, and a Spanish dub, cost $0.70 all-in and every call is logged, so the "what does a finished minute cost" question has a receipt instead of a guess.</div>
           </div>
         </div>
         <div class="cs-callout" style="margin-top:22px;">
-          <p>The point is not the 15 seconds. The point is the <em>loop</em>: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can copy it. That loop is the job.</p>
+          <p>The point is not the 50 seconds. The point is the <em>loop</em>: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can copy it. That loop is the job.</p>
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@
 
       <p><strong>Model choices, and one honest constraint.</strong> The audio stack runs end-to-end through the API: Text-to-Speech for narration, Eleven Music v2 for a licensed, commercially-cleared score, the Sound Effects API for accent beats, and Dubbing for a localized cut. ElevenLabs' 2026 image and video generation lives in ElevenCreative Studio and has no public REST endpoint, so the pipeline treats the visual step as a <em>product-in-the-loop</em> stage: it generates the prompts programmatically, hands them to Studio, and pulls the results back through a capture shim (a small utility that grabs Studio's rendered output back into the pipeline). Building a clean workflow <em>around</em> a real product boundary, rather than routing to a competitor's video API, is deliberate. It stays inside the customer's stack and demonstrates the exact instinct the role calls for.</p>
 
-      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. On the run that produced the short above, live narration across three beats cost <strong>$0.025</strong>; the visual, score, and sound stages are wired and activate the moment a video credit plan is attached. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
+      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. On the run that produced the short above, narration, score, sound effects, and a Spanish dub all executed live for <strong>$0.696 total</strong>; only the visual stage still routes through ElevenCreative Studio's product-in-the-loop boundary. The manifest is <a href="https://github.com/mitwilli-create/broll-pipeline/blob/main/output/run-manifest.json" rel="noopener">committed in the public repo</a>. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
 
       <p><strong>Where a human still touches it.</strong> Script approval, brand and legal sign-off, voice selection, and a caption QA pass all stay human. Naming those seams is not a weakness to hide; it is what separates an enterprise-realistic workflow from a toy. The pipeline removes the mechanical hours and leaves the judgment where it belongs.</p>
     </div>
@@ -248,14 +248,14 @@
       <div class="stage">
         <div class="stage-n">04</div>
         <div>
-          <div class="stage-h">Score <span class="badge wired">wired</span></div>
+          <div class="stage-h">Score <span class="badge live">live</span></div>
           <div class="stage-d">Eleven Music v2, text-to-music or video-to-music against the rough cut. Trained on licensed data and cleared for commercial use, which removes the sync-fee and clearance friction that stops brand teams from shipping.</div>
         </div>
       </div>
       <div class="stage">
         <div class="stage-n">05</div>
         <div>
-          <div class="stage-h">Sound effects <span class="badge wired">wired</span></div>
+          <div class="stage-h">Sound effects <span class="badge live">live</span></div>
           <div class="stage-d">Optional accent beats generated per cue through the Sound Effects API and mixed under the voiceover.</div>
         </div>
       </div>
@@ -269,7 +269,7 @@
       <div class="stage">
         <div class="stage-n">07</div>
         <div>
-          <div class="stage-h">Dub <span class="badge wired">wired</span></div>
+          <div class="stage-h">Dub <span class="badge live">live</span></div>
           <div class="stage-d">One command produces a localized cut through the Dubbing API. The localization proof a media customer asks for first.</div>
         </div>
       </div>
@@ -294,7 +294,7 @@
           <tr class="total"><td>Audio stack, per short</td><td class="mono">n/a</td><td class="mono">a few dollars</td></tr>
         </tbody>
       </table>
-      <div class="caption">Rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>, accessed 2026-07-07; per-short figures are estimates for a ~180-word, 60-second piece. Visual generation is the real cost driver and is credit-metered, so a Pro or Scale plan is the budget line to watch. The actual run that produced the short above logged $0.025 in live narration spend to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>.</div>
+      <div class="caption">Rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>, accessed 2026-07-07; per-short figures are estimates for a ~180-word, 60-second piece. Visual generation is the real cost driver and is credit-metered, so a Pro or Scale plan is the budget line to watch. The actual run that produced the short above logged $0.696 all-in (narration, score, sound effects, Spanish dub) to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>, committed in the repo.</div>
     </div>
   </div>
 </section>
@@ -309,11 +309,11 @@
       <p>Understand the pipeline. Prototype the replacement. Package it so it travels. Teach it. The short is proof of craft; the manifest and the template are proof I can hand it to a customer and have it still work after I leave.</p>
     </div>
     <div class="cs-cta" style="margin-top:40px;">
-      <a class="btn solid" href="https://github.com/mitwilli-create"><span>Code available on request</span></a>
+      <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>
       <a class="btn" href="mailto:mitwilli@gmail.com?subject=Forward%20Deployed%20Creative%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
       <a class="btn" href="projects.html"><span>The rest of the build</span></a>
     </div>
-    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The standalone repo publishes at <span style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</span>; until it is live, the full template and run manifest are available on request.</p>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The full pipeline code, demo script, and the run manifest that produced this cut are public at <a href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</a>.</p>
   </div>
 </section>
 

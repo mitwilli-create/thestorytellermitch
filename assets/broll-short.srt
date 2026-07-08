@@ -1,12 +1,36 @@
 1
-00:00:00,000 --> 00:00:05,000
-The gap between having a tool and getting value from it is where the work lives.
+00:00:00,000 --> 00:00:07,000
+Every content team knows the math. A finished minute of short-form video costs hours of people.
 
 2
-00:00:05,000 --> 00:00:12,152
-This short was produced by a pipeline: voice, score, and sound, generated and assembled from one script.
+00:00:07,000 --> 00:00:14,941
+A scripter, a voice session, an editor cutting b-roll, a captioning pass. Four hand-offs before anything ships.
 
 3
-00:00:12,152 --> 00:00:17,152
-Forward-deployed means building the workflow, not just the output.
+00:00:14,941 --> 00:00:20,941
+This short is the counter-argument. It was produced by a pipeline from one plain-text script.
+
+4
+00:00:20,941 --> 00:00:26,941
+The narration you are hearing was generated through the ElevenLabs text to speech API.
+
+5
+00:00:26,941 --> 00:00:33,941
+The score under it came from Eleven Music. The accents came from the sound effects API.
+
+6
+00:00:33,941 --> 00:00:40,941
+Every API call lands in a run manifest with its model, its latency, and its cost in dollars.
+
+7
+00:00:40,941 --> 00:00:47,941
+So when a customer asks what a finished minute costs, the answer is a receipt, not a guess.
+
+8
+00:00:47,941 --> 00:00:54,941
+The stages that need a human keep a human. Script approval, brand sign-off, and the final quality pass.
+
+9
+00:00:54,941 --> 00:01:00,941
+One operator, one command, one costed cut. That is the whole pitch.
 
