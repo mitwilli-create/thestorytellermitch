@@ -260,25 +260,6 @@
       ]
     },
     {
-      "id": "macing-it",
-      "kicker": "Fusion · 2013",
-      "title": "The day Jorge Ramos volunteered to be pepper-sprayed",
-      "body": [
-        "Jorge Ramos built his reputation asking non-deferential questions of presidents and candidates. On Fusion's America With Jorge Ramos, where I produced, he went a step further for a segment we called Macing It: he volunteered to be pepper-sprayed on camera, on his own show, choosing to experience the thing firsthand rather than narrate it from a distance.",
-        "Producing immersion journalism is mostly invisible work. The on-camera moment lasts seconds; the judgment around it is the job. You have to be sure the stunt serves the story instead of replacing it, that your anchor's credibility comes out stronger, and that the audience leaves understanding the subject itself, not just the spectacle. The show existed to hold power to account for a young, multicultural audience, and this was that mandate at its most physical.",
-        "What it proves about how I work: I take a principal's risk seriously and the audience's intelligence seriously at the same time. When your anchor is willing to put his own body in the story, the producer owes him a segment that earns it. My job was to make sure the discomfort meant something."
-      ],
-      "pull": "When a principal puts their own body in the story, the producer owes them a segment that earns it.",
-      "clipSlugs": [
-        "fusion-2013-america-with-jorge-ramos-macing-it"
-      ],
-      "still": {
-        "src": "assets/stills/macing-it.jpg",
-        "cap": "From the segment · America With Jorge Ramos",
-        "alt": "The day Jorge Ramos volunteered to be pepper-sprayed"
-      }
-    },
-    {
       "id": "mong-kok-backpack-live",
       "kicker": "Fusion · 2014",
       "title": "Live from a backpack in Mong Kok",
@@ -393,7 +374,21 @@
         "src": "assets/stills/aj-plus-50m-views.jpg",
         "cap": "From the piece · AJ+, 2017",
         "alt": "Fifty million views in two minutes"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/ajplus-newsroom.jpg",
+          "cap": "On camera in the AJ+ newsroom, San Francisco · from the piece",
+          "alt": "Presenter in the AJ+ newsroom"
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/measles-capitol.jpg",
+          "cap": "From the piece: the vaccine fight at California's capitol",
+          "alt": "Protest signs outside the California state capitol, from the measles explainer"
+        }
+      ]
     },
     {
       "id": "talent-pipeline",
@@ -409,10 +404,26 @@
         "ajp-2017-measles-outbreaks-usa-viral-50m-views"
       ],
       "still": {
-        "src": "assets/stills/talent-pipeline.jpg",
-        "cap": "From the proof-of-concept piece · AJ+, 2017",
-        "alt": "Coaching producers from behind the camera to on air"
-      }
+        "src": "assets/stills/mara-vanells-oncamera.jpg",
+        "cap": "Mara Van Ells presenting the proof-of-concept piece · AJ+, 2017",
+        "alt": "Mara Van Ells on camera in the AJ+ newsroom"
+      },
+      "media": [
+        {
+          "type": "headline",
+          "headline": "Learn from the Past with 'Lessons from a Holocaust Survivor' by AJ+",
+          "outlet": "The Webby Awards · People's Voice, Documentary",
+          "date": "2018",
+          "url": "https://www.webbyawards.com/news/learn-past-lessons-holocaust-survivor-aj/"
+        },
+        {
+          "type": "headline",
+          "headline": "AJ+ wins prestigious Emmy Award in Los Angeles",
+          "outlet": "Al Jazeera · Eat This with Yara",
+          "date": "Dec 19, 2023",
+          "url": "https://www.aljazeera.com/news/2023/12/19/aj-wins-prestigious-emmy-award-in-los-angeles"
+        }
+      ]
     },
     {
       "id": "comms-triage-build",
