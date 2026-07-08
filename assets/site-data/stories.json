@@ -182,6 +182,13 @@
       "media": [
         {
           "type": "img",
+          "src": "assets/stills/mc-jenna-huffpostlive-2013.jpg",
+          "cap": "Jenna Miscavige Hill on the HuffPost Live set, 2013 · frame from the broadcast",
+          "alt": "Jenna Miscavige Hill and the host on the HuffPost Live couch, newsroom behind them",
+          "after": 0
+        },
+        {
+          "type": "img",
           "src": "assets/stills/mc-scientology-bigblue-2009.jpg",
           "cap": "Scientology's \"Big Blue,\" Los Angeles · PictorialEvidence · CC BY-SA",
           "alt": "Church of Scientology building, Los Angeles",
@@ -422,7 +429,7 @@
       "title": "Coaching producers from behind the camera to on air",
       "body": [
         "AJ+ ran two parallel content lines when I joined as a Senior Producer: Context, which was deep, slow, and weekly, and Real Time, which was fast, shallow, and daily. Both worked. Neither caught breaking news with explanatory depth. Leadership asked me to design a third line that shipped explainer-quality context at real-time speed, and to use that format as an on-camera talent pipeline.",
-        "I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that reached 50 million views on Facebook. I then coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara went on to host his own series and won a National Daytime Emmy and multiple Webbys. The format became a permanent third production line.",
+        "I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that reached 50 million views on Facebook. I then coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara went on to host his own series and won a National Daytime Emmy and multiple Webbys. In parallel I contributed to Sana Saeed's on-camera development; she went on to host Backspace, AJ+'s media-critique series. The format became a permanent third production line.",
         "The talent pipeline was designed in, not a happy accident. The brief had two goals from the start, a new format and new on-camera principals, and I built the system to deliver both. That's how I think about every system since. The output you measure is the content; the output that compounds is the people."
       ],
       "pull": "The output you measure is the content. The output that compounds is the people.",
@@ -430,6 +437,13 @@
         "ajp-2017-measles-outbreaks-usa-viral-50m-views"
       ],
       "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-yara-ajplus-2019.jpg",
+          "cap": "Yara Elmjouie hosting his AJ+ series, 2019 · frame from the broadcast",
+          "alt": "Yara Elmjouie speaking directly to camera in the AJ+ newsroom",
+          "after": 1
+        },
         {
           "type": "headline",
           "headline": "Learn from the Past with 'Lessons from a Holocaust Survivor' by AJ+",
@@ -446,6 +460,13 @@
           "date": "Dec 19, 2023",
           "url": "https://www.aljazeera.com/news/2023/12/19/aj-wins-prestigious-emmy-award-in-los-angeles",
           "excerpt": "The AJ+ show, Eat This with Yara, has won \"Outstanding Lifestyle Program\" at the 50th Annual Daytime Emmy Awards in Los Angeles.",
+          "after": 2
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/mc-sana-backspace-2022.jpg",
+          "cap": "Sana Saeed hosting Backspace, AJ+'s media-critique series, 2022 · frame from the broadcast",
+          "alt": "Sana Saeed at her desk on the Backspace set, addressing the camera",
           "after": 2
         }
       ]
