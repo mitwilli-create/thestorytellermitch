@@ -394,22 +394,25 @@
         "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria"
       ],
       "still": {
-        "src": "assets/stills/aj-plus-50m-views.jpg",
-        "cap": "From the piece · AJ+, 2017",
-        "alt": "Fifty million views in two minutes"
+        "src": "assets/stills/measles-hook.jpg",
+        "cap": "The opening frame · from the piece, AJ+ 2017",
+        "alt": "Opening frame of the measles explainer: an infant with measles",
+        "pos": "center 30%"
       },
       "media": [
         {
           "type": "img",
-          "src": "assets/stills/ajplus-newsroom.jpg",
-          "cap": "On camera in the AJ+ newsroom, San Francisco · from the piece",
-          "alt": "Presenter in the AJ+ newsroom"
+          "src": "assets/stills/measles-capitol.jpg",
+          "cap": "From the piece: anti-vaccine protesters at California's capitol",
+          "alt": "Anti-vaccine protest signs outside the California state capitol",
+          "after": 1
         },
         {
           "type": "img",
-          "src": "assets/stills/measles-capitol.jpg",
-          "cap": "From the piece: the vaccine fight at California's capitol",
-          "alt": "Protest signs outside the California state capitol, from the measles explainer"
+          "src": "assets/stills/ajplus-newsroom.jpg",
+          "cap": "Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece",
+          "alt": "Mara Van Ells presenting in the AJ+ newsroom",
+          "after": 2
         }
       ]
     },
@@ -426,12 +429,6 @@
       "clipSlugs": [
         "ajp-2017-measles-outbreaks-usa-viral-50m-views"
       ],
-      "still": {
-        "src": "assets/stills/mara-vanells-oncamera.jpg",
-        "cap": "Mara Van Ells presenting the proof-of-concept piece · AJ+, 2017",
-        "alt": "Mara Van Ells on camera in the AJ+ newsroom",
-        "pos": "center 15%"
-      },
       "media": [
         {
           "type": "headline",
@@ -439,7 +436,8 @@
           "outlet": "The Webby Awards · People's Voice, Documentary",
           "date": "2018",
           "url": "https://www.webbyawards.com/news/learn-past-lessons-holocaust-survivor-aj/",
-          "excerpt": "With the knowledge that history repeats itself, it's important to listen to and learn from our elders."
+          "excerpt": "With the knowledge that history repeats itself, it's important to listen to and learn from our elders.",
+          "after": 1
         },
         {
           "type": "headline",
@@ -447,7 +445,8 @@
           "outlet": "Al Jazeera · Eat This with Yara",
           "date": "Dec 19, 2023",
           "url": "https://www.aljazeera.com/news/2023/12/19/aj-wins-prestigious-emmy-award-in-los-angeles",
-          "excerpt": "The AJ+ show, Eat This with Yara, has won \"Outstanding Lifestyle Program\" at the 50th Annual Daytime Emmy Awards in Los Angeles."
+          "excerpt": "The AJ+ show, Eat This with Yara, has won \"Outstanding Lifestyle Program\" at the 50th Annual Daytime Emmy Awards in Los Angeles.",
+          "after": 2
         }
       ]
     },
@@ -501,13 +500,15 @@
           "type": "img",
           "src": "assets/stills/mc-ahmed-2014.jpg",
           "cap": "Ahmed Shihab-Eldin, 2014 · UN DPI / J. Gillespie · CC BY-SA",
-          "alt": "Ahmed Shihab-Eldin speaking in 2014"
+          "alt": "Ahmed Shihab-Eldin speaking in 2014",
+          "after": 0
         },
         {
           "type": "img",
           "src": "assets/stills/mc-kuwait-skyline.jpg",
           "cap": "Kuwait City · boulanger.IE · CC BY",
-          "alt": "Kuwait City skyline"
+          "alt": "Kuwait City skyline",
+          "after": 0
         },
         {
           "type": "chips",
@@ -518,7 +519,8 @@
             "Amnesty International",
             "His international legal team",
             "The HuffPost Live + AJ+ producer network"
-          ]
+          ],
+          "after": 1
         },
         {
           "type": "headline",
@@ -526,7 +528,8 @@
           "outlet": "Committee to Protect Journalists",
           "date": "Apr 23, 2026",
           "url": "https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/",
-          "excerpt": "The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges..."
+          "excerpt": "The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...",
+          "after": 2
         }
       ]
     },
