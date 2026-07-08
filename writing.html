@@ -120,11 +120,95 @@
   </div>
 </section>
 
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="artifact">
+      <div class="art-label reveal">Reconstructed demonstration · synthetic org · zero internal data</div>
+      <div class="art-title reveal">An org-change announcement that respects its readers</div>
+      <p class="art-intro reveal">The genre: a VP announces a reorganization to a technical org. The craft is sequencing and candor: people hear it from their manager before they read it broadcast, the sentence everyone is scanning for comes first, and what does not change is stated as plainly as what does. The org and every specific below are invented.</p>
+      <div class="draft reveal" style="max-width:860px">
+        <div class="d-k">To: all of Platform Engineering, Simpler Systems · From: the VP · Day 0, 9:05 am, five minutes after manager conversations concluded</div>
+        <p><strong style="color:var(--bone)">Subject: Platform Engineering is reorganizing into two groups on May 1</strong></p>
+        <p>By now your manager has walked your team through this; here it is in writing. On May 1, Platform Engineering splits into two groups: Infrastructure, under Priya, owning compute, storage, and the build system; and Developer Platform, under Marcus, owning the SDK, CI, and the internal tools you file most of your tickets about. I made this call because one group of 340 people with nine directors was making platform decisions slower than the teams waiting on them, and you have told me that in three consecutive surveys.</p>
+        <p>What does not change: your team, your manager, your projects in flight, and your level. Nobody's compensation changes because of this. Twelve people change reporting lines; every one of them heard it in a one-on-one before this email existed.</p>
+        <p>What does change: where platform decisions get made and how fast. Each group gets its own decision forum with a published queue, so you can see where your proposal sits instead of asking me in office hours.</p>
+        <p>The FAQ is live and stays open for edits; if your question is not answered there by Friday, it becomes my problem, not yours. Ask it in Thursday's all-hands or put it on the FAQ directly. I read every addition.</p>
+      </div>
+      <div class="axes reveal">
+        <div class="axis"><div class="a-k">Sequencing</div><div class="a-v">Managers first, broadcast second, and the email says so. The announcement confirms a conversation instead of replacing one.</div></div>
+        <div class="axis"><div class="a-k">The scanned sentence</div><div class="a-v">Every reader is scanning for "am I affected." The what-does-not-change paragraph answers it by the third paragraph, explicitly, including compensation.</div></div>
+        <div class="axis"><div class="a-k">Reason with receipts</div><div class="a-v">The rationale cites the readers' own survey feedback, not "positioning us for success." The org's problem is named in numbers (340 people, nine directors).</div></div>
+        <div class="axis"><div class="a-k">Open loop closed</div><div class="a-v">The FAQ has an owner, a deadline, and an accountability transfer ("it becomes my problem, not yours").</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="artifact">
+      <div class="art-label reveal">Reconstructed demonstration · synthetic org · zero internal data</div>
+      <div class="art-title reveal">Message architecture: one page that keeps an org saying the same true thing</div>
+      <p class="art-intro reveal">The genre: the one-pager that sits under every deck, email, and elevator answer an org gives about itself. Its job is to make two hundred people describe the same mission the same way without sounding scripted. This one is built for the Office of Engineering Strategy (OES), an invented horizontal org at Simpler Systems.</p>
+      <div class="draft reveal" style="max-width:860px">
+        <div class="d-k">OES message architecture · v1 · one page, everything else derives from it</div>
+        <p><strong style="color:var(--bone)">Mission, one sentence.</strong> OES exists so that engineering decisions that cross team boundaries get made once, get made well, and get adopted.</p>
+        <p><strong style="color:var(--bone)">The problem we are the answer to.</strong> Without a neutral broker, cross-team technical decisions default to whoever escalates loudest, and every team pays the coordination tax. OES is the neutral third party: we analyze proposals, secure the decision, and stay accountable through adoption, not just approval.</p>
+        <p><strong style="color:var(--bone)">Voice principles.</strong> Plain before precise, precise before complete. Sourced: every claim carries its evidence or its owner. Decision-first: the recommendation leads, the analysis follows. We say "we were wrong" in the same channel we said the original thing.</p>
+        <p><strong style="color:var(--bone)">Key messages, by audience.</strong> To engineers: OES reduces the number of meetings between your proposal and a decision. To directors: OES gives your priorities a forum where the tradeoff is explicit. To executives: OES converts strategy into named, dated, owned technical decisions.</p>
+        <p><strong style="color:var(--bone)">The elevator answer, verbatim.</strong> "We're the team that makes cross-cutting engineering decisions actually land. We broker the decision, publish the reasoning, and track adoption until it's real."</p>
+        <p><strong style="color:var(--bone)">Say / don't say.</strong> Say "decision" not "alignment"; "adopted by" not "rolled out to"; "the tradeoff we accepted" not "win-win." Never "as you may know" (they either know or they don't), never "excited to share" on anything that costs someone work.</p>
+      </div>
+      <div class="axes reveal">
+        <div class="axis"><div class="a-k">Derivability</div><div class="a-v">The test of a message architecture is whether the all-hands, the FAQ, and the hallway answer can all be generated from it without contradiction. Every block above is written to be quoted, not paraphrased.</div></div>
+        <div class="axis"><div class="a-k">Audience calibration</div><div class="a-v">One mission, three renderings, calibrated by what each audience is actually weighing: meetings, tradeoffs, accountability.</div></div>
+        <div class="axis"><div class="a-k">Language governance</div><div class="a-v">The say/don't-say table is the enforcement layer; it is also exactly the structure a banned-phrase checklist automates, which is how this genre connects to the systems on the <a href="comms.html" style="color:var(--bone);border-bottom:1px solid var(--blood-soft)">comms page</a>.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="artifact">
+      <div class="art-label reveal">Reconstructed demonstration · synthetic incident · zero internal data</div>
+      <div class="art-title reveal">A holding statement for the hour you know the least</div>
+      <p class="art-intro reveal">The genre: the internal note that goes out while an incident is still being diagnosed. The craft is drawing the line between what is known, what is not, and what happens next, without speculating and without the passive voice that reads as hiding. The incident below is invented.</p>
+      <div class="draft reveal" style="max-width:860px">
+        <div class="d-k">Internal · Simpler Systems · T+40 minutes into a build-system outage · owner: comms lead, approved by incident commander</div>
+        <p><strong style="color:var(--bone)">What we know.</strong> Builds have been failing for all teams since 9:20 am. The incident is confirmed, it is ours (not a vendor), and the on-call team has isolated it to yesterday's scheduler change. Customer-facing services are not affected; this is a build-and-deploy outage, not a production outage.</p>
+        <p><strong style="color:var(--bone)">What we don't know yet.</strong> Whether the fix is a rollback or a forward patch, and therefore when builds resume. We will not guess in this channel. The last estimate that turned out wrong cost more trust than the outage.</p>
+        <p><strong style="color:var(--bone)">What to do.</strong> Nothing, unless you are on the incident channel. Do not retry builds in a loop; it slows diagnosis. If you have a customer-committed deadline today that this breaks, reply to this note and we will triage those individually.</p>
+        <p><strong style="color:var(--bone)">Next update: 11:00 am, in this channel, whether or not anything has changed.</strong> If you are asked about this by anyone outside engineering, route them to me rather than summarizing; one voice, one version.</p>
+      </div>
+      <div class="axes reveal">
+        <div class="axis"><div class="a-k">Known / unknown line</div><div class="a-v">The statement is structured around the boundary of knowledge, and says out loud that it will not speculate past it.</div></div>
+        <div class="axis"><div class="a-k">Scope containment</div><div class="a-v">The second sentence kills the scariest misreading (production down) before it spreads. Rumor control is a timing problem.</div></div>
+        <div class="axis"><div class="a-k">Update contract</div><div class="a-v">A named time for the next update, "whether or not anything has changed," converts silence from a signal into a schedule.</div></div>
+        <div class="axis"><div class="a-k">Single voice</div><div class="a-v">The routing instruction is the crisis-comms core: the org speaks through one channel while facts are moving.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="padding-top:0;padding-bottom:96px">
   <div class="wrap">
-    <h2 class="mini reveal">In clearance review</h2>
-    <div class="pending reveal">
-      <p>Four more artifacts are being prepared for this room: an executive announcement, a message-architecture one-pager, a crisis holding statement, and an all-hands opener. Each is a reconstructed demonstration of a genre I worked in at Google, rebuilt with fully synthetic specifics. They publish here once they clear review.</p>
+    <div class="artifact">
+      <div class="art-label reveal">Reconstructed demonstration · synthetic org · zero internal data</div>
+      <div class="art-title reveal">An all-hands opener after a hard quarter</div>
+      <p class="art-intro reveal">The genre: the first ninety seconds of a VP all-hands when the news is bad and everyone already knows it. The craft is refusing the warm-up: name the thing, give the numbers, set the contract for the next hour. Written to be spoken, not read. The quarter and org are invented.</p>
+      <div class="draft reveal" style="max-width:860px">
+        <div class="d-k">Spoken opener · VP · Simpler Systems platform all-hands · 90 seconds</div>
+        <p>Good morning. I'm not going to open with the roadmap. You've all seen the number, so let's say it in the room: we missed the reliability target for the second quarter in a row. Four nines was the commitment; we delivered three nines and change, and two of the incidents were repeats of things we said we'd fixed.</p>
+        <p>I own that. Not in the ceremonial way where a leader says "I own it" and nothing changes; in the specific way where the two things that caused it were both decisions I signed off on. I approved shipping the scheduler migration with the test gap we knew about, and I kept the on-call rotation understaffed for a quarter because I prioritized the launch. Both of those are being reversed, and you'll see the details in the plan Priya walks through in ten minutes.</p>
+        <p>Here's the contract for the next hour: the plan first, then questions for as long as you have them. Anything I can't answer today gets a date for when I will, posted in the channel by tomorrow morning. The only thing I'll ask of you is that we argue about the plan here, in this room, where it can still change.</p>
+      </div>
+      <div class="axes reveal">
+        <div class="axis"><div class="a-k">No warm-up</div><div class="a-v">The number everyone knows appears in the second sentence, in the speaker's mouth, before anyone else can say it for them.</div></div>
+        <div class="axis"><div class="a-k">Ownership with specifics</div><div class="a-v">"I own it" is only credible when attached to the actual decisions. The opener names both and the reversal of both.</div></div>
+        <div class="axis"><div class="a-k">Meeting contract</div><div class="a-v">Questions get answers or a dated commitment to one. The escape hatch ("we'll take that offline") is removed in advance.</div></div>
+        <div class="axis"><div class="a-k">Spoken register</div><div class="a-v">Short clauses, contractions, no subordinate-clause stacks: written for a voice and a room, not a document.</div></div>
+      </div>
     </div>
   </div>
 </section>
