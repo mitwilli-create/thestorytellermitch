@@ -37,6 +37,12 @@
   <style>
     .about-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
     .about-hero .display{font-size:clamp(42px,7.4vw,110px)}
+    .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0 64px;align-items:start}
+    .about-grid .prose{grid-column:1;grid-row:1}
+    .portrait{grid-column:2;grid-row:1;margin:6px 0 0;position:sticky;top:110px}
+    .portrait img{display:block;width:100%;height:auto;border:1px solid var(--line-2);filter:grayscale(1)}
+    .portrait figcaption{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);padding-top:10px}
     .prose{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
     .prose .lede{font-size:20px;line-height:1.6;color:var(--bone);font-weight:500}
     .prose h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
@@ -63,6 +69,9 @@
     section{padding:72px 0}
     @media(max-width:860px){
       .about-hero{padding:130px 0 40px}
+      .about-grid{grid-template-columns:1fr;gap:36px}
+      .about-grid .prose{grid-column:1;grid-row:2}
+      .portrait{grid-column:1;grid-row:1;position:static;max-width:300px}
       .testi-grid{grid-template-columns:1fr}
     }
   </style>
@@ -95,6 +104,11 @@
 
 <section>
   <div class="wrap">
+    <div class="about-grid">
+    <figure class="portrait reveal">
+      <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
+      <figcaption>Mitchell Williams · Seattle</figcaption>
+    </figure>
     <article class="prose">
       <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. Eight years at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers and stopped writing about the systems and started building them. Now I build AI-native storytelling and enablement systems full time.</p>
 
@@ -121,6 +135,7 @@
       </ul>
       <p class="reveal" style="margin-top:28px;">Hiring for any of these? <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume as a PDF</a>.</p>
     </article>
+    </div>
   </div>
 </section>
 
