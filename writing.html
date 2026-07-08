@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The writing room · Mitchell Williams</title>
-  <meta name="description" content="Executive-communications craft, shown rather than described: labeled demonstrations of voice work, with provenance on every artifact.">
+  <meta name="description" content="Real writing, word for word: published scripts as broadcast, public technical writing, and weekly essays.">
   <meta property="og:title" content="The writing room · Mitchell Williams">
-  <meta property="og:description" content="Executive-communications artifacts with provenance labels: what was generated, what was reconstructed, what is public record.">
+  <meta property="og:description" content="Published scripts as broadcast, public technical writing, and weekly essays. Everything here is real and checkable at the source.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
@@ -19,10 +19,6 @@
     section{padding:76px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
-    .provenance{max-width:740px;border:1px solid var(--line);background:var(--surface);padding:24px 26px}
-    .provenance p{font-size:14.5px;color:var(--bone-soft);line-height:1.65;margin-bottom:10px}
-    .provenance p:last-child{margin-bottom:0}
-    .provenance strong{color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
     .artifact{max-width:860px;margin-bottom:8px}
     .art-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--mute);border:1px solid var(--line);display:inline-block;
@@ -31,24 +27,21 @@
       color:var(--bone);line-height:1.15;margin-bottom:14px}
     .art-intro{max-width:720px;font-size:16px;color:var(--bone-soft);line-height:1.7;margin-bottom:28px}
     .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .draft{background:var(--surface);border:1px solid var(--line);padding:26px}
-    .draft.after{border-left:2px solid var(--blood-soft)}
-    .draft .d-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
-      text-transform:uppercase;color:var(--blood-soft);margin-bottom:16px}
-    .draft p{font-size:14.5px;line-height:1.7;color:var(--bone-soft);margin-bottom:12px}
-    .draft p:last-child{margin-bottom:0}
-    .axes{margin-top:26px;max-width:860px;border-top:1px solid var(--line)}
-    .axis{display:grid;grid-template-columns:220px 1fr;gap:22px;padding:16px 0;border-bottom:1px solid var(--line)}
-    .axis .a-k{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--blood-soft);padding-top:2px}
-    .axis .a-v{font-size:14.5px;color:var(--bone-soft);line-height:1.6}
-    .pending{border:1px dashed var(--line);padding:26px;max-width:860px}
-    .pending p{font-size:15px;color:var(--mute);line-height:1.65}
+    .script{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:30px 32px;max-width:760px}
+    .script .d-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:18px}
+    .script p{font-size:15px;line-height:1.85;color:var(--bone-soft);margin-bottom:14px}
+    .script p:last-child{margin-bottom:0}
+    .src-line{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);line-height:1.6}
+    .src-line a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .slot{border:1px dashed var(--line);padding:28px;max-width:760px}
+    .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+    .slot p{font-size:15.5px;color:var(--bone-soft);line-height:1.65}
+    .slot a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     @media(max-width:860px){
       .wr-hero{padding:130px 0 40px}
-      .pair{grid-template-columns:1fr}
-      .axis{grid-template-columns:1fr;gap:6px}
+      .script{padding:24px 22px}
     }
     @media (prefers-reduced-motion: reduce){ .reveal{opacity:1 !important;transform:none !important;transition:none !important} }
   </style>
@@ -71,60 +64,49 @@
 
 <header class="wr-hero">
   <div class="wrap">
-    <div class="kicker">Executive communications · shown, not described</div>
+    <div class="kicker">Real writing · word for word · checkable at the source</div>
     <h1 class="display">
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Every claim about voice work on this site should be checkable against actual writing. This room holds the demonstrations. Real client work from Google is internal and stays internal, so what ships here is labeled: scored demonstrations, reconstructions that preserve craft with fully synthetic specifics, and public record.</p>
+    <p class="wr-sub">Nothing in this room is invented for display. What ships here is writing that actually ran: published scripts exactly as they were broadcast, public technical writing from the repos, and essays as they publish. Client work from Google is internal and stays internal; it is described elsewhere on this site, never excerpted.</p>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <h2 class="mini reveal">How to read the labels</h2>
-    <div class="provenance reveal">
-      <p><strong>Scored demonstration</strong> · Written for this room and scored with voice-os, my open-source voice-scoring pipeline, in its deterministic offline mode. The principal and every specific are synthetic. No Google text was used or referenced.</p>
-      <p><strong>Reconstructed demonstration</strong> · Rebuilt from scratch to show a genre I worked in at Google: the structural moves are the craft, while the org, the names, and every detail are invented. Zero internal data.</p>
-      <p><strong>Public record</strong> · Work that was published or broadcast, linked at the source.</p>
+    <div class="artifact">
+      <div class="art-label reveal">Public record · AJ+ · 2017 · script as broadcast</div>
+      <div class="art-title reveal">The measles script: 50 million views in 125 seconds</div>
+      <p class="art-intro reveal">This is the script of my biggest piece, word for word as it was broadcast. Policy journalism built for a two-minute social window: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch it in the archive</a> and read along.</p>
+      <div class="script reveal">
+        <div class="d-k">Script · 2 minutes 5 seconds · as broadcast</div>
+        <p>Measles is making a comeback in the U.S. A staggering 54 cases were just confirmed in Minnesota. That's in addition to 61 cases reported in 2017 alone. The U.S. declared itself measles-free back in 2000. So how did this happen? Well, you can thank anti-vaxxers. They're the people who believe that vaccines contain unsafe toxins or cause autism, and they refuse to vaccinate their children. But here's the problem. Anti-vaxxer claims are 100% false.</p>
+        <p>In 1998, a British surgeon published a research paper that linked the measles, mumps, and rubella vaccine to autism. The paper was later discredited, and the doctor who published it even lost his medical license. Since then, scientists have disproved any connection between vaccines and autism. But anti-vaxxers have continued their campaign to convince parents that vaccinations will hurt their kids. They've even gone as far as targeting vulnerable communities. In 94% of recent Minnesota cases, the patient wasn't vaccinated.</p>
+        <p>And that's a big deal for two reasons. Measles is one of the most contagious and lethal diseases in the world. If one person contracts the virus, it can infect more than a dozen unvaccinated people. And infants who are too young to receive the vaccination are at the highest risk. Before the vaccine was developed in 1963, 500 Americans died each year because of the disease. Children who survive can still suffer lifelong complications, including deafness and brain damage.</p>
+        <p>And when parents opt out of vaccinating their child, they affect what's called herd immunity. If enough people in a community get vaccinated, then it makes it difficult for diseases to spread. But if more than 10% of children don't get the vaccine, it may cause a major outbreak. The spreading disease could also mutate, making the vaccinations that people already have less effective. Despite all of this, the anti-vax movement is going strong. So what will it take to convince these parents to vaccinate their children?</p>
+        <div class="src-line">Transcribed from the broadcast video; on-screen credits and end-card audio omitted. Verify against <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">the piece itself</a>. View count: <a href="impact.html">sourced on the Impact page</a>.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="artifact">
-      <div class="art-label reveal">Scored demonstration · voice-os offline mode · synthetic principal</div>
-      <div class="art-title reveal">Before and after: a hard announcement in a principal's voice</div>
-      <p class="art-intro reveal">The most common failure in executive communications is a difficult decision wrapped in comfortable language. Below: a generic first draft of a platform-deprecation announcement, then the same announcement rewritten against a voice constitution for a synthetic principal, the VP of Platform Engineering at Simpler Systems, a fictional company. Both drafts were scored with <a href="https://github.com/mitwilli-create/voice-os">voice-os</a> in its deterministic offline mode against a three-entry synthetic corpus for that principal: overall fidelity 0.62 before, 0.75 after. The <a href="assets/writing-room/vp-corpus.txt">corpus</a> and both drafts (<a href="assets/writing-room/before-draft.txt">before</a>, <a href="assets/writing-room/after-draft.txt">after</a>) are in the repo, so the numbers are reproducible. No Google text was used.</p>
-      <div class="pair">
-        <div class="draft reveal">
-          <div class="d-k">Before · the draft that arrives</div>
-          <p>Team, I'm excited to share an important update about our platform strategy. As part of our ongoing commitment to operational excellence, we will be sunsetting the Relay pipeline over the coming quarters. We believe this change will unlock significant efficiencies and position us for long-term success.</p>
-          <p>We understand change can be challenging, and we're committed to supporting everyone through this transition. Migration resources will be made available soon, and we encourage teams to reach out with any questions. Thank you for your continued dedication and flexibility as we work through this exciting evolution together.</p>
-        </div>
-        <div class="draft after reveal">
-          <div class="d-k">After · through the voice constitution</div>
-          <p>We're shutting down Relay. New builds stop on March 1; the last supported run is June 30. If your team ships through Relay today, this is the most disruptive thing I'll ask of you this year, and I want to be straight about that instead of calling it an efficiency.</p>
-          <p>Here's the tradeoff as I weighed it: keeping Relay alive costs us the equivalent of two teams who would otherwise be working on the reliability problems you actually escalate to me. The migration guide is live now, not soon. Sam's team owns it, office hours run Tuesdays, and if your service can't make June 30, tell me by January 15 and we'll work the exception. I'd rather extend a deadline than discover a broken dependency in July.</p>
-        </div>
-      </div>
-      <div class="axes reveal">
-        <div class="axis"><div class="a-k">Decision first</div><div class="a-v">The "after" opens with the decision and two dates. The "before" buries the only sentence that matters under strategy language.</div></div>
-        <div class="axis"><div class="a-k">Name the cost</div><div class="a-v">Senior engineers distrust announcements with no losers. The rewrite names who gets hurt before it names the benefit.</div></div>
-        <div class="axis"><div class="a-k">Dates, not adverbs</div><div class="a-v">"Soon" becomes March 1, June 30, January 15, Tuesdays. Every commitment is checkable.</div></div>
-        <div class="axis"><div class="a-k">Hedge budget</div><div class="a-v">"We believe," "excited," "exciting evolution," and "operational excellence" sit on the banned-phrase checklist. The rewrite spends its one softener where it's true: "the most disruptive thing I'll ask of you this year."</div></div>
-        <div class="axis"><div class="a-k">Voice markers</div><div class="a-v">First person singular where the accountability lives ("tell me by January 15"), plural where the work lives. The constitution encodes that split; the gate fails drafts that get it backwards.</div></div>
-      </div>
+    <h2 class="mini reveal">Public technical writing</h2>
+    <div class="slot reveal">
+      <div class="sl-k">Repos · written and maintained by me</div>
+      <p>The documentation is the writing sample: <a href="https://github.com/mitwilli-create/voice-os">voice-os</a> (a voice-scoring pipeline explained for someone who has never seen it) and <a href="https://github.com/mitwilli-create/broll-pipeline">broll-pipeline</a> (a seven-stage production system documented end to end). Both are the same discipline as executive communications: complex system in, plain language out, every claim checkable.</p>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0;padding-bottom:96px">
   <div class="wrap">
-    <h2 class="mini reveal">In clearance review</h2>
-    <div class="pending reveal">
-      <p>Four more artifacts are being prepared for this room: an executive announcement, a message-architecture one-pager, a crisis holding statement, and an all-hands opener. Each is a reconstructed demonstration of a genre I worked in at Google, rebuilt with fully synthetic specifics. They publish here once they clear review.</p>
+    <h2 class="mini reveal">Essays · weekly</h2>
+    <div class="slot reveal">
+      <div class="sl-k">Substack · first essay publishing this week</div>
+      <p>New long-form writing lands here weekly, starting this week: AI-native production, executive communications, and what newsrooms teach you about both. Each essay will be linked from this room the day it publishes.</p>
     </div>
   </div>
 </section>
