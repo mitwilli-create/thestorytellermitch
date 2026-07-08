@@ -62,9 +62,20 @@ const sectionsHtml = m.buckets.map((b) => {
     .filter((c) => c.bucket === b.key)
     .sort((a, b2) => String(a.year).localeCompare(String(b2.year)) || a.title.localeCompare(b2.title));
   if (!clips.length) return '';
+  // optional on-camera figure rendered above the bucket's section head
+  const okStr = (v) => typeof v === 'string' && v.trim().length > 0;
+  if (b.oncam && (!okStr(b.oncam.src) || !okStr(b.oncam.alt))) {
+    console.error(`bucket ${b.key}: oncam src and alt must be non-empty strings`); process.exit(1);
+  }
+  const oncam = b.oncam
+    ? `    <figure class="oncam oncam--divider reveal" style="margin:0 0 48px">
+      <img src="${esc(b.oncam.src)}" alt="${esc(b.oncam.alt)}" loading="lazy">
+      <figcaption class="oncam-cap">${esc(b.oncam.cap ?? '')}</figcaption>
+    </figure>\n`
+    : '';
   return `<section class="bucket" data-bucket="${b.key}" id="${b.key}">
   <div class="wrap">
-    <div class="sec-head reveal">
+${oncam}    <div class="sec-head reveal">
       <span class="sec-num">${b.num}</span>
       <h2 class="sec-title">${esc(b.label)}</h2>
       <span class="sec-count">${clips.length}${clips.length === 1 ? ' piece' : ' pieces'}</span>${b.note ? `

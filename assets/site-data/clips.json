@@ -12,7 +12,12 @@
       "key": "social-video",
       "label": "Social Video",
       "num": "02",
-      "note": "Advocacy-era social journalism, produced to platform spec"
+      "note": "Advocacy-era social journalism, produced to platform spec",
+      "oncam": {
+        "src": "assets/stills/oncam/momtrump-057.jpg",
+        "alt": "Mitchell Williams between takes on the AJ+ studio set, teleprompter and boom mic in frame",
+        "cap": "aj+ studio, 2016. between takes."
+      }
     },
     {
       "key": "field-documentary",

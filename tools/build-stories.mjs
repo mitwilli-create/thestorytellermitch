@@ -56,13 +56,24 @@ const articles = stories.map((s) => {
   const clipsHtml = s.clipSlugs?.length
     ? `\n          <div class="clips reveal">\n${s.clipSlugs.map(clipTile).filter(Boolean).join('\n')}\n          </div>`
     : '';
+  // optional on-camera divider rendered before this story's article
+  const okStr = (v) => typeof v === 'string' && v.trim().length > 0;
+  if (s.oncam && (!okStr(s.oncam.src) || !okStr(s.oncam.alt))) {
+    console.error(`story ${s.id}: oncam src and alt must be non-empty strings`); process.exit(1);
+  }
+  const oncam = s.oncam
+    ? `        <figure class="oncam oncam--divider reveal">
+          <img src="${esc(s.oncam.src)}" alt="${esc(s.oncam.alt)}" loading="lazy">
+          <figcaption class="oncam-cap">${esc(s.oncam.cap ?? '')}</figcaption>
+        </figure>\n\n`
+    : '';
   const inner = `        <article class="story" id="${esc(s.id)}">
           <div class="kick reveal">${esc(s.kicker)}</div>
           <h2 class="reveal">${esc(s.title)}</h2>
 ${paras}${clipsHtml}
         </article>`;
-  if (!s.compact) return inner;
-  return `        <details class="story-fold">
+  if (!s.compact) return oncam + inner;
+  return `${oncam}        <details class="story-fold">
           <summary><span class="sf-kick">${esc(s.kicker)}</span><span class="sf-title">${esc(s.title)}</span><span class="sf-more">read</span></summary>
 ${inner}
         </details>`;
