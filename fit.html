@@ -212,9 +212,8 @@
   </div>
 </footer>
 
+<script src="shared/reveal.js"></script>
 <script>
-  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
-  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
   // deep-link support: /fit.html#ai-enablement opens that role
   function openFromHash(){ if(location.hash){ const d=document.querySelector('details'+location.hash); if(d){ d.open=true; d.scrollIntoView(); } } }
   openFromHash();

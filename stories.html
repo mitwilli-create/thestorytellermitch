@@ -114,7 +114,7 @@
     @media(max-width:860px){.story-fold summary{flex-wrap:wrap;gap:6px}}
 </style>
 </head>
-<body>
+<body data-reveal-stagger="3">
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -538,12 +538,8 @@ $ launchctl list | grep career-ops | head -8
   </div>
 </footer>
 
+<script src="shared/reveal.js"></script>
 <script>
-  requestAnimationFrame(()=>{ setTimeout(()=>document.body.classList.add('revealed'),80); });
-  document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.15+i*0.11)+'s'; });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=((i%3)*0.07)+'s'; io.observe(el); });
-
   // sticky index highlight: click wins immediately, spy resumes after the scroll settles
   const idxEl=document.getElementById('st-index');
   const links=[...idxEl.querySelectorAll('a')];
