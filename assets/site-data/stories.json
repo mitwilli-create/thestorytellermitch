@@ -7,7 +7,7 @@
       "body": [
         "In December 2007 I was the overnight producer at WDRB Fox 41 in Louisville, owning two hours of a four-hour live morning block at a small-market station with small-market resources. Benazir Bhutto was assassinated during my window. I was monitoring the incoming wires aggressively when the story broke, and I called it.",
         "Calling it meant restacking the entire two-hour block in real time: flipping from scheduled content to breaking-news coverage inside a tight window, coordinating the control room through the pivot, and writing replacement copy during commercial breaks to keep pace with the developing story. We reported Bhutto's death minutes before The Today Show did, from a local Fox affiliate in Kentucky.",
-        "That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It proved the thing I trust most in how I work: when the story changes, move first."
+        "That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It taught me the instinct I still trust most: when the story changes, move first."
       ],
       "pull": "Breaking news doesn't care what market you're in.",
       "clipSlugs": [],
@@ -31,7 +31,8 @@
           "url": "http://news.bbc.co.uk/2/hi/south_asia/7161590.stm",
           "excerpt": "Pakistani former Prime Minister Benazir Bhutto has been assassinated in a suicide attack. Ms Bhutto - the first woman PM in an Islamic state..."
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "stream-launch-night",
@@ -104,7 +105,8 @@
           "url": "https://www.cnn.com/2016/06/30/politics/transgender-ban-lifted-us-military",
           "excerpt": "The Pentagon said Thursday it was ending the ban on transgender people being able to serve openly in the U.S. military."
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "kim-k-bahrain",
@@ -131,7 +133,8 @@
           "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
           "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011"
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "prep-origination",
@@ -166,7 +169,8 @@
           "url": "https://www.nytimes.com/2014/05/15/health/advocating-pill-us-signals-shift-to-prevent-aids.html",
           "excerpt": "Federal health officials recommended Wednesday that hundreds of thousands of Americans at risk for AIDS take a daily pill that has been shown to prevent infection..."
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "scientology-live-coverage",
@@ -175,7 +179,7 @@
       "body": [
         "In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network that had been covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. I produced Jenna Miscavige Hill's on-record break with the church, the niece of its leader telling her story live. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking existed under the shadow of multi-million-dollar litigation scrutiny. That was not background noise. It was the operating condition for the work.",
         "The format made it harder. HuffPost Live ran on live audience engagement, with viewer comments feeding directly into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony presented as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.",
-        "The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. What that period proves about how I work: I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible."
+        "The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. That period is why I know I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible."
       ],
       "pull": "That's not caution. That's architecture.",
       "clipSlugs": [],
@@ -229,7 +233,7 @@
       "body": [
         "On April 2, 2013, I produced a 58-minute live HuffPost Live episode built around Jazz, a transgender kid who would become the star of TLC's I Am Jazz two years later. She was our anchor guest, appearing alongside her mother. Host Alicia Menendez held a child-safe format across nearly an hour of live television, which is its own production discipline: every question pre-considered, every escape hatch planned.",
         "Alongside Jazz we booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air during the broadcast. The episode covered a roughly 50 percent attempted suicide rate for transgender youth at a moment when most outlets were not having that conversation at all. I Am Jazz was greenlit in 2015 and ran for more than seven seasons.",
-        "The skill here is recognizing a signal before the algorithm confirms it. Two years before television decided this story was mainstream, we gave it a full hour, with a format careful enough to protect a child and serious enough to carry clinical reality. That's how I work: find the story early, then build the container that lets it be told safely."
+        "The skill here is recognizing a signal before the algorithm confirms it. Two years before television decided this story was mainstream, we gave it a full hour, with a format careful enough to protect a child and serious enough to carry clinical reality. Find the story early, then build the container that lets it be told safely."
       ],
       "pull": "Find the story early, then build the container that lets it be told safely.",
       "clipSlugs": [
@@ -249,7 +253,8 @@
           "tall": true,
           "pos": "center 32%"
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "mandela-special",
@@ -312,7 +317,8 @@
           "cap": "Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA",
           "alt": "Umbrella Revolution street scene, Mong Kok"
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "fusion-ramos-lawsuit",
@@ -348,7 +354,8 @@
           "url": "https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million",
           "excerpt": "Donald Trump, a Republican presidential candidate, is suing Univision. The Spanish-language TV network dropped its coverage of Miss USA and Miss Universe..."
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "hurricane-maria-field",
@@ -495,7 +502,7 @@
       "body": [
         "At Google Cross-Google Engineering I wrote for a vice president whose words reached the company's most senior engineers, the Principal, Distinguished, and Fellow community of more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round costs days. I decided the voice itself was the system to build.",
         "I built the writing system solo. It encoded the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase checklist of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human ever saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.",
-        "The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. What the project proves about how I work: I treat voice as infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere."
+        "The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. The project's real argument: voice is infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere."
       ],
       "pull": "I treat voice as infrastructure, not magic.",
       "clipSlugs": [],
@@ -512,7 +519,7 @@
       "body": [
         "In March 2026, the journalist Ahmed Shihab-Eldin, a former HuffPost Live host and one of the most recognized Arab-American broadcasters of the digital era, was detained in Kuwait on charges the international press-freedom community regarded as politically motivated. I had worked alongside Ahmed during my Al Jazeera years. By mid-April he had been held more than fifty days without resolution. The Committee to Protect Journalists took his case public, and a coalition of his former colleagues began to form around it.",
         "I joined that coalition, drawn largely from the former HuffPost Live and AJ+ producer networks, and helped amplify the #FreeAhmed campaign across US and international channels. The effort ran alongside CPJ, the International Federation of Journalists, Amnesty International, and Ahmed's international legal team. Because a detention case carries real risk for the person at its center, the work demanded discretion: knowing what to say publicly, what to keep contained, and never becoming a vector for additional harm. I will not detail the mechanics here, deliberately.",
-        "Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. What it proves about how I work: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say."
+        "Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. The lesson: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say."
       ],
       "pull": "The highest-stakes communication work is often deciding what not to say.",
       "clipSlugs": [],
@@ -552,7 +559,8 @@
           "excerpt": "The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...",
           "after": 2
         }
-      ]
+      ],
+      "compact": true
     },
     {
       "id": "builder-turn",

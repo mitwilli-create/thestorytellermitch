@@ -101,7 +101,16 @@
       .st-index{position:static;flex-direction:row;flex-wrap:wrap;gap:10px}
       .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px}
     }
-  </style>
+      .story-fold{border:1px solid var(--line);background:var(--surface);margin:18px 0}
+    .story-fold summary{display:flex;align-items:baseline;gap:16px;cursor:pointer;list-style:none;padding:20px 24px}
+    .story-fold summary::-webkit-details-marker{display:none}
+    .story-fold .sf-kick{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
+    .story-fold .sf-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;color:var(--bone)}
+    .story-fold .sf-more{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+    .story-fold[open] .sf-more{opacity:0}
+    .story-fold .story{padding:8px 24px 28px}
+    @media(max-width:860px){.story-fold summary{flex-wrap:wrap;gap:6px}}
+</style>
 </head>
 <body>
 
@@ -159,6 +168,8 @@
 
       <div class="st-col">
         <!-- STORIES:START -->
+        <details class="story-fold">
+          <summary><span class="sf-kick">WDRB Fox 41 · 2007</span><span class="sf-title">The overnight shift when Bhutto was assassinated</span><span class="sf-more">read</span></summary>
         <article class="story" id="bhutto-origin">
           <div class="kick reveal">WDRB Fox 41 · 2007</div>
           <h2 class="reveal">The overnight shift when Bhutto was assassinated</h2>
@@ -172,8 +183,9 @@
           </div>
 
           <div class="pull reveal">Breaking news doesn't care what market you're in.</div>
-          <p class="reveal">That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It proved the thing I trust most in how I work: when the story changes, move first.</p>
+          <p class="reveal">That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It taught me the instinct I still trust most: when the story changes, move first.</p>
         </article>
+        </details>
 
         <article class="story" id="stream-launch-night">
           <div class="kick reveal">Al Jazeera English · 2011</div>
@@ -195,6 +207,8 @@
           </div>
         </article>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">HuffPost Live · 2012</span><span class="sf-title">The panel that aged into evidence</span><span class="sf-more">read</span></summary>
         <article class="story" id="trans-navy-panel">
           <div class="kick reveal">HuffPost Live · 2012</div>
           <h2 class="reveal">The panel that aged into evidence</h2>
@@ -213,7 +227,10 @@
             <a href="work.html#live-panels"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Watch: The few, the proud, the trans</span></a>
           </div>
         </article>
+        </details>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">HuffPost Live · 2012</span><span class="sf-title">Kim Kardashian, a milkshake shop, and an uprising</span><span class="sf-more">read</span></summary>
         <article class="story" id="kim-k-bahrain">
           <div class="kick reveal">HuffPost Live · 2012</div>
           <h2 class="reveal">Kim Kardashian, a milkshake shop, and an uprising</h2>
@@ -231,7 +248,10 @@
             <a href="work.html#interviews-longform"><img src="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" alt="Kim Kardashian, a milkshake shop, and Bahrain" loading="lazy"><span class="cl">Watch: Kim Kardashian, a milkshake shop, and Bahrain</span></a>
           </div>
         </article>
+        </details>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">HuffPost Live · 2012</span><span class="sf-title">Bringing PrEP to air months ahead of the coverage</span><span class="sf-more">read</span></summary>
         <article class="story" id="prep-origination">
           <div class="kick reveal">HuffPost Live · 2012</div>
           <h2 class="reveal">Bringing PrEP to air months ahead of the coverage</h2>
@@ -250,6 +270,7 @@
             <a href="work.html#live-panels"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><span class="cl">Watch: The HIV prevention pill hits pharmacies</span></a>
           </div>
         </article>
+        </details>
 
         <article class="story" id="scientology-live-coverage">
           <div class="kick reveal">HuffPost Live · 2013</div>
@@ -268,9 +289,11 @@
           </div>
 
           <div class="pull reveal">That's not caution. That's architecture.</div>
-          <p class="reveal">The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. What that period proves about how I work: I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible.</p>
+          <p class="reveal">The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. That period is why I know I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible.</p>
         </article>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">HuffPost Live · 2013</span><span class="sf-title">A full hour with Jazz, two years before TLC</span><span class="sf-more">read</span></summary>
         <article class="story" id="jazz-jennings">
           <div class="kick reveal">HuffPost Live · 2013</div>
           <h2 class="reveal">A full hour with Jazz, two years before TLC</h2>
@@ -283,11 +306,12 @@
           </div>
 
           <div class="pull reveal">Find the story early, then build the container that lets it be told safely.</div>
-          <p class="reveal">The skill here is recognizing a signal before the algorithm confirms it. Two years before television decided this story was mainstream, we gave it a full hour, with a format careful enough to protect a child and serious enough to carry clinical reality. That's how I work: find the story early, then build the container that lets it be told safely.</p>
+          <p class="reveal">The skill here is recognizing a signal before the algorithm confirms it. Two years before television decided this story was mainstream, we gave it a full hour, with a format careful enough to protect a child and serious enough to carry clinical reality. Find the story early, then build the container that lets it be told safely.</p>
           <div class="clips reveal">
             <a href="work.html#interviews-longform"><img src="assets/posters/huffpost-or-aje-2012-jazz-growing-up-trans-youth.jpg" alt="Growing up trans, with Jazz Jennings" loading="lazy"><span class="cl">Watch: Growing up trans, with Jazz Jennings</span></a>
           </div>
         </article>
+        </details>
 
         <article class="story" id="mandela-special">
           <div class="kick reveal">Fusion · 2013</div>
@@ -309,6 +333,8 @@
           </div>
         </article>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">Fusion · 2014</span><span class="sf-title">Live from a backpack in Mong Kok</span><span class="sf-more">read</span></summary>
         <article class="story" id="mong-kok-backpack-live">
           <div class="kick reveal">Fusion · 2014</div>
           <h2 class="reveal">Live from a backpack in Mong Kok</h2>
@@ -326,7 +352,10 @@
             <a href="work.html#live-panels"><img src="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" alt="Live from Hong Kong's Occupy Central" loading="lazy"><span class="cl">Watch: Live from Hong Kong's Occupy Central</span></a>
           </div>
         </article>
+        </details>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">Fusion · 2013-2015</span><span class="sf-title">Producing Jorge Ramos under a $500 million lawsuit</span><span class="sf-more">read</span></summary>
         <article class="story" id="fusion-ramos-lawsuit">
           <div class="kick reveal">Fusion · 2013-2015</div>
           <h2 class="reveal">Producing Jorge Ramos under a $500 million lawsuit</h2>
@@ -346,6 +375,7 @@
             <a href="work.html#interviews-longform"><img src="assets/posters/fusion-2014-midterm-mayhem-october-12-election-coverage.jpg" alt="Midterm mayhem, the 2014 election episode" loading="lazy"><span class="cl">Watch: Midterm mayhem, the 2014 election episode</span></a>
           </div>
         </article>
+        </details>
 
         <article class="story" id="hurricane-maria-field">
           <div class="kick reveal">AJ+ · 2017</div>
@@ -432,9 +462,11 @@
 
           <p class="reveal">I built the writing system solo. It encoded the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase checklist of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human ever saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.</p>
           <div class="pull reveal">I treat voice as infrastructure, not magic.</div>
-          <p class="reveal">The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. What the project proves about how I work: I treat voice as infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere.</p>
+          <p class="reveal">The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. The project's real argument: voice is infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere.</p>
         </article>
 
+        <details class="story-fold">
+          <summary><span class="sf-kick">#FreeAhmed Coalition · 2026</span><span class="sf-title">Eleven days: the #FreeAhmed coalition</span><span class="sf-more">read</span></summary>
         <article class="story" id="freeahmed-coalition">
           <div class="kick reveal">#FreeAhmed Coalition · 2026</div>
           <h2 class="reveal">Eleven days: the #FreeAhmed coalition</h2>
@@ -450,12 +482,13 @@
           </div>
 
           <div class="pull reveal">The highest-stakes communication work is often deciding what not to say.</div>
-          <p class="reveal">Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. What it proves about how I work: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say.</p>
+          <p class="reveal">Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. The lesson: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say.</p>
           <div class="media-row reveal">
             <a class="clipcard" href="https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/" rel="noopener"><span class="co">Committee to Protect Journalists</span><span class="ch">US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges</span><span class="ce">The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...</span><span class="cd">Apr 23, 2026 ↗</span></a>
           </div>
 
         </article>
+        </details>
 
         <article class="story" id="builder-turn">
           <div class="kick reveal">Independent build · 2026</div>
@@ -546,6 +579,11 @@ $ launchctl list | grep career-ops | head -8
   }
   addEventListener('scroll',()=>{ if(!spyTick){spyTick=true;requestAnimationFrame(spyUpdate);} },{passive:true});
   spyUpdate();
+</script>
+<script>
+  /* anchor links into folded stories auto-open them */
+  function openFoldForHash(){ if(!location.hash) return; const t=document.querySelector(location.hash.replace(/[^#\w-]/g,'')); if(!t) return; const f=t.closest('details.story-fold'); if(f) f.open=true; t.scrollIntoView(); }
+  window.addEventListener('hashchange', openFoldForHash); openFoldForHash();
 </script>
 </body>
 </html>

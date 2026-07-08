@@ -56,11 +56,16 @@ const articles = stories.map((s) => {
   const clipsHtml = s.clipSlugs?.length
     ? `\n          <div class="clips reveal">\n${s.clipSlugs.map(clipTile).filter(Boolean).join('\n')}\n          </div>`
     : '';
-  return `        <article class="story" id="${esc(s.id)}">
+  const inner = `        <article class="story" id="${esc(s.id)}">
           <div class="kick reveal">${esc(s.kicker)}</div>
           <h2 class="reveal">${esc(s.title)}</h2>
 ${paras}${clipsHtml}
         </article>`;
+  if (!s.compact) return inner;
+  return `        <details class="story-fold">
+          <summary><span class="sf-kick">${esc(s.kicker)}</span><span class="sf-title">${esc(s.title)}</span><span class="sf-more">read</span></summary>
+${inner}
+        </details>`;
 }).join('\n\n');
 
 const index = stories.map((s) => {
