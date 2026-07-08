@@ -123,9 +123,9 @@
       "media": [
         {
           "type": "img",
-          "src": "assets/stills/mc-kim-kardashian-2011.jpg",
-          "cap": "Kim Kardashian, 2011 · Eva Rinaldi · CC BY-SA",
-          "alt": "Kim Kardashian in 2011"
+          "src": "assets/stills/pearl-roundabout-2011-ccbysa.jpg",
+          "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
+          "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011"
         }
       ]
     },
@@ -168,13 +168,26 @@
       "kicker": "HuffPost Live · 2013",
       "title": "Covering Scientology, live, under legal scrutiny",
       "body": [
-        "In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network that had been covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking existed under the shadow of multi-million-dollar litigation scrutiny. That was not background noise. It was the operating condition for the work.",
+        "In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network that had been covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. I produced Jenna Miscavige Hill's on-record break with the church, the niece of its leader telling her story live. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking existed under the shadow of multi-million-dollar litigation scrutiny. That was not background noise. It was the operating condition for the work.",
         "The format made it harder. HuffPost Live ran on live audience engagement, with viewer comments feeding directly into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony presented as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.",
         "The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. What that period proves about how I work: I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible."
       ],
       "pull": "That's not caution. That's architecture.",
       "clipSlugs": [],
       "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-scientology-bigblue-2009.jpg",
+          "cap": "Scientology's \"Big Blue,\" Los Angeles · PictorialEvidence · CC BY-SA",
+          "alt": "Church of Scientology building, Los Angeles"
+        },
+        {
+          "type": "headline",
+          "headline": "Beyond Belief: My Secret Life Inside Scientology and My Harrowing Escape",
+          "outlet": "The memoir · Kirkus Reviews",
+          "date": "2013",
+          "url": "https://www.kirkusreviews.com/book-reviews/jenna-miscavige-hill/beyond-belief-my-secret-life/"
+        },
         {
           "type": "headline",
           "headline": "HuffPost Live and NY Times among Webby Award winners",
