@@ -318,7 +318,12 @@
           "alt": "Umbrella Revolution street scene, Mong Kok"
         }
       ],
-      "compact": true
+      "compact": true,
+      "oncam": {
+        "src": "assets/stills/oncam/barenec-052.jpg",
+        "alt": "Mitchell Williams conducting a poolside field interview with a Fusion microphone, Provincetown, 2015",
+        "cap": "fusion am tonight, provincetown, 2015. field interview."
+      }
     },
     {
       "id": "fusion-ramos-lawsuit",
@@ -391,7 +396,12 @@
           "url": "https://www.nbcnews.com/storyline/puerto-rico-crisis/san-juan-s-mayor-pleads-trump-you-are-killing-us-n806116",
           "excerpt": "\"We are dying, and you are killing us with the inefficiency and the bureaucracy,\" San Juan Mayor Carmen Yulín Cruz said Friday at a news conference."
         }
-      ]
+      ],
+      "oncam": {
+        "src": "assets/stills/oncam/jamaica-headturn.jpg",
+        "alt": "Mitchell Williams mic'd on location in Kingston, Jamaica, mid-shoot for Fusion",
+        "cap": "kingston, for fusion. in the field."
+      }
     },
     {
       "id": "aj-plus-50m-views",
