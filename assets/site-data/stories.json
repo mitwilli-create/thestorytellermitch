@@ -15,7 +15,22 @@
         "src": "assets/stills/bhutto-1989-pd.jpg",
         "cap": "Benazir Bhutto, 1989 · public domain, US Dept. of Defense",
         "alt": "Benazir Bhutto speaking to press, 1989"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-bhutto-2007-voa.jpg",
+          "cap": "Bhutto under house arrest, Nov 2007 · VOA, public domain",
+          "alt": "Benazir Bhutto speaking to supporters, November 2007"
+        },
+        {
+          "type": "headline",
+          "headline": "Benazir Bhutto killed in attack",
+          "outlet": "BBC News",
+          "date": "Dec 27, 2007",
+          "url": "http://news.bbc.co.uk/2/hi/south_asia/7161590.stm"
+        }
+      ]
     },
     {
       "id": "stream-launch-night",
@@ -24,7 +39,7 @@
       "body": [
         "The Stream was scheduled to launch on May 2, 2011. It was a new kind of live program at Al Jazeera English, built to treat Twitter, Skype, SMS, and real-time trending data as first-class journalistic sources. The night before our first broadcast, Osama bin Laden was killed in Abbottabad, Pakistan. Every piece of content we had prepared was suddenly worthless. We had roughly twelve hours to tear the launch show apart and rebuild it around a story no one had planned for, on a program that had never aired.",
         "The infrastructure held. Our team found Sohaib Athar, a software consultant in Abbottabad who had unknowingly live-tweeted the raid from his account, @ReallyVirtual, to 751 followers. We had him on Skype by air time. As we broadcast to 250 million households, our digital producer graphed his follower count climbing in real time, 751 to 59,000, live on screen. The audience watched the internet decide that someone mattered in the same moment it happened. Nobody had a name for that kind of journalism yet.",
-        "The Royal Television Society named The Stream its Most Innovative Programme of 2012. What I carry from that night is more specific. We had treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case scenario for a launch looked structurally like any other show day. The inputs changed. The workflow did not. That is how I still build: for the scenario you cannot anticipate, so that improvisation becomes unnecessary at the system level."
+        "The Royal Television Society honored The Stream with its Innovative News Award for that first season's Bahrain coverage, the same season Al Jazeera English was named RTS News Channel of the Year. What I carry from that night is more specific. We had treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case scenario for a launch looked structurally like any other show day. The inputs changed. The workflow did not. That is how I still build: for the scenario you cannot anticipate, so that improvisation becomes unnecessary at the system level."
       ],
       "pull": "We had made improvisation unnecessary at the system level.",
       "clipSlugs": [
@@ -35,7 +50,23 @@
         "src": "assets/stills/stream-launch-night.jpg",
         "cap": "From the broadcast · The Stream, 2011",
         "alt": "Launch night, rewritten by breaking news"
-      }
+      },
+      "media": [
+        {
+          "type": "headline",
+          "headline": "Man Unknowingly Live Tweets About Raid on Osama Bin Laden's Compound",
+          "outlet": "ABC News",
+          "date": "May 2, 2011",
+          "url": "https://abcnews.go.com/Blotter/sohaib-athar-unknowingly-live-tweets-raid-osama-bin/story?id=13506941"
+        },
+        {
+          "type": "headline",
+          "headline": "Al Jazeera English named channel of the year",
+          "outlet": "Al Jazeera",
+          "date": "Feb 23, 2012",
+          "url": "https://www.aljazeera.com/features/2012/2/23/al-jazeera-english-named-channel-of-the-year"
+        }
+      ]
     },
     {
       "id": "trans-navy-panel",
@@ -54,7 +85,22 @@
         "src": "assets/stills/trans-navy-panel.jpg",
         "cap": "From the broadcast · HuffPost Live, 2012",
         "alt": "The panel that aged into evidence"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-pentagon-2008.jpg",
+          "cap": "The Pentagon · D.B. Gleason · CC BY-SA",
+          "alt": "Aerial view of the Pentagon"
+        },
+        {
+          "type": "headline",
+          "headline": "Pentagon ends transgender military ban",
+          "outlet": "CNN Politics",
+          "date": "Jun 30, 2016",
+          "url": "https://www.cnn.com/2016/06/30/politics/transgender-ban-lifted-us-military"
+        }
+      ]
     },
     {
       "id": "kim-k-bahrain",
@@ -73,7 +119,15 @@
         "src": "assets/stills/kim-k-bahrain.jpg",
         "cap": "Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012",
         "alt": "Maryam Al-Khawaja interviewed on HuffPost Live"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-kim-kardashian-2011.jpg",
+          "cap": "Kim Kardashian, 2011 · Eva Rinaldi · CC BY-SA",
+          "alt": "Kim Kardashian in 2011"
+        }
+      ]
     },
     {
       "id": "prep-origination",
@@ -92,7 +146,22 @@
         "src": "assets/stills/prep-origination.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
         "alt": "Bringing PrEP to air months ahead of the coverage"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-truvada-2012.jpg",
+          "cap": "Truvada, 2012 · Jeffrey Beall · CC BY-SA",
+          "alt": "Truvada pill and packaging"
+        },
+        {
+          "type": "headline",
+          "headline": "Advocating Pill, U.S. Signals Shift to Prevent AIDS",
+          "outlet": "The New York Times",
+          "date": "May 14, 2014",
+          "url": "https://www.nytimes.com/2014/05/15/health/advocating-pill-us-signals-shift-to-prevent-aids.html"
+        }
+      ]
     },
     {
       "id": "scientology-live-coverage",
@@ -104,7 +173,16 @@
         "The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. What that period proves about how I work: I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible."
       ],
       "pull": "That's not caution. That's architecture.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "media": [
+        {
+          "type": "headline",
+          "headline": "HuffPost Live and NY Times among Webby Award winners",
+          "outlet": "Journalism.co.uk",
+          "date": "Apr 30, 2013",
+          "url": "https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/"
+        }
+      ]
     },
     {
       "id": "jazz-jennings",
@@ -123,7 +201,15 @@
         "src": "assets/stills/jazz-jennings.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
         "alt": "A full hour with Jazz, two years before TLC"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-jazz-jennings-2016.jpg",
+          "cap": "Jazz Jennings, 2016 · Steven Pisano · CC BY",
+          "alt": "Jazz Jennings at the 2016 NYC Pride Parade"
+        }
+      ]
     },
     {
       "id": "mandela-special",
@@ -143,7 +229,22 @@
         "src": "assets/stills/mandela-special.jpg",
         "cap": "From the broadcast · Fusion, December 5, 2013",
         "alt": "Rebuilding primetime in real time: the Mandela special"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-mandela-2008.jpg",
+          "cap": "Nelson Mandela, 2008 · SA The Good News · CC BY",
+          "alt": "Nelson Mandela portrait, 2008"
+        },
+        {
+          "type": "headline",
+          "headline": "Nelson Mandela, South Africa's Liberator as Prisoner and President, Dies at 95",
+          "outlet": "The New York Times",
+          "date": "Dec 5, 2013",
+          "url": "https://www.nytimes.com/2013/12/06/world/africa/nelson-mandela-obit.html"
+        }
+      ]
     },
     {
       "id": "macing-it",
@@ -181,7 +282,15 @@
         "src": "assets/stills/mong-kok-backpack-live.jpg",
         "cap": "From the field feed · Hong Kong, 2014",
         "alt": "Live from a backpack in Mong Kok"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-mongkok-2014.jpg",
+          "cap": "Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA",
+          "alt": "Umbrella Revolution street scene, Mong Kok"
+        }
+      ]
     },
     {
       "id": "fusion-ramos-lawsuit",
@@ -201,7 +310,22 @@
         "src": "assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg",
         "cap": "Jorge Ramos, 2016 · photo: Gage Skidmore · CC BY-SA 2.0",
         "alt": "Jorge Ramos speaking, 2016"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-trump-2016.jpg",
+          "cap": "Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA",
+          "alt": "Donald Trump at a 2016 campaign rally"
+        },
+        {
+          "type": "headline",
+          "headline": "Donald Trump Sues Univision For $500 Million",
+          "outlet": "NPR",
+          "date": "Jun 30, 2015",
+          "url": "https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million"
+        }
+      ]
     },
     {
       "id": "hurricane-maria-field",
@@ -221,7 +345,22 @@
         "src": "assets/stills/hurricane-maria-field.jpg",
         "cap": "From the field tape · San Juan, 2017",
         "alt": "Getting the Mayor of San Juan on record in the storm"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-cruz-dhs-2017.jpg",
+          "cap": "Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain",
+          "alt": "Carmen Yulin Cruz meeting with DHS leadership, October 2017"
+        },
+        {
+          "type": "headline",
+          "headline": "Puerto Rico Crisis: San Juan Mayor Pleads for Federal Aid, Trump Hits Back",
+          "outlet": "NBC News",
+          "date": "Sep 29, 2017",
+          "url": "https://www.nbcnews.com/storyline/puerto-rico-crisis/san-juan-s-mayor-pleads-trump-you-are-killing-us-n806116"
+        }
+      ]
     },
     {
       "id": "aj-plus-50m-views",
@@ -296,7 +435,22 @@
         "Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. What it proves about how I work: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say."
       ],
       "pull": "The highest-stakes communication work is often deciding what not to say.",
-      "clipSlugs": []
+      "clipSlugs": [],
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/mc-ahmed-2014.jpg",
+          "cap": "Ahmed Shihab-Eldin, 2014 · UN DPI / J. Gillespie · CC BY-SA",
+          "alt": "Ahmed Shihab-Eldin speaking in 2014"
+        },
+        {
+          "type": "headline",
+          "headline": "US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges",
+          "outlet": "Committee to Protect Journalists",
+          "date": "Apr 23, 2026",
+          "url": "https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/"
+        }
+      ]
     },
     {
       "id": "builder-turn",

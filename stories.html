@@ -46,6 +46,24 @@
     .story .still .cap{position:absolute;left:16px;bottom:12px;z-index:2;
       font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--mute)}
+    .media-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:26px 0 8px}
+    .mcard{position:relative;border:1px solid var(--line);overflow:hidden;background:var(--surface)}
+    .mcard img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.6;display:block;
+      filter:grayscale(0.3) contrast(1.05);transition:filter .4s var(--ease)}
+    .mcard:hover img{filter:grayscale(0)}
+    .mcard .mcap{position:absolute;left:0;right:0;bottom:0;padding:20px 10px 8px;
+      font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--bone-soft);line-height:1.5;background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
+    .clipcard{display:flex;flex-direction:column;gap:10px;padding:18px 18px 14px;background:var(--surface);
+      border:1px solid var(--line);border-top:2px solid var(--blood-soft);
+      transition:border-color .3s var(--ease),transform .4s var(--ease)}
+    a.clipcard:hover{border-color:var(--line-2);transform:translateY(-2px)}
+    .clipcard .co{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .clipcard .ch{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;line-height:1.25;
+      letter-spacing:-0.01em;color:var(--bone)}
+    .clipcard .cd{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:9px;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
     .story .clips{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
     .story .clips a{display:block;width:200px;aspect-ratio:16/10;overflow:hidden;position:relative;
       border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease)}
@@ -126,6 +144,11 @@
           <figure class="still reveal"><img src="assets/stills/bhutto-1989-pd.jpg" alt="Benazir Bhutto speaking to press, 1989" loading="lazy"><figcaption class="cap">Benazir Bhutto, 1989 · public domain, US Dept. of Defense</figcaption></figure>
 
           <p class="reveal">Calling it meant restacking the entire two-hour block in real time: flipping from scheduled content to breaking-news coverage inside a tight window, coordinating the control room through the pivot, and writing replacement copy during commercial breaks to keep pace with the developing story. We reported Bhutto's death minutes before The Today Show did, from a local Fox affiliate in Kentucky.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><figcaption class="mcap">Bhutto under house arrest, Nov 2007 · VOA, public domain</figcaption></figure>
+            <a class="clipcard" href="http://news.bbc.co.uk/2/hi/south_asia/7161590.stm" rel="noopener"><span class="co">BBC News</span><span class="ch">Benazir Bhutto killed in attack</span><span class="cd">Dec 27, 2007 ↗</span></a>
+          </div>
+
           <div class="pull reveal">Breaking news doesn't care what market you're in.</div>
           <p class="reveal">That morning became my template. High-stakes real-time decision-making turned out not to be about infrastructure; the networks had every resource we lacked. It's pattern recognition plus decisive execution. Every rebuilt rundown that followed, at Al Jazeera, Fusion, and AJ+, traces back to that shift. It proved the thing I trust most in how I work: when the story changes, move first.</p>
         </article>
@@ -137,8 +160,13 @@
           <figure class="still reveal"><img src="assets/stills/stream-launch-night.jpg" alt="Launch night, rewritten by breaking news" loading="lazy"><figcaption class="cap">From the broadcast · The Stream, 2011</figcaption></figure>
 
           <p class="reveal">The infrastructure held. Our team found Sohaib Athar, a software consultant in Abbottabad who had unknowingly live-tweeted the raid from his account, @ReallyVirtual, to 751 followers. We had him on Skype by air time. As we broadcast to 250 million households, our digital producer graphed his follower count climbing in real time, 751 to 59,000, live on screen. The audience watched the internet decide that someone mattered in the same moment it happened. Nobody had a name for that kind of journalism yet.</p>
+          <div class="media-row reveal">
+            <a class="clipcard" href="https://abcnews.go.com/Blotter/sohaib-athar-unknowingly-live-tweets-raid-osama-bin/story?id=13506941" rel="noopener"><span class="co">ABC News</span><span class="ch">Man Unknowingly Live Tweets About Raid on Osama Bin Laden's Compound</span><span class="cd">May 2, 2011 ↗</span></a>
+            <a class="clipcard" href="https://www.aljazeera.com/features/2012/2/23/al-jazeera-english-named-channel-of-the-year" rel="noopener"><span class="co">Al Jazeera</span><span class="ch">Al Jazeera English named channel of the year</span><span class="cd">Feb 23, 2012 ↗</span></a>
+          </div>
+
           <div class="pull reveal">We had made improvisation unnecessary at the system level.</div>
-          <p class="reveal">The Royal Television Society named The Stream its Most Innovative Programme of 2012. What I carry from that night is more specific. We had treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case scenario for a launch looked structurally like any other show day. The inputs changed. The workflow did not. That is how I still build: for the scenario you cannot anticipate, so that improvisation becomes unnecessary at the system level.</p>
+          <p class="reveal">The Royal Television Society honored The Stream with its Innovative News Award for that first season's Bahrain coverage, the same season Al Jazeera English was named RTS News Channel of the Year. What I carry from that night is more specific. We had treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case scenario for a launch looked structurally like any other show day. The inputs changed. The workflow did not. That is how I still build: for the scenario you cannot anticipate, so that improvisation becomes unnecessary at the system level.</p>
           <div class="clips reveal">
             <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Watch: The night bin Laden's death broke</span></a>
             <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
@@ -152,6 +180,11 @@
           <figure class="still reveal"><img src="assets/stills/trans-navy-panel.jpg" alt="The panel that aged into evidence" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2012</figcaption></figure>
 
           <p class="reveal">The panel around Olivia was built as a sourcing architecture, not a talking-head lineup. A trans Navy pilot. A Navy submarine veteran who founded the Transgender American Veterans Association. Counsel from the Servicemembers Legal Defense Network. A leader from OutServe. The newsroom was already operating under multi-million-dollar legal scrutiny from its Scientology coverage, so every seat needed institutional standing and on-record credibility. When a broadcast is litigation-sensitive, the panel itself is part of the editorial defense.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-pentagon-2008.jpg" alt="Aerial view of the Pentagon" loading="lazy"><figcaption class="mcap">The Pentagon · D.B. Gleason · CC BY-SA</figcaption></figure>
+            <a class="clipcard" href="https://www.cnn.com/2016/06/30/politics/transgender-ban-lifted-us-military" rel="noopener"><span class="co">CNN Politics</span><span class="ch">Pentagon ends transgender military ban</span><span class="cd">Jun 30, 2016 ↗</span></a>
+          </div>
+
           <div class="pull reveal">The story had aged into primary source documentation.</div>
           <p class="reveal">The segment ran without retraction. In June 2016 the Pentagon reversed its policy, validating what the panel had argued on air years earlier. In 2017, when the political environment reversed again, the broadcast resurfaced as archival evidence during the trans military ban debate. The story had aged into primary source documentation. That is what I build for: work that holds up under conditions nobody can predict at the time you ship it, because the sourcing and the judgment were sound from the start.</p>
           <div class="clips reveal">
@@ -166,6 +199,10 @@
           <figure class="still reveal"><img src="assets/stills/kim-k-bahrain.jpg" alt="Maryam Al-Khawaja interviewed on HuffPost Live" loading="lazy"><figcaption class="cap">Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012</figcaption></figure>
 
           <p class="reveal">We booked Maryam Al-Khawaja, acting president of the Bahrain Centre for Human Rights and number 48 on Foreign Policy's Global Thinkers list, and integrated Al Jazeera's documentary Shouting in the Dark live into the broadcast. We aired November 9 protest footage with Al-Khawaja narrating over it in real time, with host Ahmed Shihab-Eldin steering. The store opening got its mention. The human rights situation it was obscuring got the airtime.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-kim-kardashian-2011.jpg" alt="Kim Kardashian in 2011" loading="lazy"><figcaption class="mcap">Kim Kardashian, 2011 · Eva Rinaldi · CC BY-SA</figcaption></figure>
+          </div>
+
           <div class="pull reveal">Celebrity news was the doorway. The uprising was the story.</div>
           <p class="reveal">I don't treat celebrity news and hard news as enemies. Attention is attention, and the producer's job is deciding where it lands. This segment is my clearest statement of that instinct: find the frame that makes the real story land, and use the doorway the audience already walked through. That's still how I approach communications work today.</p>
           <div class="clips reveal">
@@ -180,6 +217,11 @@
           <figure class="still reveal"><img src="assets/stills/prep-origination.jpg" alt="Bringing PrEP to air months ahead of the coverage" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
 
           <p class="reveal">We booked Robert Grant, chair of the IPREX clinical trial that proved the drug worked, live from Lima, Peru. The AIDS Healthcare Foundation's chief of public affairs took the opposing position, so the tension on air was real, not staged consensus. At the close, the host said it on tape: &quot;Thank you to our wonderful producer, Mitchell Williams, who brought this to our attention.&quot; By 2014 the CDC was recommending PrEP for all high-risk individuals.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-truvada-2012.jpg" alt="Truvada pill and packaging" loading="lazy"><figcaption class="mcap">Truvada, 2012 · Jeffrey Beall · CC BY-SA</figcaption></figure>
+            <a class="clipcard" href="https://www.nytimes.com/2014/05/15/health/advocating-pill-us-signals-shift-to-prevent-aids.html" rel="noopener"><span class="co">The New York Times</span><span class="ch">Advocating Pill, U.S. Signals Shift to Prevent AIDS</span><span class="cd">May 14, 2014 ↗</span></a>
+          </div>
+
           <div class="pull reveal">Origination first, execution second, credit optional.</div>
           <p class="reveal">There is a difference between producing a segment and identifying why it matters, and this is the cleanest version of that distinction I have. I found the story, made the case for it, booked genuine disagreement instead of a consensus panel, and put it in front of a live audience early. That's the pattern I bring everywhere: origination first, execution second, credit optional.</p>
           <div class="clips reveal">
@@ -193,6 +235,10 @@
           <p class="reveal">In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network that had been covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking existed under the shadow of multi-million-dollar litigation scrutiny. That was not background noise. It was the operating condition for the work.</p>
 
           <p class="reveal">The format made it harder. HuffPost Live ran on live audience engagement, with viewer comments feeding directly into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony presented as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.</p>
+          <div class="media-row reveal">
+            <a class="clipcard" href="https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/" rel="noopener"><span class="co">Journalism.co.uk</span><span class="ch">HuffPost Live and NY Times among Webby Award winners</span><span class="cd">Apr 30, 2013 ↗</span></a>
+          </div>
+
           <div class="pull reveal">That's not caution. That's architecture.</div>
           <p class="reveal">The coverage ran. HuffPost Live did not retract, and there was no public blowback. The segments held because the risk analysis was built into the workflow before the moment of decision, not reviewed after the fact. What that period proves about how I work: I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other. Identify where the risk actually lives, design the filter into the system, and run it fast enough to be invisible.</p>
         </article>
@@ -204,6 +250,10 @@
           <figure class="still reveal"><img src="assets/stills/jazz-jennings.jpg" alt="A full hour with Jazz, two years before TLC" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
 
           <p class="reveal">Alongside Jazz we booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air during the broadcast. The episode covered a roughly 50 percent attempted suicide rate for transgender youth at a moment when most outlets were not having that conversation at all. I Am Jazz was greenlit in 2015 and ran for more than seven seasons.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-jazz-jennings-2016.jpg" alt="Jazz Jennings at the 2016 NYC Pride Parade" loading="lazy"><figcaption class="mcap">Jazz Jennings, 2016 · Steven Pisano · CC BY</figcaption></figure>
+          </div>
+
           <div class="pull reveal">Find the story early, then build the container that lets it be told safely.</div>
           <p class="reveal">The skill here is recognizing a signal before the algorithm confirms it. Two years before television decided this story was mainstream, we gave it a full hour, with a format careful enough to protect a child and serious enough to carry clinical reality. That's how I work: find the story early, then build the container that lets it be told safely.</p>
           <div class="clips reveal">
@@ -218,6 +268,11 @@
           <figure class="still reveal"><img src="assets/stills/mandela-special.jpg" alt="Rebuilding primetime in real time: the Mandela special" loading="lazy"><figcaption class="cap">From the broadcast · Fusion, December 5, 2013</figcaption></figure>
 
           <p class="reveal">The 44 minutes that aired integrated ABC News field packages from Karen Travers and Jim Avila, President Obama's statement in full, President Zuma's official South African government statement, four consecutive live phone experts, a real-time Twitter reaction segment, and archival footage, closing on Mandela's 1990 prison-release speech. Three newsrooms, ABC, Univision, and Fusion, feeding one rebuilt rundown, reaching 40 million households.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-mandela-2008.jpg" alt="Nelson Mandela portrait, 2008" loading="lazy"><figcaption class="mcap">Nelson Mandela, 2008 · SA The Good News · CC BY</figcaption></figure>
+            <a class="clipcard" href="https://www.nytimes.com/2013/12/06/world/africa/nelson-mandela-obit.html" rel="noopener"><span class="co">The New York Times</span><span class="ch">Nelson Mandela, South Africa's Liberator as Prisoner and President, Dies at 95</span><span class="cd">Dec 5, 2013 ↗</span></a>
+          </div>
+
           <div class="pull reveal">I don't protect the plan. I protect the broadcast.</div>
           <p class="reveal">Anyone who has run a multi-stakeholder launch under changing conditions knows this problem set. The plan is gone, the stakeholders multiply, and the clock does not move. What that night proved about how I work: I don't protect the plan, I protect the broadcast. Structure exists to be rebuilt at speed, and the calmest person in the control room should be the one holding the rundown.</p>
           <div class="clips reveal">
@@ -233,6 +288,7 @@
           <figure class="still reveal"><img src="assets/stills/macing-it.jpg" alt="The day Jorge Ramos volunteered to be pepper-sprayed" loading="lazy"><figcaption class="cap">From the segment · America With Jorge Ramos</figcaption></figure>
 
           <p class="reveal">Producing immersion journalism is mostly invisible work. The on-camera moment lasts seconds; the judgment around it is the job. You have to be sure the stunt serves the story instead of replacing it, that your anchor's credibility comes out stronger, and that the audience leaves understanding the subject itself, not just the spectacle. The show existed to hold power to account for a young, multicultural audience, and this was that mandate at its most physical.</p>
+
           <div class="pull reveal">When a principal puts their own body in the story, the producer owes them a segment that earns it.</div>
           <p class="reveal">What it proves about how I work: I take a principal's risk seriously and the audience's intelligence seriously at the same time. When your anchor is willing to put his own body in the story, the producer owes him a segment that earns it. My job was to make sure the discomfort meant something.</p>
           <div class="clips reveal">
@@ -247,6 +303,10 @@
           <figure class="still reveal"><img src="assets/stills/mong-kok-backpack-live.jpg" alt="Live from a backpack in Mong Kok" loading="lazy"><figcaption class="cap">From the field feed · Hong Kong, 2014</figcaption></figure>
 
           <p class="reveal">The production problem was integration, not gear. I was coordinating three competing broadcast organizations, Fusion, ABC News, and Univision, along with multiple live feeds and real-time social data, all in real time, while the story kept changing on its way to air. Anchor Mariana Atencio confirmed it for viewers on the broadcast itself: &quot;we're coming to you live from a backpack on the back of my producer.&quot;</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-mongkok-2014.jpg" alt="Umbrella Revolution street scene, Mong Kok" loading="lazy"><figcaption class="mcap">Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA</figcaption></figure>
+          </div>
+
           <div class="pull reveal">&quot;We're coming to you live from a backpack on the back of my producer.&quot;</div>
           <p class="reveal">That assignment compressed everything years of live news taught me. You cannot fix a live broadcast in post, so you anticipate the failure modes before you go on, hold the narrative through-line while conditions change, and deliver at production quality under whatever circumstances actually exist. It proves I can show up where the story is, with none of the infrastructure broadcast assumes, and still put a clean signal on the air.</p>
           <div class="clips reveal">
@@ -261,6 +321,11 @@
           <figure class="still reveal"><img src="assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg" alt="Jorge Ramos speaking, 2016" loading="lazy"><figcaption class="cap">Jorge Ramos, 2016 · photo: Gage Skidmore · CC BY-SA 2.0</figcaption></figure>
 
           <p class="reveal">Running aggressive political coverage live, for a principal whose every question was a potential exhibit in ongoing litigation, turned editorial calls into risk calls. I ran daily story triage with senior producers and editorial leadership, flagged segments with litigation adjacency before they were booked, and structured rundowns so Ramos's signature move, the non-deferential question put to presidents and candidates, landed without blindsiding legal or standards. Every story also had to clear two sets of corporate interests, ABC's and Univision's, on top of our own editorial bar.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"><figcaption class="mcap">Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA</figcaption></figure>
+            <a class="clipcard" href="https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million" rel="noopener"><span class="co">NPR</span><span class="ch">Donald Trump Sues Univision For $500 Million</span><span class="cd">Jun 30, 2015 ↗</span></a>
+          </div>
+
           <div class="pull reveal">Every question was a potential exhibit. The coverage ran anyway.</div>
           <p class="reveal">The show launched as part of one of the top-10 cable network debuts in history, reached 40 million households, and over-indexed among Hispanic and African-American audiences, all while sustaining that coverage inside a live lawsuit environment. The coverage ran, and the organization never became the story. It proves I can hold a principal's editorial mission steady under simultaneous legal and corporate pressure, and make the fast calls that keep hard journalism on the air.</p>
           <div class="clips reveal">
@@ -276,6 +341,11 @@
           <figure class="still reveal"><img src="assets/stills/hurricane-maria-field.jpg" alt="Getting the Mayor of San Juan on record in the storm" loading="lazy"><figcaption class="cap">From the field tape · San Juan, 2017</figcaption></figure>
 
           <p class="reveal">The clip reached 1.3 million views on a platform with a weekly audience of more than 500 million, and it ran at the peak of the national debate over the federal response. Cruz's advocacy during Maria later became central to the congressional investigation into FEMA, and Puerto Rico's official death toll was eventually revised from 64 to 2,975. I won't claim our clip caused any of that. It put her voice on record while it mattered.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-cruz-dhs-2017.jpg" alt="Carmen Yulin Cruz meeting with DHS leadership, October 2017" loading="lazy"><figcaption class="mcap">Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain</figcaption></figure>
+            <a class="clipcard" href="https://www.nbcnews.com/storyline/puerto-rico-crisis/san-juan-s-mayor-pleads-trump-you-are-killing-us-n806116" rel="noopener"><span class="co">NBC News</span><span class="ch">Puerto Rico Crisis: San Juan Mayor Pleads for Federal Aid, Trump Hits Back</span><span class="cd">Sep 29, 2017 ↗</span></a>
+          </div>
+
           <div class="pull reveal">Get a primary source on record under the worst possible conditions, then trust the story to do the work.</div>
           <p class="reveal">Crisis communication gets abstract until you're standing in it. The job that week was simple to say and hard to do: get a primary source on record under the worst possible conditions, keep the production honest enough that nothing gets between her and the audience, and trust the story to do the work. That's how I operate under pressure. Strip everything that isn't signal, then hold the camera steady.</p>
           <div class="clips reveal">
@@ -291,6 +361,7 @@
           <figure class="still reveal"><img src="assets/stills/aj-plus-50m-views.jpg" alt="Fifty million views in two minutes" loading="lazy"><figcaption class="cap">From the piece · AJ+, 2017</figcaption></figure>
 
           <p class="reveal">Three levers decided everything. The hook had to answer the viewer's unasked question, why should I stop scrolling, inside the first three seconds. The argument had to be legible at zero volume, because much of Facebook autoplay ran silent, so every cut and text line carried the logic without the audio track. And the pacing had to match the platform's attention curve, not broadcast rhythm. Years at Al Jazeera English, HuffPost Live, and Fusion had trained me to think in segments and rundowns. Social video had no rundown. It had a scroll.</p>
+
           <div class="pull reveal">This was a systems problem dressed in editorial clothing.</div>
           <p class="reveal">The video earned 50 million views and more than 40,000 comments on a piece of policy journalism formatted for a two-minute window, at a network then ranked among the largest social news video publishers on Facebook. The deeper result was structural: the same-day explainer became a repeatable production line, and I coached producers from behind-camera roles into on-camera positions using it. This was a systems problem dressed in editorial clothing. Find the platform's real constraints, then build a process that works inside them every time.</p>
           <div class="clips reveal">
@@ -306,6 +377,7 @@
           <figure class="still reveal"><img src="assets/stills/talent-pipeline.jpg" alt="Coaching producers from behind the camera to on air" loading="lazy"><figcaption class="cap">From the proof-of-concept piece · AJ+, 2017</figcaption></figure>
 
           <p class="reveal">I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that reached 50 million views on Facebook. I then coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara went on to host his own series and won a National Daytime Emmy and multiple Webbys. The format became a permanent third production line.</p>
+
           <div class="pull reveal">The output you measure is the content. The output that compounds is the people.</div>
           <p class="reveal">The talent pipeline was designed in, not a happy accident. The brief had two goals from the start, a new format and new on-camera principals, and I built the system to deliver both. That's how I think about every system since. The output you measure is the content; the output that compounds is the people.</p>
           <div class="clips reveal">
@@ -319,6 +391,7 @@
           <p class="reveal">The communications intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers arriving faster than a human first-pass could honestly serve. Most of that first pass did not need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that, solo, inside the tools the team already ran on.</p>
 
           <p class="reveal">The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was designed to auto-handle roughly 60 percent of inbound requests and projected to recapture around 160 operational hours a year, both design targets I documented rather than trophies I claimed.</p>
+
           <div class="pull reveal">I build systems that survive my own departure.</div>
           <p class="reveal">The part I am proudest of is the exit. I documented the system end to end and handed it off with a full operator runbook, so it belongs to the team, not to me. A sanitized public demo of the architecture is on my GitHub. What it proves: I build systems that survive my own departure, and I report their numbers the way an engineer would, targets as targets.</p>
         </article>
@@ -329,6 +402,7 @@
           <p class="reveal">At Google Cross-Google Engineering I wrote for a vice president whose words reached the company's most senior engineers, the Principal, Distinguished, and Fellow community of more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round costs days. I decided the voice itself was the system to build.</p>
 
           <p class="reveal">I built the writing system solo. It encoded the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase checklist of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human ever saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.</p>
+
           <div class="pull reveal">I treat voice as infrastructure, not magic.</div>
           <p class="reveal">The methodology outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes. What the project proves about how I work: I treat voice as infrastructure, not magic. If a standard matters, encode it, gate on it, and make the machine hold it so people can spend their judgment elsewhere.</p>
         </article>
@@ -339,6 +413,11 @@
           <p class="reveal">In March 2026, the journalist Ahmed Shihab-Eldin, a former HuffPost Live host and one of the most recognized Arab-American broadcasters of the digital era, was detained in Kuwait on charges the international press-freedom community regarded as politically motivated. I had worked alongside Ahmed during my Al Jazeera years. By mid-April he had been held more than fifty days without resolution. The Committee to Protect Journalists took his case public, and a coalition of his former colleagues began to form around it.</p>
 
           <p class="reveal">I joined that coalition, drawn largely from the former HuffPost Live and AJ+ producer networks, and helped amplify the #FreeAhmed campaign across US and international channels. The effort ran alongside CPJ, the International Federation of Journalists, Amnesty International, and Ahmed's international legal team. Because a detention case carries real risk for the person at its center, the work demanded discretion: knowing what to say publicly, what to keep contained, and never becoming a vector for additional harm. I will not detail the mechanics here, deliberately.</p>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-ahmed-2014.jpg" alt="Ahmed Shihab-Eldin speaking in 2014" loading="lazy"><figcaption class="mcap">Ahmed Shihab-Eldin, 2014 · UN DPI / J. Gillespie · CC BY-SA</figcaption></figure>
+            <a class="clipcard" href="https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/" rel="noopener"><span class="co">Committee to Protect Journalists</span><span class="ch">US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges</span><span class="cd">Apr 23, 2026 ↗</span></a>
+          </div>
+
           <div class="pull reveal">The highest-stakes communication work is often deciding what not to say.</div>
           <p class="reveal">Ahmed was acquitted and released in late April 2026, eleven days after CPJ took the case public. I will not claim the coalition alone produced that outcome, but the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working for his release. What it proves about how I work: a professional network is infrastructure if you maintain it, and the highest-stakes communication work is often deciding what not to say.</p>
         </article>
@@ -349,6 +428,7 @@
           <p class="reveal">After two decades in newsrooms and communications, I turned the production instinct on my own job search. I forked an open-source project called career-ops, which was a scaffold, and extended it into a production pipeline: my personal writing corpus wired into every generated output, zero-token portal scanning that reads Greenhouse, Ashby, and Lever APIs directly and filters listings before a single token is spent, and parallel workers under a single orchestrator.</p>
 
           <p class="reveal">It grew into a fleet of roughly fifty scheduled agents running unattended on launchd: scanning portals, triaging postings, batch-evaluating roles, rebuilding a live dashboard, and reporting dead-man heartbeats so silence never masquerades as health. Production deployment went live in April 2026, and the repo is public. Running it taught me that the hard problem isn't generation quality. It's coherence at scale, catching outputs that silently drift from the source.</p>
+
           <div class="pull reveal">Unclear thinking ships faster and breaks harder. So I draw the boundaries first.</div>
           <p class="reveal">The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation. That's rundown discipline, applied to software. It's the same job I've always done.</p>
         </article>

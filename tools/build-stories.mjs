@@ -28,11 +28,20 @@ const articles = stories.map((s) => {
   const still = s.still
     ? `          <figure class="still reveal"><img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"><figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`
     : '';
+  const mediaRow = s.media?.length
+    ? `          <div class="media-row reveal">\n${s.media.map((m) => {
+        if (m.type === 'headline')
+          return `            <a class="clipcard" href="${esc(m.url)}" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span><span class="cd">${esc(m.date)} ↗</span></a>`;
+        return `            <figure class="mcard"><img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"><figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
+      }).join('\n')}\n          </div>\n`
+    : '';
   const paras = s.body.map((p, i) => {
     const para = (i === s.body.length - 1 && s.pull)
       ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="reveal">${esc(p)}</p>`
       : `          <p class="reveal">${esc(p)}</p>`;
-    return i === 0 ? `${para}\n${still}` : para;
+    if (i === 0) return `${para}\n${still}`;
+    if (i === 1) return `${para}\n${mediaRow}`;
+    return para;
   }).join('\n');
   const clipsHtml = s.clipSlugs?.length
     ? `\n          <div class="clips reveal">\n${s.clipSlugs.map(clipTile).filter(Boolean).join('\n')}\n          </div>`
