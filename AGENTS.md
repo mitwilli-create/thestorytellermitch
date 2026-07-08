@@ -1,6 +1,6 @@
 # AGENTS.md - storytellermitch-site
 
-Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine. Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. CodeRabbit reviews commits and PRs automatically.
+Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine (machine-local doc for the owner's agent fleet; external readers can skip this paragraph). Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. CodeRabbit reviews commits and PRs automatically.
 
 ## What this repo is
 
@@ -8,9 +8,9 @@ Mitchell's public portfolio site, storytellermitch.com: plain static HTML/CSS/JS
 
 ## Hard constraints
 
-- **Em-dash ban, CI-enforced.** Zero U+2014 characters in any `.html`/`.css`/`.json`, tools, or `.srt` file. `tools/verify.mjs` fails the build on one. Use hyphens, commas, or restructure the sentence.
+- **Em-dash ban, CI-enforced.** Zero U+2014 characters in root `*.html`, `shared/*.css`, `assets/site-data/*.json`, `tools/*.mjs`, and `assets/*.srt`; `tools/verify.mjs` fails the build on one. Treat the ban as site-wide anyway: use hyphens, commas, or restructure the sentence.
 - **Never hand-edit baked regions.** `stories.html` and `work.html` are generated between bake markers from `assets/site-data/stories.json` and `clips.json`. Edit the JSON, re-run the baker; CI rejects bake drift byte-for-byte.
-- **Every asset reference must resolve.** All `src`/`href`/`poster` attributes are checked against disk (exemption: `media/`, the gitignored self-hosted video payloads).
+- **Every HTML asset reference must resolve.** `src`/`href`/`poster` attributes in `*.html` are checked against disk (exemption: `media/`, the gitignored self-hosted video payloads).
 - **Public repo.** No secrets, no personal data, no draft copy you wouldn't publish.
 - **Visible changes get verified in a real browser** (both desktop and narrow widths) before being called done. "Looks right in source" is not verification.
 
