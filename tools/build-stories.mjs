@@ -57,6 +57,9 @@ const articles = stories.map((s) => {
     ? `\n          <div class="clips reveal">\n${s.clipSlugs.map(clipTile).filter(Boolean).join('\n')}\n          </div>`
     : '';
   // optional on-camera divider rendered before this story's article
+  if (s.oncam && (!s.oncam.src || !s.oncam.alt)) {
+    console.error(`story ${s.id}: oncam entry missing src or alt`); process.exit(1);
+  }
   const oncam = s.oncam
     ? `        <figure class="oncam oncam--divider reveal">
           <img src="${esc(s.oncam.src)}" alt="${esc(s.oncam.alt)}" loading="lazy">
