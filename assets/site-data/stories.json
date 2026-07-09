@@ -31,8 +31,7 @@
           "url": "http://news.bbc.co.uk/2/hi/south_asia/7161590.stm",
           "excerpt": "Pakistani former Prime Minister Benazir Bhutto has been assassinated in a suicide attack. Ms Bhutto - the first woman PM in an Islamic state..."
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "stream-launch-night",
@@ -106,8 +105,7 @@
           "url": "https://www.cnn.com/2016/06/30/politics/transgender-ban-lifted-us-military",
           "excerpt": "The Pentagon said Thursday it was ending the ban on transgender people being able to serve openly in the U.S. military."
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "kim-k-bahrain",
@@ -134,8 +132,7 @@
           "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
           "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011"
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "prep-origination",
@@ -170,8 +167,7 @@
           "url": "https://www.nytimes.com/2014/05/15/health/advocating-pill-us-signals-shift-to-prevent-aids.html",
           "excerpt": "Federal health officials recommended Wednesday that hundreds of thousands of Americans at risk for AIDS take a daily pill that has been shown to prevent infection..."
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "scientology-live-coverage",
@@ -255,8 +251,7 @@
           "tall": true,
           "pos": "center 32%"
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "mandela-special",
@@ -320,7 +315,6 @@
           "alt": "Umbrella Revolution street scene, Mong Kok"
         }
       ],
-      "compact": true,
       "oncam": {
         "src": "assets/stills/oncam/barenec-052.jpg",
         "alt": "Mitchell Williams conducting a poolside field interview with a Fusion microphone, Provincetown, 2015",
@@ -361,8 +355,7 @@
           "url": "https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million",
           "excerpt": "Donald Trump, a Republican presidential candidate, is suing Univision. The Spanish-language TV network dropped its coverage of Miss USA and Miss Universe..."
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "hurricane-maria-field",
@@ -573,8 +566,7 @@
           "excerpt": "The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...",
           "after": 2
         }
-      ],
-      "compact": true
+      ]
     },
     {
       "id": "builder-turn",
