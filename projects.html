@@ -92,7 +92,7 @@
       <span class="ln"><span>What I'm</span></span>
       <span class="ln"><span class="accent">building.</span></span>
     </h1>
-    <p class="proj-sub">These are the systems I build and operate: video pipelines, writing-quality gates, verification agents, and the automation stack running my own job search. Everything here is working software with logs, tests, and honest status labels.</p>
+    <p class="proj-sub">These are the systems I build and run: video pipelines, writing-quality gates, verification agents, and the automation stack driving my own job search. All working software. Real logs, real tests, honest status labels.</p>
   </div>
 </header>
 
@@ -109,7 +109,7 @@
         <figure class="illo"><img src="assets/stills/illo-broll-pipeline.jpg" alt="System diagram: a script sheet passes through seven machine chambers and exits as a captioned video screen" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">broll-pipeline</span><span class="chip-status">SHIPPED</span></div>
         <h3>Script in, captioned video out, cost logged</h3>
-        <p class="body">A seven-stage video pipeline in Node and ffmpeg, built on the ElevenLabs stack. Feed it a plain-text script and it produces a finished, captioned short. Every API call is logged to a costed run manifest, so each run is auditable down to the cent.</p>
+        <p class="body">Seven-stage video pipeline in Node and ffmpeg, built on the ElevenLabs stack. Feed it a plain-text script, out comes a finished, captioned short. Every API call logs to a costed run manifest. Each run is auditable down to the cent.</p>
         <div class="proof">7 stages · Node + ffmpeg · ElevenLabs stack · live demo: 69s short + Spanish dub at $3.32 all-in · public repo + committed run manifest</div>
         <div class="row">
           <a class="go" href="broll-pipeline.html">Case study</a>
@@ -122,7 +122,7 @@
         <figure class="illo"><img src="assets/stills/illo-voice-radar.jpg" alt="System diagram: a six-axis radar gauge with a plotted measurement and a threshold ring" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">voice-os</span><span class="chip-status">SHIPPED</span></div>
         <h3>Scores drafts against a target voice</h3>
-        <p class="body">A Python pipeline, built on Claude, that scores a draft against a target writing voice on six stylistic axes and blocks anything below a QA threshold. "Sounds like me" is not a spec, so this makes it one: calibrated on 6.9M+ words of executive communication, with dual-persona review and a deterministic offline mode. The method and a sample corpus are inspectable in the repo.</p>
+        <p class="body">Built a Python pipeline on Claude that scores drafts against a target voice on six stylistic axes and blocks anything below a QA threshold. "Sounds like me" isn't a spec, so this makes it one. Calibrated on 6.9M+ words of executive comms, with dual-persona review and a deterministic offline mode. Method and sample corpus are in the repo.</p>
         <div class="proof">6 stylistic axes · calibrated on 6.9M+ words · deterministic offline mode · pytest</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/voice-os" rel="noopener">View repo</a>
@@ -134,7 +134,7 @@
         <figure class="illo"><img src="assets/stills/illo-agent-fleet.jpg" alt="System diagram: a fleet of small agent nodes orbiting one central orchestrator node" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">career-ops</span><span class="chip-status">IN PRODUCTION</span></div>
         <h3>Job-search automation, in production</h3>
-        <p class="body">A job-search automation system: ATS portal scanning, LLM role evaluation, CV generation, and batch processing, running as a production fork of the open-source santifer/career-ops. It orchestrates multiple models across roughly 50 scheduled agents on macOS launchd and has powered 740+ role evaluations. Operated software, not a demo.</p>
+        <p class="body">A job-search automation system: ATS portal scanning, LLM role evaluation, CV generation, and batch processing. Runs as a production fork of open-source santifer/career-ops. Orchestrates multiple models across roughly 50 scheduled agents on macOS launchd. Powered 740+ role evaluations. Operated software, not a demo.</p>
         <div class="proof">740+ role evaluations · ~50 launchd agents · multi-model orchestration · counts from the live tracker + launchd inventory · private repo, walkthrough on request</div>
         <div class="row">
           <a class="go" href="mailto:mitwilli@gmail.com?subject=career-ops%20walkthrough">Details on request</a>
@@ -146,7 +146,7 @@
         <figure class="illo"><img src="assets/stills/illo-citation-gate.jpg" alt="System diagram: a vault gate opening only after a chain of four source blocks connects into its lock" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">tax-verification-agent</span><span class="chip-status">SHIPPED</span></div>
         <h3>A tax checker that must cite or stay silent</h3>
-        <p class="body">A Claude-based agent that checks tax filings against a four-layer knowledge base: federal code, state statutes, IRS publications, and precedents. It refuses to answer without citations, because a confident wrong answer about taxes is worse than none. In practice it caught a roughly $19K error that commercial filing software had pre-filled and defended.</p>
+        <p class="body">A Claude-based agent that checks tax filings against a four-layer knowledge base: federal code, state statutes, IRS publications, precedents. It refuses to answer without citations: a confident wrong answer about taxes is worse than none. In practice it caught a roughly $19K error that commercial filing software had pre-filled and defended.</p>
         <div class="proof">4-layer knowledge base · citation-gated answers · caught a ~$19K pre-filled error</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/tax-verification-agent" rel="noopener">View repo</a>
@@ -170,7 +170,7 @@
         <figure class="illo"><img src="assets/stills/illo-three-gates.jpg" alt="System diagram: product shapes flowing through three sequential filter gates, rejects falling away, one shape passing with a seal" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">monolith</span><span class="chip-status">SHIPPED</span></div>
         <h3>Budget-gated wardrobe recommendations</h3>
-        <p class="body">A TypeScript PWA that recommends wardrobe purchases under a real budget. The LLM only extracts product data from a page; three deterministic code gates (budget, climate, aesthetic rules) issue the verdict, and unknown data returns INSUFFICIENT_DATA instead of a guess. An append-only audit log keeps the whole decision path inspectable.</p>
+        <p class="body">A TypeScript PWA that recommends wardrobe purchases under a real budget. The LLM only pulls product data from a page. Three deterministic code gates (budget, climate, aesthetic rules) issue the verdict, and unknown data returns INSUFFICIENT_DATA instead of a guess. An append-only audit log keeps the whole decision path inspectable.</p>
         <div class="proof">3 deterministic gates · INSUFFICIENT_DATA over guessing · 50 pure-function tests</div>
         <div class="row">
           <a class="go" href="https://github.com/mitwilli-create/monolith" rel="noopener">View repo</a>
