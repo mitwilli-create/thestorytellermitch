@@ -1,12 +1,130 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+  <script>document.documentElement.classList.remove('no-js')</script>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=assets/mitchell-williams-resume.pdf">
-  <link rel="canonical" href="contact.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Resume · Mitchell Williams</title>
+  <meta name="description" content="Seven role-tuned resumes: pick the one that matches your req. Each is two pages, sourced, and current.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <style>
+    .rs-hero{padding:170px 0 46px}
+    .rs-hero .display{font-size:clamp(42px,7vw,100px)}
+    .rs-sub{margin-top:24px;max-width:640px;font-size:17px;color:var(--bone-soft);line-height:1.6}
+    .rs-list{max-width:900px;margin:20px auto 90px}
+    .rs-row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;
+      padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none;
+      transition:border-color .3s var(--ease)}
+    .rs-row:first-of-type{border-top:1px solid var(--line)}
+    .rs-row:hover{border-bottom-color:var(--blood-soft)}
+    .rs-role{grid-column:1;grid-row:1;font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2.6vw,26px);
+      letter-spacing:-0.01em;text-transform:uppercase;color:var(--bone)}
+    .rs-pillars{grid-column:1;grid-row:2;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--mute);line-height:1.6}
+    .rs-get{grid-column:2;grid-row:1 / span 2;justify-self:end;font-family:'JetBrains Mono',monospace;font-size:11px;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
+    .rs-row:hover .rs-get{color:var(--bone)}
+    .rs-note{max-width:900px;margin:0 auto 80px;font-family:'JetBrains Mono',monospace;
+      font-size:11px;letter-spacing:0.06em;color:var(--mute);line-height:1.8}
+    .rs-note a{color:var(--blood-soft);text-decoration:none}
+    .rs-note a:hover{color:var(--bone)}
+    @media(max-width:700px){
+      .rs-hero{padding:130px 0 36px}
+      .rs-row{grid-template-columns:1fr}
+      .rs-get{grid-row:auto;margin-top:6px}
+    }
+  </style>
 </head>
-<body style="background:#0a0a0b;color:#ece8e1;font-family:monospace;padding:40px">
-  The resume is at <a href="assets/mitchell-williams-resume.pdf" style="color:#b1554c">assets/mitchell-williams-resume.pdf</a>.
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="rs-hero">
+  <div class="wrap">
+    <div class="kicker">resume / pick your req</div>
+    <h1 class="display">
+      <span class="ln"><span>Seven roles,</span></span>
+      <span class="ln"><span class="accent">one arc.</span></span>
+    </h1>
+    <p class="rs-sub">Each resume is tuned to the discipline on your req: same career, same sourced claims, ordered for what your screen actually checks. Two pages each. The <a href="fit.html" style="color:var(--blood-soft);text-decoration:none">Fit page</a> makes the case in prose; these make it in format.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="rs-list">
+    <a class="rs-row" href="assets/resumes/mitchell-williams-forward-deployed.pdf">
+      <span class="rs-role">Forward Deployed Engineer / Creative</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">Forward-deployed prototyping · creative AI pipelines · embedded production discipline</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-solutions-architect.pdf">
+      <span class="rs-role">AI Solutions Architect</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">AI solutions architecture · governed-voice agent systems · multi-agent orchestration</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-enablement.pdf">
+      <span class="rs-role">AI Enablement / Transformation Lead</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">AI enablement and adoption · communications at engineering scale · production agent building</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-program-manager.pdf">
+      <span class="rs-role">AI Program Manager</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">AI governance programs · approvals and gating frameworks · multi-agent operations</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-comms-manager.pdf">
+      <span class="rs-role">Communications Manager (AI-native)</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">Product and technical communications · production AI agent building · sourced-claim discipline</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-devrel-education.pdf">
+      <span class="rs-role">Developer Education / DevRel</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">Developer education · applied-AI building · explanation under constraint</span>
+    </a>
+    <a class="rs-row" href="assets/resumes/mitchell-williams-engineering-editorial.pdf">
+      <span class="rs-role">Internal Content / Editorial</span>
+      <span class="rs-get">Download PDF →</span>
+      <span class="rs-pillars">Internal storytelling across formats · executive-voice communications · editorial systems for engineering audiences</span>
+    </a>
+  </div>
+  <p class="rs-note">Not sure which req you're hiring for? The <a href="assets/mitchell-williams-resume.pdf">general resume (PDF)</a> covers the arc end to end.</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="fit.html">the fit page</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
 </body>
 </html>
