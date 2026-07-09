@@ -50,6 +50,7 @@
       aspect-ratio:9/16;max-width:300px}
     .cs-video video{width:100%;height:100%;display:block;object-fit:cover}
     .cs-video-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);margin-top:10px;line-height:1.6}
+    .cs-video-cap a{color:var(--mute);border-bottom:1px solid var(--line-2)}
     .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
     .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
@@ -130,6 +131,8 @@
     <a href="impact.html">Impact</a>
     <a href="timeline.html">Timeline</a>
     <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
     <a href="fit.html">Fit</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -140,12 +143,14 @@
   <div class="wrap">
     <div class="kicker">Case study · a Forward Deployed Creative workflow on the ElevenLabs stack</div>
     <h1 class="cs-title">One script in, a produced short out.<span class="mono">broll-pipeline</span></h1>
-    <p class="cs-standfirst">A reusable production workflow for newsroom and brand content teams shipping short-form video on the ElevenLabs stack. Built as a working answer to the Forward Deployed Creative brief: forward-deployed meaning <strong>an embedded builder who ships inside the customer's own stack</strong>, not a designer for hire. It takes a plain-text script and orchestrates narration, score, sound, and an optional dub into a finished, captioned cut, and it <strong>logs every generation step</strong> to a costed, reproducible run manifest.</p>
+    <p class="cs-standfirst">A quick-cut production workflow for newsroom and brand content teams shipping short-form video on the ElevenLabs stack. Built as a working answer to the Forward Deployed Creative brief: forward-deployed meaning <strong>an embedded builder who ships inside the customer's own stack</strong>, not a designer for hire. It takes a plain-text script and orchestrates narration, score, sound, visuals, and an optional dub into a finished, captioned cut, and it <strong>logs every generation step</strong> to a costed, reproducible run manifest.</p>
     <div class="cs-tagrow">
       <span class="cs-tag">ElevenLabs Text-to-Speech</span>
       <span class="cs-tag">Eleven Music v2</span>
       <span class="cs-tag">Sound Effects</span>
       <span class="cs-tag">Dubbing</span>
+      <span class="cs-tag">Veo 3.1 via adapter</span>
+      <span class="cs-tag">Playwright mograph</span>
       <span class="cs-tag">Node.js · ffmpeg</span>
     </div>
   </div>
@@ -158,19 +163,19 @@
         <div class="cs-video">
           <video controls playsinline preload="metadata" poster="assets/broll-poster.jpg">
             <source src="assets/broll-short.mp4" type="video/mp4">
-            <track kind="captions" src="assets/broll-short.srt" srclang="en" label="English" default>
+            <track kind="captions" src="assets/broll-short.vtt" srclang="en" label="English" default>
             Your browser does not support the video tag.
           </video>
         </div>
-        <p class="cs-video-cap">Pipeline output. 1080×1920, 50.4s. Narration, score, and sound effects generated live through the ElevenLabs API and mixed by the pipeline; a Spanish dub came from the same run. Captions from the pipeline's own timing.</p>
+        <p class="cs-video-cap">Pipeline output. 1080×1920, 53s, sixteen beats cut 2-4 seconds each. Six beats are motion graphics rendered in code from the pipeline's own artifacts (the real script, the real cost manifest, the real reroll command); ten are AI-generated shots directed by a creative council and inspected by its review board. Narration and score generated live through the ElevenLabs API, then gain-staged to measured loudness targets with the voice always on top, gated by a blind audio review that listens to the cut with zero context. The pipeline also carries a per-shot video-to-audio foley stage; for this screen-heavy cut the sound-design call was voice and score only, because footage without physical action on camera does not motivate natural sound. The <a href="assets/broll-short.es.mp4" rel="noopener">Spanish dub</a> came from the same cut. Captions from the pipeline's own timing.</p>
       </div>
       <div>
         <div class="cs-h2">What the run produced</div>
         <div class="cs-stat-grid">
           <div class="cs-stat"><div class="n">7</div><div class="l">pipeline stages orchestrated</div></div>
-          <div class="cs-stat"><div class="n">$0.70</div><div class="l">full audio stack + dub, this run</div></div>
-          <div class="cs-stat"><div class="n">50.4s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
-          <div class="cs-stat"><div class="n">6 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
+          <div class="cs-stat"><div class="n">$14.20</div><div class="l">full production cost incl. video gen, creative direction, sound design, every retake + Spanish dub</div></div>
+          <div class="cs-stat"><div class="n">53s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
+          <div class="cs-stat"><div class="n">7 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
         </div>
         <div class="cs-compare">
           <div class="col">
@@ -179,11 +184,11 @@
           </div>
           <div class="col after">
             <div class="c-k">This run</div>
-            <div class="c-b">One command from one operator. This cut, narration, score, sound, and a Spanish dub, cost $0.70 all-in and every call is logged, so the "what does a finished minute cost" question has a receipt instead of a guess.</div>
+            <div class="c-b">One command from one operator. This cut, narration, score, ten creatively directed and reviewed generated shots, a measured sound mix, and a Spanish dub, cost $14.20 all-in including every retake, and every call is logged, so the "what does a finished minute cost" question has a receipt instead of a guess. Change one line and one beat re-renders: iterations in minutes, not meetings.</div>
           </div>
         </div>
         <div class="cs-callout" style="margin-top:22px;">
-          <p>The point is not the 50 seconds. The point is the <em>loop</em>: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can copy it. That loop is the job.</p>
+          <p>The point is not the 53 seconds. The point is the <em>loop</em>: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can copy it. That loop is the job.</p>
         </div>
       </div>
     </div>
@@ -196,11 +201,13 @@
     <div class="cs-body">
       <p><strong>The problem, in business terms.</strong> A comms or newsroom team needs to ship short explainers on a daily cadence without burning out editors. Today that means a scripter, a voice artist, an editor cutting b-roll (the supporting footage laid over a narration), and a captioning pass, measured in hours per finished minute. The question a forward-deployed creative gets asked is not "can AI make a video," it is "can you turn our existing pipeline into one a small team runs before lunch, and can you prove what it costs."</p>
 
-      <p><strong>The shape of the answer.</strong> One input file, <code>input/script.md</code>, holds the whole brief: one beat per block, each with a line of voiceover, a visual prompt, and a target duration. The orchestrator parses that into beats and fans them across the ElevenLabs modalities, then ffmpeg cuts everything to the voiceover's timing and burns the caption track. Every stage caches its output keyed by a content hash, so a re-run only regenerates what actually changed. That is the difference between a demo and a workflow a team will keep using.</p>
+      <p><strong>The shape of the answer.</strong> One input file, <code>input/script.md</code>, holds the whole brief: one beat per block, each with a line of voiceover, a visual prompt, and a target duration. The orchestrator parses that into beats, fans the audio across the ElevenLabs modalities, renders or generates each beat's visual by its declared mode, then ffmpeg cuts everything to the voiceover's timing and muxes a toggleable caption track. Every stage caches its output keyed by a content hash, so a re-run only regenerates what actually changed. That is the difference between a demo and a workflow a team will keep using.</p>
 
-      <p><strong>Model choices, and one honest constraint.</strong> The audio stack runs end-to-end through the API: Text-to-Speech for narration, Eleven Music v2 for a licensed, commercially-cleared score, the Sound Effects API for accent beats, and Dubbing for a localized cut. ElevenLabs' 2026 image and video generation lives in ElevenCreative Studio and has no public REST endpoint, so the pipeline treats the visual step as a <em>product-in-the-loop</em> stage: it generates the prompts programmatically, hands them to Studio, and pulls the results back through a capture shim (a small utility that grabs Studio's rendered output back into the pipeline). Building a clean workflow <em>around</em> a real product boundary, rather than routing to a competitor's video API, is deliberate. It stays inside the customer's stack and demonstrates the exact instinct the role calls for.</p>
+      <p><strong>Model choices, and one honest boundary.</strong> The audio stack runs end-to-end through the ElevenLabs API: Text-to-Speech for narration, Eleven Music v2 for a licensed, commercially-cleared score, the Sound Effects API for accent beats, and Dubbing for the Spanish cut. Video generation sits behind a <em>pluggable provider adapter</em>: one thin module the pipeline calls per beat, routed today to a text-to-video model (Veo 3.1, via fal.ai); swapping providers is a config change, not a rewrite. And the beats that carry the pipeline's own evidence, the script, the cost manifest, the reroll command, the receipt, are not generated at all. They are rendered deterministically in code from the real artifacts, because for those shots the proof reads better than a prompt. Knowing which beats deserve a model and which deserve the actual data is the judgment call the role is about.</p>
 
-      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. On the run that produced the short above, narration, score, sound effects, and a Spanish dub all executed live for <strong>$0.696 total</strong>; only the visual stage still routes through ElevenCreative Studio's product-in-the-loop boundary. The manifest is <a href="https://github.com/mitwilli-create/broll-pipeline/blob/main/output/run-manifest.json" rel="noopener">committed in the public repo</a>. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
+      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency; cached artifacts carry their original cost forward, so the receipt reflects the whole cut, not just the last re-run. The artifacts in this cut carry <strong>$9.51</strong> of logged cost (the number the on-screen receipt bakes): $0.28 for the complete audio stack, $5.36 for the ten generated shots including the review board's retakes, $3.50 for creative direction, $0.37 for clip review. Getting to the shipped version added the board's extra re-rolls of one stubborn text-bearing shot, a full score re-render, the foley experiments, and the Spanish dub renders: <strong>$14.20 all-in</strong>, every line item logged, including the retries. The manifest is <a href="https://github.com/mitwilli-create/broll-pipeline/blob/main/output/run-manifest.json" rel="noopener">committed in the public repo</a>, and beat twelve of the video is that manifest, rendered as a thermal receipt. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
+
+      <p><strong>The creative council.</strong> Prompting shots one at a time produces b-roll that reads as disconnected stock, so generation is directed by a council of seven specialist personas (cinematographer, story producer, video researcher, sound designer, motion designer, music composer, audience-engagement expert) running in parallel on the Anthropic API. A creative director synthesizes their notes into one edit decision brief: a single visual system, a hook for the first two seconds, pacing built for short attention spans, and sound design motivated by what is on screen. After generation, the council's review board inspects frames from every generated clip against the brief, rejects unacceptable takes, and re-prompts and regenerates them. The ten shots in this cut share one visual system the council wrote, and several are retakes the review board demanded. Sound gets the same treatment: stems are gain-staged to measured loudness targets and mixed with the voice always on top, and a blind audio reviewer that can actually hear the cut scores the mix with timestamps until it is fit to ship. The pipeline also carries a per-shot video-to-audio foley stage (a model watches each shot's frames and scores the natural sound a live microphone would have caught); the sound-design judgment for this cut was to leave it out, because screen-heavy footage with little physical action does not motivate foley, and invented sound reads as artifact. Knowing when not to add sound is part of the craft.</p>
 
       <p><strong>Where a human still touches it.</strong> Script approval, brand and legal sign-off, voice selection, and a caption QA pass all stay human. Naming those seams is not a weakness to hide; it is what separates an enterprise-realistic workflow from a toy. The pipeline removes the mechanical hours and leaves the judgment where it belongs.</p>
     </div>
@@ -217,18 +224,18 @@
 <span class="node">[1] parseScript</span>   <span class="arrow">→</span> beats: [{ vo, visualPrompt, seconds }]
    <span class="arrow">│</span>
    <span class="arrow">├─▶</span> <span class="node">[2] voiceover</span>  <span class="api">(ElevenLabs TTS API)</span>            <span class="arrow">→</span> .cache/vo/*.mp3
-   <span class="arrow">├─▶</span> <span class="node">[3] visuals</span>    <span class="prod">(ElevenCreative Studio + shim)</span>  <span class="arrow">→</span> .cache/broll/*.mp4
+   <span class="arrow">├─▶</span> <span class="node">[3] visuals</span>    <span class="prod">(per beat: mograph render | provider adapter)</span>  <span class="arrow">→</span> .cache/broll/*.mp4
    <span class="arrow">├─▶</span> <span class="node">[4] score</span>      <span class="api">(Eleven Music v2)</span>               <span class="arrow">→</span> .cache/music.mp3
    <span class="arrow">└─▶</span> <span class="node">[5] sfx</span>        <span class="api">(Sound Effects API, optional)</span>   <span class="arrow">→</span> .cache/sfx/*.mp3
    <span class="arrow">│</span>
    <span class="arrow">▼</span>
-<span class="node">[6] assemble</span>  <span class="arrow">(ffmpeg: cut b-roll to VO timing, mix stems, burn captions)</span> <span class="arrow">→</span> output/short.mp4
+<span class="node">[6] assemble</span>  <span class="arrow">(ffmpeg: cut visuals to VO timing, grade, mix stems, caption)</span> <span class="arrow">→</span> output/short.mp4
    <span class="arrow">│</span>
    <span class="arrow">▼</span>
 <span class="node">[7] dub</span>       <span class="api">(Dubbing API → target language, optional)</span> <span class="arrow">→</span> output/short.&lt;lang&gt;.mp4
     </div>
 
-    <div class="badge-legend"><span style="color:var(--blood-soft)">LIVE</span> = this stage executed against the paid API to produce the cut above. <span style="color:var(--bone-soft)">WIRED</span> = the code path is complete and tested; it activates the moment the account's credit plan covers it. "Stems" below = the separate audio layers (voice, music, effects) mixed into the final track.</div>
+    <div class="badge-legend"><span style="color:var(--blood-soft)">LIVE</span> = this stage executed for real to produce the cut above (paid API call or deterministic local render). "Stems" below = the separate audio layers (voice, music, effects) mixed into the final track.</div>
 
     <div style="margin-top:14px;">
       <div class="stage">
@@ -241,8 +248,8 @@
       <div class="stage">
         <div class="stage-n">03</div>
         <div>
-          <div class="stage-h">Visuals <span class="badge wired">Studio-in-the-loop</span></div>
-          <div class="stage-d">Prompts are built programmatically per beat and handed to ElevenCreative Studio, then pulled back through the capture shim. No public video endpoint yet, so the workflow wraps the product boundary instead of leaving the stack.</div>
+          <div class="stage-h">Visuals <span class="badge live">live</span></div>
+          <div class="stage-d">Each beat declares its visual mode in the script. Mograph beats render deterministic motion graphics from the pipeline's real artifacts (Playwright frame capture, $0); gen beats are directed by the creative council into one visual system, generated through a pluggable text-to-video adapter (Veo 3.1 today), then frame-reviewed against the brief with automatic retakes. Cover-fit, duration-fit, and a shared grade keep the hybrid reading as one film.</div>
         </div>
       </div>
       <div class="stage">
@@ -263,7 +270,7 @@
         <div class="stage-n">06</div>
         <div>
           <div class="stage-h">Assemble <span class="badge live">live</span></div>
-          <div class="stage-d">ffmpeg cuts each b-roll clip to its voiceover length, mixes the stems, and burns the caption track from the pipeline's own timing. Deterministic and free.</div>
+          <div class="stage-d">ffmpeg cover-fits each clip to 1080×1920, cuts it to its voiceover length, applies a shared grade, mixes the stems, and muxes a toggleable caption track from the pipeline's own timing. Deterministic and free.</div>
         </div>
       </div>
       <div class="stage">
@@ -286,15 +293,18 @@
           <tr><th>Stage</th><th>Rate</th><th class="mono">~60s short</th></tr>
         </thead>
         <tbody>
-          <tr><td>Voiceover (TTS Multilingual v2/v3)</td><td class="mono">$0.10 / 1k chars</td><td class="mono">~$0.02</td></tr>
-          <tr><td>Score (Eleven Music v2)</td><td class="mono">$0.15 / min</td><td class="mono">~$0.15</td></tr>
-          <tr><td>Sound effects</td><td class="mono">$0.12 / min</td><td class="mono">~$0.05</td></tr>
-          <tr><td>Dubbing (per target language)</td><td class="mono">$0.33–0.50 / min</td><td class="mono">~$0.40</td></tr>
-          <tr><td>Visuals (ElevenCreative Studio)</td><td class="mono">credit-based</td><td class="mono">plan-dependent</td></tr>
-          <tr class="total"><td>Audio stack, per short</td><td class="mono">n/a</td><td class="mono">a few dollars</td></tr>
+          <tr><td>Voiceover (TTS Multilingual v2/v3)</td><td class="mono">$0.10 / 1k chars</td><td class="mono">~$0.06</td></tr>
+          <tr><td>Score (Eleven Music v2)</td><td class="mono">$0.15 / min</td><td class="mono">~$0.14</td></tr>
+          <tr><td>Sound effects + ambience bed</td><td class="mono">$0.12 / min</td><td class="mono">~$0.07</td></tr>
+          <tr><td>Dubbing (per target language)</td><td class="mono">$0.33–0.50 / min</td><td class="mono">~$0.44</td></tr>
+          <tr><td>Visuals (text-to-video + designed stills via adapter, 10 shots incl. retakes)</td><td class="mono">$0.10 / sec (Veo 3.1 Fast) + $0.08 / still (nano banana 2)</td><td class="mono">~$6.80</td></tr>
+          <tr><td>Visuals (mograph beats, 6 shots)</td><td class="mono">rendered in code</td><td class="mono">$0.00</td></tr>
+          <tr><td>Per-shot foley (video-to-audio; for action footage, unused in this cut)</td><td class="mono">~$0.001 / sec</td><td class="mono">~$0.04</td></tr>
+          <tr><td>Creative council (direction + per-clip review)</td><td class="mono">Anthropic API</td><td class="mono">~$5.45</td></tr>
+          <tr class="total"><td>Full stack, per short</td><td class="mono">n/a</td><td class="mono">~$13.00</td></tr>
         </tbody>
       </table>
-      <div class="caption">Rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>, accessed 2026-07-07; per-short figures are estimates for a ~180-word, 60-second piece. Visual generation is the real cost driver and is credit-metered, so a Pro or Scale plan is the budget line to watch. The actual run that produced the short above logged $0.696 all-in (narration, score, sound effects, Spanish dub) to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>, committed in the repo.</div>
+      <div class="caption">ElevenLabs rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>; video rate from the provider's model page, both accessed 2026-07-08. Per-short figures are the actual logged costs of the 53-second cut above: $9.51 carried by the artifacts in the cut (the number the on-screen receipt bakes), plus the review board's extra retakes, the score and foley re-rolls, and the Spanish dub renders, $14.20 all-in, logged per call to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>, committed in the repo. Video generation and creative direction are the cost drivers; the six code-rendered beats cost nothing to regenerate, which is what makes iteration cheap.</div>
     </div>
   </div>
 </section>
