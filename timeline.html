@@ -21,11 +21,20 @@
     .tl-rail{position:absolute;left:29px;top:0;bottom:0;width:1px;background:var(--line)}
     .tl-fill{position:absolute;left:29px;top:0;width:1px;height:0;background:var(--blood-soft);
       transition:height .15s linear}
-    .era{position:relative;padding:0 0 88px 92px}
+    .era{position:relative;padding:0 0 96px 92px}
     .era:last-child{padding-bottom:20px}
     .era-dot{position:absolute;left:22px;top:6px;width:15px;height:15px;border:1px solid var(--line-2);
-      background:var(--bg);transform:rotate(45deg);transition:all .6s var(--ease)}
+      background:var(--bg);transform:rotate(45deg);transition:all .6s var(--ease);z-index:2}
     .era.in .era-dot{border-color:var(--blood-soft);background:var(--blood)}
+
+    /* ghosted oversized year anchor */
+    .era::before{content:attr(data-year);position:absolute;right:0;top:-34px;z-index:0;
+      font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(88px,15vw,210px);
+      line-height:1;letter-spacing:-0.05em;color:var(--bone);opacity:.045;pointer-events:none;
+      user-select:none}
+    .era > *{position:relative;z-index:1}
+    .era > .era-dot{z-index:2}
+
     .era-years{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;
       color:var(--blood-soft);margin-bottom:12px;text-transform:uppercase}
     .era-org{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,4vw,44px);
@@ -33,21 +42,89 @@
     .era-role{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--mute);margin-top:10px}
     .era-body{margin-top:16px;max-width:560px;font-size:15px;line-height:1.65;color:var(--bone-soft)}
-    .era-metrics{display:flex;gap:26px;margin-top:20px;flex-wrap:wrap}
-    .em{border-left:2px solid var(--blood-soft);padding-left:14px}
-    .em .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:var(--bone);
-      letter-spacing:-0.01em}
+
+    /* metrics at headline scale, scrub-counted where supported */
+    .era-metrics{display:flex;gap:36px;margin-top:26px;flex-wrap:wrap;align-items:flex-end}
+    .em{border-left:2px solid var(--blood-soft);padding-left:16px}
+    .em .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(40px,6.2vw,88px);
+      color:var(--bone);letter-spacing:-0.03em;line-height:.95}
+    .em .n .cnt,.em .n .unit{display:none}
     .em .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--mute);margin-top:3px;max-width:170px;line-height:1.5}
-    .era-clips{display:flex;gap:10px;margin-top:22px}
-    .era-clips a{display:block;width:180px;aspect-ratio:16/10;overflow:hidden;position:relative;
-      border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease)}
-    .era-clips a:hover{border-color:var(--line-2);transform:translateY(-2px)}
-    .era-clips img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.4)}
-    .era-clips a:hover img{filter:grayscale(0)}
-    .era-clips .cl{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;
+      text-transform:uppercase;color:var(--mute);margin-top:8px;max-width:190px;line-height:1.5}
+
+    /* media tiles: oxblood duotone + grain, lightbox targets */
+    .era-clips{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+    .era-clips a{display:block;width:200px;aspect-ratio:16/10;overflow:hidden;position:relative;
+      border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease);
+      background:#000}
+    .era-clips a:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .era-clips img{width:100%;height:100%;object-fit:cover;
+      filter:grayscale(1) sepia(.32) hue-rotate(-24deg) saturate(2) contrast(1.05) brightness(.88);
+      transition:filter .45s var(--ease)}
+    .era-clips a:hover img{filter:none}
+    .era-clips a::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.16;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .era-clips a video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+    .era-clips .cl{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;z-index:2;
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
       color:var(--bone);background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
+
+    /* horizontal snap strip for the media-dense eras */
+    .era-clips--strip{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
+      padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+    .era-clips--strip a{flex:0 0 auto;width:min(300px,74vw);scroll-snap-align:start}
+    .era-clips--strip::-webkit-scrollbar{height:4px}
+    .era-clips--strip::-webkit-scrollbar-thumb{background:var(--line-2)}
+
+    /* deliberate sparse-era treatment (CNN) */
+    .era--sparse::before{opacity:.07}
+    .era--sparse .era-body{border:1px solid var(--line);padding:20px 22px;
+      background:rgba(255,255,255,.015)}
+    .era--sparse .era-clips a{width:150px}
+
+    /* chapter minimap (desktop) */
+    .tl-map{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;
+      display:none;flex-direction:column;gap:11px;text-align:right}
+    .tl-map a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--mute);text-decoration:none;transition:color .3s var(--ease)}
+    .tl-map a:hover{color:var(--bone)}
+    .tl-map a.on{color:var(--blood-soft)}
+    .tl-map a.on::before{content:"";display:inline-block;width:12px;height:1px;
+      background:var(--blood-soft);vertical-align:middle;margin-right:7px}
+    @media(min-width:1200px){.tl-map{display:flex}}
+
+    /* chapter pill (mobile / narrow) */
+    .tl-pill{position:fixed;right:14px;bottom:14px;z-index:40;display:block;
+      font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--bone);background:rgba(10,10,11,.92);border:1px solid var(--line-2);
+      padding:9px 13px;cursor:pointer}
+    @media(min-width:1200px){.tl-pill{display:none}}
+
+    /* lightbox + jump dialogs */
+    dialog{border:1px solid var(--line-2);background:var(--bg);color:var(--bone);padding:0}
+    dialog::backdrop{background:rgba(10,10,11,.84)}
+    .clipbox{max-width:min(940px,94vw)}
+    .clipbox figure{margin:0}
+    .clipbox img,.clipbox video{display:block;width:100%;max-height:72vh;object-fit:contain;background:#000}
+    .clipbox figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--mute);padding:12px 16px 0}
+    .clipbox .cb-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px 16px}
+    .clipbox .cb-row a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);text-decoration:none}
+    .clipbox .cb-row a:hover{color:var(--bone)}
+    .clipbox button,.mapbox button{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;
+      text-transform:uppercase;background:none;border:1px solid var(--line-2);color:var(--bone);
+      padding:7px 12px;cursor:pointer}
+    .clipbox button:hover,.mapbox button:hover{border-color:var(--blood-soft)}
+    .mapbox{min-width:220px}
+    .mapbox ul{list-style:none;margin:0;padding:18px}
+    .mapbox li+li{margin-top:12px}
+    .mapbox a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--bone-soft);text-decoration:none}
+    .mapbox a:hover,.mapbox a.on{color:var(--blood-soft)}
+    .mapbox .mb-foot{padding:0 18px 16px;text-align:right}
+
+    /* reveal fallback (non scroll-driven browsers) */
     .era .reveal-child{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
     .era.in .reveal-child{opacity:1;transform:none}
     .era.in .reveal-child:nth-child(2){transition-delay:.08s}
@@ -58,17 +135,48 @@
     .no-js .era .reveal-child,.no-js .era-dot{opacity:1;transform:none}
     .no-js .era-dot{transform:rotate(45deg)}
     .no-js .tl-fill{height:100%}
+
+    /* native scroll-driven layer: rail, reveals, ghost years, counters */
+    @property --nn{syntax:"<integer>";inherits:true;initial-value:0}
+    @keyframes tl-fill-kf{from{height:0}to{height:100%}}
+    @keyframes rise-kf{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+    @keyframes ghost-kf{from{opacity:0;transform:translateY(46px)}}
+    @keyframes count-kf{from{--nn:0}}
+    @media (prefers-reduced-motion: no-preference){
+      @supports (animation-timeline: view()){
+        .tl{view-timeline:--tl block}
+        .tl-fill{transition:none;animation:tl-fill-kf linear both;animation-timeline:--tl;
+          animation-range:cover 0% cover 88%}
+        .era .reveal-child,.era.in .reveal-child{opacity:1;transform:none;transition:none}
+        .era .reveal-child{animation:rise-kf linear both;animation-timeline:view();
+          animation-range:entry 0% entry 62%}
+        .era::before{animation:ghost-kf linear both;animation-timeline:view();
+          animation-range:entry 0% cover 34%}
+        .em .n .real{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+        .em .n .cnt,.em .n .unit{display:inline}
+        .em .n .cnt{--nn:var(--t);animation:count-kf linear both;animation-timeline:view();
+          animation-range:cover 0% cover 42%}
+        .em .n .cnt::before{content:counter(nn);counter-reset:nn var(--nn)}
+      }
+    }
     @media (prefers-reduced-motion: reduce){
-      .era .reveal-child{opacity:1 !important;transform:none !important;transition:none !important}
-      .tl-fill{height:100% !important;transition:none}
+      .era .reveal-child{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important}
+      .tl-fill{height:100% !important;transition:none;animation:none !important}
       .era-dot{transition:none}
+      .era::before{animation:none !important}
+      .era-clips img{transition:none}
     }
     @media(max-width:860px){
       .tl-hero{padding:130px 0 40px}
       .tl-rail,.tl-fill{left:7px}
-      .era{padding-left:44px}
+      .era{padding-left:44px;padding-bottom:78px}
       .era-dot{left:0}
       .era-clips{flex-wrap:wrap}
+      .era-clips--strip{flex-wrap:nowrap}
+      .era-clips a{width:160px}
+      .era-clips--strip a{width:min(280px,74vw)}
+      .era::before{right:-6px;top:-18px}
+      .em .n{font-size:clamp(34px,9vw,56px)}
     }
   </style>
 </head>
@@ -103,12 +211,25 @@
   </div>
 </header>
 
+<nav class="tl-map" aria-label="Timeline chapters">
+  <a href="#era-wdrb">WDRB</a>
+  <a href="#era-stream">Stream</a>
+  <a href="#era-huffpost">HuffPost</a>
+  <a href="#era-fusion">Fusion</a>
+  <a href="#era-cnn">CNN</a>
+  <a href="#era-ajplus">AJ+</a>
+  <a href="#era-corpeng">CorpEng</a>
+  <a href="#era-xge">xGE</a>
+  <a href="#era-now">Now</a>
+</nav>
+<button class="tl-pill" id="tl-pill" aria-haspopup="dialog">2007 · now</button>
+
 <div class="wrap">
   <div class="tl" id="tl">
     <div class="tl-rail"></div>
     <div class="tl-fill" id="tl-fill"></div>
 
-    <div class="era">
+    <div class="era" id="era-wdrb" data-year="2007">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2007 · 2010</div>
       <h2 class="era-org reveal-child">WDRB Fox 41<br>Louisville</h2>
@@ -116,29 +237,29 @@
       <p class="era-body reveal-child">The origin: owning two hours of a live morning block at a small-market station. When the Bhutto assassination broke during my overnight window, we beat the networks to air from Kentucky. The template for every rebuilt rundown since.</p>
       <div class="era-clips reveal-child">
         <a href="stories.html#bhutto-origin"><img src="assets/stills/louisville-2005-ccby-pugfather.jpg" alt="Louisville skyline at night, 2005" loading="lazy"><span class="cl">Louisville · The Pug Father · CC BY</span></a>
+        <a href="stories.html#bhutto-origin"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><span class="cl">Bhutto, Nov 2007 · VOA · public domain</span></a>
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-stream" data-year="2010">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2010 · 2012</div>
       <h2 class="era-org reveal-child">Al Jazeera English<br>The Stream</h2>
       <div class="era-role reveal-child">Founding-team Associate Producer</div>
       <p class="era-body reveal-child">Launch night, May 2, 2011: the planned rundown abandoned when the bin Laden raid broke, and the man who unknowingly live-tweeted it booked on air, his follower count climbing from a few hundred to tens of thousands. Social-data journalism before that was a category.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n">250M</div><div class="l">households at launch</div></div>
+        <div class="em"><div class="n" style="--t:250"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">250M</span></div><div class="l">households at launch</div></div>
         <div class="em"><div class="n">RTS 2012</div><div class="l">Innovative News Award</div></div>
       </div>
-      <div class="era-clips reveal-child">
-        <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Bin Laden night · 45m</span></a>
+      <div class="era-clips era-clips--strip reveal-child">
+        <a href="work.html#live-panels" data-preview="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Bin Laden night · 45m</span></a>
         <a href="work.html#live-panels"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
         <a href="stories.html#stream-launch-night"><img src="assets/stills/tahrir-2011-ccby-rashad.jpg" alt="Tahrir Square protests, February 2011" loading="lazy"><span class="cl">Tahrir, 2011 · J. Rashad · CC BY</span></a>
         <a href="work.html#live-panels"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Pearl Roundabout protests, Bahrain 2011" loading="lazy"><span class="cl">Pearl Roundabout, 2011 · CC BY-SA</span></a>
-        <a href="timeline.html"><img src="assets/stills/cctv-america-dc-ccbysa.jpg" alt="1099 New York Avenue NW, Washington DC" loading="lazy"><span class="cl">CCTV America's DC home · CC BY-SA</span></a>
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-huffpost" data-year="2012">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2012 · 2013</div>
       <h2 class="era-org reveal-child">HuffPost Live</h2>
@@ -156,18 +277,20 @@
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-fusion" data-year="2013">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2013 · 2015</div>
       <h2 class="era-org reveal-child">Fusion</h2>
       <div class="era-role reveal-child">Senior Producer · America With Jorge Ramos</div>
       <p class="era-body reveal-child">Weekly primetime on the ABC/Univision joint venture, produced end to end: full episodes, election specials, field segments, and the 44-minute live special on Mandela's death built on a rebuilt rundown.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n">179%</div><div class="l">primetime growth window</div></div>
-        <div class="em"><div class="n">40M</div><div class="l">household distribution</div></div>
+        <div class="em"><div class="n" style="--t:179"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">%</span><span class="real">179%</span></div><div class="l">primetime growth window</div></div>
+        <div class="em"><div class="n" style="--t:40"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">40M</span></div><div class="l">household distribution</div></div>
       </div>
       <div class="era-clips reveal-child">
-        <a href="work.html#interviews-longform"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos showreel" loading="lazy"><span class="cl">The showreel · 44m</span></a>
+        <a href="work.html#interviews-longform" data-preview="assets/previews/fusion-2013-america-with-jorge-ramos.mp4"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos showreel" loading="lazy"><span class="cl">The showreel · 44m</span></a>
+        <a href="stories.html#mandela-special"><img src="assets/stills/mandela-special.jpg" alt="Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board" loading="lazy"><span class="cl">Mandela special · Dec 5, 2013</span></a>
+        <a href="stories.html#fusion-ramos-lawsuit"><img src="assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg" alt="Jorge Ramos speaking, 2016" loading="lazy"><span class="cl">Jorge Ramos · Gage Skidmore · CC BY-SA</span></a>
       </div>
       <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
         <img src="assets/stills/oncam/barenec-130.jpg" alt="Mitchell Williams interviewing a festival attendee with a Fusion microphone, 2015" loading="lazy">
@@ -175,7 +298,7 @@
       </figure>
     </div>
 
-    <div class="era">
+    <div class="era era--sparse" id="era-cnn" data-year="2016">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2016</div>
       <h2 class="era-org reveal-child">CNN · New Day</h2>
@@ -186,19 +309,24 @@
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-ajplus" data-year="2016">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2016 · 2018</div>
       <h2 class="era-org reveal-child">AJ+</h2>
       <div class="era-role reveal-child">Senior Producer</div>
       <p class="era-body reveal-child">Viral social news at the top of its category-defining era. I ran a team during the years AJ+ reached 500 million weekly viewers, field-produced San Juan's mayor during active Hurricane Maria conditions, and made one piece that hit 50 million views on its own.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n">500M</div><div class="l">weekly viewers, team era</div></div>
-        <div class="em"><div class="n">50M</div><div class="l">views, one piece of my own</div></div>
+        <div class="em"><div class="n" style="--t:500"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">500M</span></div><div class="l">weekly viewers, team era</div></div>
+        <div class="em"><div class="n" style="--t:50"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">50M</span></div><div class="l">views, one piece of my own</div></div>
       </div>
-      <div class="era-clips reveal-child">
-        <a href="work.html#social-video"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">The 50M measles piece</span></a>
-        <a href="work.html#field-documentary"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><span class="cl">Hurricane Maria · field</span></a>
+      <div class="era-clips era-clips--strip reveal-child">
+        <a href="work.html#social-video" data-preview="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">The 50M measles piece</span></a>
+        <a href="work.html#field-documentary" data-preview="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><span class="cl">Hurricane Maria · field</span></a>
+        <a href="stories.html#hurricane-maria-field"><img src="assets/stills/hurricane-maria-field.jpg" alt="Getting the Mayor of San Juan on record in the storm" loading="lazy"><span class="cl">From the field tape · San Juan</span></a>
+        <a href="work.html#social-video" data-preview="assets/previews/ajp-2016-surviving-an-atomic-bomb.mp4"><img src="assets/posters/ajp-2016-surviving-an-atomic-bomb.jpg" alt="Surviving an atomic bomb" loading="lazy"><span class="cl">Surviving an atomic bomb</span></a>
+        <a href="work.html#social-video" data-preview="assets/previews/ajp-2016-bill-nye-curbing-climate-change.mp4"><img src="assets/posters/ajp-2016-bill-nye-curbing-climate-change.jpg" alt="Bill Nye on curbing climate change" loading="lazy"><span class="cl">Bill Nye · climate</span></a>
+        <a href="work.html#social-video" data-preview="assets/previews/ajp-2017-truvada-prep-not-just-for-gay-men.mp4"><img src="assets/posters/ajp-2017-truvada-prep-not-just-for-gay-men.jpg" alt="Truvada PrEP explainer" loading="lazy"><span class="cl">Truvada PrEP · 2017</span></a>
+        <a href="stories.html#aj-plus-50m-views"><img src="assets/stills/aj-plus-50m-views.jpg" alt="The 50 million view counter on the measles explainer" loading="lazy"><span class="cl">Fifty million views · the story</span></a>
       </div>
       <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
         <img src="assets/stills/oncam/trumpmj-010.jpg" alt="Mitchell Williams hosting an AJ+ explainer, composited beside Donald Trump at a campaign podium" loading="lazy">
@@ -206,22 +334,22 @@
       </figure>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-corpeng" data-year="2018">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2018 · 2024</div>
       <h2 class="era-org reveal-child">Google<br>Corporate Engineering</h2>
       <div class="era-role reveal-child">Senior Communications &amp; Content Strategist</div>
       <p class="era-body reveal-child">Six years turning dense internal engineering into communication people actually watched. Video-first internal comms at a scale most newsrooms never touch, plus public recruitment and interview-prep video for Google's talent brand.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n">75,000+</div><div class="l">employees reached</div></div>
+        <div class="em"><div class="n" style="--t:75"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">,000+</span><span class="real">75,000+</span></div><div class="l">employees reached</div></div>
       </div>
       <div class="era-clips reveal-child">
-        <a href="work.html#social-video"><img src="https://i.ytimg.com/vi/ohtLXCwC-oU/hqdefault.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
-        <a href="work.html#social-video"><img src="https://i.ytimg.com/vi/6ZZX9iIgFoo/hqdefault.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
+        <a href="work.html#social-video"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
+        <a href="work.html#social-video"><img src="assets/posters/google-lifeatgoogle-2019-interview-prep-coding.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-xge" data-year="2024">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2024 · 2026</div>
       <h2 class="era-org reveal-child">Google<br>Cross-Google Engineering</h2>
@@ -229,21 +357,23 @@
       <p class="era-body reveal-child">Communications for the community of 1,000+ Principal, Distinguished, and Fellow engineers. This is where I stopped writing about the systems and started building them: two production AI agents, built and deployed solo.</p>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n">1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
-        <div class="em"><div class="n">~70%</div><div class="l">less VP review back-and-forth, digital-twin system (internal, self-measured)</div></div>
+        <div class="em"><div class="n" style="--t:70"><span aria-hidden="true">~</span><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">%</span><span class="real">~70%</span></div><div class="l">less VP review back-and-forth, digital-twin system (internal, self-measured)</div></div>
       </div>
       <div class="era-clips reveal-child">
         <a href="work.html#interviews-longform"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
+        <a href="stories.html#digital-twin"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><span class="cl">The digital twin · system illustration</span></a>
       </div>
     </div>
 
-    <div class="era">
+    <div class="era" id="era-now" data-year="NOW">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2026 · Now</div>
       <h2 class="era-org reveal-child">AI-native<br>builder</h2>
       <div class="era-role reveal-child">Forward Deployed Creative / Engineer</div>
       <p class="era-body reveal-child">Building full time: an ElevenLabs production pipeline with per-run cost receipts, measurable voice scoring, citation-gated verification, and a fifty-agent job-search fleet. The newsroom instinct, shipped as software.</p>
       <div class="era-clips reveal-child">
-        <a href="broll-pipeline.html"><img src="assets/broll-poster.jpg" alt="broll pipeline case study" loading="lazy"><span class="cl">broll pipeline · case study</span></a>
+        <a href="broll-pipeline.html" data-preview="assets/broll-short.mp4"><img src="assets/broll-poster.jpg" alt="broll pipeline case study" loading="lazy"><span class="cl">broll pipeline · case study</span></a>
+        <a href="stories.html#builder-turn"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
       </div>
       <div class="era-metrics reveal-child" style="margin-top:26px">
         <a class="btn solid" href="projects.html"><span>See what I'm building</span></a>
@@ -252,6 +382,32 @@
 
   </div>
 </div>
+
+<dialog class="clipbox" id="clipbox">
+  <figure>
+    <div id="cb-media"></div>
+    <figcaption id="cb-cap"></figcaption>
+  </figure>
+  <div class="cb-row">
+    <a id="cb-link" href="#">Open in the archive</a>
+    <button id="cb-close" type="button">Close</button>
+  </div>
+</dialog>
+
+<dialog class="mapbox" id="mapbox">
+  <ul>
+    <li><a href="#era-wdrb">2007 · WDRB</a></li>
+    <li><a href="#era-stream">2010 · The Stream</a></li>
+    <li><a href="#era-huffpost">2012 · HuffPost Live</a></li>
+    <li><a href="#era-fusion">2013 · Fusion</a></li>
+    <li><a href="#era-cnn">2016 · CNN New Day</a></li>
+    <li><a href="#era-ajplus">2016 · AJ+</a></li>
+    <li><a href="#era-corpeng">2018 · Google CorpEng</a></li>
+    <li><a href="#era-xge">2024 · Google xGE</a></li>
+    <li><a href="#era-now">2026 · Now</a></li>
+  </ul>
+  <div class="mb-foot"><button id="mb-close" type="button">Close</button></div>
+</dialog>
 
 <footer>
   <div class="wrap">
@@ -270,24 +426,101 @@
 
 <script src="shared/reveal.js"></script>
 <script>
-  // era activation (shared observer from reveal.js)
-  document.querySelectorAll('.era').forEach(el=>window.__revealObserve(el));
+  var SDA = typeof CSS!=='undefined' && CSS.supports && CSS.supports('animation-timeline: view()');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // scroll-driven rail fill
-  const tl=document.getElementById('tl'), fill=document.getElementById('tl-fill');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // era activation (dot state + fallback reveals via shared observer)
+  document.querySelectorAll('.era').forEach(function(el){ window.__revealObserve(el); });
+
+  // scroll-driven rail fill: native CSS where supported, JS fallback otherwise
+  var tl=document.getElementById('tl'), fill=document.getElementById('tl-fill');
   if(reduce){ fill.style.height='100%'; }
-  else{
-    let ticking=false;
-    function update(){
-      const r=tl.getBoundingClientRect();
-      const vh=innerHeight;
-      const progress=Math.min(1,Math.max(0,(vh*0.7-r.top)/r.height));
+  else if(!SDA){
+    var ticking=false;
+    var update=function(){
+      var r=tl.getBoundingClientRect();
+      var vh=innerHeight;
+      var progress=Math.min(1,Math.max(0,(vh*0.7-r.top)/r.height));
       fill.style.height=(progress*100)+'%';
       ticking=false;
-    }
-    addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } },{passive:true});
+    };
+    addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(update); ticking=true; } },{passive:true});
     update();
+  }
+
+  // chapter tracking: minimap + pill reflect the era nearest viewport center
+  var eras=[].slice.call(document.querySelectorAll('.era'));
+  var mapLinks=[].slice.call(document.querySelectorAll('.tl-map a, .mapbox a'));
+  var pill=document.getElementById('tl-pill');
+  var centerIO=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var id=e.target.id;
+      mapLinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+id); });
+      var yrs=e.target.querySelector('.era-years');
+      if(yrs) pill.textContent=yrs.textContent;
+    });
+  },{rootMargin:'-42% 0px -42% 0px'});
+  eras.forEach(function(el){ centerIO.observe(el); });
+  mapLinks.forEach(function(a){
+    a.addEventListener('click',function(ev){
+      ev.preventDefault();
+      var t=document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView(reduce?{}:{behavior:'smooth'});
+      if(mapbox.open) mapbox.close();
+    });
+  });
+
+  // mobile chapter pill -> jump dialog
+  var mapbox=document.getElementById('mapbox');
+  pill.addEventListener('click',function(){ mapbox.showModal(); });
+  document.getElementById('mb-close').addEventListener('click',function(){ mapbox.close(); });
+
+  // lightbox: clips open in-page; archive link preserved
+  var clipbox=document.getElementById('clipbox');
+  var cbMedia=document.getElementById('cb-media'), cbCap=document.getElementById('cb-cap'), cbLink=document.getElementById('cb-link');
+  document.querySelectorAll('.era-clips a').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      ev.preventDefault();
+      var img=a.querySelector('img'), cap=a.querySelector('.cl');
+      cbMedia.innerHTML='';
+      var prev=a.getAttribute('data-preview');
+      if(prev && !reduce){
+        var v=document.createElement('video');
+        v.src=prev; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true;
+        v.setAttribute('aria-label', img?img.alt:'');
+        cbMedia.appendChild(v);
+      } else if(img){
+        var big=document.createElement('img');
+        big.src=img.src; big.alt=img.alt;
+        cbMedia.appendChild(big);
+      }
+      cbCap.textContent=cap?cap.textContent:'';
+      cbLink.href=a.getAttribute('href');
+      clipbox.showModal();
+    });
+  });
+  document.getElementById('cb-close').addEventListener('click',function(){ clipbox.close(); });
+  [clipbox,mapbox].forEach(function(d){
+    d.addEventListener('click',function(ev){ if(ev.target===d) d.close(); });
+    d.addEventListener('close',function(){ if(d===clipbox) cbMedia.innerHTML=''; });
+  });
+
+  // hover previews on capable pointers
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    document.querySelectorAll('.era-clips a[data-preview]').forEach(function(a){
+      var v=null;
+      a.addEventListener('mouseenter',function(){
+        if(v) return;
+        v=document.createElement('video');
+        v.src=a.getAttribute('data-preview');
+        v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true;
+        a.insertBefore(v, a.querySelector('.cl'));
+      });
+      a.addEventListener('mouseleave',function(){
+        if(v){ v.remove(); v=null; }
+      });
+    });
   }
 </script>
 </body>
