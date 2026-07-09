@@ -12,6 +12,7 @@ Mitchell's public portfolio site, storytellermitch.com: plain static HTML/CSS/JS
 - **Never hand-edit baked regions.** `stories.html` and `work.html` are generated between bake markers from `assets/site-data/stories.json` and `clips.json`. Edit the JSON, re-run the baker; CI rejects bake drift byte-for-byte.
 - **Every HTML asset reference must resolve.** `src`/`href`/`poster` attributes in `*.html` are checked against disk (exemption: `media/`, the gitignored self-hosted video payloads).
 - **Public repo.** No secrets, no personal data, no draft copy you wouldn't publish.
+- **Image licensing.** Third-party images need verified PD/CC licensing from the source file page, with author and license in the caption; wire-service photos (AP/Getty/Reuters) never. Carve-out (Mitchell-approved 2026-07-08): cover art of a published work may appear at modest size solely to identify the work under discussion, captioned "cover shown for identification".
 - **Visible changes get verified in a real browser** (both desktop and narrow widths) before being called done. "Looks right in source" is not verification.
 
 ## Commands
