@@ -1,0 +1,12 @@
+# Excluded from the Cloudflare Pages upload.
+# Anything uploaded is served publicly at its path, so keep this to site assets only.
+# Video is served from Cloudflare Stream (playback=stream), so local media/ is not needed.
+media/
+.git/
+node_modules/
+tools/
+docs/
+.claude/
+AGENTS.md
+.DS_Store
+.env

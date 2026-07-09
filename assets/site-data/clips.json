@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "playback": "local",
-  "streamCustomerCode": null,
+  "playback": "stream",
+  "streamCustomerCode": "bkgfhhvaijyxffgn",
   "buckets": [
     {
       "key": "ai-native",
@@ -133,7 +133,7 @@
       "previewStart": 561,
       "media": {
         "local": "media/aje-stream-2010-a-look-into-islams-holy-pilgrimage.mp4",
-        "streamId": null,
+        "streamId": "17dce2894f2180d2ec4f619c881173a1",
         "youtubeId": null
       },
       "startHere": false,
@@ -159,7 +159,7 @@
       "previewStart": 520,
       "media": {
         "local": "media/aje-stream-2010-is-isolating-iran-the-answer.mp4",
-        "streamId": null,
+        "streamId": "32f3e9a422aaf2468cd0e6147d2ffb95",
         "youtubeId": null
       },
       "startHere": false,
@@ -185,7 +185,7 @@
       "previewStart": 677,
       "media": {
         "local": "media/aje-stream-2011-chinese-micro-blogging-crowd-sourced-epidemi.mp4",
-        "streamId": null,
+        "streamId": "7b32ae134ee25a5a1ddd45889b56ae43",
         "youtubeId": null
       },
       "startHere": false,
@@ -211,7 +211,7 @@
       "previewStart": 586,
       "media": {
         "local": "media/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4",
-        "streamId": null,
+        "streamId": "50fad9a0e5e0bbff2b41ecd3d37295a4",
         "youtubeId": null
       },
       "startHere": false,
@@ -237,7 +237,7 @@
       "previewStart": 678,
       "media": {
         "local": "media/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4",
-        "streamId": null,
+        "streamId": "5110494fc9e3e53e73cbd135e77d96de",
         "youtubeId": null
       },
       "startHere": true,
@@ -263,7 +263,7 @@
       "previewStart": 375,
       "media": {
         "local": "media/aje-stream-2011-lilianne-khalil-twitter-hoax-wenzhou-train-c.mp4",
-        "streamId": null,
+        "streamId": "b1451b9ab1cc7aaff98b838b5d51a666",
         "youtubeId": null
       },
       "startHere": false,
@@ -289,7 +289,7 @@
       "previewStart": 227,
       "media": {
         "local": "media/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4",
-        "streamId": null,
+        "streamId": "916e5ea1de00ac7b3125e60644017298",
         "youtubeId": null
       },
       "startHere": false,
@@ -315,7 +315,7 @@
       "previewStart": 131,
       "media": {
         "local": "media/ajp-or-fusion-2015-hiv-prevention-pill-truvada-nobody-talkin.mp4",
-        "streamId": null,
+        "streamId": "5656710d2f4f43cd3115d41d09083576",
         "youtubeId": null
       },
       "startHere": false,
@@ -341,7 +341,7 @@
       "previewStart": 164,
       "media": {
         "local": "media/ajp-or-fusion-2015-the-future-of-marijuana-policy.mp4",
-        "streamId": null,
+        "streamId": "7d1c31dec09df28c762a44d667fcc4cf",
         "youtubeId": null
       },
       "startHere": false,
@@ -367,7 +367,7 @@
       "previewStart": 67,
       "media": {
         "local": "media/ajp-or-fusion-2015-the-bare-necessities.mp4",
-        "streamId": null,
+        "streamId": "2793f97e05e1027006e2d205e0bb99d1",
         "youtubeId": null
       },
       "startHere": false,
@@ -393,7 +393,7 @@
       "previewStart": 42,
       "media": {
         "local": "media/ajp-or-fusion-2016-my-mom-is-voting-for-trump.mp4",
-        "streamId": null,
+        "streamId": "120b7e01942ce787c48f881b39bf6a2c",
         "youtubeId": null
       },
       "startHere": false,
@@ -419,7 +419,7 @@
       "previewStart": 27,
       "media": {
         "local": "media/ajp-2016-americas-longest-war-afghanistan.mp4",
-        "streamId": null,
+        "streamId": "2e20a7f69838e258c68575acd07b5905",
         "youtubeId": null
       },
       "startHere": false,
@@ -445,7 +445,7 @@
       "previewStart": 46,
       "media": {
         "local": "media/ajp-2016-bill-nye-curbing-climate-change.mp4",
-        "streamId": null,
+        "streamId": "0c77f9dc24b075f6356f96a64bf193da",
         "youtubeId": null
       },
       "startHere": true,
@@ -471,7 +471,7 @@
       "previewStart": 43,
       "media": {
         "local": "media/ajp-2016-criminalizing-bds.mp4",
-        "streamId": null,
+        "streamId": "f288c9635968e426956bb28827e2c49c",
         "youtubeId": null
       },
       "startHere": false,
@@ -497,7 +497,7 @@
       "previewStart": 34,
       "media": {
         "local": "media/ajp-2016-grieving-mother-pleas-end-gun-violence.mp4",
-        "streamId": null,
+        "streamId": "576ddb64b40f390805ba3025c9c90bad",
         "youtubeId": null
       },
       "startHere": false,
@@ -523,7 +523,7 @@
       "previewStart": 83,
       "media": {
         "local": "media/ajp-2016-honey-i-shrunk-the-population-demographics.mp4",
-        "streamId": null,
+        "streamId": "d298b36e9503352a91010ffb8ae74957",
         "youtubeId": null
       },
       "startHere": false,
@@ -549,7 +549,7 @@
       "previewStart": 45,
       "media": {
         "local": "media/ajp-2016-how-the-media-fails.mp4",
-        "streamId": null,
+        "streamId": "03e2eb8b3b65c04eb3d663a95a215d0f",
         "youtubeId": null
       },
       "startHere": false,
@@ -575,7 +575,7 @@
       "previewStart": 32,
       "media": {
         "local": "media/ajp-2016-how-to-handle-a-racist-rant.mp4",
-        "streamId": null,
+        "streamId": "9e2bcd53c4af63834dd383444f41d128",
         "youtubeId": null
       },
       "startHere": false,
@@ -601,7 +601,7 @@
       "previewStart": 63,
       "media": {
         "local": "media/ajp-2016-its-time-to-end-the-drug-war.mp4",
-        "streamId": null,
+        "streamId": "da74124b9bf6157deb2a046f8206e010",
         "youtubeId": null
       },
       "startHere": false,
@@ -627,7 +627,7 @@
       "previewStart": 29,
       "media": {
         "local": "media/ajp-2016-sincerely-a-minimum-wage-worker.mp4",
-        "streamId": null,
+        "streamId": "68608ac6f7bdd08e0e4646f8a792c9c7",
         "youtubeId": null
       },
       "startHere": false,
@@ -653,7 +653,7 @@
       "previewStart": 59,
       "media": {
         "local": "media/ajp-2016-surviving-an-atomic-bomb.mp4",
-        "streamId": null,
+        "streamId": "fd25d79f821f0513a5002f9dd7199574",
         "youtubeId": null
       },
       "startHere": true,
@@ -679,7 +679,7 @@
       "previewStart": 60,
       "media": {
         "local": "media/ajp-2016-the-dangerous-divide-in-venezuela.mp4",
-        "streamId": null,
+        "streamId": "58b884b742c218c86565c8639823e03d",
         "youtubeId": null
       },
       "startHere": false,
@@ -705,7 +705,7 @@
       "previewStart": 48,
       "media": {
         "local": "media/ajp-2016-the-electoral-college-is-crushing-your-vote.mp4",
-        "streamId": null,
+        "streamId": "fcb675630713b142e372849ec111d26e",
         "youtubeId": null
       },
       "startHere": false,
@@ -731,7 +731,7 @@
       "previewStart": 28,
       "media": {
         "local": "media/ajp-2016-trump-played-the-media.mp4",
-        "streamId": null,
+        "streamId": "e7e83690437e3f2b8220271ef4c76385",
         "youtubeId": null
       },
       "startHere": false,
@@ -757,7 +757,7 @@
       "previewStart": 51,
       "media": {
         "local": "media/ajp-2017-kicking-opioids-with-weed-part-1.mp4",
-        "streamId": null,
+        "streamId": "46f3c563256c62ff889ab5ab71474951",
         "youtubeId": null
       },
       "startHere": false,
@@ -783,7 +783,7 @@
       "previewStart": 50,
       "media": {
         "local": "media/ajp-2017-kicking-opioids-with-weed-part-2.mp4",
-        "streamId": null,
+        "streamId": "dbb8e6be55a925daa9d88853b56850e7",
         "youtubeId": null
       },
       "startHere": false,
@@ -809,7 +809,7 @@
       "previewStart": 36,
       "media": {
         "local": "media/ajp-2017-can-trump-pardon-himself.mp4",
-        "streamId": null,
+        "streamId": "8074b81c1c854fb62ebee371c5015468",
         "youtubeId": null
       },
       "startHere": false,
@@ -835,7 +835,7 @@
       "previewStart": 39,
       "media": {
         "local": "media/ajp-2017-covering-president-trump-media-analysis.mp4",
-        "streamId": null,
+        "streamId": "447bae7403056239a892e8d5a6f2a2bf",
         "youtubeId": null
       },
       "startHere": false,
@@ -861,7 +861,7 @@
       "previewStart": 73,
       "media": {
         "local": "media/ajp-2017-does-trump-want-war.mp4",
-        "streamId": null,
+        "streamId": "24b725d925b9a7d70f2c5b28cf3b4b82",
         "youtubeId": null
       },
       "startHere": false,
@@ -887,7 +887,7 @@
       "previewStart": 75,
       "media": {
         "local": "media/ajp-2017-how-one-company-aims-to-compete.mp4",
-        "streamId": null,
+        "streamId": "c159ab122bef031736a03b15ef7524ac",
         "youtubeId": null
       },
       "startHere": false,
@@ -913,7 +913,7 @@
       "previewStart": 44,
       "media": {
         "local": "media/ajp-2017-hurricane-maria-puerto-rico-aftermath.mp4",
-        "streamId": null,
+        "streamId": "97a1f2a94b205023cfff8dee3dbb1f3f",
         "youtubeId": null
       },
       "startHere": false,
@@ -939,7 +939,7 @@
       "previewStart": 38,
       "media": {
         "local": "media/ajp-2017-is-the-national-anthem-racist-kaepernick.mp4",
-        "streamId": null,
+        "streamId": "2e370da9c7b5decb0620b6e47029cae7",
         "youtubeId": null
       },
       "startHere": false,
@@ -965,7 +965,7 @@
       "previewStart": 51,
       "media": {
         "local": "media/ajp-2017-is-trump-modern-day-nixon.mp4",
-        "streamId": null,
+        "streamId": "206cf881ea92ba6d4a710b3e42617081",
         "youtubeId": null
       },
       "startHere": false,
@@ -991,7 +991,7 @@
       "previewStart": 39,
       "media": {
         "local": "media/ajp-2017-living-in-trumps-america-activist-advice.mp4",
-        "streamId": null,
+        "streamId": "95c04fec02e9ab88723dbdee6e58da02",
         "youtubeId": null
       },
       "startHere": false,
@@ -1017,7 +1017,7 @@
       "previewStart": 31,
       "media": {
         "local": "media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4",
-        "streamId": null,
+        "streamId": "5a827c6fdf137c4523fa194224983a75",
         "youtubeId": null
       },
       "startHere": true,
@@ -1043,7 +1043,7 @@
       "previewStart": 74,
       "media": {
         "local": "media/ajp-2017-meet-steve-bannon-political-profile.mp4",
-        "streamId": null,
+        "streamId": "dc1807668b3d368a152da9eeae68f3f4",
         "youtubeId": null
       },
       "startHere": false,
@@ -1069,7 +1069,7 @@
       "previewStart": 80,
       "media": {
         "local": "media/ajp-2017-men-dont-need-another-excuse.mp4",
-        "streamId": null,
+        "streamId": "7556c7749ed4886fd85dfa988bdbd32c",
         "youtubeId": null
       },
       "startHere": false,
@@ -1095,7 +1095,7 @@
       "previewStart": 19,
       "media": {
         "local": "media/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4",
-        "streamId": null,
+        "streamId": "b610deaacd1ba1311079601e92044d79",
         "youtubeId": null
       },
       "startHere": true,
@@ -1121,7 +1121,7 @@
       "previewStart": 42,
       "media": {
         "local": "media/ajp-2017-should-congress-handle-daca-immigration.mp4",
-        "streamId": null,
+        "streamId": "eb394ac7477b5c860eb5552aeba91093",
         "youtubeId": null
       },
       "startHere": false,
@@ -1147,7 +1147,7 @@
       "previewStart": 66,
       "media": {
         "local": "media/ajp-2017-the-rise-of-bears.mp4",
-        "streamId": null,
+        "streamId": "e6ce7bfa0ea89afac0e1a9bb498dcdca",
         "youtubeId": null
       },
       "startHere": false,
@@ -1173,7 +1173,7 @@
       "previewStart": 43,
       "media": {
         "local": "media/ajp-2017-trumps-neo-nazi-problem-charlottesville.mp4",
-        "streamId": null,
+        "streamId": "b6827fc3921302b5dc32a5cee96a3e70",
         "youtubeId": null
       },
       "startHere": false,
@@ -1199,7 +1199,7 @@
       "previewStart": 29,
       "media": {
         "local": "media/ajp-2017-trumps-war-on-marijuana.mp4",
-        "streamId": null,
+        "streamId": "6ebb0d1e749e66793acd028e7efd473c",
         "youtubeId": null
       },
       "startHere": false,
@@ -1225,7 +1225,7 @@
       "previewStart": 26,
       "media": {
         "local": "media/ajp-2017-trumps-war-on-student-debt.mp4",
-        "streamId": null,
+        "streamId": "4206a882c921442aa528f0c18f575dd0",
         "youtubeId": null
       },
       "startHere": false,
@@ -1251,7 +1251,7 @@
       "previewStart": 112,
       "media": {
         "local": "media/ajp-2017-truvada-prep-not-just-for-gay-men.mp4",
-        "streamId": null,
+        "streamId": "e90dfd5a6c92fdb8928e396dbb1fe1bc",
         "youtubeId": null
       },
       "startHere": true,
@@ -1277,7 +1277,7 @@
       "previewStart": 50,
       "media": {
         "local": "media/ajp-2017-what-does-north-korea-want.mp4",
-        "streamId": null,
+        "streamId": "f417f653795814ecec2abd30079d2c15",
         "youtubeId": null
       },
       "startHere": false,
@@ -1303,7 +1303,7 @@
       "previewStart": 33,
       "media": {
         "local": "media/ajp-2017-why-i-wont-watch-13-reasons-why-mental-health.mp4",
-        "streamId": null,
+        "streamId": "097a2848288542d02111502c353351f4",
         "youtubeId": null
       },
       "startHere": false,
@@ -1329,7 +1329,7 @@
       "previewStart": 51,
       "media": {
         "local": "media/ajp-2017-will-us-learn-to-handle-storms-climate-policy.mp4",
-        "streamId": null,
+        "streamId": "4e0c3b7918407685ccea410f67c917a1",
         "youtubeId": null
       },
       "startHere": false,
@@ -1381,7 +1381,7 @@
       "previewStart": 658,
       "media": {
         "local": "media/fusion-2013-america-with-jorge-ramos.mp4",
-        "streamId": null,
+        "streamId": "ab1fd4776fb5231713a07d9e7935c5ab",
         "youtubeId": null
       },
       "startHere": true,
@@ -1407,7 +1407,7 @@
       "previewStart": 658,
       "media": {
         "local": "media/fusion-2013-america-with-jorge-ramos-december-5.mp4",
-        "streamId": null,
+        "streamId": "0aa1c9a40167c873c55c9d1df265bfa7",
         "youtubeId": null
       },
       "startHere": false,
@@ -1433,7 +1433,7 @@
       "previewStart": 396,
       "media": {
         "local": "media/fusion-2014-america-with-jorge-ramos-october-28.mp4",
-        "streamId": null,
+        "streamId": "d5467a54c7ee434e6971f99ba719b080",
         "youtubeId": null
       },
       "startHere": false,
@@ -1459,7 +1459,7 @@
       "previewStart": 262,
       "media": {
         "local": "media/fusion-2014-america-with-jorge-ramos-october-28-2.mp4",
-        "streamId": null,
+        "streamId": "b05bf7516de0e008d581d52736ee2104",
         "youtubeId": null
       },
       "startHere": false,
@@ -1485,7 +1485,7 @@
       "previewStart": 647,
       "media": {
         "local": "media/fusion-2014-america-with-jorge-ramos-october-7.mp4",
-        "streamId": null,
+        "streamId": "6eec2a8f72a045f25096cc922ef311e9",
         "youtubeId": null
       },
       "startHere": false,
@@ -1511,7 +1511,7 @@
       "previewStart": 76,
       "media": {
         "local": "media/fusion-2014-colorado-pot-dealers-more-money-more-problems.mp4",
-        "streamId": null,
+        "streamId": "5156ac3550e348beb4df9cb222f465af",
         "youtubeId": null
       },
       "startHere": false,
@@ -1537,7 +1537,7 @@
       "previewStart": 329,
       "media": {
         "local": "media/fusion-2014-midterm-mayhem-october-12-election-coverage.mp4",
-        "streamId": null,
+        "streamId": "66f1f5596829a76f90eaea25ac5d22d3",
         "youtubeId": null
       },
       "startHere": false,
@@ -1563,7 +1563,7 @@
       "previewStart": 97,
       "media": {
         "local": "media/fusion-2014-pot-tourism-in-colorado.mp4",
-        "streamId": null,
+        "streamId": "21f9de36e19c463f85824ea937b4473c",
         "youtubeId": null
       },
       "startHere": false,
@@ -1589,7 +1589,7 @@
       "previewStart": 645,
       "media": {
         "local": "media/fusion-2014-soccer-gods-world-cup-coverage.mp4",
-        "streamId": null,
+        "streamId": "18f598f34c34728def22ae45c98439ad",
         "youtubeId": null
       },
       "startHere": false,
@@ -1719,7 +1719,7 @@
       "previewStart": 515,
       "media": {
         "local": "media/google-xge-2023-svp-interview-grace-hopper-conference.mp4",
-        "streamId": null,
+        "streamId": "d8a16799d75d8abe9acf2361fdd1894e",
         "youtubeId": null
       },
       "startHere": false,
@@ -1745,7 +1745,7 @@
       "previewStart": 881,
       "media": {
         "local": "media/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4",
-        "streamId": null,
+        "streamId": "f2af0db41c8092e097f770c9e1846cb5",
         "youtubeId": null
       },
       "startHere": false,
@@ -1771,7 +1771,7 @@
       "previewStart": 465,
       "media": {
         "local": "media/huffpost-2012-is-minimum-wage-not-enough.mp4",
-        "streamId": null,
+        "streamId": "c8b5a89e93a9fe6ccef5065249022be2",
         "youtubeId": null
       },
       "startHere": false,
@@ -1797,7 +1797,7 @@
       "previewStart": 436,
       "media": {
         "local": "media/huffpost-2012-jada-pinkett-smith-style-and-success.mp4",
-        "streamId": null,
+        "streamId": "24bb6ccebde96d3ce91a9be2df0a04a6",
         "youtubeId": null
       },
       "startHere": false,
@@ -1823,7 +1823,7 @@
       "previewStart": 230,
       "media": {
         "local": "media/huffpost-2012-kelly-rowland-talk-a-good-game.mp4",
-        "streamId": null,
+        "streamId": "f38123c3c58d937ee270adca0df3aaf1",
         "youtubeId": null
       },
       "startHere": false,
@@ -1849,7 +1849,7 @@
       "previewStart": 418,
       "media": {
         "local": "media/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4",
-        "streamId": null,
+        "streamId": "b17c4aacb94b4cf60ca5e6e56071c78c",
         "youtubeId": null
       },
       "startHere": false,
@@ -1875,7 +1875,7 @@
       "previewStart": 349,
       "media": {
         "local": "media/huffpost-2012-sarah-michelle-gellar-new-fight.mp4",
-        "streamId": null,
+        "streamId": "2dbbedb48bc1f29210ab3f864fae4b4e",
         "youtubeId": null
       },
       "startHere": false,
@@ -1901,7 +1901,7 @@
       "previewStart": 470,
       "media": {
         "local": "media/huffpost-2012-the-few-the-proud-trans-military-panel.mp4",
-        "streamId": null,
+        "streamId": "7819090251204c968c4603709229098c",
         "youtubeId": null
       },
       "startHere": false,
@@ -1927,7 +1927,7 @@
       "previewStart": 442,
       "media": {
         "local": "media/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4",
-        "streamId": null,
+        "streamId": "cc594328635d480d3cf04873a746a262",
         "youtubeId": null
       },
       "startHere": false,
