@@ -75,7 +75,7 @@ async function tusUpload(filePath, name) {
 
 const m = JSON.parse(readFileSync(MANIFEST, 'utf8'));
 const jobs = m.clips.filter((c) =>
-  c.published && c.media?.local && !c.media.streamId && !c.media.youtubeId && (!only || c.slug === only));
+  c.published && c.media?.local?.startsWith('media/') && !c.media.streamId && !c.media.youtubeId && (!only || c.slug === only));
 
 let done = 0, skippedMissing = 0;
 for (const clip of jobs) {
@@ -92,5 +92,5 @@ for (const clip of jobs) {
     console.error(`FAIL ${clip.slug}: ${err.message}`);
   }
 }
-const remaining = m.clips.filter((c) => c.published && c.media?.local && !c.media.streamId && !c.media.youtubeId).length;
+const remaining = m.clips.filter((c) => c.published && c.media?.local?.startsWith('media/') && !c.media.streamId && !c.media.youtubeId).length;
 console.log(`\nstream-upload: ${done} uploaded, ${skippedMissing} missing local files, ${remaining} still without streamId`);

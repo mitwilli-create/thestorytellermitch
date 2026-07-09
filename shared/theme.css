@@ -169,8 +169,7 @@
       border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
     .film .meta{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 18px;z-index:3;
       background:linear-gradient(to top,rgba(10,10,11,0.97) 0%,rgba(10,10,11,0.9) 42%,rgba(10,10,11,0.4) 78%,transparent 100%)}
-    .film .m-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
-      text-transform:uppercase;color:var(--blood-soft);margin-bottom:6px}
+    .film .m-tag{display:none}
     .film .m-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;
       letter-spacing:-0.01em;line-height:1.15}
     .film .m-stat{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);

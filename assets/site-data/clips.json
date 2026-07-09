@@ -9,10 +9,16 @@
       "num": "01"
     },
     {
-      "key": "social-video",
-      "label": "Social Video",
+      "key": "live-broadcasts",
+      "label": "Live Broadcasts",
       "num": "02",
-      "note": "Advocacy-era social journalism, produced to platform spec",
+      "note": "Live television: breaking news, election nights, and full episodes"
+    },
+    {
+      "key": "social-explainers",
+      "label": "Social Videos & Explainers",
+      "num": "03",
+      "note": "Short-form journalism and explainers, produced to platform spec",
       "oncam": {
         "src": "assets/stills/oncam/momtrump-057.jpg",
         "alt": "Mitchell Williams between takes on the AJ+ studio set, teleprompter and boom mic in frame",
@@ -20,19 +26,22 @@
       }
     },
     {
-      "key": "field-documentary",
-      "label": "Field & Documentary",
-      "num": "03"
+      "key": "field-shoots",
+      "label": "Field Shoots",
+      "num": "04",
+      "note": "Shot on location, from Hurricane Maria to Colorado"
     },
     {
-      "key": "live-panels",
-      "label": "Live & Panels",
-      "num": "04"
+      "key": "interviews-panels",
+      "label": "Interviews & Panels",
+      "num": "05",
+      "note": "Studio conversations: expert panels and principal interviews"
     },
     {
-      "key": "interviews-longform",
-      "label": "Interviews & Long-Form",
-      "num": "05"
+      "key": "google",
+      "label": "Google",
+      "num": "06",
+      "note": "Recruiting, brand, and engineering-community video from the Google years"
     }
   ],
   "outlets": [
@@ -91,8 +100,8 @@
       "type": "AI Pipeline Demo",
       "title": "One script in, a produced short out",
       "subtitle": "The broll pipeline: seven stages, ElevenLabs stack, every call logged",
-      "duration": "0m15s",
-      "durationSec": 15,
+      "duration": "1m9s",
+      "durationSec": 69,
       "poster": "assets/broll-poster.jpg",
       "hoverPreview": "assets/broll-short.mp4",
       "previewStart": 0,
@@ -109,7 +118,7 @@
     {
       "slug": "aje-stream-2010-a-look-into-islams-holy-pilgrimage",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "live-broadcasts",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -135,7 +144,7 @@
     {
       "slug": "aje-stream-2010-is-isolating-iran-the-answer",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -161,7 +170,7 @@
     {
       "slug": "aje-stream-2011-chinese-micro-blogging-crowd-sourced-epidemi",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "live-broadcasts",
       "outlet": "aje-stream",
       "outletLabel": "Al Jazeera · The Stream",
       "year": "2011-2012",
@@ -187,7 +196,7 @@
     {
       "slug": "aje-stream-2011-what-is-the-way-forward-in-bahrain",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "live-broadcasts",
       "outlet": "aje-stream",
       "outletLabel": "Al Jazeera · The Stream",
       "year": "2011-2012",
@@ -213,7 +222,7 @@
     {
       "slug": "aje-stream-2011-global-reactions-bin-laden-death-bahrain",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "live-broadcasts",
       "outlet": "aje-stream",
       "outletLabel": "Al Jazeera · The Stream",
       "year": "2011",
@@ -239,7 +248,7 @@
     {
       "slug": "aje-stream-2011-lilianne-khalil-twitter-hoax-wenzhou-train-c",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "live-broadcasts",
       "outlet": "aje-stream",
       "outletLabel": "Al Jazeera · The Stream",
       "year": "2011",
@@ -265,7 +274,7 @@
     {
       "slug": "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -291,7 +300,7 @@
     {
       "slug": "ajp-or-fusion-2015-hiv-prevention-pill-truvada-nobody-talkin",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "field-shoots",
       "outlet": "fusion",
       "outletLabel": "Fusion / HuffPost Live",
       "year": "2015-2016",
@@ -317,7 +326,7 @@
     {
       "slug": "ajp-or-fusion-2015-the-future-of-marijuana-policy",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "field-shoots",
       "outlet": "fusion",
       "outletLabel": "AJ+ / Fusion",
       "year": "2015-2016",
@@ -343,7 +352,7 @@
     {
       "slug": "ajp-or-fusion-2015-the-bare-necessities",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2015",
@@ -369,7 +378,7 @@
     {
       "slug": "ajp-or-fusion-2016-my-mom-is-voting-for-trump",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016",
@@ -395,7 +404,7 @@
     {
       "slug": "ajp-2016-americas-longest-war-afghanistan",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -421,7 +430,7 @@
     {
       "slug": "ajp-2016-bill-nye-curbing-climate-change",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -447,7 +456,7 @@
     {
       "slug": "ajp-2016-criminalizing-bds",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -473,7 +482,7 @@
     {
       "slug": "ajp-2016-grieving-mother-pleas-end-gun-violence",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -499,7 +508,7 @@
     {
       "slug": "ajp-2016-honey-i-shrunk-the-population-demographics",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -525,7 +534,7 @@
     {
       "slug": "ajp-2016-how-the-media-fails",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -551,7 +560,7 @@
     {
       "slug": "ajp-2016-how-to-handle-a-racist-rant",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -577,7 +586,7 @@
     {
       "slug": "ajp-2016-its-time-to-end-the-drug-war",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -603,7 +612,7 @@
     {
       "slug": "ajp-2016-sincerely-a-minimum-wage-worker",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -629,7 +638,7 @@
     {
       "slug": "ajp-2016-surviving-an-atomic-bomb",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -655,7 +664,7 @@
     {
       "slug": "ajp-2016-the-dangerous-divide-in-venezuela",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016-2018",
@@ -681,7 +690,7 @@
     {
       "slug": "ajp-2016-the-electoral-college-is-crushing-your-vote",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016",
@@ -707,7 +716,7 @@
     {
       "slug": "ajp-2016-trump-played-the-media",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2016",
@@ -733,7 +742,7 @@
     {
       "slug": "ajp-2017-kicking-opioids-with-weed-part-1",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017-2018",
@@ -759,7 +768,7 @@
     {
       "slug": "ajp-2017-kicking-opioids-with-weed-part-2",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017-2018",
@@ -785,7 +794,7 @@
     {
       "slug": "ajp-2017-can-trump-pardon-himself",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -811,7 +820,7 @@
     {
       "slug": "ajp-2017-covering-president-trump-media-analysis",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -837,7 +846,7 @@
     {
       "slug": "ajp-2017-does-trump-want-war",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -863,7 +872,7 @@
     {
       "slug": "ajp-2017-how-one-company-aims-to-compete",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -889,7 +898,7 @@
     {
       "slug": "ajp-2017-hurricane-maria-puerto-rico-aftermath",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -915,7 +924,7 @@
     {
       "slug": "ajp-2017-is-the-national-anthem-racist-kaepernick",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -941,7 +950,7 @@
     {
       "slug": "ajp-2017-is-trump-modern-day-nixon",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -967,7 +976,7 @@
     {
       "slug": "ajp-2017-living-in-trumps-america-activist-advice",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -993,7 +1002,7 @@
     {
       "slug": "ajp-2017-measles-outbreaks-usa-viral-50m-views",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1019,7 +1028,7 @@
     {
       "slug": "ajp-2017-meet-steve-bannon-political-profile",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1045,7 +1054,7 @@
     {
       "slug": "ajp-2017-men-dont-need-another-excuse",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "live-broadcasts",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1071,7 +1080,7 @@
     {
       "slug": "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria",
       "published": true,
-      "bucket": "field-documentary",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1097,7 +1106,7 @@
     {
       "slug": "ajp-2017-should-congress-handle-daca-immigration",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1123,7 +1132,7 @@
     {
       "slug": "ajp-2017-the-rise-of-bears",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1149,7 +1158,7 @@
     {
       "slug": "ajp-2017-trumps-neo-nazi-problem-charlottesville",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1175,7 +1184,7 @@
     {
       "slug": "ajp-2017-trumps-war-on-marijuana",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1201,7 +1210,7 @@
     {
       "slug": "ajp-2017-trumps-war-on-student-debt",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1227,7 +1236,7 @@
     {
       "slug": "ajp-2017-truvada-prep-not-just-for-gay-men",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "field-shoots",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1253,7 +1262,7 @@
     {
       "slug": "ajp-2017-what-does-north-korea-want",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1279,7 +1288,7 @@
     {
       "slug": "ajp-2017-why-i-wont-watch-13-reasons-why-mental-health",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "interviews-panels",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1305,7 +1314,7 @@
     {
       "slug": "ajp-2017-will-us-learn-to-handle-storms-climate-policy",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "social-explainers",
       "outlet": "ajplus",
       "outletLabel": "AJ+",
       "year": "2017",
@@ -1331,7 +1340,7 @@
     {
       "slug": "fusion-2013-america-with-jorge-ramos-macing-it",
       "published": false,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2013-2015",
@@ -1357,7 +1366,7 @@
     {
       "slug": "fusion-2013-america-with-jorge-ramos",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2013-2015",
@@ -1383,7 +1392,7 @@
     {
       "slug": "fusion-2013-america-with-jorge-ramos-december-5",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2013",
@@ -1409,7 +1418,7 @@
     {
       "slug": "fusion-2014-america-with-jorge-ramos-october-28",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1435,7 +1444,7 @@
     {
       "slug": "fusion-2014-america-with-jorge-ramos-october-28-2",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1461,7 +1470,7 @@
     {
       "slug": "fusion-2014-america-with-jorge-ramos-october-7",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1487,7 +1496,7 @@
     {
       "slug": "fusion-2014-colorado-pot-dealers-more-money-more-problems",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "field-shoots",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1513,7 +1522,7 @@
     {
       "slug": "fusion-2014-midterm-mayhem-october-12-election-coverage",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1539,7 +1548,7 @@
     {
       "slug": "fusion-2014-pot-tourism-in-colorado",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "field-shoots",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1565,7 +1574,7 @@
     {
       "slug": "fusion-2014-soccer-gods-world-cup-coverage",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "live-broadcasts",
       "outlet": "fusion",
       "outletLabel": "Fusion",
       "year": "2014",
@@ -1591,7 +1600,7 @@
     {
       "slug": "google-corpeng-2022-internal-content-social-share",
       "published": false,
-      "bucket": "interviews-longform",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google",
       "year": "2022",
@@ -1617,7 +1626,7 @@
     {
       "slug": "google-corpeng-2022-working-on-corpeng",
       "published": false,
-      "bucket": "interviews-longform",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google",
       "year": "2022",
@@ -1643,7 +1652,7 @@
     {
       "slug": "google-xge-2023-all-hands-googler",
       "published": false,
-      "bucket": "interviews-longform",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google xGE",
       "year": "2023",
@@ -1669,7 +1678,7 @@
     {
       "slug": "google-xge-2023-honey-i-shrunk-the-population",
       "published": false,
-      "bucket": "interviews-longform",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google xGE",
       "year": "2023",
@@ -1695,7 +1704,7 @@
     {
       "slug": "google-xge-2023-svp-interview-grace-hopper-conference",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google xGE",
       "year": "2023",
@@ -1721,7 +1730,7 @@
     {
       "slug": "huffpost-or-aje-2012-jazz-growing-up-trans-youth",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost / Al Jazeera",
       "year": "2012-2014",
@@ -1747,7 +1756,7 @@
     {
       "slug": "huffpost-2012-is-minimum-wage-not-enough",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1773,7 +1782,7 @@
     {
       "slug": "huffpost-2012-jada-pinkett-smith-style-and-success",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1799,7 +1808,7 @@
     {
       "slug": "huffpost-2012-kelly-rowland-talk-a-good-game",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1825,7 +1834,7 @@
     {
       "slug": "huffpost-2012-kim-kardashian-milkshake-bahrain",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1851,7 +1860,7 @@
     {
       "slug": "huffpost-2012-sarah-michelle-gellar-new-fight",
       "published": true,
-      "bucket": "interviews-longform",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1877,7 +1886,7 @@
     {
       "slug": "huffpost-2012-the-few-the-proud-trans-military-panel",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2012-2013",
@@ -1903,7 +1912,7 @@
     {
       "slug": "huffpost-2013-hiv-prevention-pill-truvada-in-stores",
       "published": true,
-      "bucket": "live-panels",
+      "bucket": "interviews-panels",
       "outlet": "huffpost",
       "outletLabel": "HuffPost Live",
       "year": "2013-2014",
@@ -1929,7 +1938,7 @@
     {
       "slug": "google-lifeatgoogle-2019-working-on-the-corpeng-team",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google · Life at Google",
       "year": "2019",
@@ -1955,7 +1964,7 @@
     {
       "slug": "google-lifeatgoogle-2019-application-engineer",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google · Life at Google",
       "year": "2019",
@@ -1981,7 +1990,7 @@
     {
       "slug": "google-lifeatgoogle-2019-interview-prep-coding",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google · Life at Google",
       "year": "2019",
@@ -2007,7 +2016,7 @@
     {
       "slug": "google-lifeatgoogle-2019-interview-prep-leadership",
       "published": true,
-      "bucket": "social-video",
+      "bucket": "google",
       "outlet": "google",
       "outletLabel": "Google · Life at Google",
       "year": "2019",
