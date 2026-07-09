@@ -1,36 +1,64 @@
 1
-00:00:00,000 --> 00:00:07,000
-Every content team knows the math. A finished minute of short-form video costs hours of people.
+00:00:00,000 --> 00:00:04,000
+This video was cut by a pipeline, from this text file.
 
 2
-00:00:07,000 --> 00:00:14,941
-A scripter, a voice session, an editor cutting b-roll, a captioning pass. Four hand-offs before anything ships.
+00:00:04,000 --> 00:00:07,000
+The old way needs a crew.
 
 3
-00:00:14,941 --> 00:00:20,941
-This short is the counter-argument. It was produced by a pipeline from one plain-text script.
+00:00:07,000 --> 00:00:10,000
+A voice session.
 
 4
-00:00:20,941 --> 00:00:26,941
-The narration you are hearing was generated through the ElevenLabs text to speech API.
+00:00:10,000 --> 00:00:13,000
+An edit bay. A captions pass.
 
 5
-00:00:26,941 --> 00:00:33,941
-The score under it came from Eleven Music. The accents came from the sound effects API.
+00:00:13,000 --> 00:00:16,000
+Hours of people per finished minute.
 
 6
-00:00:33,941 --> 00:00:40,941
-Every API call lands in a run manifest with its model, its latency, and its cost in dollars.
+00:00:16,000 --> 00:00:19,500
+Here, every word is ElevenLabs text to speech.
 
 7
-00:00:40,941 --> 00:00:47,941
-So when a customer asks what a finished minute costs, the answer is a receipt, not a guess.
+00:00:19,500 --> 00:00:22,500
+The score is Eleven Music.
 
 8
-00:00:47,941 --> 00:00:54,941
-The stages that need a human keep a human. Script approval, brand sign-off, and the final quality pass.
+00:00:22,500 --> 00:00:25,500
+Every clip is cut to the narration's timing.
 
 9
-00:00:54,941 --> 00:01:00,941
-One operator, one command, one costed cut. That is the whole pitch.
+00:00:25,500 --> 00:00:29,076
+Every API call logs its model, latency, and cost.
+
+10
+00:00:29,076 --> 00:00:32,576
+Change one line. Re-render one beat.
+
+11
+00:00:32,576 --> 00:00:35,576
+A new cut in minutes, not meetings.
+
+12
+00:00:35,576 --> 00:00:39,076
+So this video's cost is a receipt, not a guess.
+
+13
+00:00:39,076 --> 00:00:42,576
+Your team still approves the script and the final cut.
+
+14
+00:00:42,576 --> 00:00:46,245
+One more command, and this cut ships in Spanish.
+
+15
+00:00:46,245 --> 00:00:49,245
+Same manifest. Every language.
+
+16
+00:00:49,245 --> 00:00:53,245
+One script. One command. One finished cut.
 
