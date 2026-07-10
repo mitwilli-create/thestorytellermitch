@@ -4,7 +4,7 @@ Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agen
 
 ## What this repo is
 
-Mitchell's public portfolio site, storytellermitch.com: plain static HTML/CSS/JS on GitHub Pages (push to `main` deploys). Narrative case studies from eight years in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
+Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS/JS on Cloudflare Pages, deployed via `npx wrangler pages deploy . --project-name=thestorytellermitch --branch=main` (push to `main` does NOT auto-deploy). Narrative case studies from eight years in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
 
 ## Hard constraints
 
