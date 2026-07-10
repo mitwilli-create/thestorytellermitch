@@ -224,7 +224,7 @@ for (const [base, lane] of Object.entries(LANES)) {
   let md;
   try { md = readFileSync(src, 'utf8'); }
   catch { console.error(`MISSING SOURCE: ${src}`); process.exitCode = 1; continue; }
-  if (md.includes(':')) { console.error(`EM DASH in ${base}.md : refusing to bake`); process.exitCode = 1; continue; }
+  if (md.includes('\u2014')) { console.error(`EM DASH (U+2014) in ${base}.md : refusing to bake`); process.exitCode = 1; continue; }
   const parsed = parse(md, base);
   writeFileSync(join(OUT, `${lane.slug}.html`), page(parsed, lane));
   built++;

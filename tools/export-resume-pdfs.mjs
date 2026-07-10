@@ -8,7 +8,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 
-const require_ = createRequire(join(process.env.HOME, 'Documents/career-ops/package.json'));
+const PW_ROOT = process.env.PLAYWRIGHT_PKG_ROOT || join(process.env.HOME, 'Documents/career-ops');
+const require_ = createRequire(join(PW_ROOT, 'package.json'));
 const { chromium } = require_('playwright');
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
