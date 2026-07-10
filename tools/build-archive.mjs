@@ -48,7 +48,7 @@ const startHtml = `<section class="starthere" id="starthere">
     <div class="sec-head reveal">
       <span class="sec-num">00</span>
       <h2 class="sec-title">Start here</h2>
-      <span class="sec-note">Eight pieces that explain the whole arc</span>
+      <span class="sec-note">${(['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][start.length] || start.length)} pieces that explain the whole arc</span>
     </div>
     <div class="film-grid">
 ${start.map((c, i) => tile(c, i < 2 ? 'half' : 'third')).join('\n')}
