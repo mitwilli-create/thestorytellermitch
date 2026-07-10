@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>voice-os · a measured voice operating system</title>
+  <meta name="description" content="A calibrated system that scores drafts against a target voice on six stylistic axes and blocks anything below a measured QA threshold. Built on Claude.">
+  <meta property="og:title" content="voice-os: a measured voice operating system">
+  <meta property="og:description" content="Ingests a writing corpus with provenance, mines how a voice behaves across contexts, and scores every draft on six axes against a calibrated threshold. Sounds like me becomes a spec.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "voice-os",
+    "headline": "A measured voice operating system: scores a draft against a voice and blocks what misses",
+    "about": "A calibrated drafting system: corpus ingestion with provenance, mined register statistics, dual-persona drafting on a LangGraph state machine, six-axis scoring, and a QA gate calibrated to what the author's own writing scores.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/voice-os",
+    "keywords": "voice matching, Claude, LangGraph, RAG, register calibration, evaluation harness, style scoring"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · a measured voice operating system</div>
+    <h1 class="cs-title">Scores a draft against a voice, and blocks what misses.<span class="mono">voice-os</span></h1>
+    <p class="cs-standfirst">Most "sounds like me" tooling is a prompt and a few examples. voice-os is a <strong>measured</strong> system. It ingests a writing corpus with full provenance, mines how a voice actually behaves across contexts, drafts through a generative and an adversarial persona, and scores the result on six stylistic axes against a threshold calibrated to what the author's own writing scores. Below the bar it revises, or it refuses. <strong>"Sounds like me" stops being a vibe and becomes a spec.</strong></p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">Python</span>
+      <span class="cs-tag">Built on Claude</span>
+      <span class="cs-tag">LangGraph state machine</span>
+      <span class="cs-tag">RAG corpus, provenance-tagged</span>
+      <span class="cs-tag">Six-axis scoring</span>
+      <span class="cs-tag">Deterministic offline mode</span>
+      <span class="cs-tag">pytest</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <img src="assets/stills/illo-voice-os.jpg" alt="System illustration: a written corpus streams into a six-axis radar gauge flanked by a generative and an adversarial reviewer, then exits as a single draft sealed with a check mark once it clears the threshold ring." loading="lazy">
+      <figcaption>system illustration, generated</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">A queryable voice model plus a drafting loop that will not ship a draft the model does not recognize. Every run is checkpointed and stamped with the corpus, artifact, and model that produced it, so a result is auditable, not vibed.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">6</div><div class="l">stylistic axes scored on every draft</div></div>
+      <div class="cs-stat"><div class="n">143k+</div><div class="l">provenance-tagged corpus chunks across 13 source types</div></div>
+      <div class="cs-stat"><div class="n">6.9M+</div><div class="l">words behind the original executive calibration</div></div>
+      <div class="cs-stat"><div class="n">pass · revise · reject</div><div class="l">every draft gets an explicit gate decision, not a guess</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">Prompt-based voice matching</div>
+        <div class="c-b">A few examples pasted into a prompt and a hope that the tone holds. No measurement, no threshold, no way to tell a near miss from a real match.</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">voice-os</div>
+        <div class="c-b">Statistics mined from a real corpus set the target. Six axes score the draft against it. A gate calibrated to the author's own writing decides pass, revise, or reject. The bar is a number, and the number is measured.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>Provenance.</strong> The engine began as an executive "Voice DNA" pipeline I built at Google, a digital twin that drafted high-stakes communications for a VP in that leader's own voice, calibrated on 6.9M+ words. This repository is the personal successor: the same architecture, recalibrated and extended on my own corpus of 143,000+ provenance-tagged chunks across 13 source types, from sent email and messages to broadcast scripts, program charters, and on-camera transcripts with pacing signals.</p>
+
+      <p><strong>The six axes catch what vibes miss.</strong> Voice is not one dial. voice-os scores <em>rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register</em> separately, so a draft that is technically fluent but too hedged, or too formal for the context, gets caught instead of waved through. Register is contextual: the target shifts by channel and audience, mined from how the author actually writes in each.</p>
+
+      <p><strong>A drafting loop, not a single shot.</strong> Drafts route through a LangGraph state machine. A generative persona writes with real exemplars of the author's own messages retrieved in context. An adversarial persona stress-tests the result. A QA gate then decides pass, revise, or reject, and the banned layer combines a curated refusal list with anti-patterns mined statistically from the corpus, so the tics the author never uses stay out.</p>
+
+      <p><strong>Measured, not asserted.</strong> The evaluation harness drafts real held-out messages through the full pipeline and scores generated against real, so a change to the model is measured rather than felt. The gate's thresholds are themselves calibrated per context to percentiles of what the author's real text scores. There is a deterministic offline mode for reproducible runs, and the method and a sample corpus are public in the repo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a provenance-tagged corpus is ingested and mined into per-context register statistics, which set a target profile; a draft request routes through a generative persona and an adversarial persona, is scored on six axes against the target, and passes through a QA gate that returns pass, revise, or reject; passing drafts are checkpointed with provenance.">
+<span class="node">corpus</span> <span class="prod">(143k+ provenance-tagged chunks, 13 source types)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[1] ingest + mine</span>  <span class="arrow">→</span> per-context register statistics <span class="arrow">→</span> target voice profile
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[2] draft</span>  <span class="api">(LangGraph)</span>
+   <span class="arrow">├─▶</span> <span class="node">generative persona</span>  <span class="prod">(writes with real in-context exemplars)</span>
+   <span class="arrow">└─▶</span> <span class="node">adversarial persona</span>  <span class="prod">(stress-tests the draft)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[3] score</span>  <span class="arrow">→</span> pace · risk · rhythm · escalation · hedging · register  <span class="prod">(vs target)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[4] QA gate</span>  <span class="api">(calibrated per context)</span>  <span class="arrow">→</span> <span class="node">pass</span> · revise · <span class="node">reject</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[5] checkpoint</span>  <span class="prod">(SQLite; stamped with corpus + artifact + model provenance)</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Ingest and mine</div>
+          <div class="stage-d">A personal corpus is ingested with full provenance, then per-context style statistics are mined from it: how the voice paces, hedges, and escalates in each channel and audience. Those statistics become the target profile a draft is measured against.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Draft with two personas</div>
+          <div class="stage-d">A generative persona writes with real exemplars of the author's messages retrieved in context; an adversarial persona stress-tests the result. Held-out chunks are kept out of retrieval so the system cannot quietly copy the message it will later be scored against.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Score on six axes</div>
+          <div class="stage-d">The draft is scored on rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register, against the mined target for that context. A banned layer adds a curated refusal list plus statistically mined anti-patterns.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Gate: pass, revise, or reject</div>
+          <div class="stage-d">Thresholds are calibrated per context to percentiles of what the author's own text scores. A draft above the bar passes; below it, the bounded loop revises, or refuses rather than ship something off-voice. The decision is explicit and logged.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Checkpoint with provenance</div>
+          <div class="stage-d">Every run is checkpointed to SQLite and stamped with the corpus, artifact, and model that produced it. A deterministic offline mode makes runs reproducible, which is what lets the evaluation harness act as a regression gate on the model itself.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>The interesting problem in AI-assisted writing is not generating text, it is keeping the writer's judgment in the loop while the machine does the heavy lifting. voice-os is my answer to that: it lets AI accelerate a draft while a measured gate protects the voice, and it refuses to pretend a near miss is a match. It is the same instinct I bring to every AI tool I build, more velocity and more quality without taking my hand off the wheel.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>The taste stays human. The measurement makes "sounds like me" a spec the machine can actually be held to, instead of a vibe it is trusted to approximate.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/voice-os" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=voice-os%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The method, the six-axis scorer, and a sample corpus are public at <a href="https://github.com/mitwilli-create/voice-os" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/voice-os</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>

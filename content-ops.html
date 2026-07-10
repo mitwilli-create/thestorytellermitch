@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>content-ops · a content production system</title>
+  <meta name="description" content="An agent system that sources story ideas, drafts a master, adapts each post to the mechanics of every platform, and gates every draft for voice. Nothing posts without a human pressing send.">
+  <meta property="og:title" content="content-ops: a content production system">
+  <meta property="og:description" content="One idea, shaped for every place it lands. Sources angles, drafts a master, adapts per platform for four audiences, gates for voice, and always stops before publish.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "content-ops",
+    "headline": "A content production system: one idea, shaped for every place it lands",
+    "about": "A multi-agent content engine that sources story ideas, drafts a master, adapts each post to the mechanics of nine platforms for four audiences, and gates every draft through a deterministic voice and format check, with a hard human-in-the-loop publish step.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/content-ops",
+    "keywords": "content production, multi-agent, Claude, platform adaptation, editorial workflow, human in the loop"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · a content production engine</div>
+    <h1 class="cs-title">One story, shaped for every place it lands.<span class="mono">content-ops</span></h1>
+    <p class="cs-standfirst">A production system for turning one idea into the right post for each surface. It scouts live angles into a ledger, drafts a master, and adapts that master to the mechanics of each platform, Substack, LinkedIn, X, Hacker News, Reddit, GitHub, TikTok, YouTube, for four distinct audiences. Every draft runs through one deterministic voice and format gate. <strong>Nothing posts on its own. It drafts, stages, and proposes. You press send.</strong></p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">Node</span>
+      <span class="cs-tag">Built on Claude</span>
+      <span class="cs-tag">Multi-agent</span>
+      <span class="cs-tag">9 platform playbooks</span>
+      <span class="cs-tag">4 audience profiles</span>
+      <span class="cs-tag">Deterministic voice gate</span>
+      <span class="cs-tag">Human in the loop</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <img src="assets/stills/illo-content-ops.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several differently shaped output cards, one picked out in accent, beneath four evenly spaced markers standing for four audiences." loading="lazy">
+      <figcaption>system illustration, generated</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">Cross-posting one block of text everywhere is why so much content reads as noise. content-ops treats each surface as its own medium with its own mechanics, and treats voice as something to enforce, not hope for. It is a pipeline for one operator to run the work of a small content team, with the editorial judgment kept where it belongs.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">9</div><div class="l">publishing surfaces, each with a dated playbook</div></div>
+      <div class="cs-stat"><div class="n">4</div><div class="l">audience profiles it writes for</div></div>
+      <div class="cs-stat"><div class="n">1</div><div class="l">deterministic voice + format gate, single source of truth</div></div>
+      <div class="cs-stat"><div class="n">0</div><div class="l">posts published without a human pressing send</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">Cross-posting the same text</div>
+        <div class="c-b">One block of copy pasted into every feed. It fits none of them, ignores what each audience is there for, and reads as broadcast, so it gets scrolled past.</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">content-ops</div>
+        <div class="c-b">A master idea adapted to each surface's mechanics and each audience's reason for being there, every draft checked against a deterministic voice and format gate, and nothing shipped until a person approves it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>It starts from an angle, not a blank page.</strong> A story-scout agent refreshes a ledger with live angles worth writing. A story becomes its own working directory: a master draft, one adaptation per platform, and a running notes file, so the whole life of a piece stays in one place instead of scattered across tabs.</p>
+
+      <p><strong>Each surface is its own medium.</strong> A platform-adapter reshapes the master to the mechanics of the target: what a Hacker News title has to do that a LinkedIn hook does not, how X threading differs from a Substack lede, what a technical subreddit will and will not tolerate. It writes for four distinct audiences, from AI developers to people newly getting their hands on these tools, because the same idea needs a different door for each.</p>
+
+      <p><strong>The playbooks are dated, and go stale on purpose.</strong> The knowledge base holds four audience profiles and nine platform playbooks, and every mechanics claim carries a date. A 30-day staleness gate means the timing and adaptation steps <em>refuse to run</em> against a playbook that has aged out, so the system never quietly optimizes for how a platform worked last quarter. Platform mechanics move; the tool is built to admit that.</p>
+
+      <p><strong>One gate, and one hard stop.</strong> Every draft passes through <code>voice-gates.mjs</code>, a single deterministic voice and format check that both the review step and the evaluation harness consume, so "does this sound right" has one answer, not several. And the publishing gate is absolute: the agent drafts, stages, and proposes, and then it stops. A person presses send, every time.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a story-scout agent fills a ledger with live angles; a draft-post step writes a master; a platform-adapter reshapes it per platform for four audiences; a timing-check consults dated playbooks and refuses if stale; a content-review runs the deterministic voice gate; then a human presses send.">
+<span class="node">[1] story-scout</span>  <span class="prod">(live angles)</span>  <span class="arrow">→</span> ledger
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[2] draft-post</span>  <span class="arrow">→</span> master.md  <span class="prod">(one working dir per story)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[3] platform-adapt</span>  <span class="prod">(per surface x 4 audiences)</span>
+   <span class="arrow">├─▶</span> Substack · LinkedIn · X · Hacker News
+   <span class="arrow">└─▶</span> Reddit · GitHub · TikTok · YouTube
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[4] timing-check</span>  <span class="api">(dated playbook; refuses if &gt;30 days stale)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[5] content-review</span>  <span class="api">(voice-gates.mjs, deterministic)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[6] you press send</span>  <span class="prod">(publishing gate: nothing posts autonomously, ever)</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Scout</div>
+          <div class="stage-d">A story-scout agent refreshes a ledger with live angles. The system starts from something worth saying, and each row carries enough context to move straight into a draft.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Draft the master</div>
+          <div class="stage-d">One story becomes one working directory: <code>master.md</code>, a place for each platform adaptation, and a notes file. The canonical version lives in one place, so every downstream cut traces back to it.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Adapt per platform, per audience</div>
+          <div class="stage-d">A platform-adapter reshapes the master to each surface's mechanics for four audiences. A title, a hook, a thread structure, and a length that fit the place it will actually be read, not one block of copy forced into every feed.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Check the timing against dated playbooks</div>
+          <div class="stage-d">Platform mechanics are stored with dates and a 30-day staleness gate. The timing and adaptation steps refuse to run against a playbook that has aged out, so the tool never optimizes for a version of a platform that no longer exists.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Gate for voice and format</div>
+          <div class="stage-d">Every draft passes through <code>voice-gates.mjs</code>, one deterministic check consumed by both the review step and the evaluation harness. The definition of on-voice and on-format is a single source, not a matter of opinion per post.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">06</div>
+        <div>
+          <div class="stage-h">Human presses send</div>
+          <div class="stage-d">The publishing gate is absolute. The agent drafts, stages, and proposes, then stops. Nothing reaches an audience without a person approving it. The machine removes the mechanical load and leaves the editorial call where it belongs.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>Producing good content across many surfaces is a real operational job: sourcing, drafting, shaping each version to its medium, protecting a consistent voice, and knowing what actually earns attention on each platform this month. content-ops is that job, built as a system a single operator can run, with the parts that are mechanical handed to the machine and the parts that are editorial kept human. It is the same loop I ran in newsrooms and internal communications, now with tools I built to move faster without losing the taste.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>Source the angle. Draft the master. Shape it for the room it lands in. Gate the voice. Then stop, and let a person send it. The machine carries the load; the judgment stays mine.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/content-ops" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=content-ops%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The agent system, the platform playbooks, and the deterministic voice gate are public at <a href="https://github.com/mitwilli-create/content-ops" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/content-ops</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>
