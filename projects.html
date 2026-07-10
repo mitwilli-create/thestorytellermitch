@@ -22,6 +22,7 @@
     .pcard:hover{border-color:var(--line-2);transform:translateY(-3px)}
     .pcard .illo{margin:-30px -28px 8px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .pcard .illo img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+    .pcard .illo svg{display:block;width:100%;height:auto;aspect-ratio:16/9}
     .pcard .illo figcaption{position:absolute;right:0;bottom:0;font-family:'JetBrains Mono',monospace;
       font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);
       background:rgba(10,10,11,0.78);padding:4px 9px}
@@ -101,7 +102,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">01</span>
       <h2 class="sec-title">Featured</h2>
-      <span class="sec-note">Five public repos, one costed case study, one production system</span>
+      <span class="sec-note">Six public repos, one costed case study, one production system</span>
     </div>
     <div class="card-grid">
 
@@ -115,6 +116,58 @@
           <a class="go" href="broll-pipeline.html">Case study</a>
           <a class="go" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener">View repo</a>
           <span class="tags">ElevenLabs · Node · ffmpeg</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <figure class="illo">
+          <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System diagram: a private repo and a synthetic twin feed a sanitize step whose output must pass a marker scan before it becomes a separate public repo">
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#57534d"/></marker>
+              <marker id="aha" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b1554c"/></marker>
+              <linearGradient id="rbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e0e10"/><stop offset="1" stop-color="#141416"/></linearGradient>
+            </defs>
+            <rect width="640" height="360" fill="url(#rbg)"/>
+            <g font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle">
+              <!-- private repo -->
+              <rect x="30" y="60" width="152" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+              <text x="106" y="84" fill="#c7c2b9" font-size="12" letter-spacing="0.5">private repo</text>
+              <text x="106" y="101" fill="#8b867d" font-size="9" letter-spacing="0.3">tracked + gitignored</text>
+              <!-- synthetic twin -->
+              <rect x="30" y="176" width="152" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)" stroke-dasharray="4 3"/>
+              <text x="106" y="200" fill="#c7c2b9" font-size="12" letter-spacing="0.5">synthetic twin</text>
+              <text x="106" y="217" fill="#8b867d" font-size="9" letter-spacing="0.3">fictional, same schema</text>
+              <!-- sanitize -->
+              <rect x="250" y="118" width="140" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+              <text x="320" y="142" fill="#c7c2b9" font-size="12" letter-spacing="0.5">sanitize</text>
+              <text x="320" y="159" fill="#8b867d" font-size="9" letter-spacing="0.3">copies tracked only</text>
+              <!-- scan gate -->
+              <path d="M470 106 L512 146 L470 186 L428 146 Z" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+              <text x="470" y="150" fill="#c7c2b9" font-size="10" letter-spacing="0.3">scan</text>
+              <text x="470" y="205" fill="#8b867d" font-size="9" letter-spacing="0.3">full marker list</text>
+              <!-- public repo -->
+              <rect x="416" y="256" width="188" height="58" rx="2" fill="#17110f" stroke="#b1554c"/>
+              <text x="510" y="281" fill="#ece8e1" font-size="12" letter-spacing="0.5">public repo</text>
+              <text x="510" y="298" fill="#b1554c" font-size="9" letter-spacing="0.3">verified clean cut</text>
+              <!-- connectors -->
+              <path d="M182 88 L246 128" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+              <path d="M182 204 L246 164" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+              <path d="M390 146 L424 146" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+              <path d="M470 186 L505 252" fill="none" stroke="#b1554c" stroke-width="1.4" marker-end="url(#aha)"/>
+              <text x="452" y="228" fill="#b1554c" font-size="9" letter-spacing="0.3" text-anchor="end">pass</text>
+              <path d="M512 146 L560 146" fill="none" stroke="#57534d" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text x="566" y="149" fill="#8b867d" font-size="9" letter-spacing="0.3" text-anchor="start">hit: stop</text>
+            </g>
+          </svg>
+          <figcaption>system diagram</figcaption>
+        </figure>
+        <div class="top"><span class="name">relocation-os</span><span class="chip-status">SHIPPED</span></div>
+        <h3>Architecture public, private life quarantined</h3>
+        <p class="body">A personal agentic operating system that runs identically under Claude Code and Codex: deterministic orchestration, tiered memory, a locked-decision registry, and a CodeRabbit-reviewed development lifecycle. The signature is the privacy quarantine. A fictional synthetic twin stands in for the private corpus, and a mechanical gate proves no personal fact reached the public cut. This public repo is that verified output, regenerated from a script, never hand-edited.</p>
+        <div class="proof">dual-runtime (Claude Code + Codex) · 88 tracked files · synthetic twin on the private schema · privacy gate scans the exact published bytes · fresh git history, zero archaeology</div>
+        <div class="row">
+          <a class="go" href="https://github.com/mitwilli-create/relocation-os-public" rel="noopener">View repo</a>
+          <span class="tags">Node · multi-agent · privacy gate</span>
         </div>
       </div>
 
