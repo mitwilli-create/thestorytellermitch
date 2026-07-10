@@ -33,70 +33,7 @@
     "keywords": "Claude, RAG, citation grounding, verification agent, applied AI, tax, knowledge base"
   }
   </script>
-  <style>
-    /* case-study scoped styles on the shared theme tokens */
-    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
-    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
-      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
-    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
-      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
-    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
-    .cs-standfirst strong{color:var(--bone);font-weight:700}
-    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
-    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
-      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
-    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
-    .cs-illo img{width:100%;height:auto;display:block}
-    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
-      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
-    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
-    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
-    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
-    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
-      color:var(--bone);font-variant-numeric:tabular-nums}
-    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
-      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
-    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
-    .cs-compare .col{padding:20px 22px}
-    .cs-compare .col+.col{border-left:1px solid var(--line)}
-    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
-      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
-    .cs-compare .col.after .c-k{color:var(--blood-soft)}
-    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
-    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
-      color:var(--blood-soft);margin-bottom:22px}
-    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
-    .cs-body p{margin-bottom:20px}
-    .cs-body strong{color:var(--bone);font-weight:700}
-    .cs-body em{color:var(--bone);font-style:italic}
-    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
-      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
-    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
-      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
-    .diagram .node{color:var(--bone);font-weight:500}
-    .diagram .api{color:var(--blood-soft)}
-    .diagram .prod{color:var(--bone-soft)}
-    .diagram .arrow{color:var(--dim)}
-    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
-    .stage:last-child{border-bottom:none}
-    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
-    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
-    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
-    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
-    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
-      border-left:2px solid var(--blood-soft);padding:24px 28px}
-    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
-    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
-    section{padding:72px 0}
-    @media(max-width:860px){
-      .cs-hero{padding:130px 0 40px}
-      .cs-stat-grid{grid-template-columns:1fr}
-      .cs-compare{grid-template-columns:1fr}
-      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
-      .diagram{font-size:11px;padding:20px 16px}
-    }
-  </style>
+  <link rel="stylesheet" href="shared/case-study.css">
 </head>
 <body>
 
