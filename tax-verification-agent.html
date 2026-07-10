@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tax-verification-agent · cites its sources or says nothing</title>
+  <meta name="description" content="A Claude agent that checks tax filings against a four-layer knowledge base and refuses to return a verdict without a citation chain. It caught a roughly $19K error that commercial filing software had pre-filled and defended.">
+  <meta property="og:title" content="tax-verification-agent: a tax checker that must cite or stay silent">
+  <meta property="og:description" content="Citation-gated verification: federal code, state statutes, IRS publications, precedents. No citation, no answer. Caught a real ~$19K pre-filled error the software defended as correct.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "tax-verification-agent",
+    "headline": "A tax checker that must cite or stay silent",
+    "about": "A citation-gated verification agent built on Claude: a four-layer tax knowledge base, a claim-to-citation-to-verdict prompt chain, and a gate that blocks any assertion without a grounded source. Validated on a live filing where it caught a material pre-filled error.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/tax-verification-agent",
+    "keywords": "Claude, RAG, citation grounding, verification agent, applied AI, tax, knowledge base"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · citation-gated verification</div>
+    <h1 class="cs-title">Cites its sources, or says nothing.<span class="mono">tax-verification-agent</span></h1>
+    <p class="cs-standfirst">Filing software optimizes for completion, not accuracy. This agent verifies a filing against a <strong>four-layer knowledge base</strong>: federal code, state statutes, IRS publications, and prior-year precedents, and it refuses to return a verdict without a citation chain. In practice it flagged a <strong>roughly $19K multi-state allocation error</strong> that a confident piece of commercial software had pre-filled and defended as correct. No citation, no answer. Citation-gating is an old newsroom rule written as code: <strong>no source, no story</strong>. I enforced it as a journalist and a comms lead; now my agents enforce it too.</p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">Python</span>
+      <span class="cs-tag">Built on Claude</span>
+      <span class="cs-tag">Four-layer knowledge base</span>
+      <span class="cs-tag">Citation-gated RAG</span>
+      <span class="cs-tag">Structured reports</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <img src="assets/stills/illo-citation-gate.jpg" alt="System illustration: a vault gate that opens only after a chain of four source blocks connects into its lock." loading="lazy">
+      <figcaption>system illustration, generated</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">Not a replacement for tax software. A pressure-test for it: a second system that has to show its work, pointed at the output of a first system that never does. Every claim in a verdict traces to a retrievable source, and "unknown" produces a dispute, not a guess.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">4</div><div class="l">knowledge-base layers: federal code, state statutes, IRS publications, precedents</div></div>
+      <div class="cs-stat"><div class="n">~$19K</div><div class="l">material pre-filled error caught on a live filing, not a benchmark</div></div>
+      <div class="cs-stat"><div class="n">0</div><div class="l">verdicts issued without a citation chain, by construction</div></div>
+      <div class="cs-stat"><div class="n">claim → citation → verdict</div><div class="l">the prompt chain every assertion passes before it reaches the report</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">Consumer filing software</div>
+        <div class="c-b">Optimizes for getting you to the finish line. When questioned, it defends its own math with confidence and no sources. You are trusting a black box with a material number.</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">tax-verification-agent</div>
+        <div class="c-b">Has to show its work. Every claim is checked against the knowledge base; a claim without a grounded citation is blocked, and a dispute comes back with the statute it disputes from and the condition that fails.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>The catch that validates it.</strong> A live filing claimed a state income exclusion. The software said the calculation was correct. The agent pulled the statute. It found the exclusion applies only when a specific condition is met. That condition was absent from the filing. So it returned a dispute, citation attached. The discrepancy was material, about $19K. That is the gap this is built for: not confidence versus confidence, but confidence versus evidence.</p>
+
+      <p><strong>Three components, one constraint.</strong> A retriever queries the four-layer knowledge base with ranked retrieval. A verifier runs each parsed claim through a Claude prompt chain: claim, then citation, then verdict. A reporter assembles a structured output with source attribution on every line. The constraint that binds them: any assertion lacking a grounded citation is blocked before it reaches the report.</p>
+
+      <p><strong>The refusal is the feature.</strong> A confident wrong answer about taxes is worse than no answer. So the gate is not a stylistic preference, it is the architecture: citation-gated retrieval forces the model to ground every output in a retrievable source, and the system's credibility comes from what it refuses to say without evidence. It is the same constraint layer as the executive voice pipeline I built at Google, applied to a domain where being wrong has a dollar figure.</p>
+
+      <p><strong>Built like it's going to production.</strong> Structured JSON input with a published schema, a layered knowledge base that separates federal code from state guidance from IRS publications from precedent notes, and reports designed to be read by a person deciding whether to amend a filing. A personal project, held to a production bar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a filing input is parsed into discrete claims; each claim retrieves ranked passages from the four-layer knowledge base; Claude verifies each claim through a claim-to-citation-to-verdict chain; a gate blocks anything without a citation; a structured report attributes every verdict to its source.">
+<span class="node">filing input</span>  <span class="prod">(JSON, published schema)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[1] parse</span>  <span class="arrow">→</span> discrete claims
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[2] retrieve</span>  <span class="api">(four-layer KB, ranked)</span>
+   federal code · state statutes · IRS pubs · precedents
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[3] verify</span>  <span class="api">(Claude)</span>  <span class="arrow">→</span> claim <span class="arrow">→</span> citation <span class="arrow">→</span> verdict
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[4] gate</span>  <span class="arrow">→</span> citation chain present?  <span class="node">yes: verdict</span> · <span class="node">no: blocked</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[5] report</span>  <span class="prod">(structured, every line source-attributed)</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Parse the filing into claims</div>
+          <div class="stage-d">The filing input arrives as structured JSON and is decomposed into discrete, checkable claims: an exclusion applied, an allocation made, a deduction taken. Each claim is verified on its own, so one confident error cannot hide inside an overall "looks right."</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Retrieve across four layers</div>
+          <div class="stage-d">Ranked retrieval queries federal code, state statutes and DOR guidance, IRS publications, and prior-year precedent notes as separate layers. The layering matters: a state exclusion question should be answered by the state statute, not by whichever passage happens to embed nearest.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Verify with a chained prompt</div>
+          <div class="stage-d">Claude evaluates each claim against the retrieved passages in a fixed chain: state the claim, produce the citation, then and only then render the verdict. The order is the discipline; the verdict cannot arrive before the evidence.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Block what can't cite</div>
+          <div class="stage-d">Any assertion without a grounded citation is blocked. Disputes return with the knowledge-base match and the failing condition spelled out, so the output is actionable: not "this looks wrong" but "this exclusion requires condition Y, and condition Y is not present."</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Report with attribution</div>
+          <div class="stage-d">The reporter produces a structured markdown report: claim, status, knowledge-base match, verdict. Every line carries its source, so a person reviewing the report can check the agent the same way the agent checked the software.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>Citation-gated retrieval is not a prompt trick, it is a constraint layer, and it is the difference between an AI system you can check and one you have to believe. The validation here wasn't a benchmark: it was a live filing, a confident piece of commercial software on the other side, and a structured agent that disagreed with a citation. In a domain where the cost of a wrong answer is denominated in dollars, the system that must show its work wins.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>I didn't trust the software's confidence. I trusted the citation. That is the whole design, in one sentence.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/tax-verification-agent" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=tax-verification-agent%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The architecture, sample filing schema, and verification chain are public at <a href="https://github.com/mitwilli-create/tax-verification-agent" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/tax-verification-agent</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>

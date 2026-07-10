@@ -2,3 +2,5 @@ media/
 tools/poster-candidates/
 .DS_Store
 tools/still-candidates/
+
+.env

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>comms-triage-agent · judgment at intake, before a human reads it</title>
+  <meta name="description" content="A sanitized public demo of an internal-comms triage agent on Apps Script and Gemini: three sequential prompts with conditional knowledge-base loading, and a confidence threshold that routes uncertainty to a human instead of letting the model guess.">
+  <meta property="og:title" content="comms-triage-agent: triage, revise, escalate">
+  <meta property="og:description" content="Three prompts, not one. Classifies internal comms intake, drafts revisions, escalates the rest. Designed to auto-handle the majority of requests; every number is a labeled design target with the math exposed.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "comms-triage-agent",
+    "headline": "An internal-comms triage agent: three prompts, a confidence gate, and honest math",
+    "about": "A sanitized public demo of an internal-communications triage agent built on Google Apps Script and Gemini: sequential triage, revision, and escalation prompts with conditional knowledge-base loading, confidence-gated human review, and design-target metrics whose constants are exposed for recalculation.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/comms-triage-agent",
+    "keywords": "internal communications, triage, Gemini, Apps Script, agentic systems, prompt architecture, escalation"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · internal-comms triage</div>
+    <h1 class="cs-title">Judgment at intake, before a human reads it.<span class="mono">comms-triage-agent</span></h1>
+    <p class="cs-standfirst">Senior engineers generate a steady stream of comms requests that don't need a human first pass, but do need judgment. This agent applies that judgment at intake: <strong>three sequential prompts</strong> classify, revise, and escalate every request, with conditional knowledge-base loading at each step. A confidence threshold routes anything the model is unsure about to a human instead of letting it guess. This is the sanitized public demo of a system designed for a large engineering organization, and <strong>every performance number on this page is a labeled design target</strong>, with the math exposed so you can recalculate it for your own org. The triage judgment encoded in these prompts is the judgment I applied by hand as a comms lead, after <strong>years of newsroom intake</strong> before that.</p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">Google Apps Script</span>
+      <span class="cs-tag">Gemini</span>
+      <span class="cs-tag">3-prompt architecture</span>
+      <span class="cs-tag">Conditional KB loading</span>
+      <span class="cs-tag">Confidence-gated escalation</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <img src="assets/stills/illo-triage-agent.jpg" alt="System illustration: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human." loading="lazy">
+      <figcaption>system illustration, generated</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">An intake layer for internal communications requests: a Google Form feeds a bound Sheet, the agent runs its three prompts, and the output lands in a triage log with a classification label, a revision diff, an escalation decision, and a confidence score per submission. No human in the loop unless the confidence threshold isn't met.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">3</div><div class="l">sequential prompts: triage → revise → escalate, each with a defined scope and a conditional exit</div></div>
+      <div class="cs-stat"><div class="n">~1,000</div><div class="l">engineers in the Principal / Distinguished / Fellow community the intake patterns were designed for</div></div>
+      <div class="cs-stat"><div class="n">~160 hrs/yr</div><div class="l">projected recapture. A design target derived from pre-automation baselines, not a measured outcome</div></div>
+      <div class="cs-stat"><div class="n">1 rule</div><div class="l">below the confidence threshold, a human decides. The agent never guesses on the org's behalf</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">Single-shot LLM triage</div>
+        <div class="c-b">One prompt tries to classify, rewrite, and route in a single pass. Every request pulls the full context window, and there is no principled place for the model to say "I'm not sure."</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">comms-triage-agent</div>
+        <div class="c-b">Three prompts, each with a defined scope and a conditional exit. The knowledge-base load is gated per step, so a routine request stays cheap. Uncertainty has an explicit path: it goes to a person, with the confidence score attached.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>Triage, revise, escalate.</strong> An incoming request hits the form and the agent classifies its intent and urgency, then either rewrites it against the org's comms standards or flags it for structural issues, then routes it to an owner or holds it for review. Each step is its own prompt with its own exit condition, so a request that resolves at step one never pays for steps two and three.</p>
+
+      <p><strong>The knowledge base loads conditionally.</strong> Audience profiles, triage criteria, brevity rules, and org background live as separate knowledge-base documents, and each prompt pulls only the documents its classification says it needs. Not every request deserves the full context window; the architecture enforces that instead of hoping.</p>
+
+      <p><strong>The numbers are design targets, and they say so.</strong> The ~160 hours-per-year figure is a projection: average pre-automation triage time per request, times monthly volume, times twelve, with an assumed human-review rate. It is labeled as a projection everywhere it appears, the constants are exposed in <code>config.gs</code> so another org can recalculate against its own baseline, and the triage log exists precisely so the projection can be validated against real throughput over time.</p>
+
+      <p><strong>Domain depth over generic classification.</strong> The triage logic reflects how comms intake actually behaves in a large engineering org: executive requests need a high-touch template, partnership asks need a different one, low-touch email drafts need a rewrite and nothing else. The routing carries an accountability tier built for senior ICs. A wrong answer is expensive. A slow one is merely annoying.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a form submission passes through a triage prompt that classifies intent and urgency with a conditional knowledge-base load, then a revision prompt that rewrites or flags, then an escalation prompt that routes or holds; results at or above the confidence threshold log to Sheets with an optional email trigger, and anything below the threshold diverts to human review.">
+<span class="node">form submission</span>  <span class="prod">(bound Google Sheet)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[1] triage prompt</span>  <span class="arrow">→</span> classify intent + urgency  <span class="api">(conditional KB load)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[2] revision prompt</span>  <span class="arrow">→</span> rewrite, or flag structural issues
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[3] escalation prompt</span>  <span class="arrow">→</span> route to owner, or hold
+   <span class="arrow">│</span>
+   <span class="arrow">├─▶</span> confidence ≥ threshold  <span class="arrow">→</span> <span class="node">Triage_Log + optional email</span>
+   <span class="arrow">└─▶</span> confidence &lt; threshold  <span class="arrow">→</span> <span class="node">human review</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Classify at intake</div>
+          <div class="stage-d">The triage prompt reads the submission, classifies intent and urgency, and decides which knowledge-base documents the rest of the run needs. Classification is the cheap step, so it runs first and everything downstream is scoped by it.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Revise or flag</div>
+          <div class="stage-d">The revision prompt rewrites the request against the org's comms standards, or flags it when the problem is structural rather than editorial. The output is a diff, not a replacement, so the requester can see exactly what changed and why.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Escalate or hold</div>
+          <div class="stage-d">The escalation prompt routes the request to its owner with a briefing, or holds it. High-touch executive and partnership requests get templated briefings; low-touch drafts go out with the revision attached.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Log everything</div>
+          <div class="stage-d">Every submission lands in the triage log: classification label, revision diff, escalation decision, confidence score. The log is not bookkeeping, it is the mechanism that lets the design targets be checked against reality.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Recalculate for your org</div>
+          <div class="stage-d">The volume and time-per-request constants are exposed in <code>config.gs</code>. A different org plugs in its own baseline and gets its own projection, instead of inheriting a number that was true somewhere else.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>The interesting part of this system is not the automation, it is where the automation stops. A confidence threshold with a human on the other side of it is a design decision about trust: the agent handles the volume, and the moment it stops being sure, a person decides. And the metrics discipline is the same idea applied to reporting: a projection labeled as a projection, with its inputs exposed, is worth more to a serious reader than an impressive number with no math behind it.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>The projection is labeled a projection, and the log exists so the number can be checked against reality. That honesty is a feature of the system, not a disclaimer on it.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/comms-triage-agent" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=comms-triage-agent%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The three prompts, the knowledge-base structure, and the full deployment guide are public at <a href="https://github.com/mitwilli-create/comms-triage-agent" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/comms-triage-agent</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>monolith · four LLM failure modes, fixed in code</title>
+  <meta name="description" content="A deterministic wardrobe architect and budget controller: a TypeScript PWA where the LLM only does perception and three code gates issue every verdict. Sycophancy, hallucination, context degradation, and drift are fixed structurally, not prompted away.">
+  <meta property="og:title" content="monolith: four LLM failure modes, fixed in code">
+  <meta property="og:description" content="The LLM extracts, the code decides. Three deterministic gates, INSUFFICIENT_DATA over guessing, and an append-only audit log on every verdict.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "monolith",
+    "headline": "A deterministic wardrobe architect: four LLM failure modes fixed structurally",
+    "about": "A mobile-first TypeScript PWA where the LLM is confined to perception via schema-enforced structured outputs and three deterministic code gates (budget, climate, aesthetic) issue every verdict, with INSUFFICIENT_DATA as a legal outcome and an append-only audit log.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/monolith",
+    "keywords": "TypeScript, PWA, structured outputs, deterministic gates, constraint systems, LLM architecture, audit log"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · deterministic constraint gates</div>
+    <h1 class="cs-title">Four LLM failure modes, fixed in code.<span class="mono">monolith</span></h1>
+    <p class="cs-standfirst">A deterministic wardrobe architect and budget controller, promoted from a prompt configuration to a product. The design bet: <strong>sycophancy, hallucination, context degradation, and agentic drift are architecture problems, not prompt problems.</strong> So the LLM only does perception, three deterministic code gates issue every verdict, unknown data returns <strong>INSUFFICIENT_DATA instead of a guess</strong>, and an append-only log keeps the whole decision path inspectable. Mobile-first PWA, TypeScript end to end. The instinct is editorial, straight from the newsroom: <strong>when the data is not good enough, the answer is not published</strong>.</p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">TypeScript</span>
+      <span class="cs-tag">Mobile-first PWA</span>
+      <span class="cs-tag">Anthropic structured outputs</span>
+      <span class="cs-tag">3 deterministic gates</span>
+      <span class="cs-tag">Append-only audit log</span>
+      <span class="cs-tag">vitest</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <img src="assets/stills/illo-three-gates.jpg" alt="System illustration: product shapes flowing through three sequential filter gates, rejects falling away, one shape passing with a seal." loading="lazy">
+      <figcaption>system illustration, generated</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">Paste a product URL, get a verdict: APPROVE, REJECT, or INSUFFICIENT_DATA, with the budget position, climate rules, and aesthetic doctrine that produced it. The domain is a wardrobe; the architecture is the point.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">4</div><div class="l">LLM failure modes fixed structurally: sycophancy, hallucination, context degradation, drift</div></div>
+      <div class="cs-stat"><div class="n">3</div><div class="l">deterministic gates: state audit, climate filter, aesthetic gate. All run, all report, no short-circuit</div></div>
+      <div class="cs-stat"><div class="n">50</div><div class="l">pure-function tests. The gates are testable because they are code, not prompts</div></div>
+      <div class="cs-stat"><div class="n">INSUFFICIENT_DATA</div><div class="l">a legal verdict. Unknown never becomes a guess</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">The prompt-engineering approach</div>
+        <div class="c-b">The original configuration cataloged the four failure modes and tried to mitigate them with careful instructions. But a prompt can be argued with, a long chat drifts, and a model that wants to be helpful will find a reason to approve.</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">monolith</div>
+        <div class="c-b">Constraint gates are code: a validator cannot be talked into an exception. The model only extracts fields from a page, every numeric claim cites its source file, the server is stateless per request, and there is no multi-turn agent to drift. Sycophancy, drift, and context decay aren't discouraged; they're impossible by construction. Hallucination is pinned to the perception edge, where every field cites its source and unknown is a legal answer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>The LLM is confined to perception.</strong> Its only job: turning a product page into structured fields through schema-enforced structured outputs. It never approves, never rejects, never reasons about budget. "Unknown" is a legal value in the schema, and downstream it produces INSUFFICIENT_DATA, never a filled-in guess. Every numeric claim in a verdict cites the source file it came from.</p>
+
+      <p><strong>Three gates, all of them run.</strong> Gate A audits state: budget position, campaign windows, inventory clashes. Gate B filters climate: material rules against a live weather forecast. Gate C enforces aesthetics: doctrine, banned brands, banned fit terms. There is no short-circuit; a rejection reports every violation at once, so one verdict tells you everything that is wrong instead of one thing per attempt.</p>
+
+      <p><strong>There is no middle to get lost in.</strong> The server is stateless per request and re-reads profile constraints from disk on every call, so context cannot degrade. There is no multi-turn agent, so there is nothing to drift: each verdict is a fresh, complete evaluation. And every verdict appends to an audit log, so the decision history is a file you can read, not a chat you have to scroll.</p>
+
+      <p><strong>A real product around the architecture.</strong> Five surfaces: paste-a-URL verdicts, a per-brand sizing matrix, wardrobe inventory with cost-per-wear, a budget ledger with hard-stop and advisory policies, and weather-triggered care alerts for rain-sensitive assets. Profiles are pure data. A second user onboards by adding a profile, zero code changes.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a URL or manual entry passes through schema-enforced extraction where the LLM only does perception; then three deterministic gates run in sequence, a state audit, a climate filter, and an aesthetic gate, all reporting every violation; the result is a verdict card of APPROVE, REJECT, or INSUFFICIENT_DATA, appended to an audit log.">
+<span class="node">URL or manual entry</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[0] extraction</span>  <span class="api">(structured outputs; perception only)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[A] state audit</span>     <span class="arrow">→</span> budget position · campaign windows · inventory clash
+<span class="node">[B] climate filter</span>  <span class="arrow">→</span> material rules + live forecast advisory
+<span class="node">[C] aesthetic gate</span>  <span class="arrow">→</span> doctrine · banned brands · banned fit terms
+   <span class="arrow">│</span>   <span class="prod">(all three run; every violation reported)</span>
+   <span class="arrow">▼</span>
+<span class="node">verdict card</span>  <span class="arrow">→</span> APPROVE · REJECT · <span class="node">INSUFFICIENT_DATA</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">verdicts.jsonl</span>  <span class="prod">(append-only audit log)</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Perceive, don't decide</div>
+          <div class="stage-d">The model turns a messy product page into structured fields, and that is the entire extent of its authority. Extraction runs only when an API key is configured; everything else in the product works without it.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Gate A: state audit</div>
+          <div class="stage-d">Where does the budget stand this month, is a campaign window open, does the item clash with inventory already in the vault. Deterministic reads of the ledger and inventory, not a model's recollection of them.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Gate B: climate filter</div>
+          <div class="stage-d">Material rules checked against a live Open-Meteo forecast. A rain-sensitive material in a wet forecast window is a reported violation, with the forecast as the cited source.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Gate C: aesthetic gate</div>
+          <div class="stage-d">Doctrine, banned brands, banned fit terms, held as data in the profile. The rules are the user's, the enforcement is the system's, and no amount of persuasive product copy changes either.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">Verdict, sealed and logged</div>
+          <div class="stage-d">The card carries the verdict, the sizing override from the brand matrix, capital status, and the care commitment the purchase would create. Every verdict appends to <code>verdicts.jsonl</code>, so the decision path stays inspectable forever.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>The domain is deliberately small; the architecture is not. Put judgment in deterministic code, keep the model at the perception edge, make "unknown" a first-class outcome, and log every decision: that is the same shape as any serious LLM system that has to be trusted with real constraints and real money. monolith is that pattern at personal scale, complete enough to live on a phone's home screen and honest enough to say INSUFFICIENT_DATA when it doesn't know.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>A validator cannot be talked into an exception. That single sentence is the whole architecture, and the reason the four failure modes stay fixed.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/monolith" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=monolith%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The gates, the schema, and the 50-test suite are public at <a href="https://github.com/mitwilli-create/monolith" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/monolith</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>
