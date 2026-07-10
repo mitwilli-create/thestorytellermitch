@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>relocation-os · a personal agentic OS with a privacy quarantine</title>
+  <meta name="description" content="A personal agentic operating system that runs identically under Claude Code and Codex: deterministic orchestration, a nine-agent research council, locked decisions, and a mechanical privacy gate that proves no personal fact reached the public repo.">
+  <meta property="og:title" content="relocation-os: architecture public, private life quarantined">
+  <meta property="og:description" content="A high-stakes life decision, engineered: dual-runtime agentic OS with a locked-decision registry, adjudicated multi-model research, and a privacy quarantine verified byte by byte.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="shared/theme.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "relocation-os",
+    "headline": "A personal agentic operating system: architecture public, private life quarantined",
+    "about": "A dual-runtime agentic OS for planning an international relocation: deterministic orchestration, tiered memory, a locked-decision registry, adjudicated multi-model research, and a privacy quarantine with a synthetic twin and a mechanical publication gate.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/relocation-os",
+    "keywords": "agentic systems, Claude Code, Codex, multi-agent, privacy engineering, deterministic orchestration, knowledge base"
+  }
+  </script>
+  <style>
+    /* case-study scoped styles on the shared theme tokens */
+    .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
+      letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
+      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
+    .cs-standfirst strong{color:var(--bone);font-weight:700}
+    .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+    .cs-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mute);border:1px solid var(--line);padding:7px 13px}
+    .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2)}
+    .cs-illo img{width:100%;height:auto;display:block}
+    .cs-illo svg{width:100%;height:auto;display:block}
+    .cs-illo figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      padding:10px 16px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:0.1em}
+    .cs-intro{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft);margin-bottom:26px}
+    .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
+      letter-spacing:0.08em;margin-top:8px;line-height:1.5}
+    .cs-compare{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;max-width:760px}
+    .cs-compare .col{padding:20px 22px}
+    .cs-compare .col+.col{border-left:1px solid var(--line)}
+    .cs-compare .c-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+    .cs-compare .col.after .c-k{color:var(--blood-soft)}
+    .cs-compare .c-b{font-size:14px;color:var(--bone-soft);line-height:1.6}
+    .cs-h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.14em;
+      color:var(--blood-soft);margin-bottom:22px}
+    .cs-body{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .cs-body p{margin-bottom:20px}
+    .cs-body strong{color:var(--bone);font-weight:700}
+    .cs-body em{color:var(--bone);font-style:italic}
+    .cs-body code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--surface);
+      border:1px solid var(--line);padding:1px 6px;color:var(--blood-soft)}
+    .cs-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .diagram{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;background:var(--surface);
+      border:1px solid var(--line);padding:28px 26px;overflow-x:auto;max-width:760px;color:var(--bone-soft);white-space:pre}
+    .diagram .node{color:var(--bone);font-weight:500}
+    .diagram .api{color:var(--blood-soft)}
+    .diagram .prod{color:var(--bone-soft)}
+    .diagram .arrow{color:var(--dim)}
+    .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);max-width:760px}
+    .stage:last-child{border-bottom:none}
+    .stage-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+    .stage-h{font-family:'Archivo',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
+    .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
+    .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
+    .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:24px 28px}
+    .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .cs-hero{padding:130px 0 40px}
+      .cs-stat-grid{grid-template-columns:1fr}
+      .cs-compare{grid-template-columns:1fr}
+      .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
+      .diagram{font-size:11px;padding:20px 16px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Stories</a>
+    <a href="comms.html">Comms</a>
+    <a href="writing.html">Writing</a>
+    <a href="fit.html">Fit</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">Case study · a personal agentic operating system</div>
+    <h1 class="cs-title">Architecture public. Private life quarantined.<span class="mono">relocation-os</span></h1>
+    <p class="cs-standfirst">Relocating from Seattle to Spain is a high-stakes decision with hundreds of interlocking questions. relocation-os turns it into an engineered system: a <strong>council of nine research agents</strong>, a locked-decision registry that keeps settled questions settled, and a mission pattern that makes every trip and evaluation a reproducible pipeline. The signature is the <strong>privacy quarantine</strong>: a fictional synthetic twin stands in for the private corpus, and a mechanical gate proves no personal fact reached the public cut. The instincts running it came from newsrooms and Google comms before they became code: <strong>verify before you publish, and protect what is private</strong>.</p>
+    <div class="cs-tagrow">
+      <span class="cs-tag">Dual runtime: Claude Code + Codex</span>
+      <span class="cs-tag">Nine-agent council</span>
+      <span class="cs-tag">Locked-decision registry</span>
+      <span class="cs-tag">Tiered memory</span>
+      <span class="cs-tag">Privacy quarantine</span>
+      <span class="cs-tag">CI eval gates</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="cs-illo">
+      <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System diagram: a private repo and a synthetic twin feed a sanitize step whose output must pass a marker scan before it becomes a separate public repo">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#57534d"/></marker>
+          <marker id="aha" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b1554c"/></marker>
+          <linearGradient id="rbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e0e10"/><stop offset="1" stop-color="#141416"/></linearGradient>
+        </defs>
+        <rect width="640" height="360" fill="url(#rbg)"/>
+        <g font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle">
+          <rect x="30" y="60" width="152" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+          <text x="106" y="84" fill="#c7c2b9" font-size="12" letter-spacing="0.5">private repo</text>
+          <text x="106" y="101" fill="#8b867d" font-size="9" letter-spacing="0.3">tracked + gitignored</text>
+          <rect x="30" y="176" width="152" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)" stroke-dasharray="4 3"/>
+          <text x="106" y="200" fill="#c7c2b9" font-size="12" letter-spacing="0.5">synthetic twin</text>
+          <text x="106" y="217" fill="#8b867d" font-size="9" letter-spacing="0.3">fictional, same schema</text>
+          <rect x="250" y="118" width="140" height="56" rx="2" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+          <text x="320" y="142" fill="#c7c2b9" font-size="12" letter-spacing="0.5">sanitize</text>
+          <text x="320" y="159" fill="#8b867d" font-size="9" letter-spacing="0.3">copies tracked only</text>
+          <path d="M470 106 L512 146 L470 186 L428 146 Z" fill="#141416" stroke="rgba(236,232,225,0.18)"/>
+          <text x="470" y="150" fill="#c7c2b9" font-size="10" letter-spacing="0.3">scan</text>
+          <text x="470" y="205" fill="#8b867d" font-size="9" letter-spacing="0.3">full marker list</text>
+          <rect x="416" y="256" width="188" height="58" rx="2" fill="#17110f" stroke="#b1554c"/>
+          <text x="510" y="281" fill="#ece8e1" font-size="12" letter-spacing="0.5">public repo</text>
+          <text x="510" y="298" fill="#b1554c" font-size="9" letter-spacing="0.3">verified clean cut</text>
+          <path d="M182 88 L246 128" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+          <path d="M182 204 L246 164" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+          <path d="M390 146 L424 146" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
+          <path d="M470 186 L505 252" fill="none" stroke="#b1554c" stroke-width="1.4" marker-end="url(#aha)"/>
+          <text x="452" y="228" fill="#b1554c" font-size="9" letter-spacing="0.3" text-anchor="end">pass</text>
+          <path d="M512 146 L560 146" fill="none" stroke="#57534d" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <text x="566" y="149" fill="#8b867d" font-size="9" letter-spacing="0.3" text-anchor="start">hit: stop</text>
+        </g>
+      </svg>
+      <figcaption>the privacy quarantine, mechanically verified</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it is</div>
+    <p class="cs-intro">A working demonstration of production agentic-system patterns pointed at a real decision: context-budget engineering, multi-model verification, deterministic harness design, and privacy engineering. The repo demonstrates the system; it does not publish the life.</p>
+    <div class="cs-stat-grid">
+      <div class="cs-stat"><div class="n">2 runtimes, 1 contract</div><div class="l">CLAUDE.md and Codex's AGENTS.md carry the same rules, so any session behaves identically</div></div>
+      <div class="cs-stat"><div class="n">9</div><div class="l">specialized research agents: six mission roles, three standing relocation-lifecycle roles</div></div>
+      <div class="cs-stat"><div class="n">88</div><div class="l">tracked files in the verified public cut, regenerated by script, never hand-edited</div></div>
+      <div class="cs-stat"><div class="n">0</div><div class="l">personal facts published: the gate scans the exact bytes that go public</div></div>
+    </div>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">How relocations usually get planned</div>
+        <div class="c-b">A notes app, forty browser tabs, and re-arguing the same visa question every month because nobody wrote down why it was settled. Research quality depends on whatever the last search returned.</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">relocation-os</div>
+        <div class="c-b">Every trip and evaluation is a reproducible pipeline with auditable outputs. Research flows through a multi-model council and an adjudication pass before it enters the knowledge base. Settled decisions live in a registry the harness must consult. Same inputs, same pipeline, same shape of output.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">What it does</div>
+    <div class="cs-body">
+      <p><strong>Determinism first.</strong> Orchestration lives in scripts and structured pipelines, not in model improvisation. The mission pattern converts each scouting trip or city evaluation into a folder with a defined pipeline and auditable outputs, and a CI eval harness enforces invariant gates on every pull request. The model does the research; the system decides the shape.</p>
+
+      <p><strong>Verified, not vibes.</strong> Research questions route through a council of nine agents and a multi-model research pipeline, then an adjudication pass that classifies every claim before it enters the knowledge base. A wrong fact about visa timelines or tax residency is expensive, so nothing lands in the KB on one model's say-so.</p>
+
+      <p><strong>Locked decisions are locked.</strong> Settled constraints live in a registry the harness must consult before acting. No agent, no future session, re-litigates them. This is the anti-drift mechanism: the system's memory of <em>why</em> outlives any single context window.</p>
+
+      <p><strong>The privacy quarantine.</strong> Personal data lives in gitignored private memory and never leaves. A fictional synthetic twin, same schema, invented facts, stands in for it so the architecture stays demonstrable. The public repo is generated by a sanitize script that copies tracked files only, then a marker scan runs against the exact bytes to be published. One hit and the publish stops. The public cut ships with fresh git history: zero archaeology.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">How it works</div>
+    <div class="diagram" role="img" aria-label="Flow: a question becomes a mission pipeline; the council researches through multiple models and an adjudication pass classifies each claim before it enters the knowledge base and locked-decision registry; separately, private memory feeds a synthetic twin and sanitize step, and a marker scan gates what becomes the public repo.">
+<span class="node">a question</span>  <span class="prod">(a trip, a city, a visa path)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[1] mission</span>  <span class="arrow">→</span> one folder, one pipeline, auditable outputs
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[2] council</span>  <span class="api">(6 mission roles + 3 standing roles)</span>
+   <span class="arrow">├─▶</span> <span class="node">multi-model research</span>  <span class="prod">(routed, cross-checked)</span>
+   <span class="arrow">└─▶</span> <span class="node">adjudication</span>  <span class="prod">(every claim classified before it lands)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[3] knowledge base</span>  <span class="arrow">→</span> <span class="node">locked-decision registry</span>  <span class="prod">(settled stays settled)</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[4] private memory</span>  <span class="prod">(gitignored, never committed)</span>  <span class="arrow">⇢</span> <span class="node">synthetic twin</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">[5] privacy gate</span>  <span class="api">(marker scan on the exact published bytes)</span>  <span class="arrow">→</span> <span class="node">public cut</span>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">One contract, two runtimes</div>
+          <div class="stage-d">The harness contract is written twice, once for Claude Code and once for Codex, and kept identical. Any agent session, on either runtime, inherits the same rules, the same memory discipline, and the same locked decisions.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div>
+          <div class="stage-h">Missions, not chats</div>
+          <div class="stage-d">Each trip or evaluation is a mission: a folder with a defined pipeline and outputs that can be audited later. Context is budgeted deliberately; tier-1 memory is an index measured in hundreds of tokens, and everything else loads lazily by topic.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div>
+          <div class="stage-h">Research through a council</div>
+          <div class="stage-d">Nine agents with defined roles run the research through multiple models, then an adjudication pass classifies every claim before it enters the knowledge base. Findings land with per-claim attribution, not as a wall of confident prose.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">04</div>
+        <div>
+          <div class="stage-h">Decisions lock</div>
+          <div class="stage-d">Once a constraint is settled it enters the locked-decision registry, and the harness must consult the registry before acting. The system cannot be talked back into a question it already answered.</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">05</div>
+        <div>
+          <div class="stage-h">The quarantine holds, mechanically</div>
+          <div class="stage-d">The public repo is a generated artifact: a sanitize script copies tracked files only, a synthetic twin stands in for the private corpus, and a scan runs the full marker list against the exact bytes to be published. A single hit stops the publish.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Why it matters</div>
+    <div class="cs-body">
+      <p>Most agentic-system demos are toys because nothing is at stake. Here the stakes are a family's move across an ocean, which is exactly why the system is built the way production systems are built: deterministic where it can be, verified where it can't, and honest about the boundary between the two. The pattern generalizes to any personal-scale system that wants to show its architecture without publishing the life inside it.</p>
+    </div>
+    <div class="cs-callout" style="margin-top:24px;">
+      <p>The repo demonstrates the system. It does not publish the life. And that claim is not a promise, it is a mechanical gate that scans every byte before it ships.</p>
+    </div>
+    <div class="cs-cta" style="margin-top:40px;">
+      <a class="btn solid" href="https://github.com/mitwilli-create/relocation-os-public" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=relocation-os%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
+    </div>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The architecture, council roles, eval harness, and privacy gate are public at <a href="https://github.com/mitwilli-create/relocation-os-public" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/relocation-os-public</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js"></script>
+</body>
+</html>
