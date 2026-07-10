@@ -111,6 +111,7 @@
         "youtubeId": null
       },
       "startHere": false,
+      "startHereRank": null,
       "caseStudy": "broll-pipeline.html",
       "sourceFile": null
     },
@@ -240,6 +241,7 @@
         "youtubeId": null
       },
       "startHere": false,
+      "startHereRank": null,
       "caseStudy": null,
       "sourceFile": "AJE-STREAM_2011_Global-Reactions-Bin-Laden-Death-Bahrain_Live-Coverage_45m11s.mp4"
     },
@@ -447,6 +449,7 @@
         "youtubeId": null
       },
       "startHere": false,
+      "startHereRank": null,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_Bill-Nye-Curbing-Climate-Change_Interview-Segment_3m2s.mp4"
     },
@@ -1252,6 +1255,7 @@
         "youtubeId": null
       },
       "startHere": false,
+      "startHereRank": null,
       "caseStudy": null,
       "sourceFile": "AJP_2017_Truvada-PrEP-Not-Just-For-Gay-Men_Social-Video_7m26s.mp4"
     },
