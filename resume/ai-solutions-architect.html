@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260710">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -37,28 +37,30 @@
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
     /* ---- print: bone-paper light variant, same brand ---- */
-    @page{size:letter;margin:0.42in 0.5in}
+    .rwrap a{color:var(--blood-soft);text-decoration:none}
+    .rwrap a:hover{color:var(--bone)}
+    @page{size:letter;margin:0}
     @media print{
       :root{--bg:#f7f4ee;--surface:#f7f4ee;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#f7f4ee !important;color:#2e2a26}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0;max-width:none}
-      .rname{font-size:19pt}
-      .rpillars{font-size:7.5pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:7.5pt;margin-top:5pt;line-height:1.5}
+      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rname{font-size:20pt}
+      .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:8.33pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6.5pt;padding:0}
-      .rsec-h{font-size:7.5pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:8.8pt;line-height:1.3;margin-bottom:3pt}
+      .rsec-h{font-size:8.33pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:9.8pt;line-height:1.3;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:8.8pt;line-height:1.28;margin-bottom:2pt;padding-left:11pt;break-inside:avoid}
+      .rl li{font-size:9.8pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:10.5pt;break-after:avoid}
-      .rrole-s{font-size:7.5pt;margin:1.5pt 0 4pt}
+      .rrole-h{font-size:11.6pt;break-after:avoid}
+      .rrole-s{font-size:8.33pt;margin:1.5pt 0 4pt}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:8.8pt;margin-bottom:2pt}
+      .rinit-h{font-size:9.8pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -89,31 +91,32 @@
     <div class="kicker">resume · ai solutions architect</div>
     <h1 class="rname">Mitchell Williams</h1>
     <div class="rpillars">AI SOLUTIONS ARCHITECTURE · GOVERNED-VOICE AGENT SYSTEMS · MULTI-AGENT ORCHESTRATION</div>
-    <div class="rcontact">Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com<br>linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com</div>
+    <div class="rcontact">Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a> | <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a> | <a href="https://thestorytellermitch.com">thestorytellermitch.com</a></div>
     <div class="rtop">
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn solid" href="../assets/resumes/mitchell-williams-ai-solutions-architect.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#ai-solutions-architect"><span>The fit case</span></a>
     </div>
   </header>
-  <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>Solutions architect who builds governed-voice AI systems: agents whose output is measured, gated, and citation-bound by architecture.</strong> Governed voice is a pattern I have shipped twice: voice-os scores writing on six measured axes against a codified voice "Constitution" with a banned-phrase checker, and the executive digital twin I shipped at Google drafts VP communications in a governed voice, cutting review back-and-forth by about 70% (internal, self-measured).</p>
-<p class="rp"><strong>Eight years at Google, the last two running the full internal solutions lifecycle for an internal customer community of 1,000+ Principal, Distinguished, and Fellow engineers.</strong> At Google Cross-Google Engineering (xGE) I ran discovery, build, deployment, and handoff: two production agents shipped solo, VP-level adoption, a full operator runbook. Internal customers, not external accounts.</p>
+  <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>Solutions architect who builds governed-voice AI systems: agents whose output is measured, gated, and citation-bound by architecture.</strong> Governed voice is a pattern I have shipped twice: <a href="../voice-os.html">voice-os</a> scores writing on six measured axes against a codified voice "Constitution" with a banned-phrase checker, and the executive <a href="../stories.html#digital-twin">digital twin</a> I shipped at Google drafts VP communications in a governed voice, cutting review back-and-forth by about 70% (internal, self-measured).</p>
+<p class="rp"><strong>Eight years at Google, the last two running the full internal solutions lifecycle for an internal customer community of 1,000+ Principal, Distinguished, and Fellow engineers.</strong> At Google Cross-Google Engineering (xGE) I ran discovery, build, deployment, and handoff: two production agents shipped solo, VP-level adoption, a full <a href="../writing.html">operator runbook</a>. Internal customers, not external accounts.</p>
 <p class="rp"><strong>Before Google, a decade of live national news, where requirements arrive mid-broadcast and the system holds or it does not.</strong> The same discipline governs my agent design: hard guarantees over vibes, refusal over guessing.</p></section>
-<section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Repos public at github.com/mitwilli-create.</p>
+<section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Repos public at <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>.</p>
 <p class="rp"><strong>voice-os</strong> · Six-axis measured voice scoring, dual-persona routing, and QA gates calibrated on a multi-million-word corpus; codified voice "Constitution" plus banned-phrase checker. The personal build of the governed-voice technique behind the Google executive digital twin.</p>
-<p class="rp"><strong>tax-verification-agent</strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude: no claim without a source, unknowns surface as placeholders instead of guesses. Caught a ~$19K multi-state error that filing software pre-filled and defended as correct.</p>
-<p class="rp"><strong>monolith</strong> · TypeScript agent built on hard guarantees: a deterministic constraint-gate contract that returns INSUFFICIENT_DATA instead of guessing when the inputs cannot support an answer.</p>
-<p class="rp"><strong>career-ops</strong> · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, about 50 scheduled agents, live dashboard under a unified spend cap. CI-green; public release in progress.</p>
-<p class="rp"><strong>broll-pipeline</strong> · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included.</p></section>
+<p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude: no claim without a source, unknowns surface as placeholders instead of guesses. Caught a ~$19K multi-state error that filing software pre-filled and defended as correct.</p>
+<p class="rp"><strong><a href="../monolith.html">monolith</a></strong> · TypeScript agent built on hard guarantees: a deterministic constraint-gate contract that returns INSUFFICIENT_DATA instead of guessing when the inputs cannot support an answer.</p>
+<p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, about 50 scheduled agents, live dashboard under a unified spend cap. CI-green; public release in progress.</p>
+<p class="rp"><strong><a href="../broll-pipeline.html">broll-pipeline</a></strong> · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included.</p></section>
 <section class="rsec"><h2 class="rsec-h">Fit for AI Solutions Architecture</h2><ul class="rl"><li><strong>Voice fidelity as a testable primitive.</strong> The executive digital twin measures every draft against a voice "Constitution" and banned-phrase checklist; it cut VP review back-and-forth by about 70% (internal, self-measured).</li><li><strong>Hard guarantees over vibes.</strong> The tax-verification agent is citation-gated by architecture and caught a ~$19K error that commercial software defended as correct. Monolith returns INSUFFICIENT_DATA instead of guessing.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
-<div class="rinit"><div class="rinit-h">Communications-triage agent</div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake for the senior-IC community consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed solo (Apps Script + Gemini) a three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing; human-in-the-loop authority holds on every High-touch classification.</li><li><strong>Impact:</strong> Documented end-to-end and handed off with a full operator runbook a non-builder can run and extend.</li></ul></div>
+<div class="rinit"><div class="rinit-h"><a href="../comms-triage-agent.html">Communications-triage agent</a></div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake for the senior-IC community consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed solo (Apps Script + Gemini) a three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing; human-in-the-loop authority holds on every High-touch classification.</li><li><strong>Impact:</strong> Documented end-to-end and handed off with a full operator runbook a non-builder can run and extend.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Executive-communications digital twin</div><ul class="rl"><li><strong>Problem:</strong> High-stakes VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent loaded with a "Constitution" of voice rules, a banned-phrase verification checklist, and engagement-summary generators.</li><li><strong>Impact:</strong> Review cycles with the VP dropped by about 70%.</li></ul></div>
 <div class="rinit"><div class="rinit-h">MEJ (My Engineering Journey), AI mentorship-matching agent</div><ul class="rl"><li><strong>Problem:</strong> Manual mentorship matching across the senior-engineer community capped program capacity.</li><li><strong>Action:</strong> Architected and prototyped the matching agent and app as lead PM and architect: Python matching engine, Gemini prompt-chaining pipelines, agent security guardrails.</li><li><strong>Impact:</strong> Working prototype, framed as exactly that; production numbers wait until the system earns them.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Approvals governance overhaul</div><ul class="rl"><li><strong>Problem:</strong> Cross-org technical mandates stalled without a clear approvals framework.</li><li><strong>Action:</strong> Authored the Approvals User Guide (v3, "Effectively Approved"), the Approvals Matrix, and the Roles &amp; Responsibilities framework.</li><li><strong>Impact:</strong> Drove named cross-org mandates (Keystore Rotation, Memory Safety TRR) to approval.</li></ul></div></div>
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned communications and content enabling technical outcomes for a global, mixed-technical audience across Google's internal IT org and TechStop, its global help desk; directed the Q1-2020 global remote-work shift strategy, driving an 80% increase in self-provisioning efficiency the following quarter.</p>
 <div class="rinit"><div class="rinit-h">2023 self-help content audit</div><ul class="rl"><li><strong>Problem:</strong> Ticket volume included issues users could have solved themselves.</li><li><strong>Action:</strong> Audited the self-help corpus and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Self-service solvability up 9.03%, roughly 10,670 fewer tickets per year.</li></ul></div></div></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2010 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of solutions architecture: messy human requirements translated, live and under deadline, into boundaries a system can hold.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's Umbrella Revolution.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the bin Laden raid and pioneered social-data journalism.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>AI / Agent Engineering &amp; Build:</strong> multi-provider LLM orchestration (Anthropic, OpenAI, Google, xAI, Perplexity), custom MCP servers, Claude Code skills, eval and regression gates, RAG + vector stores, prompt engineering, LangGraph / LangChain, Node.js, Playwright, launchd fleet operations, Apps Script, Gemini API, Python.</p>

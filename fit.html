@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="shared/theme.css">
+  <link rel="stylesheet" href="shared/theme.css?v=20260710">
   <style>
     .fit-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .fit-hero .display{font-size:clamp(38px,6.6vw,96px)}
@@ -39,6 +39,15 @@
       letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);
       border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
     details.role .r-links a:hover{color:var(--blood-soft)}
+    .fit-router{display:flex;gap:10px;align-items:center;margin-top:26px;flex-wrap:wrap}
+    .fr-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
+    .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}
+    .fr-chip:hover{border-color:var(--blood-soft);color:var(--blood-soft)}
+    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+      color:var(--dim);margin:46px 0 8px;scroll-margin-top:110px}
+    .cluster-h:first-child{margin-top:0}
+    details.role{scroll-margin-top:96px}
     .fit-cta{margin-top:56px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .fit-cta .note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.06em}
     section{padding:80px 0}
@@ -76,14 +85,76 @@
       <span class="ln"><span class="accent">hiring for.</span></span>
     </h1>
     <p class="fit-sub">You're hiring for a discipline, not a resume keyword. This page lists the roles I'm pursuing, each with the case for why I'm the hire, plus links to the work that backs it. Match it to your req, then open it.</p>
+    <div class="fit-router">
+      <span class="fr-k">Hiring for:</span>
+      <a class="fr-chip" href="#cluster-story">Editorial &amp; comms</a>
+      <a class="fr-chip" href="#cluster-build">Engineering &amp; AI</a>
+      <a class="fr-chip" href="#roles">Everything</a>
+    </div>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <div class="role-list">
+    <div class="role-list" id="roles">
 
-      <details class="role" open id="forward-deployed">
+      <div class="cluster-h" id="cluster-story">Story &amp; editorial</div>
+
+      <details class="role" open id="content-editorial">
+        <summary>
+          <span class="r-label">Content Producer / Editorial Lead</span>
+          <span class="r-mark">+</span>
+          <span class="r-hook">Finds the story, ships it in any format, builds the system that holds the bar.</span>
+        </summary>
+        <div class="r-body">
+          <p class="r-fit">Internal content at an AI company is two jobs, and I've done both. The producer half: find the story inside the people and the work, then ship it in whatever format serves it. I engineered the AJ+ explainer format that hit 50M views, produced Google's engineer profiles, and ran events, newsletters, and video for the company's most senior engineers. The editorial half: hold the bar when the volume grows. Voice-os encodes a writing voice as six scored axes plus a banned-phrase list, I've run litigation-sensitive editorial judgment live, and I coached AJ+ producers into on-camera careers that went on to win a Webby and a Daytime Emmy. One discipline, both hands: the story gets made, and the standard survives the making.</p>
+          <div class="r-links">
+            <a href="resume/content-editorial.html">resume, online</a>
+            <a href="assets/resumes/mitchell-williams-content-editorial.pdf">resume (PDF)</a>
+            <a href="select-works.html">the profiles and explainers</a>
+            <a href="projects.html">voice-os</a>
+            <a href="stories.html#talent-pipeline">the talent pipeline</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="role" id="comms-manager">
+        <summary>
+          <span class="r-label">Communications Manager (AI-native)</span>
+          <span class="r-mark">+</span>
+          <span class="r-hook">Exec comms for Google's most senior engineers. Every claim sourced.</span>
+        </summary>
+        <div class="r-body">
+          <p class="r-fit">AI-native companies need communicators who actually understand what the models do. Your audience can tell when they don't. I wrote executive communications for Google's most senior engineers, then built the system that scaled it: a digital-twin writing tool that cut VP review back-and-forth by about 70%. Before Google, I ran a team at AJ+ during its 500M-weekly-view era. The habit that runs through all of it: every claim gets a source. This site practices what I'm pitching. The Impact page is the proof.</p>
+          <div class="r-links">
+            <a href="resume/comms-manager.html">resume, online</a>
+            <a href="assets/resumes/mitchell-williams-comms-manager.pdf">resume (PDF)</a>
+            <a href="impact.html">impact: the sourced claims</a>
+            <a href="stories.html#digital-twin">the digital-twin story</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="role" id="devrel-education">
+        <summary>
+          <span class="r-label">Developer Education / DevRel</span>
+          <span class="r-mark">+</span>
+          <span class="r-hook">Sixteen years across newsrooms and Google. 50M views was engineered.</span>
+        </summary>
+        <div class="r-body">
+          <p class="r-fit">Developer education is explanation under constraint: limited attention, a skeptical audience, zero hand-waving. Sixteen years doing this, in newsrooms and at Google, making complex systems land on camera. I produced Google's public Life at Google recruitment and interview-prep videos. Before that, I engineered the explainer format that hit 50M views. I also write an operator runbook for everything I ship. A tool nobody else can run is just a demo.</p>
+          <div class="r-links">
+            <a href="resume/devrel-education.html">resume, online</a>
+            <a href="assets/resumes/mitchell-williams-devrel-education.pdf">resume (PDF)</a>
+            <a href="work.html">the video work</a>
+            <a href="stories.html#aj-plus-50m-views">the 50M-view story</a>
+          </div>
+        </div>
+      </details>
+
+      <div class="cluster-h" id="cluster-build">Build &amp; deploy</div>
+
+      <details class="role" id="forward-deployed">
         <summary>
           <span class="r-label">Forward Deployed Engineer / Creative</span>
           <span class="r-mark">+</span>
@@ -152,57 +223,6 @@
         </div>
       </details>
 
-      <details class="role" id="comms-manager">
-        <summary>
-          <span class="r-label">Communications Manager (AI-native)</span>
-          <span class="r-mark">+</span>
-          <span class="r-hook">Exec comms for Google's most senior engineers. Every claim sourced.</span>
-        </summary>
-        <div class="r-body">
-          <p class="r-fit">AI-native companies need communicators who actually understand what the models do. Your audience can tell when they don't. I wrote executive communications for Google's most senior engineers, then built the system that scaled it: a digital-twin writing tool that cut VP review back-and-forth by about 70%. Before Google, I ran a team at AJ+ during its 500M-weekly-view era. The habit that runs through all of it: every claim gets a source. This site practices what I'm pitching. The Impact page is the proof.</p>
-          <div class="r-links">
-            <a href="resume/comms-manager.html">resume, online</a>
-            <a href="assets/resumes/mitchell-williams-comms-manager.pdf">resume (PDF)</a>
-            <a href="impact.html">impact: the sourced claims</a>
-            <a href="stories.html#digital-twin">the digital-twin story</a>
-          </div>
-        </div>
-      </details>
-
-      <details class="role" id="devrel-education">
-        <summary>
-          <span class="r-label">Developer Education / DevRel</span>
-          <span class="r-mark">+</span>
-          <span class="r-hook">Sixteen years across newsrooms and Google. 50M views was engineered.</span>
-        </summary>
-        <div class="r-body">
-          <p class="r-fit">Developer education is explanation under constraint: limited attention, a skeptical audience, zero hand-waving. Sixteen years doing this, in newsrooms and at Google, making complex systems land on camera. I produced Google's public Life at Google recruitment and interview-prep videos. Before that, I engineered the explainer format that hit 50M views. I also write an operator runbook for everything I ship. A tool nobody else can run is just a demo.</p>
-          <div class="r-links">
-            <a href="resume/devrel-education.html">resume, online</a>
-            <a href="assets/resumes/mitchell-williams-devrel-education.pdf">resume (PDF)</a>
-            <a href="work.html">the video work</a>
-            <a href="stories.html#aj-plus-50m-views">the 50M-view story</a>
-          </div>
-        </div>
-      </details>
-
-      <details class="role" id="content-editorial">
-        <summary>
-          <span class="r-label">Content Producer / Editorial Lead</span>
-          <span class="r-mark">+</span>
-          <span class="r-hook">Finds the story, ships it in any format, builds the system that holds the bar.</span>
-        </summary>
-        <div class="r-body">
-          <p class="r-fit">Internal content at an AI company is two jobs, and I've done both. The producer half: find the story inside the people and the work, then ship it in whatever format serves it. I engineered the AJ+ explainer format that hit 50M views, produced Google's engineer profiles, and ran events, newsletters, and video for the company's most senior engineers. The editorial half: hold the bar when the volume grows. Voice-os encodes a writing voice as six scored axes plus a banned-phrase list, I've run litigation-sensitive editorial judgment live, and I coached AJ+ producers into on-camera careers that went on to win a Webby and a Daytime Emmy. One discipline, both hands: the story gets made, and the standard survives the making.</p>
-          <div class="r-links">
-            <a href="resume/content-editorial.html">resume, online</a>
-            <a href="assets/resumes/mitchell-williams-content-editorial.pdf">resume (PDF)</a>
-            <a href="select-works.html">the profiles and explainers</a>
-            <a href="projects.html">voice-os</a>
-            <a href="stories.html#talent-pipeline">the talent pipeline</a>
-          </div>
-        </div>
-      </details>
 
     </div>
 
@@ -237,8 +257,11 @@
 <script src="shared/reveal.js"></script>
 <script>
   // deep-link support: /fit.html#ai-enablement opens that role
-  function openFromHash(){ if(location.hash){ const d=document.querySelector('details'+location.hash); if(d){ d.open=true; d.scrollIntoView(); } } }
+  const HASH_ALIAS={'engineering-editorial':'content-editorial'};
+  function openFromHash(){ if(!location.hash) return; let id=location.hash.slice(1); id=HASH_ALIAS[id]||id;
+    const d=document.querySelector('details#'+CSS.escape(id)); if(d){ d.open=true; d.scrollIntoView({behavior:'instant',block:'start'}); } }
   openFromHash();
+  window.addEventListener('load', openFromHash);
   addEventListener('hashchange', openFromHash);
 </script>
 </body>

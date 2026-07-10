@@ -36,6 +36,14 @@ let fail = 0;
 for (const [file, slug] of Object.entries(LANES)) {
   const url = 'file://' + join(ROOT, 'resume', `${slug}.html`);
   await page.goto(url, { waitUntil: 'networkidle' });
+  // PDF link annotations must be portable: rewrite relative hrefs to the live site.
+  await page.evaluate(() => {
+    for (const a of document.querySelectorAll('a[href]')) {
+      const h = a.getAttribute('href');
+      if (/^(https?:|mailto:|tel:|#)/.test(h)) continue;
+      a.setAttribute('href', 'https://thestorytellermitch.com/' + h.replace(/^(\.\.\/)+/, ''));
+    }
+  });
   const pdf = await page.pdf({ format: 'Letter', printBackground: true });
   const n = pageCount(pdf);
   const out = join(ROOT, 'assets/resumes', `${file}.pdf`);
