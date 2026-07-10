@@ -31,6 +31,7 @@ const PRINT_PT = {
 // Applied to assembled section HTML only; skips text already inside an <a>.
 const TERM_LINKS = [
   ['tax-verification-agent', '../tax-verification-agent.html'],
+  ['comms-triage-agent', '../comms-triage-agent.html'],
   ['tax-verification agent', '../tax-verification-agent.html'],
   ['Communications-triage agent', '../comms-triage-agent.html'],
   ['comms-triage agent', '../comms-triage-agent.html'],
@@ -208,8 +209,8 @@ function page({ name, pillars, contact, sections }, lane) {
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
     /* ---- print: bone-paper light variant, same brand ---- */
-    .rwrap a{color:var(--blood-soft);text-decoration:none}
-    .rwrap a:hover{color:var(--bone)}
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     @page{size:letter;margin:0}
     @media print{
       :root{--bg:#f7f4ee;--surface:#f7f4ee;--bone:#181614;--bone-soft:#2e2a26;
@@ -262,7 +263,7 @@ function page({ name, pillars, contact, sections }, lane) {
     <div class="kicker">resume · ${esc(lane.title.toLowerCase())}</div>
     <h1 class="rname">${esc(name)}</h1>
     <div class="rpillars">${esc(pillars)}</div>
-    <div class="rcontact">${contact.map(c => inline(c)).join('<br>')}</div>
+    <div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane))}.pdf"><span>Download PDF</span></a>

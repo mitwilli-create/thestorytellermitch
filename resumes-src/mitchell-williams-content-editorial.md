@@ -6,7 +6,7 @@ Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com
 linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **Selected work:**
-#FreeAhmed (April 2026): helped free detained journalist Ahmed Shihab-Eldin, released in ten days and acquitted on the central charge
+**#FreeAhmed** (April 2026): helped free detained journalist Ahmed Shihab-Eldin, released in ten days and acquitted on the central charge
 Google engineer profiles + 50M-view measles explainer (thestorytellermitch.com/select-works)
 Writing room with verbatim published scripts (thestorytellermitch.com/writing)
 

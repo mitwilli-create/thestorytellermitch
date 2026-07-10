@@ -36,6 +36,12 @@ let fail = 0;
 for (const [file, slug] of Object.entries(LANES)) {
   const url = 'file://' + join(ROOT, 'resume', `${slug}.html`);
   await page.goto(url, { waitUntil: 'networkidle' });
+  // Phone is stripped from the served HTML (public-page privacy); the PDF keeps it.
+  const md = readFileSync(join(ROOT, 'resumes-src', `${file}.md`), 'utf8');
+  const phone = (md.match(/\b\d{3}-\d{3}-\d{4}\b/) || [null])[0];
+  if (phone) await page.evaluate((p) => {
+    for (const el of document.querySelectorAll('.pdf-phone')) el.textContent = p + ' | ';
+  }, phone);
   // PDF link annotations must be portable: rewrite relative hrefs to the live site.
   await page.evaluate(() => {
     for (const a of document.querySelectorAll('a[href]')) {
