@@ -110,8 +110,7 @@
         "streamId": null,
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 1,
+      "startHere": false,
       "caseStudy": "broll-pipeline.html",
       "sourceFile": null
     },
@@ -240,8 +239,7 @@
         "streamId": "5110494fc9e3e53e73cbd135e77d96de",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 3,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "AJE-STREAM_2011_Global-Reactions-Bin-Laden-Death-Bahrain_Live-Coverage_45m11s.mp4"
     },
@@ -448,8 +446,7 @@
         "streamId": "0c77f9dc24b075f6356f96a64bf193da",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 7,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_Bill-Nye-Curbing-Climate-Change_Interview-Segment_3m2s.mp4"
     },
@@ -552,8 +549,8 @@
         "streamId": "03e2eb8b3b65c04eb3d663a95a215d0f",
         "youtubeId": null
       },
-      "startHere": false,
-      "startHereRank": null,
+      "startHere": true,
+      "startHereRank": 4,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_How-The-Media-Fails_Social-Video_3m1s.mp4"
     },
@@ -657,7 +654,7 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 8,
+      "startHereRank": 6,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_Surviving-An-Atomic-Bomb_Documentary-Short_3m56s.mp4"
     },
@@ -1021,7 +1018,7 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 2,
+      "startHereRank": 3,
       "caseStudy": null,
       "sourceFile": "AJP_2017_Measles-Outbreaks-USA-VIRAL-50M-Views_Social-Video_2m5s.mp4"
     },
@@ -1099,7 +1096,7 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 4,
+      "startHereRank": 5,
       "caseStudy": null,
       "sourceFile": "AJP_2017_San-Juan-Mayor-Speaks-Out-Hurricane-Maria_Social-Video_1m16s.mp4"
     },
@@ -1254,8 +1251,7 @@
         "streamId": "e90dfd5a6c92fdb8928e396dbb1fe1bc",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 6,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "AJP_2017_Truvada-PrEP-Not-Just-For-Gay-Men_Social-Video_7m26s.mp4"
     },
@@ -1385,7 +1381,7 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 5,
+      "startHereRank": 7,
       "caseStudy": null,
       "sourceFile": "FUSION_2013-2015_America-With-Jorge-Ramos_Showreel_43m50s.mp4"
     },
@@ -1956,8 +1952,8 @@
         "streamId": null,
         "youtubeId": "ohtLXCwC-oU"
       },
-      "startHere": false,
-      "startHereRank": null,
+      "startHere": true,
+      "startHereRank": 2,
       "caseStudy": null,
       "sourceFile": null
     },
@@ -1982,8 +1978,8 @@
         "streamId": null,
         "youtubeId": "rGtcmKIZi5c"
       },
-      "startHere": false,
-      "startHereRank": null,
+      "startHere": true,
+      "startHereRank": 1,
       "caseStudy": null,
       "sourceFile": null
     },
