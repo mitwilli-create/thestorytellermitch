@@ -142,6 +142,11 @@ function page({ name, pillars, contact, sections }, lane) {
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#f7f4ee !important;color:#2e2a26}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
       .rwrap{padding:0;max-width:none}
       .rname{font-size:19pt}
