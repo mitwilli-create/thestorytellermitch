@@ -170,6 +170,7 @@
 
       <a class="film tall reveal" href="work.html#play-aje-stream-2011-global-reactions-bin-laden-death-bahrain">
         <img class="thumb" src="assets/posters/home-binladen.jpg" alt="The Stream live coverage" loading="lazy">
+        <video class="preview" preload="none" muted loop playsinline data-src="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4" poster="assets/posters/home-binladen.jpg"></video>
         <div class="play-o"></div>
         <div class="meta">
           <div class="m-tag">Al Jazeera · The Stream</div>
@@ -180,6 +181,7 @@
 
       <a class="film half reveal" href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">
         <img class="thumb" src="assets/posters/home-measles.jpg" alt="AJ+ measles outbreak social video" loading="lazy">
+        <video class="preview" preload="none" muted loop playsinline data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" poster="assets/posters/home-measles.jpg"></video>
         <div class="play-o"></div>
         <div class="meta">
           <div class="m-tag">AJ+ · viral social</div>
@@ -190,6 +192,7 @@
 
       <a class="film half reveal" href="work.html#play-ajp-2017-san-juan-mayor-speaks-out-hurricane-maria">
         <img class="thumb" src="assets/posters/home-maria.jpg" alt="Hurricane Maria aftermath field piece" loading="lazy">
+        <video class="preview" preload="none" muted loop playsinline data-src="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4" poster="assets/posters/home-maria.jpg"></video>
         <div class="play-o"></div>
         <div class="meta">
           <div class="m-tag">AJ+ · field production</div>
@@ -200,6 +203,7 @@
 
       <a class="film half reveal" href="work.html#play-ajp-2017-truvada-prep-not-just-for-gay-men">
         <img class="thumb" src="assets/posters/home-truvada.jpg" alt="AJ+ Truvada PrEP piece" loading="lazy">
+        <video class="preview" preload="none" muted loop playsinline data-src="assets/previews/ajp-2017-truvada-prep-not-just-for-gay-men.mp4" poster="assets/posters/home-truvada.jpg"></video>
         <div class="play-o"></div>
         <div class="meta">
           <div class="m-tag">AJ+ · social video</div>
@@ -210,6 +214,7 @@
 
       <a class="film half reveal" href="work.html#play-fusion-2014-america-with-jorge-ramos-october-7">
         <img class="thumb" src="assets/posters/home-ramos.jpg" alt="America With Jorge Ramos, Fusion" loading="lazy">
+        <video class="preview" preload="none" muted loop playsinline data-src="assets/previews/fusion-2014-america-with-jorge-ramos-october-7.mp4" poster="assets/posters/home-ramos.jpg"></video>
         <div class="play-o"></div>
         <div class="meta">
           <div class="m-tag">Fusion · ABC / Univision</div>
@@ -234,7 +239,7 @@
     <div class="stmt reveal">
       <p><b>The code matters, and now I write it.</b> My edge is the understanding.</p>
       <p>Knowing what an audience needs, hearing a room quickly, and shipping something that fits the way people already work.</p>
-      <p>The models got good. The taste, the judgment, and the story stayed human. <b>That is the part I have spent my whole career on.</b></p>
+      <p>The models have gotten good. The taste, the judgment, and the story stayed human. <b>That is the part I have spent my whole career on.</b></p>
     </div>
 
     <div class="arc">
@@ -246,7 +251,7 @@
       <div class="cell reveal">
         <div class="c-k">02 · Google</div>
         <div class="c-h">Eight years scale</div>
-        <div class="c-b">Turned dense engineering into training and communication for <a href="impact.html">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
+        <div class="c-b">Turned dense engineering into training and communication for <a href="comms.html">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
       </div>
       <div class="cell reveal">
         <div class="c-k">03 · Now</div>
@@ -274,10 +279,11 @@
 
 <script src="shared/reveal.js"></script>
 <script>
-  // hover-play the real video tiles
+  // hover-play every video tile: broll has a real src; the journalism tiles
+  // lazy-load a short muted preview clip from data-src on first hover.
   document.querySelectorAll('.film video').forEach(v=>{
     const c=v.closest('.film');
-    c.addEventListener('mouseenter',()=>{ v.play().catch(()=>{}); });
+    c.addEventListener('mouseenter',()=>{ if(!v.src&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); });
     c.addEventListener('mouseleave',()=>{ v.pause(); });
   });
 </script>
