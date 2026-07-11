@@ -190,7 +190,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="../shared/theme.css?v=20260711">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260711b">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -310,7 +310,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   </div>
 </footer>
 
-<script src="../shared/reveal.js?v=20260711"></script>
+<script src="../shared/reveal.js?v=20260711b"></script>
 </body>
 </html>
 `;

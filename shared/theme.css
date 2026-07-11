@@ -366,4 +366,8 @@ a.chip{text-decoration:none;display:inline-block}
       }
       .marquee-track{animation:none}
       .scrollcue span{animation:none}
+      /* view transitions become an instant swap (the universal selector
+         above cannot reach ::view-transition pseudo-elements) */
+      ::view-transition-group(*),::view-transition-image-pair(*),
+      ::view-transition-old(*),::view-transition-new(*){animation:none !important}
     }
