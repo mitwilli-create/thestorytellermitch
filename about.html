@@ -74,6 +74,20 @@
       .portrait{grid-column:1;grid-row:1;position:static;max-width:300px}
       .testi-grid{grid-template-columns:1fr}
     }
+    /* on-camera walkthrough slot: styled player frame, poster placeholder;
+       Mitchell's 45-90s clip drops in as a <video> with this frame's poster */
+    .walkthrough{margin:34px 0 38px;max-width:640px}
+    .wt-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line-2);background:var(--bg-2)}
+    .wt-frame img{width:100%;height:100%;object-fit:cover}
+    .wt-card{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:8px;text-align:center;padding:20px}
+    .wt-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .wt-t{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone)}
+    .wt-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone-soft);max-width:360px;line-height:1.6}
+    .walkthrough figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      margin-top:8px;letter-spacing:0.1em;text-transform:lowercase}
   </style>
 </head>
 <body>
@@ -117,6 +131,18 @@
 
       <h2 class="reveal">What I build now</h2>
       <p class="reveal">Production AI agents and AI-native creative pipelines. The <a href="broll-pipeline.html">broll pipeline</a> turns one script into a produced, captioned short on the ElevenLabs stack with every API call costed. <a href="projects.html">The rest of the build</a> covers voice scoring, citation-gated verification, agentic job-search infrastructure, and the orchestration layers that hold them together. Same discipline I learned in control rooms: know what matters before it matters, build systems that hold under pressure.</p>
+
+      <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
+        <div class="wt-frame oncam">
+          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
+          <div class="wt-card">
+            <span class="wt-k">on camera &middot; recording soon</span>
+            <span class="wt-t">How this site works</span>
+            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
+          </div>
+        </div>
+        <figcaption>reserved for the on-camera walkthrough; the player drops in here</figcaption>
+      </figure>
 
       <h2 class="reveal">Google, 2018 to 2026</h2>
       <p class="reveal">At Google Cross-Google Engineering (xGE) I was Internal Communications Lead for the community of 1,000+ senior engineers at the Principal, Distinguished, and Fellow levels. I built and deployed two production AI agents solo: a communications-triage agent, documented end to end and handed off with a full operator runbook, and an executive <a href="stories.html#digital-twin">"digital twin" writing system</a> that cut review back-and-forth with the VP by about 70%, an internal figure I measured myself. Before xGE, six years as Senior Communications &amp; Content Strategist in Corporate Engineering, where video-first internal comms reached 75,000+ employees.</p>
