@@ -14,7 +14,7 @@
       --line-2:rgba(236,232,225,0.18);
       --blood:#8a3a33;      /* restrained oxblood accent, used sparingly */
       --blood-soft:#b1554c;
-      --ease:cubic-bezier(0.16,1,0.3,1);
+      --ease:var(--ease-reveal); /* legacy alias; every var(--ease) now rides the reveal curve */
       --maxw:1200px;
 
       /* ---------- motion language (engraved-signal, 2026-07-11) ----------
