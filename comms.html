@@ -18,8 +18,50 @@
     .comms-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
     .comms-sub a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     section{padding:76px 0}
+    section [id]{scroll-margin-top:86px}
+    /* section lockups: mono eyebrow + Archivo title, one notch below the
+       home .sec-title (council-adjudicated 2026-07-11) */
+    .sec-lock{margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:20px;max-width:1040px}
+    .sec-lock .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:12px;font-weight:500}
+    .sec-lock h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,40px);
+      letter-spacing:-0.02em;text-transform:uppercase;line-height:1.05;color:var(--bone);margin:0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:28px;font-weight:500}
+    /* jump chips under the intro: static row, mono chip language */
+    .jump-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+    .jump-row .chip{text-decoration:none}
+    /* seat cells that navigate carry a visible affordance */
+    a.fact{display:block;color:inherit;transition:border-color var(--dur-micro) var(--ease-micro),transform var(--dur-move) var(--ease)}
+    a.fact:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    a.fact .go-mark{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin-top:12px}
+    /* system cells: illustration thumb under the name, hover-animated */
+    .sys-thumb{display:block;margin-top:12px;border:1px solid var(--line);overflow:hidden;
+      transition:border-color var(--dur-micro) var(--ease-micro)}
+    .sys-thumb:hover{border-color:var(--blood-soft)}
+    .sys-thumb img{display:block;width:100%;height:auto}
+    /* enablement band: deliberately different texture from the sections
+       around it: surface band, oxblood rail, three tiles */
+    .enable-band{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:64px 0}
+    .enable-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
+    .etile{background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--blood-soft);padding:26px 24px}
+    .etile .e-n{font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;color:var(--bone);
+      font-variant-numeric:tabular-nums;line-height:1.1}
+    .etile .e-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);margin:10px 0 8px}
+    .etile .e-b{font-size:14.5px;color:var(--bone-soft);line-height:1.6}
+    .enable-illo{max-width:1040px;margin-top:14px}
+    /* talk-to-me: prominent hairline card, oxblood reserved for the email */
+    .talk-card{max-width:860px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:2px solid var(--blood-soft);padding:36px 38px}
+    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:14px}
+    .talk-card p{font-size:17px;line-height:1.7;color:var(--bone-soft);margin:0}
+    .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
+    .talk-card .t-mail:hover{color:var(--bone)}
     .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
     .fact{background:var(--surface);border:1px solid var(--line);padding:24px 22px}
     .fact .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;color:var(--bone);line-height:1.1}
@@ -38,7 +80,7 @@
     .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--mute);margin-bottom:12px}
     .slot p{font-size:15.5px;color:var(--bone-soft);line-height:1.65}
-    .cta-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:860px}
+    .cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
     .ccard{background:var(--surface);border:1px solid var(--line);padding:26px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .ccard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
@@ -81,21 +123,57 @@
       <span class="ln"><span class="accent">lands.</span></span>
     </h1>
     <p class="comms-sub">Eight years producing live news in network control rooms. Eight years at Google, where I led communications for the horizontal org that drives technical change across the company, wrote for a VP and Google's then-CIO, and built AI infrastructure so the comms function scales instead of drowning. This page is the communications-first view of that career. The <a href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
+    <nav class="jump-row" aria-label="Jump to a section of this page">
+      <a class="chip" href="#the-seat-i-held">The seat</a>
+      <a class="chip" href="#enablement">Enablement</a>
+      <a class="chip" href="#judgment">Judgment</a>
+      <a class="chip" href="#infrastructure">Systems</a>
+      <a class="chip" href="#read-the-work">The work</a>
+      <a class="chip" href="#talk-to-me">Contact</a>
+    </nav>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <h2 class="mini reveal" id="the-seat-i-held">The seat I held</h2>
+    <div class="sec-lock reveal" id="the-seat-i-held">
+      <span class="eyebrow">01 &middot; Credentials</span>
+      <h2>The seat I held</h2>
+    </div>
     <div class="fact-grid">
-      <div class="fact reveal"><div class="n">1,000+</div><div class="l">Principal, Distinguished, and Fellow engineers served as the org's communications lead. An analytical, truth-seeking audience that notices spin instantly.</div></div>
-      <div class="fact reveal"><div class="n">VP + CIO</div><div class="l">Principals written for directly: VP-level executive communications at xGE, and C-suite writing for Google's then-CIO in Corporate Engineering.</div></div>
-      <div class="fact reveal"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual senior-IC summit (600+ attendees) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div></div>
+      <a class="fact reveal" href="timeline.html"><div class="n">1,000+</div><div class="l">Principal, Distinguished, and Fellow engineers served as the org's communications lead. An analytical, truth-seeking audience that notices spin instantly.</div><span class="go-mark">the era, on the timeline &rarr;</span></a>
+      <a class="fact reveal" href="stories.html#digital-twin"><div class="n">VP + CIO</div><div class="l">Principals written for directly: VP-level executive communications at xGE, and C-suite writing for Google's then-CIO in Corporate Engineering.</div><span class="go-mark">how the VP's voice became a system &rarr;</span></a>
+      <a class="fact reveal" href="writing.html"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual senior-IC summit (600+ attendees) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div><span class="go-mark">the writing, word for word &rarr;</span></a>
       <div class="fact reveal"><div class="n">Three tiers</div><div class="l">Authored the org's three-tier communications operating model and its multi-channel strategy: routine requests move fast, high-stakes work gets full partnership.</div></div>
       <div class="fact reveal"><div class="n">Cadence</div><div class="l">Ran the recurring approval-intake prioritization meetings and drove cross-org security and memory-safety mandates through to approval, working alongside engineering leads and program owners.</div></div>
-      <div class="fact reveal"><div class="n">10+</div><div class="l">Producers led at AJ+ during its 500M-weekly-view era. Three I coached moved from behind the camera to on-air principals, with Emmy and Webby wins of their own.</div></div>
+      <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at AJ+ during its 500M-weekly-view era. Three I coached moved from behind the camera to on-air principals, with Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>
     </div>
-    <p class="prose reveal" style="margin-top:26px">Earlier: rebuilt Google's Day-One technical orientation into self-service onboarding for <strong>75,000+ new hires at 88% CSAT</strong>. Also designed the peer-led speaker series and annual survey that shape the senior-engineer community's roadmap.</p>
+  </div>
+</section>
+
+<section class="enable-band" id="enablement" style="padding-top:64px">
+  <div class="wrap">
+    <div class="sec-lock reveal">
+      <span class="eyebrow">02 &middot; Workshops, events, enablement</span>
+      <h2>Teaching at scale</h2>
+    </div>
+    <div class="enable-grid">
+      <div class="etile reveal">
+        <div class="e-n">75,000+</div>
+        <div class="e-k">Day-One, rebuilt</div>
+        <div class="e-b">Rebuilt Google's Day-One technical orientation into self-service onboarding for 75,000+ new hires, at 88% CSAT.</div>
+      </div>
+      <div class="etile reveal">
+        <div class="e-n">On stage</div>
+        <div class="e-k">Peer-led speaker series</div>
+        <div class="e-b">Designed the peer-led speaker series that puts the senior-engineer community's own voices on stage for each other.</div>
+      </div>
+      <div class="etile reveal">
+        <div class="e-n">Annual</div>
+        <div class="e-k">The survey that steers</div>
+        <div class="e-b">Designed the annual survey that shapes the senior-engineer community's roadmap.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -105,7 +183,10 @@
       <img src="assets/stills/oncam/momtrump-065.jpg" alt="Mitchell Williams on the AJ+ studio set, boom microphone in frame" loading="lazy">
       <figcaption class="oncam-cap">aj+ studio, 2016. on both sides of the camera.</figcaption>
     </figure>
-    <h2 class="mini reveal" id="judgment">Judgment when counsel is in the room</h2>
+    <div class="sec-lock reveal" id="judgment">
+      <span class="eyebrow">03 &middot; Editorial judgment</span>
+      <h2>Judgment when counsel is in the room</h2>
+    </div>
     <div class="prose reveal">
       <p>Comms leadership gets tested when Legal is on the call. Twice, that test ran live on air. At HuffPost Live I <a href="stories.html#scientology-live-coverage">covered Scientology while the network was under active legal scrutiny</a>. Counsel drew hard lines. I built the editorial filter that got every segment through review without losing the story. Then Fusion. I <a href="stories.html#fusion-ramos-lawsuit">produced Jorge Ramos's flagship weekly under a $500 million lawsuit</a>. Half a billion dollars on the line. The coverage ran. We stayed the reporter, never the headline.</p>
       <p>Same discipline carried into Google. Executive comms under regulatory and litigation scrutiny. The first draft has to anticipate the review, not fight it.</p>
@@ -115,23 +196,34 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="mini reveal" id="infrastructure">I built the infrastructure so the function scales</h2>
+    <div class="sec-lock reveal" id="infrastructure">
+      <span class="eyebrow">04 &middot; Systems</span>
+      <h2>I built the infrastructure so the function scales</h2>
+    </div>
     <p class="prose reveal" style="margin-bottom:26px">While leading communications, I built the systems a modern comms function needs. Not a career change. The same job, given leverage.</p>
     <div class="sys-list">
       <div class="sys reveal">
-        <div class="sys-name"><a href="stories.html#digital-twin">Executive digital twin</a></div>
+        <div class="sys-name"><a href="stories.html#digital-twin">Executive digital twin</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-digital-twin" href="stories.html#digital-twin" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-digital-twin.jpg" width="1376" height="768" alt="" loading="lazy"></a>
+        </div>
         <div class="sys-body">A writing system encoding one VP's voice: a constitution of voice rules plus a banned-phrase checklist, built in partnership with the principal it serves and used to draft high-stakes executive communications. It cut review back-and-forth with the VP by about 70%, a figure I measured myself and a reference can confirm. The voice encoding is consensual, documented, and auditable; the principal always holds final sign-off.</div>
       </div>
       <div class="sys reveal">
-        <div class="sys-name"><a href="comms-triage-agent.html">Comms triage agent</a></div>
+        <div class="sys-name"><a href="comms-triage-agent.html">Comms triage agent</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-triage-agent" href="comms-triage-agent.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-triage-agent.jpg" width="1376" height="768" alt="" loading="lazy"></a>
+        </div>
         <div class="sys-body">An autonomous intake pipeline for the org's communications requests: triage, revise, escalate, with a confidence threshold that routes anything uncertain to a human. Documented end to end and handed off with a full operator runbook. Designed to auto-handle roughly 55% of inbound requests and projected to recapture about 160 operational hours a year; both are design targets, reported as targets.</div>
       </div>
       <div class="sys reveal">
-        <div class="sys-name">voice-os</div>
+        <div class="sys-name"><a href="voice-os.html">voice-os</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-voice-os" href="voice-os.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-voice-os.jpg" width="1376" height="768" alt="" loading="lazy"></a>
+        </div>
         <div class="sys-body">The methodology rebuilt in public: an <a href="https://github.com/mitwilli-create/voice-os">open-source pipeline</a> that scores any draft against a target voice on six stylistic axes and gates anything below threshold. The repo documentation is linked from the <a href="writing.html">writing room</a>.</div>
       </div>
       <div class="sys reveal">
-        <div class="sys-name"><a href="career-ops.html">Agent orchestration</a></div>
+        <div class="sys-name"><a href="career-ops.html">Agent orchestration</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-agent-fleet" href="career-ops.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-agent-fleet.jpg" width="1376" height="768" alt="" loading="lazy"></a>
+        </div>
         <div class="sys-body">On my own time: a multi-model agent orchestration system with cost governance, scheduled autonomous jobs, and a live operations dashboard. For a comms leader, the point is fluency: I can read what the models actually do, so I can communicate about them without hand-waving.</div>
       </div>
     </div>
@@ -140,7 +232,10 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="mini reveal" id="principals-words">In the principal's words</h2>
+    <div class="sec-lock reveal" id="principals-words">
+      <span class="eyebrow">05 &middot; Testimonial</span>
+      <h2>In the principal's words</h2>
+    </div>
     <div class="slot reveal">
       <div class="sl-k">Testimonial · being gathered</div>
       <p>The right voice here is the VP I wrote for. I'm requesting that quote directly, not reconstructing it from reviews. This space stays empty until it lands. References who can vouch for the ghostwriting and the review-cycle claim are available on request.</p>
@@ -150,7 +245,10 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="mini reveal" id="read-the-work">Read the work</h2>
+    <div class="sec-lock reveal" id="read-the-work">
+      <span class="eyebrow">06 &middot; Artifacts</span>
+      <h2>Read the work</h2>
+    </div>
     <div class="cta-cards">
       <a class="ccard reveal" href="writing.html">
         <strong>The writing room</strong>
@@ -160,15 +258,23 @@
         <strong>Three stories for comms hiring managers</strong>
         <span>Ramos under a $500M lawsuit. Scientology under legal scrutiny. An executive's voice encoded as a system.</span>
       </a>
+      <a class="ccard reveal" href="broll-pipeline.html">
+        <strong>Writing for the ear</strong>
+        <span>One plain-text script becomes a produced, captioned short with a receipt. The same writing discipline, pointed at production.</span>
+      </a>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0;padding-bottom:96px">
   <div class="wrap">
-    <h2 class="mini reveal" id="talk-to-me">Talk to me</h2>
-    <div class="prose reveal">
-      <p>Hiring for executive comms, internal comms, or a comms leader who can build? Email me: <a href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>. The <a href="assets/mitchell-williams-resume.pdf">resume PDF</a> is one click, no form. Seattle-based, open to relocation, US citizen. I move fast, whatever process you run.</p>
+    <div class="sec-lock reveal" id="talk-to-me">
+      <span class="eyebrow">07 &middot; Contact</span>
+      <h2>Talk to me</h2>
+    </div>
+    <div class="talk-card reveal">
+      <div class="t-h">Hiring for comms that can build?</div>
+      <p>Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>. The <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">resume PDF</a> is one click, no form. Seattle-based, open to relocation, US citizen. I move fast, whatever process you run.</p>
     </div>
   </div>
 </section>
