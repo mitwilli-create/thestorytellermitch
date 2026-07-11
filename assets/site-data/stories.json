@@ -345,7 +345,8 @@
           "type": "img",
           "src": "assets/stills/mc-trump-2016.jpg",
           "cap": "Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA",
-          "alt": "Donald Trump at a 2016 campaign rally"
+          "alt": "Donald Trump at a 2016 campaign rally",
+          "preview": "assets/previews/fusion-2014-america-with-jorge-ramos-october-7.mp4"
         },
         {
           "type": "headline",
@@ -381,7 +382,8 @@
           "type": "img",
           "src": "assets/stills/mc-cruz-dhs-2017.jpg",
           "cap": "Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain",
-          "alt": "Carmen Yulin Cruz meeting with DHS leadership, October 2017"
+          "alt": "Carmen Yulin Cruz meeting with DHS leadership, October 2017",
+          "preview": "assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4"
         },
         {
           "type": "headline",
@@ -424,7 +426,8 @@
           "src": "assets/stills/measles-capitol.jpg",
           "cap": "From the piece: anti-vaccine protesters at California's capitol",
           "alt": "Anti-vaccine protest signs outside the California state capitol",
-          "after": 1
+          "after": 1,
+          "preview": "assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4"
         },
         {
           "type": "img",

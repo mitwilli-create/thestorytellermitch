@@ -43,7 +43,11 @@ const articles = stories.map((s) => {
           return `            <div class="termcard"><span class="tc-bar">${esc(m.title)}</span><pre class="tc-body">${esc(m.lines.join('\n'))}</pre></div>`;
         const cls = ['mcard', soloImg ? 'wide' : '', m.fit === 'contain' ? 'book' : '', m.tall ? 'tall' : ''].filter(Boolean).join(' ');
         const style = m.pos ? ` style="object-position:${esc(m.pos)}"` : '';
-        return `            <figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"${style}><figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
+        // m.preview: the image is a frame from (or directly tied to) a published
+        // clip; hover layers that clip's preview over the still (page JS wires it)
+        const img = `<img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"${style}>`;
+        const body = m.preview ? `<span class="m-prev" data-preview="${esc(m.preview)}">${img}</span>` : img;
+        return `            <figure class="${cls}">${body}<figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
       }).join('\n')}\n          </div>\n`;
   }
   const rowsAfter = (idx) => renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === idx));

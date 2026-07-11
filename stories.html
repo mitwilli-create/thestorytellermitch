@@ -112,6 +112,16 @@
     .story-fold[open] .sf-more{opacity:0}
     .story-fold .story{padding:8px 24px 28px}
     @media(max-width:860px){.story-fold summary{flex-wrap:wrap;gap:6px}}
+    /* stills that are frames from published clips: hover plays the clip
+       preview over the still (wired by the page script, motion-gated) */
+    .m-prev{position:relative;display:block;cursor:pointer}
+    .m-prev video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      opacity:0;transition:opacity var(--dur-move) var(--ease);pointer-events:none}
+    .m-prev.prev-on:hover video{opacity:1}
+    .m-prev::after{content:'▸ from the piece';position:absolute;right:8px;bottom:8px;z-index:2;
+      font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--bone);background:color-mix(in srgb,var(--bg) 78%,transparent);padding:3px 8px;
+      border:1px solid var(--line-2)}
 </style>
 </head>
 <body data-reveal-stagger="3">
@@ -355,7 +365,7 @@
 
           <p class="reveal">Running aggressive political coverage live, for a principal whose every question was a potential exhibit in ongoing litigation, turned editorial calls into risk calls. I ran daily story triage with senior producers and editorial leadership, flagged segments with litigation adjacency before they got booked, and structured rundowns so Ramos's signature move, the non-deferential question put to presidents and candidates, landed without blindsiding legal or standards. Every story also had to clear two sets of corporate interests, ABC's and Univision's, on top of our own editorial bar.</p>
           <div class="media-row reveal">
-            <figure class="mcard"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"><figcaption class="mcap">Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/fusion-2014-america-with-jorge-ramos-october-7.mp4"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"></span><figcaption class="mcap">Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA</figcaption></figure>
             <a class="clipcard" href="https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million" rel="noopener"><span class="co">NPR</span><span class="ch">Donald Trump Sues Univision For $500 Million</span><span class="ce">Donald Trump, a Republican presidential candidate, is suing Univision. The Spanish-language TV network dropped its coverage of Miss USA and Miss Universe...</span><span class="cd">Jun 30, 2015 ↗</span></a>
           </div>
 
@@ -380,7 +390,7 @@
 
           <p class="reveal">The clip hit 1.3 million views on a platform with a weekly audience north of 500 million. It ran at the peak of the national fight over the federal response. Cruz's advocacy during Maria became central to the congressional investigation into FEMA, and Puerto Rico's official death toll was later revised from 64 to 2,975. I won't claim our clip caused any of that. It put her voice on record while it mattered.</p>
           <div class="media-row reveal">
-            <figure class="mcard"><img src="assets/stills/mc-cruz-dhs-2017.jpg" alt="Carmen Yulin Cruz meeting with DHS leadership, October 2017" loading="lazy"><figcaption class="mcap">Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain</figcaption></figure>
+            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4"><img src="assets/stills/mc-cruz-dhs-2017.jpg" alt="Carmen Yulin Cruz meeting with DHS leadership, October 2017" loading="lazy"></span><figcaption class="mcap">Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain</figcaption></figure>
             <a class="clipcard" href="https://www.nbcnews.com/storyline/puerto-rico-crisis/san-juan-s-mayor-pleads-trump-you-are-killing-us-n806116" rel="noopener"><span class="co">NBC News</span><span class="ch">Puerto Rico Crisis: San Juan Mayor Pleads for Federal Aid, Trump Hits Back</span><span class="ce">&quot;We are dying, and you are killing us with the inefficiency and the bureaucracy,&quot; San Juan Mayor Carmen Yulín Cruz said Friday at a news conference.</span><span class="cd">Sep 29, 2017 ↗</span></a>
           </div>
 
@@ -400,7 +410,7 @@
 
           <p class="reveal">Three levers decided everything. The hook had to answer the viewer's unasked question, why should I stop scrolling, inside the first three seconds. The argument had to be legible at zero volume, because much of Facebook autoplay ran silent, so every cut and text line carried the logic without the audio. And the pacing had to match the platform's attention curve, not broadcast rhythm. Years at Al Jazeera English, HuffPost Live, and Fusion trained me to think in segments and rundowns. Social video had no rundown. It had a scroll.</p>
           <div class="media-row reveal solo">
-            <figure class="mcard wide"><img src="assets/stills/measles-capitol.jpg" alt="Anti-vaccine protest signs outside the California state capitol" loading="lazy"><figcaption class="mcap">From the piece: anti-vaccine protesters at California's capitol</figcaption></figure>
+            <figure class="mcard wide"><span class="m-prev" data-preview="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4"><img src="assets/stills/measles-capitol.jpg" alt="Anti-vaccine protest signs outside the California state capitol" loading="lazy"></span><figcaption class="mcap">From the piece: anti-vaccine protesters at California's capitol</figcaption></figure>
           </div>
 
           <div class="pull reveal">This was a systems problem dressed in editorial clothing.</div>
@@ -570,6 +580,27 @@ $ launchctl list | grep career-ops | head -8
   }
   addEventListener('scroll',()=>{ if(!spyTick){spyTick=true;requestAnimationFrame(spyUpdate);} },{passive:true});
   spyUpdate();
+</script>
+<script>
+  /* story stills that are frames from published clips hover-play that
+     clip's preview over the still (motion-gated, hover pointers only) */
+  if(window.__motionOK && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.m-prev[data-preview]').forEach((el)=>{
+      let v=null;
+      el.addEventListener('mouseenter',()=>{
+        if(!v){
+          v=document.createElement('video');
+          v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto';
+          v.setAttribute('muted',''); v.setAttribute('aria-hidden','true');
+          v.src=el.dataset.preview;
+          el.appendChild(v);
+          v.addEventListener('playing',()=>el.classList.add('prev-on'),{once:true});
+        }
+        const p=v.play(); if(p&&p.catch)p.catch(()=>{});
+      });
+      el.addEventListener('mouseleave',()=>{ if(v) v.pause(); });
+    });
+  }
 </script>
 <script>
   /* anchor links into folded stories auto-open them */
