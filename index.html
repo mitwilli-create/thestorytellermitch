@@ -58,6 +58,12 @@
     .sig-band::after{content:'';position:absolute;inset:0;pointer-events:none;
       background:linear-gradient(to right,var(--bg),rgba(10,10,11,0) 18%,rgba(10,10,11,0) 82%,var(--bg)),
         linear-gradient(to bottom,var(--bg),rgba(10,10,11,0) 30%,rgba(10,10,11,0) 70%,var(--bg))}
+    /* hero cinemagraph inherits the still's crop, grade, and hairline */
+    .sys-cine video{object-position:center 46%;filter:grayscale(0.12) contrast(1.03);
+      border-bottom:1px solid var(--line)}
+    .hero-sys:hover .sys-cine video{filter:grayscale(0) contrast(1.05)}
+    /* sig-band video sits under the band's edge-fade overlay */
+    .sig-band video{object-position:center}
     .no-js .hero-facts,.no-js .hero-sys{opacity:1;transform:none}
     @media(max-width:1120px){
       .hero-grid{grid-template-columns:1fr;gap:44px}
@@ -119,7 +125,9 @@
         </div>
       </div>
       <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline breakdown: one script in, a produced short out, every API call costed">
-        <img class="sys-illo" src="assets/stills/hero-machine-plate.jpg" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." loading="lazy">
+        <div class="cine sys-cine" data-cine="assets/cinemagraphs/hero-machine-plate">
+          <img class="sys-illo" src="assets/stills/hero-machine-plate.jpg" width="1200" height="896" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." loading="lazy">
+        </div>
         <div class="sys-body">
           <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $14.20</span></div>
           <pre class="sys-diagram" aria-hidden="true"><span class="n">input/script.md</span>
@@ -234,7 +242,7 @@
   </div>
 </section>
 
-<div class="sig-band" aria-hidden="true">
+<div class="sig-band cine" data-cine="assets/cinemagraphs/band-signal-flow-b" aria-hidden="true">
   <img src="assets/stills/band-signal-flow-b.jpg" alt="" loading="lazy">
 </div>
 

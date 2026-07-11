@@ -323,6 +323,15 @@ a.chip{text-decoration:none;display:inline-block}
       .oncam--hero img{opacity:0.6}
     }
 
+    /* ---------- cinemagraphs: living photographs, poster-first ----------
+       [data-cine] wraps a poster <img>; reveal.js lazily layers a muted
+       looping video over it when motion is allowed (never under reduced
+       motion, save-data, or no-JS: the img IS the fallback state). */
+    .cine{position:relative;display:block}
+    .cine video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      opacity:0;transition:opacity var(--dur-set) var(--ease-reveal);pointer-events:none}
+    .cine.cine-on video{opacity:1}
+
     /* ---------- reduced motion: static end states, sitewide ----------
        Collapse durations instead of removing animation so transitionend
        still fires and load-in choreography lands at its finished state
