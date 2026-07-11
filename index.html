@@ -58,6 +58,20 @@
     .sig-band::after{content:'';position:absolute;inset:0;pointer-events:none;
       background:linear-gradient(to right,var(--bg),rgba(10,10,11,0) 18%,rgba(10,10,11,0) 82%,var(--bg)),
         linear-gradient(to bottom,var(--bg),rgba(10,10,11,0) 30%,rgba(10,10,11,0) 70%,var(--bg))}
+    /* ---------- two-act opening ----------
+       Act 1 (0 to ~1s): title, sub, facts, CTAs set fast; readable inside
+       second one. Act 2 (~1.4s): the machine card wakes: cinemagraph fades
+       up, one pulse crosses the diagram, the receipt figure ticks in. */
+    .hero-sub{transition-delay:.3s,.3s}
+    .hero-facts{transition-delay:.4s,.4s}
+    .hero-cta{transition-delay:.5s,.5s}
+    .hero-sys{transition:opacity var(--dur-set) var(--ease) 1.2s,border-color var(--dur-micro) var(--ease-micro)}
+    .sys-diagram{position:relative}
+    .sys-diagram::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:34%;opacity:0;
+      background:linear-gradient(90deg,transparent,rgba(177,85,76,0.13),transparent);pointer-events:none}
+    .sys-diagram.pulse::after{animation:sys-pulse 1.4s var(--ease-mech)}
+    @keyframes sys-pulse{from{opacity:1;transform:translateX(0)}to{opacity:1;transform:translateX(440%)}}
+    .sys-k .r{font-variant-numeric:tabular-nums}
     /* hero cinemagraph inherits the still's crop, grade, and hairline */
     .sys-cine video{object-position:center 46%;filter:grayscale(0.12) contrast(1.03);
       border-bottom:1px solid var(--line)}
@@ -295,6 +309,26 @@
 
 <script src="shared/reveal.js?v=20260711"></script>
 <script>
+  // two-act opening. Act 1: tighter title stagger so name/role/CTAs are
+  // readable inside second one. Act 2 at ~1.4s: one pulse crosses the
+  // diagram and the receipt figure ticks up. Motion-off gets the static
+  // end state that is already in the HTML.
+  if(window.__motionOK){
+    document.querySelectorAll('.display .ln > span').forEach((el,i)=>{ el.style.transitionDelay=(0.05+i*0.07)+'s'; });
+    setTimeout(()=>{
+      const d=document.querySelector('.sys-diagram'); if(d) d.classList.add('pulse');
+      const r=document.querySelector('.sys-k .r');
+      if(r){
+        const t0=performance.now(), dur=1100, end=14.20;
+        const step=(t)=>{
+          const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+          r.textContent='run receipt $'+(end*e).toFixed(2);
+          if(k<1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    },1400);
+  }
   // hover-play every video tile: broll has a real src; the journalism tiles
   // lazy-load a short muted preview clip from data-src on first hover.
   document.querySelectorAll('.film video').forEach(v=>{
