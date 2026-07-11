@@ -1185,18 +1185,23 @@
       const f=document.createElement('iframe');
       f.src='https://www.youtube-nocookie.com/embed/'+d.youtubeId+'?autoplay=1';
       f.allow='autoplay; fullscreen; picture-in-picture'; f.allowFullscreen=true;
-      stage.appendChild(f); return;
+      stage.appendChild(f);
+      if(window.__sound) __sound.duck(true); // clip audio owns the room
+      return;
     }
     const devLocal=d.local&&(location.protocol==='file:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname));
     if(mode==='stream'&&d.streamId&&!devLocal){
       const f=document.createElement('iframe');
       f.src='https://customer-'+code+'.cloudflarestream.com/'+d.streamId+'/iframe?autoplay=true&poster='+encodeURIComponent(new URL(d.poster,location.href).href);
       f.allow='autoplay; fullscreen; picture-in-picture'; f.allowFullscreen=true;
-      stage.appendChild(f); return;
+      stage.appendChild(f);
+      if(window.__sound) __sound.duck(true); // clip audio owns the room
+      return;
     }
     const v=document.createElement('video');
     v.controls=true; v.autoplay=true; v.playsInline=true; v.preload='auto';
     v.poster=d.poster; v.src=d.local;
+    if(window.__sound) __sound.voice(v); // clip audio ducks the bed like narration
     stage.appendChild(v);
   }
   function openTheater(tile){
@@ -1206,6 +1211,7 @@
     document.getElementById('th-sub').textContent=d.sub||'';
     const cl=document.getElementById('th-case');
     if(d.case){cl.hidden=false;cl.href=d.case;}else{cl.hidden=true;}
+    if(window.__sound) __sound.score('assets/music/bed-analog-drone.mp3'); // theater bed, ~15%, opt-in only
     mountPlayer(d);
     theater.hidden=false;
     document.documentElement.classList.add('theater-open');
@@ -1216,6 +1222,7 @@
     stage.replaceChildren();
     theater.hidden=true;
     document.documentElement.classList.remove('theater-open');
+    if(window.__sound){ __sound.duck(false); __sound.score(null); }
     if(lastTile) lastTile.focus();
   }
   document.addEventListener('click',e=>{

@@ -70,6 +70,11 @@
       state.scoreEl.volume = 0;
       state.scoreEl.play().then(() => fade(state.scoreEl, state.voiceBusy ? DUCK_VOL : SCORE_VOL, 1200)).catch(() => {});
     },
+    duck(on) {
+      // for contexts where playback can't be observed (iframe players):
+      // hold the bed at duck level while a clip is presumably speaking
+      if (state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, on ? DUCK_VOL : SCORE_VOL, on ? 300 : 900);
+    },
     voice(el) {
       el.addEventListener('play', () => {
         // one voice at a time; duck the bed; hold one-shots and hum

@@ -334,6 +334,14 @@
       }
     },1400);
   }
+  // post-opt-in homepage score: the bed starts on the toggle gesture and
+  // on later visits where the stored preference is on (play() is caught
+  // silently if the browser blocks it without fresh engagement).
+  if(window.__sound){
+    const bed=()=>__sound.score('assets/music/bed-analog-drone.mp3');
+    __sound.sub(on=>{ if(on) bed(); });
+    if(__sound.on) bed();
+  }
   // hover-play every video tile: broll has a real src; the journalism tiles
   // lazy-load a short muted preview clip from data-src on first hover.
   document.querySelectorAll('.film video').forEach(v=>{

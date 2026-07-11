@@ -107,6 +107,17 @@
     .manifest .caption{font-size:12px;color:var(--dim);padding:12px 18px;background:var(--surface);
       border-top:1px solid var(--line);line-height:1.6}
     .manifest .caption a{color:var(--mute);border-bottom:1px solid var(--line-2)}
+    /* ---------- dubbing toggle: same cut, ElevenLabs Dubbing API ---------- */
+    .dub-bar{display:flex;flex-direction:column;gap:8px;margin-top:12px;max-width:300px}
+    .dub-toggle{display:flex;gap:6px}
+    .dub-note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;
+      color:var(--dim);text-transform:lowercase}
+    /* ---------- voice variety: one paragraph, three voices ---------- */
+    .variety{max-width:760px;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+    .variety-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
+      text-transform:lowercase;color:var(--dim)}
+    .variety-row{display:flex;gap:8px;flex-wrap:wrap}
+    .variety .chip.is-playing{border-color:var(--blood-soft);color:var(--bone);background:rgba(138,58,51,0.14)}
     /* ---------- the run, animated from broll-run.json ---------- */
     .diagram .node{transition:color var(--dur-micro) var(--ease-mech),text-shadow var(--dur-micro) var(--ease-mech)}
     .diagram .node.run-on{color:var(--blood-soft);text-shadow:0 0 14px rgba(177,85,76,0.35)}
@@ -225,11 +236,19 @@
     <div class="cs-stage">
       <div>
         <div class="cs-video">
-          <video controls playsinline preload="metadata" poster="assets/broll-poster.jpg">
+          <video controls playsinline preload="metadata" poster="assets/broll-poster.jpg" data-reel>
             <source src="assets/broll-short.mp4" type="video/mp4">
             <track kind="captions" src="assets/broll-short.vtt" srclang="en" label="English" default>
             Your browser does not support the video tag.
           </video>
+        </div>
+        <div class="dub-bar">
+          <div class="dub-toggle" role="group" aria-label="Reel language, dubbed through the pipeline's Dubbing API stage">
+            <button class="chip is-active" type="button" data-dub="en">EN</button>
+            <button class="chip" type="button" data-dub="es">ES</button>
+            <button class="chip" type="button" data-dub="ja">JA</button>
+          </div>
+          <span class="dub-note" data-dubnote>original English cut &middot; captions: English</span>
         </div>
         <p class="cs-video-cap">The film is the pipeline explaining itself: the machine narrating how it replaced the crew, every claim rendered from the run's real artifacts. 1080×1920, 53s, sixteen beats cut 2-4 seconds each. Six beats are motion graphics rendered in code from the pipeline's own artifacts (the real script, the real cost manifest, the real reroll command); ten are AI-generated shots directed by a creative council and inspected by its review board. Narration and score generated live through the ElevenLabs API, then gain-staged to measured loudness targets with the voice always on top, gated by a blind audio review that listens to the cut with zero context. The pipeline also carries a per-shot video-to-audio foley stage; for this screen-heavy cut the sound-design call was voice and score only, because footage without physical action on camera does not motivate natural sound. The <a href="assets/broll-short.es.mp4" rel="noopener">Spanish dub</a> came from the same cut. Captions from the pipeline's own timing.</p>
       </div>
@@ -406,6 +425,14 @@
     <div class="cs-callout" style="margin-top:24px;">
       <p>Understand the pipeline. Prototype the replacement. Package it so it travels. Teach it. The short is proof of craft; the manifest and the template are proof I can hand it to a customer and have it still work after I leave.</p>
     </div>
+    <div class="variety" aria-label="The paragraph above, rendered in three contrasting ElevenLabs voices">
+      <span class="variety-k">hear that paragraph in another voice &middot; same copy, three ElevenLabs voices, one TTS call each</span>
+      <div class="variety-row">
+        <button class="chip" type="button" data-variety="assets/audio/variety-daniel-broadcaster.mp3">Daniel &middot; steady broadcaster</button>
+        <button class="chip" type="button" data-variety="assets/audio/variety-jessica-bright.mp3">Jessica &middot; bright, warm</button>
+        <button class="chip" type="button" data-variety="assets/audio/variety-charlie-aussie.mp3">Charlie &middot; deep, energetic</button>
+      </div>
+    </div>
     <div class="cs-cta" style="margin-top:40px;max-width:none;">
       <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>
       <a class="btn" href="fit.html"><span>See the fit case</span></a>
@@ -478,6 +505,53 @@
     io.observe(diagram);
     replay.addEventListener('click',playRun);
   }
+
+  // Dubbing toggle: swap the reel between language cuts from the same
+  // pipeline run, preserving playhead and play state. Caption tracks are
+  // declared per language and labeled honestly (only EN has captions
+  // until a language ships with its own file).
+  const reel=document.querySelector('[data-reel]');
+  if(reel){
+    const CUTS={
+      en:{src:'assets/broll-short.mp4',vtt:'assets/broll-short.vtt',cap:'English',note:'original English cut &middot; captions: English'},
+      es:{src:'assets/broll-short.es.mp4',vtt:null,cap:null,note:'Spanish dub, Dubbing API, same cut &middot; captions: none yet'},
+      ja:{src:'assets/broll-short.ja.mp4',vtt:'assets/broll-short.ja.vtt',cap:'Japanese',note:'Japanese dub, Dubbing API, same cut &middot; captions: Japanese, from the dub transcript'}
+    };
+    const note=document.querySelector('[data-dubnote]');
+    document.querySelectorAll('.dub-toggle .chip').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const cut=CUTS[btn.dataset.dub]; if(!cut||btn.classList.contains('is-active')) return;
+        document.querySelectorAll('.dub-toggle .chip').forEach(b=>b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const t=reel.currentTime, wasPlaying=!reel.paused;
+        reel.querySelectorAll('source,track').forEach(n=>n.remove());
+        const s=document.createElement('source'); s.src=cut.src; s.type='video/mp4'; reel.appendChild(s);
+        if(cut.vtt){ const tr=document.createElement('track'); tr.kind='captions'; tr.src=cut.vtt; tr.srclang=btn.dataset.dub; tr.label=cut.cap; tr.default=true; reel.appendChild(tr); }
+        note.innerHTML=cut.note;
+        reel.load();
+        reel.addEventListener('loadedmetadata',()=>{ reel.currentTime=Math.min(t,reel.duration||t); if(wasPlaying) reel.play().catch(()=>{}); },{once:true});
+      });
+    });
+  }
+
+  // Voice variety: pressing a chip is the explicit gesture (plays even
+  // with the master toggle off, like narration); one voice at a time,
+  // registered with the engine so the bed ducks.
+  (()=>{
+    let cur=null,curBtn=null;
+    document.querySelectorAll('[data-variety]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        if(curBtn===btn&&cur&&!cur.paused){ cur.pause(); return; }
+        if(cur){ cur.pause(); }
+        if(curBtn) curBtn.classList.remove('is-playing');
+        cur=new Audio(btn.dataset.variety); curBtn=btn;
+        if(window.__sound) __sound.voice(cur);
+        cur.addEventListener('ended',()=>btn.classList.remove('is-playing'));
+        cur.addEventListener('pause',()=>btn.classList.remove('is-playing'));
+        cur.play().then(()=>btn.classList.add('is-playing')).catch(()=>{});
+      });
+    });
+  })();
 
   // Proof moment 2: the receipt prints its lines top-down, once, on scroll.
   const paper=document.querySelector('[data-receipt]');
