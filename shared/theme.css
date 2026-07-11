@@ -362,6 +362,24 @@ a.chip{text-decoration:none;display:inline-block}
     .sig-pulse.pulsing::after{animation:sig-sweep 1.6s var(--ease-mech)}
     @keyframes sig-sweep{from{opacity:1;background-position-x:-60%}to{opacity:1;background-position-x:160%}}
 
+    /* ---------- sound toggle (audio.js): muted default, opt-in ---------- */
+    .sound-toggle{position:fixed;right:18px;bottom:18px;z-index:200;min-width:44px;min-height:44px;
+      display:flex;align-items:center;gap:8px;padding:0 14px;cursor:pointer;
+      background:rgba(10,10,11,0.82);backdrop-filter:blur(6px);border:1px solid var(--line-2);
+      color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.14em;text-transform:uppercase;
+      transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
+    .sound-toggle:hover{color:var(--bone);border-color:var(--blood-soft)}
+    .sound-toggle .st-i{width:14px;height:10px;position:relative;display:inline-block}
+    .sound-toggle .st-i::before,.sound-toggle .st-i::after,.sound-toggle .st-i span{content:''}
+    .sound-toggle .st-i::before{content:'';position:absolute;left:0;bottom:0;width:3px;height:4px;background:currentColor}
+    .sound-toggle .st-i::after{content:'';position:absolute;left:5px;bottom:0;width:3px;height:8px;background:currentColor;opacity:0.55}
+    .sound-toggle .st-i{border-right:3px solid currentColor}
+    .sound-toggle[aria-pressed="true"]{color:var(--blood-soft);border-color:var(--blood-soft)}
+    .sound-toggle[aria-pressed="true"]:hover{color:var(--bone)}
+    .sound-toggle[aria-pressed="false"] .st-i{opacity:0.5}
+    @media(max-width:860px){.sound-toggle{right:12px;bottom:12px}}
+
     /* ---------- reduced motion: static end states, sitewide ----------
        Collapse durations instead of removing animation so transitionend
        still fires and load-in choreography lands at its finished state

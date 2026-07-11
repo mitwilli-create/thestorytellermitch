@@ -311,6 +311,7 @@ export function page({ name, pillars, contact, sections }, lane) {
 </footer>
 
 <script src="../shared/reveal.js?v=20260711b"></script>
+<script src="../shared/audio.js?v=20260711c"></script>
 </body>
 </html>
 `;
