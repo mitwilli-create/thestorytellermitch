@@ -310,7 +310,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   </div>
 </footer>
 
-<script src="../shared/reveal.js?v=20260711d"></script>
+<script src="../shared/reveal.js?v=20260711e"></script>
 <script src="../shared/audio.js?v=20260711c"></script>
 </body>
 </html>

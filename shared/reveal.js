@@ -22,6 +22,8 @@
   // (decode, autoplay policy, 404) silently leaves the poster in place.
   // [data-cine-hover] variants stay a poster until pointer hover and pause
   // on leave (hover-capable pointers only).
+  // [data-cine-m] names a lighter 960px encode served to narrow viewports
+  // so heavy HD loops never dominate a phone's transfer budget.
   const saveData = navigator.connection && navigator.connection.saveData;
   if (window.__motionOK && !saveData) {
     const buildCine = (el, base) => {
@@ -36,8 +38,9 @@
       el.appendChild(v);
       return v;
     };
+    const narrow = matchMedia('(max-width: 640px)').matches;
     const startCine = (el) => {
-      const v = buildCine(el, el.dataset.cine);
+      const v = buildCine(el, (narrow && el.dataset.cineM) || el.dataset.cine);
       const p = v.play(); if (p && p.catch) p.catch(() => v.remove());
     };
     const cio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { cio.unobserve(e.target); startCine(e.target); } }); }, { rootMargin: '160px' });
