@@ -43,7 +43,9 @@
        mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
-    @page{size:letter;margin:0}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
     @media print{
       :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
@@ -60,15 +62,15 @@
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:8.33pt;margin-top:5pt;line-height:1.5}
-      section.rsec{margin-top:6.5pt;padding:0}
+      section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:8.33pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:9.8pt;line-height:1.3;margin-bottom:3pt}
+      .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:9.8pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
+      .rl li{font-size:9.8pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:11.6pt;break-after:avoid}
@@ -112,11 +114,11 @@
     </div>
   </header>
   <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>The receipt first: <a href="../broll-pipeline.html">broll-pipeline</a>, in Node and ffmpeg on the ElevenLabs stack, produced a 53-second creative-directed short with a Spanish dub for $14.20 all-in, every retake logged to a run manifest, public on GitHub with a README build walkthrough.</strong> Forward Deployed Creative: embed with a team, learn the pipeline, ship the replacement for the slow part, and teach the team to run it. The arc runs journalist to communications strategist to applied-AI builder; the loop never changed. Target lane: forward-deployed creative and agent-builder roles on the creative-AI and agent stack, plus media and entertainment-vertical solutions work.</p>
-<p class="rp"><a href="../career-ops.html">career-ops</a> runs about 50 scheduled agents daily, CI-green under a unified spend cap. A <a href="../stories.html#digital-twin">digital twin</a> built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.</p>
+<p class="rp"><a href="../career-ops.html">career-ops</a> runs 52 scheduled agents daily and has produced 1,150+ scored role reports, CI-green under a unified spend cap. A <a href="../stories.html#digital-twin">digital twin</a> built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.</p>
 <p class="rp"><strong>Eight years at Google, the last two building production LLM agents for its most senior engineers</strong>, after a decade in live national newsrooms where the workflow was the product.</p></section>
 <section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Repos at <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>.</p>
 <p class="rp"><strong>broll-pipeline</strong> · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing. Live demo: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included, every API call logged to a run manifest. Public and reproducible.</p>
-<p class="rp"><strong>career-ops</strong> · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, about 50 scheduled agents, live operations dashboard. CI-green and test-covered; open-sourcing in progress.</p>
+<p class="rp"><strong>career-ops</strong> · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, 52 scheduled agents, live operations dashboard. CI-green, test-covered, and public on GitHub.</p>
 <p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude: every claim cites its source; unknowns surface as placeholders. Caught a ~$19K multi-state error filing software pre-filled and defended as correct. Public.</p>
 <p class="rp"><strong><a href="../voice-os.html">voice-os</a></strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker. Public.</p></section>
 <section class="rsec"><h2 class="rsec-h">Highlights</h2><ul class="rl"><li><strong>Calibrate to a principal's standards.</strong> The VP digital twin (voice "Constitution" plus banned-phrase verification checklist) cut review back-and-forth by about 70%.</li><li><strong>Teach the team to run it.</strong> The <a href="../comms-triage-agent.html">comms-triage agent</a> shipped with a full <a href="../writing.html">operator runbook</a> (prompt architecture, KB-loading rules, escalation paths, failure modes) written for a non-builder operator.</li><li><strong>Deliver through partner engineering as well as solo.</strong> Specced and architected MEJ with the partner-engineering team that built its matching engine; scoped the approvals automation partner engineering built.</li></ul></section>
@@ -130,7 +132,7 @@
 <ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production through a 179% viewership-growth window (40M households); field-produced Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>CNN, Writer / Producer, "New Day" (2016):</strong> morning-show segments through the election cycle.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
-<section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Ships in production:</strong> Node.js / ESM, ffmpeg + ElevenLabs creative-AI pipeline, Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (about 50 scheduled agents), eval / QA / regression gates.</p>
+<section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Ships in production:</strong> Node.js / ESM, ffmpeg + ElevenLabs creative-AI pipeline, Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (52 scheduled agents), eval / QA / regression gates.</p>
 <p class="rp"><strong>Agent design:</strong> Apps Script + Gemini (Google-internal production agents), prompt architecture, conditional knowledge-base loading, citation-gating, deterministic constraint gates (<a href="../monolith.html">monolith</a>), Claude Code skills, Model Context Protocol (MCP).</p>
 <p class="rp"><strong>Also:</strong> JavaScript / Node.js, Python (scripting), YAML, Greenhouse / Ashby / Lever APIs; live-broadcast editorial, field production, executive communications, on-camera coaching.</p></section>
 </div>

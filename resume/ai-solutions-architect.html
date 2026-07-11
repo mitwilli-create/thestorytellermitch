@@ -43,7 +43,9 @@
        mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
-    @page{size:letter;margin:0}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
     @media print{
       :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
@@ -60,15 +62,15 @@
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:8.33pt;margin-top:5pt;line-height:1.5}
-      section.rsec{margin-top:6.5pt;padding:0}
+      section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:8.33pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:9.8pt;line-height:1.3;margin-bottom:3pt}
+      .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:9.8pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
+      .rl li{font-size:9.8pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:11.6pt;break-after:avoid}
@@ -118,7 +120,7 @@
 <p class="rp"><strong>voice-os</strong> · Six-axis measured voice scoring, dual-persona routing, and QA gates calibrated on a multi-million-word corpus; codified voice "Constitution" plus banned-phrase checker. The personal build of the governed-voice technique behind the Google executive digital twin.</p>
 <p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude: no claim without a source, unknowns surface as placeholders instead of guesses. Caught a ~$19K multi-state error that filing software pre-filled and defended as correct.</p>
 <p class="rp"><strong><a href="../monolith.html">monolith</a></strong> · TypeScript agent built on hard guarantees: a deterministic constraint-gate contract that returns INSUFFICIENT_DATA instead of guessing when the inputs cannot support an answer.</p>
-<p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, about 50 scheduled agents, live dashboard under a unified spend cap. CI-green; public release in progress.</p>
+<p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, 52 scheduled agents, 1,150+ scored role reports, live dashboard under a unified spend cap. CI-green; public on GitHub.</p>
 <p class="rp"><strong><a href="../broll-pipeline.html">broll-pipeline</a></strong> · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included.</p></section>
 <section class="rsec"><h2 class="rsec-h">Fit for AI Solutions Architecture</h2><ul class="rl"><li><strong>Voice fidelity as a testable primitive.</strong> The executive digital twin measures every draft against a voice "Constitution" and banned-phrase checklist; it cut VP review back-and-forth by about 70% (internal, self-measured).</li><li><strong>Hard guarantees over vibes.</strong> The tax-verification agent is citation-gated by architecture and caught a ~$19K error that commercial software defended as correct. Monolith returns INSUFFICIENT_DATA instead of guessing.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
