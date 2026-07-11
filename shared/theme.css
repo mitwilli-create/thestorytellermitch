@@ -398,7 +398,7 @@ a.chip{text-decoration:none;display:inline-block}
     /* ---------- sound toggle (audio.js): muted default, opt-in ---------- */
     .sound-toggle{position:fixed;right:18px;bottom:18px;z-index:200;min-width:44px;min-height:44px;
       display:flex;align-items:center;gap:8px;padding:0 14px;cursor:pointer;
-      background:rgba(10,10,11,0.82);backdrop-filter:blur(6px);border:1px solid var(--line-2);
+      background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(6px);border:1px solid var(--line-2);
       color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.14em;text-transform:uppercase;
       transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}

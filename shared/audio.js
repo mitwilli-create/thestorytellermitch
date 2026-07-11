@@ -22,8 +22,14 @@
   const DUCK_VOL = 0.04;       // bed while a voice is speaking
   const SFX_VOL = 0.5;
   const HUM_VOL = 0.22;
+  // storage access can throw (Safari Private Browsing, blocked storage);
+  // a throw here would abort the IIFE and take the whole engine with it
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+  };
   const state = {
-    on: localStorage.getItem(KEY) === 'on',
+    on: store.get(KEY) === 'on',
     subs: [], voiceBusy: false,
     scoreEl: null, humEl: null, sfxCache: {},
   };
@@ -96,7 +102,7 @@
 
   const setOn = (on) => {
     state.on = on;
-    localStorage.setItem(KEY, on ? 'on' : 'off');
+    store.set(KEY, on ? 'on' : 'off');
     btn.setAttribute('aria-pressed', String(on));
     btn.classList.toggle('is-on', on);
     if (!on) { api.score(null); api.hum(false); }

@@ -221,9 +221,9 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" aria-label="Narration console for this page">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
       <div class="vc-head">
-        <span class="vc-k">listen &middot; this page, narrated</span>
+        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
         <span class="vc-label">synthetic voice, cloned with consent</span>
       </div>
       <div class="vc-body">
@@ -260,11 +260,11 @@
         </div>
         <div class="dub-bar">
           <div class="dub-toggle" role="group" aria-label="Reel language, dubbed through the pipeline's Dubbing API stage">
-            <button class="chip is-active" type="button" data-dub="en">EN</button>
-            <button class="chip" type="button" data-dub="es">ES</button>
-            <button class="chip" type="button" data-dub="ja">JA</button>
+            <button class="chip is-active" type="button" data-dub="en" aria-pressed="true">EN</button>
+            <button class="chip" type="button" data-dub="es" aria-pressed="false">ES</button>
+            <button class="chip" type="button" data-dub="ja" aria-pressed="false">JA</button>
           </div>
-          <span class="dub-note" data-dubnote>original English cut &middot; captions: English</span>
+          <span class="dub-note" data-dubnote aria-live="polite">original English cut &middot; captions: English</span>
         </div>
         <p class="cs-video-cap">The film is the pipeline explaining itself: the machine narrating how it replaced the crew, every claim rendered from the run's real artifacts. 1080×1920, 53s, sixteen beats cut 2-4 seconds each. Six beats are motion graphics rendered in code from the pipeline's own artifacts (the real script, the real cost manifest, the real reroll command); ten are AI-generated shots directed by a creative council and inspected by its review board. Narration and score generated live through the ElevenLabs API, then gain-staged to measured loudness targets with the voice always on top, gated by a blind audio review that listens to the cut with zero context. The pipeline also carries a per-shot video-to-audio foley stage; for this screen-heavy cut the sound-design call was voice and score only, because footage without physical action on camera does not motivate natural sound. The <a href="assets/broll-short.es.mp4" rel="noopener">Spanish dub</a> came from the same cut. Captions from the pipeline's own timing.</p>
       </div>
@@ -537,8 +537,8 @@
     document.querySelectorAll('.dub-toggle .chip').forEach(btn=>{
       btn.addEventListener('click',()=>{
         const cut=CUTS[btn.dataset.dub]; if(!cut||btn.classList.contains('is-active')) return;
-        document.querySelectorAll('.dub-toggle .chip').forEach(b=>b.classList.remove('is-active'));
-        btn.classList.add('is-active');
+        document.querySelectorAll('.dub-toggle .chip').forEach(b=>{b.classList.remove('is-active');b.setAttribute('aria-pressed','false');});
+        btn.classList.add('is-active');btn.setAttribute('aria-pressed','true');
         const t=reel.currentTime, wasPlaying=!reel.paused;
         reel.querySelectorAll('source,track').forEach(n=>n.remove());
         const s=document.createElement('source'); s.src=cut.src; s.type='video/mp4'; reel.appendChild(s);
