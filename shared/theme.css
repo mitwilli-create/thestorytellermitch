@@ -24,7 +24,7 @@
       font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
       font-size:17px;line-height:1.6;font-weight:400;
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
+      overflow-x:clip; /* clip, not hidden: hidden makes body a scroll container and breaks anchor/fragment scrolling site-wide */
     }
     /* subtle concrete grain */
     body::after{

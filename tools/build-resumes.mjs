@@ -21,9 +21,78 @@ const LANES = {
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };
 
+const PRINT_PT = {
+  'forward-deployed': 9.8, 'ai-solutions-architect': 9.8, 'ai-enablement': 9.2,
+  'ai-program-manager': 9.2, 'comms-manager': 9.6, 'devrel-education': 9.8,
+  'content-editorial': 9.2,
+};
+
+// Deep links: first mention per resume of a video / story / project routes to its page.
+// Applied to assembled section HTML only; skips text already inside an <a>.
+const TERM_LINKS = [
+  ['tax-verification-agent', '../tax-verification-agent.html'],
+  ['comms-triage-agent', '../comms-triage-agent.html'],
+  ['tax-verification agent', '../tax-verification-agent.html'],
+  ['Communications-triage agent', '../comms-triage-agent.html'],
+  ['comms-triage agent', '../comms-triage-agent.html'],
+  ['comms-triage', '../comms-triage-agent.html'],
+  ['broll-pipeline', '../broll-pipeline.html'],
+  ['content-ops', '../content-ops.html'],
+  ['voice-os', '../voice-os.html'],
+  ['career-ops', '../career-ops.html'],
+  ['monolith', '../monolith.html'],
+  ['#FreeAhmed', '../stories.html#freeahmed-coalition'],
+  ['Nelson Mandela', '../stories.html#mandela-special'],
+  ['bin Laden', '../stories.html#stream-launch-night'],
+  ['Umbrella Revolution', '../stories.html#mong-kok-backpack-live'],
+  ['Scientology', '../stories.html#scientology-live-coverage'],
+  ['digital-twin agent', '../stories.html#digital-twin'],
+  ['digital twin', '../stories.html#digital-twin'],
+  ['talent pipeline', '../stories.html#talent-pipeline'],
+  ['explainer line', '../stories.html#aj-plus-50m-views'],
+  ['measles explainer', '../select-works.html'],
+  ['talent-branding video', '../select-works.html'],
+  ['engineer profiles', '../select-works.html'],
+  ['operator runbook', '../writing.html'],
+];
+function deepLink(html) {
+  const parts = html.split(/(<[^>]+>)/);
+  const linked = new Set(); // one link per destination URL per document
+  let anchorDepth = 0;
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (p.startsWith('<')) {
+      if (/^<a[\s>]/i.test(p)) anchorDepth++;
+      else if (/^<\/a>/i.test(p)) anchorDepth = Math.max(0, anchorDepth - 1);
+      continue;
+    }
+    if (anchorDepth > 0 || !p.trim()) continue;
+    // collect non-overlapping matches against the pristine token, then apply right-to-left
+    const spans = [];
+    for (const [phrase, url] of TERM_LINKS) {
+      if (linked.has(url)) continue;
+      const idx = p.toLowerCase().indexOf(phrase.toLowerCase());
+      if (idx === -1) continue;
+      if (spans.some(sp => idx < sp.end && idx + phrase.length > sp.start)) continue;
+      spans.push({ start: idx, end: idx + phrase.length, url });
+      linked.add(url);
+    }
+    spans.sort((a, b) => b.start - a.start);
+    let text = p;
+    for (const sp of spans) {
+      text = text.slice(0, sp.start) + '<a href="' + sp.url + '">' + text.slice(sp.start, sp.end) + '</a>' + text.slice(sp.end);
+    }
+    parts[i] = text;
+  }
+  return parts.join('');
+}
+
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // inline markdown: **bold** only; URLs stay plain text (print-honest)
-const inline = (s) => esc(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
+const inline = (s) => esc(s)
+  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+  .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 function parse(md, file) {
   const lines = md.split('\n');
@@ -96,7 +165,11 @@ function page({ name, pillars, contact, sections }, lane) {
   const secHtml = sections.map(s =>
     `<section class="rsec${s.intro ? ' rsec-intro' : ''}">${s.title ? `<h2 class="rsec-h">${inline(s.title)}</h2>` : ''}${renderBlocks(s.blocks)}</section>`
   ).join('\n');
+  const secHtmlLinked = deepLink(secHtml);
 
+  const pt = PRINT_PT[lane.slug] ?? 9.2;
+  const sm = (pt * 0.85).toFixed(2);
+  const rh = (pt + 1.8).toFixed(1);
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -109,7 +182,7 @@ function page({ name, pillars, contact, sections }, lane) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260710">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -136,28 +209,35 @@ function page({ name, pillars, contact, sections }, lane) {
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
     /* ---- print: bone-paper light variant, same brand ---- */
-    @page{size:letter;margin:0.42in 0.5in}
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
+    @page{size:letter;margin:0}
     @media print{
       :root{--bg:#f7f4ee;--surface:#f7f4ee;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#f7f4ee !important;color:#2e2a26}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0;max-width:none}
-      .rname{font-size:19pt}
-      .rpillars{font-size:7.5pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:7.5pt;margin-top:5pt;line-height:1.5}
+      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rname{font-size:20pt}
+      .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6.5pt;padding:0}
-      .rsec-h{font-size:7.5pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:8.8pt;line-height:1.3;margin-bottom:3pt}
+      .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:${pt}pt;line-height:1.3;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:8.8pt;line-height:1.28;margin-bottom:2pt;padding-left:11pt;break-inside:avoid}
+      .rl li{font-size:${pt}pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:10.5pt;break-after:avoid}
-      .rrole-s{font-size:7.5pt;margin:1.5pt 0 4pt}
+      .rrole-h{font-size:${rh}pt;break-after:avoid}
+      .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:8.8pt;margin-bottom:2pt}
+      .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -188,13 +268,14 @@ function page({ name, pillars, contact, sections }, lane) {
     <div class="kicker">resume · ${esc(lane.title.toLowerCase())}</div>
     <h1 class="rname">${esc(name)}</h1>
     <div class="rpillars">${esc(pillars)}</div>
-    <div class="rcontact">${contact.map(c => inline(c)).join('<br>')}</div>
+    <div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane))}.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#${esc(lane.slug === 'forward-deployed' ? 'forward-deployed' : lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
-  ${secHtml}
+  ${secHtmlLinked}
 </div>
 
 <footer>

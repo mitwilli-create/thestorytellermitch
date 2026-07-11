@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260710">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -37,28 +37,35 @@
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
     /* ---- print: bone-paper light variant, same brand ---- */
-    @page{size:letter;margin:0.42in 0.5in}
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
+    @page{size:letter;margin:0}
     @media print{
       :root{--bg:#f7f4ee;--surface:#f7f4ee;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#f7f4ee !important;color:#2e2a26}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0;max-width:none}
-      .rname{font-size:19pt}
-      .rpillars{font-size:7.5pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:7.5pt;margin-top:5pt;line-height:1.5}
+      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rname{font-size:20pt}
+      .rpillars{font-size:8.16pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:8.16pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6.5pt;padding:0}
-      .rsec-h{font-size:7.5pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:8.8pt;line-height:1.3;margin-bottom:3pt}
+      .rsec-h{font-size:8.16pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:9.6pt;line-height:1.3;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:8.8pt;line-height:1.28;margin-bottom:2pt;padding-left:11pt;break-inside:avoid}
+      .rl li{font-size:9.6pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:10.5pt;break-after:avoid}
-      .rrole-s{font-size:7.5pt;margin:1.5pt 0 4pt}
+      .rrole-h{font-size:11.4pt;break-after:avoid}
+      .rrole-s{font-size:8.16pt;margin:1.5pt 0 4pt}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:8.8pt;margin-bottom:2pt}
+      .rinit-h{font-size:9.6pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -89,8 +96,9 @@
     <div class="kicker">resume · communications manager (ai-native)</div>
     <h1 class="rname">Mitchell Williams</h1>
     <div class="rpillars">PRODUCT AND TECHNICAL COMMUNICATIONS · PRODUCTION AI AGENT BUILDING · SOURCED-CLAIM DISCIPLINE</div>
-    <div class="rcontact">Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com<br>linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com<br>Writing portfolio: thestorytellermitch.com/writing</div>
+    <div class="rcontact">Seattle, WA (open to relocation) | <span class="pdf-phone"></span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a> | <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a> | <a href="https://thestorytellermitch.com">thestorytellermitch.com</a><br>Writing portfolio: <a href="https://thestorytellermitch.com/writing">thestorytellermitch.com/writing</a></div>
     <div class="rtop">
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn solid" href="../assets/resumes/mitchell-williams-comms-manager.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#comms-manager"><span>The fit case</span></a>
     </div>
@@ -98,21 +106,21 @@
   <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>Communications manager who understands what the models actually do, because the audience can tell when you do not.</strong> Journalist, then communications and content strategist, then applied-AI builder; the habit that carries through: every claim gets a source.</p>
 <p class="rp"><strong>Eight years at Google in executive and engineering communications.</strong> Wrote for then-CIO Ben Fried at Corporate Engineering, then ran communications for Google's 1,000+ most senior engineers at Cross-Google Engineering (xGE), building two production LLM agents for the communications function itself.</p>
 <p class="rp"><strong>Before Google, a decade of live national news at AJ+, CNN, Fusion, HuffPost Live, and Al Jazeera English.</strong> Ten years deciding what ran teaches you what a working journalist needs from a technical story.</p></section>
-<section class="rsec"><h2 class="rsec-h">Fit for Product, Technical, and Research Communications (AI-Native)</h2><ul class="rl"><li><strong>Understand the technology from the inside:</strong> Built and deployed two production LLM agents solo at xGE, plus public multi-agent systems on my own time.</li><li><strong>Work the journalist's side of the desk:</strong> Booked one of Foreign Policy's 2012 Top 100 Global Thinkers onto a live panel, produced an exclusive Netanyahu interview, and surfaced on-record admissions from sitting U.S. Senators.</li><li><strong>Source every claim:</strong> Built a citation-gated verification agent where no claim surfaces without its source; it caught a ~$19K error commercial software defended as correct.</li><li><strong>Write for technical audiences that punish spin:</strong> the annual 600-person summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.</li><li><strong>Produce external content at reach:</strong> Google engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of explainer line (proof-of-concept: 50M+ views).</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Fit for Product, Technical, and Research Communications (AI-Native)</h2><ul class="rl"><li><strong>Understand the technology from the inside:</strong> Built and deployed two production LLM agents solo at xGE, plus public multi-agent systems on my own time.</li><li><strong>Work the journalist's side of the desk:</strong> Booked one of Foreign Policy's 2012 Top 100 Global Thinkers onto a live panel, produced an exclusive Netanyahu interview, and surfaced on-record admissions from sitting U.S. Senators.</li><li><strong>Source every claim:</strong> Built a citation-gated verification agent where no claim surfaces without its source; it caught a ~$19K error commercial software defended as correct.</li><li><strong>Write for technical audiences that punish spin:</strong> the annual 600-person summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.</li><li><strong>Produce external content at reach:</strong> Google engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views).</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
-<div class="rinit"><div class="rinit-h">Executive-communications digital twin (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent around a codified "Constitution" of voice rules and a banned-phrase verification checklist.</li><li><strong>Impact:</strong> Cut review back-and-forth with the VP by about 70%, an internal, self-measured figure.</li></ul></div>
-<div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise in Smart Brevity, escalate) with knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 60% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full operator runbook.</li></ul></div>
+<div class="rinit"><div class="rinit-h">Executive-communications <a href="../stories.html#digital-twin">digital twin</a> (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent around a codified "Constitution" of voice rules and a banned-phrase verification checklist.</li><li><strong>Impact:</strong> Cut review back-and-forth with the VP by about 70%, an internal, self-measured figure.</li></ul></div>
+<div class="rinit"><div class="rinit-h"><a href="../comms-triage-agent.html">Communications-triage agent</a> (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise in Smart Brevity, escalate) with knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 60% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full <a href="../writing.html">operator runbook</a>.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Approvals governance, cross-org scope</div><ul class="rl"><li><strong>Problem:</strong> Cross-org technical mandates stalled without a clear approvals framework.</li><li><strong>Action:</strong> Authored the Approvals User Guide (v3), Approvals Matrix, and Roles and Responsibilities framework; ran approval-intake prioritization.</li><li><strong>Impact:</strong> Drove named cross-org mandates (Keystore Rotation, Memory Safety TRR) to approval.</li></ul></div>
 <div class="rinit"><div class="rinit-h">xGE Connects, peer-led technical workshop series</div><ul class="rl"><li><strong>Problem:</strong> Senior-engineer expertise was not reaching the tier below repeatably.</li><li><strong>Action:</strong> Designed and ran the speaker and workshop series end to end, plus the annual survey shaping the community roadmap.</li><li><strong>Impact:</strong> Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.</li></ul></div></div>
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned the communications and content enabling technical outcomes across Google's internal IT org and global help desk.</p>
 <div class="rinit"><div class="rinit-h">Day-One onboarding rebuilt for self-service</div><ul class="rl"><li><strong>Problem:</strong> Instructor-led technical orientation could not keep pace with Google's hiring.</li><li><strong>Action:</strong> Rebuilt it into a self-service curriculum a new hire could complete without a facilitator.</li><li><strong>Impact:</strong> Delivered to 75,000+ new hires at an 88% CSAT score.</li></ul></div>
 <div class="rinit"><div class="rinit-h">2023 content audit</div><ul class="rl"><li><strong>Problem:</strong> Self-service content was leaving solvable tickets on the table.</li><li><strong>Action:</strong> Ran the 2023 audit of the help-desk content portfolio.</li><li><strong>Impact:</strong> Lifted self-service solvability 9.03%, roughly 10,670 fewer tickets a year.</li></ul></div></div></section>
-<section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Code public at github.com/mitwilli-create.</p>
-<p class="rp"><strong>tax-verification-agent</strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude; no claim surfaces without its source.</p>
-<p class="rp"><strong>voice-os</strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker.</p>
-<p class="rp"><strong>career-ops</strong> · Extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system with ~50 scheduled agents, Claude Code skills and MCP servers, and a live operations dashboard. CI-green and test-covered.</p></section>
+<section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Code public at <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>.</p>
+<p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude; no claim surfaces without its source.</p>
+<p class="rp"><strong><a href="../voice-os.html">voice-os</a></strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker.</p>
+<p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system with ~50 scheduled agents, Claude Code skills and MCP servers, and a live operations dashboard. CI-green and test-covered.</p></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2010 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of product and technical communications: the message lands the first time, under deadline, in the principal's voice.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when Nelson Mandela died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained Scientology-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the bin Laden raid.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when <a href="../stories.html#mandela-special">Nelson Mandela</a> died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Product, Technical &amp; Editorial Communications:</strong> technical translation, internal-comms strategy at engineering scale, change-management narrative design, stakeholder management, principal-level ghostwriting, live-broadcast editorial under deadline, journalist-side booking and sourcing, voice and tone calibration.</p>
