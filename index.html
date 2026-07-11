@@ -9,9 +9,10 @@
   <meta property="og:title" content="Mitchell Williams · Storyteller × Builder">
   <meta property="og:description" content="AI-native storytelling workflows. Ex-CNN / AJ+ / Al Jazeera, ex-Google. Building on the ElevenLabs stack.">
   <meta property="og:type" content="profile">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/stills/hero-machine-plate.jpg" fetchpriority="high">
   <link rel="stylesheet" href="shared/theme.css?v=20260711b">
   <style>
     /* homepage hero: literal header block + system diagram card (2026-07-10 restructure) */
@@ -65,7 +66,7 @@
     .hero-sub{transition-delay:.3s,.3s}
     .hero-facts{transition-delay:.4s,.4s}
     .hero-cta{transition-delay:.5s,.5s}
-    .hero-sys{transition:opacity var(--dur-set) var(--ease) 1.2s,border-color var(--dur-micro) var(--ease-micro)}
+    .hero-sys{transition:opacity 600ms var(--ease) 1s,border-color var(--dur-micro) var(--ease-micro)}
     .sys-k .r{font-variant-numeric:tabular-nums}
     /* hero cinemagraph inherits the still's crop, grade, and hairline */
     .sys-cine video{object-position:center 46%;filter:grayscale(0.12) contrast(1.03);
@@ -84,6 +85,14 @@
       .f-v{font-size:12px}
       .sys-diagram{font-size:10px}
       .hero-sys{padding:18px 16px 15px}
+      /* same two acts, tuned lighter: shorter fades so first paint of the
+         largest text lands well inside the mobile LCP budget */
+      .display .ln > span{transition-duration:var(--dur-move)}
+      .hero-sub,.hero-facts,.hero-cta{transition-duration:var(--dur-move),var(--dur-move)}
+      .hero-sub{transition-delay:.12s,.12s}
+      .hero-facts{transition-delay:.2s,.2s}
+      .hero-cta{transition-delay:.28s,.28s}
+      .hero-sys{transition:opacity 500ms var(--ease) .7s,border-color var(--dur-micro) var(--ease-micro)}
     }
   </style>
 </head>
@@ -135,7 +144,7 @@
       </div>
       <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline breakdown: one script in, a produced short out, every API call costed">
         <div class="cine sys-cine" data-cine="assets/cinemagraphs/hero-machine-plate">
-          <img class="sys-illo" src="assets/stills/hero-machine-plate.jpg" width="1200" height="896" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." loading="lazy">
+          <img class="sys-illo" src="assets/stills/hero-machine-plate.jpg" width="1200" height="896" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." fetchpriority="high">
         </div>
         <div class="sys-body">
           <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $14.20</span></div>
