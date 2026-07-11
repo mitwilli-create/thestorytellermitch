@@ -50,17 +50,8 @@ for (const [file, slug] of Object.entries(LANES)) {
       a.setAttribute('href', 'https://thestorytellermitch.com/' + h.replace(/^(\.\.\/)+/, ''));
     }
   });
-  // Council-adjudicated link budget (dealbreaker-final-20260710-175432.md): the PDF
-  // keeps header identity links plus the first 3 unique deep links in body order;
-  // the rest unwrap to plain text. The HTML resume keeps its full link set.
-  await page.evaluate(() => {
-    const seen = new Set();
-    for (const a of document.querySelectorAll('.rwrap section a[href]')) {
-      const h = a.getAttribute('href');
-      if (!seen.has(h) && seen.size < 3) { seen.add(h); continue; }
-      a.replaceWith(...a.childNodes);
-    }
-  });
+  // Mitchell's call 2026-07-10 (supersedes the earlier 6-link budget): every
+  // portfolio reference stays linked in the PDF, same as the HTML resume.
   const pdf = await page.pdf({ format: 'Letter', printBackground: true });
   const n = pageCount(pdf);
   const out = join(ROOT, 'assets/resumes', `${file}.pdf`);

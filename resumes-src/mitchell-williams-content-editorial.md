@@ -6,9 +6,8 @@ Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com
 linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **Selected work:**
-**#FreeAhmed** (April 2026): helped free detained journalist Ahmed Shihab-Eldin, released in ten days and acquitted on the central charge
-Google engineer profiles + 50M-view measles explainer (thestorytellermitch.com/select-works)
-Writing room with verbatim published scripts (thestorytellermitch.com/writing)
+**#FreeAhmed** (April 2026): helped free journalist Ahmed Shihab-Eldin in ten days, acquitted on the central charge
+[Google engineer profiles](../work.html#google) + [50M-view measles explainer](../work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views) · [Writing room with verbatim published scripts](../writing.html)
 
 ## Summary
 
@@ -27,7 +26,7 @@ Writing room with verbatim published scripts (thestorytellermitch.com/writing)
 - **High-trust, time-sensitive environments:** Executive communications for Google's CIO; a digital-twin agent drafting for a VP in the VP's own voice; sustained Scientology-defector coverage under an active litigation posture with no retractions.
 - **Moving extremely quickly and fluidly:** When Nelson Mandela died, rebuilt the rundown overnight and line-produced Fusion's 44-minute live primetime breaking-news special, integrating ABC News packages, White House audio, and four consecutive live phone experts under genuine breaking-news conditions.
 - **Telling stories in unexpected ways:** Pioneered social-data journalism on The Stream, turning a Twitter eyewitness's follower trajectory into a live on-air data story the night bin Laden died.
-- **AI-assisted production:** I built two production LLM agents at Google, plus broll-pipeline and content-ops on my own time; case studies at thestorytellermitch.com/projects. The rule I build by: AI does the mechanical work, the editorial cut stays human. Anthropic-certified (AI Fluency, Claude 101, Agent Skills, MCP, Skill Builder).
+- **AI-assisted production:** I built two production LLM agents at Google, plus broll-pipeline and content-ops on my own time ([case studies](../projects.html)). The rule I build by: AI does the mechanical work, the editorial cut stays human. Anthropic-certified (AI Fluency, Claude 101, Agent Skills, MCP, Skill Builder).
 
 ## Experience
 
@@ -61,11 +60,11 @@ Owned the communications and content (documentation, self-help, onboarding, vide
 
 ## Portfolio and Projects
 
-**Portfolio** · thestorytellermitch.com/writing: the verbatim published AJ+ measles explainer script, 17 authored longform story pages, and redacted-verbatim Google work samples including the comms-triage operator runbook.
+**Portfolio** · [The writing room](../writing.html): the verbatim published AJ+ measles explainer script, 17 authored longform story pages, and redacted-verbatim Google work samples including the comms-triage operator runbook.
 
 **broll-pipeline** · Seven-stage script-to-short video pipeline (Node + ffmpeg, ElevenLabs stack): AI narration, composed score, sound design, generated shots, multilingual dub. The live demo ships a 53-second captioned cut with a Spanish dub at $14.20 all-in, every API call logged to a run manifest committed in the public repo at github.com/mitwilli-create/broll-pipeline.
 
-**content-ops** · A multi-agent engine that adapts one story to each of nine platforms' native formats through deterministic voice gates, with a person pressing send; case study at thestorytellermitch.com/projects.
+**content-ops** · A multi-agent engine that adapts one story to each of nine platforms' native formats through deterministic voice gates, with a person pressing send ([case study](../content-ops.html)).
 
 **voice-os** · Six-axis voice-quality rubric with a codified voice "Constitution" and banned-phrase checklist, calibrated on a multi-million-word corpus; built as a coaching aid that surfaces voice deltas back to the writer.
 

@@ -53,10 +53,12 @@ const TERM_LINKS = [
   ['digital twin', '../stories.html#digital-twin'],
   ['talent pipeline', '../stories.html#talent-pipeline'],
   ['explainer line', '../stories.html#aj-plus-50m-views'],
-  ['measles explainer', '../select-works.html'],
-  ['talent-branding video', '../select-works.html'],
-  ['engineer profiles', '../select-works.html'],
+  ['measles explainer', '../work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views'],
+  ['talent-branding video', '../work.html#google'],
+  ['engineer profiles', '../work.html#google'],
   ['operator runbook', '../writing.html'],
+  ['Ahmed Shihab-Eldin', '../stories.html#freeahmed-coalition'],
+  ['Mandela', '../stories.html#mandela-special'],
 ];
 function deepLink(html) {
   const parts = html.split(/(<[^>]+>)/);
@@ -91,10 +93,13 @@ function deepLink(html) {
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// inline markdown: **bold** only; URLs stay plain text (print-honest)
+// inline markdown: **bold**, [text](../site-relative.html or #anchor) phrase links;
+// bare portfolio/profile URLs still auto-link. Site-relative-only md links keep
+// LINK_RE from re-matching inside generated hrefs.
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
 const inline = (s) => esc(s)
   .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+  .replace(/\[([^\]]+)\]\(((?:\.\.\/|#)[\w./#-]+)\)/g, '<a href="$2">$1</a>')
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 export function parse(md, file) {
