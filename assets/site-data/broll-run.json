@@ -38,7 +38,8 @@
       "calls": 11,
       "cached": 10,
       "costUsd": 3.59,
-      "api": "Anthropic API"
+      "api": "Anthropic API",
+      "node": "visuals"
     },
     {
       "id": "score",
@@ -100,5 +101,6 @@
     "artifactsTotalUsd": 9.51,
     "allInUsd": 14.2,
     "allInNote": "incl. extra re-rolls, score + foley experiments, Spanish dub"
-  }
+  },
+  "_reconciliation": "Stage costUsd values aggregate THIS run-manifest snapshot (live spend + original cost carried by cached artifacts): they sum to $8.70. The receipt block is the published whole-cut accounting from the manifest committed in the public repo, which also covers designed stills and prior-run retakes not present in this snapshot; that is the $0.81 delta between the stage sum and artifactsTotalUsd."
 }

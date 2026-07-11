@@ -449,19 +449,26 @@
     if(running) return; running=true; replay.hidden=true;
     try{
       if(!run) run=await (await fetch('assets/site-data/broll-run.json')).json();
-    }catch(e){ running=false; return; }
+    }catch(e){
+      running=false; replay.hidden=false;
+      setStatus('could not load the run log; replay to retry');
+      return;
+    }
     diagram.querySelectorAll('.node').forEach(n=>n.classList.remove('run-lit','run-on'));
     let cost=0;
     window.dispatchEvent(new CustomEvent('mw:run-start'));
     for(const st of run.stages){
-      const nodes=diagram.querySelectorAll('.node[data-stage="'+st.id+'"]');
+      // st.node lets a stage without its own diagram line light its host
+      // node (the council directs and reviews visuals; the ASCII diagram
+      // is frozen copy this build, so council borrows that node)
+      const nodes=diagram.querySelectorAll('.node[data-stage="'+(st.node||st.id)+'"]');
       nodes.forEach(n=>n.classList.add('run-on'));
       const cached=st.cached?(' &middot; '+st.cached+' cached'):'';
       setStatus('&#9656; <b>'+esc(st.label)+'</b> &middot; '+esc(st.detail)+' &middot; '+st.calls+(st.calls===1?' call':' calls')+cached+' &middot; <span class="r-cost">'+money(cost+=st.costUsd)+'</span>');
       await new Promise(r=>setTimeout(r, st.id==='parse'?500:(450+Math.min(650,st.calls*38))));
       nodes.forEach(n=>{ n.classList.remove('run-on'); n.classList.add('run-lit'); });
     }
-    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(run.receipt.artifactsTotalUsd)+'</span> carried by the artifacts &middot; '+money(run.receipt.allInUsd)+' all-in with every retake');
+    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(cost)+'</span> logged in this snapshot &middot; '+money(run.receipt.allInUsd)+' all-in with every retake; the receipt below carries the full accounting');
     window.dispatchEvent(new CustomEvent('mw:run-end'));
     replay.hidden=false; running=false;
   }
