@@ -34,6 +34,20 @@
   }
   </script>
   <link rel="stylesheet" href="shared/case-study.css">
+  <style>
+    /* live verdict screenshots: three real outcomes from the running PWA */
+    .cs-verdicts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;align-items:start}
+    .cs-verdicts figure{border:1px solid var(--line-2);background:var(--bg-2);overflow:hidden;display:flex;flex-direction:column}
+    .cs-verdicts img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line)}
+    .cs-verdicts figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
+      padding:13px 15px;line-height:1.6}
+    .cs-verdicts .vk{display:block;color:var(--blood-soft);text-transform:uppercase;letter-spacing:0.12em;
+      font-size:10px;margin-bottom:5px}
+    .cs-shotnote{max-width:760px;font-size:14px;color:var(--dim);margin-top:16px;line-height:1.6}
+    @media(max-width:860px){
+      .cs-verdicts{grid-template-columns:1fr;max-width:420px;gap:20px}
+    }
+  </style>
 </head>
 <body>
 
@@ -114,6 +128,28 @@
 
       <p><strong>A real product around the architecture.</strong> Five surfaces: paste-a-URL verdicts, a per-brand sizing matrix, wardrobe inventory with cost-per-wear, a budget ledger with hard-stop and advisory policies, and weather-triggered care alerts for rain-sensitive assets. Profiles are pure data. A second user onboards by adding a profile, zero code changes.</p>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cs-h2">Three verdicts, one architecture · live from the running app</div>
+    <p class="cs-intro">The same three gates, three different outcomes. Every card is a real verdict from the app, each one citing the rule and the source that produced it.</p>
+    <div class="cs-verdicts">
+      <figure>
+        <img src="assets/monolith/verdict-approve.jpg" alt="An APPROVED verdict: Gate A budget passes with $250 remaining post-purchase, Gate B climate passes on wool, Gate C aesthetic passes, plus sizing, budget position, and the care commitment the purchase creates." loading="lazy">
+        <figcaption><span class="vk">Approve</span>All three gates pass. The card still carries the sizing baseline, the budget position, and the upkeep this purchase commits you to.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/monolith/verdict-reject.jpg" alt="A REJECTED verdict: Gate A flags the item as over budget on an advisory policy, Gate B notes the materials, and Gate C fails outright on a banned 'slim fit' cut, citing the profile's banned fit terms. Every violation is reported at once." loading="lazy">
+        <figcaption><span class="vk">Reject</span>Gate C fails on a banned cut, citing the rule. No short-circuit: the over-budget advisory and the material notes all report at once. Overriding is possible, and logged as an override.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/monolith/verdict-insufficient.jpg" alt="An INSUFFICIENT_DATA verdict: budget and aesthetic gates pass, but with no material composition extracted the climate gate cannot run, so the system returns INSUFFICIENT_DATA and names the missing field instead of guessing." loading="lazy">
+        <figcaption><span class="vk">Insufficient_data</span>No materials extracted, so the climate gate cannot run. The system names the missing field and refuses to guess, rather than approving on a hunch.</figcaption>
+      </figure>
+    </div>
+    <p class="cs-shotnote">Screenshots from the running PWA, 2026-07-10. The wardrobe is the demo domain; the architecture is the point.</p>
   </div>
 </section>
 
