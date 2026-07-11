@@ -107,6 +107,43 @@
     .manifest .caption{font-size:12px;color:var(--dim);padding:12px 18px;background:var(--surface);
       border-top:1px solid var(--line);line-height:1.6}
     .manifest .caption a{color:var(--mute);border-bottom:1px solid var(--line-2)}
+    /* ---------- the run, animated from broll-run.json ---------- */
+    .diagram .node{transition:color var(--dur-micro) var(--ease-mech),text-shadow var(--dur-micro) var(--ease-mech)}
+    .diagram .node.run-on{color:var(--blood-soft);text-shadow:0 0 14px rgba(177,85,76,0.35)}
+    .diagram .node.run-lit{color:var(--bone);text-shadow:0 0 10px rgba(236,232,225,0.12)}
+    .run-bar{max-width:760px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+      font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.04em;
+      color:var(--mute);padding:12px 2px 0;font-variant-numeric:tabular-nums;min-height:34px}
+    .run-status b{color:var(--bone);font-weight:500}
+    .run-status .r-cost{color:var(--blood-soft)}
+    .run-replay,.r-replay{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);background:transparent;
+      color:var(--mute);cursor:pointer;transition:all var(--dur-micro) var(--ease-micro)}
+    .run-replay:hover,.r-replay:hover{border-color:var(--blood-soft);color:var(--bone)}
+    /* ---------- thermal receipt, printed from the same ledger ---------- */
+    .cost-flex{display:grid;grid-template-columns:minmax(0,760px) 300px;gap:44px;align-items:start}
+    .receipt{position:relative}
+    .r-paper{background:var(--bone);color:#1c1a17;font-family:'JetBrains Mono',monospace;
+      padding:22px 20px 26px;max-width:300px;transform:rotate(-0.6deg);
+      box-shadow:0 18px 40px rgba(0,0,0,0.5);
+      clip-path:polygon(0 0,100% 0,100% calc(100% - 7px),97.5% 100%,95% calc(100% - 7px),92.5% 100%,90% calc(100% - 7px),87.5% 100%,85% calc(100% - 7px),82.5% 100%,80% calc(100% - 7px),77.5% 100%,75% calc(100% - 7px),72.5% 100%,70% calc(100% - 7px),67.5% 100%,65% calc(100% - 7px),62.5% 100%,60% calc(100% - 7px),57.5% 100%,55% calc(100% - 7px),52.5% 100%,50% calc(100% - 7px),47.5% 100%,45% calc(100% - 7px),42.5% 100%,40% calc(100% - 7px),37.5% 100%,35% calc(100% - 7px),32.5% 100%,30% calc(100% - 7px),27.5% 100%,25% calc(100% - 7px),22.5% 100%,20% calc(100% - 7px),17.5% 100%,15% calc(100% - 7px),12.5% 100%,10% calc(100% - 7px),7.5% 100%,5% calc(100% - 7px),2.5% 100%,0 calc(100% - 7px))}
+    .r-head{font-size:13px;font-weight:700;letter-spacing:0.14em;text-align:center;line-height:1.5}
+    .r-meta{font-size:9.5px;letter-spacing:0.06em;color:#6b675f;text-align:center;margin-top:6px}
+    .r-rule{border-top:1px dashed #a39d92;margin:12px 0}
+    .r-line{display:flex;justify-content:space-between;gap:12px;font-size:11px;line-height:1.7;
+      font-variant-numeric:tabular-nums}
+    .r-line span:first-child{text-transform:lowercase}
+    .r-line.r-sub{font-weight:500}
+    .r-line.r-total{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:0.04em}
+    .r-foot{font-size:9px;color:#6b675f;line-height:1.7;margin-top:2px}
+    .r-replay{margin-top:14px}
+    /* print animation: lines feed out top-down with a mechanical step */
+    .r-paper.printing .r-head,.r-paper.printing .r-meta,.r-paper.printing .r-rule,
+    .r-paper.printing .r-line,.r-paper.printing .r-foot{opacity:0;transform:translateY(-6px)}
+    .r-paper.printed .r-head,.r-paper.printed .r-meta,.r-paper.printed .r-rule,
+    .r-paper.printed .r-line,.r-paper.printed .r-foot{opacity:1;transform:none;
+      transition:opacity 0.3s var(--ease-mech) var(--r-d,0s),transform 0.3s var(--ease-mech) var(--r-d,0s)}
+    @media(max-width:1120px){.cost-flex{grid-template-columns:1fr}.receipt{justify-self:center}}
     .cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
       border-left:2px solid var(--blood-soft);padding:24px 28px}
     .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
@@ -232,21 +269,26 @@
   <div class="wrap">
     <div class="cs-h2">The pipeline</div>
     <div class="diagram" role="img" aria-label="Pipeline flow: script.md parses into beats, which fan out to voiceover, visuals, score, and sound effects, then assemble into a captioned mp4 with an optional dub.">
-<span class="node">input/script.md</span>
+<span class="node" data-stage="parse">input/script.md</span>
    <span class="arrow">│</span>
    <span class="arrow">▼</span>
-<span class="node">[1] parseScript</span>   <span class="arrow">→</span> beats: [{ vo, visualPrompt, seconds }]
+<span class="node" data-stage="parse">[1] parseScript</span>   <span class="arrow">→</span> beats: [{ vo, visualPrompt, seconds }]
    <span class="arrow">│</span>
-   <span class="arrow">├─▶</span> <span class="node">[2] voiceover</span>  <span class="api">(ElevenLabs TTS API)</span>            <span class="arrow">→</span> .cache/vo/*.mp3
-   <span class="arrow">├─▶</span> <span class="node">[3] visuals</span>    <span class="prod">(per beat: mograph render | provider adapter)</span>  <span class="arrow">→</span> .cache/broll/*.mp4
-   <span class="arrow">├─▶</span> <span class="node">[4] score</span>      <span class="api">(Eleven Music v2)</span>               <span class="arrow">→</span> .cache/music.mp3
-   <span class="arrow">└─▶</span> <span class="node">[5] sfx</span>        <span class="api">(Sound Effects API, optional)</span>   <span class="arrow">→</span> .cache/sfx/*.mp3
-   <span class="arrow">│</span>
-   <span class="arrow">▼</span>
-<span class="node">[6] assemble</span>  <span class="arrow">(ffmpeg: cut visuals to VO timing, grade, mix stems, caption)</span> <span class="arrow">→</span> output/short.mp4
+   <span class="arrow">├─▶</span> <span class="node" data-stage="voiceover">[2] voiceover</span>  <span class="api">(ElevenLabs TTS API)</span>            <span class="arrow">→</span> .cache/vo/*.mp3
+   <span class="arrow">├─▶</span> <span class="node" data-stage="visuals">[3] visuals</span>    <span class="prod">(per beat: mograph render | provider adapter)</span>  <span class="arrow">→</span> .cache/broll/*.mp4
+   <span class="arrow">├─▶</span> <span class="node" data-stage="score">[4] score</span>      <span class="api">(Eleven Music v2)</span>               <span class="arrow">→</span> .cache/music.mp3
+   <span class="arrow">└─▶</span> <span class="node" data-stage="sfx">[5] sfx</span>        <span class="api">(Sound Effects API, optional)</span>   <span class="arrow">→</span> .cache/sfx/*.mp3
    <span class="arrow">│</span>
    <span class="arrow">▼</span>
-<span class="node">[7] dub</span>       <span class="api">(Dubbing API → target language, optional)</span> <span class="arrow">→</span> output/short.&lt;lang&gt;.mp4
+<span class="node" data-stage="assemble">[6] assemble</span>  <span class="arrow">(ffmpeg: cut visuals to VO timing, grade, mix stems, caption)</span> <span class="arrow">→</span> output/short.mp4
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node" data-stage="dub">[7] dub</span>       <span class="api">(Dubbing API → target language, optional)</span> <span class="arrow">→</span> output/short.&lt;lang&gt;.mp4
+    </div>
+
+    <div class="run-bar">
+      <span class="run-status" data-runstatus>the logged run: 60 calls, $9.51 carried by the artifacts in the cut</span>
+      <button class="run-replay" type="button" data-runreplay hidden>&#8635; replay the run</button>
     </div>
 
     <div class="badge-legend"><span style="color:var(--blood-soft)">LIVE</span> = this stage executed for real to produce the cut above (paid API call or deterministic local render). "Stems" below = the separate audio layers (voice, music, effects) mixed into the final track.</div>
@@ -301,6 +343,7 @@
 <section>
   <div class="wrap">
     <div class="cs-h2">Cost model · ElevenLabs API, 2026</div>
+    <div class="cost-flex">
     <div class="manifest">
       <table>
         <thead>
@@ -319,6 +362,24 @@
         </tbody>
       </table>
       <div class="caption">ElevenLabs rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>; video rate from the provider's model page, both accessed 2026-07-08. Per-short figures are the actual logged costs of the 53-second cut above: $9.51 carried by the artifacts in the cut (the number the on-screen receipt bakes), plus the review board's extra retakes, the score and foley re-rolls, and the Spanish dub renders, $14.20 all-in, logged per call to <span style="font-family:'JetBrains Mono',monospace;">output/run-manifest.json</span>, committed in the repo. Video generation and creative direction are the cost drivers; the six code-rendered beats cost nothing to regenerate, which is what makes iteration cheap.</div>
+    </div>
+    <aside class="receipt" aria-label="The run's cost ledger, printed as a receipt from the logged manifest">
+      <div class="r-paper" data-receipt>
+        <div class="r-head">BROLL-PIPELINE<br>RUN RECEIPT</div>
+        <div class="r-meta">run-manifest.json &middot; 60 logged calls</div>
+        <div class="r-rule"></div>
+        <div class="r-line"><span>audio stack: TTS + music + SFX</span><span>$0.28</span></div>
+        <div class="r-line"><span>generated shots incl. retakes</span><span>$5.36</span></div>
+        <div class="r-line"><span>creative direction, council</span><span>$3.50</span></div>
+        <div class="r-line"><span>clip review board</span><span>$0.37</span></div>
+        <div class="r-rule"></div>
+        <div class="r-line r-sub"><span>carried by the artifacts</span><span>$9.51</span></div>
+        <div class="r-line r-total"><span>all-in, every retake + dub</span><span>$14.20</span></div>
+        <div class="r-rule"></div>
+        <div class="r-foot">every call logged &middot; cached artifacts carry original cost &middot; manifest committed in the public repo</div>
+      </div>
+      <button class="r-replay" type="button" data-printreplay hidden>&#8635; print again</button>
+    </aside>
     </div>
   </div>
 </section>
@@ -357,5 +418,66 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260711"></script>
+<script>
+(()=>{
+  // Proof moment 1: the diagram animates the real logged run, fetched from
+  // assets/site-data/broll-run.json (distilled from run-manifest.json).
+  // Scroll-triggered once, replayable, never loops. Motion-off keeps the
+  // static summary already in the HTML.
+  if(!window.__motionOK) return;
+  const diagram=document.querySelector('.diagram');
+  const status=document.querySelector('[data-runstatus]');
+  const replay=document.querySelector('[data-runreplay]');
+  const money=(n)=>'$'+n.toFixed(2);
+  let run=null, running=false;
+  const setStatus=(html)=>{ status.innerHTML=html; };
+  const esc=(s)=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  async function playRun(){
+    if(running) return; running=true; replay.hidden=true;
+    try{
+      if(!run) run=await (await fetch('assets/site-data/broll-run.json')).json();
+    }catch(e){ running=false; return; }
+    diagram.querySelectorAll('.node').forEach(n=>n.classList.remove('run-lit','run-on'));
+    let cost=0;
+    window.dispatchEvent(new CustomEvent('mw:run-start'));
+    for(const st of run.stages){
+      const nodes=diagram.querySelectorAll('.node[data-stage="'+st.id+'"]');
+      nodes.forEach(n=>n.classList.add('run-on'));
+      const cached=st.cached?(' &middot; '+st.cached+' cached'):'';
+      setStatus('&#9656; <b>'+esc(st.label)+'</b> &middot; '+esc(st.detail)+' &middot; '+st.calls+(st.calls===1?' call':' calls')+cached+' &middot; <span class="r-cost">'+money(cost+=st.costUsd)+'</span>');
+      await new Promise(r=>setTimeout(r, st.id==='parse'?500:(450+Math.min(650,st.calls*38))));
+      nodes.forEach(n=>{ n.classList.remove('run-on'); n.classList.add('run-lit'); });
+    }
+    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(run.receipt.artifactsTotalUsd)+'</span> carried by the artifacts &middot; '+money(run.receipt.allInUsd)+' all-in with every retake');
+    window.dispatchEvent(new CustomEvent('mw:run-end'));
+    replay.hidden=false; running=false;
+  }
+  if(diagram&&status&&replay){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();playRun();}})},{threshold:0.5});
+    io.observe(diagram);
+    replay.addEventListener('click',playRun);
+  }
+
+  // Proof moment 2: the receipt prints its lines top-down, once, on scroll.
+  const paper=document.querySelector('[data-receipt]');
+  const printBtn=document.querySelector('[data-printreplay]');
+  if(paper&&printBtn){
+    const rows=paper.querySelectorAll('.r-head,.r-meta,.r-rule,.r-line,.r-foot');
+    let printing=false;
+    const print=()=>{
+      if(printing) return; printing=true; printBtn.hidden=true;
+      paper.classList.remove('printed'); paper.classList.add('printing');
+      void paper.offsetWidth;
+      rows.forEach((el,i)=>el.style.setProperty('--r-d',(i*0.13)+'s'));
+      paper.classList.add('printed');
+      window.dispatchEvent(new CustomEvent('mw:receipt-print',{detail:{ms:rows.length*130+300}}));
+      setTimeout(()=>{ paper.classList.remove('printing'); printBtn.hidden=false; printing=false; }, rows.length*130+400);
+    };
+    const io2=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){io2.disconnect();print();}})},{threshold:0.45});
+    io2.observe(paper);
+    printBtn.addEventListener('click',print);
+  }
+})();
+</script>
 </body>
 </html>
