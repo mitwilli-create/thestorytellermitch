@@ -20,23 +20,38 @@
   // img. When motion is allowed and the wrapper nears the viewport, layer a
   // muted looping video and fade it in once it actually plays. Any failure
   // (decode, autoplay policy, 404) silently leaves the poster in place.
+  // [data-cine-hover] variants stay a poster until pointer hover and pause
+  // on leave (hover-capable pointers only).
   const saveData = navigator.connection && navigator.connection.saveData;
   if (window.__motionOK && !saveData) {
-    const startCine = (el) => {
+    const buildCine = (el, base) => {
       const v = document.createElement('video');
       v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true'); v.tabIndex = -1;
-      const base = el.dataset.cine;
       for (const [ext, type] of [['webm', 'video/webm'], ['mp4', 'video/mp4']]) {
         const s = document.createElement('source'); s.src = base + '.' + ext; s.type = type; v.appendChild(s);
       }
       v.addEventListener('playing', () => el.classList.add('cine-on'), { once: true });
       v.addEventListener('error', () => v.remove(), { once: true });
       el.appendChild(v);
+      return v;
+    };
+    const startCine = (el) => {
+      const v = buildCine(el, el.dataset.cine);
       const p = v.play(); if (p && p.catch) p.catch(() => v.remove());
     };
     const cio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { cio.unobserve(e.target); startCine(e.target); } }); }, { rootMargin: '160px' });
     document.querySelectorAll('[data-cine]').forEach((el) => cio.observe(el));
+    if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      document.querySelectorAll('[data-cine-hover]').forEach((el) => {
+        let v = null;
+        el.addEventListener('mouseenter', () => {
+          if (!v || !v.isConnected) v = buildCine(el, el.dataset.cineHover);
+          const p = v.play(); if (p && p.catch) p.catch(() => {});
+        });
+        el.addEventListener('mouseleave', () => { if (v) v.pause(); });
+      });
+    }
   }
 
   // Signal pulses: an occasional band crossing each diagram, randomized
@@ -53,23 +68,32 @@
 
   // Counters: numeric stats tick up once on scroll-into-view; the HTML
   // value is the motion-off end state. tabular-nums keeps width stable.
+  // Ease-out quad with an adaptive duration: small integers resolve in
+  // ~400ms with no terminal crawl (cubic left counters visibly stalling
+  // one step from the end), bigger figures get slightly longer.
   if (window.__motionOK) {
     const tick = (el) => {
       const m = el.textContent.match(/^([^0-9]*)([\d,.]+)(.*)$/s); if (!m) return;
       const end = parseFloat(m[2].replace(/,/g, '')); if (!isFinite(end)) return;
       const dec = (m[2].split('.')[1] || '').length;
       const grp = m[2].includes(',');
-      const t0 = performance.now(), dur = 900;
-      const step = (t) => {
-        const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-        let n = (end * e).toFixed(dec);
+      const dur = Math.min(650, 320 + String(Math.round(end)).length * 70);
+      const fmt = (v) => {
+        let n = v.toFixed(dec);
         if (grp) n = Number(n).toLocaleString('en-US', { minimumFractionDigits: dec });
-        el.textContent = m[1] + n + m[3];
+        return m[1] + n + m[3];
+      };
+      const t0 = performance.now();
+      let last = null;
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / dur), e = 1 - (1 - k) * (1 - k);
+        const txt = k < 1 ? fmt(end * e) : fmt(end);
+        if (txt !== last) { el.textContent = txt; last = txt; }
         if (k < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
     };
     const nio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { nio.unobserve(e.target); tick(e.target); } }); }, { threshold: 0.6 });
-    document.querySelectorAll('.cs-stat .n, [data-count]').forEach((el) => { if (/\d/.test(el.textContent)) nio.observe(el); });
+    document.querySelectorAll('.cs-stat .n, .fact .n, [data-count]').forEach((el) => { if (/\d/.test(el.textContent)) nio.observe(el); });
   }
 })();

@@ -105,7 +105,7 @@
   <div class="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html">AI Projects</a>
-    <a href="assets/mitchell-williams-resume.pdf">Resume</a>
+    <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">Resume</a>
     <a href="comms.html">Comms &amp; Editorial</a>
     <a href="work.html">Reel</a>
     <a href="timeline.html">Timeline</a>
@@ -285,7 +285,7 @@
       <div class="cell reveal">
         <div class="c-k">02 · Google</div>
         <div class="c-h">Eight years scale</div>
-        <div class="c-b">Turned dense engineering into training and communication for <a href="comms.html">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
+        <div class="c-b">Turned dense engineering into training and communication for <a href="comms.html#the-seat-i-held">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
       </div>
       <div class="cell reveal">
         <div class="c-k">03 · Now</div>
@@ -311,7 +311,7 @@
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260711b"></script>
+<script src="shared/reveal.js?v=20260711d"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 <script>
   // two-act opening. Act 1: tighter title stagger so name/role/CTAs are
@@ -324,10 +324,10 @@
       const d=document.querySelector('.sys-diagram'); if(d) d.classList.add('sig-pulse','pulsing');
       const r=document.querySelector('.sys-k .r');
       if(r){
-        const t0=performance.now(), dur=1100, end=14.20;
+        const t0=performance.now(), dur=800, end=14.20;
         const step=(t)=>{
-          const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
-          r.textContent='run receipt $'+(end*e).toFixed(2);
+          const k=Math.min(1,(t-t0)/dur), e=1-(1-k)*(1-k);
+          r.textContent='run receipt $'+(k<1?(end*e):end).toFixed(2);
           if(k<1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
@@ -338,7 +338,7 @@
   // on later visits where the stored preference is on (play() is caught
   // silently if the browser blocks it without fresh engagement).
   if(window.__sound){
-    const bed=()=>__sound.score('assets/music/bed-analog-drone.mp3');
+    const bed=()=>__sound.score('assets/music/bed-composed.mp3');
     __sound.sub(on=>{ if(on) bed(); });
     if(__sound.on) bed();
   }

@@ -29,7 +29,7 @@
   <div class="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html">AI Projects</a>
-    <a href="assets/mitchell-williams-resume.pdf">Resume</a>
+    <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">Resume</a>
     <a href="comms.html">Comms &amp; Editorial</a>
     <a href="work.html" aria-current="page">Reel</a>
     <a href="timeline.html">Timeline</a>
@@ -1144,7 +1144,7 @@
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260711b"></script>
+<script src="shared/reveal.js?v=20260711d"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 <script>
   /* ---------- filtering ---------- */
@@ -1211,7 +1211,7 @@
     document.getElementById('th-sub').textContent=d.sub||'';
     const cl=document.getElementById('th-case');
     if(d.case){cl.hidden=false;cl.href=d.case;}else{cl.hidden=true;}
-    if(window.__sound) __sound.score('assets/music/bed-analog-drone.mp3'); // theater bed, ~15%, opt-in only
+    if(window.__sound) __sound.score('assets/music/bed-composed.mp3'); // theater bed, ~15%, opt-in only
     mountPlayer(d);
     theater.hidden=false;
     document.documentElement.classList.add('theater-open');

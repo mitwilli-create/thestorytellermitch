@@ -88,7 +88,7 @@
   <div class="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html" aria-current="page">AI Projects</a>
-    <a href="assets/mitchell-williams-resume.pdf">Resume</a>
+    <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">Resume</a>
     <a href="comms.html">Comms &amp; Editorial</a>
     <a href="work.html">Reel</a>
     <a href="timeline.html">Timeline</a>
@@ -119,7 +119,7 @@
     <div class="card-grid">
 
       <div class="pcard flagship reveal">
-        <figure class="illo"><img src="assets/stills/illo-broll-pipeline.jpg" alt="System diagram: a script sheet passes through seven machine chambers and exits as a captioned video screen" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-broll-pipeline"><img src="assets/stills/illo-broll-pipeline.jpg" alt="System diagram: a script sheet passes through seven machine chambers and exits as a captioned video screen" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">broll-pipeline</span><span class="chip-status">SHIPPED</span></div>
         <h3>Script in, captioned video out, cost logged</h3>
         <p class="body">Seven-stage video pipeline in Node and ffmpeg, built on the ElevenLabs stack. Feed it a plain-text script, out comes a finished, captioned short. Every API call logs to a costed run manifest. Each run is auditable down to the cent.</p>
@@ -185,7 +185,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-voice-radar.jpg" alt="System diagram: a six-axis radar gauge with a plotted measurement and a threshold ring" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-voice-radar"><img src="assets/stills/illo-voice-radar.jpg" alt="System diagram: a six-axis radar gauge with a plotted measurement and a threshold ring" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">voice-os</span><span class="chip-status">SHIPPED</span></div>
         <h3>Scores drafts against a target voice</h3>
         <p class="body">Built a Python pipeline on Claude that scores drafts against a target voice on six stylistic axes and blocks anything below a QA threshold. "Sounds like me" isn't a spec, so this makes it one. Calibrated on 6.9M+ words of executive comms, with dual-persona review and a deterministic offline mode. Method and sample corpus are in the repo.</p>
@@ -198,7 +198,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-content-ops.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several platform-shaped output cards beneath four audience markers" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-content-ops"><img src="assets/stills/illo-content-ops.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several platform-shaped output cards beneath four audience markers" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">content-ops</span><span class="chip-status">SHIPPED</span></div>
         <h3>One story, shaped for every platform</h3>
         <p class="body">A multi-agent content engine on Claude: sources live angles, drafts a master, and adapts it to the mechanics of nine platforms for four audiences. Every draft passes one deterministic voice and format gate, and nothing posts without a person pressing send.</p>
@@ -211,7 +211,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-agent-fleet.jpg" alt="System diagram: a fleet of small agent nodes orbiting one central orchestrator node" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-agent-fleet"><img src="assets/stills/illo-agent-fleet.jpg" alt="System diagram: a fleet of small agent nodes orbiting one central orchestrator node" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">career-ops</span><span class="chip-status">IN PRODUCTION</span></div>
         <h3>Job-search automation, in production</h3>
         <p class="body">A job-search automation system: ATS portal scanning, LLM role evaluation, CV generation, and batch processing. Runs as a production fork of open-source santifer/career-ops. Orchestrates multiple models across 52 scheduled agents on macOS launchd. Produced 1,150+ scored role reports. Operated software, not a demo.</p>
@@ -224,7 +224,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-citation-gate.jpg" alt="System diagram: a vault gate opening only after a chain of four source blocks connects into its lock" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-citation-gate"><img src="assets/stills/illo-citation-gate.jpg" alt="System diagram: a vault gate opening only after a chain of four source blocks connects into its lock" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">tax-verification-agent</span><span class="chip-status">SHIPPED</span></div>
         <h3>A tax checker that must cite or stay silent</h3>
         <p class="body">A Claude-based agent that checks tax filings against a four-layer knowledge base: federal code, state statutes, IRS publications, precedents. It refuses to answer without citations: a confident wrong answer about taxes is worse than none. In practice it caught a roughly $19K error that commercial filing software had pre-filled and defended.</p>
@@ -237,7 +237,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-triage-agent.jpg" alt="System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-triage-agent"><img src="assets/stills/illo-triage-agent.jpg" alt="System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">comms-triage-agent</span><span class="chip-status">SHIPPED</span></div>
         <h3>Triage agent for internal comms requests</h3>
         <p class="body">A sanitized public demo of an internal-communications triage agent, built on Google Apps Script and Gemini. It classifies incoming requests, drafts revisions, and escalates the rest through three sequential prompts with conditional knowledge-base loading. A confidence threshold routes anything the model is unsure about to a human instead of letting it guess.</p>
@@ -250,7 +250,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo"><img src="assets/stills/illo-three-gates.jpg" alt="System diagram: product shapes flowing through three sequential filter gates, rejects falling away, one shape passing with a seal" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-three-gates"><img src="assets/stills/illo-three-gates.jpg" alt="System diagram: product shapes flowing through three sequential filter gates, rejects falling away, one shape passing with a seal" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">monolith</span><span class="chip-status">SHIPPED</span></div>
         <h3>Budget-gated wardrobe recommendations</h3>
         <p class="body">A TypeScript PWA that recommends wardrobe purchases under a real budget. The LLM only pulls product data from a page. Three deterministic code gates (budget, climate, aesthetic rules) issue the verdict, and unknown data returns INSUFFICIENT_DATA instead of a guess. An append-only audit log keeps the whole decision path inspectable.</p>
@@ -318,7 +318,7 @@
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260711b"></script>
+<script src="shared/reveal.js?v=20260711d"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 <script>
   // name the clicked card illustration so the cross-document transition
