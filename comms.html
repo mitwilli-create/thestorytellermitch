@@ -53,6 +53,16 @@
       text-transform:uppercase;color:var(--blood-soft);margin:10px 0 8px}
     .etile .e-b{font-size:14.5px;color:var(--bone-soft);line-height:1.6}
     .enable-illo{max-width:1040px;margin-top:14px}
+    /* judgment: prose left, the broadcast frame fills screen right */
+    .judg-grid{display:grid;grid-template-columns:minmax(0,700px) minmax(280px,1fr);gap:48px;align-items:start;max-width:1180px}
+    .judg-figure{display:block}
+    .judg-figure .oncam{border:1px solid var(--line)}
+    .judg-figure:hover .oncam{border-color:var(--blood-soft)}
+    .judg-figure img{width:100%;height:auto;display:block}
+    .judg-figure .jf-go{display:inline-block;margin-top:10px;font-family:'JetBrains Mono',monospace;
+      font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft)}
+    .judg-figure:hover .jf-go{color:var(--bone)}
+    @media(max-width:1120px){.judg-grid{grid-template-columns:1fr}.judg-figure{max-width:520px}}
     /* talk-to-me: prominent hairline card, oxblood reserved for the email */
     .talk-card{max-width:860px;background:var(--surface);border:1px solid var(--line-2);
       border-left:2px solid var(--blood-soft);padding:36px 38px}
@@ -115,7 +125,10 @@
   </div>
 </nav>
 
-<header class="comms-hero">
+<header class="comms-hero fill-host">
+  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-comms" aria-hidden="true">
+    <img src="assets/stills/fill-comms.jpg" alt="" width="1376" height="768" loading="lazy">
+  </figure>
   <div class="wrap">
     <div class="kicker">Executive &amp; internal communications · the comms-first view</div>
     <h1 class="display">
@@ -169,14 +182,11 @@
         <div class="e-b">Designed the peer-led speaker series that puts the senior-engineer community's own voices on stage for each other.</div>
       </div>
       <div class="etile reveal">
-        <div class="e-n">Annual</div>
-        <div class="e-k">The survey that steers</div>
-        <div class="e-b">Designed the annual survey that shapes the senior-engineer community's roadmap.</div>
+        <div class="e-n">On camera</div>
+        <div class="e-k">Teaching in public</div>
+        <div class="e-b">Public interview-prep and recruitment video for Google's talent brand, <a href="work.html#social-explainers">on the reel</a>.</div>
       </div>
     </div>
-    <figure class="enable-illo cine reveal" data-cine="assets/cinemagraphs/fill-comms" aria-hidden="true" style="border:1px solid var(--line);overflow:hidden">
-      <img src="assets/stills/fill-comms.jpg" alt="" width="1376" height="768" loading="lazy" style="display:block;width:100%;height:auto">
-    </figure>
   </div>
 </section>
 
@@ -190,14 +200,19 @@
       <span class="eyebrow">03 &middot; Editorial judgment</span>
       <h2>Judgment when counsel is in the room</h2>
     </div>
+    <div class="judg-grid">
     <div class="prose reveal">
       <p>Comms leadership gets tested when Legal is on the call. Twice, that test ran live on air. At HuffPost Live I <a href="stories.html#scientology-live-coverage">covered Scientology while the network was under active legal scrutiny</a>. Counsel drew hard lines. I built the editorial filter that got every segment through review without losing the story. Then Fusion. I <a href="stories.html#fusion-ramos-lawsuit">produced Jorge Ramos's flagship weekly under a $500 million lawsuit</a>. Half a billion dollars on the line. The coverage ran. We stayed the reporter, never the headline.</p>
       <p>Same discipline carried into Google. Executive comms under regulatory and litigation scrutiny. The first draft has to anticipate the review, not fight it.</p>
     </div>
-    <figure class="oncam oncam--card reveal" style="margin-top:26px">
-      <img src="assets/stills/mc-jenna-huffpostlive-2013.jpg" alt="Jenna Miscavige Hill and the host on the HuffPost Live couch, newsroom behind them" width="1376" height="768" loading="lazy">
-      <figcaption class="oncam-cap">jenna miscavige hill on the huffpost live set, 2013 &middot; frame from the broadcast</figcaption>
-    </figure>
+    <a class="judg-figure reveal" href="stories.html#scientology-live-coverage" aria-label="The Scientology coverage story">
+      <figure class="oncam">
+        <img src="assets/stills/mc-jenna-huffpostlive-2013.jpg" alt="Jenna Miscavige Hill and the host on the HuffPost Live couch, newsroom behind them" width="1376" height="768" loading="lazy">
+        <figcaption class="oncam-cap">jenna miscavige hill &middot; huffpost live, 2013</figcaption>
+      </figure>
+      <span class="jf-go">the scientology coverage, the full story &rarr;</span>
+    </a>
+    </div>
   </div>
 </section>
 
@@ -239,21 +254,8 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-lock reveal" id="principals-words">
-      <span class="eyebrow">05 &middot; Testimonial</span>
-      <h2>In the principal's words</h2>
-    </div>
-    <div class="slot reveal">
-      <div class="sl-k">Testimonial · being gathered</div>
-      <p>The right voice here is the VP I wrote for. I'm requesting that quote directly, not reconstructing it from reviews. This space stays empty until it lands. References who can vouch for the ghostwriting and the review-cycle claim are available on request.</p>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
     <div class="sec-lock reveal" id="read-the-work">
-      <span class="eyebrow">06 &middot; Artifacts</span>
+      <span class="eyebrow">05 &middot; Artifacts</span>
       <h2>Read the work</h2>
     </div>
     <div class="cta-cards">
@@ -276,12 +278,12 @@
 <section style="padding-top:0;padding-bottom:96px">
   <div class="wrap">
     <div class="sec-lock reveal" id="talk-to-me">
-      <span class="eyebrow">07 &middot; Contact</span>
+      <span class="eyebrow">06 &middot; Contact</span>
       <h2>Talk to me</h2>
     </div>
     <div class="talk-card reveal">
       <div class="t-h">Hiring for comms that can build?</div>
-      <p>Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>. The <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">resume PDF</a> is one click, no form. Seattle-based, open to relocation, US citizen. I move fast, whatever process you run.</p>
+      <p>Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>. The <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">resume PDF</a> is one click, no form. Seattle-based, open to relocation, US citizen. I move fast, whatever process you run. References who can vouch for the ghostwriting and the review-cycle numbers are available on request.</p>
     </div>
   </div>
 </section>

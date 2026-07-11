@@ -41,7 +41,11 @@
       line-height:1;letter-spacing:-0.05em;color:var(--bone);opacity:.045;pointer-events:none;
       user-select:none}
     .era > *{position:relative;z-index:1}
-    .era > .era-dot{z-index:2}
+    /* the .era > * rule above outranks .era-dot's own declaration by
+       source order and was silently turning the dot position:relative,
+       which parked every dot ON the year text instead of the rail (the
+       "bullets clash with text" bug) */
+    .era > .era-dot{position:absolute;z-index:2}
 
     .era-years{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;
       color:var(--blood-soft);margin-bottom:12px;text-transform:uppercase}
@@ -125,6 +129,9 @@
     .clipbox img,.clipbox video{display:block;width:100%;max-height:72vh;object-fit:contain;background:#000}
     .clipbox figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--mute);padding:12px 16px 0}
+    .clipbox .cb-ctx{font-size:13px;line-height:1.6;color:var(--bone-soft);padding:10px 16px 0;
+      margin:0;max-width:70ch}
+    .clipbox .cb-ctx:empty{display:none}
     .clipbox .cb-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px 16px}
     .clipbox .cb-row a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--blood-soft);text-decoration:none}
@@ -245,6 +252,8 @@
       <h2 class="era-org reveal-child">WDRB Fox 41<br>Louisville</h2>
       <div class="era-role reveal-child">Overnight / Morning News Producer</div>
       <p class="era-body reveal-child">The origin: owning two hours of a live morning block at a small-market station. When the Bhutto assassination broke during my overnight window, we beat the networks to air from Kentucky. The template for every rebuilt rundown since.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>WDRB Fox 41, Louisville, Kentucky's Fox affiliate. A small-market local station. Morning news runs on long live blocks with tiny crews. From 2007 to 2010, I was overnight and morning producer, owning two hours of the four-hour live morning block. Real deadlines, no safety net, that block is where live television started for me.</p></aside>
+
       <div class="era-clips reveal-child">
         <a href="stories.html#bhutto-origin"><img src="assets/stills/louisville-2005-ccby-pugfather.jpg" alt="Louisville skyline at night, 2005" loading="lazy"><span class="cl">Louisville · The Pug Father · CC BY</span></a>
         <a href="stories.html#bhutto-origin"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><span class="cl">Bhutto, Nov 2007 · VOA · public domain</span></a>
@@ -257,13 +266,14 @@
       <h2 class="era-org reveal-child">Al Jazeera English<br>The Stream</h2>
       <div class="era-role reveal-child">Founding-team Associate Producer</div>
       <p class="era-body reveal-child">Launch night, May 2, 2011: the planned rundown abandoned when the bin Laden raid broke, and the man who unknowingly live-tweeted it booked on air, his follower count climbing from a few hundred to tens of thousands. Social-data journalism before that was a category.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Al Jazeera English launched The Stream in May 2011. Bold bet: social media itself was the story engine. A daily news show built around live audience input, not a fixed script. First broadcast night, the planned rundown collided with the bin Laden raid. The show booked the man who had unknowingly live-tweeted it. Within a year, a Royal Television Society award for innovative news. I was on the founding production team, building a format nobody had run before.</p></aside>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>250M</div><div class="l">households at launch</div></div>
         <div class="em"><div class="n">RTS 2012</div><div class="l">Innovative News Award</div></div>
       </div>
       <div class="era-clips era-clips--strip reveal-child">
         <a href="work.html#live-broadcasts" data-preview="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Bin Laden night · 45m</span></a>
-        <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
+        <a href="work.html#live-broadcasts" data-preview="assets/previews/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
         <a href="stories.html#stream-launch-night"><img src="assets/stills/tahrir-2011-ccby-rashad.jpg" alt="Tahrir Square protests, February 2011" loading="lazy"><span class="cl">Tahrir, 2011 · J. Rashad · CC BY</span></a>
         <a href="work.html#live-broadcasts"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Pearl Roundabout protests, Bahrain 2011" loading="lazy"><span class="cl">Pearl Roundabout, 2011 · CC BY-SA</span></a>
       </div>
@@ -295,9 +305,9 @@
         <div class="em"><div class="n">2013</div><div class="l">Webby honors era</div></div>
       </div>
       <div class="era-clips reveal-child">
-        <a href="work.html#live-broadcasts"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Trans military panel</span></a>
-        <a href="work.html#live-broadcasts"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><span class="cl">Truvada panel · 2013</span></a>
-        <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-jada-pinkett-smith-style-and-success.jpg" alt="Jada Pinkett Smith interview" loading="lazy"><span class="cl">Jada Pinkett Smith · live</span></a>
+        <a href="work.html#live-broadcasts" data-preview="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Trans military panel</span></a>
+        <a href="work.html#live-broadcasts" data-preview="assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><span class="cl">Truvada panel · 2013</span></a>
+        <a href="work.html#interviews-panels" data-preview="assets/previews/huffpost-2012-jada-pinkett-smith-style-and-success.mp4"><img src="assets/posters/huffpost-2012-jada-pinkett-smith-style-and-success.jpg" alt="Jada Pinkett Smith interview" loading="lazy"><span class="cl">Jada Pinkett Smith · live</span></a>
         <a href="stories.html#scientology-live-coverage"><img src="assets/stills/huffpost-live-set.jpg" alt="The HuffPost Live set" loading="lazy"><span class="cl">The set · from the broadcast</span></a>
       </div>
     </div>
@@ -330,6 +340,8 @@
       <h2 class="era-org reveal-child">CNN · New Day</h2>
       <div class="era-role reveal-child">Writer / Producer · election cycle</div>
       <p class="era-body reveal-child">Network morning television at full election pace: daily live segments through the 2016 primaries, guest pre-interviews, anchor briefings. One shot to land a story, no second take.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>CNN's New Day was the network's flagship morning show, and in 2016 it ran at full election pace. I was a writer and producer during the 2016 primary cycle: daily live segments, guest pre-interviews, anchor briefings, one shot to land a story with no second take. Network morning television at its highest-pressure setting.</p></aside>
+
       <div class="era-clips reveal-child">
         <a href="work.html"><img src="assets/stills/cnn-newsroom-2012-ccby-atkeison.jpg" alt="CNN newsroom, Atlanta" loading="lazy"><span class="cl">A CNN newsroom · C. Atkeison · CC BY</span></a>
       </div>
@@ -367,6 +379,8 @@
       <h2 class="era-org reveal-child">Google<br>Corporate Engineering</h2>
       <div class="era-role reveal-child">Senior Communications &amp; Content Strategist</div>
       <p class="era-body reveal-child">Six years turning dense internal engineering into communication people actually watched. Video-first internal comms at a scale most newsrooms never touch, plus public recruitment and interview-prep video for Google's talent brand.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Google's Corporate Engineering is the internal engineering org that builds the company's own tools and infrastructure, reaching every employee. I spent six years, 2018 to 2024, as Senior Communications and Content Strategist there, turning dense internal engineering into video-first communication that reached 75,000-plus employees, plus public recruitment and interview-prep video for Google's talent brand.</p></aside>
+
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>75,000+</div><div class="l">employees reached</div></div>
       </div>
@@ -382,12 +396,14 @@
       <h2 class="era-org reveal-child">Google<br>Cross-Google Engineering</h2>
       <div class="era-role reveal-child">Internal Communications Lead</div>
       <p class="era-body reveal-child">Communications for the community of 1,000+ Principal, Distinguished, and Fellow engineers. This is where I stopped writing about the systems and started building them: two production AI agents, built and deployed solo.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Cross-Google Engineering, xGE, is the horizontal org that drives technical change across the whole company, and its community is the 1,000-plus most senior engineers: Principal, Distinguished, and Fellow. I was Internal Communications Lead there from 2024 to 2026. It's also where I stopped writing about systems and started building them, shipping two production AI agents solo.</p></aside>
+
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
         <div class="em"><div class="n" data-count>~70%</div><div class="l">less VP review back-and-forth, digital-twin system (internal, self-measured)</div></div>
       </div>
       <div class="era-clips reveal-child">
-        <a href="work.html#interviews-panels"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
+        <a href="work.html#interviews-panels" data-preview="assets/previews/google-xge-2023-svp-interview-grace-hopper-conference.mp4"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
         <a href="stories.html#digital-twin"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><span class="cl">The digital twin · system illustration</span></a>
       </div>
     </div>
@@ -398,6 +414,8 @@
       <h2 class="era-org reveal-child">AI-native<br>builder</h2>
       <div class="era-role reveal-child">Forward Deployed Creative / Engineer</div>
       <p class="era-body reveal-child">Building full time: an ElevenLabs production pipeline with per-run cost receipts, measurable voice scoring, citation-gated verification, and a fifty-agent job-search fleet. The newsroom instinct, shipped as software.</p>
+      <aside class="era-context reveal-child"><div class="ec-k">what this is</div><p>2026, post-Google. I'm building AI-native production systems full time on the ElevenLabs stack, in public, with costed run manifests: a broll pipeline that turns one script into a produced, captioned short, voice scoring, citation-gated verification, and the orchestration layers holding it together. This portfolio site is itself one of the artifacts.</p></aside>
+
       <div class="era-clips reveal-child">
         <a href="broll-pipeline.html" data-preview="assets/broll-short.mp4"><img src="assets/broll-poster.jpg" alt="broll pipeline breakdown" loading="lazy"><span class="cl">broll pipeline · breakdown</span></a>
         <a href="stories.html#builder-turn"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
@@ -415,6 +433,7 @@
     <div id="cb-media"></div>
     <figcaption id="cb-cap"></figcaption>
   </figure>
+  <p class="cb-ctx" id="cb-ctx"></p>
   <div class="cb-row">
     <a id="cb-link" href="#">Open in the archive</a>
     <button id="cb-close" type="button">Close</button>
@@ -524,7 +543,16 @@
         big.src=img.src; big.alt=img.alt;
         cbMedia.appendChild(big);
       }
-      cbCap.textContent=cap?cap.textContent:'';
+      // in-dialog context: name the era and carry its what-this-was line
+      // so a clicked still explains itself without leaving the timeline
+      var era=a.closest('.era');
+      var org=era?era.querySelector('.era-org'):null;
+      var ctx=era?era.querySelector('.era-context p'):null;
+      var capText=cap?cap.textContent:'';
+      if(org) capText=org.textContent.replace(/\s+/g,' ').trim()+' · '+capText;
+      cbCap.textContent=capText;
+      var cbCtx=document.getElementById('cb-ctx');
+      if(cbCtx) cbCtx.textContent=ctx?ctx.textContent:'';
       var href=a.getAttribute('href');
       cbLink.href=href;
       cbLink.textContent = href.indexOf('work.html')===0 ? 'See it on the reel' :

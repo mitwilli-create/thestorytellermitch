@@ -53,6 +53,17 @@
       transition:color .3s var(--ease)}
     .hero-sys:hover .sys-cap{color:var(--bone)}
     .arc .c-b a,.stmt a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    /* arc cells route to their timeline tier: linked kickers + a visible
+       go-affordance (cells stay non-wrapper-clickable for a11y) */
+    .arc .c-k a{color:inherit;transition:color var(--dur-micro) var(--ease-micro)}
+    .arc .c-k a:hover{color:var(--bone)}
+    .arc .c-go{display:inline-block;margin-top:14px;font-family:'JetBrains Mono',monospace;
+      font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft);
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .arc .c-go:hover{color:var(--bone)}
+    .sec-title a{color:inherit}
+    .sec-note a{color:inherit}
+    .sec-note a:hover{color:var(--bone)}
     /* signal-flow divider band: emerges from the page background, oncam-style */
     .sig-band{position:relative;height:clamp(150px,22vw,270px);overflow:hidden;background:var(--bg)}
     .sig-band img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
@@ -268,7 +279,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">02</span>
-      <h2 class="sec-title">The Arc</h2>
+      <h2 class="sec-title"><a href="timeline.html">The Arc</a></h2>
+      <span class="sec-note"><a href="timeline.html">scroll the full timeline &rarr;</a></span>
     </div>
     <div class="stmt reveal">
       <p><b>The code matters, and now I write it.</b> My edge is the understanding.</p>
@@ -278,19 +290,22 @@
 
     <div class="arc">
       <div class="cell reveal">
-        <div class="c-k">01 · Newsroom</div>
+        <div class="c-k"><a href="timeline.html#era-wdrb">01 · Newsroom</a></div>
         <div class="c-h">Eight years live</div>
         <div class="c-b">CNN, AJ+, Al Jazeera, HuffPost Live, Fusion. <a href="stories.html">One shot to land a story</a>, no second take. Where I learned to make complex things land under deadline.</div>
+        <a class="c-go" href="timeline.html#era-wdrb">the newsroom years, on the timeline &rarr;</a>
       </div>
       <div class="cell reveal">
-        <div class="c-k">02 · Google</div>
+        <div class="c-k"><a href="timeline.html#era-corpeng">02 · Google</a></div>
         <div class="c-h">Eight years scale</div>
         <div class="c-b">Turned dense engineering into training and communication for <a href="comms.html#the-seat-i-held">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
+        <a class="c-go" href="timeline.html#era-corpeng">the Google years, on the timeline &rarr;</a>
       </div>
       <div class="cell reveal">
-        <div class="c-k">03 · Now</div>
+        <div class="c-k"><a href="timeline.html#era-now">03 · Now</a></div>
         <div class="c-h">Forward deployed</div>
         <div class="c-b">Production AI agents and AI-native creative pipelines. I sit with the problem, build the workflow, and <a href="fit.html">make the value stick after I leave the room</a>.</div>
+        <a class="c-go" href="timeline.html#era-now">what I'm building now, on the timeline &rarr;</a>
       </div>
     </div>
   </div>
