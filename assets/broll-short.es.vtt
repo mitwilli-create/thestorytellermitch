@@ -16,7 +16,7 @@ una sala de edición, una revisión de subtítulos, horas de trabajo por cada mi
 Aquí, cada palabra es texto a voz de Eleven Labs. La música es de Eleven Music.
 
 00:00:22.779 --> 00:00:28.659
-Cada clip está ajustado al ritmo de la narración. Cada llamada a la APA registra su modelo, latencia y costo.
+Cada clip está ajustado al ritmo de la narración. Cada llamada a la API registra su modelo, latencia y costo.
 
 00:00:28.659 --> 00:00:31.019
 Cambia una línea, vuelve a renderizar un compás.
