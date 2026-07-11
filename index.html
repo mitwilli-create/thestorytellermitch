@@ -13,6 +13,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="shared/theme.css?v=20260710b">
+  <style>
+    /* homepage hero: literal header block + system diagram card (2026-07-10 restructure) */
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:64px;align-items:center}
+    .hero .display{font-size:clamp(44px,6.6vw,94px)}
+    .hero-sub{margin-top:30px}
+    .hero-facts{margin-top:28px;max-width:660px;display:flex;flex-direction:column;gap:11px;
+      opacity:0;transform:translateY(20px);
+      transition:opacity 1s var(--ease) .58s,transform 1s var(--ease) .58s}
+    .revealed .hero-facts{opacity:1;transform:none}
+    .fact-row{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:baseline}
+    .f-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .f-v{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.75;
+      letter-spacing:0.02em;color:var(--bone-soft)}
+    .hero-cta{margin-top:36px}
+    .hero-sys{display:block;background:var(--surface);border:1px solid var(--line-2);
+      padding:22px 22px 18px;opacity:0;
+      transition:opacity 1s var(--ease) .8s,border-color .3s var(--ease)}
+    .revealed .hero-sys{opacity:1}
+    .hero-sys:hover{border-color:var(--blood-soft)}
+    .sys-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:16px;
+      display:flex;justify-content:space-between;gap:12px}
+    .sys-k .r{color:var(--mute);letter-spacing:0.08em}
+    .sys-diagram{font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.7;
+      color:var(--bone-soft);white-space:pre;overflow-x:auto;margin:0}
+    .sys-diagram .n{color:var(--bone);font-weight:500}
+    .sys-diagram .a{color:var(--blood-soft)}
+    .sys-diagram .d{color:var(--dim)}
+    .sys-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
+      line-height:1.65;margin-top:16px;padding-top:13px;border-top:1px solid var(--line);
+      transition:color .3s var(--ease)}
+    .hero-sys:hover .sys-cap{color:var(--bone)}
+    .arc .c-b a,.stmt a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    .no-js .hero-facts,.no-js .hero-sys{opacity:1;transform:none}
+    @media(max-width:1120px){
+      .hero-grid{grid-template-columns:1fr;gap:44px}
+      .hero-sys{max-width:520px}
+    }
+    @media(max-width:860px){
+      .hero .display{font-size:clamp(42px,10.5vw,64px)}
+      .fact-row{grid-template-columns:1fr;gap:5px}
+      .f-v{font-size:12px}
+      .sys-diagram{font-size:10px}
+      .hero-sys{padding:18px 16px 15px}
+    }
+  </style>
 </head>
 <body>
 
@@ -35,18 +82,45 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="kicker">Storyteller · Builder · Forward Deployed</div>
-    <h1 class="display">
-      <span class="ln"><span>I build the</span></span>
-      <span class="ln"><span class="accent">workflows</span></span>
-      <span class="ln"><span>where craft</span></span>
-      <span class="ln"><span class="thin">meets the machine.</span></span>
-    </h1>
-    <p class="hero-sub">Eight years in live newsrooms, eight at Google. Building production AI since 2024. Now I make AI-native storytelling systems on the ElevenLabs stack.</p>
-    <div class="hero-cta">
-      <a class="btn solid" href="#work"><span>See the work</span></a>
-      <a class="btn" href="broll-pipeline.html"><span>The ElevenLabs pipeline</span></a>
-      <a class="btn" href="work.html#google"><span>Watch the profiles</span></a>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="kicker">Mitchell Williams · Production AI since 2024</div>
+        <h1 class="display">
+          <span class="ln"><span>Forward</span></span>
+          <span class="ln"><span class="accent">deployed</span></span>
+          <span class="ln"><span>AI builder.</span></span>
+        </h1>
+        <p class="hero-sub">Eight years in live newsrooms, eight at Google. I build the workflows where craft meets the machine: production AI agents, creative pipelines, and the enablement that makes them stick.</p>
+        <div class="hero-facts">
+          <div class="fact-row">
+            <span class="f-k">Target roles</span>
+            <span class="f-v">Forward Deployed Engineer / Creative · AI Solutions Architect · AI Enablement · Comms Lead · DevRel · AI Editorial</span>
+          </div>
+          <div class="fact-row">
+            <span class="f-k">Logistics</span>
+            <span class="f-v">16 yrs (8 newsrooms + 8 Google) · Seattle · US citizen, no sponsorship · Remote or relocate</span>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn solid" href="fit.html"><span>See role fit</span></a>
+          <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Resume (PDF)</span></a>
+          <a class="btn" href="projects.html"><span>AI projects</span></a>
+        </div>
+      </div>
+      <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline case study: one script in, a produced short out, every API call costed">
+        <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $14.20</span></div>
+        <pre class="sys-diagram" aria-hidden="true"><span class="n">input/script.md</span>
+  <span class="d">│</span>  parse <span class="d">→</span> beats
+  <span class="d">├─▶</span> <span class="n">voiceover</span>  <span class="a">ElevenLabs TTS</span>
+  <span class="d">├─▶</span> <span class="n">visuals</span>    council-directed gen
+  <span class="d">├─▶</span> <span class="n">score</span>      <span class="a">Eleven Music v2</span>
+  <span class="d">└─▶</span> <span class="n">sfx</span>        <span class="a">Sound Effects API</span>
+  <span class="d">▼</span>
+<span class="n">assemble</span>   ffmpeg <span class="d">·</span> cut to VO timing
+  <span class="d">▼</span>
+<span class="n">short.mp4</span> <span class="d">→</span> <span class="n">dub</span> <span class="d">→</span> <span class="n">short.es.mp4</span></pre>
+        <div class="sys-cap">One script in, a produced short out. Every API call logged and costed. See the teardown →</div>
+      </a>
     </div>
   </div>
   <div class="scrollcue"><span>↓ &nbsp; Scroll</span></div>
@@ -128,7 +202,7 @@
         </div>
       </a>
 
-      <a class="film half reveal" href="work.html#play-fusion-2013-america-with-jorge-ramos">
+      <a class="film half reveal" href="work.html#play-fusion-2014-america-with-jorge-ramos-october-7">
         <img class="thumb" src="assets/posters/home-ramos.jpg" alt="America With Jorge Ramos, Fusion" loading="lazy">
         <div class="play-o"></div>
         <div class="meta">
@@ -157,17 +231,17 @@
       <div class="cell reveal">
         <div class="c-k">01 · Newsroom</div>
         <div class="c-h">Eight years live</div>
-        <div class="c-b">CNN, AJ+, Al Jazeera, HuffPost Live, Fusion. One shot to land a story, no second take. Where I learned to make complex things land under deadline.</div>
+        <div class="c-b">CNN, AJ+, Al Jazeera, HuffPost Live, Fusion. <a href="stories.html">One shot to land a story</a>, no second take. Where I learned to make complex things land under deadline.</div>
       </div>
       <div class="cell reveal">
         <div class="c-k">02 · Google</div>
         <div class="c-h">Eight years scale</div>
-        <div class="c-b">Turned dense engineering into training and communication for 1,000+ Principal, Distinguished, and Fellow engineers. Then I stopped writing about the systems and started building them.</div>
+        <div class="c-b">Turned dense engineering into training and communication for <a href="impact.html">1,000+ Principal, Distinguished, and Fellow engineers</a>. Then I stopped writing about the systems and started building them.</div>
       </div>
       <div class="cell reveal">
         <div class="c-k">03 · Now</div>
         <div class="c-h">Forward deployed</div>
-        <div class="c-b">Production AI agents and AI-native creative pipelines. I sit with the problem, build the workflow, and make the value stick after I leave the room.</div>
+        <div class="c-b">Production AI agents and AI-native creative pipelines. I sit with the problem, build the workflow, and <a href="fit.html">make the value stick after I leave the room</a>.</div>
       </div>
     </div>
   </div>
