@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>career-ops · the job search, run as production software</title>
-  <meta name="description" content="A job-search automation system in production: ATS portal scanning, multi-model role evaluation, tailored materials, and roughly 50 scheduled agents on macOS launchd. 740+ role evaluations through the pipeline. Operated software, not a demo.">
+  <meta name="description" content="A job-search automation system in production: ATS portal scanning, multi-model role evaluation, tailored materials, and 52 scheduled agents on macOS launchd. 1,150+ scored role reports through the pipeline, receipts on the page. Operated software, not a demo.">
   <meta property="og:title" content="career-ops: the job search, run as production software">
   <meta property="og:description" content="A production fork of open-source santifer/career-ops, extended into a multi-model agent fleet that scans, scores, tracks, and drafts. The strongest proof it works: it runs the owner's own search.">
   <meta property="og:type" content="article">
@@ -19,7 +19,7 @@
     "@type": "CreativeWork",
     "name": "career-ops",
     "headline": "The job search, run as production software",
-    "about": "A job-search automation system in production: zero-token ATS portal scanning, multi-model LLM role evaluation, tailored application materials, an application tracker, and a fleet of roughly 50 scheduled agents on macOS launchd, running as a production fork of the open-source santifer/career-ops.",
+    "about": "A job-search automation system in production: zero-token ATS portal scanning, multi-model LLM role evaluation, tailored application materials, an application tracker, and a fleet of 52 scheduled agents on macOS launchd, running as a production fork of the open-source santifer/career-ops.",
     "author": {
       "@type": "Person",
       "name": "Mitchell Williams",
@@ -58,7 +58,7 @@
   <div class="wrap">
     <div class="kicker">Case study · a production system, operated daily</div>
     <h1 class="cs-title">The job search, run as production software.<span class="mono">career-ops</span></h1>
-    <p class="cs-standfirst">A job-search automation system that scans ATS portals, evaluates roles against a real CV corpus, generates tailored materials, and tracks everything: a production fork of the open-source <strong>santifer/career-ops</strong>, extended with a multi-model agent fleet of roughly 50 scheduled jobs on macOS launchd. It has powered <strong>740+ role evaluations</strong>. This is not a portfolio demo; it is the system I run my own search on, every day, which is also why the repo stays private. The operating standard is imported from <strong>live news and Google comms</strong>: daily deadlines, nothing silently wrong.</p>
+    <p class="cs-standfirst">A job-search automation system that scans ATS portals, evaluates roles against a real CV corpus, generates tailored materials, and tracks everything: a production fork of the open-source <strong>santifer/career-ops</strong>, extended with a multi-model agent fleet of 52 scheduled jobs on macOS launchd. It has produced <strong>1,150+ scored role reports</strong>, and the receipts are on this page. This is not a portfolio demo; it is the system I run my own search on, every day. The code is public; the life inside it stays local. The operating standard is imported from <strong>live news and Google comms</strong>: daily deadlines, nothing silently wrong.</p>
     <div class="cs-tagrow">
       <span class="cs-tag">Node</span>
       <span class="cs-tag">Multi-agent</span>
@@ -84,8 +84,8 @@
     <div class="cs-h2">What it is</div>
     <p class="cs-intro">An operating discipline for a job search: every posting flows through the same scan, triage, evaluate, track pipeline, and a fleet of scheduled agents keeps the data fresh, the duplicates merged, and the owner honestly informed. The numbers below come from the live tracker and the launchd inventory, not estimates.</p>
     <div class="cs-stat-grid">
-      <div class="cs-stat"><div class="n">740+</div><div class="l">role evaluations through the pipeline, each scored against the real CV corpus</div></div>
-      <div class="cs-stat"><div class="n">~50</div><div class="l">scheduled agents on macOS launchd: scanners, sweeps, health checks, digests</div></div>
+      <div class="cs-stat"><div class="n">1,150+</div><div class="l">scored role reports through the pipeline, counted from the report archive on disk</div></div>
+      <div class="cs-stat"><div class="n">52</div><div class="l">scheduled agents on macOS launchd: scanners, sweeps, health checks, digests</div></div>
       <div class="cs-stat"><div class="n">$0</div><div class="l">token cost for portal scanning: it hits Greenhouse, Ashby, and Lever APIs directly</div></div>
       <div class="cs-stat"><div class="n">5</div><div class="l">model vendors orchestrated, routed by task instead of loyalty</div></div>
     </div>
@@ -106,13 +106,13 @@
   <div class="wrap">
     <div class="cs-h2">What it does</div>
     <div class="cs-body">
-      <p><strong>A fork, extended into a fleet.</strong> The foundation is santifer/career-ops, an open-source job-search pipeline. The production fork extends it with the operating layer a daily-driver system needs: roughly 50 launchd agents covering portal scans, posting-liveness sweeps, data-integrity checks, nightly enrichment, health monitoring, and a morning email digest. The fork stays current with upstream while the personal data underneath stays gitignored and local.</p>
+      <p><strong>A fork, extended into a fleet.</strong> The foundation is santifer/career-ops, an open-source job-search pipeline. The production fork extends it with the operating layer a daily-driver system needs: 52 launchd agents covering portal scans, posting-liveness sweeps, data-integrity checks, nightly enrichment, health monitoring, and a morning email digest. The fork stays current with upstream while the personal data underneath stays gitignored and local.</p>
 
       <p><strong>Evaluation with a rubric, not a vibe.</strong> Each posting is triaged cheaply first, then batch-evaluated by stronger models against the real CV corpus, producing a scored report with an explicit recommendation. Hard-disqualifier and compensation-floor gates run as deterministic code after the model, because a scoring rule that matters should not depend on a model's mood. Low-fit roles get told "don't apply."</p>
 
       <p><strong>Operated like production.</strong> The fleet has the discipline production systems have: spend caps and kill switches on every autonomous agent, append-only audit logs, regression detection with seeded baselines, a health agent that checks quotas and credentials daily, and a bug ledger with its own resolution pipeline. When something silently breaks, a watcher notices before I do.</p>
 
-      <p><strong>Private on purpose.</strong> The repo carries my actual pipeline: applications, contacts, evaluation reports, tailored materials. That data is gitignored and never committed, and the fork itself stays private. The architecture is worth showing; the life inside it is not for publishing. I walk the system end to end on request.</p>
+      <p><strong>Public code, private life.</strong> The fork is <a href="https://github.com/mitwilli-create/career-ops" rel="noopener">public on GitHub</a>: the orchestrator, the agents, the gates, the tests. What never ships is the pipeline data it operates on: applications, contacts, evaluation reports, tailored materials all stay local, gitignored at the fence and filtered out of the published history entirely. The architecture is worth showing; the life inside it is not for publishing. I walk the live system end to end on request.</p>
     </div>
   </div>
 </section>
@@ -120,7 +120,7 @@
 <section>
   <div class="wrap">
     <div class="cs-h2">How it works</div>
-    <div class="diagram" role="img" aria-label="Flow: ATS portals are scanned via their APIs at zero token cost; postings pass through cheap triage with deterministic disqualifier gates, then multi-model batch evaluation scored against the CV corpus; results land in a tracker with reports and tailored materials per role, surfaced through a dashboard and a daily email digest; around the pipeline, roughly fifty launchd agents run scans, sweeps, health checks, and regression guards.">
+    <div class="diagram" role="img" aria-label="Flow: ATS portals are scanned via their APIs at zero token cost; postings pass through cheap triage with deterministic disqualifier gates, then multi-model batch evaluation scored against the CV corpus; results land in a tracker with reports and tailored materials per role, surfaced through a dashboard and a daily email digest; around the pipeline, 52 launchd agents run scans, sweeps, health checks, and regression guards.">
 <span class="node">ATS portals</span>  <span class="prod">(Greenhouse · Ashby · Lever APIs, zero-token scan)</span>
    <span class="arrow">│</span>
    <span class="arrow">▼</span>
@@ -135,7 +135,7 @@
    <span class="arrow">▼</span>
 <span class="node">[4] dashboard + daily digest</span>  <span class="prod">(what needs attention today)</span>
    <span class="arrow">▲</span>
-   <span class="arrow">└──</span> <span class="node">~50 launchd agents</span>  <span class="prod">(scans · liveness sweeps · health checks · regression guard)</span>
+   <span class="arrow">└──</span> <span class="node">52 launchd agents</span>  <span class="prod">(scans · liveness sweeps · health checks · regression guard)</span>
     </div>
 
     <div style="margin-top:14px;">
@@ -180,19 +180,41 @@
 
 <section>
   <div class="wrap">
+    <div class="cs-h2">The receipts · captured live 2026-07-10</div>
+    <div class="cs-body">
+      <p>Three reviewers independently flagged the numbers on this page as unverifiable, and that was fair. So here is the evidence, captured from the running system and dated. The pipeline is live, so anything that names a company I am actually talking to is blurred; everything else is exactly what the machine shows.</p>
+    </div>
+    <figure class="cs-illo" style="margin-top:28px;">
+      <img src="assets/career-ops/dashboard-live-20260710.png" alt="The career-ops dashboard, live: 117 companies tracked, 11,692 postings scanned, 298 evaluations in the tracker, a 2.8k-contact network, and 12 roles ready to apply. Rows naming live target companies are blurred." loading="lazy">
+      <figcaption>the operational dashboard, live capture · identifying rows blurred because the pipeline is in use</figcaption>
+    </figure>
+    <figure class="cs-illo" style="margin-top:18px;">
+      <img src="assets/career-ops/career-ops-evals.png" alt="Terminal census of the eval report archive: 2,936 files, 1,153 distinct numbered role reports, report ids issued to 2,761, and the live tracker API showing 298 current rows and 11,692 postings scanned." loading="lazy">
+      <figcaption>the report-archive census: 1,153 distinct scored role reports on disk, ids issued to #2761</figcaption>
+    </figure>
+    <figure class="cs-illo" style="margin-top:18px;">
+      <img src="assets/career-ops/career-ops-fleet.png" alt="Terminal listing of the launchd fleet: 52 com.mitchell.career-ops agents registered, from scanners and liveness sweeps to watchdogs and digests." loading="lazy">
+      <figcaption>the launchd inventory: all 52 agent labels, registered and running on the machine that runs the search</figcaption>
+    </figure>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The tracker shows 298 evaluations because dead postings get swept and duplicates get merged; the report archive is the cumulative record. Want the live version instead of pixels? The walkthrough offer below is real.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <div class="cs-h2">Why it matters</div>
     <div class="cs-body">
       <p>Anyone can demo an agent. Operating a fleet of them for months, on data you personally depend on, is a different skill: it forces the unglamorous parts, the kill switches, the audit logs, the dedupe invariants, the honest scoring that tells you not to apply. career-ops is where I practice that skill daily. The system's strongest credential is that its owner trusts it with his own job search.</p>
     </div>
     <div class="cs-callout" style="margin-top:24px;">
-      <p>Operated software, not a demo. The proof is not a screenshot; it is that the system has to be right every morning, for me.</p>
+      <p>Operated software, not a demo. The screenshots above are receipts, but the deeper proof is that the system has to be right every morning, for me.</p>
     </div>
     <div class="cs-cta" style="margin-top:40px;">
-      <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=career-ops%20walkthrough"><span>Details on request</span></a>
+      <a class="btn solid" href="https://github.com/mitwilli-create/career-ops" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="mailto:mitwilli@gmail.com?subject=career-ops%20walkthrough"><span>Live walkthrough</span></a>
       <a class="btn" href="projects.html"><span>The rest of the build</span></a>
-      <a class="btn" href="mailto:mitwilli@gmail.com?subject=career-ops%20%3A%20Mitchell%20Williams"><span>Work with me</span></a>
     </div>
-    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The repo is a private fork carrying live personal pipeline data, so there is no public link. The upstream it forks from is open source at <a href="https://github.com/santifer/career-ops" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/santifer/career-ops</a>; I demo my production extension of it on request.</p>
+    <p style="max-width:760px;font-size:14px;color:var(--dim);margin-top:18px;line-height:1.6;">The production fork is public at <a href="https://github.com/mitwilli-create/career-ops" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/career-ops</a>, with the personal pipeline data filtered out of the published history entirely. The upstream it forks from is open source at <a href="https://github.com/santifer/career-ops" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/santifer/career-ops</a>; I demo the live system on request.</p>
   </div>
 </section>
 
