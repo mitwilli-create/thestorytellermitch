@@ -362,6 +362,39 @@ a.chip{text-decoration:none;display:inline-block}
     .sig-pulse.pulsing::after{animation:sig-sweep 1.6s var(--ease-mech)}
     @keyframes sig-sweep{from{opacity:1;background-position-x:-60%}to{opacity:1;background-position-x:160%}}
 
+    /* ---------- narration console: one per narrated page ----------
+       Ships in a labeled "narration coming" state until the re-cloned
+       voice generates; the drop-in step enables the player, bakes the
+       real waveform, and wires the diagram tour. */
+    .voice-console{max-width:760px;border:1px solid var(--line-2);background:var(--surface);
+      padding:16px 18px;margin:26px 0 6px}
+    .vc-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    .vc-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .vc-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;
+      text-transform:lowercase;color:var(--dim);border:1px solid var(--line);padding:2px 8px}
+    .vc-body{display:flex;align-items:center;gap:14px}
+    .vc-play{width:44px;height:44px;flex:none;border:1px solid var(--line-2);background:transparent;
+      color:var(--bone);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+      transition:all var(--dur-micro) var(--ease-micro)}
+    .vc-play:not(:disabled):hover{border-color:var(--blood-soft)}
+    .vc-play:disabled{color:var(--dim);cursor:default;opacity:0.6}
+    .vc-wave{flex:1;height:34px;min-width:0;
+      background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 5px);
+      -webkit-mask-image:linear-gradient(90deg,#000 0 100%);position:relative;overflow:hidden}
+    .vc-wave--placeholder{opacity:0.5}
+    .vc-status{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.06em;color:var(--mute);text-transform:lowercase;max-width:220px;line-height:1.5}
+    .vc-transcript{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+    .vc-transcript summary{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--mute);cursor:pointer}
+    .vc-transcript summary:hover{color:var(--bone)}
+    .vc-transcript p{font-size:14px;line-height:1.7;color:var(--bone-soft);margin-top:10px;max-width:680px}
+    @media(max-width:860px){
+      .vc-body{flex-wrap:wrap}
+      .vc-status{max-width:none}
+    }
+
     /* ---------- sound toggle (audio.js): muted default, opt-in ---------- */
     .sound-toggle{position:fixed;right:18px;bottom:18px;z-index:200;min-width:44px;min-height:44px;
       display:flex;align-items:center;gap:8px;padding:0 14px;cursor:pointer;
