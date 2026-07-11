@@ -47,6 +47,12 @@
       transition:color .3s var(--ease)}
     .hero-sys:hover .sys-cap{color:var(--bone)}
     .arc .c-b a,.stmt a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    /* signal-flow divider band: emerges from the page background, oncam-style */
+    .sig-band{position:relative;height:clamp(150px,22vw,270px);overflow:hidden;background:var(--bg)}
+    .sig-band img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .sig-band::after{content:'';position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(to right,var(--bg),rgba(10,10,11,0) 18%,rgba(10,10,11,0) 82%,var(--bg)),
+        linear-gradient(to bottom,var(--bg),rgba(10,10,11,0) 30%,rgba(10,10,11,0) 70%,var(--bg))}
     .no-js .hero-facts,.no-js .hero-sys{opacity:1;transform:none}
     @media(max-width:1120px){
       .hero-grid{grid-template-columns:1fr;gap:44px}
@@ -214,6 +220,10 @@
     </div>
   </div>
 </section>
+
+<div class="sig-band" aria-hidden="true">
+  <img src="assets/stills/band-signal-flow.jpg" alt="" loading="lazy">
+</div>
 
 <section>
   <div class="wrap">
