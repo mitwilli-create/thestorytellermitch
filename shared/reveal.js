@@ -38,4 +38,38 @@
     const cio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { cio.unobserve(e.target); startCine(e.target); } }); }, { rootMargin: '160px' });
     document.querySelectorAll('[data-cine]').forEach((el) => cio.observe(el));
   }
+
+  // Signal pulses: an occasional band crossing each diagram, randomized
+  // 8-20s so surfaces feel alive without a metronome. Motion-gated.
+  if (window.__motionOK) {
+    document.querySelectorAll('.diagram, .sys-diagram, [data-pulse]').forEach((el) => {
+      el.classList.add('sig-pulse');
+      const loop = () => setTimeout(() => {
+        el.classList.remove('pulsing'); void el.offsetWidth; el.classList.add('pulsing'); loop();
+      }, 8000 + Math.random() * 12000);
+      loop();
+    });
+  }
+
+  // Counters: numeric stats tick up once on scroll-into-view; the HTML
+  // value is the motion-off end state. tabular-nums keeps width stable.
+  if (window.__motionOK) {
+    const tick = (el) => {
+      const m = el.textContent.match(/^([^0-9]*)([\d,.]+)(.*)$/s); if (!m) return;
+      const end = parseFloat(m[2].replace(/,/g, '')); if (!isFinite(end)) return;
+      const dec = (m[2].split('.')[1] || '').length;
+      const grp = m[2].includes(',');
+      const t0 = performance.now(), dur = 900;
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        let n = (end * e).toFixed(dec);
+        if (grp) n = Number(n).toLocaleString('en-US', { minimumFractionDigits: dec });
+        el.textContent = m[1] + n + m[3];
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const nio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { nio.unobserve(e.target); tick(e.target); } }); }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat .n, [data-count]').forEach((el) => { if (/\d/.test(el.textContent)) nio.observe(el); });
+  }
 })();

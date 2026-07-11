@@ -332,6 +332,19 @@ a.chip{text-decoration:none;display:inline-block}
       opacity:0;transition:opacity var(--dur-set) var(--ease-reveal);pointer-events:none}
     .cine.cine-on video{opacity:1}
 
+    /* ---------- signal pulses: idle data-life on proof surfaces ----------
+       A low-contrast band sweeps a diagram once; reveal.js retriggers on a
+       randomized 8-20s interval, motion-gated. Flash-safe: 11% peak
+       opacity over a fraction of the surface, never full-viewport. */
+    .sig-pulse{position:relative}
+    /* the band is a no-repeat background on an inset-0 overlay, so the
+       sweep never adds scrollable overflow to overflow-x:auto diagrams */
+    .sig-pulse::after{content:'';position:absolute;inset:0;opacity:0;pointer-events:none;
+      background:linear-gradient(90deg,transparent 0,rgba(177,85,76,0.11) 50%,transparent 100%) no-repeat;
+      background-size:34% 100%;background-position-x:-60%}
+    .sig-pulse.pulsing::after{animation:sig-sweep 1.6s var(--ease-mech)}
+    @keyframes sig-sweep{from{opacity:1;background-position-x:-60%}to{opacity:1;background-position-x:160%}}
+
     /* ---------- reduced motion: static end states, sitewide ----------
        Collapse durations instead of removing animation so transitionend
        still fires and load-in choreography lands at its finished state
