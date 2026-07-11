@@ -96,7 +96,14 @@ const chipGroup = (group, label, items) => `    <div class="chip-group" data-fil
       <button class="chip is-active" data-value="*" aria-pressed="true">All</button>
 ${items.map((i) => `      <button class="chip" data-value="${esc(i.key)}" aria-pressed="false">${esc(i.label)}</button>`).join('\n')}
     </div>`;
+const jumpTargets = [{ key: 'starthere', label: 'Start here' }]
+  .concat(m.buckets.filter((b) => pub.some((c) => c.bucket === b.key)));
+const jumpHtml = `    <div class="chip-jump" role="navigation" aria-label="Jump to section">
+      <span class="cg-label">Jump to</span>
+${jumpTargets.map((b) => `      <a class="chip" href="#${esc(b.key)}">${esc(b.label)}</a>`).join('\n')}
+    </div>`;
 const filtersHtml = [
+  jumpHtml,
   chipGroup('outlet', 'Outlet', m.outlets.filter((o) => usedOutlets.has(o.key))),
   chipGroup('era', 'Years', m.eras.filter((e) => usedEras.has(e.key))),
 ].join('\n');

@@ -3,15 +3,18 @@
 // Web view: dark, on-brand (theme.css tokens). Print view (@media print): bone-paper
 // light variant, same type system; Playwright's page.pdf() picks it up automatically.
 // Fail-loud: unknown markdown shapes throw; a silent mis-parse must never ship.
+// Also importable: parse() + page() are exported so private per-application CV
+// renders (career-ops scripts/render-cv-site-pdf.mjs) reuse the exact same
+// parser + print CSS without publishing anything to the site.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.RESUME_SRC || join(ROOT, 'resumes-src');
 const OUT = join(ROOT, 'resume');
 
-const LANES = {
+export const LANES = {
   'mitchell-williams-forward-deployed':       { slug: 'forward-deployed',       title: 'Forward Deployed Engineer / Creative' },
   'mitchell-williams-ai-solutions-architect': { slug: 'ai-solutions-architect', title: 'AI Solutions Architect' },
   'mitchell-williams-ai-enablement':          { slug: 'ai-enablement',          title: 'AI Enablement / Transformation Lead' },
@@ -21,7 +24,7 @@ const LANES = {
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };
 
-const PRINT_PT = {
+export const PRINT_PT = {
   'forward-deployed': 9.8, 'ai-solutions-architect': 9.8, 'ai-enablement': 9.2,
   'ai-program-manager': 9.2, 'comms-manager': 9.6, 'devrel-education': 9.8,
   'content-editorial': 9.2,
@@ -94,7 +97,7 @@ const inline = (s) => esc(s)
   .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
-function parse(md, file) {
+export function parse(md, file) {
   const lines = md.split('\n');
   let i = 0;
   const next = () => lines[i++];
@@ -161,13 +164,13 @@ function renderBlocks(blocks) {
   }).join('\n');
 }
 
-function page({ name, pillars, contact, sections }, lane) {
+export function page({ name, pillars, contact, sections }, lane) {
   const secHtml = sections.map(s =>
     `<section class="rsec${s.intro ? ' rsec-intro' : ''}">${s.title ? `<h2 class="rsec-h">${inline(s.title)}</h2>` : ''}${renderBlocks(s.blocks)}</section>`
   ).join('\n');
-  const secHtmlLinked = deepLink(secHtml);
+  const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const pt = PRINT_PT[lane.slug] ?? 9.2;
+  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2;
   const sm = (pt * 0.85).toFixed(2);
   const rh = (pt + 1.8).toFixed(1);
   return `<!doctype html>
@@ -182,7 +185,7 @@ function page({ name, pillars, contact, sections }, lane) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="../shared/theme.css?v=20260710">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260710b">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -208,15 +211,24 @@ function page({ name, pillars, contact, sections }, lane) {
     .rinit{margin:10px 0}
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
-    /* ---- print: bone-paper light variant, same brand ---- */
+    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
+       overriding the dealbreaker's band/underline/mono-line compromises):
+       Archivo carries every heading (name, section heads, role heads), Inter
+       carries every text run (pillars, contact, subtitles, body). No band, no
+       mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     @page{size:letter;margin:0}
     @media print{
-      :root{--bg:#f7f4ee;--surface:#f7f4ee;--bone:#181614;--bone-soft:#2e2a26;
+      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
-      html,body{background:#f7f4ee !important;color:#2e2a26}
+      html,body{background:#fff !important;color:#2e2a26}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
+      .kicker{font-weight:600}
+      .rpillars{font-weight:600;letter-spacing:0.06em}
+      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
@@ -250,16 +262,15 @@ function page({ name, pillars, contact, sections }, lane) {
   <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
   <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
   <div class="nav-links">
-    <a href="../work.html">Work</a>
-    <a href="../projects.html">Projects</a>
-    <a href="../impact.html">Impact</a>
+    <a href="../fit.html">Role Fit</a>
+    <a href="../projects.html">AI Projects</a>
+    <a href="../assets/mitchell-williams-resume.pdf">Resume</a>
+    <a href="../comms.html">Comms &amp; Editorial</a>
+    <a href="../work.html">Reel</a>
     <a href="../timeline.html">Timeline</a>
-    <a href="../stories.html">Stories</a>
-    <a href="../comms.html">Comms</a>
-    <a href="../writing.html">Writing</a>
-    <a href="../fit.html">Fit</a>
+    <a href="../stories.html">Case Files</a>
     <a href="../about.html">About</a>
-    <a href="../contact.html">Contact</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
 
@@ -271,7 +282,7 @@ function page({ name, pillars, contact, sections }, lane) {
     <div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
-      <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane))}.pdf"><span>Download PDF</span></a>
+      <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#${esc(lane.slug === 'forward-deployed' ? 'forward-deployed' : lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
@@ -298,18 +309,21 @@ function page({ name, pillars, contact, sections }, lane) {
 `;
 }
 
-mkdirSync(OUT, { recursive: true });
-let built = 0;
-for (const [base, lane] of Object.entries(LANES)) {
-  const src = join(SRC, `${base}.md`);
-  let md;
-  try { md = readFileSync(src, 'utf8'); }
-  catch { console.error(`MISSING SOURCE: ${src}`); process.exitCode = 1; continue; }
-  if (md.includes('\u2014')) { console.error(`EM DASH (U+2014) in ${base}.md : refusing to bake`); process.exitCode = 1; continue; }
-  const parsed = parse(md, base);
-  writeFileSync(join(OUT, `${lane.slug}.html`), page(parsed, lane));
-  built++;
-  console.log(`baked resume/${lane.slug}.html (${md.split(/\s+/).length}w source)`);
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMain) {
+  mkdirSync(OUT, { recursive: true });
+  let built = 0;
+  for (const [base, lane] of Object.entries(LANES)) {
+    const src = join(SRC, `${base}.md`);
+    let md;
+    try { md = readFileSync(src, 'utf8'); }
+    catch { console.error(`MISSING SOURCE: ${src}`); process.exitCode = 1; continue; }
+    if (md.includes('\u2014')) { console.error(`EM DASH (U+2014) in ${base}.md : refusing to bake`); process.exitCode = 1; continue; }
+    const parsed = parse(md, base);
+    writeFileSync(join(OUT, `${lane.slug}.html`), page(parsed, lane));
+    built++;
+    console.log(`baked resume/${lane.slug}.html (${md.split(/\s+/).length}w source)`);
+  }
+  console.log(`${built}/${Object.keys(LANES).length} resume pages baked`);
+  if (built !== Object.keys(LANES).length) process.exit(1);
 }
-console.log(`${built}/${Object.keys(LANES).length} resume pages baked`);
-if (built !== Object.keys(LANES).length) process.exit(1);

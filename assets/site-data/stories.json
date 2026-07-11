@@ -508,7 +508,7 @@
       "body": [
         "At Google Cross-Google Engineering I wrote for a vice president whose words landed on the company's most senior engineers, the Principal, Distinguished, and Fellow community, more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round burns days. So I decided the voice itself was the system to build.",
         "I built it solo. It encodes the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase list of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.",
-        "The method outlived the job. I rebuilt it in public as voice-os, an open-source pipeline that scores any draft against a target voice on six axes."
+        "The method outlived the job. I rebuilt it in public as [voice-os](voice-os.html), an open-source pipeline that scores any draft against a target voice on six axes."
       ],
       "pull": "I treat voice as infrastructure, not magic.",
       "clipSlugs": [],

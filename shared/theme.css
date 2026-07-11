@@ -225,9 +225,18 @@
 /* ---------- shared components: filter chips + theater modal (archive/projects) ---------- */
 html{scrollbar-gutter:stable}
 .filter-bar{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
-.chip-group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.chip-group .cg-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
+.chip-group,.chip-jump{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip-group .cg-label,.chip-jump .cg-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--dim);margin-right:8px;min-width:64px}
+a.chip{text-decoration:none;display:inline-block}
+.starthere[id],.bucket[id]{scroll-margin-top:76px}
+/* in-content links: house style (matches per-page .prose a rules on comms/about) */
+.prose a,.sys-body a,.sys-name a,.r-fit a,.story p a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+/* header contact CTA: bordered on desktop, plain list item in the mobile menu */
+@media(min-width:861px){
+  .nav-links .nav-cta{border:1px solid var(--blood-soft);padding:8px 14px;opacity:1}
+  .nav-links .nav-cta:hover{background:rgba(138,58,51,0.18)}
+}
 .chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
   padding:9px 16px;border:1px solid var(--line);background:transparent;color:var(--mute);
   cursor:pointer;transition:all .25s var(--ease)}

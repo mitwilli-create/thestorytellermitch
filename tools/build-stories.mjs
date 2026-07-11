@@ -13,6 +13,8 @@ const clips = JSON.parse(readFileSync(resolve(SITE, 'assets/site-data/clips.json
 const clipBySlug = new Map(clips.clips.map((c) => [c.slug, c]));
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// body-paragraph inline links: [text](site-relative-or-https url), converted post-escape
+const md = (s) => esc(s).replace(/\[([^\]]+)\]\((?!javascript:)([a-z0-9./#:-]+)\)/gi, '<a href="$2">$1</a>');
 
 // em-dash gate: fail the bake rather than ship one
 const blob = JSON.stringify(stories);
@@ -47,8 +49,8 @@ const articles = stories.map((s) => {
   const rowsAfter = (idx) => renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === idx));
   const paras = s.body.map((p, i) => {
     const para = (i === s.body.length - 1 && s.pull)
-      ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="reveal">${esc(p)}</p>`
-      : `          <p class="reveal">${esc(p)}</p>`;
+      ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="reveal">${md(p)}</p>`
+      : `          <p class="reveal">${md(p)}</p>`;
     const row = rowsAfter(i);
     if (i === 0) return `${para}\n${still}${row}`;
     return row ? `${para}\n${row}` : para;
