@@ -97,6 +97,12 @@
     .era-clips--strip::-webkit-scrollbar{height:4px}
     .era-clips--strip::-webkit-scrollbar-thumb{background:var(--line-2)}
 
+    /* interstitial moment: a beat on the rail between eras, not a role.
+       Smaller lockup, no role line, one clip. */
+    .era--moment{padding-bottom:84px}
+    .era--moment .era-org{font-size:clamp(24px,3.4vw,38px)}
+    .era--moment .era-body{border-left:2px solid var(--blood-soft);padding-left:16px}
+
     /* deliberate sparse-era treatment (CNN) */
     .era--sparse::before{opacity:.07}
     .era--sparse .era-body{border:1px solid var(--line);padding:20px 22px;
@@ -280,13 +286,24 @@
     </div>
 
 
+    <div class="era era--moment" id="moment-information-war" data-year="2011">
+      <div class="era-dot"></div>
+      <div class="era-years reveal-child">March 2, 2011</div>
+      <h2 class="era-org reveal-child">The moment that<br> opened the door</h2>
+      <p class="era-body reveal-child">On March 2, 2011, Secretary of State Hillary Clinton told the Senate Foreign Relations Committee: "So we are in an information war. And we are losing that war... Al-Jazeera is winning. The Chinese have opened up a global English language and multilanguage television network... We are cutting back." The line named what newsrooms like mine had been building, and it landed as a starting gun. Within a year, competing broadcasters were staffing up fast, hiring producers with the live, social-first skills The Stream had spent that year sharpening.</p>
+      <div class="era-clips reveal-child">
+        <a href="https://www.c-span.org/program/senate-committee/us-foreign-policy-priorities/245943" data-preview="assets/previews/clinton-information-war-2011.mp4" data-full="assets/clips/clinton-information-war-2011.mp4"><img src="assets/posters/clinton-information-war-2011.jpg" alt="Secretary of State Hillary Clinton testifying before the Senate Foreign Relations Committee, March 2, 2011" loading="lazy"><span class="cl">"Al-Jazeera is winning" · C-SPAN · Mar 2, 2011</span></a>
+      </div>
+    </div>
+
+
     <div class="era" id="era-cctv" data-year="2012">
       <div class="era-dot"></div>
       <div class="era-years reveal-child">2011 · 2012</div>
       <h2 class="era-org reveal-child">CCTV America</h2>
       <div class="era-role reveal-child">Line Producer &middot; owned the daily rundown &middot; DC bureau</div>
       <p class="era-body reveal-child">CCTV's American launch year. I owned the daily rundown at the brand-new DC bureau, carrying the live-broadcast discipline from The Stream into a newsroom being assembled from zero. That August, I took the same operating rhythm to HuffPost Live.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">the moment that opened the door</div><p>On March 2, 2011, Secretary of State Hillary Clinton told the Senate Foreign Relations Committee: "So we are in an information war. And we are losing that war... Al-Jazeera is winning. The Chinese have opened up a global English language and multilanguage television network... We are cutting back." The line named what newsrooms like mine had been building, and it landed as a starting gun. Within a year, competing broadcasters were staffing up fast, hiring producers with the live, social-first skills The Stream had spent that year sharpening.</p><p><b>CCTV America launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists for its new DC bureau. <a href="https://www.c-span.org/program/senate-committee/us-foreign-policy-priorities/245943" target="_blank" rel="noopener">The testimony, on C-SPAN &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" target="_blank" rel="noopener">Launch night, surviving footage &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" target="_blank" rel="noopener">A full 2012 broadcast hour &#8599;</a></p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>CCTV America was China Central Television's American production hub. <b>It launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists from NBC, Bloomberg, Fox, CNN, BBC, and ABC for its new DC bureau. <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" target="_blank" rel="noopener">Launch night, surviving footage &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" target="_blank" rel="noopener">A full 2012 broadcast hour &#8599;</a></p></aside>
       <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
         <img src="assets/stills/cctv-america-dc-ccbysa.jpg" alt="The CCTV America studios in Washington, DC" loading="lazy">
         <figcaption class="oncam-cap">cctv america, washington dc &middot; cc by-sa</figcaption>
@@ -533,7 +550,15 @@
       var img=a.querySelector('img'), cap=a.querySelector('.cl');
       cbMedia.innerHTML='';
       var prev=a.getAttribute('data-preview');
-      if(prev && !reduce){
+      var full=a.getAttribute('data-full');
+      if(full){
+        // full cut with sound: the click on the thumb is the explicit
+        // gesture, same contract as the reel theater. No loop.
+        var fv=document.createElement('video');
+        fv.src=full; fv.autoplay=!reduce; fv.playsInline=true; fv.controls=true;
+        fv.setAttribute('aria-label', img?img.alt:'');
+        cbMedia.appendChild(fv);
+      } else if(prev && !reduce){
         var v=document.createElement('video');
         v.src=prev; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true; v.controls=true;
         v.setAttribute('aria-label', img?img.alt:'');
@@ -556,7 +581,9 @@
       var href=a.getAttribute('href');
       cbLink.href=href;
       cbLink.textContent = href.indexOf('work.html')===0 ? 'See it on the reel' :
-        href.indexOf('stories.html')===0 ? 'Read the story' : 'Open the breakdown';
+        href.indexOf('stories.html')===0 ? 'Read the story' :
+        href.indexOf('https://www.c-span.org')===0 ? 'Full hearing on C-SPAN' : 'Open the breakdown';
+      if(href.indexOf('https://')===0){ cbLink.target='_blank'; cbLink.rel='noopener'; } else { cbLink.removeAttribute('target'); cbLink.removeAttribute('rel'); }
       clipbox.showModal();
     });
   });
