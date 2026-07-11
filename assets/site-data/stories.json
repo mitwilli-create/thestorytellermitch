@@ -95,7 +95,8 @@
           "type": "img",
           "src": "assets/stills/mc-pentagon-2008.jpg",
           "cap": "The Pentagon · D.B. Gleason · CC BY-SA",
-          "alt": "Aerial view of the Pentagon"
+          "alt": "Aerial view of the Pentagon",
+          "preview": "assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"
         },
         {
           "type": "headline",
@@ -130,7 +131,8 @@
           "type": "img",
           "src": "assets/stills/pearl-roundabout-2011-ccbysa.jpg",
           "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
-          "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011"
+          "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011",
+          "preview": "assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"
         }
       ]
     },
@@ -157,7 +159,8 @@
           "type": "img",
           "src": "assets/stills/mc-truvada-2012.jpg",
           "cap": "Truvada, 2012 · Jeffrey Beall · CC BY-SA",
-          "alt": "Truvada pill and packaging"
+          "alt": "Truvada pill and packaging",
+          "preview": "assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"
         },
         {
           "type": "headline",
@@ -249,7 +252,8 @@
           "cap": "Jazz Jennings, 2016 · Steven Pisano · CC BY",
           "alt": "Jazz Jennings at the 2016 NYC Pride Parade",
           "tall": true,
-          "pos": "center 32%"
+          "pos": "center 32%",
+          "preview": "assets/previews/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4"
         }
       ]
     },
@@ -277,7 +281,8 @@
           "type": "img",
           "src": "assets/stills/mc-mandela-2008.jpg",
           "cap": "Nelson Mandela, 2008 · SA The Good News · CC BY",
-          "alt": "Nelson Mandela portrait, 2008"
+          "alt": "Nelson Mandela portrait, 2008",
+          "preview": "assets/previews/fusion-2013-america-with-jorge-ramos-december-5.mp4"
         },
         {
           "type": "headline",
