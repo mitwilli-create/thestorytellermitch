@@ -291,7 +291,7 @@
   // lazy-load a short muted preview clip from data-src on first hover.
   document.querySelectorAll('.film video').forEach(v=>{
     const c=v.closest('.film');
-    c.addEventListener('mouseenter',()=>{ if(!v.src&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); });
+    c.addEventListener('mouseenter',()=>{ if(!window.__motionOK) return; if(!v.src&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); });
     c.addEventListener('mouseleave',()=>{ v.pause(); });
   });
 </script>

@@ -322,3 +322,26 @@ a.chip{text-decoration:none;display:inline-block}
       .oncam--hero{position:relative;width:100%;height:34vh;max-height:260px}
       .oncam--hero img{opacity:0.6}
     }
+
+    /* ---------- reduced motion: static end states, sitewide ----------
+       Collapse durations instead of removing animation so transitionend
+       still fires and load-in choreography lands at its finished state
+       (animation:none would leave reveal content trapped mid-state).
+       Infinite loops are forced to a single 1ms pass or removed outright;
+       JS gates on window.__motionOK (set in reveal.js). */
+    @media (prefers-reduced-motion: reduce){
+      :root{
+        --ease:linear;--ease-reveal:linear;--ease-exit:linear;
+        --ease-mech:linear;--ease-micro:linear;
+        --dur-micro:1ms;--dur-move:1ms;--dur-set:1ms;
+        --stag-tight:0ms;--stag-line:0ms;--stag-grid:0ms;
+      }
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        transition-duration:1ms !important;transition-delay:0ms !important;
+        animation-duration:1ms !important;animation-delay:0ms !important;
+        animation-iteration-count:1 !important;
+      }
+      .marquee-track{animation:none}
+      .scrollcue span{animation:none}
+    }
