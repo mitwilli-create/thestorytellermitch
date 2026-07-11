@@ -253,7 +253,7 @@
       <div>
         <div class="cs-video">
           <video controls playsinline preload="metadata" poster="assets/broll-poster.jpg" data-reel>
-            <source src="assets/broll-short.mp4" type="video/mp4">
+            <source src="assets/broll-short-n16.mp4" type="video/mp4">
             <track kind="captions" src="assets/broll-short.vtt" srclang="en" label="English" default>
             Your browser does not support the video tag.
           </video>
@@ -266,7 +266,7 @@
           </div>
           <span class="dub-note" data-dubnote aria-live="polite">original English cut &middot; captions: English</span>
         </div>
-        <p class="cs-video-cap">The film is the pipeline explaining itself: the machine narrating how it replaced the crew, every claim rendered from the run's real artifacts. 1080×1920, 53s, sixteen beats cut 2-4 seconds each. Six beats are motion graphics rendered in code from the pipeline's own artifacts (the real script, the real cost manifest, the real reroll command); ten are AI-generated shots directed by a creative council and inspected by its review board. Narration and score generated live through the ElevenLabs API, then gain-staged to measured loudness targets with the voice always on top, gated by a blind audio review that listens to the cut with zero context. The pipeline also carries a per-shot video-to-audio foley stage; for this screen-heavy cut the sound-design call was voice and score only, because footage without physical action on camera does not motivate natural sound. The <a href="assets/broll-short.es.mp4" rel="noopener">Spanish dub</a> came from the same cut. Captions from the pipeline's own timing.</p>
+        <p class="cs-video-cap">The film is the pipeline explaining itself: the machine narrating how it replaced the crew, every claim rendered from the run's real artifacts. 1080×1920, 53s, sixteen beats cut 2-4 seconds each. Six beats are motion graphics rendered in code from the pipeline's own artifacts (the real script, the real cost manifest, the real reroll command); ten are AI-generated shots directed by a creative council and inspected by its review board. Narration and score generated live through the ElevenLabs API, then gain-staged to measured loudness targets with the voice always on top, gated by a blind audio review that listens to the cut with zero context. The pipeline also carries a per-shot video-to-audio foley stage; for this screen-heavy cut the sound-design call was voice and score only, because footage without physical action on camera does not motivate natural sound. The <a href="assets/broll-short.es-n16.mp4" rel="noopener">Spanish dub</a> came from the same cut. Captions from the pipeline's own timing.</p>
       </div>
       <div>
         <div class="cs-h2">What the run produced</div>
@@ -529,9 +529,9 @@
   const reel=document.querySelector('[data-reel]');
   if(reel){
     const CUTS={
-      en:{src:'assets/broll-short.mp4',vtt:'assets/broll-short.vtt',cap:'English',note:'original English cut &middot; captions: English'},
-      es:{src:'assets/broll-short.es.mp4',vtt:'assets/broll-short.es.vtt',cap:'Spanish',note:'Spanish dub, Dubbing API, same cut &middot; captions: Spanish, from the dub transcript'},
-      ja:{src:'assets/broll-short.ja.mp4',vtt:'assets/broll-short.ja.vtt',cap:'Japanese',note:'Japanese dub, Dubbing API, same cut &middot; captions: Japanese, from the dub transcript'}
+      en:{src:'assets/broll-short-n16.mp4',vtt:'assets/broll-short.vtt',cap:'English',note:'original English cut &middot; captions: English'},
+      es:{src:'assets/broll-short.es-n16.mp4',vtt:'assets/broll-short.es.vtt',cap:'Spanish',note:'Spanish dub, Dubbing API, same cut &middot; captions: Spanish, from the dub transcript'},
+      ja:{src:'assets/broll-short.ja-n16.mp4',vtt:'assets/broll-short.ja.vtt',cap:'Japanese',note:'Japanese dub, Dubbing API, same cut &middot; captions: Japanese, from the dub transcript'}
     };
     const note=document.querySelector('[data-dubnote]');
     document.querySelectorAll('.dub-toggle .chip').forEach(btn=>{

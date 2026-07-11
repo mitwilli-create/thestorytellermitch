@@ -102,6 +102,27 @@
     .era--moment{padding-bottom:84px}
     .era--moment .era-org{font-size:clamp(24px,3.4vw,38px)}
     .era--moment .era-body{border-left:2px solid var(--blood-soft);padding-left:16px}
+    /* broadcast-monitor housing for the testimony feed: code-drawn chrome
+       in the diagram language (bezel, control strip, air light) */
+    .era-clips.crt{display:block;max-width:640px;margin-top:26px;background:var(--surface);
+      border:1px solid var(--line-2);padding:14px 14px 0;position:relative}
+    .era-clips.crt::before,.era-clips.crt::after{content:'';position:absolute;top:6px;width:4px;height:4px;
+      border-radius:50%;background:var(--line-2)}
+    .era-clips.crt::before{left:6px}
+    .era-clips.crt::after{right:6px}
+    .era-clips.crt a{width:100%;aspect-ratio:16/9;border-color:var(--line-2);border-radius:6px}
+    .era-clips.crt a img{filter:none}
+    .crt-strip{display:flex;align-items:center;gap:10px;padding:10px 2px 12px}
+    .crt-knob{width:10px;height:10px;border-radius:50%;border:1px solid var(--line-2);position:relative}
+    .crt-knob::after{content:'';position:absolute;top:1px;left:50%;width:1px;height:4px;background:var(--line-2)}
+    .crt-led{width:6px;height:6px;border-radius:50%;background:var(--blood);
+      box-shadow:0 0 8px 1px rgba(177,85,76,.55)}
+    .crt-badge{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9px;
+      letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+    /* context card overlaps its era photo instead of stacking above it */
+    .era-context--overlay{position:relative;z-index:2;margin-bottom:-72px;max-width:520px;
+      box-shadow:0 18px 44px rgba(0,0,0,.55)}
+    @media(max-width:860px){.era-context--overlay{margin-bottom:18px;box-shadow:none}}
 
     /* deliberate sparse-era treatment (CNN) */
     .era--sparse::before{opacity:.07}
@@ -261,7 +282,7 @@
       <h2 class="era-org reveal-child">WDRB Fox 41<br>Louisville</h2>
       <div class="era-role reveal-child">Overnight Producer · Fox in the Morning</div>
       <p class="era-body reveal-child">The origin: owning two hours of a live morning block at a small-market station. When the Bhutto assassination broke during my overnight window, we beat the networks to air from Kentucky. The template for every rebuilt rundown since.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>WDRB Fox 41, Louisville, Kentucky's Fox affiliate. A small-market local station. Morning news runs on long live blocks with tiny crews. From September 2007 to May 2008, I was the overnight producer, owning two hours of the four-hour live morning block. Real deadlines, no safety net, that block is where live television started for me.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>WDRB Fox 41, Louisville, Kentucky's Fox affiliate. A small-market local station. Morning news runs on long live blocks with tiny crews. From September 2007 to May 2008, I was the overnight producer, owning two hours of the four-hour live morning block. Real deadlines, no safety net, that block is where live television started for me.</p></aside>
 
       <div class="era-clips reveal-child">
         <a href="stories.html#bhutto-origin"><img src="assets/stills/louisville-2005-ccby-pugfather.jpg" alt="Louisville skyline at night, 2005" loading="lazy"><span class="cl">Louisville · The Pug Father · CC BY</span></a>
@@ -275,14 +296,14 @@
       <h2 class="era-org reveal-child">Al Jazeera English<br>The Stream</h2>
       <div class="era-role reveal-child">Founding-team Associate Producer</div>
       <p class="era-body reveal-child">Launch night, May 2, 2011: the planned rundown abandoned when the bin Laden raid broke, and the man who unknowingly live-tweeted it booked on air, his follower count climbing from a few hundred to tens of thousands. Social-data journalism before that was a category.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Al Jazeera English launched The Stream in May 2011. Bold bet: social media itself was the story engine. A daily news show built around live audience input, not a fixed script. First broadcast night, the planned rundown collided with the bin Laden raid. The show booked the man who had unknowingly live-tweeted it. Within a year, a Royal Television Society award for innovative news. I was on the founding production team, building a format nobody had run before.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>Al Jazeera English launched The Stream in May 2011. Bold bet: social media itself was the story engine. A daily news show built around live audience input, not a fixed script. First broadcast night, the planned rundown collided with the bin Laden raid. The show booked the man who had unknowingly live-tweeted it. Within a year, a Royal Television Society award for innovative news. I was on the founding production team, building a format nobody had run before.</p></aside>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>250M</div><div class="l">households at launch</div></div>
         <div class="em"><div class="n">RTS 2012</div><div class="l">Innovative News Award</div></div>
       </div>
       <div class="era-clips era-clips--strip reveal-child">
         <a href="work.html#live-broadcasts" data-preview="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4" data-stream-id="5110494fc9e3e53e73cbd135e77d96de"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Bin Laden night · 45m</span></a>
-        <a href="work.html#live-broadcasts" data-preview="assets/previews/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4" data-stream-id="50fad9a0e5e0bbff2b41ecd3d37295a4"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
+        <a href="work.html#live-broadcasts" data-preview="assets/previews/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4" data-stream-id="0c82f76973f954de5dcd2071a4f4574f"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain" loading="lazy"><span class="cl">Bahrain uprising · live</span></a>
         <a href="stories.html#stream-launch-night"><img src="assets/stills/tahrir-2011-ccby-rashad.jpg" alt="Tahrir Square protests, February 2011" loading="lazy"><span class="cl">Tahrir, 2011 · J. Rashad · CC BY</span></a>
         <a href="work.html#live-broadcasts"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Pearl Roundabout protests, Bahrain 2011" loading="lazy"><span class="cl">Pearl Roundabout, 2011 · CC BY-SA</span></a>
       </div>
@@ -294,8 +315,9 @@
       <div class="era-years reveal-child">March 2, 2011</div>
       <h2 class="era-org reveal-child">The moment that<br> opened the door</h2>
       <p class="era-body reveal-child">On March 2, 2011, Secretary of State Hillary Clinton told the Senate Foreign Relations Committee: "So we are in an information war. And we are losing that war... Al-Jazeera is winning. The Chinese have opened up a global English language and multilanguage television network... We are cutting back." The line named what newsrooms like mine had been building, and it landed as a starting gun. Within a year, competing broadcasters were staffing up fast, hiring producers with the live, social-first skills The Stream had spent that year sharpening.</p>
-      <div class="era-clips reveal-child">
-        <a href="https://www.c-span.org/program/senate-committee/us-foreign-policy-priorities/245943" data-preview="assets/previews/clinton-information-war-2011.mp4" data-full="assets/clips/clinton-information-war-2011.mp4"><img src="assets/posters/clinton-information-war-2011.jpg" alt="Secretary of State Hillary Clinton testifying before the Senate Foreign Relations Committee, March 2, 2011" loading="lazy"><span class="cl">"Al-Jazeera is winning" · C-SPAN · Mar 2, 2011</span></a>
+      <div class="era-clips crt reveal-child">
+        <a href="https://www.c-span.org/program/senate-committee/us-foreign-policy-priorities/245943" data-preview="assets/previews/clinton-information-war-2011.mp4" data-full="assets/clips/clinton-information-war-2011-ext-n16.mp4"><img src="assets/posters/clinton-information-war-2011.jpg" alt="Secretary of State Hillary Clinton testifying before the Senate Foreign Relations Committee, March 2, 2011" loading="lazy"><span class="cl">"Al-Jazeera is winning" · C-SPAN · Mar 2, 2011</span></a>
+        <div class="crt-strip" aria-hidden="true"><span class="crt-led"></span><span class="crt-knob"></span><span class="crt-knob"></span><span class="crt-badge">live feed &middot; sen. foreign relations</span></div>
       </div>
     </div>
 
@@ -306,7 +328,7 @@
       <h2 class="era-org reveal-child">CCTV America</h2>
       <div class="era-role reveal-child">Line Producer &middot; owned the daily rundown &middot; DC bureau</div>
       <p class="era-body reveal-child">CCTV's American launch year. I owned the daily rundown at the brand-new DC bureau, carrying the live-broadcast discipline from The Stream into a newsroom being assembled from zero. That August, I took the same operating rhythm to HuffPost Live.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>CCTV America was China Central Television's American production hub. <b>It launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists from NBC, Bloomberg, Fox, CNN, BBC, and ABC for its new DC bureau. <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" target="_blank" rel="noopener">Launch night, surviving footage &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" target="_blank" rel="noopener">A full 2012 broadcast hour &#8599;</a></p></aside>
+      <aside class="era-context era-context--overlay reveal-child"><div class="ec-k">the backdrop</div><p>CCTV America was China Central Television's American production hub. <b>It launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists from NBC, Bloomberg, Fox, CNN, BBC, and ABC for its new DC bureau. <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" target="_blank" rel="noopener">Launch night, surviving footage &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" target="_blank" rel="noopener">A full 2012 broadcast hour &#8599;</a></p></aside>
       <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
         <img src="assets/stills/cctv-america-dc-ccbysa.jpg" alt="The CCTV America studios in Washington, DC" loading="lazy">
         <figcaption class="oncam-cap">cctv america, washington dc &middot; cc by-sa</figcaption>
@@ -319,7 +341,7 @@
       <h2 class="era-org reveal-child">HuffPost Live</h2>
       <div class="era-role reveal-child">Segment Producer</div>
       <p class="era-body reveal-child">Streaming-first live news before streaming-first was normal. I originated and produced panels years ahead of their policy fights: PrEP six months after FDA approval, transgender service members before the Pentagon moved.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>HuffPost Live launched August 13, 2012. Roy Sekoff, founding editor. The bet: eight hours of live daily streaming, built around viewer participation, guests joining by Skype and Google+ Hangouts. A news network years before streaming news was normal television.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>HuffPost Live launched August 13, 2012. Roy Sekoff, founding editor. The bet: eight hours of live daily streaming, built around viewer participation, guests joining by Skype and Google+ Hangouts. A news network years before streaming news was normal television.</p></aside>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n">2012</div><div class="l">Mashable Biggest Innovation in Media</div></div>
         <div class="em"><div class="n">2013</div><div class="l">Webby honors era</div></div>
@@ -338,7 +360,7 @@
       <h2 class="era-org reveal-child">Fusion</h2>
       <div class="era-role reveal-child">Senior Producer · America With Jorge Ramos</div>
       <p class="era-body reveal-child">Weekly primetime on the ABC/Univision joint venture, produced end to end: full episodes, election specials, field segments, and the 44-minute live special on Mandela's death built on a rebuilt rundown.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Fusion launched October 28, 2013, a joint venture between ABC and Univision aimed at English-speaking millennials, including Latino millennials, mixing news with satire and pop culture. Its primetime flagship was America with Jorge Ramos, which brought the veteran Noticiero Univision anchor's immigration, gun control, and civil rights interviewing into English for the first time.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>Fusion launched October 28, 2013, a joint venture between ABC and Univision aimed at English-speaking millennials, including Latino millennials, mixing news with satire and pop culture. Its primetime flagship was America with Jorge Ramos, which brought the veteran Noticiero Univision anchor's immigration, gun control, and civil rights interviewing into English for the first time.</p></aside>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>179%</div><div class="l">primetime growth window</div></div>
         <div class="em"><div class="n" data-count>40M</div><div class="l">household distribution</div></div>
@@ -360,7 +382,7 @@
       <h2 class="era-org reveal-child">CNN · New Day</h2>
       <div class="era-role reveal-child">Writer / Producer · election cycle</div>
       <p class="era-body reveal-child">Network morning television at full election pace: daily live segments through the 2016 primaries, guest pre-interviews, anchor briefings. One shot to land a story, no second take.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>CNN's New Day was the network's flagship morning show, and in 2016 it ran at full election pace. I was a writer and producer during the 2016 primary cycle: daily live segments, guest pre-interviews, anchor briefings, one shot to land a story with no second take. Network morning television at its highest-pressure setting.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>CNN's New Day was the network's flagship morning show, and in 2016 it ran at full election pace. I was a writer and producer during the 2016 primary cycle: daily live segments, guest pre-interviews, anchor briefings, one shot to land a story with no second take. Network morning television at its highest-pressure setting.</p></aside>
 
       <div class="era-clips reveal-child">
         <a href="work.html"><img src="assets/stills/cnn-newsroom-2012-ccby-atkeison.jpg" alt="CNN newsroom, Atlanta" loading="lazy"><span class="cl">A CNN newsroom · C. Atkeison · CC BY</span></a>
@@ -373,7 +395,7 @@
       <h2 class="era-org reveal-child">AJ+</h2>
       <div class="era-role reveal-child">Senior Producer</div>
       <p class="era-body reveal-child">Viral social news at the top of its category-defining era. I ran a team during the years AJ+ reached 500 million weekly viewers, field-produced San Juan's mayor during active Hurricane Maria conditions, and made one piece that hit 50 million views on its own.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>AJ+ launched September 15, 2014, built out of the former Current TV headquarters in San Francisco that Al Jazeera had just acquired, a mobile-first, digital-native offshoot aimed at millennials who had never watched a cable newscast. It went on to define the captioned, short-form social video format most news publishers later copied, becoming one of the most-viewed news publishers on Facebook.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>AJ+ launched September 15, 2014, built out of the former Current TV headquarters in San Francisco that Al Jazeera had just acquired, a mobile-first, digital-native offshoot aimed at millennials who had never watched a cable newscast. It went on to define the captioned, short-form social video format most news publishers later copied, becoming one of the most-viewed news publishers on Facebook.</p></aside>
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>500M</div><div class="l">weekly viewers, team era</div></div>
         <div class="em"><div class="n" data-count>50M</div><div class="l">views, one piece of my own</div></div>
@@ -399,7 +421,7 @@
       <h2 class="era-org reveal-child">Google<br>Corporate Engineering</h2>
       <div class="era-role reveal-child">Senior Communications &amp; Content Strategist</div>
       <p class="era-body reveal-child">Six years turning dense internal engineering into communication people actually watched. Video-first internal comms at a scale most newsrooms never touch, plus public recruitment and interview-prep video for Google's talent brand.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Google's Corporate Engineering is the internal engineering org that builds the company's own tools and infrastructure, reaching every employee. I spent six years, 2018 to 2024, as Senior Communications and Content Strategist there, turning dense internal engineering into video-first communication that reached 75,000-plus employees, plus public recruitment and interview-prep video for Google's talent brand.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>Google's Corporate Engineering is the internal engineering org that builds the company's own tools and infrastructure, reaching every employee. I spent six years, 2018 to 2024, as Senior Communications and Content Strategist there, turning dense internal engineering into video-first communication that reached 75,000-plus employees, plus public recruitment and interview-prep video for Google's talent brand.</p></aside>
 
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>75,000+</div><div class="l">employees reached</div></div>
@@ -416,7 +438,7 @@
       <h2 class="era-org reveal-child">Google<br>Cross-Google Engineering</h2>
       <div class="era-role reveal-child">Internal Communications Lead</div>
       <p class="era-body reveal-child">Communications for the community of 1,000+ Principal, Distinguished, and Fellow engineers. This is where I stopped writing about the systems and started building them: two production AI agents, built and deployed solo.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this was</div><p>Cross-Google Engineering, xGE, is the horizontal org that drives technical change across the whole company, and its community is the 1,000-plus most senior engineers: Principal, Distinguished, and Fellow. I was Internal Communications Lead there from 2024 to 2026. It's also where I stopped writing about systems and started building them, shipping two production AI agents solo.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>Cross-Google Engineering, xGE, is the horizontal org that drives technical change across the whole company, and its community is the 1,000-plus most senior engineers: Principal, Distinguished, and Fellow. I was Internal Communications Lead there from 2024 to 2026. It's also where I stopped writing about systems and started building them, shipping two production AI agents solo.</p></aside>
 
       <div class="era-metrics reveal-child">
         <div class="em"><div class="n" data-count>1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
@@ -434,10 +456,10 @@
       <h2 class="era-org reveal-child">AI-native<br>builder</h2>
       <div class="era-role reveal-child">Forward Deployed Creative / Engineer</div>
       <p class="era-body reveal-child">Building full time: an ElevenLabs production pipeline with per-run cost receipts, measurable voice scoring, citation-gated verification, and a fifty-agent job-search fleet. The newsroom instinct, shipped as software.</p>
-      <aside class="era-context reveal-child"><div class="ec-k">what this is</div><p>2026, post-Google. I'm building AI-native production systems full time on the ElevenLabs stack, in public, with costed run manifests: a broll pipeline that turns one script into a produced, captioned short, voice scoring, citation-gated verification, and the orchestration layers holding it together. This portfolio site is itself one of the artifacts.</p></aside>
+      <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>2026, post-Google. I'm building AI-native production systems full time on the ElevenLabs stack, in public, with costed run manifests: a broll pipeline that turns one script into a produced, captioned short, voice scoring, citation-gated verification, and the orchestration layers holding it together. This portfolio site is itself one of the artifacts.</p></aside>
 
       <div class="era-clips reveal-child">
-        <a href="broll-pipeline.html" data-preview="assets/broll-short.mp4" data-full="assets/broll-short.mp4"><img src="assets/broll-poster.jpg" alt="broll pipeline breakdown" loading="lazy"><span class="cl">broll pipeline · breakdown</span></a>
+        <a href="broll-pipeline.html" data-preview="assets/broll-short-n16.mp4" data-full="assets/broll-short-n16.mp4"><img src="assets/broll-poster.jpg" alt="broll pipeline breakdown" loading="lazy"><span class="cl">broll pipeline · breakdown</span></a>
         <a href="stories.html#builder-turn"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
       </div>
       <div class="era-metrics reveal-child" style="margin-top:26px">
