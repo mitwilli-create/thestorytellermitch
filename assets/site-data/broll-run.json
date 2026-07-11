@@ -1,0 +1,104 @@
+{
+  "_provenance": "Distilled from broll-pipeline output/run-manifest.json (run started 2026-07-09T02:50:17.107Z, 60 logged calls). Stage costs = live spend plus original cost carried by cached artifacts. Receipt line items match the published accounting in the case study and the committed manifest in the public repo.",
+  "started": "2026-07-09T02:50:17.107Z",
+  "script": "input/script.md",
+  "totalCalls": 60,
+  "stages": [
+    {
+      "id": "parse",
+      "label": "parseScript",
+      "detail": "script.md to 16 beats",
+      "calls": 1,
+      "cached": 0,
+      "costUsd": 0,
+      "api": null
+    },
+    {
+      "id": "voiceover",
+      "label": "voiceover",
+      "detail": "16 beats",
+      "calls": 16,
+      "cached": 16,
+      "costUsd": 0.06,
+      "api": "ElevenLabs TTS"
+    },
+    {
+      "id": "visuals",
+      "label": "visuals",
+      "detail": "6 mograph + 10 gen shots",
+      "calls": 16,
+      "cached": 13,
+      "costUsd": 4.4,
+      "api": "council-directed gen"
+    },
+    {
+      "id": "council",
+      "label": "council",
+      "detail": "direction + review board",
+      "calls": 11,
+      "cached": 10,
+      "costUsd": 3.59,
+      "api": "Anthropic API"
+    },
+    {
+      "id": "score",
+      "label": "score",
+      "detail": "75s bed",
+      "calls": 1,
+      "cached": 0,
+      "costUsd": 0.14,
+      "api": "Eleven Music v2"
+    },
+    {
+      "id": "sfx",
+      "label": "sfx",
+      "detail": "4 cues + ambience",
+      "calls": 5,
+      "cached": 0,
+      "costUsd": 0.07,
+      "api": "Sound Effects API"
+    },
+    {
+      "id": "assemble",
+      "label": "assemble",
+      "detail": "cut to VO timing, mix, captions",
+      "calls": 11,
+      "cached": 0,
+      "costUsd": 0,
+      "api": "ffmpeg, deterministic"
+    },
+    {
+      "id": "dub",
+      "label": "dub",
+      "detail": "Spanish cut, earlier logged run",
+      "calls": 1,
+      "cached": 1,
+      "costUsd": 0.44,
+      "api": "Dubbing API"
+    }
+  ],
+  "receipt": {
+    "title": "RUN RECEIPT",
+    "lines": [
+      {
+        "label": "audio stack (TTS + music + SFX)",
+        "usd": 0.28
+      },
+      {
+        "label": "generated shots incl. retakes",
+        "usd": 5.36
+      },
+      {
+        "label": "creative direction (council)",
+        "usd": 3.5
+      },
+      {
+        "label": "clip review board",
+        "usd": 0.37
+      }
+    ],
+    "artifactsTotalUsd": 9.51,
+    "allInUsd": 14.2,
+    "allInNote": "incl. extra re-rolls, score + foley experiments, Spanish dub"
+  }
+}
