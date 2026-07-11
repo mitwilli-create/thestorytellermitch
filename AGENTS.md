@@ -4,7 +4,7 @@ Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agen
 
 ## What this repo is
 
-Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS/JS on Cloudflare Pages via manual Wrangler upload (push to `main` does NOT auto-deploy; see Commands for the deploy recipe). Narrative case studies from eight years in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
+Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS/JS served as Cloudflare Workers Static Assets (the "thestorytellermitch" Worker; migrated off Cloudflare Pages 2026-07-10). Deploys are manual via `tools/deploy.sh` (push to `main` does NOT auto-deploy; see Commands). Narrative case studies from eight years in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
 
 ## Hard constraints
 
@@ -19,9 +19,9 @@ Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS
 
 - Bake stories: `node tools/build-stories.mjs` · bake archive: `node tools/build-archive.mjs`
 - Verify (the CI gate; run before every commit): `node tools/verify.mjs`
-- Deploy (manual; push to `main` does NOT auto-deploy): commit first, since the recipe deploys `HEAD` and silently omits uncommitted edits. Then upload a clean tracked-only export, never `wrangler pages deploy .` from the repo root: the working tree carries gitignored `media/` (multi-GB self-hosted video) that exceeds Pages' 25 MiB per-file cap, so a root deploy fails on the first large file. Auth is OAuth via `wrangler login`; the `CLOUDFLARE_API_TOKEN` in `.env` lacks Pages permission (API error code 10000). The recipe runs in a subshell so `set -e` and the token unset stay scoped (`CF_ACCOUNT_ID` survives for later `tools/stream-upload.mjs` runs) and a failed deploy propagates a nonzero exit: `(set -e; unset CLOUDFLARE_API_TOKEN CF_ACCOUNT_ID; STAGE=$(mktemp -d); trap 'rm -rf "$STAGE"' EXIT; git archive HEAD | tar -x -C "$STAGE"; cd "$STAGE"; npx wrangler pages deploy . --project-name=thestorytellermitch --branch=main --commit-dirty=true)`. Success prints a `*.thestorytellermitch.pages.dev` URL; `--branch=main` targets production.
+- Deploy (manual; push to `main` does NOT auto-deploy): commit first, then run `tools/deploy.sh`. It deploys `HEAD` to the "thestorytellermitch" Worker via `wrangler deploy` (uncommitted edits silently stay behind; the script warns), stages a tracked-only export via `git archive` so the gitignored multi-GB `media/` and untracked scratch never reach the upload, and unsets the Cloudflare env tokens so the `wrangler login` OAuth session wins (the `CLOUDFLARE_API_TOKEN` in `.env` lacks deploy permission, API error code 10000). Never run `wrangler deploy` from the repo root with `.env` present. `.assetsignore` controls what is uploaded/served; anything uploaded is public.
 - No build step; no dev server in-repo (serve statically, e.g. `python3 -m http.server`).
-- Media pipeline lives in `tools/` (transcode, posters, previews, upload); those are content-ops utilities, not part of deploy.
+- Media pipeline lives in `tools/` (transcode, posters, previews, upload); those are content-ops utilities. `tools/deploy.sh` is the one deploy entry point.
 
 ## Conventions
 

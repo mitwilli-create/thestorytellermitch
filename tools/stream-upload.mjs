@@ -4,7 +4,7 @@
 // clips that already have a streamId are skipped.
 //
 // Usage:
-//   CF_ACCOUNT_ID=... CF_STREAM_TOKEN=... node tools/stream-upload.mjs [--only <slug>] [--dry-run]
+//   CLOUDFLARE_ACCOUNT_ID=... CF_STREAM_TOKEN=... node tools/stream-upload.mjs [--only <slug>] [--dry-run]
 //
 // After all uploads: set "playback": "stream" + "streamCustomerCode" in clips.json,
 // run `node tools/build-archive.mjs`, commit. Player code never changes.
@@ -15,12 +15,13 @@ import { fileURLToPath } from 'node:url';
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST = resolve(SITE, 'assets/site-data/clips.json');
 
-const ACCOUNT = process.env.CF_ACCOUNT_ID;
+// CF_ACCOUNT_ID is wrangler's deprecated name for the same value; accepted as a fallback.
+const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID || process.env.CF_ACCOUNT_ID;
 const TOKEN = process.env.CF_STREAM_TOKEN;
 const DRY = process.argv.includes('--dry-run');
 const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
 if (!DRY && (!ACCOUNT || !TOKEN)) {
-  console.error('Set CF_ACCOUNT_ID and CF_STREAM_TOKEN (API token with Stream:Edit).');
+  console.error('Set CLOUDFLARE_ACCOUNT_ID and CF_STREAM_TOKEN (API token with Stream:Edit).');
   process.exit(2);
 }
 

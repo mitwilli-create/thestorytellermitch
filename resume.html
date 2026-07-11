@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="shared/theme.css">
+  <link rel="stylesheet" href="shared/theme.css?v=20260710">
   <style>
     .rs-hero{padding:170px 0 46px}
     .rs-hero .display{font-size:clamp(42px,7vw,100px)}
@@ -18,7 +18,7 @@
     .rs-row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;
       padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none;
       transition:border-color .3s var(--ease)}
-    .rs-row:first-of-type{border-top:1px solid var(--line)}
+    .cluster-h + .rs-row{border-top:1px solid var(--line)}
     .rs-row:hover{border-bottom-color:var(--blood-soft)}
     .rs-role{grid-column:1;grid-row:1;font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2.6vw,26px);
       letter-spacing:-0.01em;text-transform:uppercase;color:var(--bone)}
@@ -27,6 +27,15 @@
     .rs-get{grid-column:2;grid-row:1 / span 2;justify-self:end;font-family:'JetBrains Mono',monospace;font-size:11px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
     .rs-row:hover .rs-get{color:var(--bone)}
+    .fit-router{display:flex;gap:10px;align-items:center;margin-top:24px;flex-wrap:wrap}
+    .fr-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
+    .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}
+    .fr-chip:hover{border-color:var(--blood-soft);color:var(--blood-soft)}
+    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+      color:var(--dim);margin:42px 0 4px;scroll-margin-top:110px}
+    .cluster-h:first-child{margin-top:0}
+    .rs-row{scroll-margin-top:96px}
     .rs-note{max-width:900px;margin:0 auto 80px;font-family:'JetBrains Mono',monospace;
       font-size:11px;letter-spacing:0.06em;color:var(--mute);line-height:1.8}
     .rs-note a{color:var(--blood-soft);text-decoration:none}
@@ -66,45 +75,53 @@
       <span class="ln"><span class="accent">one arc.</span></span>
     </h1>
     <p class="rs-sub">Each resume is tuned to the discipline on your req: same career, same sourced claims, ordered for what your screen actually checks. Two pages each. The <a href="fit.html" style="color:var(--blood-soft);text-decoration:none">Fit page</a> makes the case in prose; these make it in format.</p>
+    <div class="fit-router">
+      <span class="fr-k">Hiring for:</span>
+      <a class="fr-chip" href="#cluster-story">Editorial &amp; comms</a>
+      <a class="fr-chip" href="#cluster-build">Engineering &amp; AI</a>
+      <a class="fr-chip" href="#rows">Everything</a>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="rs-list">
-    <a class="rs-row" href="assets/resumes/mitchell-williams-forward-deployed.pdf">
-      <span class="rs-role">Forward Deployed Engineer / Creative</span>
-      <span class="rs-get">Download PDF →</span>
-      <span class="rs-pillars">Forward-deployed prototyping · creative AI pipelines · embedded production discipline</span>
+  <div class="rs-list" id="rows">
+    <div class="cluster-h" id="cluster-story">Story &amp; editorial</div>
+    <a class="rs-row" href="resume/content-editorial.html" id="rs-content-editorial">
+      <span class="rs-role">Content Producer / Editorial Lead</span>
+      <span class="rs-get">View resume →</span>
+      <span class="rs-pillars">Internal storytelling across formats · editorial systems and voice governance · AI-assisted creative pipelines</span>
     </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-solutions-architect.pdf">
-      <span class="rs-role">AI Solutions Architect</span>
-      <span class="rs-get">Download PDF →</span>
-      <span class="rs-pillars">AI solutions architecture · governed-voice agent systems · multi-agent orchestration</span>
-    </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-enablement.pdf">
-      <span class="rs-role">AI Enablement / Transformation Lead</span>
-      <span class="rs-get">Download PDF →</span>
-      <span class="rs-pillars">AI enablement and adoption · communications at engineering scale · production agent building</span>
-    </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-ai-program-manager.pdf">
-      <span class="rs-role">AI Program Manager</span>
-      <span class="rs-get">Download PDF →</span>
-      <span class="rs-pillars">AI governance programs · approvals and gating frameworks · multi-agent operations</span>
-    </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-comms-manager.pdf">
+    <a class="rs-row" href="resume/comms-manager.html" id="rs-comms-manager">
       <span class="rs-role">Communications Manager (AI-native)</span>
-      <span class="rs-get">Download PDF →</span>
+      <span class="rs-get">View resume →</span>
       <span class="rs-pillars">Product and technical communications · production AI agent building · sourced-claim discipline</span>
     </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-devrel-education.pdf">
+    <a class="rs-row" href="resume/devrel-education.html" id="rs-devrel-education">
       <span class="rs-role">Developer Education / DevRel</span>
-      <span class="rs-get">Download PDF →</span>
+      <span class="rs-get">View resume →</span>
       <span class="rs-pillars">Developer education · applied-AI building · explanation under constraint</span>
     </a>
-    <a class="rs-row" href="assets/resumes/mitchell-williams-content-editorial.pdf">
-      <span class="rs-role">Content Producer / Editorial Lead</span>
-      <span class="rs-get">Download PDF →</span>
-      <span class="rs-pillars">Internal storytelling across formats · editorial systems and voice governance · AI-assisted creative pipelines</span>
+    <div class="cluster-h" id="cluster-build">Build &amp; deploy</div>
+    <a class="rs-row" href="resume/forward-deployed.html" id="rs-forward-deployed">
+      <span class="rs-role">Forward Deployed Engineer / Creative</span>
+      <span class="rs-get">View resume →</span>
+      <span class="rs-pillars">Forward-deployed prototyping · creative AI pipelines · embedded production discipline</span>
+    </a>
+    <a class="rs-row" href="resume/ai-solutions-architect.html" id="rs-ai-solutions-architect">
+      <span class="rs-role">AI Solutions Architect</span>
+      <span class="rs-get">View resume →</span>
+      <span class="rs-pillars">AI solutions architecture · governed-voice agent systems · multi-agent orchestration</span>
+    </a>
+    <a class="rs-row" href="resume/ai-enablement.html" id="rs-ai-enablement">
+      <span class="rs-role">AI Enablement / Transformation Lead</span>
+      <span class="rs-get">View resume →</span>
+      <span class="rs-pillars">AI enablement and adoption · communications at engineering scale · production agent building</span>
+    </a>
+    <a class="rs-row" href="resume/ai-program-manager.html" id="rs-ai-program-manager">
+      <span class="rs-role">AI Program Manager</span>
+      <span class="rs-get">View resume →</span>
+      <span class="rs-pillars">AI governance programs · approvals and gating frameworks · multi-agent operations</span>
     </a>
   </div>
   <p class="rs-note">Not sure which req you're hiring for? The <a href="assets/mitchell-williams-resume.pdf">general resume (PDF)</a> covers the arc end to end.</p>
