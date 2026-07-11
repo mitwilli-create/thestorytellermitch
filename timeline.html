@@ -26,6 +26,14 @@
     .era-dot{position:absolute;left:22px;top:6px;width:15px;height:15px;border:1px solid var(--line-2);
       background:var(--bg);transform:rotate(45deg);transition:all .6s var(--ease);z-index:2}
     .era.in .era-dot{border-color:var(--blood-soft);background:var(--blood)}
+    /* node tick: the dot connects to its era content so the rail reads as
+       a system diagram, and pings once when the era activates */
+    .era-dot::after{content:'';position:absolute;top:50%;left:100%;width:0;height:1px;
+      background:var(--blood-soft);opacity:0;transform:rotate(-45deg);transform-origin:left center;
+      transition:width .5s var(--ease) .15s,opacity .3s var(--ease) .15s}
+    .era.in .era-dot::after{width:46px;opacity:0.55}
+    @keyframes dot-ping{0%{box-shadow:0 0 0 0 rgba(177,85,76,0.45)}100%{box-shadow:0 0 0 14px rgba(177,85,76,0)}}
+    .era.in .era-dot{animation:dot-ping 1s var(--ease-mech) 1}
 
     /* ghosted oversized year anchor */
     .era::before{content:attr(data-year);position:absolute;right:0;top:-34px;z-index:0;
@@ -48,22 +56,22 @@
     .em{border-left:2px solid var(--blood-soft);padding-left:16px}
     .em .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(40px,6.2vw,88px);
       color:var(--bone);letter-spacing:-0.03em;line-height:.95}
-    .em .n .cnt,.em .n .unit{display:none}
     .em .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--mute);margin-top:8px;max-width:190px;line-height:1.5}
 
     /* media tiles: oxblood duotone + grain, lightbox targets */
     .era-clips{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-    .era-clips a{display:block;width:200px;aspect-ratio:16/10;overflow:hidden;position:relative;
+    /* archival stills render clean and legible on first reference
+       (council 2026-07-11: they are evidence, not decoration; the old
+       oxblood duotone + grain obscured what they showed) */
+    .era-clips a{display:block;width:256px;aspect-ratio:16/10;overflow:hidden;position:relative;
       border:1px solid var(--line);transition:border-color .3s var(--ease),transform .4s var(--ease);
       background:#000}
     .era-clips a:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
     .era-clips img{width:100%;height:100%;object-fit:cover;
-      filter:grayscale(1) sepia(.32) hue-rotate(-24deg) saturate(2) contrast(1.05) brightness(.88);
+      filter:grayscale(.15) contrast(1.03) brightness(.96);
       transition:filter .45s var(--ease)}
     .era-clips a:hover img{filter:none}
-    .era-clips a::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.16;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
     .era-clips a video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
     .era-clips .cl{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;z-index:2;
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
@@ -72,7 +80,7 @@
     /* horizontal snap strip for the media-dense eras */
     .era-clips--strip{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
       padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
-    .era-clips--strip a{flex:0 0 auto;width:min(300px,74vw);scroll-snap-align:start}
+    .era-clips--strip a{flex:0 0 auto;width:min(340px,74vw);scroll-snap-align:start}
     .era-clips--strip::-webkit-scrollbar{height:4px}
     .era-clips--strip::-webkit-scrollbar-thumb{background:var(--line-2)}
 
@@ -80,7 +88,7 @@
     .era--sparse::before{opacity:.07}
     .era--sparse .era-body{border:1px solid var(--line);padding:20px 22px;
       background:rgba(255,255,255,.015)}
-    .era--sparse .era-clips a{width:150px}
+    .era--sparse .era-clips a{width:200px}
 
     /* chapter minimap (desktop) */
     .tl-map{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;
@@ -137,11 +145,9 @@
     .no-js .tl-fill{height:100%}
 
     /* native scroll-driven layer: rail, reveals, ghost years, counters */
-    @property --nn{syntax:"<integer>";inherits:true;initial-value:0}
     @keyframes tl-fill-kf{from{height:0}to{height:100%}}
     @keyframes rise-kf{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
     @keyframes ghost-kf{from{opacity:0;transform:translateY(46px)}}
-    @keyframes count-kf{from{--nn:0}}
     @media (prefers-reduced-motion: no-preference){
       @supports (animation-timeline: view()){
         .tl{view-timeline:--tl block}
@@ -152,11 +158,6 @@
           animation-range:entry 0% entry 62%}
         .era::before{animation:ghost-kf linear both;animation-timeline:view();
           animation-range:entry 0% cover 34%}
-        .em .n .real{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
-        .em .n .cnt,.em .n .unit{display:inline}
-        .em .n .cnt{--nn:var(--t);animation:count-kf linear both;animation-timeline:view();
-          animation-range:cover 0% cover 42%}
-        .em .n .cnt::before{content:counter(nn);counter-reset:nn var(--nn)}
       }
     }
     @media (prefers-reduced-motion: reduce){
@@ -247,7 +248,7 @@
       <div class="era-role reveal-child">Founding-team Associate Producer</div>
       <p class="era-body reveal-child">Launch night, May 2, 2011: the planned rundown abandoned when the bin Laden raid broke, and the man who unknowingly live-tweeted it booked on air, his follower count climbing from a few hundred to tens of thousands. Social-data journalism before that was a category.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n" style="--t:250"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">250M</span></div><div class="l">households at launch</div></div>
+        <div class="em"><div class="n" data-count>250M</div><div class="l">households at launch</div></div>
         <div class="em"><div class="n">RTS 2012</div><div class="l">Innovative News Award</div></div>
       </div>
       <div class="era-clips era-clips--strip reveal-child">
@@ -283,8 +284,8 @@
       <div class="era-role reveal-child">Senior Producer · America With Jorge Ramos</div>
       <p class="era-body reveal-child">Weekly primetime on the ABC/Univision joint venture, produced end to end: full episodes, election specials, field segments, and the 44-minute live special on Mandela's death built on a rebuilt rundown.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n" style="--t:179"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">%</span><span class="real">179%</span></div><div class="l">primetime growth window</div></div>
-        <div class="em"><div class="n" style="--t:40"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">40M</span></div><div class="l">household distribution</div></div>
+        <div class="em"><div class="n" data-count>179%</div><div class="l">primetime growth window</div></div>
+        <div class="em"><div class="n" data-count>40M</div><div class="l">household distribution</div></div>
       </div>
       <div class="era-clips reveal-child">
         <a href="work.html#interviews-panels" data-preview="assets/previews/fusion-2013-america-with-jorge-ramos.mp4"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos showreel" loading="lazy"><span class="cl">The showreel · 44m</span></a>
@@ -315,8 +316,8 @@
       <div class="era-role reveal-child">Senior Producer</div>
       <p class="era-body reveal-child">Viral social news at the top of its category-defining era. I ran a team during the years AJ+ reached 500 million weekly viewers, field-produced San Juan's mayor during active Hurricane Maria conditions, and made one piece that hit 50 million views on its own.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n" style="--t:500"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">500M</span></div><div class="l">weekly viewers, team era</div></div>
-        <div class="em"><div class="n" style="--t:50"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">M</span><span class="real">50M</span></div><div class="l">views, one piece of my own</div></div>
+        <div class="em"><div class="n" data-count>500M</div><div class="l">weekly viewers, team era</div></div>
+        <div class="em"><div class="n" data-count>50M</div><div class="l">views, one piece of my own</div></div>
       </div>
       <div class="era-clips era-clips--strip reveal-child">
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">The 50M measles piece</span></a>
@@ -340,7 +341,7 @@
       <div class="era-role reveal-child">Senior Communications &amp; Content Strategist</div>
       <p class="era-body reveal-child">Six years turning dense internal engineering into communication people actually watched. Video-first internal comms at a scale most newsrooms never touch, plus public recruitment and interview-prep video for Google's talent brand.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n" style="--t:75"><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">,000+</span><span class="real">75,000+</span></div><div class="l">employees reached</div></div>
+        <div class="em"><div class="n" data-count>75,000+</div><div class="l">employees reached</div></div>
       </div>
       <div class="era-clips reveal-child">
         <a href="work.html#social-explainers"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
@@ -355,8 +356,8 @@
       <div class="era-role reveal-child">Internal Communications Lead</div>
       <p class="era-body reveal-child">Communications for the community of 1,000+ Principal, Distinguished, and Fellow engineers. This is where I stopped writing about the systems and started building them: two production AI agents, built and deployed solo.</p>
       <div class="era-metrics reveal-child">
-        <div class="em"><div class="n">1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
-        <div class="em"><div class="n" style="--t:70"><span aria-hidden="true">~</span><span class="cnt" aria-hidden="true"></span><span class="unit" aria-hidden="true">%</span><span class="real">~70%</span></div><div class="l">less VP review back-and-forth, digital-twin system (internal, self-measured)</div></div>
+        <div class="em"><div class="n" data-count>1,000+</div><div class="l">Principal, Distinguished, Fellow engineers</div></div>
+        <div class="em"><div class="n" data-count>~70%</div><div class="l">less VP review back-and-forth, digital-twin system (internal, self-measured)</div></div>
       </div>
       <div class="era-clips reveal-child">
         <a href="work.html#interviews-panels"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
@@ -487,7 +488,7 @@
       var prev=a.getAttribute('data-preview');
       if(prev && !reduce){
         var v=document.createElement('video');
-        v.src=prev; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true;
+        v.src=prev; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true; v.controls=true;
         v.setAttribute('aria-label', img?img.alt:'');
         cbMedia.appendChild(v);
       } else if(img){
@@ -496,7 +497,10 @@
         cbMedia.appendChild(big);
       }
       cbCap.textContent=cap?cap.textContent:'';
-      cbLink.href=a.getAttribute('href');
+      var href=a.getAttribute('href');
+      cbLink.href=href;
+      cbLink.textContent = href.indexOf('work.html')===0 ? 'See it on the reel' :
+        href.indexOf('stories.html')===0 ? 'Read the story' : 'Open the breakdown';
       clipbox.showModal();
     });
   });
