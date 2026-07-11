@@ -16,6 +16,20 @@
       --blood-soft:#b1554c;
       --ease:cubic-bezier(0.16,1,0.3,1);
       --maxw:1200px;
+
+      /* ---------- motion language (engraved-signal, 2026-07-11) ----------
+         Four curves, three duration tiers, three staggers. Every animation
+         on the site draws from these; page styles must not invent values. */
+      --ease-reveal:cubic-bezier(0.19,1,0.22,1);  /* filmic ease-out: reveals, hero, cards */
+      --ease-exit:cubic-bezier(0.7,0,0.84,0);     /* fast asymmetric dismiss */
+      --ease-mech:cubic-bezier(0.65,0,0.35,1);    /* mechanical: pipeline nodes, counters */
+      --ease-micro:cubic-bezier(0.4,0,0.2,1);     /* UI acknowledgements: hover, focus */
+      --dur-micro:160ms;                          /* button, hover, chip */
+      --dur-move:420ms;                           /* section reveal, tile, card */
+      --dur-set:900ms;                            /* hero orchestration, modal, view transition */
+      --stag-tight:40ms;                          /* character/technical sequences */
+      --stag-line:70ms;                           /* multi-line hero text */
+      --stag-grid:90ms;                           /* card grids, reading order */
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
