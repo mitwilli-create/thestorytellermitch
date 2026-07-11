@@ -105,6 +105,16 @@
       .hero-cta{transition-delay:.28s,.28s}
       .hero-sys{transition:opacity 500ms var(--ease) .7s,border-color var(--dur-micro) var(--ease-micro)}
     }
+    /* hero card joins the hub-card morph family: clicking through to
+       broll-pipeline morphs the machine plate into the case hero illo */
+    @view-transition{navigation:auto}
+    .nav{view-transition-name:site-nav}
+    ::view-transition-old(root){animation:vt-out 280ms var(--ease-exit) both}
+    ::view-transition-new(root){animation:vt-in 550ms var(--ease-reveal) 90ms both}
+    @keyframes vt-out{to{opacity:0}}
+    @keyframes vt-in{from{opacity:0;transform:translateY(14px)}}
+    ::view-transition-group(proj-illo){animation-duration:560ms;animation-timing-function:var(--ease-reveal)}
+    ::view-transition-group(site-nav){animation-duration:0ms}
   </style>
 </head>
 <body>
@@ -329,6 +339,14 @@
 <script src="shared/reveal.js?v=20260711e"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 <script>
+  // name the hero machine plate at click time so the cross-document
+  // transition morphs it into broll-pipeline's case hero illo
+  document.querySelectorAll('a.hero-sys[href="broll-pipeline.html"]').forEach((a)=>{
+    a.addEventListener('click',()=>{
+      const fig=a.querySelector('.sys-cine');
+      if(fig) fig.style.viewTransitionName='proj-illo';
+    });
+  });
   // two-act opening. Act 1: tighter title stagger so name/role/CTAs are
   // readable inside second one. Act 2 at ~1.4s: one pulse crosses the
   // diagram and the receipt figure ticks up. Motion-off gets the static
