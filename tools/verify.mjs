@@ -50,7 +50,7 @@ for (const f of censusFiles.filter((f) => f.endsWith('.html'))) {
   const html = readFileSync(resolve(SITE, f), 'utf8');
   for (const m of html.matchAll(/(?:src|href|poster)="([^"#][^"]*)"/g)) {
     const url = m[1];
-    if (/^(https?:|mailto:|data:|back$|forward$)/.test(url)) continue;
+    if (/^(https?:|mailto:|tel:|data:|back$|forward$)/.test(url)) continue;
     const path = url.split('#')[0].split('?')[0];
     if (path.startsWith('media/')) continue; // gitignored self-host payloads
     refCount++;
