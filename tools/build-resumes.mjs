@@ -223,7 +223,9 @@ export function page({ name, pillars, contact, sections }, lane) {
        mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
-    @page{size:letter;margin:0}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
     @media print{
       :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
@@ -240,15 +242,15 @@ export function page({ name, pillars, contact, sections }, lane) {
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue{display:none !important}
-      .rwrap{padding:0.35in 0.42in;max-width:none}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
-      section.rsec{margin-top:6.5pt;padding:0}
+      section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:${pt}pt;line-height:1.3;margin-bottom:3pt}
+      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:${pt}pt;line-height:1.28;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
+      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
       .rl li::before{left:1pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:${rh}pt;break-after:avoid}

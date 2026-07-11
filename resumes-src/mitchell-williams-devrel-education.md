@@ -23,7 +23,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **monolith** · TypeScript agent built on hard guarantees: deterministic constraint gates that return INSUFFICIENT_DATA instead of guessing.
 
-**career-ops** · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, about 50 scheduled agents, live dashboard under a unified spend cap. CI-green; public release in progress.
+**career-ops** · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, 52 scheduled agents, live dashboard under a unified spend cap. CI-green; public on GitHub.
 
 ## Highlights
 

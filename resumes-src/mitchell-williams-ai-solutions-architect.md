@@ -23,7 +23,7 @@ Repos public at github.com/mitwilli-create.
 
 **monolith** · TypeScript agent built on hard guarantees: a deterministic constraint-gate contract that returns INSUFFICIENT_DATA instead of guessing when the inputs cannot support an answer.
 
-**career-ops** · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, about 50 scheduled agents, live dashboard under a unified spend cap. CI-green; public release in progress.
+**career-ops** · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, 52 scheduled agents, 1,150+ scored role reports, live dashboard under a unified spend cap. CI-green; public on GitHub.
 
 **broll-pipeline** · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included.
 

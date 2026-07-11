@@ -9,7 +9,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **The receipt first: broll-pipeline, in Node and ffmpeg on the ElevenLabs stack, produced a 53-second creative-directed short with a Spanish dub for $14.20 all-in, every retake logged to a run manifest, public on GitHub with a README build walkthrough.** Forward Deployed Creative: embed with a team, learn the pipeline, ship the replacement for the slow part, and teach the team to run it. The arc runs journalist to communications strategist to applied-AI builder; the loop never changed. Target lane: forward-deployed creative and agent-builder roles on the creative-AI and agent stack, plus media and entertainment-vertical solutions work.
 
-career-ops runs about 50 scheduled agents daily, CI-green under a unified spend cap. A digital twin built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.
+career-ops runs 52 scheduled agents daily and has produced 1,150+ scored role reports, CI-green under a unified spend cap. A digital twin built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.
 
 **Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product.
 
@@ -19,7 +19,7 @@ Repos at github.com/mitwilli-create.
 
 **broll-pipeline** · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing. Live demo: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included, every API call logged to a run manifest. Public and reproducible.
 
-**career-ops** · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, about 50 scheduled agents, live operations dashboard. CI-green and test-covered; open-sourcing in progress.
+**career-ops** · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, 52 scheduled agents, live operations dashboard. CI-green, test-covered, and public on GitHub.
 
 **tax-verification-agent** · Citation-gated verification over a four-layer IRS knowledge base on Claude: every claim cites its source; unknowns surface as placeholders. Caught a ~$19K multi-state error filing software pre-filled and defended as correct. Public.
 
@@ -82,7 +82,7 @@ AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Buil
 
 ## Skills
 
-**Ships in production:** Node.js / ESM, ffmpeg + ElevenLabs creative-AI pipeline, Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (about 50 scheduled agents), eval / QA / regression gates.
+**Ships in production:** Node.js / ESM, ffmpeg + ElevenLabs creative-AI pipeline, Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (52 scheduled agents), eval / QA / regression gates.
 
 **Agent design:** Apps Script + Gemini (Google-internal production agents), prompt architecture, conditional knowledge-base loading, citation-gating, deterministic constraint gates (monolith), Claude Code skills, Model Context Protocol (MCP).
 

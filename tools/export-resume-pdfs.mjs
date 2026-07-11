@@ -52,7 +52,8 @@ for (const [file, slug] of Object.entries(LANES)) {
   });
   // Mitchell's call 2026-07-10 (supersedes the earlier 6-link budget): every
   // portfolio reference stays linked in the PDF, same as the HTML resume.
-  const pdf = await page.pdf({ format: 'Letter', printBackground: true });
+  const pdf = await page.pdf({ format: 'Letter', printBackground: true,
+    margin: { top: '0.28in', bottom: '0.12in', left: '0', right: '0' } });
   const n = pageCount(pdf);
   const out = join(ROOT, 'assets/resumes', `${file}.pdf`);
   if (n > 2 || n < 1) {
@@ -65,4 +66,12 @@ for (const [file, slug] of Object.entries(LANES)) {
 }
 await browser.close();
 if (fail) { console.error(`${fail} resume(s) failed the 2-page gate`); process.exit(1); }
+// The site-wide default resume (nav + hero + every footer) is the forward-deployed
+// lane; emit it as the canonical copy so it can never drift from the variants again.
+const DEFAULT_LANE = 'mitchell-williams-forward-deployed';
+writeFileSync(
+  join(ROOT, 'assets', 'mitchell-williams-resume.pdf'),
+  readFileSync(join(ROOT, 'assets/resumes', `${DEFAULT_LANE}.pdf`)),
+);
+console.log(`OK default: assets/mitchell-williams-resume.pdf <- ${DEFAULT_LANE}`);
 console.log('all resume PDFs exported inside the 2-page gate');

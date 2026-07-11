@@ -11,7 +11,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:** the approvals governance gate, the intake prioritization sequencing a concurrent-mandate portfolio, the senior-IC program cadence, and production AI agents, including a digital twin that cut VP review cycles by about 70% (internal, self-measured).
 
-**Outside work, I operate an autonomous agent fleet:** about 50 scheduled agents, each with a budget cap, a schedule, and a dead-man heartbeat that reports when a job goes quiet, under a unified spend cap with QA gates and a live operations dashboard.
+**Outside work, I operate an autonomous agent fleet:** 52 scheduled agents, each with a budget cap, a schedule, and a dead-man heartbeat that reports when a job goes quiet, under a unified spend cap with QA gates and a live operations dashboard.
 
 ## Fit for AI Governance Programs
 
@@ -75,7 +75,7 @@ Communications and content for Google's internal IT org and TechStop.
 
 Repos public at github.com/mitwilli-create.
 
-**career-ops** · Forked and extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system: multi-LLM council with adjudication, regression-guard and bug-resolver pipeline, MCP servers, about 50 scheduled agents, live operations dashboard. CI-green and test-covered.
+**career-ops** · Forked and extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system: multi-LLM council with adjudication, regression-guard and bug-resolver pipeline, MCP servers, 52 scheduled agents, live operations dashboard. CI-green, test-covered, public on GitHub.
 
 **tax-verification-agent** · Citation-gated verification over a four-layer IRS knowledge base on Claude; caught a ~$19K multi-state error that filing software pre-filled and defended as correct.
 

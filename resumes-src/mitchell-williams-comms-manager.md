@@ -72,7 +72,7 @@ Code public at github.com/mitwilli-create.
 
 **voice-os** · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker.
 
-**career-ops** · Extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system with ~50 scheduled agents, Claude Code skills and MCP servers, and a live operations dashboard. CI-green and test-covered.
+**career-ops** · Extended an open-source pipeline into a cost-governed multi-agent system: 52 scheduled agents, Claude Code skills and MCP servers, live operations dashboard. CI-green; public on GitHub.
 
 ## Earlier Career: Live National News (2010 – 2018)
 
@@ -94,6 +94,6 @@ AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Buil
 
 ## Skills
 
-**Product, Technical & Editorial Communications:** technical translation, internal-comms strategy at engineering scale, change-management narrative design, stakeholder management, principal-level ghostwriting, live-broadcast editorial under deadline, journalist-side booking and sourcing, voice and tone calibration.
+**Product, Technical & Editorial Communications:** technical translation, internal-comms strategy at engineering scale, change-management narrative design, stakeholder management, principal-level ghostwriting, live-broadcast editorial under deadline, voice and tone calibration.
 
 **Applied AI:** agent design (Apps Script + Gemini, Node.js), LLM orchestration, Claude Code / MCP, prompt engineering, eval and regression infrastructure.
