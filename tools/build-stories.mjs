@@ -50,13 +50,22 @@ const articles = stories.map((s) => {
         return `            <figure class="${cls}">${body}<figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
       }).join('\n')}\n          </div>\n`;
   }
-  const rowsAfter = (idx) => renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === idx));
+  // stories-02: when a still opens the case, the first media row hoists
+  // to sit directly under it, so panel + still + tray read as one spread
+  const rowsAfter = (idx) => {
+    if (s.still && idx === 1) return '';
+    return renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === idx));
+  };
+  const hoistedRow = s.still ? renderRow((s.media ?? []).filter((m) => (m.after ?? 1) === 1)) : '';
   const paras = s.body.map((p, i) => {
+    // the opening paragraph carries the panel that overlaps the still's
+    // top edge (class only exists when a still follows)
+    const pCls = (i === 0 && s.still) ? 'reveal lead-p' : 'reveal';
     const para = (i === s.body.length - 1 && s.pull)
-      ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="reveal">${md(p)}</p>`
-      : `          <p class="reveal">${md(p)}</p>`;
+      ? `          <div class="pull reveal">${esc(s.pull)}</div>\n          <p class="${pCls}">${md(p)}</p>`
+      : `          <p class="${pCls}">${md(p)}</p>`;
     const row = rowsAfter(i);
-    if (i === 0) return `${para}\n${still}${row}`;
+    if (i === 0) return `${para}\n${still}${hoistedRow}${row}`;
     return row ? `${para}\n${row}` : para;
   }).join('\n');
   const clipsHtml = s.clipSlugs?.length
@@ -73,9 +82,13 @@ const articles = stories.map((s) => {
           <figcaption class="oncam-cap">${esc(s.oncam.cap ?? '')}</figcaption>
         </figure>\n\n`
     : '';
+  // stories-03: kick + title ride a per-case band that pins inside the
+  // article; the page JS compresses it once stuck
   const inner = `        <article class="story" id="${esc(s.id)}">
-          <div class="kick reveal">${esc(s.kicker)}</div>
-          <h2 class="reveal">${esc(s.title)}</h2>
+          <div class="case-band">
+            <div class="kick reveal">${esc(s.kicker)}</div>
+            <h2 class="reveal">${esc(s.title)}</h2>
+          </div>
 ${paras}${clipsHtml}
         </article>`;
   if (!s.compact) return oncam + inner;
