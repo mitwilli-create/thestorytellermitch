@@ -94,8 +94,9 @@ async function main() {
     console.warn(`substack-sync: feed parse failed (${e.message}); keeping the last baked state`);
     process.exit(0);
   }
-  posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-  writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
+  // numeric-epoch sort; a missing/unparseable pubDate sinks to the end
+  // instead of accidentally winning the featured slot
+  posts.sort((a, b) => (Date.parse(b.date) || -Infinity) - (Date.parse(a.date) || -Infinity));
 
   const feat = posts[0];
   const featHtml = `<!-- WRITING:FEAT:START -->
@@ -112,11 +113,16 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
     </div>
     ` : '\n    '}<!-- WRITING:LIST:END -->`;
 
+  // splice first, persist after: a missing marker throws before either
+  // file is touched, so json and page can never go inconsistent
   let page = readFileSync(PAGE, 'utf8');
   page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
   page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
+  writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
   writeFileSync(PAGE, page);
   console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (featured: ${feat.title})`);
 }
 
-main().catch((e) => { console.warn(`substack-sync: ${e.message}; keeping the last baked state`); process.exit(0); });
+// template regressions (missing markers) exit 1 so deploy.sh logs them
+// distinctly from tolerated network failures (which exit 0 above)
+main().catch((e) => { console.error(`substack-sync: ${e.message}`); process.exit(1); });
