@@ -75,7 +75,9 @@
     theater.querySelector('#th-title').textContent = d.title || '';
     theater.querySelector('#th-sub').textContent = d.sub || '';
     const cl = theater.querySelector('#th-case');
-    if (d.case) { cl.hidden = false; cl.href = d.case; } else { cl.hidden = true; }
+    // theme.css sets .case-link{display:inline-block}, which beats the UA
+    // [hidden] rule; toggle display explicitly so no phantom link renders
+    if (d.case) { cl.hidden = false; cl.style.display = ''; cl.href = d.case; } else { cl.hidden = true; cl.style.display = 'none'; }
     if (window.__sound && document.body.dataset.theaterBed !== undefined) __sound.score('assets/music/bed-composed.mp3'); // theater bed, ~15%, opt-in only
     mountPlayer(d);
     theater.hidden = false;
@@ -97,6 +99,13 @@
     const tile = e.target.closest(SEL);
     if (tile) { e.preventDefault(); openTheater(tile); return; }
     if (e.target.closest('[data-close]')) closeTheater();
+  });
+
+  // iframe players swallow Tab inside their own document, so a keydown trap
+  // alone lets focus exit the overlay; recapture whenever focus lands outside
+  document.addEventListener('focusin', (e) => {
+    if (!theater || theater.hidden) return;
+    if (!theater.contains(e.target)) theater.querySelector('.theater-close').focus();
   });
 
   document.addEventListener('keydown', (e) => {
