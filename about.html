@@ -37,25 +37,37 @@
   <style>
     .about-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
     .about-hero .display{font-size:clamp(42px,6.2vw,96px)}
-    /* about-03: the walkthrough slot rides beside the name in a 2-col
-       hero; the first prose section overlaps the hero's bottom edge
-       (hero reserves the room, zero shift) */
-    .about-hero .hero-2col{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
-      gap:44px;align-items:center}
-    .about-hero .walkthrough{margin:0;max-width:none}
+    /* about-02: hero carries the reel-frames monitor-wall fill plate;
+       the first spread overlaps the hero's bottom edge (hero reserves
+       the room, zero shift) */
     @media(min-width:861px){
       .about-hero{padding-bottom:calc(48px + 10vh);border-bottom:none}
       .sec-about{margin-top:-10vh;padding-top:0;position:relative;z-index:2}
     }
-    @media(max-width:860px){
-      .about-hero .hero-2col{grid-template-columns:1fr;gap:36px}
+    @media(min-width:1121px){
+      .about-hero .kicker{max-width:50%}
     }
     .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0 64px;align-items:start}
     .about-grid .prose{grid-column:1;grid-row:1 / span 2}
     /* about-01: colleague quotes ride the right rail as pull-quote cards
-       beside the sections they support (below the portrait) */
+       beside the sections they support */
     .portrait{grid-column:2;grid-row:1}
-    .about-rail{grid-column:2;grid-row:2;display:flex;flex-direction:column;min-width:0}
+    .about-rail{grid-column:2;grid-row:2;display:flex;flex-direction:column;min-width:0;gap:16px}
+    .about-rail .walkthrough{margin:0;max-width:none}
+    /* about-02 spread 3: targeting beside the letters panel */
+    .target-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 64px;align-items:start}
+    .rec-panel{background:var(--surface);border:1px solid var(--line);padding:26px 24px;
+      display:flex;flex-direction:column;gap:22px;min-width:0}
+    .rec-head{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-soft);padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .rec-item p{font-size:14px;line-height:1.65;color:var(--bone-soft);margin:0 0 12px}
+    .rec-item cite{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-style:normal;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);line-height:1.6;display:block}
+    .rec-item cite b{color:var(--bone);display:block}
+    .rec-item + .rec-item{padding-top:22px;border-top:1px solid var(--line)}
+    @media(max-width:860px){
+      .target-grid{grid-template-columns:1fr;gap:36px}
+    }
     .rail-quote{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);
       padding:22px 20px;margin:0}
     .rail-quote:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
@@ -65,11 +77,6 @@
     .rail-quote cite{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-style:normal;
       letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);line-height:1.6;display:block}
     .rail-quote cite b{color:var(--bone);display:block}
-    @media(min-width:861px){
-      .rail-quote--google{margin-top:170px}
-      .rail-quote--newsrooms{margin-top:90px}
-      .rail-quote--seat{margin-top:330px}
-    }
     .portrait{margin:6px 0 0;min-width:0}
     .portrait img{display:block;width:100%;height:auto;border:1px solid var(--line-2);filter:grayscale(1)}
     .portrait figcaption{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
@@ -133,28 +140,16 @@
   </div>
 </nav>
 
-<header class="about-hero">
+<header class="about-hero fill-host">
+  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-about-loop" aria-hidden="true">
+    <img src="assets/stills/fill-about-hd.jpg" alt="" width="1376" height="768" loading="lazy">
+  </figure>
   <div class="wrap">
-    <div class="hero-2col">
-      <div>
-        <div class="kicker">AI Builder · Communications Lead · Former Live Television Producer</div>
-        <h1 class="display">
-          <span class="ln"><span>About</span></span>
-          <span class="ln"><span class="accent">Mitchell.</span></span>
-        </h1>
-      </div>
-      <figure class="walkthrough" aria-label="Reserved player for the on-camera walkthrough video">
-        <div class="wt-frame oncam">
-          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
-          <div class="wt-card">
-            <span class="wt-k">on camera &middot; in production</span>
-            <span class="wt-t">How this site works</span>
-            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
-          </div>
-        </div>
-        <figcaption>reserved for the on-camera walkthrough; the player drops in here</figcaption>
-      </figure>
-    </div>
+    <div class="kicker">AI Builder · Communications Lead · Former Live Television Producer</div>
+    <h1 class="display">
+      <span class="ln"><span>About</span></span>
+      <span class="ln"><span class="accent">Mitchell.</span></span>
+    </h1>
   </div>
 </header>
 
@@ -166,7 +161,8 @@
       <figcaption>Mitchell Williams · Seattle</figcaption>
     </figure>
     <article class="prose">
-      <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. Eight years at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers and stopped writing about the systems and started building them. Now I build AI-native storytelling and enablement systems full time.</p>
+      <h2 class="reveal">The bridge</h2>
+      <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. Eight years at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers, and stopped writing about the systems and started building them. Now I build AI-native storytelling and enablement systems full time. Whether the system is a live control room or an LLM orchestration layer, the discipline is the same: identify what matters, build the structure that gets it out, measure what happened. The full trajectory is on the <a href="timeline.html">Timeline</a>, and the stories behind the biggest nights are on <a href="stories.html">Stories</a>.</p>
 
       <div class="voice-console reveal" role="region" aria-labelledby="voice-console-label">
         <div class="vc-head">
@@ -180,46 +176,81 @@
         </div>
         <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and I bridge two things that rarely share a resume: production AI systems and live broadcast journalism. I spent eight years at the properties that rewired live television, then went to Google, where I ran communications for a community of over a thousand Principal, Distinguished, and Fellow engineers. That's where I stopped writing about systems and started building them. I built two production AI agents solo there: a communications triage agent, handed off with a full operator runbook, and an executive digital twin writing system that cut review back-and-forth with the VP by about seventy percent. Now I build AI-native storytelling and enablement systems full time: a broll pipeline that turns one script into a produced, costed short, voice scoring, citation-gated verification, and the orchestration layers that hold it all together. The through line is the same discipline I learned in control rooms: know what matters before it matters, and build systems that hold under pressure.</p></details>
       </div>
+    </article>
+    </div>
+  </div>
+</section>
 
-      <h2 class="reveal">What I build now</h2>
-      <p class="reveal">Production AI agents and AI-native creative pipelines. The <a href="broll-pipeline.html">broll pipeline</a> turns one script into a produced, captioned short on the ElevenLabs stack with every API call costed. <a href="projects.html">The rest of the build</a> covers voice scoring, citation-gated verification, agentic job-search infrastructure, and the orchestration layers that hold them together. Same discipline I learned in control rooms: know what matters before it matters, build systems that hold under pressure.</p>
-
-      <h2 class="reveal">Google, 2018 to 2026</h2>
-      <p class="reveal">At Google Cross-Google Engineering (xGE) I was Internal Communications Lead for the community of 1,000+ senior engineers at the Principal, Distinguished, and Fellow levels. I built and deployed two production AI agents solo: a communications-triage agent, documented end to end and handed off with a full operator runbook, and an executive <a href="stories.html#digital-twin">"digital twin" writing system</a> that cut review back-and-forth with the VP by about 70%, an internal figure I measured myself. Before xGE, six years as Senior Communications &amp; Content Strategist in Corporate Engineering, where video-first internal comms reached 75,000+ employees.</p>
-
-      <h2 class="reveal">Newsrooms, 2010 to 2018</h2>
-      <p class="reveal">As a founding-team Associate Producer on Al Jazeera English's <em>The Stream</em>, I helped <a href="stories.html#stream-launch-night">launch to 250 million households on the night Osama bin Laden was killed</a>: the planned rundown abandoned overnight, Sohaib Athar (@ReallyVirtual) booked live on Skype while his follower count graphed from a few hundred to tens of thousands on air.</p>
-      <p class="reveal">At HuffPost Live, I produced the PrEP/Truvada panel six months after FDA approval, with the IPREX clinical trial chair live from Lima; the host thanked me by name on air for originating the story. At Fusion, as Senior Producer on <em>America With Jorge Ramos</em>, I produced the 44-minute live primetime special on Mandela's death, a three-way ABC/Univision/Fusion integration on a rebuilt rundown. At AJ+, I field-produced San Juan Mayor Carmen Yulín Cruz during active Hurricane Maria conditions, and I ran a team during the era AJ+ reached 500 million weekly viewers, with <a href="stories.html#aj-plus-50m-views">one piece of my own hitting 50 million</a>.</p>
+<section>
+  <div class="wrap">
+    <div class="about-grid">
+    <article class="prose" style="grid-row:1 / span 2">
+      <h2 class="reveal">Sixteen years, two control rooms</h2>
+      <p class="reveal">As a founding-team Associate Producer on Al Jazeera English's <em>The Stream</em>, I helped <a href="stories.html#stream-launch-night">launch to 250 million households on the night Osama bin Laden was killed</a>: the planned rundown abandoned overnight, Sohaib Athar (@ReallyVirtual) booked live on Skype while his follower count graphed from a few hundred to tens of thousands on air. At HuffPost Live, I produced the PrEP/Truvada panel six months after FDA approval, with the IPREX clinical trial chair live from Lima; the host thanked me by name on air for originating the story. At Fusion, as Senior Producer on <em>America With Jorge Ramos</em>, I produced the 44-minute live primetime special on Mandela's death, a three-way ABC/Univision/Fusion integration on a rebuilt rundown. At AJ+, I field-produced San Juan Mayor Carmen Yulin Cruz during active Hurricane Maria conditions, and I ran a team during the era AJ+ reached 500 million weekly viewers, with <a href="stories.html#aj-plus-50m-views">one piece of my own hitting 50 million</a>.</p>
 
       <blockquote class="reveal">"Thank you to our wonderful producer, Mitchell Williams, who brought this to our attention." · host, HuffPost Live PrEP/Truvada panel, [29:00]</blockquote>
 
-      <h2 class="reveal">The through line</h2>
-      <p class="reveal">Systems under pressure. Whether the system is a live control room or an LLM orchestration layer, the discipline is the same: identify what matters, build the structure that gets it out, and measure what happened. The full trajectory is on the <a href="timeline.html">Timeline</a>, and the stories behind the biggest nights are on <a href="stories.html">Stories</a>.</p>
+      <p class="reveal">Then Google. At Cross-Google Engineering (xGE) I was Internal Communications Lead for the community of 1,000+ senior engineers at the Principal, Distinguished, and Fellow levels: I owned communications for the annual senior-IC summit (600+ attendees) and quarterly forums (300+ each), authored the org's three-tier communications operating model, ran the recurring approval-intake prioritization meetings, and wrote directly for a VP. I built and deployed two production AI agents solo: a communications-triage agent, documented end to end and handed off with a full operator runbook, and an executive <a href="stories.html#digital-twin">"digital twin" writing system</a> that cut review back-and-forth with the VP by about 70%, an internal figure I measured myself.</p>
+      <p class="reveal">Before xGE, six years as Senior Communications &amp; Content Strategist in Corporate Engineering, where video-first internal comms reached 75,000+ employees, and earlier I wrote executive communications for Google's then-CIO. At AJ+ I led 10+ producers and coached three of them into on-camera principals with Emmy and Webby wins of their own. The communications-first view of this career lives on the <a href="comms.html">comms page</a>, with the craft demonstrations in the <a href="writing.html">writing room</a>.</p>
+    </article>
+    <aside class="about-rail" aria-label="Walkthrough and colleague quotes" style="grid-row:1">
+      <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
+        <div class="wt-frame oncam">
+          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
+          <div class="wt-card">
+            <span class="wt-k">on camera &middot; in production</span>
+            <span class="wt-t">How this site works</span>
+            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
+          </div>
+        </div>
+        <figcaption>reserved for the on-camera walkthrough</figcaption>
+      </figure>
+      <blockquote class="rail-quote reveal" tabindex="0">
+        <p>Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</p>
+        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal" tabindex="0">
+        <p>Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</p>
+        <cite><b>Mike Suh</b>Content Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal" tabindex="0">
+        <p>Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</p>
+        <cite><b>Emily O'Neal</b>Executive Business Partner</cite>
+      </blockquote>
+    </aside>
+    </div>
+  </div>
+</section>
 
-      <h2 class="reveal">The comms seat, concretely</h2>
-      <p class="reveal">At Google xGE I was the communications lead for a community of 1,000+ Principal, Distinguished, and Fellow engineers: I owned communications for the annual senior-IC summit (600+ attendees) and quarterly forums (300+ each), authored the org's three-tier communications operating model, ran the recurring approval-intake prioritization meetings, and wrote directly for a VP. Earlier, at Corporate Engineering, I wrote executive communications for Google's then-CIO. At AJ+ I led 10+ producers and coached three of them into on-camera principals with Emmy and Webby wins of their own. The communications-first view of this career lives on the <a href="comms.html">comms page</a>, with the craft demonstrations in the <a href="writing.html">writing room</a>.</p>
+<section>
+  <div class="wrap">
+    <div class="target-grid">
+    <article class="prose">
+      <h2 class="reveal">What I build now</h2>
+      <p class="reveal">Production AI agents and AI-native creative pipelines. The <a href="broll-pipeline.html">broll pipeline</a> turns one script into a produced, captioned short on the ElevenLabs stack, every API call costed. <a href="projects.html">The rest of the build</a> covers voice scoring, citation-gated verification, and agentic job-search infrastructure, plus the orchestration that ties it together. Same discipline I learned in control rooms: know what matters before it matters, and ship systems that survive contact with production.</p>
 
       <h2 class="reveal">What I'm targeting</h2>
       <ul class="reveal">
-        <li><strong>Build &amp; deploy</strong>AI Solutions Architect · Forward Deployed Engineer / Creative · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager</li>
-        <li><strong>Communications &amp; editorial</strong>Executive &amp; Internal Communications · Communications Manager (AI-native) · Developer Education Lead · Engineering Editorial Lead · Communications Manager, Research</li>
+        <li><strong>Engineering &amp; AI</strong>AI Solutions Architect · Forward Deployed Engineer / Creative · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager</li>
+        <li><strong>Editorial &amp; comms</strong>Executive &amp; Internal Communications · Communications Manager (AI-native) · Developer Education Lead · Engineering Editorial Lead · Communications Manager, Research</li>
         <li><strong>Adjacent</strong>Residencies and fellowships at AI-native or AI-policy organizations</li>
       </ul>
       <p class="reveal" style="margin-top:28px;">Hiring for any of these? Email <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume PDF</a>.</p>
     </article>
-    <aside class="about-rail" aria-label="Colleague quotes">
-      <blockquote class="rail-quote rail-quote--google reveal" tabindex="0">
-        <p>Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</p>
-        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</cite>
-      </blockquote>
-      <blockquote class="rail-quote rail-quote--newsrooms reveal" tabindex="0">
-        <p>Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</p>
-        <cite><b>Mike Suh</b>Content Strategist</cite>
-      </blockquote>
-      <blockquote class="rail-quote rail-quote--seat reveal" tabindex="0">
-        <p>Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</p>
-        <cite><b>Emily O'Neal</b>Executive Business Partner</cite>
-      </blockquote>
+    <aside class="rec-panel reveal" aria-label="From written recommendation letters">
+      <div class="rec-head">on the record &middot; from written recommendation letters</div>
+      <div class="rec-item">
+        <p>"A star performer, consistently receiving strong reviews and being promoted during his tenure." On coaching Google's IT Director through a company-wide presentation, rewritten and rehearsed line by line: "the result was a resounding success." Closes with "my strongest endorsement."</p>
+        <cite><b>Mark Farrell</b>Manager for 4+ years, Google</cite>
+      </div>
+      <div class="rec-item">
+        <p>"Dedication to quality production and editorial discretion is some of the best I've seen in my 10+ year career in media." On the control room: he can mobilize a team for "12hrs of live, breaking news coverage" and "thrives in the moments when time is critical, and accuracy is essential."</p>
+        <cite><b>Katrina Norvell</b>Managing Executive Producer, iHeartRadio · HuffPost Live colleague</cite>
+      </div>
+      <div class="rec-item">
+        <p>Spotted her potential as a new Associate Producer, then advocated, produced, and coached her on-air; she went on to host morning shows, podcasts, and talk radio. In breaking news he "managed producers and guided newsrooms with aplomb, allowing leadership to consistently rely on him."</p>
+        <cite><b>Alex Berg</b>Creative Director, Blink Media · coached at HuffPost Live</cite>
+      </div>
     </aside>
     </div>
   </div>
