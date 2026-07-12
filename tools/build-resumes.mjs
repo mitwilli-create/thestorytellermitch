@@ -281,7 +281,7 @@ export function page({ name, pillars, contact, sections }, lane) {
     <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
-<main id="main">
+<main id="main" tabindex="-1">
 
 <div class="rwrap">
   <header>
