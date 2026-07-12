@@ -51,10 +51,11 @@
       .about-hero .hero-2col{grid-template-columns:1fr;gap:36px}
     }
     .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0 64px;align-items:start}
-    .about-grid .prose{grid-column:1;grid-row:1}
+    .about-grid .prose{grid-column:1;grid-row:1 / span 2}
     /* about-01: colleague quotes ride the right rail as pull-quote cards
-       beside the sections they support (portrait leads the rail) */
-    .about-rail{grid-column:2;grid-row:1;display:flex;flex-direction:column;min-width:0}
+       beside the sections they support (below the portrait) */
+    .portrait{grid-column:2;grid-row:1}
+    .about-rail{grid-column:2;grid-row:2;display:flex;flex-direction:column;min-width:0}
     .rail-quote{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);
       padding:22px 20px;margin:0}
     .rail-quote:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
@@ -69,7 +70,7 @@
       .rail-quote--newsrooms{margin-top:90px}
       .rail-quote--seat{margin-top:330px}
     }
-    .portrait{margin:6px 0 0}
+    .portrait{margin:6px 0 0;min-width:0}
     .portrait img{display:block;width:100%;height:auto;border:1px solid var(--line-2);filter:grayscale(1)}
     .portrait figcaption{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--dim);padding-top:10px}
@@ -91,11 +92,11 @@
     @media(max-width:860px){
       .about-hero{padding:130px 0 40px}
       .about-grid{grid-template-columns:1fr;gap:36px}
+      /* portrait leads, prose follows, the quote rail closes the page */
       .about-grid .prose{grid-column:1;grid-row:2}
-      /* the rail dissolves: portrait leads, quotes fall in after the prose */
-      .about-rail{display:contents}
       .portrait{grid-column:1;grid-row:1;max-width:300px}
-      .rail-quote{grid-column:1;margin-top:14px}
+      .about-rail{grid-column:1;grid-row:3;gap:14px}
+      .rail-quote{margin-top:0}
     }
     /* on-camera walkthrough slot: styled player frame, poster placeholder;
        Mitchell's 45-90s clip drops in as a <video> with this frame's poster */
@@ -160,24 +161,10 @@
 <section class="sec-about">
   <div class="wrap">
     <div class="about-grid">
-    <aside class="about-rail" aria-label="Portrait and colleague quotes">
-      <figure class="portrait reveal">
-        <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
-        <figcaption>Mitchell Williams · Seattle</figcaption>
-      </figure>
-      <blockquote class="rail-quote rail-quote--google reveal" tabindex="0">
-        <p>Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</p>
-        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</cite>
-      </blockquote>
-      <blockquote class="rail-quote rail-quote--newsrooms reveal" tabindex="0">
-        <p>Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</p>
-        <cite><b>Mike Suh</b>Content Strategist</cite>
-      </blockquote>
-      <blockquote class="rail-quote rail-quote--seat reveal" tabindex="0">
-        <p>Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</p>
-        <cite><b>Emily O'Neal</b>Executive Business Partner</cite>
-      </blockquote>
-    </aside>
+    <figure class="portrait reveal">
+      <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
+      <figcaption>Mitchell Williams · Seattle</figcaption>
+    </figure>
     <article class="prose">
       <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. Eight years at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers and stopped writing about the systems and started building them. Now I build AI-native storytelling and enablement systems full time.</p>
 
@@ -220,6 +207,20 @@
       </ul>
       <p class="reveal" style="margin-top:28px;">Hiring for any of these? Email <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume PDF</a>.</p>
     </article>
+    <aside class="about-rail" aria-label="Colleague quotes">
+      <blockquote class="rail-quote rail-quote--google reveal" tabindex="0">
+        <p>Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</p>
+        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote rail-quote--newsrooms reveal" tabindex="0">
+        <p>Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</p>
+        <cite><b>Mike Suh</b>Content Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote rail-quote--seat reveal" tabindex="0">
+        <p>Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</p>
+        <cite><b>Emily O'Neal</b>Executive Business Partner</cite>
+      </blockquote>
+    </aside>
     </div>
   </div>
 </section>
