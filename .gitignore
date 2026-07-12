@@ -5,3 +5,4 @@ tools/still-candidates/
 
 .env
 node_modules
+__pycache__/
