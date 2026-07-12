@@ -36,10 +36,40 @@
   </script>
   <style>
     .about-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
-    .about-hero .display{font-size:clamp(42px,7.4vw,110px)}
+    .about-hero .display{font-size:clamp(42px,6.2vw,96px)}
+    /* about-03: the walkthrough slot rides beside the name in a 2-col
+       hero; the first prose section overlaps the hero's bottom edge
+       (hero reserves the room, zero shift) */
+    .about-hero .hero-2col{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+      gap:44px;align-items:center}
+    .about-hero .walkthrough{margin:0;max-width:none}
+    @media(min-width:861px){
+      .about-hero{padding-bottom:calc(48px + 10vh);border-bottom:none}
+      .sec-about{margin-top:-10vh;padding-top:0;position:relative;z-index:2}
+    }
+    @media(max-width:860px){
+      .about-hero .hero-2col{grid-template-columns:1fr;gap:36px}
+    }
     .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0 64px;align-items:start}
     .about-grid .prose{grid-column:1;grid-row:1}
-    .portrait{grid-column:2;grid-row:1;margin:6px 0 0;position:sticky;top:110px}
+    /* about-01: colleague quotes ride the right rail as pull-quote cards
+       beside the sections they support (portrait leads the rail) */
+    .about-rail{grid-column:2;grid-row:1;display:flex;flex-direction:column;min-width:0}
+    .rail-quote{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      padding:22px 20px;margin:0}
+    .rail-quote:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .rail-quote p{font-size:14px;line-height:1.65;color:var(--bone-soft);margin:0 0 14px}
+    .rail-quote p::before{content:'"';font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;
+      color:var(--blood-soft);display:block;line-height:0.6;margin-bottom:10px}
+    .rail-quote cite{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-style:normal;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);line-height:1.6;display:block}
+    .rail-quote cite b{color:var(--bone);display:block}
+    @media(min-width:861px){
+      .rail-quote--google{margin-top:170px}
+      .rail-quote--newsrooms{margin-top:90px}
+      .rail-quote--seat{margin-top:330px}
+    }
+    .portrait{margin:6px 0 0}
     .portrait img{display:block;width:100%;height:auto;border:1px solid var(--line-2);filter:grayscale(1)}
     .portrait figcaption{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--dim);padding-top:10px}
@@ -57,22 +87,15 @@
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px}
     .prose blockquote{border-left:2px solid var(--blood-soft);padding:6px 0 6px 22px;margin:26px 0;
       color:var(--bone);font-style:italic}
-    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-    .testi{background:var(--surface);border:1px solid var(--line);padding:26px 24px;display:flex;
-      flex-direction:column;gap:16px}
-    .testi .q{font-size:15px;line-height:1.65;color:var(--bone-soft)}
-    .testi .q::before{content:'"';font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;
-      color:var(--blood-soft);display:block;line-height:0.6;margin-bottom:12px}
-    .testi .who{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:11px;
-      letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);line-height:1.6}
-    .testi .who b{color:var(--bone);display:block}
     section{padding:72px 0}
     @media(max-width:860px){
       .about-hero{padding:130px 0 40px}
       .about-grid{grid-template-columns:1fr;gap:36px}
       .about-grid .prose{grid-column:1;grid-row:2}
-      .portrait{grid-column:1;grid-row:1;position:static;max-width:300px}
-      .testi-grid{grid-template-columns:1fr}
+      /* the rail dissolves: portrait leads, quotes fall in after the prose */
+      .about-rail{display:contents}
+      .portrait{grid-column:1;grid-row:1;max-width:300px}
+      .rail-quote{grid-column:1;margin-top:14px}
     }
     /* on-camera walkthrough slot: styled player frame, poster placeholder;
        Mitchell's 45-90s clip drops in as a <video> with this frame's poster */
@@ -111,21 +134,50 @@
 
 <header class="about-hero">
   <div class="wrap">
-    <div class="kicker">AI Builder · Communications Lead · Former Live Television Producer</div>
-    <h1 class="display">
-      <span class="ln"><span>About</span></span>
-      <span class="ln"><span class="accent">Mitchell.</span></span>
-    </h1>
+    <div class="hero-2col">
+      <div>
+        <div class="kicker">AI Builder · Communications Lead · Former Live Television Producer</div>
+        <h1 class="display">
+          <span class="ln"><span>About</span></span>
+          <span class="ln"><span class="accent">Mitchell.</span></span>
+        </h1>
+      </div>
+      <figure class="walkthrough" aria-label="Reserved player for the on-camera walkthrough video">
+        <div class="wt-frame oncam">
+          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
+          <div class="wt-card">
+            <span class="wt-k">on camera &middot; recording soon</span>
+            <span class="wt-t">How this site works</span>
+            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
+          </div>
+        </div>
+        <figcaption>reserved for the on-camera walkthrough; the player drops in here</figcaption>
+      </figure>
+    </div>
   </div>
 </header>
 
-<section>
+<section class="sec-about">
   <div class="wrap">
     <div class="about-grid">
-    <figure class="portrait reveal">
-      <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
-      <figcaption>Mitchell Williams · Seattle</figcaption>
-    </figure>
+    <aside class="about-rail" aria-label="Portrait and colleague quotes">
+      <figure class="portrait reveal">
+        <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
+        <figcaption>Mitchell Williams · Seattle</figcaption>
+      </figure>
+      <blockquote class="rail-quote rail-quote--google reveal" tabindex="0">
+        <p>Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</p>
+        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote rail-quote--newsrooms reveal" tabindex="0">
+        <p>Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</p>
+        <cite><b>Mike Suh</b>Content Strategist</cite>
+      </blockquote>
+      <blockquote class="rail-quote rail-quote--seat reveal" tabindex="0">
+        <p>Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</p>
+        <cite><b>Emily O'Neal</b>Executive Business Partner</cite>
+      </blockquote>
+    </aside>
     <article class="prose">
       <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. Eight years at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers and stopped writing about the systems and started building them. Now I build AI-native storytelling and enablement systems full time.</p>
 
@@ -144,18 +196,6 @@
 
       <h2 class="reveal">What I build now</h2>
       <p class="reveal">Production AI agents and AI-native creative pipelines. The <a href="broll-pipeline.html">broll pipeline</a> turns one script into a produced, captioned short on the ElevenLabs stack with every API call costed. <a href="projects.html">The rest of the build</a> covers voice scoring, citation-gated verification, agentic job-search infrastructure, and the orchestration layers that hold them together. Same discipline I learned in control rooms: know what matters before it matters, build systems that hold under pressure.</p>
-
-      <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
-        <div class="wt-frame oncam">
-          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
-          <div class="wt-card">
-            <span class="wt-k">on camera &middot; recording soon</span>
-            <span class="wt-t">How this site works</span>
-            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
-          </div>
-        </div>
-        <figcaption>reserved for the on-camera walkthrough; the player drops in here</figcaption>
-      </figure>
 
       <h2 class="reveal">Google, 2018 to 2026</h2>
       <p class="reveal">At Google Cross-Google Engineering (xGE) I was Internal Communications Lead for the community of 1,000+ senior engineers at the Principal, Distinguished, and Fellow levels. I built and deployed two production AI agents solo: a communications-triage agent, documented end to end and handed off with a full operator runbook, and an executive <a href="stories.html#digital-twin">"digital twin" writing system</a> that cut review back-and-forth with the VP by about 70%, an internal figure I measured myself. Before xGE, six years as Senior Communications &amp; Content Strategist in Corporate Engineering, where video-first internal comms reached 75,000+ employees.</p>
@@ -180,30 +220,6 @@
       </ul>
       <p class="reveal" style="margin-top:28px;">Hiring for any of these? Email <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume PDF</a>.</p>
     </article>
-    </div>
-  </div>
-</section>
-
-<section style="border-top:1px solid var(--line);background:var(--bg-2)">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">02</span>
-      <h2 class="sec-title">What colleagues say</h2>
-      <span class="sec-note">From the people who saw the work up close</span>
-    </div>
-    <div class="testi-grid">
-      <div class="testi reveal">
-        <div class="q">Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership.</div>
-        <div class="who"><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist</div>
-      </div>
-      <div class="testi reveal">
-        <div class="q">Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences.</div>
-        <div class="who"><b>Emily O'Neal</b>Executive Business Partner</div>
-      </div>
-      <div class="testi reveal">
-        <div class="q">Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications.</div>
-        <div class="who"><b>Mike Suh</b>Content Strategist</div>
-      </div>
     </div>
   </div>
 </section>
