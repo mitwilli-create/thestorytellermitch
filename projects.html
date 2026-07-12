@@ -40,20 +40,51 @@
     .pcard h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,28px);
       letter-spacing:-0.02em;text-transform:uppercase;line-height:1.05}
     .pcard .body{font-size:15px;line-height:1.65;color:var(--bone-soft);max-width:640px}
+    /* projects-01: the proof line rides the illo as a lower-right overlay
+       plate (grid-area layering keeps DOM order; pointer-events:none keeps
+       the hover-cinemagraph trigger clear; row height is reserved by the
+       illo's aspect-ratio so nothing shifts). */
     .pcard .proof{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;
       color:var(--mute);border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+    @media(min-width:768px){
+      .pcard:not(.flagship){display:grid;grid-template-columns:minmax(0,1fr)}
+      .pcard:not(.flagship) .illo{grid-area:1/1/2/2}
+      .pcard:not(.flagship) .proof{grid-area:1/1/2/2;align-self:end;justify-self:end;
+        pointer-events:none;z-index:2;margin:0 -14px -8px 0;max-width:78%;
+        background:rgba(10,10,11,0.92);border:1px solid var(--blood-soft);border-top:1px solid var(--blood-soft);
+        padding:10px 13px;font-size:10px;line-height:1.6;color:var(--bone-soft)}
+      .pcard.flagship .proof{position:absolute;right:14px;bottom:14px;z-index:2;
+        width:calc(38% - 42px);pointer-events:none;margin:0;
+        background:rgba(10,10,11,0.92);border:1px solid var(--blood-soft);
+        padding:10px 13px;font-size:10px;line-height:1.6;color:var(--bone-soft)}
+    }
+    /* projects-03: the standard cards stagger: right column drops 48px */
+    @media(min-width:861px){
+      .card-grid > .pcard:not(.flagship):nth-child(odd){margin-top:48px}
+    }
     .pcard .row{display:flex;gap:14px;align-items:center;margin-top:2px}
     .pcard .go{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
     .pcard .go:hover{color:var(--blood-soft)}
     .pcard .tags{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
       letter-spacing:0.06em;text-align:right}
-    .compact-list{border-top:1px solid var(--line)}
-    .crow{display:grid;grid-template-columns:220px 1fr auto;gap:24px;align-items:baseline;
-      padding:20px 0;border-bottom:1px solid var(--line)}
-    .crow .cname{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--bone)}
-    .crow .cdesc{font-size:14px;color:var(--mute);line-height:1.6}
-    .crow .cstat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--dim)}
+    /* projects-02: the bench rides a horizontal snap strip of small cards */
+    .bench-strip{display:flex;flex-wrap:nowrap;gap:14px;overflow-x:auto;
+      scroll-snap-type:x proximity;padding-bottom:14px;
+      scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent);
+      mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent)}
+    .bench-strip::-webkit-scrollbar{height:4px}
+    .bench-strip::-webkit-scrollbar-thumb{background:var(--line-2)}
+    .bench-strip:focus-visible{outline:1px solid var(--blood-soft);outline-offset:4px}
+    .no-js .bench-strip{flex-wrap:wrap;mask-image:none;-webkit-mask-image:none;overflow-x:visible}
+    .bench-card{flex:0 0 auto;width:min(340px,74vw);scroll-snap-align:start;
+      background:var(--surface);border:1px solid var(--line);padding:22px;
+      display:flex;flex-direction:column;gap:10px}
+    .bench-card .bname{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--bone);letter-spacing:0.04em}
+    .bench-card .bdesc{font-size:13.5px;color:var(--mute);line-height:1.6;margin:0}
+    .bench-card .bstat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      color:var(--dim);margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
     section{padding:80px 0}
     @media(max-width:860px){
       .proj-hero{padding:130px 0 44px}
@@ -62,7 +93,8 @@
       .pcard.flagship .illo{position:static;width:auto;margin:-30px -28px 8px;
         border-left:0;border-bottom:1px solid var(--line)}
       .pcard.flagship .illo img{height:auto;aspect-ratio:16/9}
-      .crow{grid-template-columns:1fr;gap:6px}
+      .pcard.flagship .proof{position:static;width:auto;pointer-events:auto;
+        background:none;border:none;border-top:1px solid var(--line);padding:14px 0 0;font-size:11px}
     }
   </style>
   <style>
@@ -277,26 +309,26 @@
       <img src="assets/stills/oncam/trumpmj-068.jpg" alt="Mitchell Williams hosting an AJ+ explainer behind a row of product jars" loading="lazy">
       <figcaption class="oncam-cap">aj+, 2017. the production craft these systems automate.</figcaption>
     </figure>
-    <div class="compact-list">
-      <div class="crow reveal">
-        <span class="cname">mission-control</span>
-        <span class="cdesc">Personal ops dashboard, a zero-dependency Node PWA: one next action, the content pipeline, and agent-fleet health on one screen.</span>
-        <span class="cstat">SHIPPED · PRIVATE</span>
+    <div class="bench-strip" tabindex="0" role="region" aria-label="Bench projects: horizontal strip, arrow keys scroll">
+      <div class="bench-card reveal">
+        <span class="bname">mission-control</span>
+        <p class="bdesc">Personal ops dashboard, a zero-dependency Node PWA: one next action, the content pipeline, and agent-fleet health on one screen.</p>
+        <span class="bstat">SHIPPED · PRIVATE</span>
       </div>
-      <div class="crow reveal">
-        <span class="cname">mcp-agent-router</span>
-        <span class="cdesc">An MCP router that puts six specialist agents behind one conversational interface.</span>
-        <span class="cstat">SHIPPED · PRIVATE</span>
+      <div class="bench-card reveal">
+        <span class="bname">mcp-agent-router</span>
+        <p class="bdesc">An MCP router that puts six specialist agents behind one conversational interface.</p>
+        <span class="bstat">SHIPPED · PRIVATE</span>
       </div>
-      <div class="crow reveal">
-        <span class="cname">finance-cli</span>
-        <span class="cdesc">A CLI with custom MCP servers that lets Claude Desktop answer questions about real transaction data.</span>
-        <span class="cstat">IN PRODUCTION · PRIVATE</span>
+      <div class="bench-card reveal">
+        <span class="bname">finance-cli</span>
+        <p class="bdesc">A CLI with custom MCP servers that lets Claude Desktop answer questions about real transaction data.</p>
+        <span class="bstat">IN PRODUCTION · PRIVATE</span>
       </div>
-      <div class="crow reveal">
-        <span class="cname">content-ops</span>
-        <span class="cdesc">A content-repurposing pipeline, in progress; the quality gate was built first.</span>
-        <span class="cstat">BUILDING</span>
+      <div class="bench-card reveal">
+        <span class="bname">content-ops</span>
+        <p class="bdesc">A content-repurposing pipeline, in progress; the quality gate was built first.</p>
+        <span class="bstat">BUILDING</span>
       </div>
     </div>
     <p class="reveal" style="margin-top:40px;font-size:15px;color:var(--mute);max-width:640px;">Every featured project will carry a short demo video here as the library grows. Until then, the repos and the <a href="broll-pipeline.html" style="color:var(--bone);border-bottom:1px solid var(--blood-soft)">broll breakdown</a> are the walkthrough.</p>
@@ -331,6 +363,16 @@
       });
     });
   });
+  // bench strip: arrow keys page the snap strip
+  const bench=document.querySelector('.bench-strip');
+  if(bench){
+    bench.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const step=Math.min(340,innerWidth*0.74)+14;
+      bench.scrollBy({left:(e.key==='ArrowRight'?1:-1)*step,behavior:window.__motionOK?'smooth':'auto'});
+    });
+  }
 </script>
 </body>
 </html>
