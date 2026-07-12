@@ -83,7 +83,7 @@ ${oncam}    <div class="sec-head reveal">
       <span class="sec-count">${clips.length}${clips.length === 1 ? ' piece' : ' pieces'}</span>${b.note ? `
       <span class="sec-note">${esc(b.note)}</span>` : ''}
     </div>
-    <div class="film-grid">
+    <div class="film-grid film-strip" role="region" aria-label="${esc(b.label)}: horizontal strip, arrow keys scroll">
 ${clips.map((c) => tile(c, 'third', true)).join('\n')}
     </div>
   </div>
