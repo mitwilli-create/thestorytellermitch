@@ -1,0 +1,19 @@
+[
+  { "page": "build.html", "src": "(audit walk)", "reason": "meta-refresh redirect stub, no rendered content" },
+  { "page": "build.html", "src": "(page load)", "reason": "meta-refresh redirect stub, no rendered content" },
+  { "page": "select-works.html", "src": "(audit walk)", "reason": "meta-refresh redirect stub, no rendered content" },
+  { "page": "select-works.html", "src": "(page load)", "reason": "meta-refresh redirect stub, no rendered content" },
+  { "src": "assets/stills/fill-comms-hd.jpg", "reason": "Veo 1080p ceiling; 1920x1072 is the best master (cover-height binds on tall heroes)" },
+  { "src": "assets/cinemagraphs/fill-comms-loop", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/stills/fill-contact-hd.jpg", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/cinemagraphs/fill-contact-loop", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/stills/fill-impact-hd.jpg", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/cinemagraphs/fill-impact-loop", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/stills/fill-writing-hd.jpg", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/cinemagraphs/fill-writing-loop", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/stills/fill-storiesboard-hd.jpg", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/cinemagraphs/fill-storiesboard-loop", "reason": "Veo 1080p ceiling" },
+  { "src": "assets/stills/band-signal-flow-b-hd.jpg", "reason": "Veo 1080p ceiling; full-width band renders 2880 device px at 1440" },
+  { "src": "assets/career-ops/dashboard-live-20260710.png", "reason": "dated live-dashboard capture; re-shooting would change the dated artifact" },
+  { "src": "assets/posters/clinton-information-war-2011.jpg", "reason": "C-SPAN SD source, 768x576 is the native master" }
+]

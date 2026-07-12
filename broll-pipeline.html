@@ -624,8 +624,10 @@
   // Proof moment 1: the diagram animates the real logged run, fetched from
   // assets/site-data/broll-run.json (distilled from run-manifest.json).
   // Scroll-triggered once, replayable, never loops. Motion-off keeps the
-  // static summary already in the HTML.
-  if(!window.__motionOK) return;
+  // static summary already in the HTML. The motion gate scopes to the run
+  // animation and receipt print only: the dubbing toggle and voice-variety
+  // chips are function, not motion, and must work under reduced-motion.
+  const motionOK=!!window.__motionOK;
   const diagram=document.querySelector('.diagram');
   const status=document.querySelector('[data-runstatus]');
   const replay=document.querySelector('[data-runreplay]');
@@ -660,7 +662,7 @@
     window.dispatchEvent(new CustomEvent('mw:run-end'));
     replay.hidden=false; running=false;
   }
-  if(diagram&&status&&replay){
+  if(motionOK&&diagram&&status&&replay){
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();playRun();}})},{threshold:0.5});
     io.observe(diagram);
     replay.addEventListener('click',playRun);
@@ -716,7 +718,7 @@
   // Proof moment 2: the receipt prints its lines top-down, once, on scroll.
   const paper=document.querySelector('[data-receipt]');
   const printBtn=document.querySelector('[data-printreplay]');
-  if(paper&&printBtn){
+  if(motionOK&&paper&&printBtn){
     const rows=paper.querySelectorAll('.r-head,.r-meta,.r-rule,.r-line,.r-foot,.r-manifest tr,.r-manifest caption');
     let printing=false;
     const print=()=>{
