@@ -103,14 +103,18 @@ async function main() {
   // last bake, leave both files untouched (otherwise the churning
   // fetched-timestamp would make deploy.sh commit a noise bake on
   // every deploy)
+  let prevData = null;
   if (existsSync(DATA)) {
+    try { prevData = readFileSync(DATA); } catch { /* unreadable: treat as absent */ }
+  }
+  if (prevData !== null) {
     try {
-      const prev = JSON.parse(readFileSync(DATA, 'utf8'));
+      const prev = JSON.parse(String(prevData));
       if (JSON.stringify(prev.posts) === JSON.stringify(posts)) {
         console.log(`substack-sync: no changes (${posts.length} post${posts.length === 1 ? '' : 's'}, latest: ${posts[0].title})`);
         return;
       }
-    } catch { /* unreadable previous json: fall through and rewrite */ }
+    } catch { /* unparseable previous json: fall through and rewrite */ }
   }
 
   const feat = posts[0];
@@ -134,8 +138,8 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
   page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
   page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
   // the two artifacts persist as a pair: if the page write fails after
-  // the json write, the json rolls back so they can never diverge
-  const prevData = existsSync(DATA) ? readFileSync(DATA) : null;
+  // the json write, the json rolls back (prevData snapshot from above)
+  // so they can never diverge
   writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
   try {
     writeFileSync(PAGE, page);
