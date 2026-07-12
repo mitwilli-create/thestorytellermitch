@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
   <style>
     /* writing-02 (layout half): hero reserves bottom room for the featured
        essay card that overlaps its lower-right edge */
@@ -71,7 +71,8 @@
     .script-fold[open] summary::before{content:'- '}
     .script-fold summary:hover{color:var(--bone)}
     .script-fold summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
-    .no-js .script-fold{display:block}
+    /* no .no-js rule needed: details/summary is native HTML disclosure,
+       fully operable without JavaScript */
     .script-fold > p:last-child{margin-bottom:14px}
     .src-line{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);line-height:1.6}
     .src-line a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
