@@ -9,7 +9,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712b">
   <style>
     :root{--nav-height:62px}
     .archive-hero{padding:170px 0 56px}
@@ -54,6 +54,9 @@
     .film-strip:focus-visible{outline:1px solid var(--blood-soft);outline-offset:4px}
     /* no-JS: strips fall back to wrapped grids, everything reachable */
     .no-js .film-strip{flex-wrap:wrap;mask-image:none;-webkit-mask-image:none;overflow-x:visible}
+    /* single-item buckets: a static left-anchored card, no strip mechanics */
+    .film-solo{display:flex;flex-wrap:wrap;gap:14px}
+    .film-solo .film{flex:0 0 auto;width:min(480px,80vw)}
     @media(max-width:860px){
       .filter-bar{gap:14px;padding:1px 0;min-height:46px}
       .filter-bar .chip{padding:8px 12px}
@@ -232,7 +235,7 @@
       <h2 class="sec-title">AI-Native Production</h2>
       <span class="sec-count">1 piece</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="AI-Native Production: clip strip">
+    <div class="film-grid film-solo" role="region" aria-label="AI-Native Production">
   <a class="film third reveal" href="assets/broll-short-n16.mp4"
      data-clip="broll-pipeline-2026" data-bucket="ai-native" data-outlet="independent" data-era="2019-2026"
      data-tag="Independent · AI-native · AI Pipeline Demo · 2026" data-title="One script in, a produced short out" data-sub="The broll pipeline: seven stages, ElevenLabs stack, every call logged"

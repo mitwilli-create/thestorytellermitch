@@ -57,6 +57,12 @@
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
       overflow-x:clip; /* clip, not hidden: hidden makes body a scroll container and breaks anchor/fragment scrolling site-wide */
     }
+    /* top scrim under the difference-blended nav: keeps the labels legible
+       when photographic media scrolls beneath the bar (2026-07-12) */
+    body::before{
+      content:'';position:fixed;top:0;left:0;right:0;height:92px;z-index:99;pointer-events:none;
+      background:linear-gradient(to bottom,rgba(10,10,11,0.72),rgba(10,10,11,0.32) 58%,transparent)
+    }
     /* subtle concrete grain */
     body::after{
       content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.035;
@@ -238,6 +244,10 @@
         padding:26px 34px;margin-top:-64px;position:relative;z-index:2}
       footer.foot--flat .foot .big{background:var(--surface);border:1px solid var(--line-2);
         padding:26px 34px}
+    }
+    /* mobile keeps the card identity without the overlap */
+    @media(max-width:860px){
+      .foot .big{background:var(--surface);border:1px solid var(--line-2);padding:20px 26px}
     }
     .foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px}
     .foot .big{font-family:'Archivo',sans-serif;font-weight:900;
