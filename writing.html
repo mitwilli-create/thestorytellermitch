@@ -36,6 +36,14 @@
       .feat-essay{margin:48px 0 0;max-width:100%}
       .wr-col-docs{margin-top:76px}
     }
+    /* earlier essays: baked by tools/substack-sync.mjs */
+    .essay-list{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-bottom:36px}
+    .el-row{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .el-row .el-d{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);min-width:96px}
+    .el-row .el-t{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:var(--bone-soft);line-height:1.3}
+    .el-row:hover .el-t{color:var(--blood-soft)}
     /* writing-03: pull-quote band (pattern from stories.html .pull) */
     .pull{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);
       line-height:1.25;letter-spacing:-0.01em;color:var(--bone);border-left:2px solid var(--blood-soft);
@@ -114,15 +122,19 @@
 
 <section style="padding-top:0">
   <div class="wrap">
+    <!-- WRITING:FEAT:START -->
     <div class="feat-essay reveal">
       <div class="art-label">Essay · Substack · July 2026 · first in the weekly series</div>
       <div class="art-title">What Do AI Employees Know About Using LLMs That I Don't?</div>
-      <p class="art-intro">Their edge isn't IQ. It's a workflow you can steal. The people who get the most out of AI models are not the smartest in the room; they are the most disciplined about how they work. This first essay breaks down seven concrete moves, from keeping a memory file to delegating outcomes instead of steps, that anyone can copy to get sharper results from Claude. <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using">Read it on Substack.</a></p>
+      <p class="art-intro">Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude. So when someone at the AI Engineer World's Fair asked him how he actually uses … <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" rel="noopener">Read it on Substack.</a></p>
     </div>
+    <!-- WRITING:FEAT:END -->
     <div class="wr-grid">
     <div class="wr-col-essays">
     <h2 class="mini reveal">Essays · weekly</h2>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
+    <!-- WRITING:LIST:START -->
+    <!-- WRITING:LIST:END -->
     <div class="slot reveal">
       <div class="sl-k">Substack · new essays weekly</div>
       <p>New long-form writing lands here every week: AI-native production, executive communications, and what newsrooms teach you about both. Each essay gets linked from this room the day it publishes.</p>

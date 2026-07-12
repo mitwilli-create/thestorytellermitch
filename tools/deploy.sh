@@ -20,6 +20,20 @@ set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 
+# Substack sync (writing-02 pipeline): bake the latest essays before the
+# deploy. Network-tolerant: the sync exits 0 and keeps the last baked
+# state on any fetch/parse failure. Because this script deploys HEAD, a
+# changed bake is auto-committed (those two paths only) so it ships.
+if node tools/substack-sync.mjs; then
+  if ! git diff --quiet -- writing.html assets/site-data/writing.json; then
+    git add writing.html assets/site-data/writing.json
+    git commit -m "chore(writing): substack sync bake" -- writing.html assets/site-data/writing.json
+    echo "substack-sync: bake committed so it ships with this deploy"
+  fi
+else
+  echo "warning: substack-sync failed; deploying the last baked state" >&2
+fi
+
 if ! git diff-index --quiet HEAD --; then
   echo "warning: uncommitted changes detected; this deploys HEAD, so they will NOT ship." >&2
 fi
