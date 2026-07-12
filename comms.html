@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
   <style>
     .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
     .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
@@ -94,12 +94,17 @@
       font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft)}
     .judg-figure:hover .jf-go{color:var(--bone)}
     @media(max-width:1120px){.judg-grid{grid-template-columns:1fr}.judg-figure{max-width:520px}}
-    /* talk-to-me: prominent hairline card, oxblood reserved for the email */
-    .talk-card{max-width:860px;background:var(--surface);border:1px solid var(--line-2);
-      border-left:2px solid var(--blood-soft);padding:36px 38px}
-    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);
-      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:14px}
-    .talk-card p{font-size:17px;line-height:1.7;color:var(--bone-soft);margin:0}
+    /* talk-to-me: the page's one loud card. Full content width, each fact
+       on its own ruled line (round-2, Mitchell 2026-07-12) */
+    .talk-card{max-width:1180px;background:var(--surface);border:1px solid var(--line-2);
+      border-left:3px solid var(--blood);padding:44px 48px}
+    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.6vw,40px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:16px}
+    .talk-card .t-lead{font-size:clamp(18px,2vw,22px);line-height:1.6;color:var(--bone);margin:0 0 26px}
+    .talk-card .t-facts{border-top:1px solid var(--line)}
+    .talk-card .t-facts p{font-size:16px;line-height:1.6;color:var(--bone-soft);margin:0;
+      padding:13px 0;border-bottom:1px solid var(--line)}
+    @media(max-width:860px){.talk-card{padding:30px 24px}}
     .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
     .talk-card .t-mail:hover{color:var(--bone)}
@@ -145,6 +150,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -162,6 +168,7 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <header class="comms-hero fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-comms-loop" aria-hidden="true">
@@ -315,11 +322,18 @@
     </div>
     <div class="talk-card reveal">
       <div class="t-h">Hiring for comms that can build?</div>
-      <p>Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or call <a class="t-mail" href="tel:+18122196077">(812) 219-6077</a>. The <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">resume PDF</a> is one click, no form. Seattle-based, open to relocation, US citizen. I move fast, whatever process you run. References who can vouch for the ghostwriting and the review-cycle numbers are available on request.</p>
+      <p class="t-lead">Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or call <a class="t-mail" href="tel:+18122196077">(812) 219-6077</a>.</p>
+      <div class="t-facts">
+        <p>The <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">resume PDF</a> is one click, no form.</p>
+        <p>Seattle-based, open to relocation, US citizen.</p>
+        <p>I move fast, whatever process you run.</p>
+        <p>References who can vouch for the ghostwriting and the review-cycle numbers are available on request.</p>
+      </div>
     </div>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">

@@ -49,7 +49,7 @@ Communications lead and program manager for xGE.
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** High-volume comms intake consumed operator hours on low-complexity requests.
 - **Action:** Built a three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading.
-- **Impact:** Designed to auto-handle roughly 60% of inbound (est.); handed off with a full operator runbook.
+- **Impact:** Designed to auto-handle roughly 55% of inbound (est.); handed off with a full operator runbook.
 
 ### Senior Communications & Content Strategist
 **Google · Corporate Engineering (TechStop)** | April 2018 – June 2024

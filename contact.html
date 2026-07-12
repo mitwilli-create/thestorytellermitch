@@ -11,12 +11,17 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
   <style>
     /* contact-01: hero + targeting + reach + logistics composed into one
        12-col spread; no scroll to reach any of the four at >=1024px and
        >=720px viewport height. Mobile stacks in DOM order. */
     .contact-spread{padding:128px 0 44px;border-bottom:1px solid var(--line)}
+    /* round-2: the targeting column lives inside the art's 46% zone on this
+       page only; deepen the scrim so the tier list reads over the swirl */
+    .contact-spread .fill-hero::after{
+      background:linear-gradient(to right,var(--bg) 6%,rgba(10,10,11,0.62) 45%,rgba(10,10,11,0.38) 78%),
+        linear-gradient(to bottom,rgba(10,10,11,0.5),rgba(10,10,11,0.3) 35%,rgba(10,10,11,0.25) 60%,var(--bg) 100%)}
     .contact-spread .display{font-size:clamp(38px,5.6vw,84px)}
     .contact-spread .kicker{margin-bottom:24px}
     .contact-sub{margin-top:20px;max-width:620px;font-size:17px;color:var(--bone-soft);line-height:1.6}
@@ -89,6 +94,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -106,6 +112,7 @@
     <a href="contact.html" class="nav-cta" aria-current="page">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <header class="contact-spread fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-contact-loop" aria-hidden="true">
@@ -169,6 +176,7 @@
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">

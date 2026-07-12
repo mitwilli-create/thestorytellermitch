@@ -12,7 +12,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -56,7 +56,8 @@
     .cs-video-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);margin-top:10px;line-height:1.6}
     .cs-video-cap a{color:var(--mute);border-bottom:1px solid var(--line-2)}
     .cs-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .cs-stat{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:20px}
+    .cs-stat{background:var(--surface);border:1px solid var(--line);padding:20px;transition:border-color var(--dur-micro) var(--ease-micro)}
+    .cs-stat:hover{border-color:var(--blood-soft)}
     .cs-stat .n{font-family:'Archivo',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;
       color:var(--bone);font-variant-numeric:tabular-nums}
     .cs-stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);text-transform:uppercase;
@@ -240,6 +241,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -257,6 +259,7 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <header class="cs-hero">
   <div class="wrap">
@@ -405,6 +408,13 @@
     <div class="badge-legend"><span style="color:var(--blood-soft)">LIVE</span> = this stage executed for real to produce the cut above (paid API call or deterministic local render). "Stems" below = the separate audio layers (voice, music, effects) mixed into the final track.</div>
 
     <div style="margin-top:14px;">
+      <div class="stage" data-stage="parse">
+        <div class="stage-n">01</div>
+        <div>
+          <div class="stage-h">Parse <span class="badge live">live</span></div>
+          <div class="stage-d">The script becomes the machine plan: <code>parseScript</code> reads <code>input/script.md</code> into timed beats, each carrying its narration line, visual direction, and target seconds. Deterministic and free; every stage below works from this plan.</div>
+        </div>
+      </div>
       <div class="stage" data-stage="voiceover">
         <div class="stage-n">02</div>
         <div>
@@ -513,10 +523,12 @@
       <p>A forward-deployed creative is a creative solutions architect and an enablement lead, not a designer for hire. The job: embed with a customer, understand their production pipeline, prototype an AI-native replacement, package it as a template, teach it. That is the loop this artifact runs. It is also the loop I ran for <a href="timeline.html">eight years in live newsrooms</a> and then at Google, <a href="projects.html">building production AI enablement since 2024</a> for a community of 1,000+ senior engineers.</p>
     </div>
     <div class="cs-cta-card">
+      <div class="kicker" style="margin-bottom:16px">where this fits</div>
       <div class="cs-cta" style="max-width:none;">
         <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>
         <a class="btn" href="fit.html"><span>See the fit case</span></a>
         <a class="btn" href="impact.html"><span>The measured results</span></a>
+        <a class="btn" href="projects.html"><span>The rest of the build</span></a>
         <a class="btn" href="contact.html"><span>Email me</span></a>
       </div>
       <p class="cs-cta-note">The full pipeline code, demo script, and the run manifest that produced this cut are public at <a href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</a>.</p>
@@ -524,6 +536,7 @@
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">

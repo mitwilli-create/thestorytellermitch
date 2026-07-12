@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
   <style>
     .st-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .st-hero .display{font-size:clamp(42px,7.4vw,110px)}
@@ -48,16 +48,18 @@
     .story .still .cap{position:absolute;left:16px;bottom:12px;z-index:2;
       font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--mute)}
-    .media-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px;align-items:flex-start}
+    /* round-2 (Mitchell): rows stretch; cards in one row equalize height and
+       fill the body width instead of leaving right-edge voids */
+    .media-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px;align-items:stretch}
     .mcard{position:relative;border:1px solid var(--line);overflow:hidden;background:var(--surface);
-      flex:1 1 260px;max-width:400px}
+      flex:1 1 260px;max-width:560px;display:flex;flex-direction:column}
     .media-row.solo{margin-top:16px}
     .mcard.wide{flex-basis:100%;max-width:100%}
     .mcard.wide img{max-height:400px}
     .mcard.wide.tall img{max-height:540px}
     .mcard.book{flex:0 1 240px;max-width:260px}
     .mcard.book img{object-fit:contain;min-height:0;max-height:380px;background:var(--surface);padding:10px}
-    .mcard img{width:100%;height:100%;min-height:200px;max-height:260px;object-fit:cover;
+    .mcard img{width:100%;height:100%;flex:1;min-height:200px;max-height:340px;object-fit:cover;
       object-position:center 22%;display:block;
       filter:grayscale(0.3) contrast(1.05);transition:filter .4s var(--ease)}
     .mcard:hover img{filter:grayscale(0)}
@@ -65,8 +67,8 @@
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
       color:var(--bone-soft);line-height:1.5;background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
     .clipcard{display:flex;flex-direction:column;gap:10px;padding:18px 18px 14px;background:var(--surface);
-      border:1px solid var(--line);border-top:2px solid var(--blood-soft);
-      flex:1 1 240px;max-width:440px;min-height:0;
+      border:1px solid var(--line);
+      flex:1 1 240px;max-width:560px;min-height:0;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     a.clipcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
     a.clipcard:focus-visible{border-color:var(--blood-soft);outline:none}
@@ -77,8 +79,8 @@
     .clipcard .ce{font-size:13px;line-height:1.6;color:var(--mute);font-style:italic}
     .clipcard .cd{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:9px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
-    .chipscard{flex:1 1 240px;max-width:440px;padding:18px;background:var(--surface);
-      border:1px solid var(--line);border-top:2px solid var(--blood-soft)}
+    .chipscard{flex:1 1 240px;max-width:560px;padding:18px;background:var(--surface);
+      border:1px solid var(--line)}
     .chipscard .chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
     .orgchip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--bone-soft);border:1px solid var(--line-2);padding:7px 12px}
@@ -164,6 +166,7 @@
 </style>
 </head>
 <body data-reveal-stagger="3">
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -181,6 +184,7 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <header class="st-hero fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-storiesboard-loop" aria-hidden="true">
@@ -528,7 +532,7 @@
             <h2 class="reveal">Building the triage agent, then handing over the keys</h2>
           </div>
           <p class="reveal lead-p">The comms intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers landing faster than a human first-pass could honestly serve. Most of that first pass didn't need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that. Solo, inside the tools the team already ran on.</p>
-          <figure class="still reveal"><img src="assets/stills/illo-triage-agent.jpg" alt="Diagram-style illustration of a message triage pipeline with a human escalation desk" loading="lazy"><figcaption class="cap">The triage pipeline · system illustration, generated</figcaption></figure>
+          <figure class="still reveal"><img src="assets/stills/illo-triage-agent-detail.jpg" alt="Detail of the triage diagram: a red envelope glowing on its routing lane between gate arms" loading="lazy"><figcaption class="cap">The escalation lane, up close · detail from the system illustration</figcaption></figure>
           <div class="media-row reveal solo">
             <figure class="mcard wide"><span class="m-prev" data-preview="assets/cinemagraphs/illo-triage-agent-b-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-triage-agent-hd.jpg" alt="System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human" loading="lazy"></span><figcaption class="mcap">The system diagram · triage, revise, escalate</figcaption></figure>
           </div>
@@ -558,7 +562,7 @@
             <h2 class="reveal">Teaching a system to write in an executive's voice</h2>
           </div>
           <p class="reveal lead-p">At Google Cross-Google Engineering I wrote for a vice president whose words landed on the company's most senior engineers, the Principal, Distinguished, and Fellow community, more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round burns days. So I decided the voice itself was the system to build.</p>
-          <figure class="still reveal"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><figcaption class="cap">Voice as infrastructure · system illustration, generated</figcaption></figure>
+          <figure class="still reveal"><img src="assets/stills/illo-digital-twin-detail.jpg" alt="Detail of the digital-twin diagram: tangled lines meeting a glowing vertical gate and leaving as one clean waveform" loading="lazy"><figcaption class="cap">The gate that measures the voice · detail from the system illustration</figcaption></figure>
           <div class="media-row reveal solo">
             <figure class="mcard wide"><span class="m-prev" data-preview="assets/cinemagraphs/illo-digital-twin-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-digital-twin-hd.jpg" alt="System diagram: a waveform passing through six measuring gates before it ships" loading="lazy"></span><figcaption class="mcap">The system diagram · a voice encoded as checkable rules</figcaption></figure>
           </div>
@@ -640,6 +644,7 @@ $ launchctl list | grep career-ops | head -8
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">
@@ -713,6 +718,10 @@ $ launchctl list | grep career-ops | head -8
   }
   addEventListener('scroll',()=>{ if(!bandTick){bandTick=true;requestAnimationFrame(updateBands);} },{passive:true});
   addEventListener('resize',()=>{ if(!bandTick){bandTick=true;requestAnimationFrame(updateBands);} });
+  // deep-link jumps and late media loads move articles without firing
+  // scroll; re-check after the browser's anchor scroll and layout settle
+  addEventListener('hashchange',()=>requestAnimationFrame(updateBands));
+  addEventListener('load',()=>{requestAnimationFrame(updateBands);setTimeout(updateBands,250);setTimeout(updateBands,1000);});
   updateBands();
 </script>
 <script>

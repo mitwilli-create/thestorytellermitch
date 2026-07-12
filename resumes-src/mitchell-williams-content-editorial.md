@@ -36,7 +36,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 Communications lead for the horizontal org that drives technical change across Google, serving 1,000+ Principal, Distinguished, and Fellow engineers; designed the org's three-tier communications operating model, on which the annual summit (600+ attendees), quarterly forums, and the Distinguished / Principal Engineering newsletters run.
 
 - **Executive-communications "digital twin" (Gemini agent):** Built and deployed a production Gemini agent loaded with a "Constitution" of voice rules plus a banned-phrase verification checklist; drafts high-stakes VP communications in a consistent voice and cut review back-and-forth with the VP by about 70% (internal, self-measured).
-- **Communications-triage agent (Apps Script + Gemini):** Built and deployed an autonomous triage agent for the comms inbox, documented end to end and handed off with a full operator runbook; designed to auto-handle ~60% of inbound requests without escalation (est.) and projected to recapture ~160 operator hours a year (est.).
+- **Communications-triage agent (Apps Script + Gemini):** Built and deployed an autonomous triage agent for the comms inbox, documented end to end and handed off with a full operator runbook; designed to auto-handle ~55% of inbound requests without escalation (est.) and projected to recapture ~160 operator hours a year (est.).
 - **xGE Connects, peer-led workshop series:** Designed and ran a peer-led speaker series (senior engineers teaching the tier below) plus the annual survey that shapes the community's roadmap; Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.
 
 ### Senior Communications & Content Strategist

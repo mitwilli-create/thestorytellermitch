@@ -10,7 +10,7 @@
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260712d">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -61,7 +61,7 @@
          blend/filter contexts so print stays vector + ATS-parseable. */
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
-      .nav,.rtop,footer,.scrollcue{display:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
@@ -83,6 +83,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -100,6 +101,7 @@
     <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <div class="rwrap">
   <header>
@@ -137,6 +139,7 @@
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>AI / Agent Engineering &amp; Build:</strong> multi-provider LLM orchestration (Anthropic, OpenAI, Google, xAI, Perplexity), custom MCP servers, Claude Code skills, eval and regression gates, RAG + vector stores, prompt engineering, LangGraph / LangChain, Node.js, Playwright, launchd fleet operations, Apps Script, Gemini API, Python.</p>
 <p class="rp"><strong>Program &amp; Communications:</strong> governance and approvals frameworks, intake protocols, metrics design, stakeholder management, executive communications at engineering scale.</p></section>
 </div>
+</main>
 
 <footer>
   <div class="wrap">

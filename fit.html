@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
   <style>
     /* fit-02: hero on the shared fill-hero plate (comms/work/stories
        pattern): the cinemagraph edge-bleeds the right 46% behind the
@@ -65,13 +65,18 @@
     /* fit-04: the closing block composes as one row: the on-camera still
        left at a contained width, the CTA actions beside it (single column
        under 860px) */
-    .fit-close{margin-top:56px;padding-top:36px;border-top:1px solid var(--line);
-      display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:28px 56px;align-items:center}
+    /* round-2 close (council 7-model + FDC-adjudicator synthesis): direct
+       eye contact left, one display-line ask right */
+    .fit-close{margin-top:64px;padding-top:48px;border-top:1px solid var(--line);
+      display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px 64px;align-items:center}
     .fit-close .oncam--card{margin:0;max-width:none}
+    .fit-close .oncam--card img{aspect-ratio:1/1;object-fit:cover;width:100%;display:block}
+    .fit-ask{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);
+      letter-spacing:-0.01em;line-height:1.2;color:var(--bone);max-width:20ch;margin:0 0 22px}
     .fit-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .fit-cta .btn{padding:12px 20px}
     .fit-cta .note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);
-      letter-spacing:0.06em;flex-basis:100%}
+      letter-spacing:0.06em;flex-basis:100%;margin-top:6px;text-transform:lowercase}
     section{padding:80px 0}
     /* fit-01: two-pane role atlas (JS-built at >=1024px from the native
        details markup; no-JS and mobile keep the accordions exactly) */
@@ -102,10 +107,14 @@
       .fit-hero{padding:130px 0 40px}
       details.role summary{grid-template-columns:1fr auto}
       .fit-close{grid-template-columns:1fr;gap:24px}
+      /* the ask reads before the photo on phones */
+      .fit-close .oncam--card{order:2;max-width:400px}
+      .fit-close .fit-copy{order:1}
     }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -123,6 +132,7 @@
     <a href="contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <header class="fit-hero fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-fit2-loop" aria-hidden="true">
@@ -295,18 +305,22 @@
 
     <div class="fit-close reveal">
       <figure class="oncam oncam--card">
-        <img src="assets/stills/oncam/momtrump-098.jpg" alt="Mitchell Williams speaking straight to camera on the AJ+ studio set" loading="lazy">
-        <figcaption class="oncam-cap">aj+, 2016. on camera when the story needs it.</figcaption>
+        <img src="assets/stills/oncam/jamaica-headturn.jpg" alt="Mitchell Williams mic'd on location in Kingston, Jamaica, turning to camera mid-shoot" width="1080" height="1080" loading="lazy">
+        <figcaption class="oncam-cap">kingston, jamaica. on location for fusion.</figcaption>
       </figure>
-      <div class="fit-cta">
-        <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Role%20at%20%7BCompany%7D%20%C2%B7%20Mitchell%20Williams"><span>Email me about your req</span></a>
-        <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Download resume (PDF)</span></a>
-        <span class="note">I read every recruiter email myself.</span>
+      <div class="fit-copy">
+        <p class="fit-ask">If one of those seven roles is the one, tell me.</p>
+        <div class="fit-cta">
+          <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Role%20at%20%7BCompany%7D%20%C2%B7%20Mitchell%20Williams"><span>Email me about the role</span></a>
+          <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Resume (PDF)</span></a>
+          <span class="note">i read every email myself.</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">

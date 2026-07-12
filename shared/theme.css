@@ -26,11 +26,12 @@
       --bone:#ece8e1;
       --bone-soft:#c7c2b9;
       --mute:#8b867d;
-      --dim:#57534d;
+      --dim:#827d73;        /* lifted 2026-07-12: 4.8:1 on --bg (was #57534d at 2.6:1) */
       --line:rgba(236,232,225,0.10);
       --line-2:rgba(236,232,225,0.18);
       --blood:#8a3a33;      /* restrained oxblood accent, used sparingly */
       --blood-soft:#b1554c;
+      --blood-text:#c4685d; /* blood-soft lifted for small text: 5.2:1 on --bg */
       --ease:var(--ease-reveal); /* legacy alias; every var(--ease) now rides the reveal curve */
       --maxw:1200px;
 
@@ -84,7 +85,7 @@
     .nav-toggle span{position:absolute;left:8px;right:8px;height:2px;background:#fff;
       transition:transform var(--dur-micro) var(--ease-micro);top:14px}
     .nav-toggle span+span{top:24px}
-    .nav-links a[aria-current="page"]{opacity:1;color:var(--blood-soft)}
+    .nav-links a[aria-current="page"]{opacity:1;color:var(--blood-text)}
     @media(max-width:860px){
       .nav-toggle{display:block}
       .nav:has(.nav-check:checked){mix-blend-mode:normal;background:var(--bg,#0a0a0b)}
@@ -242,14 +243,14 @@
        sticky. Pages without room opt out via .foot--flat on <footer>. */
     @media(min-width:861px){
       footer:not(.foot--flat){padding-top:0}
-      footer:not(.foot--flat) .foot .big{background:var(--surface);border:1px solid var(--line-2);
+      footer:not(.foot--flat) .foot .big{background:var(--surface);border:2px solid var(--blood-soft);
         padding:26px 34px;margin-top:-64px;position:relative;z-index:2}
-      footer.foot--flat .foot .big{background:var(--surface);border:1px solid var(--line-2);
+      footer.foot--flat .foot .big{background:var(--surface);border:2px solid var(--blood-soft);
         padding:26px 34px}
     }
     /* mobile keeps the card identity without the overlap */
     @media(max-width:860px){
-      .foot .big{background:var(--surface);border:1px solid var(--line-2);padding:20px 26px}
+      .foot .big{background:var(--surface);border:2px solid var(--blood-soft);padding:20px 26px}
     }
     .foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px}
     .foot .big{font-family:'Archivo',sans-serif;font-weight:900;
@@ -449,7 +450,23 @@ a.chip{text-decoration:none;display:inline-block}
     .sound-toggle[aria-pressed="true"]{color:var(--blood-soft);border-color:var(--blood-soft)}
     .sound-toggle[aria-pressed="true"]:hover{color:var(--bone)}
     .sound-toggle[aria-pressed="false"] .st-i{opacity:0.5}
-    @media(max-width:860px){.sound-toggle{right:12px;bottom:12px}}
+    @media(max-width:860px){
+      /* icon-only on mobile: the labeled pill was landing on body copy in
+         the bottom-right reading column (round-2 spot-check, 3 pages) */
+      .sound-toggle{right:12px;bottom:12px;width:44px;padding:0;justify-content:center}
+      .sound-toggle .st-t{display:none}
+    }
+
+    /* round-2 cell convention (Mitchell 2026-07-12): cells carry no static
+       accent border; hover/focus lights the full border oxblood */
+    .pcard,.bench-card,.mcard,.dcard,.ccard{transition:border-color var(--dur-micro) var(--ease-micro)}
+    .pcard:hover,.bench-card:hover,.mcard:hover,.dcard:hover,.ccard:hover{border-color:var(--blood-soft)}
+
+    /* skip link: hidden until keyboard focus */
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--bg-2);color:var(--bone);
+      padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;border:1px solid var(--blood-soft)}
+    .skip-link:focus{left:12px;top:12px}
 
     /* ---------- reduced motion: static end states, sitewide ----------
        Collapse durations instead of removing animation so transitionend

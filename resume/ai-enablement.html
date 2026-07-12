@@ -10,7 +10,7 @@
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260712d">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -61,7 +61,7 @@
          blend/filter contexts so print stays vector + ATS-parseable. */
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
-      .nav,.rtop,footer,.scrollcue{display:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:7.82pt;margin-top:6pt;line-height:1.5}
@@ -83,6 +83,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -100,6 +101,7 @@
     <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <div class="rwrap">
   <header>
@@ -122,7 +124,7 @@
 <div class="rinit"><div class="rinit-h">Executive-communications digital twin (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent with a voice "Constitution" and banned-phrase verification checklist.</li><li><strong>Impact:</strong> Cut the VP's review back-and-forth by roughly 70%.</li></ul></div>
 <div class="rinit"><div class="rinit-h">xGE Connects, peer-led technical workshop series</div><ul class="rl"><li><strong>Problem:</strong> Senior engineers' expertise was not reaching the tier below repeatably.</li><li><strong>Action:</strong> Designed and ran the peer-led speaker series plus the annual roadmap survey.</li><li><strong>Impact:</strong> Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Approvals governance overhaul</div><ul class="rl"><li><strong>Problem:</strong> Cross-org technical mandates stalled without a clear approvals framework.</li><li><strong>Action:</strong> Authored the Approvals User Guide, Approvals Matrix, and Roles &amp; Responsibilities framework.</li><li><strong>Impact:</strong> Drove named cross-org mandates (Keystore Rotation, Memory Safety TRR) to approval.</li></ul></div>
-<div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> Senior-IC comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed a three-prompt pipeline (triage, revise in Smart Brevity, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact (design targets):</strong> Designed to auto-handle roughly 60% of inbound requests without escalation (est.), projected to recapture ~160 operational hours/year (est.); documented and handed off with a full <a href="../writing.html">operator runbook</a>.</li></ul></div>
+<div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> Senior-IC comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed a three-prompt pipeline (triage, revise in Smart Brevity, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact (design targets):</strong> Designed to auto-handle roughly 55% of inbound requests without escalation (est.), projected to recapture ~160 operational hours/year (est.); documented and handed off with a full <a href="../writing.html">operator runbook</a>.</li></ul></div>
 <div class="rinit"><div class="rinit-h">MEJ (My Engineering Journey), AI mentorship-matching agent</div><ul class="rl"><li><strong>Problem:</strong> Manual mentorship matching ran ~3 hours per match and capped capacity.</li><li><strong>Action:</strong> Prototyped the agent and app as lead PM and architect: Python matching engine, Gemini prompt-chaining, security guardrails.</li><li><strong>Impact (design targets):</strong> Designed to cut per-match time to ~20 minutes and lift half-year capacity from ~15 to 50 matches.</li></ul></div></div>
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned communications and content for Google's internal IT org and its global help desk; also ran the engineering talent-branding portfolio across video and editorial (1.7M+ YouTube views).</p>
 <div class="rinit"><div class="rinit-h">Day-One onboarding overhaul</div><ul class="rl"><li><strong>Problem:</strong> Live instructor-led technical orientation could not keep pace with Google's hiring.</li><li><strong>Action:</strong> Rebuilt it into a self-service curriculum a new hire completes without a facilitator.</li><li><strong>Impact:</strong> Delivered to 75,000+ new hires at an 88% CSAT score.</li></ul></div>
@@ -135,6 +137,7 @@
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Program, Enablement &amp; Communications:</strong> AI enablement and adoption, internal training design and delivery, change-management programs, governance and approvals frameworks, metrics design, internal-comms strategy at engineering scale, executive communications, voice and tone calibration.</p>
 <p class="rp"><strong>AI / Agents:</strong> agent design (Apps Script + Gemini, Node.js), LLM orchestration, multi-agent systems, Model Context Protocol (MCP), Claude Code skills, prompt engineering, eval / regression infrastructure, citation-gated RAG.</p></section>
 </div>
+</main>
 
 <footer>
   <div class="wrap">

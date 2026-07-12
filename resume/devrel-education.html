@@ -10,7 +10,7 @@
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260712d">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -61,7 +61,7 @@
          blend/filter contexts so print stays vector + ATS-parseable. */
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
-      .nav,.rtop,footer,.scrollcue{display:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
@@ -83,6 +83,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -100,6 +101,7 @@
     <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <div class="rwrap">
   <header>
@@ -125,7 +127,7 @@
 <section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for the internal org driving technical change across Google; served its 1,000+ Principal, Distinguished, and Fellow engineers, owning the annual summit (600+ attendees), quarterly forums (300+ each), and the senior-engineering newsletters.</p>
 <div class="rinit"><div class="rinit-h">xGE Connects, peer-led technical workshop series</div><ul class="rl"><li><strong>Problem:</strong> Senior engineers distrust top-down training; expertise was not reaching the tier below.</li><li><strong>Action:</strong> Designed and ran the peer-led series end to end, plus the annual survey that shapes the community's roadmap.</li><li><strong>Impact:</strong> Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Executive-comms agent that drafts in a VP's voice</div><ul class="rl"><li><strong>Problem:</strong> High-stakes VP communications needed to ship fast in a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent loaded with a codified voice "Constitution" plus a banned-phrase verification checklist.</li><li><strong>Impact:</strong> Review back-and-forth with the VP down about 70%.</li></ul></div>
-<div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> Senior-IC comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 60% of inbound requests without escalation (est.); documented end-to-end and handed off with a full operator runbook.</li></ul></div></div>
+<div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> Senior-IC comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 55% of inbound requests without escalation (est.); documented end-to-end and handed off with a full operator runbook.</li></ul></div></div>
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned documentation, self-help articles, and onboarding content for Google's internal IT org and its global help desk (TechStop), for a global, mixed-technical audience; also ran the engineering <a href="../work.html#google">talent-branding video</a> portfolio (1.7M+ YouTube views).</p>
 <div class="rinit"><div class="rinit-h">Day-One technical onboarding overhaul</div><ul class="rl"><li><strong>Problem:</strong> Live instructor-led technical orientation could not keep up with Google's hiring pace.</li><li><strong>Action:</strong> Rebuilt it into a self-service curriculum a new hire could complete without a facilitator.</li><li><strong>Impact:</strong> Delivered to 75,000+ new hires at an 88% CSAT score.</li></ul></div>
 <div class="rinit"><div class="rinit-h">2023 self-help content audit</div><ul class="rl"><li><strong>Problem:</strong> Engineers opened help-desk tickets for problems the documentation should have solved.</li><li><strong>Action:</strong> Audited the self-help content corpus and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Lifted self-service solvability 9.03%, roughly 10,670 fewer tickets per year.</li></ul></div></div></section>
@@ -136,6 +138,7 @@
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>AI / Agents:</strong> LLM orchestration, multi-agent systems, Model Context Protocol (MCP), Claude Code skills, agent design (Apps Script + Gemini, Node.js), prompt engineering.</p>
 <p class="rp"><strong>Education &amp; Build:</strong> onboarding curriculum design, peer-led workshops, operator runbooks; JavaScript / Node.js, TypeScript, Apps Script, Playwright, Claude Code / MCP, Gemini API, RAG + vector stores, LangGraph / LangChain, Python.</p></section>
 </div>
+</main>
 
 <footer>
   <div class="wrap">

@@ -23,7 +23,7 @@ function tile(c, sizeClass, inBucket) {
   const tag = `${c.outletLabel} · ${c.type} · ${c.year}`;
   const pick = inBucket && c.startHere ? '<span class="pick-mark">start-here pick</span>' : '';
   const preview = c.hoverPreview
-    ? `\n    <video class="preview" preload="none" muted loop playsinline data-src="${esc(c.hoverPreview)}" poster="${esc(c.poster)}"></video>`
+    ? `\n    <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="${esc(c.hoverPreview)}" poster="${esc(c.poster)}"></video>`
     : '';
   return `  <a class="film ${sizeClass} reveal" href="${esc(nojsHref(c))}"
      data-clip="${esc(c.slug)}" data-bucket="${esc(c.bucket)}" data-outlet="${esc(c.outlet)}" data-era="${esc(c.era)}"

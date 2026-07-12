@@ -18,12 +18,7 @@
       "key": "social-explainers",
       "label": "Social Videos & Explainers",
       "num": "03",
-      "note": "Short-form journalism & explainers · produced to platform spec",
-      "oncam": {
-        "src": "assets/stills/oncam/momtrump-057.jpg",
-        "alt": "Mitchell Williams between takes on the AJ+ studio set, teleprompter and boom mic in frame",
-        "cap": "aj+ studio, 2016. between takes."
-      }
+      "note": "Short-form journalism & explainers · produced to platform spec"
     },
     {
       "key": "field-shoots",

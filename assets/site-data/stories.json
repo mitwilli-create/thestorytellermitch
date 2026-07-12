@@ -554,9 +554,9 @@
       "pull": "I build systems that outlast me. That's the point.",
       "clipSlugs": [],
       "still": {
-        "src": "assets/stills/illo-triage-agent.jpg",
-        "cap": "The triage pipeline · system illustration, generated",
-        "alt": "Diagram-style illustration of a message triage pipeline with a human escalation desk"
+        "src": "assets/stills/illo-triage-agent-detail.jpg",
+        "cap": "The escalation lane, up close · detail from the system illustration",
+        "alt": "Detail of the triage diagram: a red envelope glowing on its routing lane between gate arms"
       },
       "media": [
         {
@@ -606,9 +606,9 @@
       "pull": "I treat voice as infrastructure, not magic.",
       "clipSlugs": [],
       "still": {
-        "src": "assets/stills/illo-digital-twin.jpg",
-        "cap": "Voice as infrastructure · system illustration, generated",
-        "alt": "Diagram-style illustration of a waveform passing through six measuring gates"
+        "src": "assets/stills/illo-digital-twin-detail.jpg",
+        "cap": "The gate that measures the voice · detail from the system illustration",
+        "alt": "Detail of the digital-twin diagram: tangled lines meeting a glowing vertical gate and leaving as one clean waveform"
       },
       "media": [
         {

@@ -190,7 +190,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="../shared/theme.css?v=20260712c">
+  <link rel="stylesheet" href="../shared/theme.css?v=20260712d">
   <style>
     /* ---- shared structure ---- */
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
@@ -241,7 +241,7 @@ export function page({ name, pillars, contact, sections }, lane) {
          blend/filter contexts so print stays vector + ATS-parseable. */
       body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
-      .nav,.rtop,footer,.scrollcue{display:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
       .rname{font-size:20pt}
       .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
@@ -263,6 +263,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -280,6 +281,7 @@ export function page({ name, pillars, contact, sections }, lane) {
     <a href="../contact.html" class="nav-cta">Contact</a>
   </div>
 </nav>
+<main id="main">
 
 <div class="rwrap">
   <header>
@@ -295,6 +297,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   </header>
   ${secHtmlLinked}
 </div>
+</main>
 
 <footer>
   <div class="wrap">

@@ -49,7 +49,7 @@ Communications lead and program manager for the horizontal org driving technical
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** Senior-IC comms intake consumed operator hours on low-complexity requests.
 - **Action:** Built and deployed a three-prompt pipeline (triage, revise in Smart Brevity, escalate) with conditional knowledge-base loading and tiered routing.
-- **Impact (design targets):** Designed to auto-handle roughly 60% of inbound requests without escalation (est.), projected to recapture ~160 operational hours/year (est.); documented and handed off with a full operator runbook.
+- **Impact (design targets):** Designed to auto-handle roughly 55% of inbound requests without escalation (est.), projected to recapture ~160 operational hours/year (est.); documented and handed off with a full operator runbook.
 
 #### MEJ (My Engineering Journey), AI mentorship-matching agent
 - **Problem:** Manual mentorship matching ran ~3 hours per match and capped capacity.
