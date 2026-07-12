@@ -32,8 +32,10 @@
       text-transform:uppercase;color:var(--dim);min-width:96px}
     .ledger .t{font-size:15.5px;color:var(--bone-soft);line-height:1.55}
     .ledger .t b{color:var(--bone);font-weight:600}
-    /* flag rows: audit flags get an oxblood mark so open items scan */
+    /* flag rows: audit-flag lifecycle rows carry a left mark so they scan;
+       oxblood while open, dimmed once closed */
     .ledger .row.flag{border-left:2px solid var(--blood-soft);padding-left:14px}
+    .ledger .row.flag--closed{border-left-color:var(--dim)}
     .sys-stamp{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--dim);margin-top:18px}
     .sys-note{max-width:760px;font-size:14px;color:var(--dim);line-height:1.7;margin-top:34px}
@@ -97,7 +99,7 @@
     <h2 class="mini">The record</h2>
     <div class="ledger">
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Definition audit, third pass:</b> 877 rendered elements across 29 pages at two viewports. The first pass flagged 49; re-sourcing and gated regeneration closed all but one.</span></div>
-      <div class="row reveal flag"><span class="d">2026-07-12</span><span class="t"><b>Last audit flag closed, zero open.</b> The final flag, an on-camera still served at 1400 wide, was re-cut from its 1080p master at 1920 with the face fully in frame; the approved shirt retouch was re-applied and composited over untouched master pixels.</span></div>
+      <div class="row reveal flag flag--closed"><span class="d">2026-07-12</span><span class="t"><b>Last audit flag closed, zero open.</b> The final flag, an on-camera still served at 1400 wide, was re-cut from its 1080p master at 1920 with the face fully in frame; the approved shirt retouch was re-applied and composited over untouched master pixels.</span></div>
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Throttled-harness pass</b> (10 Mbps, 40 ms RTT, 4x CPU, 390 wide): largest contentful paint 288 to 1024 ms across changed pages; layout shift zero.</span></div>
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Projects hero regenerated</b> at an 8 second generation for a 7.2 second cycle after the 3.4 second loop read as repeating. Seam score 0.154 against a 2.0 ceiling; palette clean; luminance flat across the cycle.</span></div>
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Clip system sweep:</b> 153 playable tiles across 5 pages exercised for keyboard, touch at 390 wide, reduced motion, and lazy loading. 114 of 114 hover previews muted. Two bugs found, fixed, and re-verified the same day.</span></div>

@@ -57,8 +57,10 @@ const articles = stories.map((s) => {
   let still = '';
   if (s.still) {
     const img = `<img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"${s.still.pos ? ` style="object-position:${esc(s.still.pos)}"` : ""}>`;
-    // still.clip: this frame comes from a published clip; the whole still plays it
-    const body = s.still.clip ? mplay(clipOrDie(s.still.clip, `story ${s.id} still`), img) : img;
+    // still.clip: this frame comes from a published clip; the whole still plays it.
+    // still.preview (without clip): self-derived motion, same grammar as media rows
+    const body = s.still.clip ? mplay(clipOrDie(s.still.clip, `story ${s.id} still`), img)
+      : s.still.preview ? `<span class="m-prev" data-preview="${esc(s.still.preview)}">${img}</span>` : img;
     still = `          <figure class="still reveal">${body}<figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`;
   }
   // media rows: each entry may set after:<paragraph index> (default 1)

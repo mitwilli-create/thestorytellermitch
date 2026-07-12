@@ -235,7 +235,9 @@
         "The coverage ran. HuffPost Live didn't retract, and there was no public blowback. The segments held because the risk analysis was baked into the workflow before the moment of decision, not reviewed after. That period is why I know I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other."
       ],
       "pull": "That's not caution. That's architecture.",
-      "clipSlugs": [],
+      "clipSlugs": [
+        "huffpost-2013-jenna-miscavige-beyond-belief"
+      ],
       "media": [
         {
           "type": "img",
@@ -624,7 +626,8 @@
       "still": {
         "src": "assets/stills/illo-triage-agent-detail.jpg",
         "cap": "The escalation lane, up close · detail from the system illustration",
-        "alt": "Detail of the triage diagram: a red envelope glowing on its routing lane between gate arms"
+        "alt": "Detail of the triage diagram: a red envelope glowing on its routing lane between gate arms",
+        "preview": "assets/cinemagraphs/illo-triage-agent-c-loop.mp4"
       },
       "media": [
         {
@@ -632,7 +635,7 @@
           "src": "assets/stills/illo-triage-agent-hd.jpg",
           "cap": "The system diagram · triage, revise, escalate",
           "alt": "System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human",
-          "preview": "assets/cinemagraphs/illo-triage-agent-b-loop.mp4",
+          "preview": "assets/cinemagraphs/illo-triage-agent-c-loop.mp4",
           "previewLabel": "▸ in motion"
         },
         {
@@ -708,7 +711,7 @@
           "src": "assets/stills/illo-voice-os-hd.jpg",
           "cap": "voice-os, the public rebuild · system illustration, generated",
           "alt": "System illustration: a written corpus streams into a six-axis radar gauge flanked by two reviewers, exiting as a single gated draft",
-          "preview": "assets/cinemagraphs/illo-voice-os-b-loop.mp4",
+          "preview": "assets/cinemagraphs/illo-voice-os-c-loop.mp4",
           "previewLabel": "▸ in motion",
           "after": 2
         }
@@ -806,7 +809,7 @@
           "src": "assets/stills/illo-agent-fleet-hd.jpg",
           "cap": "The fleet diagram · one orchestrator, fifty agents",
           "alt": "System diagram: a fleet of small agent nodes orbiting one central orchestrator node",
-          "preview": "assets/cinemagraphs/illo-agent-fleet-b-loop.mp4",
+          "preview": "assets/cinemagraphs/illo-agent-fleet-c-loop.mp4",
           "previewLabel": "▸ in motion"
         },
         {
