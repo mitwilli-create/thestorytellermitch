@@ -653,6 +653,7 @@ $ launchctl list | grep career-ops | head -8
     }
   }
   addEventListener('scroll',()=>{ if(!bandTick){bandTick=true;requestAnimationFrame(updateBands);} },{passive:true});
+  addEventListener('resize',()=>{ if(!bandTick){bandTick=true;requestAnimationFrame(updateBands);} });
   updateBands();
 </script>
 <script>
