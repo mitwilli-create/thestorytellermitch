@@ -156,13 +156,14 @@
     .story-fold[open] .sf-more{opacity:0}
     .story-fold .story{padding:8px 24px 28px}
     @media(max-width:860px){.story-fold summary{flex-wrap:wrap;gap:6px}}
-    /* stills that are frames from published clips: hover plays the clip
-       preview over the still (wired by the page script, motion-gated) */
-    .m-prev{position:relative;display:block;cursor:pointer;overflow:hidden}
+    /* generated system illustrations: hover plays a cinemagraph of the SAME
+       image over the still (wired by the page script, motion-gated); passive
+       affordance, not a click target (clip playback lives on a.mplay tiles) */
+    .m-prev{position:relative;display:block;overflow:hidden}
     .m-prev video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       opacity:0;transition:opacity var(--dur-move) var(--ease);pointer-events:none}
     .m-prev.prev-on:hover video{opacity:1}
-    .m-prev::after{content:'▸ from the piece';position:absolute;right:8px;bottom:8px;z-index:2;
+    .m-prev::after{content:'▸ in motion';position:absolute;right:8px;bottom:8px;z-index:2;
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--bone);background:color-mix(in srgb,var(--bg) 78%,transparent);padding:3px 8px;
       border:1px solid var(--line-2)}
