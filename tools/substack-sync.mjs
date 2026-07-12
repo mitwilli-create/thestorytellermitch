@@ -99,6 +99,20 @@ async function main() {
   const epoch = (d) => { const t = Date.parse(d); return Number.isNaN(t) ? -Infinity : t; };
   posts.sort((a, b) => epoch(b.date) - epoch(a.date));
 
+  // no-op guard, before any page work: if the parsed posts match the
+  // last bake, leave both files untouched (otherwise the churning
+  // fetched-timestamp would make deploy.sh commit a noise bake on
+  // every deploy)
+  if (existsSync(DATA)) {
+    try {
+      const prev = JSON.parse(readFileSync(DATA, 'utf8'));
+      if (JSON.stringify(prev.posts) === JSON.stringify(posts)) {
+        console.log(`substack-sync: no changes (${posts.length} post${posts.length === 1 ? '' : 's'}, latest: ${posts[0].title})`);
+        return;
+      }
+    } catch { /* unreadable previous json: fall through and rewrite */ }
+  }
+
   const feat = posts[0];
   const featHtml = `<!-- WRITING:FEAT:START -->
     <div class="feat-essay reveal">
@@ -119,21 +133,9 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
   let page = readFileSync(PAGE, 'utf8');
   page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
   page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
-  // no-op guard: if the parsed posts match the last bake, leave both
-  // files untouched (otherwise the churning fetched-timestamp would
-  // make deploy.sh commit a noise bake on every deploy)
-  const prevData = existsSync(DATA) ? readFileSync(DATA) : null;
-  if (prevData !== null) {
-    try {
-      const prev = JSON.parse(String(prevData));
-      if (JSON.stringify(prev.posts) === JSON.stringify(posts)) {
-        console.log(`substack-sync: no changes (${posts.length} post${posts.length === 1 ? '' : 's'}, latest: ${posts[0].title})`);
-        return;
-      }
-    } catch { /* unreadable previous json: fall through and rewrite */ }
-  }
   // the two artifacts persist as a pair: if the page write fails after
   // the json write, the json rolls back so they can never diverge
+  const prevData = existsSync(DATA) ? readFileSync(DATA) : null;
   writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
   try {
     writeFileSync(PAGE, page);
