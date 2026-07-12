@@ -13,33 +13,76 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="shared/theme.css?v=20260711d">
   <style>
-    .contact-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
-    .contact-hero .display{font-size:clamp(38px,6.4vw,92px)}
-    .contact-sub{margin-top:26px;max-width:620px;font-size:18px;color:var(--bone-soft);line-height:1.6}
-    .tier-list{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
-    .tier{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+    /* contact-01: hero + targeting + reach + logistics composed into one
+       12-col spread; no scroll to reach any of the four at >=1024px and
+       >=720px viewport height. Mobile stacks in DOM order. */
+    .contact-spread{padding:128px 0 44px;border-bottom:1px solid var(--line)}
+    .contact-spread .display{font-size:clamp(38px,5.6vw,84px)}
+    .contact-spread .kicker{margin-bottom:24px}
+    .contact-sub{margin-top:20px;max-width:620px;font-size:17px;color:var(--bone-soft);line-height:1.6}
+    .cgrid{display:grid;grid-template-columns:1fr;gap:44px}
+    @media(min-width:1024px){
+      .cgrid{grid-template-columns:repeat(12,1fr);gap:26px 32px;
+        grid-template-areas:
+          "hero hero hero hero hero hero hero tgt tgt tgt tgt tgt"
+          "reach reach reach reach reach reach reach reach reach reach reach reach"
+          "logi logi logi logi logi logi logi logi logi logi logi logi"}
+      .c-hero{grid-area:hero}
+      .c-target{grid-area:tgt}
+      .c-reach{grid-area:reach}
+      .c-logi{grid-area:logi}
+    }
+    .tier-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+    .tier{padding:13px 0;border-bottom:1px solid var(--line)}
     .tier-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
-      text-transform:uppercase;color:var(--blood-soft);padding-top:3px}
-    .tier-roles{font-size:16px;color:var(--bone-soft);line-height:1.6}
-    .contact-links{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:860px}
-    .clink{background:var(--surface);border:1px solid var(--line);padding:24px;display:block;
-      transition:border-color .3s var(--ease),transform .4s var(--ease)}
-    .clink:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
-    .clink strong{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--bone);display:block;margin-bottom:8px}
-    .clink span{font-size:14px;color:var(--mute);line-height:1.5}
-    .clink.primary{border-left:2px solid var(--blood-soft)}
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:6px}
+    .tier-roles{font-size:14.5px;color:var(--bone-soft);line-height:1.55}
+    /* contact-03: the mailto is the page's display object */
+    .mail-display{display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;
+      font-size:clamp(40px,6vw,96px);letter-spacing:-0.03em;line-height:1;color:var(--bone);
+      overflow-wrap:anywhere;
+      text-decoration:underline transparent;text-underline-offset:0.12em;text-decoration-thickness:0.055em;
+      transition:text-decoration-color var(--dur-micro) var(--ease-micro)}
+    .mail-display:hover,.mail-display:focus-visible{text-decoration-color:var(--blood-soft)}
+    .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip-row .chip{display:inline-flex;align-items:center;min-height:44px;color:var(--bone-soft)}
+    .chip-row .chip:hover{color:var(--bone)}
+    .code-note{margin-top:10px;font-size:14px;color:var(--bone-soft)}
+    .code-note a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .c-logi{display:flex;gap:28px;align-items:baseline;flex-wrap:wrap;
+      border-top:1px solid var(--line);padding-top:18px}
+    .c-logi h2.mini{margin-bottom:0;flex:none}
+    .c-logi p{font-size:15px;color:var(--bone-soft);line-height:1.6;max-width:760px}
     .helper{max-width:760px;font-size:16px;line-height:1.7;color:var(--bone-soft)}
     .helper p{margin-bottom:16px}
     .helper strong{color:var(--bone)}
     .helper a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
     section{padding:72px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
-    @media(max-width:860px){
-      .contact-hero{padding:130px 0 40px}
-      .tier{grid-template-columns:1fr;gap:6px}
-      .contact-links{grid-template-columns:1fr}
+    @media(max-width:1023px){
+      .contact-spread{padding:130px 0 40px}
+      .c-logi{flex-direction:column;gap:10px}
+      /* keep the address on one line on phone widths */
+      .mail-display{font-size:clamp(24px,8.6vw,52px)}
+    }
+    /* short-viewport compression: keep the whole spread inside 720-820px
+       tall desktop windows without scroll */
+    @media(min-width:1024px) and (max-height:820px){
+      .contact-spread{padding:86px 0 24px}
+      .cgrid{gap:14px 32px}
+      .contact-spread .display{font-size:clamp(32px,4.2vw,58px)}
+      .contact-spread .kicker{margin-bottom:12px}
+      .contact-sub{margin-top:10px;font-size:15px}
+      .contact-spread h2.mini{margin-bottom:10px}
+      .tier{padding:8px 0}
+      .tier-roles{font-size:12.5px;line-height:1.45}
+      .mail-display{font-size:clamp(34px,4.8vw,72px)}
+      .chip-row{margin-top:10px}
+      .chip-row .chip{min-height:38px}
+      .code-note{margin-top:8px;font-size:13px}
+      .c-logi{padding-top:10px}
+      .c-logi p{font-size:13.5px}
     }
   </style>
 </head>
@@ -62,74 +105,54 @@
   </div>
 </nav>
 
-<header class="contact-hero fill-host">
+<header class="contact-spread fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-contact-loop" aria-hidden="true">
     <img src="assets/stills/fill-contact-hd.jpg" alt="" width="1376" height="768" loading="lazy">
   </figure>
-  <div class="wrap">
-    <div class="kicker">Hiring for an AI builder, comms lead, or editorial hybrid?</div>
-    <h1 class="display">
-      <span class="ln"><span>Let's</span></span>
-      <span class="ln"><span class="accent">talk.</span></span>
-    </h1>
-    <p class="contact-sub">Email is the fastest path to a real conversation. I read every recruiter email myself. The resume's one click away.</p>
-    <div class="hero-cta">
-      <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Role%20conversation%20%C2%B7%20Mitchell%20Williams"><span>Email me</span></a>
-      <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Download resume (PDF)</span></a>
+  <div class="wrap cgrid">
+    <div class="c-hero">
+      <div class="kicker">Hiring for an AI builder, comms lead, or editorial hybrid?</div>
+      <h1 class="display">
+        <span class="ln"><span>Let's <span class="accent">talk.</span></span></span>
+      </h1>
+      <p class="contact-sub">Email is the fastest path to a real conversation. I read every recruiter email myself. The resume's one click away.</p>
+    </div>
+    <div class="c-target">
+      <h2 class="mini reveal">What I'm targeting</h2>
+      <div class="tier-list">
+        <div class="tier reveal">
+          <div class="tier-label">Build &amp; deploy</div>
+          <div class="tier-roles">AI Solutions Architect · Forward Deployed Engineer / Creative · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager (AI-native)</div>
+        </div>
+        <div class="tier reveal">
+          <div class="tier-label">Communications &amp; editorial</div>
+          <div class="tier-roles">Executive &amp; Internal Communications · Communications Manager (AI-native) · Developer Education Lead · Engineering Editorial Lead · Communications Manager, Research · Internal Communications, Policy</div>
+        </div>
+        <div class="tier reveal">
+          <div class="tier-label">Adjacent</div>
+          <div class="tier-roles">Residencies and fellowships at AI-native or AI-policy organizations</div>
+        </div>
+      </div>
+    </div>
+    <div class="c-reach">
+      <h2 class="mini reveal">How to reach me</h2>
+      <a class="mail-display reveal" href="mailto:mitwilli@gmail.com?subject=Role%20conversation%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>
+      <div class="chip-row reveal">
+        <a class="chip" href="tel:+18122196077">(812) 219-6077</a>
+        <a class="chip" href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a class="chip" href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a class="chip" href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+      <p class="code-note reveal">Breakdowns for the code above: <a href="voice-os.html">voice-os</a> · <a href="tax-verification-agent.html">tax-verification-agent</a> · <a href="monolith.html">monolith</a></p>
+    </div>
+    <div class="c-logi reveal">
+      <h2 class="mini">Geography and availability</h2>
+      <p>Based in Seattle, open to relocation for the right role: San Francisco, LA, NYC, Chicago, or Portland, and flexible beyond those. US citizen, no sponsorship needed.</p>
     </div>
   </div>
 </header>
 
 <section>
-  <div class="wrap">
-    <h2 class="mini reveal">What I'm targeting</h2>
-    <div class="tier-list">
-      <div class="tier reveal">
-        <div class="tier-label">Build &amp; deploy</div>
-        <div class="tier-roles">AI Solutions Architect · Forward Deployed Engineer / Creative · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager (AI-native)</div>
-      </div>
-      <div class="tier reveal">
-        <div class="tier-label">Communications &amp; editorial</div>
-        <div class="tier-roles">Executive &amp; Internal Communications · Communications Manager (AI-native) · Developer Education Lead · Engineering Editorial Lead · Communications Manager, Research · Internal Communications, Policy</div>
-      </div>
-      <div class="tier reveal">
-        <div class="tier-label">Adjacent</div>
-        <div class="tier-roles">Residencies and fellowships at AI-native or AI-policy organizations</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <h2 class="mini reveal">How to reach me</h2>
-    <div class="contact-links">
-      <a class="clink primary reveal" href="mailto:mitwilli@gmail.com?subject=Role%20conversation%20%C2%B7%20Mitchell%20Williams">
-        <strong>mitwilli@gmail.com</strong>
-        <span>Subject line pre-filled. One click, send.</span>
-      </a>
-      <a class="clink reveal" href="tel:+18122196077">
-        <strong>(812) 219-6077</strong>
-        <span>Call or text. Pacific time.</span>
-      </a>
-      <a class="clink reveal" href="https://linkedin.com/in/mitwilli">
-        <strong>linkedin.com/in/mitwilli</strong>
-        <span>For a DM with the role link attached.</span>
-      </a>
-      <a class="clink reveal" href="https://github.com/mitwilli-create">
-        <strong>github.com/mitwilli-create</strong>
-        <span>To see the code: voice-os, tax-verification-agent, monolith, and the rest of the build.</span>
-      </a>
-      <a class="clink reveal" href="assets/mitchell-williams-resume.pdf">
-        <strong>resume (PDF)</strong>
-        <span>The two-page version, current as of July 2026. No form, no gate.</span>
-      </a>
-    </div>
-    <p class="prose reveal" style="margin-top:18px;font-size:14px">Breakdowns for the code above: <a href="voice-os.html">voice-os</a> · <a href="tax-verification-agent.html">tax-verification-agent</a> · <a href="monolith.html">monolith</a></p>
-  </div>
-</section>
-
-<section style="padding-top:0">
   <div class="wrap">
     <figure class="oncam oncam--card reveal" style="margin:0 0 56px">
       <img src="assets/stills/oncam/ig-fusion-selfie.jpg" alt="Mitchell Williams on the Fusion studio floor" loading="lazy">
@@ -140,15 +163,6 @@
       <p><strong>Recruiters:</strong> give me the team, reporting line, location flexibility, and comp band up front. I'll respond within 24 hours.</p>
       <p><strong>If you're a hiring manager:</strong> happy to move fast, whatever your process. The <a href="projects.html">Projects page</a> has the artifacts. Resume's one click away.</p>
       <p><strong>Builder peers:</strong> my LinkedIn DMs are wide open.</p>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <h2 class="mini reveal">Geography and availability</h2>
-    <div class="helper reveal">
-      <p>Based in Seattle, open to relocation for the right role: San Francisco, LA, NYC, Chicago, or Portland, and flexible beyond those. US citizen, no sponsorship needed.</p>
     </div>
   </div>
 </section>
