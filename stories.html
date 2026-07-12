@@ -18,13 +18,18 @@
     .st-sub{margin-top:26px;max-width:640px;font-size:18px;color:var(--bone-soft);line-height:1.6}
     .comms-pointer{margin-top:18px;max-width:640px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.04em;color:var(--mute);line-height:1.7}
     .comms-pointer a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .st-layout{display:grid;grid-template-columns:230px 1fr;gap:60px;align-items:start}
+    /* round-3 A2 (Mitchell): the layout anchors LEFT at every desktop width,
+       killing the dead column that used to sit left of the rail; the rail
+       widens to 310px and its type steps up to 14px mono, one line per label
+       (titles are written to fit; the bake keeps rail label == story h2) */
+    .st-wrap{max-width:none}
+    .st-layout{display:grid;grid-template-columns:310px minmax(0,720px);gap:56px;align-items:start;justify-content:start}
     .st-index{position:sticky;top:96px;display:flex;flex-direction:column;gap:0;
       max-height:calc(100vh - 130px);overflow-y:auto;overscroll-behavior:contain;
       scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;padding-right:6px}
-    .st-index a{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;
-      text-transform:uppercase;color:var(--dim);padding:7px 0 7px 14px;border-left:1px solid var(--line);
-      transition:color .25s var(--ease),border-color .25s var(--ease);line-height:1.45}
+    .st-index a{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.05em;
+      text-transform:uppercase;color:var(--dim);padding:9px 0 9px 16px;border-left:1px solid var(--line);
+      transition:color .25s var(--ease),border-color .25s var(--ease);line-height:1.4;white-space:nowrap}
     .st-index a:hover{color:var(--bone)}
     .st-index a.on{color:var(--blood-soft);border-left-color:var(--blood-soft)}
     .story{padding:0 0 88px;max-width:720px;scroll-margin-top:92px}
@@ -49,15 +54,17 @@
       font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--mute)}
     /* round-2 (Mitchell): rows stretch; cards in one row equalize height and
-       fill the body width instead of leaving right-edge voids */
+       fill the body width instead of leaving right-edge voids.
+       round-3 A3: the max-width caps are gone, so every wrap line fills the
+       body edge-to-edge; the data keeps rows at 2 or 4 tiles so lines pair up */
     .media-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px;align-items:stretch}
     .mcard{position:relative;border:1px solid var(--line);overflow:hidden;background:var(--surface);
-      flex:1 1 260px;max-width:560px;display:flex;flex-direction:column}
+      flex:1 1 260px;display:flex;flex-direction:column}
     .media-row.solo{margin-top:16px}
     .mcard.wide{flex-basis:100%;max-width:100%}
     .mcard.wide img{max-height:400px}
     .mcard.wide.tall img{max-height:540px}
-    .mcard.book{flex:0 1 240px;max-width:260px}
+    .mcard.book{flex:1 1 220px}
     .mcard.book img{object-fit:contain;min-height:0;max-height:380px;background:var(--surface);padding:10px}
     .mcard img{width:100%;height:100%;flex:1;min-height:200px;max-height:340px;object-fit:cover;
       object-position:center 22%;display:block;
@@ -68,7 +75,7 @@
       color:var(--bone-soft);line-height:1.5;background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
     .clipcard{display:flex;flex-direction:column;gap:10px;padding:18px 18px 14px;background:var(--surface);
       border:1px solid var(--line);
-      flex:1 1 240px;max-width:560px;min-height:0;
+      flex:1 1 240px;min-height:0;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     a.clipcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
     a.clipcard:focus-visible{border-color:var(--blood-soft);outline:none}
@@ -79,12 +86,12 @@
     .clipcard .ce{font-size:13px;line-height:1.6;color:var(--mute);font-style:italic}
     .clipcard .cd{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:9px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
-    .chipscard{flex:1 1 240px;max-width:560px;padding:18px;background:var(--surface);
+    .chipscard{flex:1 1 240px;padding:18px;background:var(--surface);
       border:1px solid var(--line)}
     .chipscard .chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
     .orgchip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--bone-soft);border:1px solid var(--line-2);padding:7px 12px}
-    .termcard{flex:1 1 300px;max-width:460px;background:#050506;border:1px solid var(--line-2);overflow:hidden}
+    .termcard{flex:1 1 300px;background:#050506;border:1px solid var(--line-2);overflow:hidden}
     .termcard .tc-bar{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;
       letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);padding:10px 14px;
       border-bottom:1px solid var(--line);background:var(--surface)}
@@ -101,28 +108,21 @@
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;
       color:var(--bone);background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
     section{padding:80px 0}
-    /* stories-01: the case files leave the single-column river for a
-       2-col brick grid once columns can hold >=640px (page-shell only;
-       article internals untouched). 1440-1739: the index collapses to a
-       top strip and the page widens; >=1740 the 230px rail returns. */
+    /* stories-01 + round-3 A2: the case files leave the single-column river
+       for a 2-col brick grid at >=1440px, and the vertical rail now PERSISTS
+       through every desktop width (the 1440-1739 horizontal strip is gone;
+       the retitled one-line labels make the rail fit). >=1740 the content
+       column caps at 1440px so the brick math tops out unchanged. */
     @media(min-width:1440px){
-      .st-wrap{max-width:calc(100vw - 48px)}
+      .st-layout{grid-template-columns:310px minmax(0,1fr)}
       .st-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-items:start}
       .st-col > .story,.st-col > .story-fold{max-width:none;min-width:0}
       .st-col > .oncam--divider{grid-column:1 / -1}
       .st-col > .story-fold{grid-column:1 / -1;align-self:start}
     }
-    @media(min-width:1440px) and (max-width:1739px){
-      .st-layout{grid-template-columns:1fr;gap:30px}
-      .st-index{position:static;flex-direction:row;flex-wrap:wrap;gap:10px;max-height:none;overflow:visible}
-      .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px}
-    }
     @media(min-width:1740px){
-      /* B8: anchor the layout left so the index rail sits near the viewport
-         edge; the content column keeps the 1440px cap (2 x >=640px bricks +
-         32px gap), so the brick-grid math is unchanged */
-      .st-wrap{max-width:none;padding-left:24px}
-      .st-layout{grid-template-columns:230px minmax(0,1440px);justify-content:start}
+      .st-wrap{padding-left:24px}
+      .st-layout{grid-template-columns:310px minmax(0,1440px)}
     }
     /* stories-02: the opening paragraph panel overlaps the still's top
        edge; an adjacent media row underlaps its bottom with real depth */
@@ -136,11 +136,15 @@
     .js-bands .case-band.stuck{border-bottom:1px solid var(--line);padding:5px 0}
     .js-bands .case-band.stuck .kick{display:none}
     .js-bands .case-band.stuck h2{font-size:14px;line-height:1.4;margin-bottom:0;letter-spacing:0.02em}
+    @media(max-width:1023px){
+      /* below 1024 the 310px rail would starve the body: collapse to the
+         horizontal wrap strip (same pattern the page always used on mobile) */
+      .st-layout{grid-template-columns:1fr;gap:30px}
+      .st-index{position:static;flex-direction:row;flex-wrap:wrap;gap:10px;max-height:none;overflow:visible}
+      .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px;white-space:normal}
+    }
     @media(max-width:860px){
       .st-hero{padding:130px 0 40px}
-      .st-layout{grid-template-columns:1fr;gap:30px}
-      .st-index{position:static;flex-direction:row;flex-wrap:wrap;gap:10px}
-      .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px}
       .js-bands .case-band{top:57px}
     }
       .story-fold{border:1px solid var(--line);background:var(--surface);margin:18px 0}
@@ -154,7 +158,7 @@
     @media(max-width:860px){.story-fold summary{flex-wrap:wrap;gap:6px}}
     /* stills that are frames from published clips: hover plays the clip
        preview over the still (wired by the page script, motion-gated) */
-    .m-prev{position:relative;display:block;cursor:pointer}
+    .m-prev{position:relative;display:block;cursor:pointer;overflow:hidden}
     .m-prev video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       opacity:0;transition:opacity var(--dur-move) var(--ease);pointer-events:none}
     .m-prev.prev-on:hover video{opacity:1}
@@ -163,6 +167,32 @@
       color:var(--bone);background:color-mix(in srgb,var(--bg) 78%,transparent);padding:3px 8px;
       border:1px solid var(--line-2)}
     .m-prev[data-plabel]::after{content:attr(data-plabel)}
+    /* round-3 A1: clip-derived visuals are playable in-page. a.mplay tiles
+       (baked) open the shared theater on click (shared/clipplay.js); the
+       lazy child video.preview hover-plays the SAME clip's preview, strictly
+       contained inside the tile (position:relative + inset:0 + overflow:hidden).
+       Keyboard/touch get identical content through the click itself. */
+    a.mplay{position:relative;display:block;cursor:pointer;overflow:hidden}
+    .mcard a.mplay{display:flex;flex:1;min-height:0}
+    .mcard a.mplay img{flex:1}
+    a.mplay video.preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      opacity:0;transition:opacity var(--dur-move) var(--ease);pointer-events:none}
+    a.mplay.prev-on:hover video.preview,a.mplay.prev-on:focus-visible video.preview{opacity:1}
+    a.mplay:focus-visible{outline:2px solid var(--blood-soft);outline-offset:-2px}
+    a.mplay .play-o{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+      width:54px;height:54px;border:1px solid var(--line-2);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;transition:border-color .3s var(--ease),background .3s var(--ease);
+      background:rgba(10,10,11,0.4);backdrop-filter:blur(2px)}
+    a.mplay:hover .play-o,a.mplay:focus-visible .play-o{border-color:var(--bone);background:rgba(10,10,11,0.25)}
+    a.mplay .play-o::after{content:'';border-left:12px solid var(--bone);
+      border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+    .story .clips a.mplay .play-o{width:40px;height:40px}
+    .story .clips a.mplay .play-o::after{border-left-width:9px;border-top-width:6px;border-bottom-width:6px}
+    .story .clips a.mplay .cl{z-index:3}
+    /* the still's gradient overlay and caption must not eat the tile's click */
+    .story .still::after{pointer-events:none}
+    .story .still .cap{pointer-events:none}
+    .story .still a.mplay{display:block}
 </style>
 </head>
 <body data-reveal-stagger="3">
@@ -206,23 +236,23 @@
     <div class="st-layout">
       <nav class="st-index" id="st-index" aria-label="Story index">
         <!-- STINDEX:START -->
-        <a href="#bhutto-origin">The overnight shift when Bhutto was assassinated</a>
-        <a href="#stream-launch-night">Launch night, rewritten by breaking news</a>
-        <a href="#trans-navy-panel">The panel that aged into evidence</a>
-        <a href="#kim-k-bahrain">Kim Kardashian, a milkshake shop, and an uprising</a>
-        <a href="#prep-origination">Bringing PrEP to air months ahead of the coverage</a>
-        <a href="#scientology-live-coverage">Covering Scientology, live, under legal scrutiny</a>
-        <a href="#jazz-jennings">A full hour with Jazz, two years before TLC</a>
-        <a href="#mandela-special">Rebuilding primetime in real time: the Mandela special</a>
-        <a href="#mong-kok-backpack-live">Live from a backpack in Mong Kok</a>
-        <a href="#fusion-ramos-lawsuit">Producing Jorge Ramos under a $500 million lawsuit</a>
-        <a href="#hurricane-maria-field">Getting the Mayor of San Juan on record in the storm</a>
-        <a href="#aj-plus-50m-views">Fifty million views in two minutes</a>
-        <a href="#talent-pipeline">Coaching producers from behind the camera to on air</a>
-        <a href="#comms-triage-build">Building the triage agent, then handing over the keys</a>
-        <a href="#digital-twin">Teaching a system to write in an executive's voice</a>
-        <a href="#freeahmed-coalition">Ten days: the #FreeAhmed coalition</a>
-        <a href="#builder-turn">From newsrooms to a fleet of fifty agents</a>
+        <a href="#bhutto-origin">The Bhutto overnight shift</a>
+        <a href="#stream-launch-night">The bin Laden launch night</a>
+        <a href="#trans-navy-panel">A panel that became evidence</a>
+        <a href="#kim-k-bahrain">Kim Kardashian and an uprising</a>
+        <a href="#prep-origination">PrEP on air, months early</a>
+        <a href="#scientology-live-coverage">Covering Scientology, live</a>
+        <a href="#jazz-jennings">An hour with Jazz, before TLC</a>
+        <a href="#mandela-special">The Mandela special, rebuilt</a>
+        <a href="#mong-kok-backpack-live">Live from a Mong Kok backpack</a>
+        <a href="#fusion-ramos-lawsuit">Ramos under a $500M lawsuit</a>
+        <a href="#hurricane-maria-field">San Juan's mayor in the storm</a>
+        <a href="#aj-plus-50m-views">50M views in two minutes</a>
+        <a href="#talent-pipeline">From behind camera to on air</a>
+        <a href="#comms-triage-build">The triage agent, handed off</a>
+        <a href="#digital-twin">The executive voice, encoded</a>
+        <a href="#freeahmed-coalition">Ten days: #FreeAhmed</a>
+        <a href="#builder-turn">A fleet of fifty agents</a>
         <!-- STINDEX:END -->
       </nav>
 
@@ -231,7 +261,7 @@
         <article class="story" id="bhutto-origin">
           <div class="case-band">
             <div class="kick reveal">WDRB Fox 41 · 2007</div>
-            <h2 class="reveal">The overnight shift when Bhutto was assassinated</h2>
+            <h2 class="reveal">The Bhutto overnight shift</h2>
           </div>
           <p class="reveal lead-p">December 2007. I was the overnight producer at WDRB Fox 41 in Louisville, owning two hours of a four-hour live morning block. Small-market station, small-market resources. Benazir Bhutto was assassinated during my window. I was hammering the incoming wires when the story broke, and I called it.</p>
           <figure class="still reveal"><img src="assets/stills/bhutto-1989-pd.jpg" alt="Benazir Bhutto speaking to press, 1989" loading="lazy"><figcaption class="cap">Benazir Bhutto, 1989 · public domain, US Dept. of Defense</figcaption></figure>
@@ -239,6 +269,7 @@
             <figure class="mcard"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><figcaption class="mcap">Bhutto under house arrest, Nov 2007 · VOA, public domain</figcaption></figure>
             <a class="clipcard" href="http://news.bbc.co.uk/2/hi/south_asia/7161590.stm" rel="noopener"><span class="co">BBC News</span><span class="ch">Benazir Bhutto killed in attack</span><span class="ce">Pakistani former Prime Minister Benazir Bhutto has been assassinated in a suicide attack. Ms Bhutto - the first woman PM in an Islamic state...</span><span class="cd">Dec 27, 2007 ↗</span></a>
             <a class="clipcard" href="https://www.deseret.com/2007/12/27/20061571/pakistani-opposition-leader-bhutto-killed-in-suicide-attack-on-campaign-rally/" rel="noopener"><span class="co">Associated Press · via Deseret News</span><span class="ch">Pakistani opposition leader Bhutto killed in suicide attack on campaign rally</span><span class="ce">RAWALPINDI, Pakistan: Pakistan opposition leader Benazir Bhutto was assassinated Thursday by an attacker who shot her after a campaign rally and then blew himself up...</span><span class="cd">Dec 27, 2007 ↗</span></a>
+            <figure class="mcard"><img src="assets/stills/louisville-2005-ccby-pugfather.jpg" alt="Louisville skyline at night, 2005" loading="lazy"><figcaption class="mcap">Louisville at night, 2005 · The Pug Father · CC BY</figcaption></figure>
           </div>
 
           <p class="reveal">Calling it meant restacking the entire two-hour block in real time: flipping from scheduled content to breaking news inside a tight window, driving the control room through the pivot, writing replacement copy during commercial breaks to keep up with a developing story. We reported Bhutto's death minutes before The Today Show did. From a local Fox affiliate in Kentucky.</p>
@@ -249,12 +280,14 @@
         <article class="story" id="stream-launch-night">
           <div class="case-band">
             <div class="kick reveal">Al Jazeera English · 2011</div>
-            <h2 class="reveal">Launch night, rewritten by breaking news</h2>
+            <h2 class="reveal">The bin Laden launch night</h2>
           </div>
           <p class="reveal lead-p">The Stream was set to launch on May 2, 2011. A new kind of live program at Al Jazeera English, built to treat Twitter, Skype, SMS, and real-time trending data as first-class journalistic sources. The night before our first broadcast, Osama bin Laden was killed in Abbottabad, Pakistan. Every piece of content we'd prepared was suddenly worthless. We had roughly twelve hours to tear the launch show apart and rebuild it around a story nobody had planned for, on a program that had never aired.</p>
-          <figure class="still reveal"><img src="assets/stills/stream-launch-night.jpg" alt="Launch night, rewritten by breaking news" loading="lazy"><figcaption class="cap">From the broadcast · The Stream, 2011</figcaption></figure>
+          <figure class="still reveal"><img src="assets/stills/stream-launch-night.jpg" alt="The Stream launch-night broadcast frame" loading="lazy"><figcaption class="cap">From the broadcast · The Stream, 2011</figcaption></figure>
           <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/tahrir-2011-ccby-rashad.jpg" alt="Crowds filling Tahrir Square during the 2011 protests" loading="lazy"><figcaption class="mcap">Tahrir Square, Cairo, 2011 · Jonathan Rashad · CC BY</figcaption></figure>
             <a class="clipcard" href="https://abcnews.go.com/Blotter/sohaib-athar-unknowingly-live-tweets-raid-osama-bin/story?id=13506941" rel="noopener"><span class="co">ABC News</span><span class="ch">Man Unknowingly Live Tweets About Raid on Osama Bin Laden's Compound</span><span class="ce">When 33-year-old Sohaib Athar began sending out live Twitter messages detailing a mysterious blast, shaking windows, and a helicopter hovering above Abbottabad...</span><span class="cd">May 2, 2011 ↗</span></a>
+            <a class="clipcard" href="https://www.bbc.com/news/world-us-canada-13256676" rel="noopener"><span class="co">BBC News</span><span class="ch">Osama Bin Laden, al-Qaeda leader, dead - Barack Obama</span><span class="ce">Al-Qaeda leader Osama Bin Laden has been killed by US forces in Pakistan, President Barack Obama has said.</span><span class="cd">May 2, 2011 ↗</span></a>
             <a class="clipcard" href="https://www.aljazeera.com/features/2012/2/23/al-jazeera-english-named-channel-of-the-year" rel="noopener"><span class="co">Al Jazeera</span><span class="ch">Al Jazeera English named channel of the year</span><span class="ce">Al Jazeera English has been named News Channel of the Year at this year's Royal Television Society Awards.</span><span class="cd">Feb 23, 2012 ↗</span></a>
           </div>
 
@@ -262,20 +295,20 @@
           <div class="pull reveal">We built the system to kill improvisation. On purpose.</div>
           <p class="reveal">The Royal Television Society gave The Stream its Innovative News Award for that first season's Bahrain coverage, the same season Al Jazeera English was named RTS News Channel of the Year. What I carry from that night is more specific. We'd treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case launch looked structurally like any other show day. The inputs changed. The workflow did not.</p>
           <div class="clips reveal">
-            <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><span class="cl">Watch: The night bin Laden's death broke</span></a>
-            <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5110494fc9e3e53e73cbd135e77d96de/watch" data-clip-play data-clip="aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-tag="Al Jazeera · The Stream · Live Coverage · 2011" data-title="The night bin Laden's death broke" data-sub="Live global reaction coverage from The Stream's launch era, on a 250M-household network." data-poster="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" data-local="media/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4" data-stream-id="5110494fc9e3e53e73cbd135e77d96de" aria-label="Play: The night bin Laden's death broke"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The night bin Laden's death broke" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: The night bin Laden's death broke</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/0c82f76973f954de5dcd2071a4f4574f/watch" data-clip-play data-clip="aje-stream-2011-what-is-the-way-forward-in-bahrain" data-tag="Al Jazeera · The Stream · Panel Discussion · 2011-2012" data-title="What is the way forward in Bahrain?" data-sub="A live panel on Bahrain's uprising, produced as the story was still unfolding." data-poster="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" data-local="media/aje-stream-2011-what-is-the-way-forward-in-bahrain-n16.mp4" data-stream-id="0c82f76973f954de5dcd2071a4f4574f" aria-label="Play: What is the way forward in Bahrain?"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
           </div>
         </article>
 
         <article class="story" id="trans-navy-panel">
           <div class="case-band">
             <div class="kick reveal">HuffPost Live · 2012</div>
-            <h2 class="reveal">The panel that aged into evidence</h2>
+            <h2 class="reveal">A panel that became evidence</h2>
           </div>
           <p class="reveal lead-p">In 2012 I produced a HuffPost Live panel on transgender military service. One guest was an anonymous active-duty Navy service member. No face, no surname, call sign Olivia. She joined at real risk of discharge for showing up. At the time it felt like a Tuesday: a booking came together, a rundown slot opened, we aired it. The Pentagon wouldn't let transgender people serve openly for another four years. We named the arguments before the policy fight had fully surfaced in mainstream coverage.</p>
-          <figure class="still reveal"><img src="assets/stills/trans-navy-panel.jpg" alt="The panel that aged into evidence" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2012</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/7819090251204c968c4603709229098c/watch" data-clip-play data-clip="huffpost-2012-the-few-the-proud-trans-military-panel" data-tag="HuffPost Live · Panel Discussion · 2012-2013" data-title="The few, the proud, the trans" data-sub="A live panel on transgender service members, years ahead of the policy fights." data-poster="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" data-local="media/huffpost-2012-the-few-the-proud-trans-military-panel.mp4" data-stream-id="7819090251204c968c4603709229098c" aria-label="Play: The few, the proud, the trans"><img src="assets/stills/trans-navy-panel.jpg" alt="The transgender military service panel on the HuffPost Live set" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">From the broadcast · HuffPost Live, 2012</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"><img src="assets/stills/mc-pentagon-2008.jpg" alt="Aerial view of the Pentagon" loading="lazy"></span><figcaption class="mcap">The Pentagon · D.B. Gleason · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-pentagon-2008.jpg" alt="Aerial view of the Pentagon" loading="lazy"><figcaption class="mcap">The Pentagon · D.B. Gleason · CC BY-SA</figcaption></figure>
             <a class="clipcard" href="https://www.cnn.com/2016/06/30/politics/transgender-ban-lifted-us-military" rel="noopener"><span class="co">CNN Politics</span><span class="ch">Pentagon ends transgender military ban</span><span class="ce">The Pentagon said Thursday it was ending the ban on transgender people being able to serve openly in the U.S. military.</span><span class="cd">Jun 30, 2016 ↗</span></a>
           </div>
 
@@ -284,20 +317,20 @@
           <div class="pull reveal">The story had aged into primary source documentation.</div>
           <p class="reveal">The segment ran without retraction. In June 2016 the Pentagon reversed its policy, validating what the panel argued on air years earlier. In 2017, when the politics flipped again, the broadcast resurfaced as archival evidence during the trans military ban fight. The story had aged into primary source documentation.</p>
           <div class="clips reveal">
-            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Watch: The few, the proud, the trans</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/7819090251204c968c4603709229098c/watch" data-clip-play data-clip="huffpost-2012-the-few-the-proud-trans-military-panel" data-tag="HuffPost Live · Panel Discussion · 2012-2013" data-title="The few, the proud, the trans" data-sub="A live panel on transgender service members, years ahead of the policy fights." data-poster="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" data-local="media/huffpost-2012-the-few-the-proud-trans-military-panel.mp4" data-stream-id="7819090251204c968c4603709229098c" aria-label="Play: The few, the proud, the trans"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: The few, the proud, the trans</span></a>
           </div>
         </article>
 
         <article class="story" id="kim-k-bahrain">
           <div class="case-band">
             <div class="kick reveal">HuffPost Live · 2012</div>
-            <h2 class="reveal">Kim Kardashian, a milkshake shop, and an uprising</h2>
+            <h2 class="reveal">Kim Kardashian and an uprising</h2>
           </div>
           <p class="reveal lead-p">The premise sounded like a celebrity item: Kim Kardashian opens a milkshake shop in Bahrain. But Bahrain in late 2012 was mid-uprising. Crowds peaked at roughly 200,000 in a country of about 600,000 citizens, one of the largest shares of a citizenry in the streets anywhere that year. The editorial question: cover the shop or the country? My answer was both, same segment.</p>
-          <figure class="still reveal"><img src="assets/stills/kim-k-bahrain.jpg" alt="Maryam Al-Khawaja interviewed on HuffPost Live" loading="lazy"><figcaption class="cap">Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b17c4aacb94b4cf60ca5e6e56071c78c/watch" data-clip-play data-clip="huffpost-2012-kim-kardashian-milkshake-bahrain" data-tag="HuffPost Live · Entertainment Segment · 2012-2013" data-title="Kim Kardashian, a milkshake shop, and Bahrain" data-sub="A live segment on a celebrity appearance staged amid an ongoing uprising." data-poster="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" data-local="media/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4" data-stream-id="b17c4aacb94b4cf60ca5e6e56071c78c" aria-label="Play: Kim Kardashian, a milkshake shop, and Bahrain"><img src="assets/stills/kim-k-bahrain.jpg" alt="Maryam Al-Khawaja interviewed on HuffPost Live" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Mass protest at Pearl Roundabout, Bahrain, 2011" loading="lazy"></span><figcaption class="mcap">Pearl Roundabout, Manama, 2011 · CC BY-SA</figcaption></figure>
-            <figure class="mcard"><img src="assets/stills/mc-riffa-launch-2012.jpg" alt="Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012" loading="lazy"><figcaption class="mcap">Kim Kardashian in the launch crowd at The Walk, Riffa · from the aired segment, 2012</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Mass protest at Pearl Roundabout, Bahrain, 2011" loading="lazy"><figcaption class="mcap">Pearl Roundabout, Manama, 2011 · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b17c4aacb94b4cf60ca5e6e56071c78c/watch" data-clip-play data-clip="huffpost-2012-kim-kardashian-milkshake-bahrain" data-tag="HuffPost Live · Entertainment Segment · 2012-2013" data-title="Kim Kardashian, a milkshake shop, and Bahrain" data-sub="A live segment on a celebrity appearance staged amid an ongoing uprising." data-poster="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" data-local="media/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4" data-stream-id="b17c4aacb94b4cf60ca5e6e56071c78c" aria-label="Play: Kim Kardashian, a milkshake shop, and Bahrain"><img src="assets/stills/mc-riffa-launch-2012.jpg" alt="Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="mcap">Kim Kardashian in the launch crowd at The Walk, Riffa · from the aired segment, 2012</figcaption></figure>
           </div>
 
           <p class="reveal">We booked Maryam Al-Khawaja, acting president of the Bahrain Centre for Human Rights and named to Foreign Policy's 2012 Global Thinkers list, and cut Al Jazeera's documentary Shouting in the Dark live into the broadcast. We aired November 9 protest footage with Al-Khawaja narrating over it in real time, host Ahmed Shihab-Eldin steering. The store opening got its mention. The human rights situation it was obscuring got the airtime.</p>
@@ -305,23 +338,24 @@
           <p class="reveal">I don't treat celebrity news and hard news as enemies. Attention is attention, and the producer's job is deciding where it lands. The segment used a doorway the audience had already walked through. An uprising's story reached viewers no straight news pitch would ever have found.</p>
           <div class="media-row reveal">
             <a class="clipcard" href="https://globalvoices.org/2012/12/02/kim-kardashian-tear-gas-and-milkshake-in-bahrain/" rel="noopener"><span class="co">Global Voices</span><span class="ch">Kim Kardashian, Tear-Gas and Milkshake in Bahrain</span><span class="ce">American socialite and TV reality star Kim Kardashian was in Bahrain yesterday to open a milkshake shop. Hardline Salafists protested her visit...</span><span class="cd">Dec 2, 2012 ↗</span></a>
+            <a class="clipcard" href="https://foreignpolicy.com/2012/12/11/kim-kardashians-bahrain-milkshake-diplomacy-leaves-a-bad-taste/" rel="noopener"><span class="co">Foreign Policy</span><span class="ch">Kim Kardashian's Bahrain milkshake diplomacy leaves a bad taste</span><span class="cd">Dec 11, 2012 ↗</span></a>
           </div>
 
           <div class="clips reveal">
-            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" alt="Kim Kardashian, a milkshake shop, and Bahrain" loading="lazy"><span class="cl">Watch: Kim Kardashian, a milkshake shop, and Bahrain</span></a>
-            <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b17c4aacb94b4cf60ca5e6e56071c78c/watch" data-clip-play data-clip="huffpost-2012-kim-kardashian-milkshake-bahrain" data-tag="HuffPost Live · Entertainment Segment · 2012-2013" data-title="Kim Kardashian, a milkshake shop, and Bahrain" data-sub="A live segment on a celebrity appearance staged amid an ongoing uprising." data-poster="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" data-local="media/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4" data-stream-id="b17c4aacb94b4cf60ca5e6e56071c78c" aria-label="Play: Kim Kardashian, a milkshake shop, and Bahrain"><img src="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" alt="Kim Kardashian, a milkshake shop, and Bahrain" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Kim Kardashian, a milkshake shop, and Bahrain</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/0c82f76973f954de5dcd2071a4f4574f/watch" data-clip-play data-clip="aje-stream-2011-what-is-the-way-forward-in-bahrain" data-tag="Al Jazeera · The Stream · Panel Discussion · 2011-2012" data-title="What is the way forward in Bahrain?" data-sub="A live panel on Bahrain's uprising, produced as the story was still unfolding." data-poster="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" data-local="media/aje-stream-2011-what-is-the-way-forward-in-bahrain-n16.mp4" data-stream-id="0c82f76973f954de5dcd2071a4f4574f" aria-label="Play: What is the way forward in Bahrain?"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/aje-stream-2011-what-is-the-way-forward-in-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
           </div>
         </article>
 
         <article class="story" id="prep-origination">
           <div class="case-band">
             <div class="kick reveal">HuffPost Live · 2012</div>
-            <h2 class="reveal">Bringing PrEP to air months ahead of the coverage</h2>
+            <h2 class="reveal">PrEP on air, months early</h2>
           </div>
           <p class="reveal lead-p">The FDA approved Truvada for HIV prevention in 2012, and then almost nobody talked about it. PrEP was clinically real but invisible in the communities it was built to serve. Roughly six months after approval, well ahead of mainstream coverage, I brought the story to HuffPost Live and produced a 29-minute live expert panel on it. Nobody assigned it. I argued it mattered, and then I built it.</p>
-          <figure class="still reveal"><img src="assets/stills/prep-origination.jpg" alt="Bringing PrEP to air months ahead of the coverage" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/cc594328635d480d3cf04873a746a262/watch" data-clip-play data-clip="huffpost-2013-hiv-prevention-pill-truvada-in-stores" data-tag="HuffPost Live · Panel Interview · 2013-2014" data-title="The HIV prevention pill hits pharmacies" data-sub="An early live panel on Truvada's arrival as PrEP reached pharmacy shelves." data-poster="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" data-local="media/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4" data-stream-id="cc594328635d480d3cf04873a746a262" aria-label="Play: The HIV prevention pill hits pharmacies"><img src="assets/stills/prep-origination.jpg" alt="The PrEP expert panel on the HuffPost Live set" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"><img src="assets/stills/mc-truvada-2012.jpg" alt="Truvada pill and packaging" loading="lazy"></span><figcaption class="mcap">Truvada, 2012 · Jeffrey Beall · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-truvada-2012.jpg" alt="Truvada pill and packaging" loading="lazy"><figcaption class="mcap">Truvada, 2012 · Jeffrey Beall · CC BY-SA</figcaption></figure>
             <a class="clipcard" href="https://www.nytimes.com/2014/05/15/health/advocating-pill-us-signals-shift-to-prevent-aids.html" rel="noopener"><span class="co">The New York Times</span><span class="ch">Advocating Pill, U.S. Signals Shift to Prevent AIDS</span><span class="ce">Federal health officials recommended Wednesday that hundreds of thousands of Americans at risk for AIDS take a daily pill that has been shown to prevent infection...</span><span class="cd">May 14, 2014 ↗</span></a>
           </div>
 
@@ -329,20 +363,21 @@
           <div class="pull reveal">Origination first. Execution second. Credit? Optional.</div>
           <p class="reveal">There's a difference between producing a segment and identifying why it matters, and this is the cleanest version of that distinction I've got. I found the story, made the case, booked genuine disagreement instead of a consensus panel, and put it in front of a live audience early.</p>
           <div class="clips reveal">
-            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><span class="cl">Watch: The HIV prevention pill hits pharmacies</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/cc594328635d480d3cf04873a746a262/watch" data-clip-play data-clip="huffpost-2013-hiv-prevention-pill-truvada-in-stores" data-tag="HuffPost Live · Panel Interview · 2013-2014" data-title="The HIV prevention pill hits pharmacies" data-sub="An early live panel on Truvada's arrival as PrEP reached pharmacy shelves." data-poster="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" data-local="media/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4" data-stream-id="cc594328635d480d3cf04873a746a262" aria-label="Play: The HIV prevention pill hits pharmacies"><img src="assets/posters/huffpost-2013-hiv-prevention-pill-truvada-in-stores.jpg" alt="The HIV prevention pill hits pharmacies" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: The HIV prevention pill hits pharmacies</span></a>
           </div>
         </article>
 
         <article class="story" id="scientology-live-coverage">
           <div class="case-band">
             <div class="kick reveal">HuffPost Live · 2013</div>
-            <h2 class="reveal">Covering Scientology, live, under legal scrutiny</h2>
+            <h2 class="reveal">Covering Scientology, live</h2>
           </div>
           <p class="reveal">In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. I produced Jenna Miscavige Hill's on-record break with the church, the niece of its leader telling her story live. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking sat under the shadow of multi-million-dollar litigation. That wasn't background noise. It was the operating condition for the work.</p>
           <div class="media-row reveal">
             <figure class="mcard"><img src="assets/stills/mc-jenna-huffpostlive-2013.jpg" alt="Jenna Miscavige Hill and the host on the HuffPost Live couch, newsroom behind them" loading="lazy"><figcaption class="mcap">Jenna Miscavige Hill on the HuffPost Live set, 2013 · frame from the broadcast</figcaption></figure>
             <figure class="mcard"><img src="assets/stills/mc-scientology-bigblue-2009.jpg" alt="Church of Scientology building, Los Angeles" loading="lazy"><figcaption class="mcap">Scientology's &quot;Big Blue,&quot; Los Angeles · PictorialEvidence · CC BY-SA</figcaption></figure>
             <a class="clipcard" href="https://www.journalism.co.uk/huffpost-live-vice-and-new-york-times-among-webby-award-winners/" rel="noopener"><span class="co">Journalism.co.uk</span><span class="ch">HuffPost Live and NY Times among Webby Award winners</span><span class="ce">News organisations such as the New York Times, BBC and Forbes joined digital-only news outlets including Pitchfork, The Daily Beast and the Huffington Post...</span><span class="cd">Apr 30, 2013 ↗</span></a>
+            <figure class="mcard"><img src="assets/stills/huffpost-live-set.jpg" alt="Host and guest in conversation on the HuffPost Live couch set" loading="lazy"><figcaption class="mcap">The HuffPost Live set, New York · from the broadcast</figcaption></figure>
           </div>
 
           <p class="reveal">The format made it harder. HuffPost Live ran on live audience engagement, viewer comments feeding straight into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.</p>
@@ -358,37 +393,34 @@
         <article class="story" id="jazz-jennings">
           <div class="case-band">
             <div class="kick reveal">HuffPost Live · 2013</div>
-            <h2 class="reveal">A full hour with Jazz, two years before TLC</h2>
+            <h2 class="reveal">An hour with Jazz, before TLC</h2>
           </div>
           <p class="reveal lead-p">On April 2, 2013, I produced a 58-minute live HuffPost Live episode built around Jazz, a transgender kid who'd become the star of TLC's I Am Jazz two years later. She was our anchor guest, alongside her mother. Host Alicia Menendez held a child-safe format across nearly an hour of live TV. That's its own production discipline: every question pre-considered, every escape hatch planned.</p>
-          <figure class="still reveal"><img src="assets/stills/jazz-jennings.jpg" alt="A full hour with Jazz, two years before TLC" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
-          <div class="media-row reveal solo">
-            <figure class="mcard wide tall"><span class="m-prev" data-preview="assets/previews/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4"><img src="assets/stills/mc-jazz-jennings-2016.jpg" alt="Jazz Jennings at the 2016 NYC Pride Parade" loading="lazy" style="object-position:center 32%"></span><figcaption class="mcap">Jazz Jennings, 2016 · Steven Pisano · CC BY</figcaption></figure>
+          <figure class="still reveal"><img src="assets/stills/jazz-jennings.jpg" alt="Jazz and her mother on the HuffPost Live set" loading="lazy"><figcaption class="cap">From the broadcast · HuffPost Live, 2013</figcaption></figure>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-jazz-jennings-2016.jpg" alt="Jazz Jennings at the 2016 NYC Pride Parade" loading="lazy" style="object-position:center 32%"><figcaption class="mcap">Jazz Jennings, 2016 · Steven Pisano · CC BY</figcaption></figure>
+            <a class="clipcard" href="https://www.hollywoodreporter.com/tv/tv-news/jazz-jennings-lands-tlc-docuseries-780890/" rel="noopener"><span class="co">The Hollywood Reporter</span><span class="ch">Transgender Teen Activist Lands TLC Reality Show</span><span class="ce">TLC is becoming the latest network to explore transgender life. The cable network has handed out a straight-to-series order for All That Jazz, a docuseries following 14-year-old transgender activist Jazz Jennings...</span><span class="cd">Mar 12, 2015 ↗</span></a>
           </div>
 
           <p class="reveal">We also booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air. On air, the panel discussed attempted-suicide rates for transgender youth that guests put near 50 percent. Most outlets weren't having that conversation at all.</p>
           <p class="reveal">I Am Jazz got greenlit in 2015 and ran for more than seven seasons.</p>
-          <div class="media-row reveal">
-            <a class="clipcard" href="https://www.hollywoodreporter.com/tv/tv-news/jazz-jennings-lands-tlc-docuseries-780890/" rel="noopener"><span class="co">The Hollywood Reporter</span><span class="ch">Transgender Teen Activist Lands TLC Reality Show</span><span class="ce">TLC is becoming the latest network to explore transgender life. The cable network has handed out a straight-to-series order for All That Jazz, a docuseries following 14-year-old transgender activist Jazz Jennings...</span><span class="cd">Mar 12, 2015 ↗</span></a>
-          </div>
-
           <div class="pull reveal">Find the story early. Then build the container so it can be told safely.</div>
           <p class="reveal">Two years before television decided this story was mainstream, we gave it a full hour. A format careful enough to protect a child, serious enough to carry clinical reality.</p>
           <div class="clips reveal">
-            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-or-aje-2012-jazz-growing-up-trans-youth.jpg" alt="Growing up trans, with Jazz Jennings" loading="lazy"><span class="cl">Watch: Growing up trans, with Jazz Jennings</span></a>
-            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Watch: The few, the proud, the trans</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/f2af0db41c8092e097f770c9e1846cb5/watch" data-clip-play data-clip="huffpost-or-aje-2012-jazz-growing-up-trans-youth" data-tag="HuffPost / Al Jazeera · Full Episode · 2012-2014" data-title="Growing up trans, with Jazz Jennings" data-sub="A full-hour interview episode with the trans youth advocate." data-poster="assets/posters/huffpost-or-aje-2012-jazz-growing-up-trans-youth.jpg" data-local="media/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4" data-stream-id="f2af0db41c8092e097f770c9e1846cb5" aria-label="Play: Growing up trans, with Jazz Jennings"><img src="assets/posters/huffpost-or-aje-2012-jazz-growing-up-trans-youth.jpg" alt="Growing up trans, with Jazz Jennings" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Growing up trans, with Jazz Jennings</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/7819090251204c968c4603709229098c/watch" data-clip-play data-clip="huffpost-2012-the-few-the-proud-trans-military-panel" data-tag="HuffPost Live · Panel Discussion · 2012-2013" data-title="The few, the proud, the trans" data-sub="A live panel on transgender service members, years ahead of the policy fights." data-poster="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" data-local="media/huffpost-2012-the-few-the-proud-trans-military-panel.mp4" data-stream-id="7819090251204c968c4603709229098c" aria-label="Play: The few, the proud, the trans"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: The few, the proud, the trans</span></a>
           </div>
         </article>
 
         <article class="story" id="mandela-special">
           <div class="case-band">
             <div class="kick reveal">Fusion · 2013</div>
-            <h2 class="reveal">Rebuilding primetime in real time: the Mandela special</h2>
+            <h2 class="reveal">The Mandela special, rebuilt</h2>
           </div>
           <p class="reveal lead-p">On December 5, 2013, I was producing Fusion's primetime flagship when Nelson Mandela died at 8:50 PM. The rundown had been built for a different night. We threw it out and rebuilt the broadcast from scratch, live, with anchor Mariana Atencio carrying it solo from our studio and ABC's Lindsay Janis co-anchoring from theirs. Fusion was a young ABC and Univision joint venture, and this was the night it had to perform like a legacy network.</p>
-          <figure class="still reveal"><img src="assets/stills/mandela-special.jpg" alt="Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board" loading="lazy"><figcaption class="cap">Mariana Atencio opening the special · from the broadcast, Dec 5, 2013</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/0aa1c9a40167c873c55c9d1df265bfa7/watch" data-clip-play data-clip="fusion-2013-america-with-jorge-ramos-december-5" data-tag="Fusion · Full Episode · 2013" data-title="America with Jorge Ramos, December 5" data-sub="A complete 2013 episode of Fusion's flagship weekly, produced end to end." data-poster="assets/posters/fusion-2013-america-with-jorge-ramos-december-5.jpg" data-local="media/fusion-2013-america-with-jorge-ramos-december-5.mp4" data-stream-id="0aa1c9a40167c873c55c9d1df265bfa7" aria-label="Play: America with Jorge Ramos, December 5"><img src="assets/stills/mandela-special.jpg" alt="Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2013-america-with-jorge-ramos-december-5.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">Mariana Atencio opening the special · from the broadcast, Dec 5, 2013</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/fusion-2013-america-with-jorge-ramos-december-5.mp4"><img src="assets/stills/mc-mandela-2008.jpg" alt="Nelson Mandela portrait, 2008" loading="lazy"></span><figcaption class="mcap">Nelson Mandela, 2008 · SA The Good News · CC BY</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-mandela-2008.jpg" alt="Nelson Mandela portrait, 2008" loading="lazy"><figcaption class="mcap">Nelson Mandela, 2008 · SA The Good News · CC BY</figcaption></figure>
             <a class="clipcard" href="https://www.nytimes.com/2013/12/06/world/africa/nelson-mandela-obit.html" rel="noopener"><span class="co">The New York Times</span><span class="ch">Nelson Mandela, South Africa's Liberator as Prisoner and President, Dies at 95</span><span class="ce">Nelson Mandela, who led the emancipation of South Africa from white minority rule and served as his country's first black president...</span><span class="cd">Dec 5, 2013 ↗</span></a>
           </div>
 
@@ -396,8 +428,8 @@
           <div class="pull reveal">I don't protect the plan. I protect the broadcast.</div>
           <p class="reveal">Anyone who's run a multi-stakeholder launch under shifting conditions knows this problem. The plan is gone, the stakeholders multiply, and the clock doesn't move. Here's what that night proved about how I work: I don't protect the plan, I protect the broadcast. Structure exists to be rebuilt at speed, and the calmest person in the control room should be the one holding the rundown.</p>
           <div class="clips reveal">
-            <a href="work.html#live-broadcasts"><img src="assets/posters/fusion-2013-america-with-jorge-ramos-december-5.jpg" alt="America with Jorge Ramos, December 5" loading="lazy"><span class="cl">Watch: America with Jorge Ramos, December 5</span></a>
-            <a href="work.html#live-broadcasts"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos, the showreel" loading="lazy"><span class="cl">Watch: America with Jorge Ramos, the showreel</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/0aa1c9a40167c873c55c9d1df265bfa7/watch" data-clip-play data-clip="fusion-2013-america-with-jorge-ramos-december-5" data-tag="Fusion · Full Episode · 2013" data-title="America with Jorge Ramos, December 5" data-sub="A complete 2013 episode of Fusion's flagship weekly, produced end to end." data-poster="assets/posters/fusion-2013-america-with-jorge-ramos-december-5.jpg" data-local="media/fusion-2013-america-with-jorge-ramos-december-5.mp4" data-stream-id="0aa1c9a40167c873c55c9d1df265bfa7" aria-label="Play: America with Jorge Ramos, December 5"><img src="assets/posters/fusion-2013-america-with-jorge-ramos-december-5.jpg" alt="America with Jorge Ramos, December 5" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2013-america-with-jorge-ramos-december-5.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: America with Jorge Ramos, December 5</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/ab1fd4776fb5231713a07d9e7935c5ab/watch" data-clip-play data-clip="fusion-2013-america-with-jorge-ramos" data-tag="Fusion · Showreel · 2013-2015" data-title="America with Jorge Ramos, the showreel" data-sub="A 44-minute reel from Fusion's flagship weekly news program." data-poster="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" data-local="media/fusion-2013-america-with-jorge-ramos.mp4" data-stream-id="ab1fd4776fb5231713a07d9e7935c5ab" aria-label="Play: America with Jorge Ramos, the showreel"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos, the showreel" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2013-america-with-jorge-ramos.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: America with Jorge Ramos, the showreel</span></a>
           </div>
         </article>
 
@@ -409,13 +441,13 @@
         <article class="story" id="mong-kok-backpack-live">
           <div class="case-band">
             <div class="kick reveal">Fusion · 2014</div>
-            <h2 class="reveal">Live from a backpack in Mong Kok</h2>
+            <h2 class="reveal">Live from a Mong Kok backpack</h2>
           </div>
           <p class="reveal lead-p">October 2014. The Umbrella Revolution filled the streets of Hong Kong, and the confrontations in Mong Kok were live, unscripted, and moving faster than any rundown could anticipate. I field-produced Fusion's breaking news coverage from inside those confrontations with no script and zero infrastructure. No satellite truck. No control room. No studio. The whole live operation ran from a backpack on my back.</p>
-          <figure class="still reveal"><img src="assets/stills/mong-kok-backpack-live.jpg" alt="Live from a backpack in Mong Kok" loading="lazy"><figcaption class="cap">From the field feed · Hong Kong, 2014</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/916e5ea1de00ac7b3125e60644017298/watch" data-clip-play data-clip="ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage" data-tag="Fusion · Live Coverage · 2014" data-title="Live from Hong Kong's Occupy Central" data-sub="Real-time protest coverage produced as demonstrators filled the streets." data-poster="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" data-local="media/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4" data-stream-id="916e5ea1de00ac7b3125e60644017298" aria-label="Play: Live from Hong Kong's Occupy Central"><img src="assets/stills/mong-kok-backpack-live.jpg" alt="Live field feed frame from Mong Kok, Hong Kong, 2014" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">From the field feed · Hong Kong, 2014</figcaption></figure>
           <div class="media-row reveal">
             <figure class="mcard"><img src="assets/stills/mc-mongkok-2014.jpg" alt="Umbrella Revolution street scene, Mong Kok" loading="lazy"><figcaption class="mcap">Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA</figcaption></figure>
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage-960.mp4"><img src="assets/stills/mc-mongkok-barricade-2014.jpg" alt="A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014" loading="lazy"></span><figcaption class="mcap">Holding the barricade line · from the coverage, Hong Kong 2014</figcaption></figure>
+            <figure class="mcard"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/916e5ea1de00ac7b3125e60644017298/watch" data-clip-play data-clip="ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage" data-tag="Fusion · Live Coverage · 2014" data-title="Live from Hong Kong's Occupy Central" data-sub="Real-time protest coverage produced as demonstrators filled the streets." data-poster="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" data-local="media/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4" data-stream-id="916e5ea1de00ac7b3125e60644017298" aria-label="Play: Live from Hong Kong's Occupy Central"><img src="assets/stills/mc-mongkok-barricade-2014.jpg" alt="A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="mcap">Holding the barricade line · from the coverage, Hong Kong 2014</figcaption></figure>
           </div>
 
           <p class="reveal">The production problem was integration, not gear. I coordinated three competing broadcast organizations, Fusion, ABC News, and Univision, plus multiple live feeds and real-time social data, all at once, while the story kept changing on its way to air. Anchor Mariana Atencio confirmed it for viewers on the broadcast itself: &quot;we're coming to you live from a backpack on the back of my producer.&quot;</p>
@@ -423,22 +455,23 @@
           <p class="reveal">That assignment compressed everything years of live news taught me. You can't fix a live broadcast in post. So you anticipate the failure modes before you go on, hold the narrative through-line while conditions shift, and deliver at production quality under whatever circumstances actually exist.</p>
           <div class="media-row reveal">
             <a class="clipcard" href="https://www.hrw.org/news/2014/10/16/eight-questions-about-occupy-hong-kong" rel="noopener"><span class="co">Human Rights Watch</span><span class="ch">Eight Questions about &quot;Occupy Hong Kong&quot;</span><span class="ce">Hong Kong's Occupy Movement refers to a citizens' blockade of major roads in Hong Kong's Admiralty, Mongkok, and Causeway Bay districts since September 29, 2014.</span><span class="cd">Oct 16, 2014 ↗</span></a>
+            <a class="clipcard" href="https://www.npr.org/sections/thetwo-way/2014/10/18/357178403/hong-kong-activists-clash-with-police-retake-protest-site" rel="noopener"><span class="co">NPR</span><span class="ch">Hong Kong Activists Clash With Police, Retake Protest Site</span><span class="ce">Pro-democracy activists in Hong Kong have retaken parts of a protest camp that authorities had cleared on Friday after scuffles with police clad in riot gear that left dozens of people injured.</span><span class="cd">Oct 18, 2014 ↗</span></a>
           </div>
 
           <div class="clips reveal">
-            <a href="work.html#live-broadcasts"><img src="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" alt="Live from Hong Kong's Occupy Central" loading="lazy"><span class="cl">Watch: Live from Hong Kong's Occupy Central</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/916e5ea1de00ac7b3125e60644017298/watch" data-clip-play data-clip="ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage" data-tag="Fusion · Live Coverage · 2014" data-title="Live from Hong Kong's Occupy Central" data-sub="Real-time protest coverage produced as demonstrators filled the streets." data-poster="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" data-local="media/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4" data-stream-id="916e5ea1de00ac7b3125e60644017298" aria-label="Play: Live from Hong Kong's Occupy Central"><img src="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" alt="Live from Hong Kong's Occupy Central" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Live from Hong Kong's Occupy Central</span></a>
           </div>
         </article>
 
         <article class="story" id="fusion-ramos-lawsuit">
           <div class="case-band">
             <div class="kick reveal">Fusion · 2013-2015</div>
-            <h2 class="reveal">Producing Jorge Ramos under a $500 million lawsuit</h2>
+            <h2 class="reveal">Ramos under a $500M lawsuit</h2>
           </div>
           <p class="reveal lead-p">From 2013 to 2015 I was a Senior Producer on &quot;America With Jorge Ramos,&quot; Fusion's primetime flagship, the ABC News and Univision joint venture built to hold U.S. power to account from a Latino perspective. Ramos was already the most prominent Spanish-language anchor on American television. Partway through our run, Donald Trump filed a $500 million lawsuit against Univision, and Ramos's confrontation with him in Dubuque became one of the defining moments of the 2016 election cycle.</p>
           <figure class="still reveal"><img src="assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg" alt="Jorge Ramos speaking, 2016" loading="lazy"><figcaption class="cap">Jorge Ramos, 2016 · photo: Gage Skidmore · CC BY-SA 2.0</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/fusion-2014-america-with-jorge-ramos-october-7.mp4"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"></span><figcaption class="mcap">Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"><figcaption class="mcap">Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA</figcaption></figure>
             <a class="clipcard" href="https://www.npr.org/sections/thetwo-way/2015/06/30/418990895/donald-trump-sues-univision-for-500-million" rel="noopener"><span class="co">NPR</span><span class="ch">Donald Trump Sues Univision For $500 Million</span><span class="ce">Donald Trump, a Republican presidential candidate, is suing Univision. The Spanish-language TV network dropped its coverage of Miss USA and Miss Universe...</span><span class="cd">Jun 30, 2015 ↗</span></a>
           </div>
 
@@ -446,8 +479,8 @@
           <div class="pull reveal">Every question was a potential exhibit. Coverage ran anyway.</div>
           <p class="reveal">Fusion's rollout ranked among the top-10 cable network launches in history, growing to nearly 40 million households by its second year per Adweek, and the show over-indexed among Hispanic and African-American audiences, all while sustaining that coverage inside a live lawsuit. The coverage ran. The organization never became the story.</p>
           <div class="clips reveal">
-            <a href="work.html#live-broadcasts"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos, the showreel" loading="lazy"><span class="cl">Watch: America with Jorge Ramos, the showreel</span></a>
-            <a href="work.html#live-broadcasts"><img src="assets/posters/fusion-2014-midterm-mayhem-october-12-election-coverage.jpg" alt="Midterm mayhem, the 2014 election episode" loading="lazy"><span class="cl">Watch: Midterm mayhem, the 2014 election episode</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/ab1fd4776fb5231713a07d9e7935c5ab/watch" data-clip-play data-clip="fusion-2013-america-with-jorge-ramos" data-tag="Fusion · Showreel · 2013-2015" data-title="America with Jorge Ramos, the showreel" data-sub="A 44-minute reel from Fusion's flagship weekly news program." data-poster="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" data-local="media/fusion-2013-america-with-jorge-ramos.mp4" data-stream-id="ab1fd4776fb5231713a07d9e7935c5ab" aria-label="Play: America with Jorge Ramos, the showreel"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America with Jorge Ramos, the showreel" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2013-america-with-jorge-ramos.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: America with Jorge Ramos, the showreel</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/66f1f5596829a76f90eaea25ac5d22d3/watch" data-clip-play data-clip="fusion-2014-midterm-mayhem-october-12-election-coverage" data-tag="Fusion · Full Episode · 2014" data-title="Midterm mayhem, the 2014 election episode" data-sub="A full episode of live election coverage in the run-up to the 2014 midterms." data-poster="assets/posters/fusion-2014-midterm-mayhem-october-12-election-coverage.jpg" data-local="media/fusion-2014-midterm-mayhem-october-12-election-coverage.mp4" data-stream-id="66f1f5596829a76f90eaea25ac5d22d3" aria-label="Play: Midterm mayhem, the 2014 election episode"><img src="assets/posters/fusion-2014-midterm-mayhem-october-12-election-coverage.jpg" alt="Midterm mayhem, the 2014 election episode" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2014-midterm-mayhem-october-12-election-coverage.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Midterm mayhem, the 2014 election episode</span></a>
           </div>
         </article>
 
@@ -459,12 +492,12 @@
         <article class="story" id="hurricane-maria-field">
           <div class="case-band">
             <div class="kick reveal">AJ+ · 2017</div>
-            <h2 class="reveal">Getting the Mayor of San Juan on record in the storm</h2>
+            <h2 class="reveal">San Juan's mayor in the storm</h2>
           </div>
           <p class="reveal lead-p">In September 2017 I field-produced an interview with San Juan Mayor Carmen Yulín Cruz while Hurricane Maria was still active over Puerto Rico. Raw verité: no music, ambient disaster audio, an unscripted primary source. On camera, unprompted, she said, &quot;At least somebody's listening on the other side of the ocean. Which is new. Which is new.&quot; She also confirmed on record that the island faced a four-month electrical blackout.</p>
-          <figure class="still reveal"><img src="assets/stills/hurricane-maria-field.jpg" alt="Getting the Mayor of San Juan on record in the storm" loading="lazy"><figcaption class="cap">From the field tape · San Juan, 2017</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b610deaacd1ba1311079601e92044d79/watch" data-clip-play data-clip="ajp-2017-san-juan-mayor-speaks-out-hurricane-maria" data-tag="AJ+ · Social Video · 2017" data-title="San Juan's mayor speaks out" data-sub="Carmen Yulín Cruz on the Maria response, coverage that fed a congressional FEMA probe." data-poster="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" data-local="media/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4" data-stream-id="b610deaacd1ba1311079601e92044d79" aria-label="Play: San Juan's mayor speaks out"><img src="assets/stills/hurricane-maria-field.jpg" alt="Mayor Carmen Yulín Cruz interviewed in the field during Hurricane Maria" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">From the field tape · San Juan, 2017</figcaption></figure>
           <div class="media-row reveal">
-            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4"><img src="assets/stills/mc-cruz-dhs-2017.jpg" alt="Carmen Yulin Cruz meeting with DHS leadership, October 2017" loading="lazy"></span><figcaption class="mcap">Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-cruz-dhs-2017.jpg" alt="Carmen Yulin Cruz meeting with DHS leadership, October 2017" loading="lazy"><figcaption class="mcap">Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain</figcaption></figure>
             <a class="clipcard" href="https://www.nbcnews.com/storyline/puerto-rico-crisis/san-juan-s-mayor-pleads-trump-you-are-killing-us-n806116" rel="noopener"><span class="co">NBC News</span><span class="ch">Puerto Rico Crisis: San Juan Mayor Pleads for Federal Aid, Trump Hits Back</span><span class="ce">&quot;We are dying, and you are killing us with the inefficiency and the bureaucracy,&quot; San Juan Mayor Carmen Yulín Cruz said Friday at a news conference.</span><span class="cd">Sep 29, 2017 ↗</span></a>
           </div>
 
@@ -472,48 +505,50 @@
           <div class="pull reveal">Get a primary source on record. Worst conditions. Then trust the story to do the work.</div>
           <p class="reveal">Crisis communication stays abstract until you're standing in it. The job that week was simple to say and hard to do: get a primary source on record under the worst conditions, keep the production honest enough that nothing gets between her and the audience, and trust the story to do the work.</p>
           <div class="clips reveal">
-            <a href="work.html#social-explainers"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><span class="cl">Watch: San Juan's mayor speaks out</span></a>
-            <a href="work.html#field-shoots"><img src="assets/posters/ajp-2017-hurricane-maria-puerto-rico-aftermath.jpg" alt="Puerto Rico after Hurricane Maria" loading="lazy"><span class="cl">Watch: Puerto Rico after Hurricane Maria</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b610deaacd1ba1311079601e92044d79/watch" data-clip-play data-clip="ajp-2017-san-juan-mayor-speaks-out-hurricane-maria" data-tag="AJ+ · Social Video · 2017" data-title="San Juan's mayor speaks out" data-sub="Carmen Yulín Cruz on the Maria response, coverage that fed a congressional FEMA probe." data-poster="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" data-local="media/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4" data-stream-id="b610deaacd1ba1311079601e92044d79" aria-label="Play: San Juan's mayor speaks out"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: San Juan's mayor speaks out</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/97a1f2a94b205023cfff8dee3dbb1f3f/watch" data-clip-play data-clip="ajp-2017-hurricane-maria-puerto-rico-aftermath" data-tag="AJ+ · Social Video · 2017" data-title="Puerto Rico after Hurricane Maria" data-sub="Aftermath coverage that fed a congressional FEMA probe." data-poster="assets/posters/ajp-2017-hurricane-maria-puerto-rico-aftermath.jpg" data-local="media/ajp-2017-hurricane-maria-puerto-rico-aftermath.mp4" data-stream-id="97a1f2a94b205023cfff8dee3dbb1f3f" aria-label="Play: Puerto Rico after Hurricane Maria"><img src="assets/posters/ajp-2017-hurricane-maria-puerto-rico-aftermath.jpg" alt="Puerto Rico after Hurricane Maria" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-hurricane-maria-puerto-rico-aftermath.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Puerto Rico after Hurricane Maria</span></a>
           </div>
         </article>
 
         <article class="story" id="aj-plus-50m-views">
           <div class="case-band">
             <div class="kick reveal">AJ+ · 2017</div>
-            <h2 class="reveal">Fifty million views in two minutes</h2>
+            <h2 class="reveal">50M views in two minutes</h2>
           </div>
           <p class="reveal lead-p">As a Senior Producer at AJ+ in San Francisco, I got a deceptively simple brief: build a video that could break through. Breaking through meant something specific. The platform was Facebook. The window was the first three seconds. And the audience would scroll past anything that felt like a lecture. The piece I led, a two-minute explainer on the US measles outbreaks, hit 50 million views. What made it work wasn't creativity. It was engineering.</p>
-          <figure class="still reveal"><img src="assets/stills/measles-hook.jpg" alt="Opening frame of the measles explainer: an infant with measles" loading="lazy" style="object-position:center 30%"><figcaption class="cap">The opening frame · from the piece, AJ+ 2017</figcaption></figure>
-          <div class="media-row reveal solo">
-            <figure class="mcard wide"><span class="m-prev" data-preview="assets/previews/measles-capitol-xf.mp4"><img src="assets/stills/measles-capitol.jpg" alt="Anti-vaccine protest signs outside the California state capitol" loading="lazy"></span><figcaption class="mcap">From the piece: anti-vaccine protesters at California's capitol</figcaption></figure>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/stills/measles-hook.jpg" alt="Opening frame of the measles explainer: an infant with measles" loading="lazy" style="object-position:center 30%"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">The opening frame · from the piece, AJ+ 2017</figcaption></figure>
+          <div class="media-row reveal">
+            <figure class="mcard"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/stills/measles-capitol.jpg" alt="Anti-vaccine protest signs outside the California state capitol" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="mcap">From the piece: anti-vaccine protesters at California's capitol</figcaption></figure>
+            <a class="clipcard" href="https://www.npr.org/sections/health-shots/2017/05/03/526723028/autism-fears-fueling-minnesotas-measles-outbreak" rel="noopener"><span class="co">NPR</span><span class="ch">Anti-Vaccine Groups Fuel Fears In Minnesota's Measles Outbreak</span><span class="ce">Health officials in Minnesota have been scrambling to contain a measles outbreak that has sickened primarily Somali-American children in the state.</span><span class="cd">May 3, 2017 ↗</span></a>
           </div>
 
           <p class="reveal">Three levers decided everything. The hook had to answer the viewer's unasked question, why should I stop scrolling, inside the first three seconds. The argument had to be legible at zero volume, because much of Facebook autoplay ran silent, so every cut and text line carried the logic without the audio. And the pacing had to match the platform's attention curve, not broadcast rhythm. Years at Al Jazeera English, HuffPost Live, and Fusion trained me to think in segments and rundowns. Social video had no rundown. It had a scroll.</p>
           <div class="pull reveal">This was a systems problem dressed in editorial clothing.</div>
           <p class="reveal">The video earned 50 million views and more than 40,000 comments on a piece of policy journalism cut for a two-minute window, at a network then ranked among the largest social news video publishers on Facebook. The deeper result was structural. The same-day explainer became a repeatable production line. And I coached producers from behind-camera roles into on-camera positions using it.</p>
-          <div class="media-row reveal solo">
-            <figure class="mcard wide"><img src="assets/stills/ajplus-newsroom.jpg" alt="Mara Van Ells presenting in the AJ+ newsroom" loading="lazy"><figcaption class="mcap">Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece</figcaption></figure>
+          <div class="media-row reveal">
+            <figure class="mcard"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/stills/ajplus-newsroom.jpg" alt="Mara Van Ells presenting in the AJ+ newsroom" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="mcap">Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece</figcaption></figure>
+            <figure class="mcard"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/stills/aj-plus-50m-views.jpg" alt="Frame from the explainer: Andrew Wakefield outside a hearing, on-screen text reading 'In 1998, a British surgeon published a...'" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="mcap">From the piece: the retracted 1998 Wakefield study</figcaption></figure>
           </div>
 
           <div class="clips reveal">
-            <a href="work.html#social-explainers"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">Watch: Measles is back in America</span></a>
-            <a href="work.html#social-explainers"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><span class="cl">Watch: San Juan's mayor speaks out</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Measles is back in America</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/b610deaacd1ba1311079601e92044d79/watch" data-clip-play data-clip="ajp-2017-san-juan-mayor-speaks-out-hurricane-maria" data-tag="AJ+ · Social Video · 2017" data-title="San Juan's mayor speaks out" data-sub="Carmen Yulín Cruz on the Maria response, coverage that fed a congressional FEMA probe." data-poster="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" data-local="media/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4" data-stream-id="b610deaacd1ba1311079601e92044d79" aria-label="Play: San Juan's mayor speaks out"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan's mayor speaks out" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: San Juan's mayor speaks out</span></a>
           </div>
         </article>
 
         <article class="story" id="talent-pipeline">
           <div class="case-band">
             <div class="kick reveal">AJ+ · 2017</div>
-            <h2 class="reveal">Coaching producers from behind the camera to on air</h2>
+            <h2 class="reveal">From behind camera to on air</h2>
           </div>
-          <p class="reveal">AJ+ ran two parallel content lines when I joined as a Senior Producer: Context, which was deep, slow, and weekly, and Real Time, which was fast, shallow, and daily. Both worked. Neither caught breaking news with explanatory depth. Leadership asked me to design a third line that shipped explainer-quality context at real-time speed, and to use that format as an on-camera talent pipeline.</p>
-
-          <p class="reveal">I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that hit 50 million views on Facebook. Then I coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara hosted his own series and won a National Daytime Emmy and multiple Webbys. Alongside that, I contributed to Sana Saeed's on-camera development; she went on to host Backspace, AJ+'s media-critique series. The format became a permanent third production line.</p>
+          <p class="reveal lead-p">AJ+ ran two parallel content lines when I joined as a Senior Producer: Context, which was deep, slow, and weekly, and Real Time, which was fast, shallow, and daily. Both worked. Neither caught breaking news with explanatory depth. Leadership asked me to design a third line that shipped explainer-quality context at real-time speed, and to use that format as an on-camera talent pipeline.</p>
+          <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/stills/mara-vanells-oncamera.jpg" alt="Mara Van Ells presenting to camera in the AJ+ measles explainer, lower third on screen" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">Mara Van Ells on camera · from the proof-of-concept piece, 2017</figcaption></figure>
           <div class="media-row reveal">
             <figure class="mcard"><img src="assets/stills/mc-yara-ajplus-2019.jpg" alt="Yara Elmjouie speaking directly to camera in the AJ+ newsroom" loading="lazy"><figcaption class="mcap">Yara Elmjouie hosting his AJ+ series, 2019 · frame from the broadcast</figcaption></figure>
             <a class="clipcard" href="https://www.webbyawards.com/news/learn-past-lessons-holocaust-survivor-aj/" rel="noopener"><span class="co">The Webby Awards · People's Voice, Documentary</span><span class="ch">Learn from the Past with 'Lessons from a Holocaust Survivor' by AJ+</span><span class="ce">With the knowledge that history repeats itself, it's important to listen to and learn from our elders.</span><span class="cd">2018 ↗</span></a>
           </div>
 
+          <p class="reveal">I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that hit 50 million views on Facebook. Then I coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara hosted his own series and won a National Daytime Emmy and multiple Webbys. Alongside that, I contributed to Sana Saeed's on-camera development; she went on to host Backspace, AJ+'s media-critique series. The format became a permanent third production line.</p>
           <div class="pull reveal">The output you measure is the content. The output that compounds is the people.</div>
           <p class="reveal">The talent pipeline was designed in, not a happy accident. The brief had two goals from the start: a new format and new on-camera principals. I built the system to deliver both. That's how I think about every system since. The output you measure is the content. The output that compounds is the people.</p>
           <div class="media-row reveal">
@@ -522,14 +557,14 @@
           </div>
 
           <div class="clips reveal">
-            <a href="work.html#social-explainers"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><span class="cl">Watch: Measles is back in America</span></a>
+            <a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5a827c6fdf137c4523fa194224983a75/watch" data-clip-play data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017" data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views." data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4" data-stream-id="5a827c6fdf137c4523fa194224983a75" aria-label="Play: Measles is back in America"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="Measles is back in America" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: Measles is back in America</span></a>
           </div>
         </article>
 
         <article class="story" id="comms-triage-build">
           <div class="case-band">
             <div class="kick reveal">Google xGE · 2025-2026</div>
-            <h2 class="reveal">Building the triage agent, then handing over the keys</h2>
+            <h2 class="reveal">The triage agent, handed off</h2>
           </div>
           <p class="reveal lead-p">The comms intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers landing faster than a human first-pass could honestly serve. Most of that first pass didn't need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that. Solo, inside the tools the team already ran on.</p>
           <figure class="still reveal"><img src="assets/stills/illo-triage-agent-detail.jpg" alt="Detail of the triage diagram: a red envelope glowing on its routing lane between gate arms" loading="lazy"><figcaption class="cap">The escalation lane, up close · detail from the system illustration</figcaption></figure>
@@ -559,7 +594,7 @@
         <article class="story" id="digital-twin">
           <div class="case-band">
             <div class="kick reveal">Google xGE · 2024-2026</div>
-            <h2 class="reveal">Teaching a system to write in an executive's voice</h2>
+            <h2 class="reveal">The executive voice, encoded</h2>
           </div>
           <p class="reveal lead-p">At Google Cross-Google Engineering I wrote for a vice president whose words landed on the company's most senior engineers, the Principal, Distinguished, and Fellow community, more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round burns days. So I decided the voice itself was the system to build.</p>
           <figure class="still reveal"><img src="assets/stills/illo-digital-twin-detail.jpg" alt="Detail of the digital-twin diagram: tangled lines meeting a glowing vertical gate and leaving as one clean waveform" loading="lazy"><figcaption class="cap">The gate that measures the voice · detail from the system illustration</figcaption></figure>
@@ -580,6 +615,7 @@
 gate  pass · revise · reject
 bar   calibrated per context to percentiles
       of what the author's own text scores</pre></div>
+            <figure class="mcard"><span class="m-prev" data-preview="assets/cinemagraphs/illo-voice-os-b-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-voice-os-hd.jpg" alt="System illustration: a written corpus streams into a six-axis radar gauge flanked by two reviewers, exiting as a single gated draft" loading="lazy"></span><figcaption class="mcap">voice-os, the public rebuild · system illustration, generated</figcaption></figure>
           </div>
 
         </article>
@@ -587,7 +623,7 @@ bar   calibrated per context to percentiles
         <article class="story" id="freeahmed-coalition">
           <div class="case-band">
             <div class="kick reveal">#FreeAhmed Coalition · 2026</div>
-            <h2 class="reveal">Ten days: the #FreeAhmed coalition</h2>
+            <h2 class="reveal">Ten days: #FreeAhmed</h2>
           </div>
           <p class="reveal">In March 2026, the journalist Ahmed Shihab-Eldin, a former HuffPost Live host and one of the most recognized Arab-American broadcasters of the digital era, was detained in Kuwait on charges the international press-freedom community called politically motivated. I'd worked alongside Ahmed during my Al Jazeera years. By mid-April he'd been held more than fifty days without resolution. The Committee to Protect Journalists took his case public, and a coalition of his former colleagues formed around it.</p>
           <div class="media-row reveal">
@@ -598,11 +634,13 @@ bar   calibrated per context to percentiles
           <p class="reveal">I joined that coalition, drawn largely from the former HuffPost Live and AJ+ producer networks, and helped push the #FreeAhmed campaign across US and international channels. The effort ran alongside CPJ, the International Federation of Journalists, Amnesty International, and Ahmed's international legal team. A detention case carries real risk for the person at its center, so the work demanded discretion: knowing what to say publicly, what to keep contained, and never becoming a vector for more harm. I won't detail the mechanics here. Deliberately.</p>
           <div class="media-row reveal">
             <div class="chipscard"><span class="co">The coalition, aligned</span><div class="chipset"><span class="orgchip">Committee to Protect Journalists</span><span class="orgchip">International Federation of Journalists</span><span class="orgchip">Amnesty International</span><span class="orgchip">His international legal team</span><span class="orgchip">The HuffPost Live + AJ+ producer network</span></div></div>
+            <a class="clipcard" href="https://www.ifj.org/media-centre/news/detail/category/press-releases/article/kuwait-free-ahmed-shihab-eldin" rel="noopener"><span class="co">International Federation of Journalists</span><span class="ch">Kuwait: Free Ahmed Shihab-Eldin</span><span class="ce">Shihab-Eldin was visiting his family in Kuwait at the start of the war and was last seen on 2 March. He is believed to be facing charges for allegedly spreading false information.</span><span class="cd">Apr 2026 ↗</span></a>
           </div>
 
           <p class="reveal">Ahmed was acquitted on the central charge and released in late April 2026, ten days after CPJ went public. I won't claim the coalition alone produced that outcome. But the pressure campaign was coordinated, international, and clean: nothing surfaced that could compromise him or the people working to free him.</p>
           <div class="media-row reveal">
             <a class="clipcard" href="https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/" rel="noopener"><span class="co">Committee to Protect Journalists</span><span class="ch">US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges</span><span class="ce">The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...</span><span class="cd">Apr 23, 2026 ↗</span></a>
+            <a class="clipcard" href="https://www.jurist.org/news/2026/04/us-kuwait-journalist-acquitted-on-all-charges-after-nearly-two-months-of-detention/" rel="noopener"><span class="co">JURIST</span><span class="ch">US-Kuwait journalist acquitted after nearly two months of detention</span><span class="ce">A Kuwait court acquitted US-Kuwaiti journalist Ahmed Shihab-Eldin of all charges, which is expected to end a 52-day detention that has drawn international concern about press freedom...</span><span class="cd">Apr 27, 2026 ↗</span></a>
           </div>
 
           <div class="pull reveal">The highest-stakes communication work is often deciding what not to say.</div>
@@ -612,7 +650,7 @@ bar   calibrated per context to percentiles
         <article class="story" id="builder-turn">
           <div class="case-band">
             <div class="kick reveal">Independent build · 2026</div>
-            <h2 class="reveal">From newsrooms to a fleet of fifty agents</h2>
+            <h2 class="reveal">A fleet of fifty agents</h2>
           </div>
           <p class="reveal lead-p">After sixteen years in newsrooms and communications, I turned the production instinct on my own job search. I forked an open-source project called career-ops, which was a scaffold, and extended it into a production pipeline: my personal writing corpus wired into every generated output, zero-token portal scanning that reads Greenhouse, Ashby, and Lever APIs directly and filters listings before a single token is spent, and parallel workers under a single orchestrator.</p>
           <figure class="still reveal"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><figcaption class="cap">The fleet · system illustration, generated</figcaption></figure>
@@ -635,7 +673,7 @@ $ launchctl list | grep career-ops | head -8
           <div class="pull reveal">Unclear thinking ships faster and breaks harder. So I draw the boundaries first.</div>
           <p class="reveal">The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation.</p>
           <div class="clips reveal">
-            <a href="work.html#ai-native"><img src="assets/broll-poster.jpg" alt="One script in, a produced short out" loading="lazy"><span class="cl">Watch: One script in, a produced short out</span></a>
+            <a class="mplay" href="assets/broll-short-n16.mp4" data-clip-play data-clip="broll-pipeline-2026" data-tag="Independent · AI-native · AI Pipeline Demo · 2026" data-title="One script in, a produced short out" data-sub="The broll pipeline: seven stages, ElevenLabs stack, every call logged" data-poster="assets/broll-poster.jpg" data-local="assets/broll-short-n16.mp4" data-stream-id="" aria-label="Play: One script in, a produced short out"><img src="assets/broll-poster.jpg" alt="One script in, a produced short out" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/broll-short.mp4"></video><span class="play-o" aria-hidden="true"></span><span class="cl">Watch: One script in, a produced short out</span></a>
           </div>
         </article>
         <!-- STORIES:END -->
@@ -662,6 +700,7 @@ $ launchctl list | grep career-ops | head -8
 
 <script src="shared/reveal.js?v=20260711e"></script>
 <script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/clipplay.js?v=20260712a"></script>
 <script>
   // sticky index highlight: click wins immediately, spy resumes after the scroll settles
   const idxEl=document.getElementById('st-index');
@@ -725,8 +764,16 @@ $ launchctl list | grep career-ops | head -8
   updateBands();
 </script>
 <script>
-  /* story stills that are frames from published clips hover-play that
-     clip's preview over the still (motion-gated, hover pointers only) */
+  /* clipplay tiles reveal their hover preview only once frames are actually
+     playing (prevents a black flash before the lazy src decodes) */
+  document.querySelectorAll('a.mplay').forEach((t)=>{
+    const v=t.querySelector('video.preview'); if(!v) return;
+    v.addEventListener('playing',()=>t.classList.add('prev-on'),{once:true});
+  });
+</script>
+<script>
+  /* generated-illustration cards hover-play a cinemagraph of the SAME image
+     (motion-gated, hover pointers only); clip frames use clipplay instead */
   if(window.__motionOK && matchMedia('(hover:hover) and (pointer:fine)').matches){
     document.querySelectorAll('.m-prev[data-preview]').forEach((el)=>{
       let v=null;

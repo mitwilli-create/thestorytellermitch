@@ -20,16 +20,47 @@ const md = (s) => esc(s).replace(/\[([^\]]+)\]\((?!javascript:)([a-z0-9./#:-]+)\
 const blob = JSON.stringify(stories);
 if (blob.includes('—')) { console.error('EM DASH found in stories.json — fix before baking'); process.exit(1); }
 
+// ---- in-page clip playback (round-3 A1) --------------------------------
+// Clip-derived visuals bake as a.mplay[data-clip-play] tiles: shared/clipplay.js
+// opens the theater on click; a lazy child video.preview hover-autoplays the
+// SAME clip's preview, contained inside the tile (provenance + containment
+// are Mitchell mandates: never hover-play a clip over a different image).
+function nojsHref(c) {
+  if (c.media.youtubeId) return `https://www.youtube.com/watch?v=${c.media.youtubeId}`;
+  if (clips.playback === 'stream' && c.media.streamId)
+    return `https://customer-${clips.streamCustomerCode}.cloudflarestream.com/${c.media.streamId}/watch`;
+  return c.media.local;
+}
+function clipOrDie(slug, where) {
+  const c = clipBySlug.get(slug);
+  if (!c) { console.error(`${where}: clip slug not in manifest: ${slug}`); process.exit(1); }
+  return c;
+}
+function playAttrs(c) {
+  const tag = `${c.outletLabel} · ${c.type} · ${c.year}`;
+  return ` data-clip-play data-clip="${esc(c.slug)}" data-tag="${esc(tag)}" data-title="${esc(c.title)}" data-sub="${esc(c.subtitle)}" data-poster="${esc(c.poster)}" data-local="${esc(c.media.local)}" data-stream-id="${esc(c.media.streamId ?? '')}"${c.media.youtubeId ? ` data-youtube-id="${esc(c.media.youtubeId)}"` : ''}`;
+}
+const previewVideo = (src) => src
+  ? `<video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="${esc(src)}"></video>`
+  : '';
+function mplay(c, inner, extra = '') {
+  return `<a class="mplay" href="${esc(nojsHref(c))}"${playAttrs(c)} aria-label="Play: ${esc(c.title)}">${inner}${previewVideo(c.hoverPreview)}<span class="play-o" aria-hidden="true"></span>${extra}</a>`;
+}
+
 function clipTile(slug) {
   const c = clipBySlug.get(slug);
   if (!c) { console.warn(`story clip slug not in manifest: ${slug}`); return ''; }
-  return `            <a href="work.html#${esc(c.bucket)}"><img src="${esc(c.poster)}" alt="${esc(c.title)}" loading="lazy"><span class="cl">Watch: ${esc(c.title)}</span></a>`;
+  return `            ${mplay(c, `<img src="${esc(c.poster)}" alt="${esc(c.title)}" loading="lazy">`, `<span class="cl">Watch: ${esc(c.title)}</span>`)}`;
 }
 
 const articles = stories.map((s) => {
-  const still = s.still
-    ? `          <figure class="still reveal"><img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"${s.still.pos ? ` style="object-position:${esc(s.still.pos)}"` : ""}><figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`
-    : '';
+  let still = '';
+  if (s.still) {
+    const img = `<img src="${esc(s.still.src)}" alt="${esc(s.still.alt ?? s.title)}" loading="lazy"${s.still.pos ? ` style="object-position:${esc(s.still.pos)}"` : ""}>`;
+    // still.clip: this frame comes from a published clip; the whole still plays it
+    const body = s.still.clip ? mplay(clipOrDie(s.still.clip, `story ${s.id} still`), img) : img;
+    still = `          <figure class="still reveal">${body}<figcaption class="cap">${esc(s.still.cap ?? '')}</figcaption></figure>\n`;
+  }
   // media rows: each entry may set after:<paragraph index> (default 1)
   function renderRow(items) {
     if (!items.length) return '';
@@ -43,13 +74,16 @@ const articles = stories.map((s) => {
           return `            <div class="termcard"><span class="tc-bar">${esc(m.title)}</span><pre class="tc-body">${esc(m.lines.join('\n'))}</pre></div>`;
         const cls = ['mcard', soloImg ? 'wide' : '', m.fit === 'contain' ? 'book' : '', m.tall ? 'tall' : ''].filter(Boolean).join(' ');
         const style = m.pos ? ` style="object-position:${esc(m.pos)}"` : '';
-        // m.preview: the image is a frame from (or directly tied to) a published
-        // clip; hover layers that clip's preview over the still (page JS wires it).
-        // m.previewLabel overrides the badge text (e.g. generated illustrations
-        // whose hover loop is a cinemagraph, not a clip)
+        // m.clip: the image IS a frame from that published clip; the tile
+        // becomes an in-page player (theater on click, contained hover preview).
+        // m.preview (without clip): self-derived motion only, e.g. generated
+        // illustrations whose hover loop is a cinemagraph of the same image;
+        // m.previewLabel overrides the badge text
         const img = `<img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"${style}>`;
         const label = m.previewLabel ? ` data-plabel="${esc(m.previewLabel)}"` : '';
-        const body = m.preview ? `<span class="m-prev" data-preview="${esc(m.preview)}"${label}>${img}</span>` : img;
+        const body = m.clip
+          ? mplay(clipOrDie(m.clip, `story ${s.id} media ${m.src}`), img)
+          : m.preview ? `<span class="m-prev" data-preview="${esc(m.preview)}"${label}>${img}</span>` : img;
         return `            <figure class="${cls}">${body}<figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
       }).join('\n')}\n          </div>\n`;
   }
