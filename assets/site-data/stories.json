@@ -3,7 +3,7 @@
     {
       "id": "bhutto-origin",
       "kicker": "WDRB Fox 41 · 2007",
-      "title": "The overnight shift when Bhutto was assassinated",
+      "title": "The Bhutto overnight shift",
       "body": [
         "December 2007. I was the overnight producer at WDRB Fox 41 in Louisville, owning two hours of a four-hour live morning block. Small-market station, small-market resources. Benazir Bhutto was assassinated during my window. I was hammering the incoming wires when the story broke, and I called it.",
         "Calling it meant restacking the entire two-hour block in real time: flipping from scheduled content to breaking news inside a tight window, driving the control room through the pivot, writing replacement copy during commercial breaks to keep up with a developing story. We reported Bhutto's death minutes before The Today Show did. From a local Fox affiliate in Kentucky.",
@@ -38,13 +38,19 @@
           "date": "Dec 27, 2007",
           "url": "https://www.deseret.com/2007/12/27/20061571/pakistani-opposition-leader-bhutto-killed-in-suicide-attack-on-campaign-rally/",
           "excerpt": "RAWALPINDI, Pakistan: Pakistan opposition leader Benazir Bhutto was assassinated Thursday by an attacker who shot her after a campaign rally and then blew himself up..."
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/louisville-2005-ccby-pugfather.jpg",
+          "cap": "Louisville at night, 2005 · The Pug Father · CC BY",
+          "alt": "Louisville skyline at night, 2005"
         }
       ]
     },
     {
       "id": "stream-launch-night",
       "kicker": "Al Jazeera English · 2011",
-      "title": "Launch night, rewritten by breaking news",
+      "title": "The bin Laden launch night",
       "body": [
         "The Stream was set to launch on May 2, 2011. A new kind of live program at Al Jazeera English, built to treat Twitter, Skype, SMS, and real-time trending data as first-class journalistic sources. The night before our first broadcast, Osama bin Laden was killed in Abbottabad, Pakistan. Every piece of content we'd prepared was suddenly worthless. We had roughly twelve hours to tear the launch show apart and rebuild it around a story nobody had planned for, on a program that had never aired.",
         "The infrastructure held. Our team found Sohaib Athar, a software consultant in Abbottabad who'd unknowingly live-tweeted the raid from @ReallyVirtual to a few hundred followers. We had him on Skype by air time. As we broadcast to 250 million households, our digital producer graphed his follower count climbing live, from a few hundred to tens of thousands, on screen. The audience watched the internet decide someone mattered in the exact moment it happened. Nobody had a name for that kind of journalism yet.",
@@ -58,9 +64,15 @@
       "still": {
         "src": "assets/stills/stream-launch-night.jpg",
         "cap": "From the broadcast · The Stream, 2011",
-        "alt": "Launch night, rewritten by breaking news"
+        "alt": "The Stream launch-night broadcast frame"
       },
       "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/tahrir-2011-ccby-rashad.jpg",
+          "cap": "Tahrir Square, Cairo, 2011 · Jonathan Rashad · CC BY",
+          "alt": "Crowds filling Tahrir Square during the 2011 protests"
+        },
         {
           "type": "headline",
           "headline": "Man Unknowingly Live Tweets About Raid on Osama Bin Laden's Compound",
@@ -68,6 +80,14 @@
           "date": "May 2, 2011",
           "url": "https://abcnews.go.com/Blotter/sohaib-athar-unknowingly-live-tweets-raid-osama-bin/story?id=13506941",
           "excerpt": "When 33-year-old Sohaib Athar began sending out live Twitter messages detailing a mysterious blast, shaking windows, and a helicopter hovering above Abbottabad..."
+        },
+        {
+          "type": "headline",
+          "headline": "Osama Bin Laden, al-Qaeda leader, dead - Barack Obama",
+          "outlet": "BBC News",
+          "date": "May 2, 2011",
+          "url": "https://www.bbc.com/news/world-us-canada-13256676",
+          "excerpt": "Al-Qaeda leader Osama Bin Laden has been killed by US forces in Pakistan, President Barack Obama has said."
         },
         {
           "type": "headline",
@@ -82,7 +102,7 @@
     {
       "id": "trans-navy-panel",
       "kicker": "HuffPost Live · 2012",
-      "title": "The panel that aged into evidence",
+      "title": "A panel that became evidence",
       "body": [
         "In 2012 I produced a HuffPost Live panel on transgender military service. One guest was an anonymous active-duty Navy service member. No face, no surname, call sign Olivia. She joined at real risk of discharge for showing up. At the time it felt like a Tuesday: a booking came together, a rundown slot opened, we aired it. The Pentagon wouldn't let transgender people serve openly for another four years. We named the arguments before the policy fight had fully surfaced in mainstream coverage.",
         "The panel around Olivia was a sourcing architecture, not a talking-head lineup. A trans Navy pilot. A Navy submarine veteran who founded the Transgender American Veterans Association. Counsel from the Servicemembers Legal Defense Network. A leader from OutServe.",
@@ -96,15 +116,15 @@
       "still": {
         "src": "assets/stills/trans-navy-panel.jpg",
         "cap": "From the broadcast · HuffPost Live, 2012",
-        "alt": "The panel that aged into evidence"
+        "alt": "The transgender military service panel on the HuffPost Live set",
+        "clip": "huffpost-2012-the-few-the-proud-trans-military-panel"
       },
       "media": [
         {
           "type": "img",
           "src": "assets/stills/mc-pentagon-2008.jpg",
           "cap": "The Pentagon · D.B. Gleason · CC BY-SA",
-          "alt": "Aerial view of the Pentagon",
-          "preview": "assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4"
+          "alt": "Aerial view of the Pentagon"
         },
         {
           "type": "headline",
@@ -119,7 +139,7 @@
     {
       "id": "kim-k-bahrain",
       "kicker": "HuffPost Live · 2012",
-      "title": "Kim Kardashian, a milkshake shop, and an uprising",
+      "title": "Kim Kardashian and an uprising",
       "body": [
         "The premise sounded like a celebrity item: Kim Kardashian opens a milkshake shop in Bahrain. But Bahrain in late 2012 was mid-uprising. Crowds peaked at roughly 200,000 in a country of about 600,000 citizens, one of the largest shares of a citizenry in the streets anywhere that year. The editorial question: cover the shop or the country? My answer was both, same segment.",
         "We booked Maryam Al-Khawaja, acting president of the Bahrain Centre for Human Rights and named to Foreign Policy's 2012 Global Thinkers list, and cut Al Jazeera's documentary Shouting in the Dark live into the broadcast. We aired November 9 protest footage with Al-Khawaja narrating over it in real time, host Ahmed Shihab-Eldin steering. The store opening got its mention. The human rights situation it was obscuring got the airtime.",
@@ -133,21 +153,22 @@
       "still": {
         "src": "assets/stills/kim-k-bahrain.jpg",
         "cap": "Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012",
-        "alt": "Maryam Al-Khawaja interviewed on HuffPost Live"
+        "alt": "Maryam Al-Khawaja interviewed on HuffPost Live",
+        "clip": "huffpost-2012-kim-kardashian-milkshake-bahrain"
       },
       "media": [
         {
           "type": "img",
           "src": "assets/stills/pearl-roundabout-2011-ccbysa.jpg",
           "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
-          "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011",
-          "preview": "assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"
+          "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011"
         },
         {
           "type": "img",
           "src": "assets/stills/mc-riffa-launch-2012.jpg",
           "cap": "Kim Kardashian in the launch crowd at The Walk, Riffa · from the aired segment, 2012",
-          "alt": "Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012"
+          "alt": "Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012",
+          "clip": "huffpost-2012-kim-kardashian-milkshake-bahrain"
         },
         {
           "type": "headline",
@@ -157,13 +178,21 @@
           "url": "https://globalvoices.org/2012/12/02/kim-kardashian-tear-gas-and-milkshake-in-bahrain/",
           "excerpt": "American socialite and TV reality star Kim Kardashian was in Bahrain yesterday to open a milkshake shop. Hardline Salafists protested her visit...",
           "after": 2
+        },
+        {
+          "type": "headline",
+          "headline": "Kim Kardashian's Bahrain milkshake diplomacy leaves a bad taste",
+          "outlet": "Foreign Policy",
+          "date": "Dec 11, 2012",
+          "url": "https://foreignpolicy.com/2012/12/11/kim-kardashians-bahrain-milkshake-diplomacy-leaves-a-bad-taste/",
+          "after": 2
         }
       ]
     },
     {
       "id": "prep-origination",
       "kicker": "HuffPost Live · 2012",
-      "title": "Bringing PrEP to air months ahead of the coverage",
+      "title": "PrEP on air, months early",
       "body": [
         "The FDA approved Truvada for HIV prevention in 2012, and then almost nobody talked about it. PrEP was clinically real but invisible in the communities it was built to serve. Roughly six months after approval, well ahead of mainstream coverage, I brought the story to HuffPost Live and produced a 29-minute live expert panel on it. Nobody assigned it. I argued it mattered, and then I built it.",
         "We booked Robert Grant, chair of the IPREX clinical trial that proved the drug worked, live from Lima, Peru. The AIDS Healthcare Foundation's chief of public affairs took the opposing side, so the tension on air was real, not staged consensus. At the close, the host said it on tape: \"Thank you to our wonderful producer, Mitchell Williams, who brought this to our attention.\" By 2014 the CDC was recommending PrEP for all high-risk individuals.",
@@ -176,15 +205,15 @@
       "still": {
         "src": "assets/stills/prep-origination.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
-        "alt": "Bringing PrEP to air months ahead of the coverage"
+        "alt": "The PrEP expert panel on the HuffPost Live set",
+        "clip": "huffpost-2013-hiv-prevention-pill-truvada-in-stores"
       },
       "media": [
         {
           "type": "img",
           "src": "assets/stills/mc-truvada-2012.jpg",
           "cap": "Truvada, 2012 · Jeffrey Beall · CC BY-SA",
-          "alt": "Truvada pill and packaging",
-          "preview": "assets/previews/huffpost-2013-hiv-prevention-pill-truvada-in-stores.mp4"
+          "alt": "Truvada pill and packaging"
         },
         {
           "type": "headline",
@@ -199,7 +228,7 @@
     {
       "id": "scientology-live-coverage",
       "kicker": "HuffPost Live · 2013",
-      "title": "Covering Scientology, live, under legal scrutiny",
+      "title": "Covering Scientology, live",
       "body": [
         "In 2012 and 2013 I produced segments at HuffPost Live, a live streaming network covering the Church of Scientology: booking defectors, airing testimony, running criticism the organization considered actionable. I produced Jenna Miscavige Hill's on-record break with the church, the niece of its leader telling her story live. Scientology had a documented history of pursuing its critics with legal tools, and everyone in that newsroom knew it. Every segment decision, every on-screen caption, every source booking sat under the shadow of multi-million-dollar litigation. That wasn't background noise. It was the operating condition for the work.",
         "The format made it harder. HuffPost Live ran on live audience engagement, viewer comments feeding straight into the broadcast. That loop was the platform's whole innovation, and on this coverage it was a liability. I had to build a parallel editorial filter inside it: fast enough for live pace, conservative enough to survive legal review. Defector testimony as personal account versus organizational fact. On-record sourcing versus implication. Every guest weighed for credibility and for exposure. All of it operational inside the broadcast window, invisible on air.",
@@ -233,6 +262,13 @@
         },
         {
           "type": "img",
+          "src": "assets/stills/huffpost-live-set.jpg",
+          "cap": "The HuffPost Live set, New York · from the broadcast",
+          "alt": "Host and guest in conversation on the HuffPost Live couch set",
+          "after": 0
+        },
+        {
+          "type": "img",
           "src": "assets/stills/beyond-belief-cover.jpg",
           "cap": "Beyond Belief · HarperCollins, 2013 · cover shown for identification",
           "alt": "Beyond Belief book cover",
@@ -253,7 +289,7 @@
     {
       "id": "jazz-jennings",
       "kicker": "HuffPost Live · 2013",
-      "title": "A full hour with Jazz, two years before TLC",
+      "title": "An hour with Jazz, before TLC",
       "body": [
         "On April 2, 2013, I produced a 58-minute live HuffPost Live episode built around Jazz, a transgender kid who'd become the star of TLC's I Am Jazz two years later. She was our anchor guest, alongside her mother. Host Alicia Menendez held a child-safe format across nearly an hour of live TV. That's its own production discipline: every question pre-considered, every escape hatch planned.",
         "We also booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air. On air, the panel discussed attempted-suicide rates for transgender youth that guests put near 50 percent. Most outlets weren't having that conversation at all.",
@@ -268,7 +304,7 @@
       "still": {
         "src": "assets/stills/jazz-jennings.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
-        "alt": "A full hour with Jazz, two years before TLC"
+        "alt": "Jazz and her mother on the HuffPost Live set"
       },
       "media": [
         {
@@ -276,9 +312,7 @@
           "src": "assets/stills/mc-jazz-jennings-2016.jpg",
           "cap": "Jazz Jennings, 2016 · Steven Pisano · CC BY",
           "alt": "Jazz Jennings at the 2016 NYC Pride Parade",
-          "tall": true,
-          "pos": "center 32%",
-          "preview": "assets/previews/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4"
+          "pos": "center 32%"
         },
         {
           "type": "headline",
@@ -287,14 +321,14 @@
           "date": "Mar 12, 2015",
           "url": "https://www.hollywoodreporter.com/tv/tv-news/jazz-jennings-lands-tlc-docuseries-780890/",
           "excerpt": "TLC is becoming the latest network to explore transgender life. The cable network has handed out a straight-to-series order for All That Jazz, a docuseries following 14-year-old transgender activist Jazz Jennings...",
-          "after": 2
+          "after": 1
         }
       ]
     },
     {
       "id": "mandela-special",
       "kicker": "Fusion · 2013",
-      "title": "Rebuilding primetime in real time: the Mandela special",
+      "title": "The Mandela special, rebuilt",
       "body": [
         "On December 5, 2013, I was producing Fusion's primetime flagship when Nelson Mandela died at 8:50 PM. The rundown had been built for a different night. We threw it out and rebuilt the broadcast from scratch, live, with anchor Mariana Atencio carrying it solo from our studio and ABC's Lindsay Janis co-anchoring from theirs. Fusion was a young ABC and Univision joint venture, and this was the night it had to perform like a legacy network.",
         "The 44 minutes that aired pulled together ABC News field packages from Karen Travers and Jim Avila, President Obama's statement in full, President Zuma's official South African government statement, four consecutive live phone experts, a real-time Twitter reaction segment, and archival footage, closing on Mandela's 1990 prison-release speech. Three newsrooms, ABC, Univision, and Fusion, feeding one rebuilt rundown, live.",
@@ -308,15 +342,15 @@
       "still": {
         "src": "assets/stills/mandela-special.jpg",
         "cap": "Mariana Atencio opening the special · from the broadcast, Dec 5, 2013",
-        "alt": "Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board"
+        "alt": "Mariana Atencio at the anchor desk with the Remembering Nelson Mandela board",
+        "clip": "fusion-2013-america-with-jorge-ramos-december-5"
       },
       "media": [
         {
           "type": "img",
           "src": "assets/stills/mc-mandela-2008.jpg",
           "cap": "Nelson Mandela, 2008 · SA The Good News · CC BY",
-          "alt": "Nelson Mandela portrait, 2008",
-          "preview": "assets/previews/fusion-2013-america-with-jorge-ramos-december-5.mp4"
+          "alt": "Nelson Mandela portrait, 2008"
         },
         {
           "type": "headline",
@@ -331,7 +365,7 @@
     {
       "id": "mong-kok-backpack-live",
       "kicker": "Fusion · 2014",
-      "title": "Live from a backpack in Mong Kok",
+      "title": "Live from a Mong Kok backpack",
       "body": [
         "October 2014. The Umbrella Revolution filled the streets of Hong Kong, and the confrontations in Mong Kok were live, unscripted, and moving faster than any rundown could anticipate. I field-produced Fusion's breaking news coverage from inside those confrontations with no script and zero infrastructure. No satellite truck. No control room. No studio. The whole live operation ran from a backpack on my back.",
         "The production problem was integration, not gear. I coordinated three competing broadcast organizations, Fusion, ABC News, and Univision, plus multiple live feeds and real-time social data, all at once, while the story kept changing on its way to air. Anchor Mariana Atencio confirmed it for viewers on the broadcast itself: \"we're coming to you live from a backpack on the back of my producer.\"",
@@ -344,7 +378,8 @@
       "still": {
         "src": "assets/stills/mong-kok-backpack-live.jpg",
         "cap": "From the field feed · Hong Kong, 2014",
-        "alt": "Live from a backpack in Mong Kok"
+        "alt": "Live field feed frame from Mong Kok, Hong Kong, 2014",
+        "clip": "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage"
       },
       "media": [
         {
@@ -358,7 +393,7 @@
           "src": "assets/stills/mc-mongkok-barricade-2014.jpg",
           "cap": "Holding the barricade line · from the coverage, Hong Kong 2014",
           "alt": "A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014",
-          "preview": "assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage-960.mp4"
+          "clip": "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage"
         },
         {
           "type": "headline",
@@ -367,6 +402,15 @@
           "date": "Oct 16, 2014",
           "url": "https://www.hrw.org/news/2014/10/16/eight-questions-about-occupy-hong-kong",
           "excerpt": "Hong Kong's Occupy Movement refers to a citizens' blockade of major roads in Hong Kong's Admiralty, Mongkok, and Causeway Bay districts since September 29, 2014.",
+          "after": 2
+        },
+        {
+          "type": "headline",
+          "headline": "Hong Kong Activists Clash With Police, Retake Protest Site",
+          "outlet": "NPR",
+          "date": "Oct 18, 2014",
+          "url": "https://www.npr.org/sections/thetwo-way/2014/10/18/357178403/hong-kong-activists-clash-with-police-retake-protest-site",
+          "excerpt": "Pro-democracy activists in Hong Kong have retaken parts of a protest camp that authorities had cleared on Friday after scuffles with police clad in riot gear that left dozens of people injured.",
           "after": 2
         }
       ],
@@ -379,7 +423,7 @@
     {
       "id": "fusion-ramos-lawsuit",
       "kicker": "Fusion · 2013-2015",
-      "title": "Producing Jorge Ramos under a $500 million lawsuit",
+      "title": "Ramos under a $500M lawsuit",
       "body": [
         "From 2013 to 2015 I was a Senior Producer on \"America With Jorge Ramos,\" Fusion's primetime flagship, the ABC News and Univision joint venture built to hold U.S. power to account from a Latino perspective. Ramos was already the most prominent Spanish-language anchor on American television. Partway through our run, Donald Trump filed a $500 million lawsuit against Univision, and Ramos's confrontation with him in Dubuque became one of the defining moments of the 2016 election cycle.",
         "Running aggressive political coverage live, for a principal whose every question was a potential exhibit in ongoing litigation, turned editorial calls into risk calls. I ran daily story triage with senior producers and editorial leadership, flagged segments with litigation adjacency before they got booked, and structured rundowns so Ramos's signature move, the non-deferential question put to presidents and candidates, landed without blindsiding legal or standards. Every story also had to clear two sets of corporate interests, ABC's and Univision's, on top of our own editorial bar.",
@@ -400,8 +444,7 @@
           "type": "img",
           "src": "assets/stills/mc-trump-2016.jpg",
           "cap": "Donald Trump campaigning, 2016 · Gage Skidmore · CC BY-SA",
-          "alt": "Donald Trump at a 2016 campaign rally",
-          "preview": "assets/previews/fusion-2014-america-with-jorge-ramos-october-7.mp4"
+          "alt": "Donald Trump at a 2016 campaign rally"
         },
         {
           "type": "headline",
@@ -416,7 +459,7 @@
     {
       "id": "hurricane-maria-field",
       "kicker": "AJ+ · 2017",
-      "title": "Getting the Mayor of San Juan on record in the storm",
+      "title": "San Juan's mayor in the storm",
       "body": [
         "In September 2017 I field-produced an interview with San Juan Mayor Carmen Yulín Cruz while Hurricane Maria was still active over Puerto Rico. Raw verité: no music, ambient disaster audio, an unscripted primary source. On camera, unprompted, she said, \"At least somebody's listening on the other side of the ocean. Which is new. Which is new.\" She also confirmed on record that the island faced a four-month electrical blackout.",
         "The clip hit 1.3 million views on a platform with a weekly audience north of 500 million. It ran at the peak of the national fight over the federal response. Cruz's advocacy during Maria became central to the congressional investigation into FEMA, and Puerto Rico's official death toll was later revised from 64 to 2,975. I won't claim our clip caused any of that. It put her voice on record while it mattered.",
@@ -430,15 +473,15 @@
       "still": {
         "src": "assets/stills/hurricane-maria-field.jpg",
         "cap": "From the field tape · San Juan, 2017",
-        "alt": "Getting the Mayor of San Juan on record in the storm"
+        "alt": "Mayor Carmen Yulín Cruz interviewed in the field during Hurricane Maria",
+        "clip": "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria"
       },
       "media": [
         {
           "type": "img",
           "src": "assets/stills/mc-cruz-dhs-2017.jpg",
           "cap": "Mayor Cruz at the DHS response briefing, Oct 2017 · DHS, public domain",
-          "alt": "Carmen Yulin Cruz meeting with DHS leadership, October 2017",
-          "preview": "assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4"
+          "alt": "Carmen Yulin Cruz meeting with DHS leadership, October 2017"
         },
         {
           "type": "headline",
@@ -458,7 +501,7 @@
     {
       "id": "aj-plus-50m-views",
       "kicker": "AJ+ · 2017",
-      "title": "Fifty million views in two minutes",
+      "title": "50M views in two minutes",
       "body": [
         "As a Senior Producer at AJ+ in San Francisco, I got a deceptively simple brief: build a video that could break through. Breaking through meant something specific. The platform was Facebook. The window was the first three seconds. And the audience would scroll past anything that felt like a lecture. The piece I led, a two-minute explainer on the US measles outbreaks, hit 50 million views. What made it work wasn't creativity. It was engineering.",
         "Three levers decided everything. The hook had to answer the viewer's unasked question, why should I stop scrolling, inside the first three seconds. The argument had to be legible at zero volume, because much of Facebook autoplay ran silent, so every cut and text line carried the logic without the audio. And the pacing had to match the platform's attention curve, not broadcast rhythm. Years at Al Jazeera English, HuffPost Live, and Fusion trained me to think in segments and rundowns. Social video had no rundown. It had a scroll.",
@@ -473,7 +516,8 @@
         "src": "assets/stills/measles-hook.jpg",
         "cap": "The opening frame · from the piece, AJ+ 2017",
         "alt": "Opening frame of the measles explainer: an infant with measles",
-        "pos": "center 30%"
+        "pos": "center 30%",
+        "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
       },
       "media": [
         {
@@ -482,21 +526,39 @@
           "cap": "From the piece: anti-vaccine protesters at California's capitol",
           "alt": "Anti-vaccine protest signs outside the California state capitol",
           "after": 1,
-          "preview": "assets/previews/measles-capitol-xf.mp4"
+          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+        },
+        {
+          "type": "headline",
+          "headline": "Anti-Vaccine Groups Fuel Fears In Minnesota's Measles Outbreak",
+          "outlet": "NPR",
+          "date": "May 3, 2017",
+          "url": "https://www.npr.org/sections/health-shots/2017/05/03/526723028/autism-fears-fueling-minnesotas-measles-outbreak",
+          "excerpt": "Health officials in Minnesota have been scrambling to contain a measles outbreak that has sickened primarily Somali-American children in the state.",
+          "after": 1
         },
         {
           "type": "img",
           "src": "assets/stills/ajplus-newsroom.jpg",
           "cap": "Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece",
           "alt": "Mara Van Ells presenting in the AJ+ newsroom",
-          "after": 2
+          "after": 2,
+          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/aj-plus-50m-views.jpg",
+          "cap": "From the piece: the retracted 1998 Wakefield study",
+          "alt": "Frame from the explainer: Andrew Wakefield outside a hearing, on-screen text reading 'In 1998, a British surgeon published a...'",
+          "after": 2,
+          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
         }
       ]
     },
     {
       "id": "talent-pipeline",
       "kicker": "AJ+ · 2017",
-      "title": "Coaching producers from behind the camera to on air",
+      "title": "From behind camera to on air",
       "body": [
         "AJ+ ran two parallel content lines when I joined as a Senior Producer: Context, which was deep, slow, and weekly, and Real Time, which was fast, shallow, and daily. Both worked. Neither caught breaking news with explanatory depth. Leadership asked me to design a third line that shipped explainer-quality context at real-time speed, and to use that format as an on-camera talent pipeline.",
         "I coached Real Time producer Mara Van Ells from behind the camera into presenting the proof-of-concept piece, a same-day measles explainer that hit 50 million views on Facebook. Then I coached Yara Elmjouie into on-camera roles using the same format. Mara went on to win a Webby People's Voice Award in 2018. Yara hosted his own series and won a National Daytime Emmy and multiple Webbys. Alongside that, I contributed to Sana Saeed's on-camera development; she went on to host Backspace, AJ+'s media-critique series. The format became a permanent third production line.",
@@ -539,12 +601,18 @@
           "alt": "Sana Saeed at her desk on the Backspace set, addressing the camera",
           "after": 2
         }
-      ]
+      ],
+      "still": {
+        "src": "assets/stills/mara-vanells-oncamera.jpg",
+        "cap": "Mara Van Ells on camera · from the proof-of-concept piece, 2017",
+        "alt": "Mara Van Ells presenting to camera in the AJ+ measles explainer, lower third on screen",
+        "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+      }
     },
     {
       "id": "comms-triage-build",
       "kicker": "Google xGE · 2025-2026",
-      "title": "Building the triage agent, then handing over the keys",
+      "title": "The triage agent, handed off",
       "body": [
         "The comms intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers landing faster than a human first-pass could honestly serve. Most of that first pass didn't need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that. Solo, inside the tools the team already ran on.",
         "The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was built to auto-handle roughly 55 percent of inbound, and projected to recapture around 160 operational hours a year. Both were design targets I documented, not trophies I claimed.",
@@ -597,7 +665,7 @@
     {
       "id": "digital-twin",
       "kicker": "Google xGE · 2024-2026",
-      "title": "Teaching a system to write in an executive's voice",
+      "title": "The executive voice, encoded",
       "body": [
         "At Google Cross-Google Engineering I wrote for a vice president whose words landed on the company's most senior engineers, the Principal, Distinguished, and Fellow community, more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round burns days. So I decided the voice itself was the system to build.",
         "I built it solo. It encodes the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase list of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.",
@@ -634,13 +702,22 @@
             "      of what the author's own text scores"
           ],
           "after": 2
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/illo-voice-os-hd.jpg",
+          "cap": "voice-os, the public rebuild · system illustration, generated",
+          "alt": "System illustration: a written corpus streams into a six-axis radar gauge flanked by two reviewers, exiting as a single gated draft",
+          "preview": "assets/cinemagraphs/illo-voice-os-b-loop.mp4",
+          "previewLabel": "▸ in motion",
+          "after": 2
         }
       ]
     },
     {
       "id": "freeahmed-coalition",
       "kicker": "#FreeAhmed Coalition · 2026",
-      "title": "Ten days: the #FreeAhmed coalition",
+      "title": "Ten days: #FreeAhmed",
       "body": [
         "In March 2026, the journalist Ahmed Shihab-Eldin, a former HuffPost Live host and one of the most recognized Arab-American broadcasters of the digital era, was detained in Kuwait on charges the international press-freedom community called politically motivated. I'd worked alongside Ahmed during my Al Jazeera years. By mid-April he'd been held more than fifty days without resolution. The Committee to Protect Journalists took his case public, and a coalition of his former colleagues formed around it.",
         "I joined that coalition, drawn largely from the former HuffPost Live and AJ+ producer networks, and helped push the #FreeAhmed campaign across US and international channels. The effort ran alongside CPJ, the International Federation of Journalists, Amnesty International, and Ahmed's international legal team. A detention case carries real risk for the person at its center, so the work demanded discretion: knowing what to say publicly, what to keep contained, and never becoming a vector for more harm. I won't detail the mechanics here. Deliberately.",
@@ -678,11 +755,29 @@
         },
         {
           "type": "headline",
+          "headline": "Kuwait: Free Ahmed Shihab-Eldin",
+          "outlet": "International Federation of Journalists",
+          "date": "Apr 2026",
+          "url": "https://www.ifj.org/media-centre/news/detail/category/press-releases/article/kuwait-free-ahmed-shihab-eldin",
+          "excerpt": "Shihab-Eldin was visiting his family in Kuwait at the start of the war and was last seen on 2 March. He is believed to be facing charges for allegedly spreading false information.",
+          "after": 1
+        },
+        {
+          "type": "headline",
           "headline": "US-Kuwaiti journalist Ahmed Shihab-Eldin acquitted of all charges",
           "outlet": "Committee to Protect Journalists",
           "date": "Apr 23, 2026",
           "url": "https://cpj.org/2026/04/us-kuwaiti-journalist-ahmed-shihab-eldin-acquitted-of-all-charges/",
           "excerpt": "The Committee to Protect Journalists welcomes a Kuwaiti court's acquittal of U.S.-Kuwaiti journalist Ahmed Shihab-Eldin on all charges...",
+          "after": 2
+        },
+        {
+          "type": "headline",
+          "headline": "US-Kuwait journalist acquitted after nearly two months of detention",
+          "outlet": "JURIST",
+          "date": "Apr 27, 2026",
+          "url": "https://www.jurist.org/news/2026/04/us-kuwait-journalist-acquitted-on-all-charges-after-nearly-two-months-of-detention/",
+          "excerpt": "A Kuwait court acquitted US-Kuwaiti journalist Ahmed Shihab-Eldin of all charges, which is expected to end a 52-day detention that has drawn international concern about press freedom...",
           "after": 2
         }
       ]
@@ -690,7 +785,7 @@
     {
       "id": "builder-turn",
       "kicker": "Independent build · 2026",
-      "title": "From newsrooms to a fleet of fifty agents",
+      "title": "A fleet of fifty agents",
       "body": [
         "After sixteen years in newsrooms and communications, I turned the production instinct on my own job search. I forked an open-source project called career-ops, which was a scaffold, and extended it into a production pipeline: my personal writing corpus wired into every generated output, zero-token portal scanning that reads Greenhouse, Ashby, and Lever APIs directly and filters listings before a single token is spent, and parallel workers under a single orchestrator.",
         "It grew into a fleet of roughly fifty scheduled agents running unattended on launchd: scanning portals, triaging postings, batch-evaluating roles, rebuilding a live dashboard, and reporting dead-man heartbeats so silence never masquerades as health. Production deployment went live in April 2026, and the repo is public. Running it taught me that the hard problem isn't generation quality. It's coherence at scale, catching outputs that silently drift from the source.",
