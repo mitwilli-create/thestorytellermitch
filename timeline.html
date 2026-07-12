@@ -308,7 +308,7 @@
   <a href="#era-corpeng">CorpEng</a>
   <a href="#era-xge">xGE</a>
   <a href="#era-now">Now</a>
-  <span class="tm-count" aria-hidden="true">01 / 10</span>
+  <span class="tm-count" aria-hidden="true">era 01 / 10</span>
 </nav>
 <button class="tl-pill" id="tl-pill" aria-haspopup="dialog">2007 · now</button>
 
@@ -667,12 +667,12 @@
       mapLinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+id); });
       var yrs=e.target.querySelector('.era-years');
       if(yrs) pill.textContent=yrs.textContent;
-      // minimap position readout (placeholder numeric per plan)
+      // minimap position readout
       var tmc=document.querySelector('.tm-count');
       if(tmc){
         var links=[].slice.call(document.querySelectorAll('.tl-map a'));
         var i=links.findIndex(function(a){ return a.getAttribute('href')==='#'+id; });
-        if(i>=0) tmc.textContent=String(i+1).padStart(2,'0')+' / '+String(links.length).padStart(2,'0');
+        if(i>=0) tmc.textContent='era '+String(i+1).padStart(2,'0')+' / '+String(links.length).padStart(2,'0');
       }
     });
   },{rootMargin:'-42% 0px -42% 0px'});

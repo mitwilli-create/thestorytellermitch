@@ -38,8 +38,8 @@
     .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
     .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
       letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
-    .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
-      color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+    .cs-slug{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:15px;
+      color:var(--blood-soft);letter-spacing:0.04em;margin:0 0 10px}
     .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
     .cs-illo{border:1px solid var(--line-2);overflow:hidden;background:var(--bg-2);max-width:980px}
     .cs-illo img{width:100%;height:auto;display:block}
@@ -263,7 +263,8 @@
     <div class="masthead">
       <div class="mh-main">
         <div class="kicker">AI Project · an AI-native short-form video workflow on the ElevenLabs stack</div>
-        <h1 class="cs-title">One script in, a produced short out.<span class="mono">broll-pipeline</span></h1>
+        <div class="cs-slug">broll-pipeline</div>
+        <h1 class="cs-title">One script in, a produced short out.</h1>
         <p class="cs-standfirst">A quick-cut production workflow for newsroom and brand content teams shipping short-form video on the ElevenLabs stack. Behind it: <strong>eight years producing live news, then years building content systems at Google</strong>. This pipeline is the two crafts merged. It takes a plain-text script and orchestrates narration, score, sound, visuals, and an optional dub into a finished, captioned cut, and it <strong>logs every generation step</strong> to a costed, reproducible run manifest.</p>
         <div class="cs-tagrow">
           <span class="cs-tag">ElevenLabs Text-to-Speech</span>
@@ -290,14 +291,14 @@
           </video>
         </div>
         <div class="lang-console" aria-label="Language and voice console, all playback through the pipeline's own outputs">
-          <span class="lc-k">language &middot; same cut, Dubbing API</span>
+          <span class="lc-k">language &middot; same script, ElevenLabs Dubbing API</span>
           <div class="dub-toggle" role="group" aria-label="Reel language, dubbed through the pipeline's Dubbing API stage">
             <button class="chip is-active" type="button" data-dub="en" aria-pressed="true">EN</button>
             <button class="chip" type="button" data-dub="es" aria-pressed="false">ES</button>
             <button class="chip" type="button" data-dub="ja" aria-pressed="false">JA</button>
           </div>
           <span class="dub-note" data-dubnote aria-live="polite">original English cut &middot; captions: English</span>
-          <span class="lc-k">voice &middot; the closing paragraph, three ElevenLabs voices, one TTS call each</span>
+          <span class="lc-k">voice &middot; closing paragraph below, three ElevenLabs voices, one TTS call each</span>
           <div class="variety-row" aria-label="The closing paragraph, rendered in three contrasting ElevenLabs voices">
             <button class="chip" type="button" data-variety="assets/audio/variety-daniel-broadcaster.mp3">Daniel &middot; steady broadcaster</button>
             <button class="chip" type="button" data-variety="assets/audio/variety-jessica-bright.mp3">Jessica &middot; bright, warm</button>
@@ -452,7 +453,7 @@
 
 <section>
   <div class="wrap">
-    <div class="cs-h2">Cost model · ElevenLabs API, 2026</div>
+    <div class="cs-h2">Cost model · ElevenLabs API · July 2026</div>
     <!-- bp-04: the manifest table lives INSIDE the receipt frame; the
          run's line values below it render from broll-run.json's receipt
          object at runtime (the static values here are the no-JS fallback

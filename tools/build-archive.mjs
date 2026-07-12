@@ -50,7 +50,7 @@ const startHtml = `<section class="starthere" id="starthere">
     <div class="sec-head reveal">
       <span class="sec-num">00</span>
       <h2 class="sec-title">Start here</h2>
-      <span class="sec-note">Reviewer cut &middot; ${(['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][start.length] || start.length)} pieces, also filed below</span>
+      <span class="sec-note">Reviewer cut &middot; ${(['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][start.length] || start.length)} pieces, refiled in the buckets below</span>
     </div>
     <div class="film-grid">
 ${start.map((c, i) => tile(c, i === 0 ? 'wide' : 'third')).join('\n')}

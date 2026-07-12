@@ -65,9 +65,9 @@ function parseItems(xml) {
 }
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const label = (iso, first) => {
+const label = (iso, num) => {
   const d = iso ? new Date(iso) : new Date();
-  return `Essay · Substack · ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()} · ${first ? 'first' : 'latest'} in the weekly series`;
+  return `Essay · Substack · ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()} · #${String(num).padStart(2, '0')} in the weekly series`;
 };
 const short = (iso) => { const d = new Date(iso); return `${MONTHS[d.getUTCMonth()].slice(0,3)} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
 
@@ -122,7 +122,7 @@ async function main() {
   const feat = posts[0];
   const featHtml = `<!-- WRITING:FEAT:START -->
     <div class="feat-essay reveal">
-      <div class="art-label">${esc(label(feat.date, posts.length === 1))}</div>
+      <div class="art-label">${esc(label(feat.date, posts.length))}</div>
       <div class="art-title">${esc(feat.title)}</div>
       <p class="art-intro">${esc(feat.excerpt)} <a href="${esc(feat.link)}" rel="noopener">Read it on Substack.</a></p>
     </div>

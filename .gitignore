@@ -4,3 +4,4 @@ tools/poster-candidates/
 tools/still-candidates/
 
 .env
+node_modules

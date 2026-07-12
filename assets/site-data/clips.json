@@ -12,13 +12,13 @@
       "key": "live-broadcasts",
       "label": "Live Broadcasts",
       "num": "02",
-      "note": "Live television: breaking news, election nights, and full episodes"
+      "note": "Live television · breaking news, election nights, and full episodes"
     },
     {
       "key": "social-explainers",
       "label": "Social Videos & Explainers",
       "num": "03",
-      "note": "Short-form journalism and explainers, produced to platform spec",
+      "note": "Short-form journalism & explainers · produced to platform spec",
       "oncam": {
         "src": "assets/stills/oncam/momtrump-057.jpg",
         "alt": "Mitchell Williams between takes on the AJ+ studio set, teleprompter and boom mic in frame",
