@@ -42,16 +42,18 @@ function tile(c, sizeClass, inBucket) {
 const pub = m.clips.filter((c) => c.published);
 
 // ---- start-here row ----
+// work-05: reviewer-cut mosaic: one lead tile + supporting thirds, labeled
+// explicitly so the curated row never reads as separate content
 const start = pub.filter((c) => c.startHere).sort((a, b) => a.startHereRank - b.startHereRank);
 const startHtml = `<section class="starthere" id="starthere">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">00</span>
       <h2 class="sec-title">Start here</h2>
-      <span class="sec-note">${(['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][start.length] || start.length)} pieces that explain the whole arc</span>
+      <span class="sec-note">Reviewer cut &middot; ${(['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][start.length] || start.length)} pieces, also filed below</span>
     </div>
     <div class="film-grid">
-${start.map((c, i) => tile(c, i < 2 ? 'half' : 'third')).join('\n')}
+${start.map((c, i) => tile(c, i === 0 ? 'wide' : 'third')).join('\n')}
     </div>
   </div>
 </section>`;
@@ -96,11 +98,10 @@ const chipGroup = (group, label, items) => `    <div class="chip-group" data-fil
       <button class="chip is-active" data-value="*" aria-pressed="true">All</button>
 ${items.map((i) => `      <button class="chip" data-value="${esc(i.key)}" aria-pressed="false">${esc(i.label)}</button>`).join('\n')}
     </div>`;
-const jumpTargets = [{ key: 'starthere', label: 'Start here' }]
-  .concat(m.buckets.filter((b) => pub.some((c) => c.bucket === b.key)));
+// work-01: the control bar carries one compact orientation chip; the
+// pinned bucket headers (work-04) do the rest of the wayfinding
 const jumpHtml = `    <div class="chip-jump" role="navigation" aria-label="Jump to section">
-      <span class="cg-label">Jump to</span>
-${jumpTargets.map((b) => `      <a class="chip" href="#${esc(b.key)}">${esc(b.label)}</a>`).join('\n')}
+      <a class="chip chip-start" href="#starthere">Start here</a>
     </div>`;
 const filtersHtml = [
   jumpHtml,
