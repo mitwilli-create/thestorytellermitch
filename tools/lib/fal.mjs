@@ -44,7 +44,9 @@ export const RATES = {
 export function pickDuration(slug, seconds) {
   const r = RATES[slug];
   if (!r) throw new Error(`no RATES entry for ${slug}: add one before using it`);
-  return r.durations.find((d) => d >= seconds) ?? r.durations[r.durations.length - 1];
+  const d = r.durations.find((d2) => d2 >= seconds);
+  if (d == null) throw new Error(`${slug} has no duration >= ${seconds}s (max is ${r.durations[r.durations.length - 1]}s)`);
+  return d;
 }
 
 export function estimateCost(slug, seconds) {
@@ -69,8 +71,17 @@ export async function verifyModel(slug = DEFAULT_SLUG) {
 async function poll(statusUrl, { deadlineMs = 10 * 60 * 1000, everyMs = 6000, log = () => {} } = {}) {
   const deadline = Date.now() + deadlineMs;
   while (Date.now() < deadline) {
-    const r = await fetch(statusUrl, { headers: headers(), signal: AbortSignal.timeout(30_000) });
-    const j = await r.json();
+    let j;
+    try {
+      const r = await fetch(statusUrl, { headers: headers(), signal: AbortSignal.timeout(30_000) });
+      j = await r.json();
+    } catch (err) {
+      // transient network trouble must not abort an already-billed job;
+      // keep polling until the deadline
+      log(`  fal: poll error, retrying (${err.message})`);
+      await new Promise((res) => setTimeout(res, everyMs));
+      continue;
+    }
     if (j.status === 'COMPLETED') return j;
     if (j.status === 'FAILED' || j.error) throw new Error('fal job failed: ' + JSON.stringify(j).slice(0, 300));
     log(`  fal: ${j.status ?? 'polling'}...`);
@@ -100,6 +111,7 @@ export async function generateImage({ prompt, outPath, slug = 'fal-ai/nano-banan
   const url = out.images?.[0]?.url ?? out.image?.url;
   if (!url) throw new Error('fal image result had no url: ' + JSON.stringify(out).slice(0, 200));
   const dl = await fetch(url, { signal: AbortSignal.timeout(120_000) });
+  if (!dl.ok) throw new Error(`fal image download ${dl.status}`);
   const { writeFileSync } = await import('fs');
   writeFileSync(outPath, Buffer.from(await dl.arrayBuffer()));
   return { url, path: outPath, requestId, estCostUsd: 0.08 };
@@ -114,6 +126,7 @@ export async function imageToVideo({ prompt, imageUrl, seconds, outPath, slug = 
   const videoUrl = out.video?.url;
   if (!videoUrl) throw new Error('fal i2v result had no video url: ' + JSON.stringify(out).slice(0, 200));
   const dl = await fetch(videoUrl, { signal: AbortSignal.timeout(120_000) });
+  if (!dl.ok) throw new Error(`fal i2v download ${dl.status}`);
   const { writeFileSync } = await import('fs');
   writeFileSync(outPath, Buffer.from(await dl.arrayBuffer()));
   return { path: outPath, requestId, slug, requestedSeconds: reqSeconds, estCostUsd: reqSeconds * 0.10 };
@@ -125,24 +138,12 @@ export async function generateClip({ prompt, seconds, slug = process.env.FAL_MOD
   const rate = RATES[slug];
   if (!rate) throw new Error(`no RATES entry for ${slug}`);
   const reqSeconds = pickDuration(slug, seconds);
-  const submit = await fetch(`${QUEUE}/${slug}`, {
-    method: 'POST',
-    headers: headers(),
-    body: JSON.stringify(rate.input({ prompt, seconds: reqSeconds })),
-    signal: AbortSignal.timeout(60_000),
-  });
-  if (!submit.ok) throw new Error(`fal submit ${submit.status}: ${(await submit.text()).slice(0, 300)}`);
-  const { request_id, status_url, response_url } = await submit.json();
-  log(`  fal: submitted ${request_id} (${slug}, ${reqSeconds}s requested)`);
-  await poll(status_url, { log });
-  const res = await fetch(response_url, { headers: headers(), signal: AbortSignal.timeout(60_000) });
-  if (!res.ok) throw new Error(`fal result ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  const out = await res.json();
+  const { out, requestId } = await queueRun(slug, rate.input({ prompt, seconds: reqSeconds }), { log });
   const videoUrl = out.video?.url ?? out.video_url ?? out.output?.video?.url;
   if (!videoUrl) throw new Error('fal result had no video url: ' + JSON.stringify(out).slice(0, 300));
   const dl = await fetch(videoUrl, { signal: AbortSignal.timeout(120_000) });
   if (!dl.ok) throw new Error(`fal video download ${dl.status}`);
   const { writeFileSync } = await import('fs');
   writeFileSync(outPath, Buffer.from(await dl.arrayBuffer()));
-  return { path: outPath, requestId: request_id, slug, requestedSeconds: reqSeconds, estCostUsd: reqSeconds * rate.usdPerSec };
+  return { path: outPath, requestId, slug, requestedSeconds: reqSeconds, estCostUsd: reqSeconds * rate.usdPerSec };
 }

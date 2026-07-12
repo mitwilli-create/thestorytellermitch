@@ -3,7 +3,7 @@
 # output/motion-groundwork/REVIEW.md — PIL, 200px thumbnail, R-B warm-cast
 # delta, HSV saturation delta, HSV value (brightness) delta. Flags: warm
 # cast if |warmDelta|>8, oversaturated if |satDelta|>15, brightness drift
-# if |valDelta|>20. Usage: _palette_check.py <source.jpg> <candidate.jpg>
+# if |valDelta|>20. Usage: palette_check.py <source.jpg> <candidate.jpg>
 import sys
 import json
 from PIL import Image
@@ -23,6 +23,9 @@ def stats(path):
 
 
 def main():
+    if len(sys.argv) != 3:
+        print("usage: palette_check.py <source.jpg> <candidate.jpg>", file=sys.stderr)
+        sys.exit(2)
     src, cand = sys.argv[1], sys.argv[2]
     s_src, s_cand = stats(src), stats(cand)
     warm_d = s_cand["warm"] - s_src["warm"]
