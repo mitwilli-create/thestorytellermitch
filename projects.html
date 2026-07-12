@@ -58,10 +58,6 @@
         background:rgba(10,10,11,0.92);border:1px solid var(--blood-soft);
         padding:10px 13px;font-size:10px;line-height:1.6;color:var(--bone-soft)}
     }
-    /* projects-03: the standard cards stagger: right column drops 48px */
-    @media(min-width:861px){
-      .card-grid > .pcard:not(.flagship):nth-child(odd){margin-top:48px}
-    }
     .pcard .row{display:flex;gap:14px;align-items:center;margin-top:2px}
     .pcard .go{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
@@ -85,6 +81,17 @@
     .bench-card .bdesc{font-size:13.5px;color:var(--mute);line-height:1.6;margin:0}
     .bench-card .bstat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
       color:var(--dim);margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+    /* projects-04: relocation-os pass-arrow signal pulse. A soft glow
+       travels the oxblood pass path (scan gate to public repo) once on
+       scroll-into-view, then on a randomized 8-20s idle retrigger, same
+       idiom as the sitewide .sig-pulse sweeps. Reduced-motion and no-JS
+       never add the .pulsing class, so the diagram stays static. */
+    .pass-glow{opacity:0;pointer-events:none;filter:blur(2.5px)}
+    .pass-gate.pulsing .pass-glow{animation:pass-travel 1.6s var(--ease-mech)}
+    @keyframes pass-travel{
+      from{opacity:0.85;stroke-dashoffset:26}
+      to{opacity:0.85;stroke-dashoffset:-100}
+    }
     section{padding:80px 0}
     @media(max-width:860px){
       .proj-hero{padding:130px 0 44px}
@@ -130,7 +137,10 @@
   </div>
 </nav>
 
-<header class="proj-hero">
+<header class="proj-hero fill-host">
+  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-ai-projects-loop" aria-hidden="true">
+    <img src="assets/stills/fill-ai-projects-hd.jpg" alt="" width="1376" height="768" loading="lazy">
+  </figure>
   <div class="wrap">
     <div class="kicker">Production AI systems, built and operated solo</div>
     <h1 class="display">
@@ -164,7 +174,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo">
+        <figure class="illo pass-gate">
           <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System diagram: a private repo and a synthetic twin feed a sanitize step whose output must pass a marker scan before it becomes a separate public repo">
             <defs>
               <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#57534d"/></marker>
@@ -198,6 +208,7 @@
               <path d="M182 204 L246 164" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
               <path d="M390 146 L424 146" fill="none" stroke="#57534d" stroke-width="1.2" marker-end="url(#ah)"/>
               <path d="M470 186 L505 252" fill="none" stroke="#b1554c" stroke-width="1.4" marker-end="url(#aha)"/>
+              <path class="pass-glow" d="M470 186 L505 252" pathLength="100" fill="none" stroke="#d98d82" stroke-width="4" stroke-linecap="round" stroke-dasharray="26 74" stroke-dashoffset="26"/>
               <text x="452" y="228" fill="#b1554c" font-size="9" letter-spacing="0.3" text-anchor="end">pass</text>
               <path d="M512 146 L560 146" fill="none" stroke="#57534d" stroke-width="1.2" stroke-dasharray="3 3"/>
               <text x="566" y="149" fill="#8b867d" font-size="9" letter-spacing="0.3" text-anchor="start">hit: stop</text>
@@ -363,6 +374,22 @@
       });
     });
   });
+  // projects-04: relocation-os pass-arrow pulse. Same mechanism as the
+  // sitewide signal pulses (class toggle + reflow retrigger, randomized
+  // 8-20s idle), but scoped to the hand-authored SVG's pass path and
+  // scroll-triggered once before the idle loop starts. Motion-gated:
+  // reduced-motion and no-JS keep the static diagram.
+  if(window.__motionOK){
+    const gate=document.querySelector('.pass-gate');
+    if(gate){
+      const fire=()=>{gate.classList.remove('pulsing');void gate.offsetWidth;gate.classList.add('pulsing');};
+      const idle=()=>setTimeout(()=>{if(window.__motionOK)fire();idle();},8000+Math.random()*12000);
+      const pio=new IntersectionObserver((es)=>{es.forEach((e)=>{
+        if(e.isIntersecting){pio.unobserve(e.target);fire();idle();}
+      });},{threshold:0.4});
+      pio.observe(gate);
+    }
+  }
   // bench strip: arrow keys page the snap strip (tab stop + wording only
   // exist when JS is here to honor them; no-JS wraps to a grid)
   const bench=document.querySelector('.bench-strip');
