@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712e">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,6 +64,14 @@
     .target-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 64px;align-items:start}
     .site-meta{display:flex;flex-direction:column;gap:18px;min-width:0}
     .site-meta .walkthrough{margin:0;max-width:none}
+    /* systems-and-checks pointer: the site's public build record */
+    .site-checks{border:1px solid var(--line-2);background:var(--surface);padding:16px 18px}
+    .site-checks .sc-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;
+      color:var(--dim);text-transform:lowercase;display:block;margin-bottom:8px}
+    .site-checks p{font-size:13.5px;color:var(--bone-soft);line-height:1.6;margin:0 0 10px}
+    .site-checks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
+    .site-checks a:hover{color:var(--blood-soft)}
     @media(max-width:860px){
       .target-grid{grid-template-columns:1fr;gap:36px}
     }
@@ -201,7 +209,7 @@
       </ul>
       <p class="reveal" style="margin-top:28px;">Hiring for any of these? Email <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume PDF</a>.</p>
     </article>
-    <aside class="site-meta" aria-label="The site itself: walkthrough and narration">
+    <aside class="site-meta" aria-label="The site itself: walkthrough, narration, and build record">
       <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
         <div class="wt-frame oncam">
           <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
@@ -224,6 +232,11 @@
           <span class="vc-status">narration coming &middot; voice retake in progress</span>
         </div>
         <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and I bridge two things that rarely share a resume: production AI systems and live broadcast journalism. I spent eight years at the properties that rewired live television, then went to Google, where I ran communications for a community of over a thousand Principal, Distinguished, and Fellow engineers. That's where I stopped writing about systems and started building them. I built two production AI agents solo there: a communications triage agent, handed off with a full operator runbook, and an executive digital twin writing system that cut review back-and-forth with the VP by about seventy percent. Now I build AI-native storytelling and enablement systems full time: a broll pipeline that turns one script into a produced, costed short, voice scoring, citation-gated verification, and the orchestration layers that hold it all together. The through line is the same discipline I learned in control rooms: know what matters before it matters, and build systems that hold under pressure.</p></details>
+      </div>
+      <div class="site-checks reveal">
+        <span class="sc-k">systems &middot; the build record</span>
+        <p>Every deploy here passes a fixed set of gates: a definition audit, loop-seam measurement, loudness targets, accessibility sweeps, code review. The measurements are public.</p>
+        <a href="systems.html">Systems and checks</a>
       </div>
     </aside>
     </div>

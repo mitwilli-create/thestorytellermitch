@@ -67,7 +67,7 @@ const articles = stories.map((s) => {
     const soloImg = items.length === 1 && (!items[0].type || items[0].type === 'img');
     return `          <div class="media-row reveal${soloImg ? ' solo' : ''}">\n${items.map((m) => {
         if (m.type === 'headline')
-          return `            <a class="clipcard" href="${esc(m.url)}" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span>${m.excerpt ? `<span class="ce">${esc(m.excerpt)}</span>` : ''}<span class="cd">${esc(m.date)} ↗</span></a>`;
+          return `            <a class="clipcard" href="${esc(m.url)}" target="_blank" rel="noopener"><span class="co">${esc(m.outlet)}</span><span class="ch">${esc(m.headline)}</span>${m.excerpt ? `<span class="ce">${esc(m.excerpt)}</span>` : ''}<span class="cd">${esc(m.date)} ↗</span></a>`;
         if (m.type === 'chips')
           return `            <div class="chipscard"><span class="co">${esc(m.title)}</span><div class="chipset">${m.items.map((i) => `<span class="orgchip">${esc(i)}</span>`).join('')}</div></div>`;
         if (m.type === 'term')

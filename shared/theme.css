@@ -66,6 +66,13 @@
         color-mix(in srgb,var(--bg) 72%,transparent),
         color-mix(in srgb,var(--bg) 32%,transparent) 58%,transparent)
     }
+    /* narrow viewports: dense prose passes directly under the blended bar,
+       so the scrim runs deeper to keep both layers readable (2026-07-12) */
+    @media(max-width:640px){
+      body::before{background:linear-gradient(to bottom,
+        color-mix(in srgb,var(--bg) 88%,transparent),
+        color-mix(in srgb,var(--bg) 44%,transparent) 58%,transparent)}
+    }
     /* subtle concrete grain */
     body::after{
       content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.035;

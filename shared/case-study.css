@@ -59,5 +59,15 @@ section{padding:72px 0}
   .cs-stat-grid{grid-template-columns:1fr}
   .cs-compare{grid-template-columns:1fr}
   .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
-  .diagram{font-size:11px;padding:20px 16px}
+  .diagram{font-size:11px;padding:20px 16px;
+    /* scroll cue: edge sheen appears only while more columns exist off-screen
+       (surface-colored covers ride the content and mask the sheen at rest) */
+    background:
+      linear-gradient(to right,var(--surface) 42%,rgba(20,20,22,0)) left/44px 100%,
+      linear-gradient(to left,var(--surface) 42%,rgba(20,20,22,0)) right/44px 100%,
+      radial-gradient(farthest-side at 0 50%,rgba(236,232,225,0.22),transparent) left/20px 100%,
+      radial-gradient(farthest-side at 100% 50%,rgba(236,232,225,0.22),transparent) right/20px 100%,
+      var(--surface);
+    background-repeat:no-repeat;
+    background-attachment:local,local,scroll,scroll,scroll}
 }

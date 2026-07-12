@@ -12,7 +12,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712d">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712e">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,12 +163,8 @@
     .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
     .cs-callout--lead p{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(19px,2.2vw,26px);
       line-height:1.35;letter-spacing:-0.01em}
-    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
-    /* bp-06: the CTA rides an overlapping card off the closing prose */
-    .cs-cta-card{max-width:820px;background:var(--bg-2);border:1px solid var(--line-2);
-      padding:26px 28px;margin-top:34px;position:relative;z-index:2}
+    .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
     .cs-cta-note{max-width:760px;font-size:14px;color:var(--dim);margin:16px 0 0;line-height:1.6}
-    @media(min-width:861px){.cs-cta-card{margin-left:38px;margin-top:-14px}}
     /* bp-01: masthead: hero copy + stats left, the 9:16 reel + language/
        voice console right, one above-the-fold spread. The reel poster is
        applied by JS after load so the reel never becomes the LCP. */
@@ -204,9 +200,18 @@
       .cs-video{max-width:260px}
       .cs-compare{grid-template-columns:1fr}
       .cs-compare .col+.col{border-left:none;border-top:1px solid var(--line)}
-      .diagram{font-size:11px;padding:20px 16px}
+      .diagram{font-size:11px;padding:20px 16px;
+        /* scroll cue: edge sheen appears only while more columns exist
+           off-screen (surface-colored covers mask the sheen at rest) */
+        background:
+          linear-gradient(to right,var(--surface) 42%,rgba(20,20,22,0)) left/44px 100%,
+          linear-gradient(to left,var(--surface) 42%,rgba(20,20,22,0)) right/44px 100%,
+          radial-gradient(farthest-side at 0 50%,rgba(236,232,225,0.22),transparent) left/20px 100%,
+          radial-gradient(farthest-side at 100% 50%,rgba(236,232,225,0.22),transparent) right/20px 100%,
+          var(--surface);
+        background-repeat:no-repeat;
+        background-attachment:local,local,scroll,scroll,scroll}
       .r-manifest{overflow-x:auto}
-      .cs-cta-card{margin-left:0}
     }
     /* bp-03: at desktop the stage rows collapse to one-liners anchored to
        their diagram nodes (data-stage is the anchor map: parse, voiceover,
@@ -514,24 +519,28 @@
   <div class="wrap">
     <div class="cs-h2">Why this maps to the role</div>
     <!-- bp-06: the callout leads as the closing pull-quote, one paragraph
-         follows, and the CTA rides an overlapping card. Paragraph
-         tightening is queued for the copy council; layout only here. -->
+         follows; tail matches the sitewide case-study closer grammar. -->
     <div class="cs-callout cs-callout--lead">
       <p>Understand the pipeline. Prototype the replacement. Package it so it travels. Teach it. The short is proof of craft; the manifest and the template are proof I can hand it to a customer and have it still work after I leave.</p>
     </div>
     <div class="cs-body" style="margin-top:24px;">
       <p>A forward-deployed creative is a creative solutions architect and an enablement lead, not a designer for hire. The job: embed with a customer, understand their production pipeline, prototype an AI-native replacement, package it as a template, teach it. That is the loop this artifact runs. It is also the loop I ran for <a href="timeline.html">eight years in live newsrooms</a> and then at Google, <a href="projects.html">building production AI enablement since 2024</a> for a community of 1,000+ senior engineers.</p>
     </div>
-    <div class="cs-cta-card">
-      <div class="kicker" style="margin-bottom:16px">where this fits</div>
-      <div class="cs-cta" style="max-width:none;">
-        <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>
-        <a class="btn" href="fit.html"><span>See the fit case</span></a>
-        <a class="btn" href="impact.html"><span>The measured results</span></a>
-        <a class="btn" href="projects.html"><span>The rest of the build</span></a>
-        <a class="btn" href="contact.html"><span>Email me</span></a>
-      </div>
-      <p class="cs-cta-note">The full pipeline code, demo script, and the run manifest that produced this cut are public at <a href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</a>.</p>
+    <div class="cs-cta">
+      <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>
+      <a class="btn" href="projects.html"><span>The rest of the build</span></a>
+    </div>
+    <p class="cs-cta-note">The full pipeline code, demo script, and the run manifest that produced this cut are public at <a href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener" style="font-family:'JetBrains Mono',monospace;">github.com/mitwilli-create/broll-pipeline</a>.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker reveal" style="margin-bottom:16px">where this fits</div>
+    <div class="hero-cta reveal">
+      <a class="btn" href="fit.html"><span>See the fit case</span></a>
+      <a class="btn" href="impact.html"><span>The measured results</span></a>
+      <a class="btn" href="contact.html"><span>Email me</span></a>
     </div>
   </div>
 </section>
