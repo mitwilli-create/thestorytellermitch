@@ -467,7 +467,10 @@ a.chip{text-decoration:none;display:inline-block}
       padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
       text-transform:uppercase;border:1px solid var(--blood-soft)}
     .skip-link:focus{left:12px;top:12px}
+    /* skip-link target: confirmation for keyboard users only; a full-page
+       outline on programmatic/mouse focus would wrap the whole document */
     main[tabindex="-1"]:focus{outline:none}
+    main[tabindex="-1"]:focus-visible{outline:2px solid var(--blood-soft);outline-offset:4px}
 
     /* ---------- reduced motion: static end states, sitewide ----------
        Collapse durations instead of removing animation so transitionend
