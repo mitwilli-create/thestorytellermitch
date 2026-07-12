@@ -17,7 +17,7 @@
 // zsh $status is read-only so do not name a variable "status"):
 //   /usr/local/bin/node /Users/mitchellwilliams/Documents/storytellermitch-site/tools/substack-sync.mjs
 // wrap via the nohup-wrapper used by the heartbeat plists on macOS Tahoe.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -96,7 +96,8 @@ async function main() {
   }
   // numeric-epoch sort; a missing/unparseable pubDate sinks to the end
   // instead of accidentally winning the featured slot
-  posts.sort((a, b) => (Date.parse(b.date) || -Infinity) - (Date.parse(a.date) || -Infinity));
+  const epoch = (d) => { const t = Date.parse(d); return Number.isNaN(t) ? -Infinity : t; };
+  posts.sort((a, b) => epoch(b.date) - epoch(a.date));
 
   const feat = posts[0];
   const featHtml = `<!-- WRITING:FEAT:START -->
@@ -118,8 +119,16 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
   let page = readFileSync(PAGE, 'utf8');
   page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
   page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
+  // the two artifacts persist as a pair: if the page write fails after
+  // the json write, the json rolls back so they can never diverge
+  const prevData = existsSync(DATA) ? readFileSync(DATA) : null;
   writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
-  writeFileSync(PAGE, page);
+  try {
+    writeFileSync(PAGE, page);
+  } catch (e) {
+    if (prevData !== null) writeFileSync(DATA, prevData); else unlinkSync(DATA);
+    throw e;
+  }
   console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (featured: ${feat.title})`);
 }
 
