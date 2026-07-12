@@ -564,7 +564,7 @@
           "src": "assets/stills/illo-triage-agent-hd.jpg",
           "cap": "The system diagram · triage, revise, escalate",
           "alt": "System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human",
-          "preview": "assets/cinemagraphs/illo-triage-agent-loop.mp4",
+          "preview": "assets/cinemagraphs/illo-triage-agent-b-loop.mp4",
           "previewLabel": "▸ in motion"
         },
         {
@@ -711,7 +711,7 @@
           "src": "assets/stills/illo-agent-fleet-hd.jpg",
           "cap": "The fleet diagram · one orchestrator, fifty agents",
           "alt": "System diagram: a fleet of small agent nodes orbiting one central orchestrator node",
-          "preview": "assets/cinemagraphs/illo-agent-fleet-loop.mp4",
+          "preview": "assets/cinemagraphs/illo-agent-fleet-b-loop.mp4",
           "previewLabel": "▸ in motion"
         },
         {
