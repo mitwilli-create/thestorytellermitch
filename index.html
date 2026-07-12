@@ -87,8 +87,53 @@
     .sig-band video{object-position:center}
     .no-js .hero-facts,.no-js .hero-sys{opacity:1;transform:none}
     @media(max-width:1120px){
-      .hero-grid{grid-template-columns:1fr;gap:44px}
-      .hero-sys{max-width:520px}
+      /* index-01 (mobile only): pull the proof card up so it peeks into
+         the first viewport; DOM order unchanged, H1 first. The CTA row
+         rides above the plate so tap targets never lose to the overlap. */
+      .hero-grid{grid-template-columns:1fr;gap:28px}
+      .hero-sys{max-width:520px;margin-top:-8vh}
+      .hero-cta{position:relative;z-index:2}
+      .hero-cta .btn{background:var(--bg)}
+      .hero-cta .btn.solid{background:var(--blood)}
+    }
+    /* index-02: the work section tucks closer to the marquee (theme default 120px) */
+    #work{padding:56px 0 0}
+    /* index-03: Selected Work rides a horizontal snap strip
+       (era-clips--strip mechanics from the timeline; edge-fade mask;
+       size classes flatten to uniform tiles) */
+    .film-grid{display:flex;flex-wrap:nowrap;gap:14px;overflow-x:auto;
+      scroll-snap-type:x mandatory;padding-bottom:14px;
+      scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent);
+      mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent)}
+    .film-grid::-webkit-scrollbar{height:4px}
+    .film-grid::-webkit-scrollbar-thumb{background:var(--line-2)}
+    .film-grid .film,.film-grid .film.wide,.film-grid .film.half,.film-grid .film.tall{
+      flex:0 0 auto;width:min(480px,80vw);aspect-ratio:16/9;scroll-snap-align:start}
+    .film-grid .film.tall .thumb,.film-grid .film.tall video{object-position:50% 22%}
+    .film-grid:focus-visible{outline:1px solid var(--blood-soft);outline-offset:4px}
+    /* no-JS: the strip falls back to a wrapped grid, everything reachable */
+    .no-js .film-grid{flex-wrap:wrap;mask-image:none;-webkit-mask-image:none;overflow-x:visible}
+    /* index-04: the signal-flow band lives inside Selected Work, under the strip */
+    #work .sig-band{margin-top:56px}
+    /* index-05: statement + arc compose into one band: pull-quote column
+       beside the three cells at desktop, stacked below */
+    .arc-band{display:grid;gap:48px}
+    @media(min-width:1024px){
+      .arc-band{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px}
+      .arc-band .stmt{border-left:2px solid var(--blood-soft);padding-left:28px;
+        font-size:clamp(20px,1.9vw,27px);align-self:start}
+      .arc{margin-top:0;grid-template-columns:1fr;border-top:none}
+      .arc .cell{border-right:none;border-bottom:1px solid var(--line);padding:26px 0}
+      .arc .cell:first-child{border-top:1px solid var(--line)}
+      .arc .cell:last-child{border-bottom:none}
+    }
+    @media(max-width:1023px){.arc{margin-top:48px}}
+    /* index-06: the footer plate overlaps the Arc band's bottom edge */
+    @media(min-width:861px){
+      footer{padding-top:0}
+      .foot .big{background:var(--surface);border:1px solid var(--line-2);
+        padding:26px 34px;margin-top:-64px;position:relative;z-index:2}
     }
     @media(max-width:860px){
       .hero .display{font-size:clamp(42px,10.5vw,64px)}
@@ -212,7 +257,7 @@
       <span class="sec-note">Live broadcast, viral social, and AI-native production</span>
     </div>
 
-    <div class="film-grid">
+    <div class="film-grid" tabindex="0" role="region" aria-label="Selected work: horizontal strip, arrow keys scroll">
       <!-- Real, playable: the ElevenLabs pipeline output -->
       <a class="film wide reveal" href="broll-pipeline.html">
         <video src="assets/broll-short-n16.mp4" poster="assets/posters/home-broll.jpg" muted loop playsinline preload="metadata"></video>
@@ -279,11 +324,11 @@
       </a>
     </div>
   </div>
-</section>
 
-<div class="sig-band cine" data-cine="assets/cinemagraphs/band-signal-flow-b-loop" data-cine-m="assets/cinemagraphs/band-signal-flow-b-loop-m" aria-hidden="true">
-  <img src="assets/stills/band-signal-flow-b-hd.jpg" alt="" loading="lazy">
-</div>
+  <div class="sig-band cine" data-cine="assets/cinemagraphs/band-signal-flow-b-loop" data-cine-m="assets/cinemagraphs/band-signal-flow-b-loop-m" aria-hidden="true">
+    <img src="assets/stills/band-signal-flow-b-hd.jpg" alt="" loading="lazy">
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -292,6 +337,7 @@
       <h2 class="sec-title"><a href="timeline.html">The Arc</a></h2>
       <span class="sec-note"><a href="timeline.html">scroll the full timeline &rarr;</a></span>
     </div>
+    <div class="arc-band">
     <div class="stmt reveal">
       <p><b>The code matters, and now I write it.</b> My edge is the understanding.</p>
       <p>Knowing what an audience needs, hearing a room quickly, and shipping something that fits the way people already work.</p>
@@ -317,6 +363,7 @@
         <div class="c-b">Production AI agents and AI-native creative pipelines. I sit with the problem, build the workflow, and <a href="fit.html">make the value stick after I leave the room</a>.</div>
         <a class="c-go" href="timeline.html#era-now">what I'm building now, on the timeline &rarr;</a>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -382,6 +429,28 @@
     c.addEventListener('mouseenter',()=>{ if(!window.__motionOK) return; if(!v.src&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); });
     c.addEventListener('mouseleave',()=>{ v.pause(); });
   });
+  // Selected Work strip: arrow keys page the snap strip; hover players
+  // pause when their tile leaves the strip's visible span.
+  (()=>{
+    const strip=document.querySelector('.film-grid');
+    if(!strip) return;
+    strip.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const step=Math.min(480,innerWidth*0.8)+14;
+      strip.scrollBy({left:(e.key==='ArrowRight'?1:-1)*step,behavior:window.__motionOK?'smooth':'auto'});
+    });
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach(({target,isIntersecting})=>{
+          if(isIntersecting) return;
+          const v=target.querySelector('video');
+          if(v&&!v.paused) v.pause();
+        });
+      },{root:strip,threshold:0.05});
+      strip.querySelectorAll('.film').forEach(f=>io.observe(f));
+    }
+  })();
 </script>
 </body>
 </html>
