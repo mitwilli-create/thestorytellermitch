@@ -1,12 +1,13 @@
 {
-  "fetched": "2026-07-12T12:46:42.262Z",
+  "fetched": "2026-07-12T13:30:28.855Z",
   "feed": "https://storytellermitch.substack.com/feed",
   "posts": [
     {
       "title": "What Do AI Employees Know About Using LLMs That I Don't?",
       "link": "https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using",
       "date": "2026-07-09T16:49:31.000Z",
-      "excerpt": "Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude. So when someone at the AI Engineer World's Fair asked him how he actually uses …"
+      "excerpt": "Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude. So when someone at the AI Engineer World's Fair asked him how he actually uses …",
+      "num": 1
     }
   ]
 }

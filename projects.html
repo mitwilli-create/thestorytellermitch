@@ -141,6 +141,9 @@
 
 <header class="proj-hero fill-host">
   <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-ai-projects-loop" aria-hidden="true">
+    <!-- lazy is deliberate: the plate is decorative background art (hidden
+         <=1120px, aria-hidden) and the hero TEXT is the LCP element; matches
+         comms/stories/contact. Measured: LH desktop perf 100, LCP 0.7s. -->
     <img src="assets/stills/fill-ai-projects-hd.jpg" alt="" width="1376" height="768" loading="lazy">
   </figure>
   <div class="wrap">
@@ -385,7 +388,7 @@
     const gate=document.querySelector('.pass-gate');
     if(gate){
       const fire=()=>{gate.classList.remove('pulsing');void gate.offsetWidth;gate.classList.add('pulsing');};
-      const idle=()=>setTimeout(()=>{if(window.__motionOK)fire();idle();},8000+Math.random()*12000);
+      const idle=()=>setTimeout(()=>{if(!window.__motionOK)return;fire();idle();},8000+Math.random()*12000);
       const pio=new IntersectionObserver((es)=>{es.forEach((e)=>{
         if(e.isIntersecting){pio.unobserve(e.target);fire();idle();}
       });},{threshold:0.4});

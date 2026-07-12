@@ -21,7 +21,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import * as fal from '/Users/mitchellwilliams/Documents/broll-pipeline/lib/fal.mjs';
+import * as fal from './lib/fal.mjs';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const W = 1376, H = 768, PADH = 774; // exact fill-hero plate size + 16:9 pad for Veo
@@ -73,7 +73,7 @@ function seamScore(loopMp4, loopDur) {
 }
 
 function paletteCheck(srcJpg, candJpg) {
-  const out = execFileSync('python3', ['/Users/mitchellwilliams/Documents/broll-pipeline/scripts/_palette_check.py', srcJpg, candJpg], { encoding: 'utf8' });
+  const out = execFileSync('python3', [resolve(dirname(fileURLToPath(import.meta.url)), 'lib/palette_check.py'), srcJpg, candJpg], { encoding: 'utf8' });
   return JSON.parse(out.trim());
 }
 

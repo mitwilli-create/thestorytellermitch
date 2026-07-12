@@ -232,7 +232,7 @@
       <h2 class="sec-title">AI-Native Production</h2>
       <span class="sec-count">1 piece</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="AI-Native Production: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="AI-Native Production: clip strip">
   <a class="film third reveal" href="assets/broll-short-n16.mp4"
      data-clip="broll-pipeline-2026" data-bucket="ai-native" data-outlet="independent" data-era="2019-2026"
      data-tag="Independent · AI-native · AI Pipeline Demo · 2026" data-title="One script in, a produced short out" data-sub="The broll pipeline: seven stages, ElevenLabs stack, every call logged"
@@ -258,7 +258,7 @@
       <span class="sec-count">13 pieces</span>
       <span class="sec-note">Live television · breaking news, election nights, and full episodes</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="Live Broadcasts: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="Live Broadcasts: clip strip">
   <a class="film third reveal" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5110494fc9e3e53e73cbd135e77d96de/watch"
      data-clip="aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-bucket="live-broadcasts" data-outlet="aje-stream" data-era="2010-2013"
      data-tag="Al Jazeera · The Stream · Live Coverage · 2011" data-title="The night bin Laden's death broke" data-sub="Live global reaction coverage from The Stream's launch era, on a 250M-household network."
@@ -444,7 +444,7 @@
       <span class="sec-count">22 pieces</span>
       <span class="sec-note">Short-form journalism &amp; explainers · produced to platform spec</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="Social Videos &amp; Explainers: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="Social Videos &amp; Explainers: clip strip">
   <a class="film third reveal" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/e7e83690437e3f2b8220271ef4c76385/watch"
      data-clip="ajp-2016-trump-played-the-media" data-bucket="social-explainers" data-outlet="ajplus" data-era="2015-2018"
      data-tag="AJ+ · Social Video · 2016" data-title="How Trump played the media" data-sub="A tight media-criticism video on coverage incentives in the 2016 race."
@@ -743,7 +743,7 @@
       <span class="sec-count">13 pieces</span>
       <span class="sec-note">Shot on location, from Hurricane Maria to Colorado</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="Field Shoots: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="Field Shoots: clip strip">
   <a class="film third reveal" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5156ac3550e348beb4df9cb222f465af/watch"
      data-clip="fusion-2014-colorado-pot-dealers-more-money-more-problems" data-bucket="field-shoots" data-outlet="fusion" data-era="2013-2015"
      data-tag="Fusion · Segment · 2014" data-title="Colorado pot dealers, more money, more problems" data-sub="A field segment on the messy economics of newly legal cannabis."
@@ -925,7 +925,7 @@
       <span class="sec-count">16 pieces</span>
       <span class="sec-note">Studio conversations: expert panels and principal interviews</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="Interviews &amp; Panels: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="Interviews &amp; Panels: clip strip">
   <a class="film third reveal" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/abd405ebbfa9020143bc35c39d14a595/watch"
      data-clip="aje-stream-2010-a-look-into-islams-holy-pilgrimage" data-bucket="interviews-panels" data-outlet="huffpost" data-era="2013-2015"
      data-tag="HuffPost Live · Documentary Segment · 2012-2013" data-title="Inside the Hajj, Islam's holy pilgrimage" data-sub="A long-form documentary segment on the world's largest annual pilgrimage."
@@ -1146,7 +1146,7 @@
       <span class="sec-count">5 pieces</span>
       <span class="sec-note">Recruiting, brand, and engineering-community video from the Google years</span>
     </div>
-    <div class="film-grid film-strip" role="region" aria-label="Google: horizontal strip, arrow keys scroll">
+    <div class="film-grid film-strip" role="region" aria-label="Google: clip strip">
   <a class="film third reveal" href="https://www.youtube.com/watch?v=6ZZX9iIgFoo"
      data-clip="google-lifeatgoogle-2019-interview-prep-coding" data-bucket="google" data-outlet="google" data-era="2019-2026"
      data-tag="Google · Life at Google · Interview Prep · 2019" data-title="Prepare for your Google interview: coding" data-sub="Google's official interview-prep series for candidates. Produced during my Corporate Engineering tenure."
@@ -1368,6 +1368,8 @@
      (Selected Work / bench-strip mechanics) ---------- */
   document.querySelectorAll('.film-strip').forEach(strip=>{
     strip.tabIndex=0;
+    // the keyboard promise only becomes true once this handler exists
+    strip.setAttribute('aria-label',strip.getAttribute('aria-label')+', arrow keys scroll');
     strip.addEventListener('keydown',e=>{
       if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
       e.preventDefault();

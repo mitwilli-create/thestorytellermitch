@@ -99,16 +99,32 @@ async function main() {
   const epoch = (d) => { const t = Date.parse(d); return Number.isNaN(t) ? -Infinity : t; };
   posts.sort((a, b) => epoch(b.date) - epoch(a.date));
 
-  // no-op guard, before any page work: if the parsed posts match the
-  // last bake, leave both files untouched (otherwise the churning
-  // fetched-timestamp would make deploy.sh commit a noise bake on
-  // every deploy)
   let prevData = null;
   if (existsSync(DATA)) {
     // refuse to proceed if the existing state cannot be snapshotted:
     // overwriting a file we could not read risks losing it on rollback
     prevData = readFileSync(DATA);
   }
+
+  // carry-forward series numbering: Substack's RSS only exposes a recent
+  // window, so posts.length is the feed size, not the issue number. Known
+  // links keep their baked number from the last writing.json; unseen posts
+  // count up from the highest known number, oldest first.
+  const knownNum = new Map();
+  if (prevData !== null) {
+    try {
+      for (const p of JSON.parse(String(prevData)).posts) if (p.link && p.num) knownNum.set(p.link, p.num);
+    } catch { /* unparseable previous json: number from scratch */ }
+  }
+  let maxNum = Math.max(0, ...knownNum.values());
+  for (const p of [...posts].sort((a, b) => epoch(a.date) - epoch(b.date))) {
+    p.num = knownNum.get(p.link) ?? ++maxNum;
+  }
+
+  // no-op guard, before any page work: if the parsed posts match the
+  // last bake, leave both files untouched (otherwise the churning
+  // fetched-timestamp would make deploy.sh commit a noise bake on
+  // every deploy)
   if (prevData !== null) {
     try {
       const prev = JSON.parse(String(prevData));
@@ -122,7 +138,7 @@ async function main() {
   const feat = posts[0];
   const featHtml = `<!-- WRITING:FEAT:START -->
     <div class="feat-essay reveal">
-      <div class="art-label">${esc(label(feat.date, posts.length))}</div>
+      <div class="art-label">${esc(label(feat.date, feat.num))}</div>
       <div class="art-title">${esc(feat.title)}</div>
       <p class="art-intro">${esc(feat.excerpt)} <a href="${esc(feat.link)}" rel="noopener">Read it on Substack.</a></p>
     </div>
