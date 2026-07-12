@@ -50,9 +50,21 @@
     .block .media img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.35) contrast(1.05);
       transition:filter .6s var(--ease)}
     .block .media:hover img{filter:grayscale(0)}
-    .block .media .ml{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;
+    .block .media .ml{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;z-index:3;
       font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
       color:var(--bone);background:linear-gradient(to top,rgba(10,10,11,0.95),transparent)}
+    /* clip-backed media blocks: hover preview + theater play via clipplay.js */
+    .block .media a{position:relative;display:block;width:100%;height:100%}
+    .block .media video.preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      filter:grayscale(0.35) contrast(1.05)}
+    .block .media:hover video.preview{filter:grayscale(0)}
+    .block .media .play-o{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+      width:54px;height:54px;border:1px solid var(--line-2);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;transition:all var(--dur-micro) var(--ease-micro);
+      background:rgba(10,10,11,0.4);backdrop-filter:blur(2px)}
+    .block .media a:hover .play-o{border-color:var(--bone);background:rgba(10,10,11,0.25)}
+    .block .media .play-o::after{content:'';border-left:12px solid var(--bone);
+      border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
     .block .kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:16px}
     .block .big-n{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(52px,7vw,110px);
@@ -120,7 +132,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The Stream launch night coverage" loading="lazy"><span class="ml">Watch: the launch-night coverage</span></a>
+        <a href="work.html#play-aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-clip-play
+           data-clip="aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-tag="Al Jazeera · The Stream · Live Coverage · 2011"
+           data-title="The night bin Laden's death broke" data-sub="Live global reaction coverage from The Stream's launch era."
+           data-poster="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg"
+           data-stream-id="5110494fc9e3e53e73cbd135e77d96de" data-local="media/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4">
+          <img src="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" alt="The Stream launch night coverage" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4" poster="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: the launch-night coverage</span></a>
       </div>
       <div>
         <div class="kick reveal">Al Jazeera English · The Stream · 2011</div>
@@ -137,7 +157,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#live-broadcasts"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="HuffPost Live panel" loading="lazy"><span class="ml">Watch: the trans-military panel</span></a>
+        <a href="work.html#play-huffpost-2012-the-few-the-proud-trans-military-panel" data-clip-play
+           data-clip="huffpost-2012-the-few-the-proud-trans-military-panel" data-tag="HuffPost Live · Panel Discussion · 2012-2013"
+           data-title="The few, the proud, the trans" data-sub="A live panel on transgender service members, years ahead of the policy fight."
+           data-poster="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg"
+           data-stream-id="7819090251204c968c4603709229098c" data-local="media/huffpost-2012-the-few-the-proud-trans-military-panel.mp4">
+          <img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="HuffPost Live panel" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2012-the-few-the-proud-trans-military-panel.mp4" poster="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: the trans-military panel</span></a>
       </div>
       <div>
         <div class="kick reveal">HuffPost Live · 2012 to 2013</div>
@@ -154,7 +182,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#interviews-panels"><img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America With Jorge Ramos" loading="lazy"><span class="ml">Watch: the showreel</span></a>
+        <a href="work.html#play-fusion-2013-america-with-jorge-ramos" data-clip-play
+           data-clip="fusion-2013-america-with-jorge-ramos" data-tag="Fusion · Showreel · 2013-2015"
+           data-title="America with Jorge Ramos, the showreel" data-sub="A 44-minute reel from Fusion's flagship weekly news program."
+           data-poster="assets/posters/fusion-2013-america-with-jorge-ramos.jpg"
+           data-stream-id="ab1fd4776fb5231713a07d9e7935c5ab" data-local="media/fusion-2013-america-with-jorge-ramos.mp4">
+          <img src="assets/posters/fusion-2013-america-with-jorge-ramos.jpg" alt="America With Jorge Ramos" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/fusion-2013-america-with-jorge-ramos.mp4" poster="assets/posters/fusion-2013-america-with-jorge-ramos.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: the showreel</span></a>
       </div>
       <div>
         <div class="kick reveal">Fusion · America With Jorge Ramos · 2013 to 2015</div>
@@ -171,7 +207,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#social-explainers"><img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="The measles video" loading="lazy"><span class="ml">Watch: the measles piece</span></a>
+        <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views" data-clip-play
+           data-clip="ajp-2017-measles-outbreaks-usa-viral-50m-views" data-tag="AJ+ · Social Video · 2017"
+           data-title="Measles is back in America" data-sub="A vaccine-hesitancy video that reached 50 million views."
+           data-poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg"
+           data-stream-id="5a827c6fdf137c4523fa194224983a75" data-local="media/ajp-2017-measles-outbreaks-usa-viral-50m-views.mp4">
+          <img src="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg" alt="The measles video" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-measles-outbreaks-usa-viral-50m-views-960.mp4" poster="assets/posters/ajp-2017-measles-outbreaks-usa-viral-50m-views.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: the measles piece</span></a>
       </div>
       <div>
         <div class="kick reveal">AJ+ · 2016 to 2018</div>
@@ -196,7 +240,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#field-shoots"><img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan Mayor during Hurricane Maria" loading="lazy"><span class="ml">Watch: Maria, in the field</span></a>
+        <a href="work.html#play-ajp-2017-san-juan-mayor-speaks-out-hurricane-maria" data-clip-play
+           data-clip="ajp-2017-san-juan-mayor-speaks-out-hurricane-maria" data-tag="AJ+ · Social Video · 2017"
+           data-title="San Juan's mayor speaks out" data-sub="Carmen Yulín Cruz on the Maria response, coverage that fed a congressional FEMA probe."
+           data-poster="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg"
+           data-stream-id="b610deaacd1ba1311079601e92044d79" data-local="media/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.mp4">
+          <img src="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg" alt="San Juan Mayor during Hurricane Maria" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria-960.mp4" poster="assets/posters/ajp-2017-san-juan-mayor-speaks-out-hurricane-maria.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: Maria, in the field</span></a>
       </div>
       <div>
         <div class="kick reveal">AJ+ · Hurricane Maria · 2017</div>
@@ -230,7 +282,15 @@
   <div class="wrap">
     <div class="inner">
       <div class="media reveal">
-        <a href="work.html#social-explainers"><img src="assets/posters/ajp-2016-surviving-an-atomic-bomb.jpg" alt="AJ+ documentary short" loading="lazy"><span class="ml">Watch: the craft that trained them</span></a>
+        <a href="work.html#play-ajp-2016-surviving-an-atomic-bomb" data-clip-play
+           data-clip="ajp-2016-surviving-an-atomic-bomb" data-tag="AJ+ · Documentary Short · 2016-2018"
+           data-title="Surviving an atomic bomb" data-sub="A documentary short built around a survivor's firsthand account."
+           data-poster="assets/posters/ajp-2016-surviving-an-atomic-bomb.jpg"
+           data-stream-id="fd25d79f821f0513a5002f9dd7199574" data-local="media/ajp-2016-surviving-an-atomic-bomb.mp4">
+          <img src="assets/posters/ajp-2016-surviving-an-atomic-bomb.jpg" alt="AJ+ documentary short" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/ajp-2016-surviving-an-atomic-bomb.mp4" poster="assets/posters/ajp-2016-surviving-an-atomic-bomb.jpg"></video>
+          <div class="play-o"></div>
+          <span class="ml">Watch: the craft that trained them</span></a>
       </div>
       <div>
         <div class="kick reveal">The talent pipeline · AJ+ and after</div>
@@ -262,5 +322,6 @@
 
 <script src="shared/reveal.js?v=20260711e"></script>
 <script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/clipplay.js?v=20260712a"></script>
 </body>
 </html>

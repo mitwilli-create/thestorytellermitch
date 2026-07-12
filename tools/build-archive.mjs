@@ -120,8 +120,9 @@ page = splice(page, /<!-- ARCHIVE:START -->[\s\S]*?<!-- ARCHIVE:END -->/,
   `<!-- ARCHIVE:START -->\n${startHtml}\n\n${sectionsHtml}\n<!-- ARCHIVE:END -->`, 'ARCHIVE markers');
 page = splice(page, /<!-- FILTERS:START -->[\s\S]*?<!-- FILTERS:END -->/,
   `<!-- FILTERS:START -->\n${filtersHtml}\n    <!-- FILTERS:END -->`, 'FILTERS markers');
-page = splice(page, /<body data-playback="[^"]*" data-stream-code="[^"]*">/,
-  `<body data-playback="${m.playback}" data-stream-code="${m.streamCustomerCode ?? ''}">`, 'body playback attributes');
+// data-theater-bed opts the reel into clipplay's music bed (work.html only)
+page = splice(page, /<body data-playback="[^"]*" data-stream-code="[^"]*"( data-theater-bed)?>/,
+  `<body data-playback="${m.playback}" data-stream-code="${m.streamCustomerCode ?? ''}" data-theater-bed>`, 'body playback attributes');
 writeFileSync(PAGE, page);
 
 console.log(`baked work.html: ${start.length} start-here + ${pub.length} published tiles across ${m.buckets.length} buckets (playback=${m.playback})`);
