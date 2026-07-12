@@ -304,7 +304,8 @@
       "still": {
         "src": "assets/stills/jazz-jennings.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
-        "alt": "Jazz and her mother on the HuffPost Live set"
+        "alt": "Jazz and her mother on the HuffPost Live set",
+        "clip": "huffpost-or-aje-2012-jazz-growing-up-trans-youth"
       },
       "media": [
         {
@@ -336,7 +337,6 @@
       ],
       "pull": "I don't protect the plan. I protect the broadcast.",
       "clipSlugs": [
-        "fusion-2013-america-with-jorge-ramos-december-5",
         "fusion-2013-america-with-jorge-ramos"
       ],
       "still": {

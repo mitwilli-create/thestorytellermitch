@@ -65,11 +65,16 @@
     .pcard .tags{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
       letter-spacing:0.06em;text-align:right}
     /* projects-02: the bench rides a horizontal snap strip of small cards */
+    /* centered when the cards fit (safe center falls back to start when
+       they overflow into a scroll); no edge mask, the thin scrollbar is
+       the affordance (Mitchell, 2026-07-12: left card read as cut off) */
     .bench-strip{display:flex;flex-wrap:nowrap;gap:14px;overflow-x:auto;
       scroll-snap-type:x proximity;padding-bottom:14px;
-      scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
-      -webkit-mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent);
-      mask-image:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent)}
+      scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+    /* auto-margin pair = safe centering: centered while the cards fit,
+       collapses to start alignment the moment the strip overflows */
+    .bench-card:first-child{margin-left:auto}
+    .bench-card:last-child{margin-right:auto}
     .bench-strip::-webkit-scrollbar{height:4px}
     .bench-strip::-webkit-scrollbar-thumb{background:var(--line-2)}
     .bench-strip:focus-visible{outline:1px solid var(--blood-soft);outline-offset:4px}
@@ -88,6 +93,11 @@
        never add the .pulsing class, so the diagram stays static. */
     .pass-glow{opacity:0;pointer-events:none;filter:blur(2.5px)}
     .pass-gate.pulsing .pass-glow{animation:pass-travel 1.6s var(--ease-mech)}
+    /* hover = continuous travel, matching the sibling cards' hover loops
+       (Mitchell, 2026-07-12); idle keeps the occasional single pulse */
+    @media(hover:hover) and (prefers-reduced-motion:no-preference){
+      .illo.pass-gate:hover .pass-glow{animation:pass-travel 1.6s var(--ease-mech) infinite}
+    }
     @keyframes pass-travel{
       from{opacity:0.85;stroke-dashoffset:26}
       to{opacity:0.85;stroke-dashoffset:-100}
@@ -248,7 +258,7 @@
       </div>
 
       <div class="pcard reveal">
-        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-content-ops-loop"><img src="assets/stills/illo-content-ops-hd.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several platform-shaped output cards beneath four audience markers" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
+        <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-content-ops-b-loop"><img src="assets/stills/illo-content-ops-hd.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several platform-shaped output cards beneath four audience markers" loading="lazy"><figcaption>system illustration, generated</figcaption></figure>
         <div class="top"><span class="name">content-ops</span><span class="chip-status">SHIPPED</span></div>
         <h3>One story, shaped for every platform</h3>
         <p class="body">A multi-agent content engine on Claude: sources live angles, drafts a master, and adapts it to the mechanics of nine platforms for four audiences. Every draft passes one deterministic voice and format gate, and nothing posts without a person pressing send.</p>
@@ -324,7 +334,7 @@
       <span class="sec-note">Private builds, described honestly</span>
     </div>
     <figure class="oncam oncam--divider reveal" style="margin:0 0 48px">
-      <img src="assets/stills/oncam/trumpmj-068.jpg" alt="Mitchell Williams hosting an AJ+ explainer behind a row of product jars" loading="lazy">
+      <img src="assets/stills/oncam/trumpmj-068-2x.jpg" alt="Mitchell Williams hosting an AJ+ explainer behind a row of product jars" style="object-position:center top" loading="lazy">
       <figcaption class="oncam-cap">aj+, 2017. the production craft these systems automate.</figcaption>
     </figure>
     <div class="bench-strip" role="region" aria-label="Bench projects">
@@ -344,7 +354,7 @@
         <span class="bstat">in production · private</span>
       </div>
     </div>
-    <p class="reveal" style="margin-top:40px;font-size:15px;color:var(--mute);max-width:640px;">Every featured project will carry a short demo video here as the library grows. Until then, the repos and the <a href="broll-pipeline.html" style="color:var(--bone);border-bottom:1px solid var(--blood-soft)">broll breakdown</a> are the walkthrough.</p>
+    <p class="reveal" style="margin-top:40px;font-size:15px;color:var(--mute);text-align:center;">Every featured project will carry a short demo video as the library grows. Until then, the repos and the <a href="broll-pipeline.html" style="color:var(--bone);border-bottom:1px solid var(--blood-soft)">broll breakdown</a> are the walkthrough.</p>
   </div>
 </section>
 

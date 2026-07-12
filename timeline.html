@@ -526,9 +526,9 @@
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
-        <a href="work.html#google"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
-        <a href="work.html#google"><img src="assets/posters/google-lifeatgoogle-2019-interview-prep-coding.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
-        <a href="work.html#google"><img src="assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg" alt="Working as an Application Engineer at Google" loading="lazy"><span class="cl">Application engineer · Life at Google</span></a>
+        <a href="work.html#google" data-youtube="ohtLXCwC-oU"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
+        <a href="work.html#google" data-youtube="6ZZX9iIgFoo"><img src="assets/posters/google-lifeatgoogle-2019-interview-prep-coding.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
+        <a href="work.html#google" data-youtube="rGtcmKIZi5c"><img src="assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg" alt="Working as an Application Engineer at Google" loading="lazy"><span class="cl">Application engineer · Life at Google</span></a>
       </div>
       </div>
     </div>
@@ -717,7 +717,16 @@
       var prev=a.getAttribute('data-preview');
       var full=a.getAttribute('data-full');
       var streamId=a.getAttribute('data-stream-id');
-      if(streamId){
+      var ytId=a.getAttribute('data-youtube');
+      if(ytId){
+        // YouTube-hosted piece (no local master): nocookie embed, same
+        // explicit-gesture autoplay contract as the stream branch
+        var yf=document.createElement('iframe');
+        yf.src='https://www.youtube-nocookie.com/embed/'+ytId+'?autoplay=1';
+        yf.allow='autoplay; fullscreen; picture-in-picture'; yf.allowFullscreen=true;
+        yf.title=img?img.alt:'clip player';
+        cbMedia.appendChild(yf);
+      } else if(streamId){
         // full piece via Cloudflare Stream, same player the reel theater
         // uses; the click is the explicit gesture, so autoplay with sound
         var f=document.createElement('iframe');

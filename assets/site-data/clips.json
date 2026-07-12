@@ -1935,6 +1935,32 @@
       "sourceFile": "HUFFPOST_2013-2014_HIV-Prevention-Pill-Truvada-In-Stores_Panel-Interview_29m26s.mp4"
     },
     {
+      "slug": "huffpost-2013-jenna-miscavige-beyond-belief",
+      "published": true,
+      "bucket": "interviews-panels",
+      "outlet": "huffpost",
+      "outletLabel": "HuffPost Live",
+      "year": "2013",
+      "era": "2010-2013",
+      "type": "Live Interview",
+      "title": "Jenna Miscavige Hill on leaving Scientology",
+      "subtitle": "The church leader's niece on her memoir Beyond Belief, interviewed by Ahmed Shihab-Eldin.",
+      "duration": "12m09s",
+      "durationSec": 729,
+      "poster": "assets/posters/huffpost-2013-jenna-miscavige-beyond-belief.jpg",
+      "hoverPreview": "assets/previews/huffpost-2013-jenna-miscavige-beyond-belief.mp4",
+      "previewStart": 47,
+      "media": {
+        "local": null,
+        "streamId": null,
+        "youtubeId": "7yCKKcg8JG0"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
+    },
+    {
       "slug": "google-lifeatgoogle-2019-working-on-the-corpeng-team",
       "published": true,
       "bucket": "google",
