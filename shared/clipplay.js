@@ -43,6 +43,7 @@
     const code = document.body.dataset.streamCode || STREAM_CODE_DEFAULT;
     if (d.youtubeId) {
       const f = document.createElement('iframe');
+      f.title = (d.title || 'Clip') + ' video player';
       f.src = 'https://www.youtube-nocookie.com/embed/' + d.youtubeId + '?autoplay=1';
       f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true;
       stage.appendChild(f);
@@ -52,6 +53,7 @@
     const devLocal = d.local && (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname));
     if (mode === 'stream' && d.streamId && !devLocal) {
       const f = document.createElement('iframe');
+      f.title = (d.title || 'Clip') + ' video player';
       f.src = 'https://customer-' + code + '.cloudflarestream.com/' + d.streamId + '/iframe?autoplay=true' + (d.poster ? '&poster=' + encodeURIComponent(new URL(d.poster, location.href).href) : '');
       f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true;
       stage.appendChild(f);
@@ -132,7 +134,8 @@
   /* deep link: #play-<clip> opens the theater directly */
   (function () {
     const m = location.hash.match(/^#play-(.+)$/); if (!m) return;
-    const slug = CSS.escape(decodeURIComponent(m[1]));
+    let slug;
+    try { slug = CSS.escape(decodeURIComponent(m[1])); } catch { return; }
     const t = document.querySelector('.film[data-clip="' + slug + '"],[data-clip-play][data-clip="' + slug + '"]');
     if (t) { t.scrollIntoView({ block: 'center' }); openTheater(t); }
   })();
