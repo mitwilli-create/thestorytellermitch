@@ -13,9 +13,33 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="shared/theme.css?v=20260711d">
   <style>
-    .fit-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
-    .fit-hero .display{font-size:clamp(38px,6.6vw,96px)}
-    .fit-sub{margin-top:26px;max-width:620px;font-size:18px;color:var(--bone-soft);line-height:1.6}
+    /* fit-02: hero console: display type + steps plate + router chips in
+       one dashboard lockup; chips dock over the plate's lower edge */
+    .fit-hero{padding:150px 0 48px;border-bottom:1px solid var(--line)}
+    .fit-hero .display{font-size:clamp(38px,5.8vw,84px)}
+    .fit-sub{margin-top:24px;max-width:620px;font-size:17px;color:var(--bone-soft);line-height:1.6}
+    .fit-lockup{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+      gap:24px 56px;align-items:center}
+    .fit-plate{margin:0;position:relative;border:1px solid var(--line-2);
+      background:var(--surface);overflow:hidden}
+    .fit-plate img,.fit-plate video{display:block;width:100%;height:auto;aspect-ratio:1376/768;object-fit:cover}
+    .fit-plate .plate-cap{position:absolute;right:10px;top:8px;z-index:2;
+      font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;
+      text-transform:lowercase;color:var(--mute)}
+    .fit-col{min-width:0}
+    .fit-col .fit-router{transform:translateY(-50%);margin-bottom:calc(-0.5 * 44px);
+      position:relative;z-index:2;justify-content:center}
+    @media(min-width:1024px){
+      .fit-col .fr-k{display:none}
+      .fit-col .fit-router{flex-wrap:nowrap;gap:8px}
+      .fit-col .fr-chip{font-size:10px;padding:8px 11px;letter-spacing:0.08em;white-space:nowrap}
+    }
+    .fit-router{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .fit-router .fr-chip{background:var(--bg)}
+    @media(max-width:1023px){
+      .fit-lockup{grid-template-columns:1fr;gap:36px}
+      .fit-col .fit-router{transform:none;margin-bottom:0;justify-content:flex-start;margin-top:14px}
+    }
     .role-list{max-width:900px}
     details.role{border-bottom:1px solid var(--line)}
     details.role:first-of-type{border-top:1px solid var(--line)}
@@ -40,7 +64,6 @@
       letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);
       border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
     details.role .r-links a:hover{color:var(--blood-soft)}
-    .fit-router{display:flex;gap:10px;align-items:center;margin-top:26px;flex-wrap:wrap}
     .fr-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
     .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}
@@ -49,12 +72,49 @@
       color:var(--dim);margin:46px 0 8px;scroll-margin-top:110px}
     .cluster-h:first-child{margin-top:0}
     details.role{scroll-margin-top:96px}
-    .fit-cta{margin-top:56px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .fit-cta .note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.06em}
+    /* fit-03: evidence links ride a 220px side column inside the open pitch */
+    @media(min-width:1024px){
+      details.role .r-body{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) 220px;
+        gap:0 36px;align-items:start}
+      details.role .r-fit{grid-column:1;max-width:720px}
+      details.role .r-links{grid-column:2;grid-row:1 / span 8;flex-direction:column;gap:12px;
+        margin-top:6px;border-left:1px solid var(--line);padding-left:22px}
+    }
+    /* fit-04: the CTA compresses to one slim ledger row (no sticky) */
+    .fit-cta{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);
+      display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .fit-cta .btn{padding:12px 20px}
+    .fit-cta .note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.06em;margin-left:auto}
     section{padding:80px 0}
+    /* fit-01: two-pane role atlas (JS-built at >=1024px from the native
+       details markup; no-JS and mobile keep the accordions exactly) */
+    .atlas-rail{display:none}
+    @media(min-width:1024px){
+      .js-atlas .atlas-shell{display:grid;grid-template-columns:320px minmax(0,1fr);gap:0 56px;align-items:start}
+      .js-atlas .atlas-rail{display:block;position:sticky;top:96px}
+      .js-atlas .ar-group{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;
+        text-transform:uppercase;color:var(--dim);margin:26px 0 10px}
+      .js-atlas .ar-group:first-child{margin-top:0}
+      .js-atlas .ar-tab{display:block;width:100%;text-align:left;background:none;border:none;
+        border-left:2px solid var(--line);cursor:pointer;padding:11px 0 11px 16px;
+        font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:-0.01em;
+        text-transform:uppercase;color:var(--mute);
+        transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
+      .js-atlas .ar-tab:hover{color:var(--bone)}
+      .js-atlas .ar-tab[aria-selected="true"]{color:var(--bone);border-left-color:var(--blood-soft)}
+      .js-atlas .ar-tab:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+      .js-atlas .role-list{max-width:none}
+      .js-atlas .role-list .cluster-h{display:none}
+      .js-atlas details.role{border-bottom:none}
+      .js-atlas details.role:first-of-type{border-top:none}
+      .js-atlas details.role:not([open]){display:none}
+      .js-atlas details.role summary{display:none}
+      .js-atlas details.role .r-body{min-height:520px;padding-top:4px}
+    }
     @media(max-width:860px){
       .fit-hero{padding:130px 0 40px}
       details.role summary{grid-template-columns:1fr auto}
+      .fit-cta .note{margin-left:0}
     }
   </style>
 </head>
@@ -77,22 +137,29 @@
   </div>
 </nav>
 
-<header class="fit-hero fill-host">
-  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-fit-loop" aria-hidden="true">
-    <img src="assets/stills/fill-fit-hd.jpg" alt="" width="1376" height="768" loading="lazy">
-  </figure>
+<header class="fit-hero">
   <div class="wrap">
-    <div class="kicker">role / fit / evidence</div>
-    <h1 class="display">
-      <span class="ln"><span>What you're</span></span>
-      <span class="ln"><span class="accent">hiring for.</span></span>
-    </h1>
-    <p class="fit-sub">You're hiring for a discipline, not a resume keyword. This page lists the roles I'm pursuing, each with the case for why I'm the hire, plus links to the work that backs it. Match it to your req, then open it.</p>
-    <div class="fit-router">
-      <span class="fr-k">Hiring for:</span>
-      <a class="fr-chip" href="#cluster-story">Editorial &amp; comms</a>
-      <a class="fr-chip" href="#cluster-build">Engineering &amp; AI</a>
-      <a class="fr-chip" href="#roles">Everything</a>
+    <div class="fit-lockup">
+      <div class="fit-main">
+        <div class="kicker">role / fit / evidence</div>
+        <h1 class="display">
+          <span class="ln"><span>What you're</span></span>
+          <span class="ln"><span class="accent">hiring for.</span></span>
+        </h1>
+        <p class="fit-sub">You're hiring for a discipline, not a resume keyword. This page lists the roles I'm pursuing, each with the case for why I'm the hire, plus links to the work that backs it. Match it to your req, then open it.</p>
+      </div>
+      <div class="fit-col">
+        <figure class="fit-plate cine" data-cine="assets/cinemagraphs/fill-fit2-loop">
+          <img src="assets/stills/fill-fit2-hd.jpg" width="1376" height="768" alt="Illustration: a staircase built from stacked pages rises to an open door, a figure stepping through." loading="lazy">
+          <figcaption class="plate-cap">the door's open.</figcaption>
+        </figure>
+        <div class="fit-router">
+          <span class="fr-k">Hiring for:</span>
+          <a class="fr-chip" href="#cluster-story">Editorial &amp; comms</a>
+          <a class="fr-chip" href="#cluster-build">Engineering &amp; AI</a>
+          <a class="fr-chip" href="#roles">Everything</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -272,10 +339,82 @@
 <script src="shared/reveal.js?v=20260711e"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 <script>
-  // deep-link support: /fit.html#ai-enablement opens that role
+  // fit-01: two-pane role atlas, built progressively from the native
+  // details markup. >=1024px + JS: sticky rail of tabs left, the selected
+  // pitch right. Mobile and no-JS keep the accordions exactly as authored.
+  const list=document.querySelector('.role-list');
+  const roles=[...list.querySelectorAll('details.role')];
+  const clusterOf=(d)=>{let el=d;while(el&&!(el.classList&&el.classList.contains('cluster-h')))el=el.previousElementSibling;return el?el.id:null;};
+  const shell=document.createElement('div');shell.className='atlas-shell';
+  list.before(shell);
+  const rail=document.createElement('nav');rail.className='atlas-rail';rail.setAttribute('aria-label','Roles');
+  const tablist=document.createElement('div');tablist.setAttribute('role','tablist');tablist.setAttribute('aria-orientation','vertical');
+  rail.appendChild(tablist);
+  [...list.querySelectorAll('.cluster-h')].forEach(h=>{
+    const g=document.createElement('div');g.className='ar-group';g.textContent=h.textContent;tablist.appendChild(g);
+    let el=h.nextElementSibling;
+    while(el&&!el.classList.contains('cluster-h')){
+      if(el.matches&&el.matches('details.role')){
+        const d=el,btn=document.createElement('button');
+        btn.type='button';btn.className='ar-tab';btn.id='tab-'+d.id;
+        btn.setAttribute('role','tab');btn.setAttribute('aria-controls',d.id);
+        btn.setAttribute('aria-selected','false');btn.tabIndex=-1;
+        btn.textContent=d.querySelector('.r-label').textContent;
+        btn.addEventListener('click',()=>select(d.id,true));
+        tablist.appendChild(btn);
+      }
+      el=el.nextElementSibling;
+    }
+  });
+  shell.append(rail,list);
+  const mq=matchMedia('(min-width:1024px)');
+  function select(id,fromUser){
+    roles.forEach(d=>{d.open=(d.id===id);});
+    tablist.querySelectorAll('.ar-tab').forEach(b=>{
+      const on=b.getAttribute('aria-controls')===id;
+      b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
+    });
+    if(fromUser) history.replaceState(null,'','#'+id);
+  }
+  tablist.addEventListener('keydown',(e)=>{
+    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp') return;
+    const tabs=[...tablist.querySelectorAll('.ar-tab')];
+    const i=tabs.indexOf(document.activeElement);
+    if(i<0) return;
+    e.preventDefault();
+    const next=tabs[(i+(e.key==='ArrowDown'?1:-1)+tabs.length)%tabs.length];
+    next.focus();next.click();
+  });
+  function applyMode(){
+    document.body.classList.toggle('js-atlas',mq.matches);
+    roles.forEach(d=>{
+      if(mq.matches){d.setAttribute('role','tabpanel');d.setAttribute('aria-labelledby','tab-'+d.id);}
+      else{d.removeAttribute('role');d.removeAttribute('aria-labelledby');}
+    });
+    if(mq.matches){const cur=roles.find(d=>d.open)||roles[0];select(cur.id,false);}
+  }
+  (mq.addEventListener?mq.addEventListener('change',applyMode):mq.addListener(applyMode));
+  applyMode();
+
+  // deep-link support: /fit.html#ai-enablement opens/selects that role;
+  // cluster hashes route to the cluster's first role in atlas mode.
   const HASH_ALIAS={'engineering-editorial':'content-editorial'};
-  function openFromHash(){ if(!location.hash) return; let id=location.hash.slice(1); id=HASH_ALIAS[id]||id;
-    const d=document.querySelector('details#'+CSS.escape(id)); if(d){ d.open=true; d.scrollIntoView({behavior:'instant',block:'start'}); } }
+  function openFromHash(){
+    if(!location.hash) return;
+    let id=location.hash.slice(1); id=HASH_ALIAS[id]||id;
+    if(document.body.classList.contains('js-atlas')&&(id==='cluster-story'||id==='cluster-build'||id==='roles')){
+      const target=id==='cluster-build'
+        ? roles.find(d=>clusterOf(d)==='cluster-build')
+        : roles[0];
+      if(target){select(target.id,false);shell.scrollIntoView({behavior:'instant',block:'start'});}
+      return;
+    }
+    const d=document.querySelector('details#'+CSS.escape(id));
+    if(d){
+      if(document.body.classList.contains('js-atlas')){select(id,false);shell.scrollIntoView({behavior:'instant',block:'start'});}
+      else{d.open=true;d.scrollIntoView({behavior:'instant',block:'start'});}
+    }
+  }
   openFromHash();
   window.addEventListener('load', openFromHash);
   addEventListener('hashchange', openFromHash);
