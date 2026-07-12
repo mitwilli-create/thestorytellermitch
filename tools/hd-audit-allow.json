@@ -15,5 +15,12 @@
   { "src": "assets/cinemagraphs/fill-storiesboard-loop", "reason": "Veo 1080p ceiling" },
   { "src": "assets/stills/band-signal-flow-b-hd.jpg", "reason": "Veo 1080p ceiling; full-width band renders 2880 device px at 1440" },
   { "src": "assets/career-ops/dashboard-live-20260710.png", "reason": "dated live-dashboard capture; re-shooting would change the dated artifact" },
-  { "src": "assets/posters/clinton-information-war-2011.jpg", "reason": "C-SPAN SD source, 768x576 is the native master" }
+  { "src": "assets/posters/clinton-information-war-2011.jpg", "reason": "C-SPAN SD source, 768x576 is the native master" },
+  { "src": "assets/stills/oncam/jamaica-headturn.jpg", "reason": "no larger master exists in ~/Downloads/VIDEOS or media/; 1080x1080 is the max" },
+  { "src": "assets/posters/home-binladen.jpg", "reason": "master is 1280x714; the shipped 700x811 portrait crop already exceeds a native same-aspect re-crop (616x714)" },
+  { "src": "assets/stills/mc-jazz-jennings-2016.jpg", "reason": "only master is the 58m episode at 640x360, smaller than the shipped 900x900" },
+  { "src": "assets/stills/mc-scientology-bigblue-2009-2x.jpg", "reason": "Commons original (PictorialEvidence, CC BY-SA 3.0) is 1000x714; no larger version of this photo exists; larger alternates are different compositions (art-direction call)" },
+  { "src": "assets/stills/oncam/barenec-052-2x.jpg", "reason": "re-grabbed from the 1920x1080 master; 1.46x at stories' 1312px cell is the source ceiling" },
+  { "src": "assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg", "reason": "YouTube 1080p ceiling on the start-here wide card (740x709 cell wants 1134px-tall source); regular cells pass at 2.26x" },
+  { "src": "assets/stills/illo-broll-machine-hd.jpg", "reason": "nano-banana-2 output at native 1446x1080; larger needs an art regeneration decision" }
 ]
