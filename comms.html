@@ -18,6 +18,26 @@
     .comms-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
     .comms-sub a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     section{padding:76px 0}
+    /* comms-01: the credentials block rises into the hero's lower third.
+       The hero reserves the room (so its own text reads first and nothing
+       shifts); the section pulls up over the reserved band. */
+    @media(min-width:861px){
+      .comms-hero{padding-bottom:calc(56px + 15vh);border-bottom:none}
+      .sec-cred{margin-top:-15vh;position:relative;z-index:2;padding-top:0}
+    }
+    /* comms-05: the three enablement tiles ride directly under the
+       overlapped fact grid, one shared sec-lock for the merged section */
+    .enable-grid{margin-top:14px}
+    /* comms-02: the jump row pins as a slim bar once the hero scrolls out */
+    .jump-row.pinned{position:fixed;top:62px;left:0;right:0;z-index:90;margin:0;
+      background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--line);padding:0 40px;height:40px;
+      display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+    .jump-row.pinned .chip{border-color:transparent;padding:6px 10px;font-size:10px;white-space:nowrap}
+    .jump-row .chip.is-here{color:var(--bone)}
+    .jump-row.pinned .chip.is-here{text-decoration:underline;text-decoration-color:var(--blood-soft);
+      text-decoration-thickness:2px;text-underline-offset:6px;background:none;border-color:transparent}
+    @media(max-width:640px){.jump-row.pinned{display:none}}
     section [id]{scroll-margin-top:86px}
     /* section lockups: mono eyebrow + Archivo title, one notch below the
        home .sec-title (council-adjudicated 2026-07-11) */
@@ -41,10 +61,7 @@
       transition:border-color var(--dur-micro) var(--ease-micro)}
     .sys-thumb:hover{border-color:var(--blood-soft)}
     .sys-thumb img{display:block;width:100%;height:auto}
-    /* enablement band: deliberately different texture from the sections
-       around it: surface band, oxblood rail, three tiles */
-    .enable-band{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-      padding:64px 0}
+    /* enablement tiles: three-up row under the fact grid (comms-05) */
     .enable-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
     .etile{background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--blood-soft);padding:26px 24px}
     .etile .e-n{font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;color:var(--bone);
@@ -53,6 +70,19 @@
       text-transform:uppercase;color:var(--blood-soft);margin:10px 0 8px}
     .etile .e-b{font-size:14.5px;color:var(--bone-soft);line-height:1.6}
     .enable-illo{max-width:1040px;margin-top:14px}
+    /* comms-03: the oncam divider becomes the Judgment section's opening
+       backdrop plate; the lockup rises over its lower edge. (The council's
+       sticky-frame variant is dropped by its own rule: the prose measures
+       under 2x the frame height at 1440.) */
+    .judg-sec{position:relative}
+    .judg-backdrop{position:absolute;top:0;left:0;right:0;height:320px;margin:0;overflow:hidden}
+    .judg-backdrop img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .judg-sec .wrap{position:relative;z-index:1}
+    .judg-sec{padding-top:200px}
+    @media(max-width:860px){
+      .judg-backdrop{height:200px}
+      .judg-sec{padding-top:130px}
+    }
     /* judgment: prose left, the broadcast frame fills screen right */
     .judg-grid{display:grid;grid-template-columns:minmax(0,700px) minmax(280px,1fr);gap:48px;align-items:start;max-width:1180px}
     .judg-figure{display:block}
@@ -80,11 +110,16 @@
     .prose p{margin-bottom:18px}
     .prose strong{color:var(--bone)}
     .prose a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .sys-list{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
-    .sys{display:grid;grid-template-columns:250px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+    /* comms-04: the four systems compose as a 2x2 card grid: thumb up
+       top, name, body; hover-cinemagraph behavior unchanged */
+    .sys-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:1040px}
+    .sys{background:var(--surface);border:1px solid var(--line);padding:24px 22px;
+      display:flex;flex-direction:column;gap:14px}
     .sys-name{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--blood-soft);padding-top:3px}
-    .sys-body{font-size:15.5px;color:var(--bone-soft);line-height:1.65}
+      text-transform:uppercase;color:var(--blood-soft);
+      display:flex;flex-direction:column-reverse;gap:14px}
+    .sys-name .sys-thumb{margin-top:0}
+    .sys-body{font-size:14.5px;color:var(--bone-soft);line-height:1.65}
     .sys-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .slot{border:1px dashed var(--line);padding:28px;max-width:740px;background:transparent}
     .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
@@ -99,8 +134,9 @@
     @media(max-width:960px){.fact-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:860px){
       .comms-hero{padding:130px 0 44px}
-      .sys{grid-template-columns:1fr;gap:8px}
+      .sys-list{grid-template-columns:1fr}
       .cta-cards{grid-template-columns:1fr}
+      .enable-grid{grid-template-columns:1fr}
     }
     @media(max-width:560px){.fact-grid{grid-template-columns:1fr}}
     @media (prefers-reduced-motion: reduce){ .reveal{opacity:1 !important;transform:none !important;transition:none !important} }
@@ -147,10 +183,10 @@
   </div>
 </header>
 
-<section>
+<section class="sec-cred">
   <div class="wrap">
     <div class="sec-lock reveal" id="the-seat-i-held">
-      <span class="eyebrow">01 &middot; Credentials</span>
+      <span class="eyebrow">01 &middot; Credentials + enablement</span>
       <h2>The seat I held</h2>
     </div>
     <div class="fact-grid">
@@ -161,16 +197,7 @@
       <div class="fact reveal"><div class="n">Cadence</div><div class="l">Ran the recurring approval-intake prioritization meetings and drove cross-org security and memory-safety mandates through to approval, working alongside engineering leads and program owners.</div></div>
       <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at AJ+ during its 500M-weekly-view era. Three I coached moved from behind the camera to on-air principals, with Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>
     </div>
-  </div>
-</section>
-
-<section class="enable-band" id="enablement" style="padding-top:64px">
-  <div class="wrap">
-    <div class="sec-lock reveal">
-      <span class="eyebrow">02 &middot; Workshops, events, enablement</span>
-      <h2>Teaching at scale</h2>
-    </div>
-    <div class="enable-grid">
+    <div class="enable-grid" id="enablement">
       <div class="etile reveal">
         <div class="e-n">75,000+</div>
         <div class="e-k">Day-One, rebuilt</div>
@@ -190,14 +217,14 @@
   </div>
 </section>
 
-<section style="padding-top:0">
+<section class="judg-sec">
+  <figure class="judg-backdrop oncam" aria-hidden="true">
+    <img src="assets/stills/oncam/momtrump-065.jpg" alt="" loading="lazy">
+    <figcaption class="oncam-cap">aj+ studio, 2016. on both sides of the camera.</figcaption>
+  </figure>
   <div class="wrap">
-    <figure class="oncam oncam--divider reveal" style="margin:0 0 56px">
-      <img src="assets/stills/oncam/momtrump-065.jpg" alt="Mitchell Williams on the AJ+ studio set, boom microphone in frame" loading="lazy">
-      <figcaption class="oncam-cap">aj+ studio, 2016. on both sides of the camera.</figcaption>
-    </figure>
     <div class="sec-lock reveal" id="judgment">
-      <span class="eyebrow">03 &middot; Editorial judgment</span>
+      <span class="eyebrow">02 &middot; Editorial judgment</span>
       <h2>Judgment when counsel is in the room</h2>
     </div>
     <div class="judg-grid">
@@ -219,7 +246,7 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-lock reveal" id="infrastructure">
-      <span class="eyebrow">04 &middot; Systems</span>
+      <span class="eyebrow">03 &middot; Systems</span>
       <h2>I built the infrastructure so the function scales</h2>
     </div>
     <p class="prose reveal" style="margin-bottom:26px">While leading communications, I built the systems a modern comms function needs. Not a career change. The same job, given leverage.</p>
@@ -255,7 +282,7 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-lock reveal" id="read-the-work">
-      <span class="eyebrow">05 &middot; Artifacts</span>
+      <span class="eyebrow">04 &middot; Artifacts</span>
       <h2>Read the work</h2>
     </div>
     <div class="cta-cards">
@@ -278,7 +305,7 @@
 <section style="padding-top:0;padding-bottom:96px">
   <div class="wrap">
     <div class="sec-lock reveal" id="talk-to-me">
-      <span class="eyebrow">06 &middot; Contact</span>
+      <span class="eyebrow">05 &middot; Contact</span>
       <h2>Talk to me</h2>
     </div>
     <div class="talk-card reveal">
@@ -304,5 +331,35 @@
 
 <script src="shared/reveal.js?v=20260711e"></script>
 <script src="shared/audio.js?v=20260711c"></script>
+<script>
+  // comms-02: the jump row pins as a slim scrollspy bar once the hero
+  // scrolls out (>=641px; the static row is untouched without JS)
+  (()=>{
+    const jump=document.querySelector('.jump-row');
+    const hero=document.querySelector('.comms-hero');
+    if(!jump||!hero||!('IntersectionObserver' in window)) return;
+    const ph=document.createElement('div');
+    ph.setAttribute('aria-hidden','true');ph.style.height='0';
+    jump.after(ph);
+    const pinIO=new IntersectionObserver(([e])=>{
+      const pin=!e.isIntersecting&&innerWidth>640;
+      if(pin&&!jump.classList.contains('pinned')) ph.style.height=jump.offsetHeight+'px';
+      jump.classList.toggle('pinned',pin);
+      if(!pin) ph.style.height='0';
+    });
+    pinIO.observe(hero);
+    const chips=[...jump.querySelectorAll('.chip')];
+    const targets=chips.map(c=>document.getElementById(c.getAttribute('href').slice(1))).filter(Boolean);
+    let spyTick=false;
+    const spy=()=>{
+      spyTick=false;
+      let cur=null;
+      for(const t of targets){ if(t.getBoundingClientRect().top<=innerHeight*0.3) cur=t; }
+      chips.forEach(c=>c.classList.toggle('is-here',!!cur&&c.getAttribute('href')==='#'+cur.id));
+    };
+    addEventListener('scroll',()=>{ if(!spyTick){spyTick=true;requestAnimationFrame(spy);} },{passive:true});
+    spy();
+  })();
+</script>
 </body>
 </html>
