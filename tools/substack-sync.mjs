@@ -17,7 +17,7 @@
 // zsh $status is read-only so do not name a variable "status"):
 //   /usr/local/bin/node /Users/mitchellwilliams/Documents/storytellermitch-site/tools/substack-sync.mjs
 // wrap via the nohup-wrapper used by the heartbeat plists on macOS Tahoe.
-import { readFileSync, writeFileSync, existsSync, renameSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, renameSync, unlinkSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -145,15 +145,17 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
   // theoretically possible (kill between renames), but both artifacts
   // are git-tracked, so any divergence is visible in git diff and one
   // checkout away from recovery.
-  const prevPage = readFileSync(PAGE);
   const dataOut = JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n';
+  const pageBak = PAGE + '.bak';
+  writeFileSync(pageBak, readFileSync(PAGE));
   writeFileSync(PAGE + '.tmp', page);
   writeFileSync(DATA + '.tmp', dataOut);
   renameSync(PAGE + '.tmp', PAGE);
   try {
     renameSync(DATA + '.tmp', DATA);
+    unlinkSync(pageBak);
   } catch (e) {
-    writeFileSync(PAGE, prevPage);
+    renameSync(pageBak, PAGE); // rollback is itself an atomic rename
     throw e;
   }
   console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (featured: ${feat.title})`);
