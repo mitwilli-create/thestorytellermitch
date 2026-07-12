@@ -52,7 +52,10 @@ for (const vp of [
     try {
       await p.goto(`${BASE}/${page}`, { waitUntil: 'load', timeout: 30000 });
     } catch (e) {
-      flags.push({ page, viewport: vp.name, src: '(page load)', problem: String(e).slice(0, 120) });
+      const entry = { page, viewport: vp.name, src: '(page load)', problem: String(e).slice(0, 120) };
+      const a = allowed(page, vp.name, entry.src);
+      if (a) entry.allowed = a.reason;
+      flags.push(entry);
       await p.close();
       continue;
     }
@@ -84,7 +87,14 @@ for (const vp of [
       for (const img of document.querySelectorAll('img')) {
         if (!visible(img)) continue;
         const r = img.getBoundingClientRect();
-        if (!img.complete || !img.naturalWidth) { await new Promise(res => setTimeout(res, 300)); }
+        if (!img.complete || !img.naturalWidth) {
+          await new Promise(res => {
+            if (img.complete && img.naturalWidth) return res();
+            img.addEventListener('load', res, { once: true });
+            img.addEventListener('error', res, { once: true });
+            setTimeout(res, 4000);
+          });
+        }
         out.push({ kind: 'img', src: img.currentSrc || img.src, iw: img.naturalWidth, ih: img.naturalHeight, rw: r.width, rh: r.height });
       }
       for (const v of document.querySelectorAll('video')) {
@@ -131,7 +141,10 @@ for (const vp of [
       }
     }
     } catch (e) {
-      flags.push({ page, viewport: vp.name, src: '(audit walk)', problem: String(e).split('\n')[0].slice(0, 160) });
+      const entry = { page, viewport: vp.name, src: '(audit walk)', problem: String(e).split('\n')[0].slice(0, 160) };
+      const a = allowed(page, vp.name, entry.src);
+      if (a) entry.allowed = a.reason;
+      flags.push(entry);
     }
     await p.close();
   }

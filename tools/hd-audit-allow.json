@@ -22,5 +22,7 @@
   { "src": "assets/stills/mc-scientology-bigblue-2009-2x.jpg", "reason": "Commons original (PictorialEvidence, CC BY-SA 3.0) is 1000x714; no larger version of this photo exists; larger alternates are different compositions (art-direction call)" },
   { "src": "assets/stills/oncam/barenec-052-2x.jpg", "reason": "re-grabbed from the 1920x1080 master; 1.46x at stories' 1312px cell is the source ceiling" },
   { "src": "assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg", "reason": "YouTube 1080p ceiling on the start-here wide card (740x709 cell wants 1134px-tall source); regular cells pass at 2.26x" },
-  { "src": "assets/stills/illo-broll-machine-hd.jpg", "reason": "nano-banana-2 output at native 1446x1080; larger needs an art regeneration decision" }
+  { "src": "assets/stills/illo-broll-machine-hd.jpg", "reason": "nano-banana-2 output at native 1446x1080; larger needs an art regeneration decision" },
+  { "src": "assets/stills/mc-ahmed-2014.jpg", "reason": "personal photo, 731x1100 is the only copy; no video master exists" },
+  { "src": "assets/stills/beyond-belief-cover.jpg", "reason": "book cover scan, 400x604 is the source; renders 1.15x only at 390" }
 ]

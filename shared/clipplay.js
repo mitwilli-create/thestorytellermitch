@@ -101,7 +101,8 @@
     if (!theater || theater.hidden) return;
     if (e.key === 'Escape') closeTheater();
     if (e.key === 'Tab') {
-      const f = [theater.querySelector('.theater-close'), ...stage.querySelectorAll('video,iframe')].filter(Boolean);
+      const cl = theater.querySelector('#th-case');
+      const f = [theater.querySelector('.theater-close'), ...stage.querySelectorAll('video,iframe'), cl && !cl.hidden ? cl : null].filter(Boolean);
       if (f.length < 2) return;
       const first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
