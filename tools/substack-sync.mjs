@@ -17,7 +17,7 @@
 // zsh $status is read-only so do not name a variable "status"):
 //   /usr/local/bin/node /Users/mitchellwilliams/Documents/storytellermitch-site/tools/substack-sync.mjs
 // wrap via the nohup-wrapper used by the heartbeat plists on macOS Tahoe.
-import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, renameSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -105,7 +105,9 @@ async function main() {
   // every deploy)
   let prevData = null;
   if (existsSync(DATA)) {
-    try { prevData = readFileSync(DATA); } catch { /* unreadable: treat as absent */ }
+    // refuse to proceed if the existing state cannot be snapshotted:
+    // overwriting a file we could not read risks losing it on rollback
+    prevData = readFileSync(DATA);
   }
   if (prevData !== null) {
     try {
@@ -137,14 +139,21 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
   let page = readFileSync(PAGE, 'utf8');
   page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
   page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
-  // the two artifacts persist as a pair: if the page write fails after
-  // the json write, the json rolls back (prevData snapshot from above)
-  // so they can never diverge
-  writeFileSync(DATA, JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n');
+  // best-effort pair consistency: each artifact lands via temp+rename
+  // (atomic per file), the page renames first, and a failed second
+  // rename restores the page from its snapshot. A torn state remains
+  // theoretically possible (kill between renames), but both artifacts
+  // are git-tracked, so any divergence is visible in git diff and one
+  // checkout away from recovery.
+  const prevPage = readFileSync(PAGE);
+  const dataOut = JSON.stringify({ fetched: new Date().toISOString(), feed: FEED, posts }, null, 2) + '\n';
+  writeFileSync(PAGE + '.tmp', page);
+  writeFileSync(DATA + '.tmp', dataOut);
+  renameSync(PAGE + '.tmp', PAGE);
   try {
-    writeFileSync(PAGE, page);
+    renameSync(DATA + '.tmp', DATA);
   } catch (e) {
-    if (prevData !== null) writeFileSync(DATA, prevData); else unlinkSync(DATA);
+    writeFileSync(PAGE, prevPage);
     throw e;
   }
   console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (featured: ${feat.title})`);
