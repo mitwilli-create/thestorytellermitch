@@ -19,6 +19,33 @@
     .block{padding:96px 0;border-top:1px solid var(--line)}
     .block .inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
     .block.flip .inner .media{order:2}
+    /* impact-01: the opening block rises 12vh into the hero's lower third;
+       the hero reserves the room so nothing shifts. Mobile stacks normally. */
+    @media(min-width:861px){
+      .im-hero{padding-bottom:calc(56px + 12vh)}
+      .block:first-of-type{margin-top:-12vh;border-top:none;padding-top:0;
+        position:relative;z-index:2}
+    }
+    /* impact-04: the text column overlaps the image edge by ~8% on a solid
+       panel; aspect ratios stay reserved, single column under 861px */
+    @media(min-width:861px){
+      .block .inner{gap:0}
+      .block .inner > div:not(.media){margin-left:-8%;position:relative;z-index:2;
+        background:var(--bg);padding:30px 0 30px 34px}
+      .block.flip .inner > div:not(.media){margin-left:0;margin-right:-8%;
+        padding:30px 34px 30px 0}
+    }
+    /* impact-02: from the second block on, the stat compresses to a plate
+       floated into the narrative flow (CSS-only; reading order unchanged) */
+    @media(min-width:861px){
+      .block:not(:first-of-type) .big-n{float:left;font-size:clamp(36px,3.8vw,60px);
+        line-height:0.95;padding:16px 18px;margin:4px 22px 8px 0;
+        background:var(--surface);border:1px solid var(--line-2);
+        border-left:2px solid var(--blood-soft)}
+      .block:not(:first-of-type) .big-l{margin-top:8px}
+      .block:not(:first-of-type) .narr{margin-top:14px}
+      .block:not(:first-of-type) .src,.block:not(:first-of-type) .sub-metrics{clear:left}
+    }
     .block .media{position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line)}
     .block .media img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.35) contrast(1.05);
       transition:filter .6s var(--ease)}
