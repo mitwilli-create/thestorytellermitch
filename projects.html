@@ -309,7 +309,7 @@
       <img src="assets/stills/oncam/trumpmj-068.jpg" alt="Mitchell Williams hosting an AJ+ explainer behind a row of product jars" loading="lazy">
       <figcaption class="oncam-cap">aj+, 2017. the production craft these systems automate.</figcaption>
     </figure>
-    <div class="bench-strip" tabindex="0" role="region" aria-label="Bench projects: horizontal strip, arrow keys scroll">
+    <div class="bench-strip" role="region" aria-label="Bench projects">
       <div class="bench-card reveal">
         <span class="bname">mission-control</span>
         <p class="bdesc">Personal ops dashboard, a zero-dependency Node PWA: one next action, the content pipeline, and agent-fleet health on one screen.</p>
@@ -363,9 +363,12 @@
       });
     });
   });
-  // bench strip: arrow keys page the snap strip
+  // bench strip: arrow keys page the snap strip (tab stop + wording only
+  // exist when JS is here to honor them; no-JS wraps to a grid)
   const bench=document.querySelector('.bench-strip');
   if(bench){
+    bench.tabIndex=0;
+    bench.setAttribute('aria-label','Bench projects: horizontal strip, arrow keys scroll');
     bench.addEventListener('keydown',(e)=>{
       if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
       e.preventDefault();

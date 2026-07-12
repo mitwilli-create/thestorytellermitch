@@ -257,7 +257,7 @@
       <span class="sec-note">Live broadcast, viral social, and AI-native production</span>
     </div>
 
-    <div class="film-grid" tabindex="0" role="region" aria-label="Selected work: horizontal strip, arrow keys scroll">
+    <div class="film-grid" role="region" aria-label="Selected work">
       <!-- Real, playable: the ElevenLabs pipeline output -->
       <a class="film wide reveal" href="broll-pipeline.html">
         <video src="assets/broll-short-n16.mp4" poster="assets/posters/home-broll.jpg" muted loop playsinline preload="metadata"></video>
@@ -434,6 +434,8 @@
   (()=>{
     const strip=document.querySelector('.film-grid');
     if(!strip) return;
+    strip.tabIndex=0;
+    strip.setAttribute('aria-label','Selected work: horizontal strip, arrow keys scroll');
     strip.addEventListener('keydown',(e)=>{
       if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
       e.preventDefault();
