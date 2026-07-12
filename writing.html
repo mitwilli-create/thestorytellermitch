@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260711d">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712a">
   <style>
     /* writing-02 (layout half): hero reserves bottom room for the featured
        essay card that overlaps its lower-right edge */
@@ -69,6 +69,7 @@
     .dcard{background:var(--surface);border:1px solid var(--line);padding:24px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .dcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .dcard:focus-visible{border-color:var(--blood-soft);outline:none}
     .dcard .dc-k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:10px}
     .dcard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--bone);display:block;margin-bottom:8px;line-height:1.25}

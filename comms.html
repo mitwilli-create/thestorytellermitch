@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260711d">
+  <link rel="stylesheet" href="shared/theme.css?v=20260712a">
   <style>
     .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
     .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
@@ -129,6 +129,7 @@
     .ccard{background:var(--surface);border:1px solid var(--line);padding:26px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .ccard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .ccard:focus-visible{border-color:var(--blood-soft);outline:none}
     .ccard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;color:var(--bone);display:block;margin-bottom:8px}
     .ccard span{font-size:14px;color:var(--mute);line-height:1.55}
     @media(max-width:960px){.fact-grid{grid-template-columns:repeat(2,1fr)}}

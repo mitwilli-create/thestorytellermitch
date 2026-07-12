@@ -175,7 +175,8 @@
     .film{position:relative;overflow:hidden;background:var(--surface);
       border:1px solid var(--line);aspect-ratio:16/9;cursor:pointer;
       transition:border-color var(--dur-micro) var(--ease-micro),transform var(--dur-move) var(--ease)}
-    .film:hover{border-color:var(--line-2);transform:translateY(-3px)}
+    .film:hover{border-color:var(--blood-soft);transform:translateY(-3px)}
+    .film:focus-visible{border-color:var(--blood-soft);outline:none}
     .film.wide{grid-column:span 4}
     .film.tall{grid-column:span 2;aspect-ratio:auto}
     .film.half{grid-column:span 3}
@@ -227,6 +228,17 @@
 
     /* ---------- footer ---------- */
     footer{border-top:1px solid var(--line);padding:64px 0 48px;background:var(--bg-2)}
+    /* footer card-over-bar, sitewide (index-06 pattern, 2026-07-12):
+       the .big plate rides as a bordered surface card overlapping the
+       preceding section's bottom edge. Static negative margin, never
+       sticky. Pages without room opt out via .foot--flat on <footer>. */
+    @media(min-width:861px){
+      footer:not(.foot--flat){padding-top:0}
+      footer:not(.foot--flat) .foot .big{background:var(--surface);border:1px solid var(--line-2);
+        padding:26px 34px;margin-top:-64px;position:relative;z-index:2}
+      footer.foot--flat .foot .big{background:var(--surface);border:1px solid var(--line-2);
+        padding:26px 34px}
+    }
     .foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px}
     .foot .big{font-family:'Archivo',sans-serif;font-weight:900;
       font-size:clamp(36px,7vw,86px);letter-spacing:-0.03em;text-transform:uppercase;line-height:0.9}
@@ -275,7 +287,8 @@ a.chip{text-decoration:none;display:inline-block}
 .chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
   padding:9px 16px;border:1px solid var(--line);background:transparent;color:var(--mute);
   cursor:pointer;transition:all var(--dur-micro) var(--ease-micro)}
-.chip:hover{border-color:var(--line-2);color:var(--bone)}
+.chip:hover{border-color:var(--blood-soft);color:var(--bone)}
+.chip:focus-visible{border-color:var(--blood-soft);outline:none}
 .chip.is-active{border-color:var(--blood-soft);color:var(--bone);background:rgba(138,58,51,0.14)}
 .no-js .filter-bar{display:none}
 .sec-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);letter-spacing:0.08em}
