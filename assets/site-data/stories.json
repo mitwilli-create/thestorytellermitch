@@ -30,6 +30,14 @@
           "date": "Dec 27, 2007",
           "url": "http://news.bbc.co.uk/2/hi/south_asia/7161590.stm",
           "excerpt": "Pakistani former Prime Minister Benazir Bhutto has been assassinated in a suicide attack. Ms Bhutto - the first woman PM in an Islamic state..."
+        },
+        {
+          "type": "headline",
+          "headline": "Pakistani opposition leader Bhutto killed in suicide attack on campaign rally",
+          "outlet": "Associated Press · via Deseret News",
+          "date": "Dec 27, 2007",
+          "url": "https://www.deseret.com/2007/12/27/20061571/pakistani-opposition-leader-bhutto-killed-in-suicide-attack-on-campaign-rally/",
+          "excerpt": "RAWALPINDI, Pakistan: Pakistan opposition leader Benazir Bhutto was assassinated Thursday by an attacker who shot her after a campaign rally and then blew himself up..."
         }
       ]
     },
@@ -119,7 +127,8 @@
       ],
       "pull": "Celebrity news was the doorway. The uprising was the story.",
       "clipSlugs": [
-        "huffpost-2012-kim-kardashian-milkshake-bahrain"
+        "huffpost-2012-kim-kardashian-milkshake-bahrain",
+        "aje-stream-2011-what-is-the-way-forward-in-bahrain"
       ],
       "still": {
         "src": "assets/stills/kim-k-bahrain.jpg",
@@ -133,6 +142,21 @@
           "cap": "Pearl Roundabout, Manama, 2011 · CC BY-SA",
           "alt": "Mass protest at Pearl Roundabout, Bahrain, 2011",
           "preview": "assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/mc-riffa-launch-2012.jpg",
+          "cap": "The Riffa launch footage, aired in the segment · from the broadcast, 2012",
+          "alt": "Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012"
+        },
+        {
+          "type": "headline",
+          "headline": "Kim Kardashian, Tear-Gas and Milkshake in Bahrain",
+          "outlet": "Global Voices",
+          "date": "Dec 2, 2012",
+          "url": "https://globalvoices.org/2012/12/02/kim-kardashian-tear-gas-and-milkshake-in-bahrain/",
+          "excerpt": "American socialite and TV reality star Kim Kardashian was in Bahrain yesterday to open a milkshake shop. Hardline Salafists protested her visit...",
+          "after": 2
         }
       ]
     },
@@ -238,7 +262,8 @@
       ],
       "pull": "Find the story early. Then build the container so it can be told safely.",
       "clipSlugs": [
-        "huffpost-or-aje-2012-jazz-growing-up-trans-youth"
+        "huffpost-or-aje-2012-jazz-growing-up-trans-youth",
+        "huffpost-2012-the-few-the-proud-trans-military-panel"
       ],
       "still": {
         "src": "assets/stills/jazz-jennings.jpg",
@@ -254,6 +279,15 @@
           "tall": true,
           "pos": "center 32%",
           "preview": "assets/previews/huffpost-or-aje-2012-jazz-growing-up-trans-youth.mp4"
+        },
+        {
+          "type": "headline",
+          "headline": "Transgender Teen Activist Lands TLC Reality Show",
+          "outlet": "The Hollywood Reporter",
+          "date": "Mar 12, 2015",
+          "url": "https://www.hollywoodreporter.com/tv/tv-news/jazz-jennings-lands-tlc-docuseries-780890/",
+          "excerpt": "TLC is becoming the latest network to explore transgender life. The cable network has handed out a straight-to-series order for All That Jazz, a docuseries following 14-year-old transgender activist Jazz Jennings...",
+          "after": 2
         }
       ]
     },
@@ -318,6 +352,22 @@
           "src": "assets/stills/mc-mongkok-2014.jpg",
           "cap": "Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA",
           "alt": "Umbrella Revolution street scene, Mong Kok"
+        },
+        {
+          "type": "img",
+          "src": "assets/stills/mc-mongkok-barricade-2014.jpg",
+          "cap": "Holding the barricade line · from the coverage, Hong Kong 2014",
+          "alt": "A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014",
+          "preview": "assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage-960.mp4"
+        },
+        {
+          "type": "headline",
+          "headline": "Eight Questions about \"Occupy Hong Kong\"",
+          "outlet": "Human Rights Watch",
+          "date": "Oct 16, 2014",
+          "url": "https://www.hrw.org/news/2014/10/16/eight-questions-about-occupy-hong-kong",
+          "excerpt": "Hong Kong's Occupy Movement refers to a citizens' blockade of major roads in Hong Kong's Admiralty, Mongkok, and Causeway Bay districts since September 29, 2014.",
+          "after": 2
         }
       ],
       "oncam": {
@@ -507,7 +557,42 @@
         "src": "assets/stills/illo-triage-agent.jpg",
         "cap": "The triage pipeline · system illustration, generated",
         "alt": "Diagram-style illustration of a message triage pipeline with a human escalation desk"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/illo-triage-agent-hd.jpg",
+          "cap": "The system diagram · triage, revise, escalate",
+          "alt": "System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human",
+          "preview": "assets/cinemagraphs/illo-triage-agent-loop.mp4",
+          "previewLabel": "▸ in motion"
+        },
+        {
+          "type": "term",
+          "title": "DEPLOYMENT.md · the operator runbook, public repo",
+          "lines": [
+            "1. Overview",
+            "2. Prerequisites",
+            "3. Environment Setup",
+            "4. Deployment Steps",
+            "5. Configuration Reference",
+            "6. Post-Deployment Verification Checklist",
+            "7. Rollback Procedure",
+            "8. Ongoing Maintenance",
+            "9. Troubleshooting"
+          ],
+          "after": 2
+        },
+        {
+          "type": "headline",
+          "headline": "comms-triage-agent: autonomous triage, revision, and escalation for internal comms intake",
+          "outlet": "GitHub · mitwilli-create",
+          "date": "2026",
+          "url": "https://github.com/mitwilli-create/comms-triage-agent",
+          "excerpt": "Public demo, sanitized.",
+          "after": 2
+        }
+      ]
     },
     {
       "id": "digital-twin",
@@ -524,7 +609,33 @@
         "src": "assets/stills/illo-digital-twin.jpg",
         "cap": "Voice as infrastructure · system illustration, generated",
         "alt": "Diagram-style illustration of a waveform passing through six measuring gates"
-      }
+      },
+      "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/illo-digital-twin-hd.jpg",
+          "cap": "The system diagram · a voice encoded as checkable rules",
+          "alt": "System diagram: a waveform passing through six measuring gates before it ships",
+          "preview": "assets/cinemagraphs/illo-digital-twin-loop.mp4",
+          "previewLabel": "▸ in motion"
+        },
+        {
+          "type": "term",
+          "title": "voice-os · six axes, one gate",
+          "lines": [
+            "axes  rhetorical pace",
+            "      risk tolerance",
+            "      sentence rhythm",
+            "      escalation pattern",
+            "      hedging behavior",
+            "      editorial register",
+            "gate  pass · revise · reject",
+            "bar   calibrated per context to percentiles",
+            "      of what the author's own text scores"
+          ],
+          "after": 2
+        }
+      ]
     },
     {
       "id": "freeahmed-coalition",
@@ -586,13 +697,23 @@
         "The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation."
       ],
       "pull": "Unclear thinking ships faster and breaks harder. So I draw the boundaries first.",
-      "clipSlugs": [],
+      "clipSlugs": [
+        "broll-pipeline-2026"
+      ],
       "still": {
         "src": "assets/stills/illo-agent-fleet.jpg",
         "cap": "The fleet · system illustration, generated",
         "alt": "Constellation-style diagram of fifty agent nodes around one orchestrator"
       },
       "media": [
+        {
+          "type": "img",
+          "src": "assets/stills/illo-agent-fleet-hd.jpg",
+          "cap": "The fleet diagram · one orchestrator, fifty agents",
+          "alt": "System diagram: a fleet of small agent nodes orbiting one central orchestrator node",
+          "preview": "assets/cinemagraphs/illo-agent-fleet-loop.mp4",
+          "previewLabel": "▸ in motion"
+        },
         {
           "type": "term",
           "title": "launchctl · the fleet, live",

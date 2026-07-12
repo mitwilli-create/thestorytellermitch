@@ -44,9 +44,12 @@ const articles = stories.map((s) => {
         const cls = ['mcard', soloImg ? 'wide' : '', m.fit === 'contain' ? 'book' : '', m.tall ? 'tall' : ''].filter(Boolean).join(' ');
         const style = m.pos ? ` style="object-position:${esc(m.pos)}"` : '';
         // m.preview: the image is a frame from (or directly tied to) a published
-        // clip; hover layers that clip's preview over the still (page JS wires it)
+        // clip; hover layers that clip's preview over the still (page JS wires it).
+        // m.previewLabel overrides the badge text (e.g. generated illustrations
+        // whose hover loop is a cinemagraph, not a clip)
         const img = `<img src="${esc(m.src)}" alt="${esc(m.alt ?? '')}" loading="lazy"${style}>`;
-        const body = m.preview ? `<span class="m-prev" data-preview="${esc(m.preview)}">${img}</span>` : img;
+        const label = m.previewLabel ? ` data-plabel="${esc(m.previewLabel)}"` : '';
+        const body = m.preview ? `<span class="m-prev" data-preview="${esc(m.preview)}"${label}>${img}</span>` : img;
         return `            <figure class="${cls}">${body}<figcaption class="mcap">${esc(m.cap ?? '')}</figcaption></figure>`;
       }).join('\n')}\n          </div>\n`;
   }
@@ -98,10 +101,7 @@ ${inner}
         </details>`;
 }).join('\n\n');
 
-const index = stories.map((s) => {
-  const short = s.title.length > 34 ? s.title.slice(0, 33).replace(/\s+\S*$/, '') + '…' : s.title;
-  return `        <a href="#${esc(s.id)}">${esc(short)}</a>`;
-}).join('\n');
+const index = stories.map((s) => `        <a href="#${esc(s.id)}">${esc(s.title)}</a>`).join('\n');
 
 let page = readFileSync(PAGE, 'utf8');
 page = page.replace(/<!-- STORIES:START -->[\s\S]*?<!-- STORIES:END -->/, `<!-- STORIES:START -->\n${articles}\n        <!-- STORIES:END -->`);

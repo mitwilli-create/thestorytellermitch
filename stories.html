@@ -22,7 +22,7 @@
     .st-index{position:sticky;top:96px;display:flex;flex-direction:column;gap:0;
       max-height:calc(100vh - 130px);overflow-y:auto;overscroll-behavior:contain;
       scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;padding-right:6px}
-    .st-index a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;
+    .st-index a{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;
       text-transform:uppercase;color:var(--dim);padding:7px 0 7px 14px;border-left:1px solid var(--line);
       transition:color .25s var(--ease),border-color .25s var(--ease);line-height:1.45}
     .st-index a:hover{color:var(--bone)}
@@ -114,7 +114,11 @@
       .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px}
     }
     @media(min-width:1740px){
-      .st-wrap{max-width:1730px}
+      /* B8: anchor the layout left so the index rail sits near the viewport
+         edge; the content column keeps the 1440px cap (2 x >=640px bricks +
+         32px gap), so the brick-grid math is unchanged */
+      .st-wrap{max-width:none;padding-left:24px}
+      .st-layout{grid-template-columns:230px minmax(0,1440px);justify-content:start}
     }
     /* stories-02: the opening paragraph panel overlaps the still's top
        edge; an adjacent media row underlaps its bottom with real depth */
@@ -154,6 +158,7 @@
       font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--bone);background:color-mix(in srgb,var(--bg) 78%,transparent);padding:3px 8px;
       border:1px solid var(--line-2)}
+    .m-prev[data-plabel]::after{content:attr(data-plabel)}
 </style>
 </head>
 <body data-reveal-stagger="3">
@@ -195,23 +200,23 @@
     <div class="st-layout">
       <nav class="st-index" id="st-index" aria-label="Story index">
         <!-- STINDEX:START -->
-        <a href="#bhutto-origin">The overnight shift when Bhutto…</a>
-        <a href="#stream-launch-night">Launch night, rewritten by…</a>
+        <a href="#bhutto-origin">The overnight shift when Bhutto was assassinated</a>
+        <a href="#stream-launch-night">Launch night, rewritten by breaking news</a>
         <a href="#trans-navy-panel">The panel that aged into evidence</a>
-        <a href="#kim-k-bahrain">Kim Kardashian, a milkshake…</a>
-        <a href="#prep-origination">Bringing PrEP to air months…</a>
-        <a href="#scientology-live-coverage">Covering Scientology, live,…</a>
-        <a href="#jazz-jennings">A full hour with Jazz, two years…</a>
-        <a href="#mandela-special">Rebuilding primetime in real…</a>
+        <a href="#kim-k-bahrain">Kim Kardashian, a milkshake shop, and an uprising</a>
+        <a href="#prep-origination">Bringing PrEP to air months ahead of the coverage</a>
+        <a href="#scientology-live-coverage">Covering Scientology, live, under legal scrutiny</a>
+        <a href="#jazz-jennings">A full hour with Jazz, two years before TLC</a>
+        <a href="#mandela-special">Rebuilding primetime in real time: the Mandela special</a>
         <a href="#mong-kok-backpack-live">Live from a backpack in Mong Kok</a>
-        <a href="#fusion-ramos-lawsuit">Producing Jorge Ramos under a…</a>
-        <a href="#hurricane-maria-field">Getting the Mayor of San Juan on…</a>
+        <a href="#fusion-ramos-lawsuit">Producing Jorge Ramos under a $500 million lawsuit</a>
+        <a href="#hurricane-maria-field">Getting the Mayor of San Juan on record in the storm</a>
         <a href="#aj-plus-50m-views">Fifty million views in two minutes</a>
-        <a href="#talent-pipeline">Coaching producers from behind…</a>
-        <a href="#comms-triage-build">Building the triage agent, then…</a>
-        <a href="#digital-twin">Teaching a system to write in an…</a>
+        <a href="#talent-pipeline">Coaching producers from behind the camera to on air</a>
+        <a href="#comms-triage-build">Building the triage agent, then handing over the keys</a>
+        <a href="#digital-twin">Teaching a system to write in an executive's voice</a>
         <a href="#freeahmed-coalition">Ten days: the #FreeAhmed coalition</a>
-        <a href="#builder-turn">From newsrooms to a fleet of…</a>
+        <a href="#builder-turn">From newsrooms to a fleet of fifty agents</a>
         <!-- STINDEX:END -->
       </nav>
 
@@ -227,6 +232,7 @@
           <div class="media-row reveal">
             <figure class="mcard"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><figcaption class="mcap">Bhutto under house arrest, Nov 2007 · VOA, public domain</figcaption></figure>
             <a class="clipcard" href="http://news.bbc.co.uk/2/hi/south_asia/7161590.stm" rel="noopener"><span class="co">BBC News</span><span class="ch">Benazir Bhutto killed in attack</span><span class="ce">Pakistani former Prime Minister Benazir Bhutto has been assassinated in a suicide attack. Ms Bhutto - the first woman PM in an Islamic state...</span><span class="cd">Dec 27, 2007 ↗</span></a>
+            <a class="clipcard" href="https://www.deseret.com/2007/12/27/20061571/pakistani-opposition-leader-bhutto-killed-in-suicide-attack-on-campaign-rally/" rel="noopener"><span class="co">Associated Press · via Deseret News</span><span class="ch">Pakistani opposition leader Bhutto killed in suicide attack on campaign rally</span><span class="ce">RAWALPINDI, Pakistan: Pakistan opposition leader Benazir Bhutto was assassinated Thursday by an attacker who shot her after a campaign rally and then blew himself up...</span><span class="cd">Dec 27, 2007 ↗</span></a>
           </div>
 
           <p class="reveal">Calling it meant restacking the entire two-hour block in real time: flipping from scheduled content to breaking news inside a tight window, driving the control room through the pivot, writing replacement copy during commercial breaks to keep up with a developing story. We reported Bhutto's death minutes before The Today Show did. From a local Fox affiliate in Kentucky.</p>
@@ -283,15 +289,21 @@
           </div>
           <p class="reveal lead-p">The premise sounded like a celebrity item: Kim Kardashian opens a milkshake shop in Bahrain. But Bahrain in late 2012 was mid-uprising. Crowds peaked at roughly 200,000 in a country of about 600,000 citizens, one of the largest shares of a citizenry in the streets anywhere that year. The editorial question: cover the shop or the country? My answer was both, same segment.</p>
           <figure class="still reveal"><img src="assets/stills/kim-k-bahrain.jpg" alt="Maryam Al-Khawaja interviewed on HuffPost Live" loading="lazy"><figcaption class="cap">Maryam Al-Khawaja on the HuffPost Live set · from the broadcast, 2012</figcaption></figure>
-          <div class="media-row reveal solo">
-            <figure class="mcard wide"><span class="m-prev" data-preview="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Mass protest at Pearl Roundabout, Bahrain, 2011" loading="lazy"></span><figcaption class="mcap">Pearl Roundabout, Manama, 2011 · CC BY-SA</figcaption></figure>
+          <div class="media-row reveal">
+            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/huffpost-2012-kim-kardashian-milkshake-bahrain.mp4"><img src="assets/stills/pearl-roundabout-2011-ccbysa.jpg" alt="Mass protest at Pearl Roundabout, Bahrain, 2011" loading="lazy"></span><figcaption class="mcap">Pearl Roundabout, Manama, 2011 · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><img src="assets/stills/mc-riffa-launch-2012.jpg" alt="Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012" loading="lazy"><figcaption class="mcap">The Riffa launch footage, aired in the segment · from the broadcast, 2012</figcaption></figure>
           </div>
 
           <p class="reveal">We booked Maryam Al-Khawaja, acting president of the Bahrain Centre for Human Rights and named to Foreign Policy's 2012 Global Thinkers list, and cut Al Jazeera's documentary Shouting in the Dark live into the broadcast. We aired November 9 protest footage with Al-Khawaja narrating over it in real time, host Ahmed Shihab-Eldin steering. The store opening got its mention. The human rights situation it was obscuring got the airtime.</p>
           <div class="pull reveal">Celebrity news was the doorway. The uprising was the story.</div>
           <p class="reveal">I don't treat celebrity news and hard news as enemies. Attention is attention, and the producer's job is deciding where it lands. The segment used a doorway the audience had already walked through. An uprising's story reached viewers no straight news pitch would ever have found.</p>
+          <div class="media-row reveal">
+            <a class="clipcard" href="https://globalvoices.org/2012/12/02/kim-kardashian-tear-gas-and-milkshake-in-bahrain/" rel="noopener"><span class="co">Global Voices</span><span class="ch">Kim Kardashian, Tear-Gas and Milkshake in Bahrain</span><span class="ce">American socialite and TV reality star Kim Kardashian was in Bahrain yesterday to open a milkshake shop. Hardline Salafists protested her visit...</span><span class="cd">Dec 2, 2012 ↗</span></a>
+          </div>
+
           <div class="clips reveal">
             <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-kim-kardashian-milkshake-bahrain.jpg" alt="Kim Kardashian, a milkshake shop, and Bahrain" loading="lazy"><span class="cl">Watch: Kim Kardashian, a milkshake shop, and Bahrain</span></a>
+            <a href="work.html#live-broadcasts"><img src="assets/posters/aje-stream-2011-what-is-the-way-forward-in-bahrain.jpg" alt="What is the way forward in Bahrain?" loading="lazy"><span class="cl">Watch: What is the way forward in Bahrain?</span></a>
           </div>
         </article>
 
@@ -350,10 +362,15 @@
 
           <p class="reveal">We also booked Dr. Maddie Deutsch of UCSF's Center for Excellence for Transgender Health, who disclosed her own trans identity on air. On air, the panel discussed attempted-suicide rates for transgender youth that guests put near 50 percent. Most outlets weren't having that conversation at all.</p>
           <p class="reveal">I Am Jazz got greenlit in 2015 and ran for more than seven seasons.</p>
+          <div class="media-row reveal">
+            <a class="clipcard" href="https://www.hollywoodreporter.com/tv/tv-news/jazz-jennings-lands-tlc-docuseries-780890/" rel="noopener"><span class="co">The Hollywood Reporter</span><span class="ch">Transgender Teen Activist Lands TLC Reality Show</span><span class="ce">TLC is becoming the latest network to explore transgender life. The cable network has handed out a straight-to-series order for All That Jazz, a docuseries following 14-year-old transgender activist Jazz Jennings...</span><span class="cd">Mar 12, 2015 ↗</span></a>
+          </div>
+
           <div class="pull reveal">Find the story early. Then build the container so it can be told safely.</div>
           <p class="reveal">Two years before television decided this story was mainstream, we gave it a full hour. A format careful enough to protect a child, serious enough to carry clinical reality.</p>
           <div class="clips reveal">
             <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-or-aje-2012-jazz-growing-up-trans-youth.jpg" alt="Growing up trans, with Jazz Jennings" loading="lazy"><span class="cl">Watch: Growing up trans, with Jazz Jennings</span></a>
+            <a href="work.html#interviews-panels"><img src="assets/posters/huffpost-2012-the-few-the-proud-trans-military-panel.jpg" alt="The few, the proud, the trans" loading="lazy"><span class="cl">Watch: The few, the proud, the trans</span></a>
           </div>
         </article>
 
@@ -390,13 +407,18 @@
           </div>
           <p class="reveal lead-p">October 2014. The Umbrella Revolution filled the streets of Hong Kong, and the confrontations in Mong Kok were live, unscripted, and moving faster than any rundown could anticipate. I field-produced Fusion's breaking news coverage from inside those confrontations with no script and zero infrastructure. No satellite truck. No control room. No studio. The whole live operation ran from a backpack on my back.</p>
           <figure class="still reveal"><img src="assets/stills/mong-kok-backpack-live.jpg" alt="Live from a backpack in Mong Kok" loading="lazy"><figcaption class="cap">From the field feed · Hong Kong, 2014</figcaption></figure>
-          <div class="media-row reveal solo">
-            <figure class="mcard wide"><img src="assets/stills/mc-mongkok-2014.jpg" alt="Umbrella Revolution street scene, Mong Kok" loading="lazy"><figcaption class="mcap">Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA</figcaption></figure>
+          <div class="media-row reveal">
+            <figure class="mcard"><img src="assets/stills/mc-mongkok-2014.jpg" alt="Umbrella Revolution street scene, Mong Kok" loading="lazy"><figcaption class="mcap">Mong Kok occupation, Oct 2014 · doctorho · CC BY-SA</figcaption></figure>
+            <figure class="mcard"><span class="m-prev" data-preview="assets/previews/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage-960.mp4"><img src="assets/stills/mc-mongkok-barricade-2014.jpg" alt="A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014" loading="lazy"></span><figcaption class="mcap">Holding the barricade line · from the coverage, Hong Kong 2014</figcaption></figure>
           </div>
 
           <p class="reveal">The production problem was integration, not gear. I coordinated three competing broadcast organizations, Fusion, ABC News, and Univision, plus multiple live feeds and real-time social data, all at once, while the story kept changing on its way to air. Anchor Mariana Atencio confirmed it for viewers on the broadcast itself: &quot;we're coming to you live from a backpack on the back of my producer.&quot;</p>
           <div class="pull reveal">&quot;We're coming to you live from a backpack on the back of my producer.&quot;</div>
           <p class="reveal">That assignment compressed everything years of live news taught me. You can't fix a live broadcast in post. So you anticipate the failure modes before you go on, hold the narrative through-line while conditions shift, and deliver at production quality under whatever circumstances actually exist.</p>
+          <div class="media-row reveal">
+            <a class="clipcard" href="https://www.hrw.org/news/2014/10/16/eight-questions-about-occupy-hong-kong" rel="noopener"><span class="co">Human Rights Watch</span><span class="ch">Eight Questions about &quot;Occupy Hong Kong&quot;</span><span class="ce">Hong Kong's Occupy Movement refers to a citizens' blockade of major roads in Hong Kong's Admiralty, Mongkok, and Causeway Bay districts since September 29, 2014.</span><span class="cd">Oct 16, 2014 ↗</span></a>
+          </div>
+
           <div class="clips reveal">
             <a href="work.html#live-broadcasts"><img src="assets/posters/ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage.jpg" alt="Live from Hong Kong's Occupy Central" loading="lazy"><span class="cl">Watch: Live from Hong Kong's Occupy Central</span></a>
           </div>
@@ -505,9 +527,25 @@
           </div>
           <p class="reveal lead-p">The comms intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers landing faster than a human first-pass could honestly serve. Most of that first pass didn't need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that. Solo, inside the tools the team already ran on.</p>
           <figure class="still reveal"><img src="assets/stills/illo-triage-agent.jpg" alt="Diagram-style illustration of a message triage pipeline with a human escalation desk" loading="lazy"><figcaption class="cap">The triage pipeline · system illustration, generated</figcaption></figure>
+          <div class="media-row reveal solo">
+            <figure class="mcard wide"><span class="m-prev" data-preview="assets/cinemagraphs/illo-triage-agent-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-triage-agent-hd.jpg" alt="System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human" loading="lazy"></span><figcaption class="mcap">The system diagram · triage, revise, escalate</figcaption></figure>
+          </div>
 
           <p class="reveal">The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was built to auto-handle roughly 55 percent of inbound, and projected to recapture around 160 operational hours a year. Both were design targets I documented, not trophies I claimed.</p>
           <p class="reveal">The part I'm proudest of is the exit. I documented the system end to end and handed it off with a full operator runbook, so it belongs to the team, not to me. A sanitized public demo of the architecture lives on my GitHub.</p>
+          <div class="media-row reveal">
+            <div class="termcard"><span class="tc-bar">DEPLOYMENT.md · the operator runbook, public repo</span><pre class="tc-body">1. Overview
+2. Prerequisites
+3. Environment Setup
+4. Deployment Steps
+5. Configuration Reference
+6. Post-Deployment Verification Checklist
+7. Rollback Procedure
+8. Ongoing Maintenance
+9. Troubleshooting</pre></div>
+            <a class="clipcard" href="https://github.com/mitwilli-create/comms-triage-agent" rel="noopener"><span class="co">GitHub · mitwilli-create</span><span class="ch">comms-triage-agent: autonomous triage, revision, and escalation for internal comms intake</span><span class="ce">Public demo, sanitized.</span><span class="cd">2026 ↗</span></a>
+          </div>
+
           <div class="pull reveal">I build systems that outlast me. That's the point.</div>
           <p class="reveal">What it proves: I build systems that survive my own departure, and I report their numbers the way an engineer would. Targets as targets.</p>
         </article>
@@ -519,10 +557,25 @@
           </div>
           <p class="reveal lead-p">At Google Cross-Google Engineering I wrote for a vice president whose words landed on the company's most senior engineers, the Principal, Distinguished, and Fellow community, more than a thousand people. Executive writing at that altitude has a brutal quality bar and a slow failure mode: drafts bounce between writer and principal until the voice is right, and every round burns days. So I decided the voice itself was the system to build.</p>
           <figure class="still reveal"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><figcaption class="cap">Voice as infrastructure · system illustration, generated</figcaption></figure>
+          <div class="media-row reveal solo">
+            <figure class="mcard wide"><span class="m-prev" data-preview="assets/cinemagraphs/illo-digital-twin-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-digital-twin-hd.jpg" alt="System diagram: a waveform passing through six measuring gates before it ships" loading="lazy"></span><figcaption class="mcap">The system diagram · a voice encoded as checkable rules</figcaption></figure>
+          </div>
 
           <p class="reveal">I built it solo. It encodes the voice as rules a machine can check: scored stylistic axes, a codified constitution of what this voice does, and a banned-phrase list of what it refuses to do, learned from rejected drafts. Every generated draft had to clear those gates before a human saw it. Review back-and-forth with the VP dropped by about 70 percent, measured across the cycles we ran together.</p>
           <div class="pull reveal">I treat voice as infrastructure, not magic.</div>
           <p class="reveal">The method outlived the job. I rebuilt it in public as <a href="voice-os.html">voice-os</a>, an open-source pipeline that scores any draft against a target voice on six axes.</p>
+          <div class="media-row reveal">
+            <div class="termcard"><span class="tc-bar">voice-os · six axes, one gate</span><pre class="tc-body">axes  rhetorical pace
+      risk tolerance
+      sentence rhythm
+      escalation pattern
+      hedging behavior
+      editorial register
+gate  pass · revise · reject
+bar   calibrated per context to percentiles
+      of what the author's own text scores</pre></div>
+          </div>
+
         </article>
 
         <article class="story" id="freeahmed-coalition">
@@ -558,6 +611,7 @@
           <p class="reveal lead-p">After sixteen years in newsrooms and communications, I turned the production instinct on my own job search. I forked an open-source project called career-ops, which was a scaffold, and extended it into a production pipeline: my personal writing corpus wired into every generated output, zero-token portal scanning that reads Greenhouse, Ashby, and Lever APIs directly and filters listings before a single token is spent, and parallel workers under a single orchestrator.</p>
           <figure class="still reveal"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><figcaption class="cap">The fleet · system illustration, generated</figcaption></figure>
           <div class="media-row reveal">
+            <figure class="mcard"><span class="m-prev" data-preview="assets/cinemagraphs/illo-agent-fleet-loop.mp4" data-plabel="▸ in motion"><img src="assets/stills/illo-agent-fleet-hd.jpg" alt="System diagram: a fleet of small agent nodes orbiting one central orchestrator node" loading="lazy"></span><figcaption class="mcap">The fleet diagram · one orchestrator, fifty agents</figcaption></figure>
             <div class="termcard"><span class="tc-bar">launchctl · the fleet, live</span><pre class="tc-body">$ launchctl list | grep career-ops | wc -l
       51
 $ launchctl list | grep career-ops | head -8
@@ -574,6 +628,9 @@ $ launchctl list | grep career-ops | head -8
           <p class="reveal">It grew into a fleet of roughly fifty scheduled agents running unattended on launchd: scanning portals, triaging postings, batch-evaluating roles, rebuilding a live dashboard, and reporting dead-man heartbeats so silence never masquerades as health. Production deployment went live in April 2026, and the repo is public. Running it taught me that the hard problem isn't generation quality. It's coherence at scale, catching outputs that silently drift from the source.</p>
           <div class="pull reveal">Unclear thinking ships faster and breaks harder. So I draw the boundaries first.</div>
           <p class="reveal">The clearest lesson: tooling doesn't protect you from architectural confusion. It removes friction from execution, which means unclear thinking ships faster and breaks harder. So I draw the stage boundaries before I build, and I decide what should be automated out of human attention entirely versus what requires judgment and must be protected from automation.</p>
+          <div class="clips reveal">
+            <a href="work.html#ai-native"><img src="assets/broll-poster.jpg" alt="One script in, a produced short out" loading="lazy"><span class="cl">Watch: One script in, a produced short out</span></a>
+          </div>
         </article>
         <!-- STORIES:END -->
       </div>
