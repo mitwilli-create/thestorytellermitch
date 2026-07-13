@@ -109,15 +109,19 @@
     @media(max-width:1120px){.judg-grid{grid-template-columns:1fr}.judg-figure{max-width:520px}}
     /* talk-to-me: the page's one loud card. Full content width, each fact
        on its own ruled line (round-2, Mitchell 2026-07-12) */
-    .talk-card{max-width:1180px;background:var(--surface);border:1px solid var(--line-2);
-      border-left:3px solid var(--blood);padding:44px 48px}
-    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.6vw,40px);
-      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:16px}
-    .talk-card .t-lead{font-size:clamp(18px,2vw,22px);line-height:1.6;color:var(--bone);margin:0 0 26px}
-    .talk-card .t-facts{border-top:1px solid var(--line)}
+    /* capstone-2 (Mitchell): condensed + bolder so the card doesn't sink
+       into the page background: blood-tinted panel, full oxblood frame,
+       larger head, facts in two columns instead of a tall single stack */
+    .talk-card{max-width:1180px;
+      background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 90%,var(--blood) 10%),var(--surface) 62%);
+      border:1px solid var(--blood-soft);border-left:3px solid var(--blood);padding:38px 42px}
+    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.9vw,46px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:14px}
+    .talk-card .t-lead{font-size:clamp(18px,2vw,22px);line-height:1.6;color:var(--bone);margin:0 0 20px}
+    .talk-card .t-facts{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
     .talk-card .t-facts p{font-size:16px;line-height:1.6;color:var(--bone-soft);margin:0;
-      padding:13px 0;border-bottom:1px solid var(--line)}
-    @media(max-width:860px){.talk-card{padding:30px 24px}}
+      padding:11px 0;border-bottom:1px solid var(--line)}
+    @media(max-width:860px){.talk-card{padding:30px 24px}.talk-card .t-facts{grid-template-columns:1fr}}
     .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
     .talk-card .t-mail:hover{color:var(--bone)}

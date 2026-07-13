@@ -430,9 +430,10 @@
         "fusion-2014-midterm-mayhem-october-12-election-coverage"
       ],
       "still": {
-        "src": "assets/stills/jorge-ramos-2016-ccbysa-gage-skidmore.jpg",
-        "cap": "Jorge Ramos, 2016 · photo: Gage Skidmore · CC BY-SA 2.0",
-        "alt": "Jorge Ramos speaking, 2016"
+        "src": "assets/posters/fusion-2015-trump-ramos-dubuque-presser.jpg",
+        "clip": "fusion-2015-trump-ramos-dubuque-presser",
+        "cap": "Dubuque, Iowa, August 25, 2015 · security removes Ramos mid-question · from the Univision cut",
+        "alt": "Jorge Ramos, palm raised mid-protest, as security grips his arm at Donald Trump's Dubuque press conference"
       },
       "media": [
         {
@@ -489,7 +490,9 @@
       "oncam": {
         "src": "assets/stills/oncam/jamaica-headturn.jpg",
         "alt": "Mitchell Williams mic'd on location in Kingston, Jamaica, mid-shoot for Fusion",
-        "cap": "kingston, for fusion. in the field."
+        "cap": "kingston, for fusion. in the field.",
+        "pos": "center 30%",
+        "h": 330
       }
     },
     {
@@ -531,16 +534,18 @@
         },
         {
           "type": "img",
-          "src": "assets/stills/ajplus-newsroom.jpg",
-          "cap": "Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece",
-          "alt": "Mara Van Ells presenting in the AJ+ newsroom",
+          "src": "assets/posters/ajp-2017-covering-president-trump-media-analysis.jpg",
+          "clip": "ajp-2017-covering-president-trump-media-analysis",
+          "cap": "Tarek Abu-Esber hosting the format line: how newsrooms covered President Trump, 2017",
+          "alt": "Tarek Abu-Esber presenting an AJ+ explainer on newsroom coverage of President Trump",
           "after": 2
         },
         {
           "type": "img",
-          "src": "assets/stills/aj-plus-50m-views.jpg",
-          "cap": "From the piece: the retracted 1998 Wakefield study",
-          "alt": "Frame from the explainer: Andrew Wakefield outside a hearing, on-screen text reading 'In 1998, a British surgeon published a...'",
+          "src": "assets/posters/ajp-2016-criminalizing-bds.jpg",
+          "clip": "ajp-2016-criminalizing-bds",
+          "cap": "Mashaal Mir hosting: the push to criminalize BDS, 2016",
+          "alt": "Mashaal Mir presenting an AJ+ explainer on efforts to criminalize BDS",
           "after": 2
         }
       ]
@@ -559,10 +564,11 @@
       "media": [
         {
           "type": "img",
-          "src": "assets/stills/mc-yara-ajplus-2019.jpg",
-          "cap": "Yara Elmjouie hosting his AJ+ series, 2019 · frame from the broadcast",
-          "alt": "Yara Elmjouie speaking directly to camera in the AJ+ newsroom",
-          "after": 1
+          "src": "assets/posters/ajp-2019-eat-this-geoduck.jpg",
+          "cap": "Yara Elmjouie hosting Eat This, 2019 · a James Beard nominated episode",
+          "alt": "Yara Elmjouie on Puget Sound tide flats hosting the Eat This geoduck episode",
+          "after": 1,
+          "clip": "ajp-2019-eat-this-geoduck"
         },
         {
           "type": "headline",
@@ -584,10 +590,11 @@
         },
         {
           "type": "img",
-          "src": "assets/stills/mc-sana-backspace-2022.jpg",
-          "cap": "Sana Saeed hosting Backspace, AJ+'s media-critique series, 2022 · frame from the broadcast",
-          "alt": "Sana Saeed at her desk on the Backspace set, addressing the camera",
-          "after": 2
+          "src": "assets/posters/ajp-2022-backspace-china-threat.jpg",
+          "cap": "Sana Saeed hosting Backspace, AJ+'s media-critique series, 2022 · episode one",
+          "alt": "Sana Saeed delivering direct address from the Backspace set",
+          "after": 2,
+          "clip": "ajp-2022-backspace-china-threat"
         }
       ],
       "still": {

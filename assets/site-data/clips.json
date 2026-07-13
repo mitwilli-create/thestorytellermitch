@@ -2067,6 +2067,84 @@
       "startHereRank": null,
       "caseStudy": null,
       "sourceFile": null
+    },
+    {
+      "slug": "fusion-2015-trump-ramos-dubuque-presser",
+      "published": true,
+      "bucket": "live-broadcasts",
+      "outlet": "fusion",
+      "outletLabel": "Fusion · news event",
+      "year": "2015",
+      "era": "2013-2015",
+      "type": "News Event",
+      "title": "Jorge Ramos ejected from Trump press conference, Dubuque",
+      "subtitle": "Univision's full cut of the August 25, 2015 presser. Security removes Ramos at 0:33; he returns at 16:12 and presses his immigration question.",
+      "duration": "24m10s",
+      "durationSec": 1450,
+      "poster": "assets/posters/fusion-2015-trump-ramos-dubuque-presser.jpg",
+      "hoverPreview": "assets/previews/fusion-2015-trump-ramos-dubuque-presser.mp4",
+      "previewStart": 46.33,
+      "media": {
+        "local": "media/fusion-2015-trump-ramos-dubuque-presser.mp4",
+        "streamId": null,
+        "youtubeId": "7BF1U21g6yI"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
+    },
+    {
+      "slug": "ajp-2019-eat-this-geoduck",
+      "published": true,
+      "bucket": "interviews-panels",
+      "outlet": "ajplus",
+      "outletLabel": "AJ+",
+      "year": "2019",
+      "era": "2019-2026",
+      "type": "Series Episode",
+      "title": "Why this $300 clam matters to Native Americans and China",
+      "subtitle": "Yara Elmjouie digs geoduck on Puget Sound tide flats in a James Beard nominated Eat This episode.",
+      "duration": "20m43s",
+      "durationSec": 1243,
+      "poster": "assets/posters/ajp-2019-eat-this-geoduck.jpg",
+      "hoverPreview": "assets/previews/ajp-2019-eat-this-geoduck.mp4",
+      "previewStart": 132,
+      "media": {
+        "local": "media/ajp-2019-eat-this-geoduck.mp4",
+        "streamId": null,
+        "youtubeId": "IrsPxHbbOqo"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
+    },
+    {
+      "slug": "ajp-2022-backspace-china-threat",
+      "published": true,
+      "bucket": "interviews-panels",
+      "outlet": "ajplus",
+      "outletLabel": "AJ+",
+      "year": "2022",
+      "era": "2019-2026",
+      "type": "Series Episode",
+      "title": "How the threat of China was made in the USA",
+      "subtitle": "Sana Saeed opens Backspace, the AJ+ media critique series, tracing how US coverage built the China threat.",
+      "duration": "24m05s",
+      "durationSec": 1445,
+      "poster": "assets/posters/ajp-2022-backspace-china-threat.jpg",
+      "hoverPreview": "assets/previews/ajp-2022-backspace-china-threat.mp4",
+      "previewStart": 58,
+      "media": {
+        "local": "media/ajp-2022-backspace-china-threat.mp4",
+        "streamId": null,
+        "youtubeId": "KuPuXAUXZjY"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
     }
   ]
 }

@@ -116,8 +116,8 @@ const articles = stories.map((s) => {
     console.error(`story ${s.id}: oncam src and alt must be non-empty strings`); process.exit(1);
   }
   const oncam = s.oncam
-    ? `        <figure class="oncam oncam--divider reveal">
-          <img src="${esc(s.oncam.src)}" alt="${esc(s.oncam.alt)}" loading="lazy">
+    ? `        <figure class="oncam oncam--divider reveal"${s.oncam.h ? ` style="height:${esc(String(s.oncam.h))}px"` : ''}>
+          <img src="${esc(s.oncam.src)}" alt="${esc(s.oncam.alt)}" loading="lazy"${s.oncam.pos ? ` style="object-position:${esc(s.oncam.pos)}"` : ''}>
           <figcaption class="oncam-cap">${esc(s.oncam.cap ?? '')}</figcaption>
         </figure>\n\n`
     : '';

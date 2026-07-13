@@ -35,11 +35,16 @@
     @keyframes dot-ping{0%{box-shadow:0 0 0 0 rgba(177,85,76,0.45)}100%{box-shadow:0 0 0 14px rgba(177,85,76,0)}}
     .era.in .era-dot{animation:dot-ping 1s var(--ease-mech) 1}
 
-    /* ghosted oversized year anchor */
-    .era::before{content:attr(data-year);position:absolute;right:0;top:-34px;z-index:0;
-      font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(88px,15vw,210px);
-      line-height:1;letter-spacing:-0.05em;color:var(--bone);opacity:.045;pointer-events:none;
-      user-select:none}
+    /* year anchor as a plated cell (Mitchell, capstone-2): the numeral rides
+       an oxblood-lit plate pinned over the era border, opaque so the rule
+       never crosses through it; replaces the straggling ghost treatment */
+    .era::before{content:attr(data-year);position:absolute;right:0;top:-64px;z-index:2;
+      font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(56px,8vw,112px);
+      line-height:1;letter-spacing:-0.04em;
+      color:color-mix(in srgb,var(--bone) 30%,transparent);
+      background:var(--bg);border:1px solid var(--blood-soft);
+      box-shadow:0 0 34px rgba(154,76,66,0.30),inset 0 0 22px rgba(154,76,66,0.10);
+      padding:10px 26px 14px;pointer-events:none;user-select:none}
     .era > *{position:relative;z-index:1}
     /* the .era > * rule above outranks .era-dot's own declaration by
        source order and was silently turning the dot position:relative,
@@ -235,7 +240,7 @@
       .era-side .era-context--overlay{margin-bottom:-72px;max-width:none}
       .era:not(.era--moment) > .era-metrics{grid-column:2}
       .em .n{font-size:clamp(36px,4.6vw,64px)}
-      .era::before{font-size:clamp(88px,11vw,170px)}
+      .era::before{font-size:clamp(52px,7vw,96px);top:-56px}
     }
     /* timeline-05: the Clinton moment escapes the rail as a full-bleed
        letterboxed band; the monitor centers at ~760px. Poster +
@@ -262,7 +267,7 @@
       .era-clips--strip{flex-wrap:nowrap}
       .era-clips a{width:160px}
       .era-clips--strip a{width:min(280px,74vw)}
-      .era::before{right:-6px;top:-18px}
+      .era::before{right:0;top:-44px;font-size:clamp(40px,10vw,64px);padding:8px 16px 10px}
       .em .n{font-size:clamp(34px,9vw,56px)}
     }
   </style>
@@ -289,8 +294,8 @@
 <main id="main" tabindex="-1">
 
 <header class="tl-hero fill-host">
-  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-timeline-b-hd" data-cine-m="assets/cinemagraphs/fill-timeline-b-loop" aria-hidden="true">
-    <img src="assets/stills/fill-timeline-b-hd.jpg" alt="" width="1376" height="768" loading="lazy">
+  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-timeline-c-hd" data-cine-m="assets/cinemagraphs/fill-timeline-c-loop" aria-hidden="true">
+    <img src="assets/stills/fill-timeline-c-hd.jpg" alt="" width="1920" height="1072" loading="lazy">
   </figure>
   <div class="wrap">
     <div class="kicker">2007 to now · scroll the arc</div>

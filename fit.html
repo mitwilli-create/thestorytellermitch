@@ -74,7 +74,10 @@
     /* round-2 close (council 7-model + FDC-adjudicator synthesis): direct
        eye contact left, one display-line ask right */
     .fit-close{margin-top:64px;padding-top:48px;border-top:1px solid var(--line);
-      display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px 64px;align-items:center}
+      display:grid;grid-template-columns:minmax(0,580px) minmax(0,1fr);gap:28px 72px;align-items:center}
+    /* capstone-2 (Mitchell): the close uses the full row: larger photo,
+       copy block rides toward the right edge instead of hugging the image */
+    .fit-close .fit-copy{justify-self:end;max-width:560px;padding-right:clamp(0px,3vw,48px)}
     .fit-close .oncam--card{margin:0;max-width:none}
     .fit-close .oncam--card img{aspect-ratio:1/1;object-fit:cover;width:100%;display:block}
     .fit-ask{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);
