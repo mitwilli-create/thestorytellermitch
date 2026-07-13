@@ -44,7 +44,26 @@ const [rw] = probe.split(',').map(Number);
 if (rw >= 1920) ff(['-i', raw, '-vf', 'crop=1920:1072:0:4', '-an', '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-pix_fmt', 'yuv420p', cropped]);
 else ff(['-i', raw, '-vf', 'scale=1920:1080,crop=1920:1072:0:4', '-an', '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-pix_fmt', 'yuv420p', cropped]);
 
+// global-drift gate (added after the timeline-c ghost pulse): a slow
+// whole-frame slide/zoom in the generation makes any self-crossfade
+// superimpose two misaligned copies, a ghost the scdet seam gate cannot
+// see. First-vs-7.2s grayscale RMS at 480w: healthy locked-off runs
+// measure 13-19 (content motion only); the drifted timeline-c raw
+// measured 38. Threshold 26. The blend image is the eyes-on check.
 const loopDur = 7.2, xfade = 0.8;
+const dA = resolve(work, 'drift-a.png'), dB = resolve(work, 'drift-b.png');
+ff(['-ss', '0', '-i', cropped, '-frames:v', '1', '-vf', 'scale=480:-2', dA]);
+ff(['-ss', String(loopDur), '-i', cropped, '-frames:v', '1', '-vf', 'scale=480:-2', dB]);
+const driftBlend = resolve(work, 'drift-blend.png');
+ff(['-i', dA, '-i', dB, '-filter_complex', '[0][1]blend=average', driftBlend]);
+const driftRms = parseFloat(execFileSync('python3', ['-c', `
+from PIL import Image
+import math
+a=Image.open('${dA}').convert('L'); b=Image.open('${dB}').convert('L')
+pa=list(a.getdata()); pb=list(b.getdata())
+print(math.sqrt(sum((x-y)**2 for x,y in zip(pa,pb))/len(pa)))`], { encoding: 'utf8' }).trim());
+console.log(`[hero-8s] drift RMS first-vs-${loopDur}s = ${driftRms.toFixed(2)} (gate <26; eyes-on: ${driftBlend})`);
+if (!(driftRms < 26)) { console.error('[hero-8s] FAILED drift gate: whole-frame slide/zoom in the generation would ghost the loop crossfade; inspect ' + driftBlend); process.exit(2); }
 const loop = resolve(work, 'loop.mp4');
 ff(['-i', cropped, '-filter_complex',
   `[0:v]split[a][b];[a]trim=end=${loopDur},setpts=PTS-STARTPTS[first];` +
