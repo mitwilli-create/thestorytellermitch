@@ -81,7 +81,7 @@ Owned communications and content enabling technical outcomes for a global, mixed
 - **AJ+, Senior Producer (2016 – 2018):** Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's Umbrella Revolution.
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the bin Laden raid and pioneered social-data journalism.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the bin Laden raid and pioneered social-data journalism.
 
 ## Education
 

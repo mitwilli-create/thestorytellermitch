@@ -59,19 +59,30 @@
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
-      body::after{display:none !important;content:none !important}
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
-      .rname{font-size:20pt}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-size:20pt;word-spacing:0.14em}
+      .rrole-h{word-spacing:0.08em}
       .rpillars{font-size:8.33pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:8.33pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:8.33pt;padding-bottom:2pt;margin-bottom:4pt}
       .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:9.8pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
-      .rl li::before{left:1pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:9.8pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:11.6pt;break-after:avoid}
       .rrole-s{font-size:8.33pt;margin:1.5pt 0 4pt}
@@ -133,7 +144,7 @@
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned communications and content enabling technical outcomes for a global, mixed-technical audience across Google's internal IT org and TechStop, its global help desk; directed the Q1-2020 global remote-work shift strategy, driving an 80% increase in self-provisioning efficiency the following quarter.</p>
 <div class="rinit"><div class="rinit-h">2023 self-help content audit</div><ul class="rl"><li><strong>Problem:</strong> Ticket volume included issues users could have solved themselves.</li><li><strong>Action:</strong> Audited the self-help corpus and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Self-service solvability up 9.03%, roughly 10,670 fewer tickets per year.</li></ul></div></div></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2010 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of solutions architecture: messy human requirements translated, live and under deadline, into boundaries a system can hold.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>AI / Agent Engineering &amp; Build:</strong> multi-provider LLM orchestration (Anthropic, OpenAI, Google, xAI, Perplexity), custom MCP servers, Claude Code skills, eval and regression gates, RAG + vector stores, prompt engineering, LangGraph / LangChain, Node.js, Playwright, launchd fleet operations, Apps Script, Gemini API, Python.</p>

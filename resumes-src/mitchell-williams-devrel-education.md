@@ -75,7 +75,7 @@ Owned documentation, self-help articles, and onboarding content for Google's int
 - **AJ+, Senior Producer (2016 – 2018):** Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through 179% viewership growth.
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night reached 250M households.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night reached 250M households.
 
 ## Education
 

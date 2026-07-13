@@ -59,19 +59,30 @@
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
-      body::after{display:none !important;content:none !important}
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
-      .rname{font-size:20pt}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-size:20pt;word-spacing:0.14em}
+      .rrole-h{word-spacing:0.08em}
       .rpillars{font-size:8.16pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:8.16pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:8.16pt;padding-bottom:2pt;margin-bottom:4pt}
       .rp{font-size:9.6pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:9.6pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
-      .rl li::before{left:1pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:9.6pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:11.4pt;break-after:avoid}
       .rrole-s{font-size:8.16pt;margin:1.5pt 0 4pt}
@@ -132,7 +143,7 @@
 <p class="rp"><strong><a href="../voice-os.html">voice-os</a></strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker.</p>
 <p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Extended an open-source pipeline into a cost-governed multi-agent system: 52 scheduled agents, Claude Code skills and MCP servers, live operations dashboard. CI-green; public on GitHub.</p></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2010 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of product and technical communications: the message lands the first time, under deadline, in the principal's voice.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when <a href="../stories.html#mandela-special">Nelson Mandela</a> died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CCTV America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when <a href="../stories.html#mandela-special">Nelson Mandela</a> died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Product, Technical &amp; Editorial Communications:</strong> technical translation, internal-comms strategy at engineering scale, change-management narrative design, stakeholder management, principal-level ghostwriting, live-broadcast editorial under deadline, voice and tone calibration.</p>

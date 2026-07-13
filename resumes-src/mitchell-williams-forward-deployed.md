@@ -71,7 +71,7 @@ Owned the communications and content that enabled technical outcomes for Google'
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production through a 179% viewership-growth window (40M households); field-produced Hong Kong's Umbrella Revolution.
 - **CNN, Writer / Producer, "New Day" (2016):** morning-show segments through the election cycle.
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer; launch night (250M households) pivoted to the bin Laden raid and pioneered social-data journalism.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer; launch night (250M households) pivoted to the bin Laden raid and pioneered social-data journalism.
 
 ## Education
 

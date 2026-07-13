@@ -73,7 +73,7 @@ Owned the communications and content (documentation, self-help, onboarding, vide
 - **CNN, Writer / Producer, "New Day" (2016):** Wrote and produced morning-show segments through the election cycle; adapted broadcast segments for social redistribution.
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households); field-produced live from Hong Kong's Umbrella Revolution.
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night pivoted to the bin Laden raid and pioneered social-data journalism; then owned the daily rundown at CCTV America's DC bureau.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night pivoted to the bin Laden raid and pioneered social-data journalism; then owned the daily rundown at CGTN America's DC bureau.
 
 ## Portfolio and Projects
 

@@ -82,7 +82,7 @@ Code public at github.com/mitwilli-create.
 - **CNN, Writer / Producer, "New Day":** Wrote and produced morning-show segments through the 2016 election cycle.
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when Nelson Mandela died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained Scientology-defector coverage under active litigation with no retractions.
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the bin Laden raid.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the bin Laden raid.
 
 ## Education
 

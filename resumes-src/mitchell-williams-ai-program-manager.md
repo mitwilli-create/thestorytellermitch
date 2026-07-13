@@ -87,7 +87,7 @@ Repos public at github.com/mitwilli-create.
 - **CNN, Writer / Producer, "New Day" (2016):** Morning-show segments through the election cycle.
 - **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable 2012; Webby 2013).
-- **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer; launch night (250M households) pivoted the full program to the bin Laden raid.
+- **Al Jazeera English "The Stream" · CGTN America (2010 – 2012):** Founding-team Associate Producer; launch night (250M households) pivoted the full program to the bin Laden raid.
 
 ## Education
 

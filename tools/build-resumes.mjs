@@ -239,19 +239,30 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
-      body::after{display:none !important;content:none !important}
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
       .rwrap{padding:0 0.42in 0.05in;max-width:none}
-      .rname{font-size:20pt}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-size:20pt;word-spacing:0.14em}
+      .rrole-h{word-spacing:0.08em}
       .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
       .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
       .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
-      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid}
-      .rl li::before{left:1pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:${rh}pt;break-after:avoid}
       .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
