@@ -46,6 +46,14 @@
     .spec-video{position:relative;border:1px solid var(--line-2);overflow:hidden;background:#000;
       aspect-ratio:16/9;max-width:760px}
     .spec-video video{width:100%;height:100%;display:block;object-fit:cover}
+    /* vertical (9:16) spec blocks for Bundle B: the reel and the compliance pair */
+    .spec-video-v{position:relative;border:1px solid var(--line-2);overflow:hidden;background:#000;
+      aspect-ratio:9/16;max-width:380px}
+    .spec-video-v video{width:100%;height:100%;display:block;object-fit:cover}
+    .spec-vpair{display:flex;gap:16px;max-width:760px}
+    .spec-vpair .spec-video-v{flex:1;min-width:0}
+    .spec-sub{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;
+      letter-spacing:0.1em;color:var(--blood-soft);margin:34px 0 14px}
     .spec-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);margin-top:10px;
       line-height:1.6;max-width:760px}
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
@@ -174,6 +182,30 @@
       </video>
     </div>
     <p class="spec-cap">44 seconds · watch with sound · every API call logged, call by call · The Harbor Ledger is a fictional publication created for this demo</p>
+
+    <p class="spec-lede reveal" style="margin-top:56px"><b>One Script, Five Markets.</b> A 35-second Spanish master spot for MERIDIEM, a fictional canned Spanish white wine, exports to six markets in the same cloned brand voice: the film holds while the language, the score, and the match-night crowd's jerseys shift with the culture. The master cost $4.13 of logged generation, each export market about $0.93, and the French Loi Evin compliance cut was a free re-edit. It ships as a full regional GTM kit: two Flows template packs (<a href="docs/bundle-b-flow-multi-market-ad-variant.html">multi-market ad variant</a>, <a href="docs/bundle-b-flow-social-cutdown.html">social cutdown</a>), a <a href="docs/bundle-b-gtm-playbook.html">regional GTM playbook</a> for the July 2026 EU AE wave, a <a href="docs/bundle-b-workshop-kit.html">30-minute workshop</a> an account executive runs solo, and the <a href="docs/bundle-b-ae-deck.html">first-meeting deck</a>.</p>
+    <div class="spec-video-v reveal">
+      <video controls preload="metadata" poster="assets/bundleb-reel-poster.jpg" crossorigin="anonymous">
+        <source src="assets/bundleb-reel.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="spec-cap">the reel · 4 min 19 s · watch with sound · seven market cuts with label cards · the <a href="assets/bundleb-spot-es.mp4" style="color:inherit;border-bottom:1px solid var(--blood-soft)">Spanish master</a> plays first</p>
+
+    <p class="spec-sub">The compliance cut · same assets, shaped for Loi Evin</p>
+    <div class="spec-vpair reveal">
+      <div class="spec-video-v">
+        <video controls preload="metadata" poster="assets/bundleb-spot-fr-poster.jpg" crossorigin="anonymous">
+          <source src="assets/bundleb-spot-fr.mp4" type="video/mp4">
+          <track kind="captions" src="assets/bundleb-spot-fr.vtt" srclang="fr" label="FR">
+        </video>
+      </div>
+      <div class="spec-video-v">
+        <video controls preload="metadata" poster="assets/bundleb-spot-fr-product-only-poster.jpg" crossorigin="anonymous">
+          <source src="assets/bundleb-spot-fr-product-only.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <p class="spec-cap">left: the French market cut · right: the product-only cut for France's alcohol-advertising law, produced from the same beats at zero additional generation cost</p>
   </div>
 </section>
 

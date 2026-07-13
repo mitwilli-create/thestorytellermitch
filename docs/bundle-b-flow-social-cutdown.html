@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flows Template Pack B · Social Cutdown · Mitchell Williams</title>
+  <meta name="description" content="Flows Template Pack B from the One Script, Five Markets spec bundle: one finished hero spot in, three vertical cutdowns with market-correct captions and re-voiced hooks out. Spec plus click-by-click guide, with the honest Flows/Studio split.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>Flows Template Pack B · Social Cutdown</h1>
+    <div class="prov">Built as part of the One Script, Five Markets spec bundle for the ElevenLabs Forward Deployed Creative role. Cost figures are measured actuals from the bundle's logged receipts (2026-07-13) or published list rates as cited inline. MERIDIEM is a fictional canned Spanish white wine created for the demo. No company named in this document is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+<p><strong>Template description (two sentences):</strong> Takes one finished hero spot and turns it into three vertical social cutdowns (a 6 second hook, a 10 second product cut, and a 15 second story cut) with market-correct captions and a re-voiced hook line per cutdown. Built for social and performance teams who get a hero ad from the brand team and need platform-ready variants the same day.</p>
+
+<h2>1. What the template does</h2>
+<ul>
+<li><strong>In:</strong> hero spot (video upload), three hook lines (text, one per cutdown), brand voice, target market caption language.</li>
+<li><strong>Out:</strong> three vertical cutdowns, captioned, each with its own re-voiced hook over the opening shot.</li>
+<li><strong>Why re-voice the hook:</strong> a cutdown that just truncates the hero loses its opening logic. Writing a fresh 6 to 10 word hook per cutdown and generating it in the same brand voice costs a few credits and makes each cutdown open like it was built for the placement.</li>
+</ul>
+
+<h2>2. Where Flows ends and Studio begins (read this first)</h2>
+<p>Flows is a generation canvas; trimming and word-timed captions are timeline work, which lives in ElevenCreative Studio. This template therefore has two halves, and that is by design, not a workaround:</p>
+<ul>
+<li><strong>Flows half:</strong> generate the per-cutdown hook VO and any end-card assets. Publish this as the reusable template.</li>
+<li><strong>Studio half:</strong> trim the hero to the three cutdown lengths, drop in the hook VO, and generate captions. Documented below as a fixed 10 minute checklist the operator repeats per campaign.</li>
+</ul>
+
+<h2>3. Click-by-click: the Flows half (target: under 15 minutes)</h2>
+<ol>
+<li>Create a new flow named <code>Social cutdown kit</code>.</li>
+<li>Add an <strong>Upload Media</strong> node and upload the hero spot mp4. Rename it <code>Hero spot</code>. (It rides along as a template input so the operator always has the source in the same canvas.)</li>
+<li>Add three <strong>Text</strong> nodes: <code>Hook 6s</code>, <code>Hook 10s</code>, <code>Hook 15s</code>. Paste one hook line into each. For the MERIDIEM demo: <code>Golden hour is not going to wait.</code> (6s), <code>A Spanish white, cold from the can.</code> (10s), <code>The day does not end. It ripens.</code> (15s).</li>
+<li>Add three <strong>Text to Speech</strong> nodes, one wired from each hook Text node, all set to the SAME brand voice used in the hero. For localized cutdowns, paste the transcreated hook in the market language into the Text node; same voice, market language.</li>
+<li>Optional: add an <strong>Image Generation</strong> node for a platform end card (a 9:16 product still with the tagline; use a text-capable image model so the tagline stays legible) and a <strong>Sound Effects</strong> node for one soft closing accent. Keep any accent low, rounded, and under the voice.</li>
+<li>Run each node once (hover Run to see the credit estimate; TTS on a hook line costs under 60 credits).</li>
+<li>Publish as a template: inputs are the three hook Text nodes, the voice selection, and the <code>Hero spot</code> upload; outputs are the three TTS nodes plus the optional end-card image (multiple outputs bundle as a zip). Run once end to end, save, share to <strong>Workspace</strong>.</li>
+</ol>
+
+<h2>4. The Studio half: fixed checklist (about 10 minutes per campaign)</h2>
+<ol>
+<li>Export or send the hero spot into ElevenCreative Studio (from the flow, use the export to Studio option so assets land in the same project).</li>
+<li>Duplicate the hero timeline three times, named <code>6s</code>, <code>10s</code>, <code>15s</code>.</li>
+<li>Trim each: the 6s cut keeps the strongest visual beat plus the end card, the 10s cut keeps product beats plus the close, the 15s cut keeps the story spine (open, product reveal, close). Front-load the shortest shots; nothing holds past 4 seconds.</li>
+<li>Drop the matching hook VO (from the Flows zip) over each cut's opening shot, replacing the hero VO there. Duck music under it.</li>
+<li>Generate captions per cutdown in the market language, check every line against the audio (numerals, brand name casing, no clipped words), and burn in or export as a sidecar per platform spec.</li>
+<li>Export all three as 1080x1920 mp4. Verify each opens with sound OFF and still communicates (captions carry the hook).</li>
+</ol>
+
+<h2>5. Handoff notes</h2>
+<ul>
+<li>The template is language-agnostic: a DE cutdown set is the same flow with DE hook lines pasted in and DE captions in Studio. Voice stays the brand voice.</li>
+<li>Keep hooks under 10 words. If the TTS read crowds the opening shot, shorten the words, not the audio.</li>
+<li>Repeat-use pattern: the social team keeps one saved flow per brand (voice locked), and per campaign only the hero upload and three hook lines change.</li>
+</ul>
+
+<h2>6. Known seams (honest limits)</h2>
+<ul>
+<li>Precise caption timing and any frame-level trim will always be Studio work; the template's value is that everything generated (voice, end card, accent) is one reusable, credit-transparent canvas away.</li>
+<li>If Studio's caption language list is missing a target market, generate the SRT externally and import it; do not ship machine captions unchecked in a language nobody on the team reads. That rule is in the <a href="bundle-b-workshop-kit.html">workshop kit's</a> objection FAQ for a reason.</li>
+<li>UI labels evolve; the docs page for ElevenCreative Flows and Studio is the source of truth.</li>
+</ul>
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+</body>
+</html>

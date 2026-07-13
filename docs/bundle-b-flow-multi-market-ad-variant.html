@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flows Template Pack A · Multi-Market Ad Variant · Mitchell Williams</title>
+  <meta name="description" content="Flows Template Pack A from the One Script, Five Markets spec bundle: one master ad script plus transcreated market copy in, per-market voice tracks and market music beds out, in the same brand voice. Spec plus click-by-click recreation guide.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>Flows Template Pack A · Multi-Market Ad Variant</h1>
+    <div class="prov">Built as part of the One Script, Five Markets spec bundle for the ElevenLabs Forward Deployed Creative role. Cost figures are measured actuals from the bundle's logged receipts (2026-07-13) or published list rates as cited inline. MERIDIEM is a fictional canned Spanish white wine created for the demo. No company named in this document is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+<p><strong>Template description (two sentences):</strong> Takes one master ad script plus transcreated copy for each target market and outputs a finished per-market voice track and a market-adapted music bed, all in the same brand voice. Built for brand and agency teams running one campaign across DE, FR, and ES who currently re-book talent and re-license music for every market.</p>
+<p>Companion proof: the MERIDIEM demo set in this bundle (a Spanish master plus localized exports, EN, DE, FR, IT, PT, and NL among them) was produced with exactly this workflow. Measured incremental cost per added market was under fifteen cents for voice, music, and ambience; receipts in the bundle's <code>receipts/</code> folder.</p>
+
+<h2>1. What the template does</h2>
+<ul>
+<li><strong>In:</strong> master script (text), one transcreated script per market (text), one brand voice, one master visual edit (video upload), one music direction per market (text prompt).</li>
+<li><strong>Out:</strong> per-market composition (visuals + localized voice + market music), bundled as a zip when multiple outputs are selected.</li>
+<li><strong>Invariant:</strong> the voice is the SAME voice in every market. Voice consistency is the brand asset; the language changes, the voice does not.</li>
+<li><strong>Deliberate choice:</strong> market copy is transcreated by a human (or an LLM step outside the flow), never machine-translated word for word. The template treats localized copy as an input, because idiom is a creative decision. See the localization notes in the bundle's <code>localized-scripts/</code> for worked examples ("con la chispa justa" becomes "mit genau der richtigen Perlage" because Perlage is how German wine copy actually talks about sparkle; the candid-photos beat lands in Dutch as "foto's die vanzelf ontstaan"; and so on).</li>
+</ul>
+
+<h2>2. Prerequisites (5 minutes)</h2>
+<ol>
+<li>ElevenLabs account with ElevenCreative access and enough credits (a five-market run of a 25 second spot uses roughly 2,000 to 4,000 credits total: TTS at 1 credit per character, music at 900 credits per minute).</li>
+<li>Your brand voice available in the workspace (an Instant or Professional Voice Clone, or a licensed library voice).</li>
+<li>The master visual edit exported as a single mp4 (visuals only or with diegetic sound effects mixed in, no voice, no music).</li>
+<li>Transcreated copy per market, one short paragraph or beat list each.</li>
+</ol>
+
+<h2>3. Click-by-click build (target: under 25 minutes)</h2>
+<h3>Create the canvas</h3>
+<ol>
+<li>Open ElevenLabs, go to the Creative section, open <strong>Flows</strong>, and create a new flow. Name it <code>Multi-market ad variant</code>.</li>
+</ol>
+<h3>Master lane (build once)</h3>
+<ol start="2">
+<li>Right-click the canvas (or use the bottom toolbar) and add a <strong>Text</strong> node. Paste the master EN script. Rename the node <code>Script EN</code>.</li>
+<li>Add a <strong>Text to Speech</strong> node. Drag from the output port of <code>Script EN</code> to the text input port of the TTS node. In the TTS node settings, select your brand voice and an Eleven v3 family model (v3 handles multilingual delivery well). Rename it <code>VO EN</code>.</li>
+<li>Add a <strong>Music</strong> node. In its prompt, describe the master bed (for MERIDIEM: warm organic downtempo, live-feel instruments, golden hour mood, instrumental bed under narration, no melody hook). Set length to your spot length plus 2 seconds. Rename it <code>Music EN</code>.</li>
+<li>Add an <strong>Upload Media</strong> node and upload the master visual edit mp4. Rename it <code>Master visuals</code>.</li>
+<li>Add a <strong>Composition</strong> node. Wire <code>Master visuals</code>, <code>VO EN</code>, and <code>Music EN</code> into it. In the composition, keep the voice on top: music sits well under the voice at all times. Rename it <code>Spot EN</code>.</li>
+<li>Hover the Run control on each node to see its credit estimate, then run the four nodes in order (Text nodes are free; TTS, Music, and Composition each show their cost before you commit). Verify: you can play <code>Spot EN</code> inside the canvas and the voice sits clearly on top.</li>
+</ol>
+<h3>Market lanes (duplicate and swap, about 3 minutes per market)</h3>
+<ol start="8">
+<li>For each market (DE, FR, ES): add a <strong>Text</strong> node with that market's transcreated script, a <strong>Text to Speech</strong> node wired from it (SAME brand voice, same model), and a <strong>Music</strong> node with the market-adapted prompt. For the demo set the shifts were: DE minimal warm deep house, precise and unhurried; FR jazz-tinged, brushed drums, aperitif mood; PT guitarra-tinged, warm and easy. (In the demo the Spanish cut IS the master, so the master market simply keeps the master bed.) Keep tempo family and energy curve close to the master so the same edit still lands.</li>
+<li>Add a <strong>Composition</strong> node per market. Wire in the SAME <code>Master visuals</code> node (one upload feeds every market lane), plus that market's VO and Music nodes.</li>
+<li>Run only the new nodes. Rerunning a single node never touches the rest of the canvas, so iterating on one market's music costs only that node's credits.</li>
+</ol>
+<h3>Publish as a template</h3>
+<ol start="11">
+<li>Open the flow's template controls. Select as <strong>inputs</strong>: every market Text node, the voice selection on the TTS nodes, and the <code>Master visuals</code> upload node. Select as <strong>outputs</strong>: every market Composition node (multiple outputs download bundled as a zip).</li>
+<li>Run the whole template once end to end (publishing requires at least one successful run).</li>
+<li>Save, then set sharing: <strong>Workspace</strong> for the client team, or <strong>Link only</strong> to hand it to an account executive for a demo.</li>
+</ol>
+
+<h2>4. Handoff notes for the team that receives this</h2>
+<ul>
+<li>To add a market, duplicate one market lane and change two things: the script text and the music prompt. Nothing else moves. Our measured marginal cost for the IT market was about 13 cents of API-equivalent spend for voice, music, and ambience combined.</li>
+<li>If the localized voice read sounds flat in one language, fix the copy first (read it aloud), then regenerate only that TTS node.</li>
+<li>Keep a one-line change log in the flow description so the next operator knows which market prompts were tuned and why.</li>
+</ul>
+
+<h2>5. Known seams (honest limits)</h2>
+<ul>
+<li>Flows composes and layers; it is not a timeline editor. If a market's VO runs long enough to need a re-cut of the visuals, export to ElevenCreative Studio for timeline work, then bring the revised master mp4 back into the <code>Master visuals</code> node.</li>
+<li>Word-timed captions are a Studio step (see <a href="bundle-b-flow-social-cutdown.html">Template Pack B</a>).</li>
+<li>UI labels evolve. If a node name here does not match what you see, the shape of the build does not change: text feeds speech, prompts feed music, one shared visuals upload feeds every market composition. The ElevenCreative Flows docs page is the source of truth.</li>
+</ul>
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+</body>
+</html>

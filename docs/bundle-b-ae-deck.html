@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Script, Five Markets · AE Deck · Mitchell Williams</title>
+  <meta name="description" content="First-meeting deck for the Bundle B regional GTM kit: one Spanish master spot, localized market exports, the compliance cut, the receipts, and the two Flows templates. Arrow keys or click to advance, N for speaker notes, print for the PDF leave-behind.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    html,body{height:100%}
+    body{overflow:hidden}
+    .deck-top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;
+      align-items:center;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--bg);
+      font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+    .deck-top .mark{color:var(--bone);font-weight:600;letter-spacing:0.12em}
+    .deck-top .mark b{color:var(--blood-soft)}
+    .deck-top a.back{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
+    .deck-top a.back:hover{color:var(--bone)}
+    .stage{position:fixed;inset:0;top:0;bottom:0}
+    .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      padding:96px 6vw 110px;opacity:0;transform:translateY(18px);pointer-events:none;visibility:hidden;
+      transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s}
+    .slide.active{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition-delay:0s}
+    .slide-inner{max-width:960px;width:100%}
+    .chip{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);border:1px solid var(--line);padding:5px 12px;
+      margin-bottom:22px;background:var(--surface)}
+    .slide h1{font-family:'Archivo',sans-serif;font-weight:800;color:var(--bone);line-height:1.06;
+      font-size:clamp(30px,5.4vw,64px);margin:0 0 18px}
+    .slide h2{font-family:'Archivo',sans-serif;font-weight:800;color:var(--bone);line-height:1.1;
+      font-size:clamp(24px,3.8vw,44px);margin:0 0 18px}
+    .slide p{font-size:clamp(15px,1.6vw,19px);line-height:1.65;color:var(--bone-soft);margin:0 0 12px;max-width:760px}
+    .slide p b,.slide li b{color:var(--bone);font-weight:600}
+    .slide .quote{border-left:2px solid var(--blood-soft);padding-left:18px;color:var(--bone);
+      font-size:clamp(17px,2.2vw,26px);line-height:1.5;max-width:760px;margin:6px 0 16px}
+    .slide ol,.slide ul{margin:0 0 12px 22px;color:var(--bone-soft);font-size:clamp(15px,1.5vw,18px);line-height:1.6;max-width:760px}
+    .slide li{margin-bottom:10px}
+    .slide .fine{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.04em;line-height:1.7;margin-top:14px}
+    .qa dt{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;
+      color:var(--blood-soft);margin:0 0 4px}
+    .qa dd{margin:0 0 14px;font-size:clamp(14px,1.4vw,16.5px);line-height:1.6;color:var(--bone-soft);max-width:760px}
+    .slide a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .tbl-wrap{overflow-x:auto;margin:0 0 14px;border:1px solid var(--line);max-width:760px}
+    .slide table{width:100%;border-collapse:collapse;font-size:clamp(13px,1.3vw,15px)}
+    .slide th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .slide td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.5}
+    .slide td.n{font-family:'JetBrains Mono',monospace;color:var(--bone)}
+    .slide tr:last-child td{border-bottom:none}
+    .deck-video{border:1px solid var(--line-2);background:#000;aspect-ratio:16/9;max-width:min(720px,100%);
+      max-height:56vh;overflow:hidden}
+    .deck-video video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+    .deck-video-v{border:1px solid var(--line-2);background:#000;aspect-ratio:9/16;height:min(62vh,560px);
+      overflow:hidden}
+    .deck-video-v video{width:100%;height:100%;display:block;object-fit:cover}
+    .vpair{display:flex;gap:16px}
+    .vpair .deck-video-v{height:min(52vh,470px)}
+    .pending{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood-soft);
+      border:1px dashed var(--blood-soft);padding:2px 8px;letter-spacing:0.08em;white-space:nowrap}
+    .progress{position:fixed;right:24px;bottom:18px;z-index:40;font-family:'JetBrains Mono',monospace;
+      font-size:12px;letter-spacing:0.14em;color:var(--mute)}
+    .hint{position:fixed;left:24px;bottom:18px;z-index:40;font-family:'JetBrains Mono',monospace;
+      font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
+    .notes{display:none}
+    body.show-notes .slide.active .notes{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;
+      max-height:38vh;overflow-y:auto;background:var(--surface);border-top:1px solid var(--line-2);
+      padding:18px 24px 46px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.75;
+      color:var(--mute);letter-spacing:0.02em}
+    .notes .nlabel{color:var(--blood-soft);text-transform:uppercase;letter-spacing:0.12em;font-size:10px;
+      display:block;margin-bottom:8px}
+    @media(max-width:640px){
+      .slide{padding:84px 6vw 96px}
+      .hint{display:none}
+      .vpair{gap:10px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .slide{transition:none;transform:none}
+    }
+    @media print{
+      *{transition:none!important;animation:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      html,body{height:auto;overflow:visible;background:#fff}
+      body::before,body::after{display:none}
+      .deck-top,.progress,.hint{display:none}
+      .stage{position:static}
+      .slide{position:static;opacity:1;transform:none;visibility:visible;pointer-events:auto;
+        display:block;padding:36px 24px;page-break-after:always;break-after:page;border-bottom:1px solid #999}
+      .slide h1,.slide h2{color:#000}
+      .slide p,.slide li,.qa dd,.slide td{color:#222}
+      .slide p b,.slide li b,.slide td b{color:#000}
+      .slide a{color:#000;border-bottom-color:#7a2f28}
+      .chip,.qa dt,.slide th{color:#7a2f28}
+      .slide .quote{color:#000;border-left-color:#7a2f28}
+      .tbl-wrap,.slide th,.slide td{border-color:#bbb;background:#fff}
+      .chip{border:1px solid #bbb;background:transparent;padding:4px 10px}
+      .slide .fine{color:#555}
+      .pending{color:#7a2f28;border-color:#7a2f28}
+      .deck-video,.deck-video-v,.ph,.vpair{display:none}
+      .notes{display:block;position:static;margin-top:22px;padding:14px 16px;border:1px solid #bbb;
+        background:#f6f5f2;color:#333;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;max-height:none}
+      .notes .nlabel{color:#7a2f28;text-transform:uppercase;letter-spacing:0.12em;font-size:9px;display:block;margin-bottom:6px}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<div class="deck-top">
+  <a class="mark" href="../index.html">MITCHELL<b>.</b>WILLIAMS</a>
+  <a class="back" href="../for-elevenlabs.html#specwork">Back to the review path</a>
+</div>
+
+<main id="main" tabindex="-1">
+<div class="stage" id="stage">
+
+  <!-- 1 · title -->
+  <section class="slide" aria-label="Slide 1">
+    <div class="slide-inner">
+      <span class="chip">Customer kit · first meeting · AE-facing</span>
+      <h1>One Script,<br>Five Markets</h1>
+      <p>One Spanish master spot for a fictional brand. Every export market keeps the film and the brand voice; the language, the score, and the crowd's jerseys shift with the culture.</p>
+      <p class="fine">MERIDIEM is a fictional canned Spanish white wine created for this kit · arrows or click to advance · press N for speaker notes</p>
+      <aside class="notes"><span class="nlabel">Speaker notes · setup</span>This is the deck an AE opens in a first meeting with an agency head of production, an in-house brand studio, or an alcohol-category brand team. Total run time if you play everything: about 12 minutes. The reel does the selling; the deck carries the receipts and the two templates. MERIDIEM is fictional on purpose: no rights questions, no client claims, and the compliance story works because the fictional product is an alcoholic beverage.</aside>
+    </div>
+  </section>
+
+  <!-- 2 · the problem -->
+  <section class="slide" aria-label="Slide 2">
+    <div class="slide-inner">
+      <span class="chip">The problem this kit answers</span>
+      <h2>The master ships in week one.<br>The exports ship in week five.</h2>
+      <p>Every regional adaptation re-books voice talent, re-licenses music, and re-opens the edit. Localization eats the margin on every rollout, and the export markets always wait.</p>
+      <p><b>The workflow in this kit swaps exactly what the market needs and reuses everything else.</b></p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Open with their pain, not the tool. The head of production or executive producer feels this every quarter: separate VO quotes, separate music licenses, separate studio time per market, per campaign. Ask what their last regional adaptation cost before you show any number of ours. Their own invoice is more persuasive than any industry average; do not invent their baseline.</aside>
+    </div>
+  </section>
+
+  <!-- 3 · the reel -->
+  <section class="slide" aria-label="Slide 3">
+    <div class="slide-inner">
+      <span class="chip">The reel · play it once, say nothing</span>
+      <h2>Same film. Same voice.<br>Watch what shifts.</h2>
+      <div class="deck-video-v">
+        <video controls preload="metadata" poster="../assets/bundleb-reel-poster.jpg" crossorigin="anonymous">
+          <source src="../assets/bundleb-reel.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="fine">the reel · 4 min 19 s · seven market cuts with label cards · watch with sound</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Play the reel full screen with sound and say nothing until it ends. The point makes itself: the Cordoba golden-hour film never changes and the voice never changes. The language changes, the music changes, and the rooftop crowd's jerseys change with the market. Nobody re-shot anything and nobody re-booked talent.</aside>
+    </div>
+  </section>
+
+  <!-- 4 · what holds, what shifts -->
+  <section class="slide" aria-label="Slide 4">
+    <div class="slide-inner">
+      <span class="chip">The mechanics in one slide</span>
+      <h2>What holds, what shifts</h2>
+      <ul>
+        <li><b>Holds:</b> the film, the edit, the diegetic city ambience, and the brand voice. One cloned voice speaks every market; voice consistency is the brand asset.</li>
+        <li><b>Shifts:</b> the language (transcreated by people, never machine-translated), the music bed (the score is cultural), and the match-night crowd shots, re-dressed in each market's colors.</li>
+        <li><b>Signature:</b> the end card keeps the Spanish tagline on screen in every market while the voice closes in the local language. A Spanish wine wears its origin.</li>
+      </ul>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>This is the workflow argument compressed. If they remember one sentence: market versions swap the voice track, the music bed, and the crowd's jerseys; everything else is reused. That reuse is where the cost delta on the receipts slide comes from.</aside>
+    </div>
+  </section>
+
+  <!-- 5 · the Perlage decision -->
+  <section class="slide" aria-label="Slide 5">
+    <div class="slide-inner">
+      <span class="chip">One localization decision, up close</span>
+      <h2>Transcreation is a creative act</h2>
+      <p class="quote">"con la chispa justa" became "mit genau der richtigen Perlage"</p>
+      <p>Chispa is Spanish wine talk. A literal German translation would say Funke and sound ridiculous. <b>Perlage is what a German wine copywriter actually writes.</b> The template treats localized copy as an input, not something a machine guesses at; the tool does the production, their people keep the creative calls.</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Pull up the ES and DE scripts side by side if there is time; every market script in the kit carries per-line transcreation notes. This slide answers the "our markets hate translated ads" objection before it is raised: nothing here is auto-translated. The same discipline applies to picture: national colors are culture, federation crests are somebody's trademark, so the crowd wears plain kit.</aside>
+    </div>
+  </section>
+
+  <!-- 6 · the compliance cut -->
+  <section class="slide" aria-label="Slide 6">
+    <div class="slide-inner">
+      <span class="chip">The alcohol-category moment</span>
+      <h2>Compliance variants are a re-edit, not a re-shoot</h2>
+      <div class="vpair">
+        <div class="deck-video-v">
+          <video controls preload="metadata" poster="../assets/bundleb-spot-fr-poster.jpg" crossorigin="anonymous">
+            <source src="../assets/bundleb-spot-fr.mp4" type="video/mp4">
+            <track kind="captions" src="../assets/bundleb-spot-fr.vtt" srclang="fr" label="FR">
+          </video>
+        </div>
+        <div class="deck-video-v">
+          <video controls preload="metadata" poster="../assets/bundleb-spot-fr-product-only-poster.jpg" crossorigin="anonymous">
+            <source src="../assets/bundleb-spot-fr-product-only.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <p>France's Loi Evin bans lifestyle and celebration framing for alcohol. The French product-only cut removes people and party beats from the same approved assets: <b>zero additional generation cost.</b> Counsel reviews per market; the workflow makes their sign-off cheap to implement.</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>For any alcohol brand in the room this is the slide that matters. Play the first seconds of the two French cuts side by side. The sentence this category has never heard: compliance variants are a re-edit, not a re-shoot. Never improvise specific market rules in the room; take the question away and bring counsel-reviewed language back.</aside>
+    </div>
+  </section>
+
+  <!-- 7 · the receipts -->
+  <section class="slide" aria-label="Slide 7">
+    <div class="slide-inner">
+      <span class="chip">The receipts · measured, not estimated</span>
+      <h2>What it cost, to the cent</h2>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>What</th><th>Measured actual</th></tr></thead>
+        <tbody>
+          <tr><td>Spanish master, all-in (voice, music, SFX, visuals, retakes)</td><td class="n">$4.13</td></tr>
+          <tr><td>Each export market after it (voice, music, market crowd shots)</td><td class="n">$0.93</td></tr>
+          <tr><td>French compliance cut</td><td class="n">$0.00 (re-edit of existing assets)</td></tr>
+          <tr><td><b>Whole bundle, ElevenLabs + fal, all three produced versions</b></td><td class="n"><b>about $17.40</b></td></tr>
+        </tbody>
+      </table></div>
+      <p class="fine">per-market: $0.13 of voice and music, $0.80 for the two crowd shots re-dressed in market colors · every number traces to a logged API call in the kit's receipts folder or a public rate card</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Every line traces to receipts/ in the published kit: logged API calls with request IDs, or public pricing pages (elevenlabs.io/pricing; fal.ai model pages). The per-market $0.93 splits as $0.13 for voice and music plus $0.80 for the two match-night crowd shots re-dressed in that market's colors. Ask what their last regional adaptation cost and let their number sit next to this table.</aside>
+    </div>
+  </section>
+
+  <!-- 8 · template A -->
+  <section class="slide" aria-label="Slide 8">
+    <div class="slide-inner">
+      <span class="chip">Flows template A · reusable, workspace-shareable</span>
+      <h2>Multi-market ad variant</h2>
+      <p class="quote">Takes one master ad script plus transcreated copy per market and outputs a per-market voice track and market music bed, all in the same brand voice.</p>
+      <p>Most valuable for brand and agency production teams running one campaign across several European markets who currently re-book talent and re-license music for every adaptation. <b>Buildable in the ElevenLabs UI in under 30 minutes;</b> the kit carries the click-by-click guide.</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>The demo set was produced with exactly this workflow. The demo move in a meeting: open the flow, change ONE market's music prompt in front of them, rerun only that node, play the result. The rerun-one-node moment is the workflow argument in miniature, and the credit estimate shows before you commit.</aside>
+    </div>
+  </section>
+
+  <!-- 9 · template B -->
+  <section class="slide" aria-label="Slide 9">
+    <div class="slide-inner">
+      <span class="chip">Flows template B · the daily-use hook</span>
+      <h2>Social cutdown</h2>
+      <p class="quote">Takes one finished hero spot and returns three vertical cutdowns with market-correct captions and a re-voiced hook line per cut.</p>
+      <p>Most valuable for social and performance teams who receive a hero ad and need platform-ready variants the same day. <b>They become the daily active users that make the account sticky.</b></p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Performance and social teams are the entry point inside bigger orgs; brand teams buy quarterly, social teams run daily. The template splits honestly: Flows generates the hook VO and end card; trimming and word-timed captions are a documented 10-minute Studio checklist per campaign. Say that split out loud; honesty about where the canvas ends builds more trust than pretending it is one button.</aside>
+    </div>
+  </section>
+
+  <!-- 10 · the QA trail -->
+  <section class="slide" aria-label="Slide 10">
+    <div class="slide-inner">
+      <span class="chip">Published on purpose</span>
+      <h2>The no-ship verdicts are in the kit</h2>
+      <p>This bundle went through a full client-notes revision cycle and the trail is public: a blind audio reviewer returned no-ship verdicts that drove three mix iterations; a frame-level pass caught a hallucinated label claim; the review board forced a product-shot retake.</p>
+      <p><b>The receipts are the case study.</b> A workflow you would trust with a real brand shows you its gates, not just its highlight reel.</p>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>If the buyer asks "what goes wrong," this slide is the answer: things go wrong on schedule, inside gates, with receipts. The known ceiling is single-shot generated foley realism; the next rung, per-shot video-to-audio foley, is documented in the production repo's sound stack. Naming the ceiling is part of the credibility.</aside>
+    </div>
+  </section>
+
+  <!-- 11 · the ask -->
+  <section class="slide" aria-label="Slide 11">
+    <div class="slide-inner">
+      <span class="chip">The close</span>
+      <h2>Two asks before the room empties</h2>
+      <ol>
+        <li><b>Send the campaign that is slowest to localize.</b> We run this exact workflow on it and send back the output with a receipt.</li>
+        <li><b>Book the 30-minute workshop.</b> Their copy, their brand voice, their market; one attendee drives, and the team leaves having heard their own words localized. The facilitator kit is in this bundle.</li>
+      </ol>
+      <aside class="notes"><span class="nlabel">Speaker notes</span>Book the follow-up before people stand up. Success signals to log in deal notes: the prospect runs a template themselves inside 14 days; a second team shows up (social after brand, or legal asking about the compliance cut, which is a buying signal in the alcohol category); template output appears in a real campaign review deck.</aside>
+    </div>
+  </section>
+
+  <!-- 12 · for the reviewer -->
+  <section class="slide" aria-label="Slide 12">
+    <div class="slide-inner">
+      <span class="chip">For the reviewer · everything is inspectable</span>
+      <h2>The whole kit is public</h2>
+      <ul>
+        <li>The regional GTM playbook: prospect profiles, per-market cost math, the 12-minute demo flow.</li>
+        <li>Both Flows template packs with click-by-click recreation guides.</li>
+        <li>The 30-minute workshop kit an AE facilitates solo.</li>
+        <li>Localized scripts with per-line transcreation notes, and the full receipts folder.</li>
+      </ul>
+      <p class="fine">press N anywhere for speaker notes · print gives one slide per page with notes below · <a href="../for-elevenlabs.html#specwork">back to the review path</a></p>
+      <aside class="notes"><span class="nlabel">Speaker notes · provenance</span>Built with the open broll-pipeline: cloned voice narration across languages, a seven-seat creative council directing shots, text-to-video and image-to-video generation, Eleven Music scored to the edit, generated SFX and ambience with a harshness gate, per-market rebuilds that reuse every visual asset. MERIDIEM is fictional; no company named anywhere in this kit is claimed as an ElevenLabs client.</aside>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div class="progress" id="progress" aria-live="polite">01 / 12</div>
+<div class="hint">&#8592; &#8594; navigate &middot; N notes &middot; deep-link by slide #</div>
+
+<script src="../shared/reveal.js?v=20260711e"></script>
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var progress = document.getElementById('progress');
+  var stage = document.getElementById('stage');
+  var current = -1;
+  var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+
+  function goTo(n, setHash){
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === current) return;
+    slides.forEach(function(s, i){
+      s.classList.toggle('active', i === n);
+      s.setAttribute('aria-hidden', i === n ? 'false' : 'true');
+      if (i !== n) s.querySelectorAll('video').forEach(function(v){ v.pause(); });
+    });
+    current = n;
+    progress.textContent = pad(n + 1) + ' / ' + pad(slides.length);
+    if (setHash !== false) {
+      if (history.replaceState) history.replaceState(null, '', '#' + (n + 1));
+      else location.hash = '#' + (n + 1);
+    }
+  }
+  function fromHash(){
+    var m = /^#(\d+)$/.exec(location.hash);
+    return m ? parseInt(m[1], 10) - 1 : (current < 0 ? 0 : current);
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'VIDEO')) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); goTo(current + 1); break;
+      case 'ArrowLeft': case 'PageUp': e.preventDefault(); goTo(current - 1); break;
+      case 'Home': e.preventDefault(); goTo(0); break;
+      case 'End': e.preventDefault(); goTo(slides.length - 1); break;
+      case 'n': case 'N': document.body.classList.toggle('show-notes'); break;
+    }
+  });
+
+  stage.addEventListener('click', function(e){
+    if (e.target.closest('a, video, button, .notes, track')) return;
+    if (e.clientX < window.innerWidth * 0.3) goTo(current - 1);
+    else goTo(current + 1);
+  });
+
+  var tx = null;
+  stage.addEventListener('touchstart', function(e){ tx = e.changedTouches[0].clientX; }, {passive: true});
+  stage.addEventListener('touchend', function(e){
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) < 44) return;
+    goTo(dx < 0 ? current + 1 : current - 1);
+  }, {passive: true});
+
+  window.addEventListener('hashchange', function(){ goTo(fromHash(), false); });
+  goTo(fromHash(), false);
+})();
+</script>
+</body>
+</html>
