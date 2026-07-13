@@ -58,7 +58,6 @@
       ],
       "pull": "We built the system to kill improvisation. On purpose.",
       "clipSlugs": [
-        "aje-stream-2011-global-reactions-bin-laden-death-bahrain",
         "aje-stream-2011-what-is-the-way-forward-in-bahrain"
       ],
       "still": {
@@ -111,9 +110,7 @@
         "The segment ran without retraction. In June 2016 the Pentagon reversed its policy, validating what the panel argued on air years earlier. In 2017, when the politics flipped again, the broadcast resurfaced as archival evidence during the trans military ban fight. The story had aged into primary source documentation."
       ],
       "pull": "The story had aged into primary source documentation.",
-      "clipSlugs": [
-        "huffpost-2012-the-few-the-proud-trans-military-panel"
-      ],
+      "clipSlugs": [],
       "still": {
         "src": "assets/stills/trans-navy-panel.jpg",
         "cap": "From the broadcast · HuffPost Live, 2012",
@@ -148,7 +145,6 @@
       ],
       "pull": "Celebrity news was the doorway. The uprising was the story.",
       "clipSlugs": [
-        "huffpost-2012-kim-kardashian-milkshake-bahrain",
         "aje-stream-2011-what-is-the-way-forward-in-bahrain"
       ],
       "still": {
@@ -168,8 +164,7 @@
           "type": "img",
           "src": "assets/stills/mc-riffa-launch-2012.jpg",
           "cap": "Kim Kardashian in the launch crowd at The Walk, Riffa · from the aired segment, 2012",
-          "alt": "Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012",
-          "clip": "huffpost-2012-kim-kardashian-milkshake-bahrain"
+          "alt": "Kim Kardashian arriving at the Millions of Milkshakes launch at The Walk, Bahrain, December 1, 2012"
         },
         {
           "type": "headline",
@@ -200,9 +195,7 @@
         "There's a difference between producing a segment and identifying why it matters, and this is the cleanest version of that distinction I've got. I found the story, made the case, booked genuine disagreement instead of a consensus panel, and put it in front of a live audience early."
       ],
       "pull": "Origination first. Execution second. Credit? Optional.",
-      "clipSlugs": [
-        "huffpost-2013-hiv-prevention-pill-truvada-in-stores"
-      ],
+      "clipSlugs": [],
       "still": {
         "src": "assets/stills/prep-origination.jpg",
         "cap": "From the broadcast · HuffPost Live, 2013",
@@ -306,7 +299,6 @@
       ],
       "pull": "Find the story early. Then build the container so it can be told safely.",
       "clipSlugs": [
-        "huffpost-or-aje-2012-jazz-growing-up-trans-youth",
         "huffpost-2012-the-few-the-proud-trans-military-panel"
       ],
       "still": {
@@ -344,9 +336,7 @@
         "Anyone who's run a multi-stakeholder launch under shifting conditions knows this problem. The plan is gone, the stakeholders multiply, and the clock doesn't move. Here's what that night proved about how I work: I don't protect the plan, I protect the broadcast. Structure exists to be rebuilt at speed, and the calmest person in the control room should be the one holding the rundown."
       ],
       "pull": "I don't protect the plan. I protect the broadcast.",
-      "clipSlugs": [
-        "fusion-2013-america-with-jorge-ramos"
-      ],
+      "clipSlugs": [],
       "still": {
         "src": "assets/stills/mandela-special.jpg",
         "cap": "Mariana Atencio opening the special · from the broadcast, Dec 5, 2013",
@@ -380,9 +370,7 @@
         "That assignment compressed everything years of live news taught me. You can't fix a live broadcast in post. So you anticipate the failure modes before you go on, hold the narrative through-line while conditions shift, and deliver at production quality under whatever circumstances actually exist."
       ],
       "pull": "\"We're coming to you live from a backpack on the back of my producer.\"",
-      "clipSlugs": [
-        "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage"
-      ],
+      "clipSlugs": [],
       "still": {
         "src": "assets/stills/mong-kok-backpack-live.jpg",
         "cap": "From the field feed · Hong Kong, 2014",
@@ -400,8 +388,7 @@
           "type": "img",
           "src": "assets/stills/mc-mongkok-barricade-2014.jpg",
           "cap": "Holding the barricade line · from the coverage, Hong Kong 2014",
-          "alt": "A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014",
-          "clip": "ajp-or-fusion-2014-hong-kong-occupycentral-live-coverage"
+          "alt": "A masked protester leaning on a barricade hung with hand-painted signs, occupied road behind, Hong Kong 2014"
         },
         {
           "type": "headline",
@@ -439,7 +426,7 @@
       ],
       "pull": "Every question was a potential exhibit. Coverage ran anyway.",
       "clipSlugs": [
-        "fusion-2013-america-with-jorge-ramos",
+        "fusion-2014-america-with-jorge-ramos-october-7",
         "fusion-2014-midterm-mayhem-october-12-election-coverage"
       ],
       "still": {
@@ -475,7 +462,6 @@
       ],
       "pull": "Get a primary source on record. Worst conditions. Then trust the story to do the work.",
       "clipSlugs": [
-        "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria",
         "ajp-2017-hurricane-maria-puerto-rico-aftermath"
       ],
       "still": {
@@ -517,7 +503,6 @@
       ],
       "pull": "This was a systems problem dressed in editorial clothing.",
       "clipSlugs": [
-        "ajp-2017-measles-outbreaks-usa-viral-50m-views",
         "ajp-2017-san-juan-mayor-speaks-out-hurricane-maria"
       ],
       "still": {
@@ -533,8 +518,7 @@
           "src": "assets/stills/measles-capitol.jpg",
           "cap": "From the piece: anti-vaccine protesters at California's capitol",
           "alt": "Anti-vaccine protest signs outside the California state capitol",
-          "after": 1,
-          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+          "after": 1
         },
         {
           "type": "headline",
@@ -550,16 +534,14 @@
           "src": "assets/stills/ajplus-newsroom.jpg",
           "cap": "Mara Van Ells presenting, AJ+ newsroom, San Francisco · from the piece",
           "alt": "Mara Van Ells presenting in the AJ+ newsroom",
-          "after": 2,
-          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+          "after": 2
         },
         {
           "type": "img",
           "src": "assets/stills/aj-plus-50m-views.jpg",
           "cap": "From the piece: the retracted 1998 Wakefield study",
           "alt": "Frame from the explainer: Andrew Wakefield outside a hearing, on-screen text reading 'In 1998, a British surgeon published a...'",
-          "after": 2,
-          "clip": "ajp-2017-measles-outbreaks-usa-viral-50m-views"
+          "after": 2
         }
       ]
     },
@@ -573,9 +555,7 @@
         "The talent pipeline was designed in, not a happy accident. The brief had two goals from the start: a new format and new on-camera principals. I built the system to deliver both. That's how I think about every system since. The output you measure is the content. The output that compounds is the people."
       ],
       "pull": "The output you measure is the content. The output that compounds is the people.",
-      "clipSlugs": [
-        "ajp-2017-measles-outbreaks-usa-viral-50m-views"
-      ],
+      "clipSlugs": [],
       "media": [
         {
           "type": "img",
