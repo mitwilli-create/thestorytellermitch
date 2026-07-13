@@ -81,9 +81,11 @@ Repos public at github.com/mitwilli-create.
 
 ## Earlier Career: Live National News (2010 – 2018)
 
-- **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).
+**The engine of live news is the engine of governance under deadline: intake, sequence, gate, ship, every day at air time.**
+
 - **AJ+, Senior Producer (2016 – 2018):** Led 10+ producers; designed a day-of explainer line (proof-of-concept: 50M+ views) that doubled as a talent pipeline.
-- **CNN, Writer / Producer, "New Day":** Morning-show segments through the 2016 election cycle.
+- **CNN, Writer / Producer, "New Day" (2016):** Morning-show segments through the election cycle.
+- **Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):** Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).
 - **HuffPost Live, Segment Producer (2012 – 2013):** Produced through the award-winning launch era (Mashable 2012; Webby 2013).
 - **Al Jazeera English "The Stream" · CCTV America (2010 – 2012):** Founding-team Associate Producer; launch night (250M households) pivoted the full program to the bin Laden raid.
 

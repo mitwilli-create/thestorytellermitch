@@ -1,35 +1,31 @@
 # Mitchell Williams
 
-## FORWARD-DEPLOYED PROTOTYPING · CREATIVE AI PIPELINES · EMBEDDED PRODUCTION DISCIPLINE
+## FORWARD DEPLOYED CREATIVE · CREATIVE AI PIPELINES · EMBEDDED PRODUCTION DISCIPLINE
 
 Seattle, WA (open to relocation) | 812-219-6077 | mitwilli@gmail.com
 linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Summary
 
-**The receipt first: broll-pipeline, in Node and ffmpeg on the ElevenLabs stack, produced a 53-second creative-directed short with a Spanish dub for $14.20 all-in, every retake logged to a run manifest, public on GitHub with a README build walkthrough.** Forward Deployed Creative: embed with a team, learn the pipeline, ship the replacement for the slow part, and teach the team to run it. The arc runs journalist to communications strategist to applied-AI builder; the loop never changed. Target lane: forward-deployed creative and agent-builder roles on the creative-AI and agent stack, plus media and entertainment-vertical solutions work.
+**The receipt first: broll-pipeline, in Node and ffmpeg on the ElevenLabs stack, produced a 53-second creative-directed short with a Spanish dub. The artifacts in the cut carry $8.26 of logged API cost, every call receipted in the committed public run manifest.** Forward Deployed Creative is the hands-on job I already do: embed with a team, map its production pipeline, ship the AI-native replacement for the slow part, and teach the team to run it. Twelve years of that loop, in live national newsrooms, then for Google's most senior engineers, now on the ElevenLabs creative stack.
 
-career-ops runs 52 scheduled agents daily and has produced 1,150+ scored role reports, CI-green under a unified spend cap. A digital twin built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.
-
-**Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product. The Google role runs through August 2026; the build practice above is concurrent, and I'm available on customary notice.
+**Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product. The Google role runs through August 2026. The public projects in this resume are a concurrent independent practice, and I'm available on customary notice.
 
 ## Projects
 
-Repos at github.com/mitwilli-create.
+**broll-pipeline** · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing. The 53-second live demo carries $8.26 of logged cost in its committed run manifest. Ships with a four-file customer handoff kit (example script, config template, cost model, operator runbook) and a node-by-node mapping onto ElevenCreative Flows across its voice, music, image, and video nodes. Public and reproducible.
 
-**broll-pipeline** · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing. Live demo: a 53-second creative-directed short at $14.20 all-in, Spanish dub and every retake included, every API call logged to a run manifest. Public and reproducible.
+**career-ops** · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, 52 scheduled agents, 1,150+ scored role reports, live operations dashboard. CI-green, test-covered, and public on GitHub.
 
-**career-ops** · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, 52 scheduled agents, live operations dashboard. CI-green, test-covered, and public on GitHub.
-
-**tax-verification-agent** · Citation-gated verification over a four-layer IRS knowledge base on Claude: every claim cites its source; unknowns surface as placeholders. Caught a ~$19K multi-state error filing software pre-filled and defended as correct. Public.
+**tax-verification-agent** · Citation-gated verification over a four-layer IRS knowledge base on Claude: no claim without a source. Caught a ~$19K multi-state error that filing software pre-filled and defended as correct. Public.
 
 **voice-os** · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker. Public.
 
 ## Highlights
 
 - **Calibrate to a principal's standards.** The VP digital twin (voice "Constitution" plus banned-phrase verification checklist) cut review back-and-forth by about 70%.
-- **Teach the team to run it.** The comms-triage agent shipped with a full operator runbook (prompt architecture, KB-loading rules, escalation paths, failure modes) written for a non-builder operator.
-- **Deliver through partner engineering as well as solo.** Specced and architected MEJ with the partner-engineering team that built its matching engine; scoped the approvals automation partner engineering built.
+- **Teach the team to run it.** The comms-triage agent shipped with a full operator runbook written for a non-builder operator; broll-pipeline hands off to customer teams the same way, kit and all. The handoff is what makes the tools stick.
+- **Enterprise embeds at scale, internal so far.** Mapped and automated production workflows for Google VPs and 1,000+ of its most senior engineers; the loop is the one this role runs (embed, map, ship, runbook, hand off), the hand-offs are public, and the external-client version is the open variable I'm here to close.
 
 ## Experience
 
@@ -47,6 +43,11 @@ Communications lead and program manager for xGE, the horizontal org driving tech
 - **Problem:** Senior-IC comms intake consumed operator hours on low-complexity requests.
 - **Action:** Built and deployed solo: a three-prompt pipeline (triage, revise in Smart Brevity, escalate) with conditional knowledge-base loading and tiered routing.
 - **Impact:** Designed to auto-handle roughly 55% of inbound without escalation (est.) and projected to recapture ~160 operational hours/year (est.); documented end to end and handed off with a full operator runbook.
+
+#### xGE Connects, peer-led technical workshop series
+- **Problem:** Senior engineers' expertise was not reaching the tier below repeatably.
+- **Action:** Designed and ran the peer-led series end to end, survey to stage.
+- **Impact:** Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.
 
 #### MEJ (My Engineering Journey), AI mentorship-matching agent
 - **Problem:** Manual mentorship matching ran roughly 3 hours per match and capped program capacity.
@@ -82,8 +83,8 @@ AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Buil
 
 ## Skills
 
-**Ships in production:** Node.js / ESM, ffmpeg + ElevenLabs creative-AI pipeline, Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (52 scheduled agents), eval / QA / regression gates.
+**Ships in production:** Node.js / ESM, ffmpeg + the ElevenLabs creative stack (TTS, Eleven Music, Sound Effects, Dubbing API; Spanish and Japanese dubs shipped), Playwright, custom MCP servers, multi-provider LLM orchestration (custom council-of-models), launchd fleet operations (52 scheduled agents), eval / QA / regression gates.
 
-**Agent design:** Apps Script + Gemini (Google-internal production agents), prompt architecture, conditional knowledge-base loading, citation-gating, deterministic constraint gates (monolith), Claude Code skills, Model Context Protocol (MCP).
+**Agent design:** Apps Script + Gemini (Google-internal production agents), prompt architecture, conditional knowledge-base loading, citation-gating, deterministic constraint gates (monolith), Claude Code skills.
 
-**Also:** JavaScript / Node.js, Python (scripting), YAML, Greenhouse / Ashby / Lever APIs; live-broadcast editorial, field production, executive communications, on-camera coaching.
+**Also:** Python (scripting), Greenhouse / Ashby / Lever APIs; live-broadcast editorial and field production, dubbing and localization workflows, executive communications, on-camera coaching.

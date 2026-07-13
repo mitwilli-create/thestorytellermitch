@@ -290,11 +290,11 @@
         </div>
         <div class="cs-stat-grid">
           <div class="cs-stat"><div class="n">7</div><div class="l">pipeline stages orchestrated</div></div>
-          <div class="cs-stat"><div class="n">$14.20</div><div class="l">full production cost incl. video gen, creative direction, sound design, every retake + Spanish dub</div></div>
+          <div class="cs-stat"><div class="n">$8.26</div><div class="l">logged API cost carried by the artifacts in the cut, per the committed run manifest</div></div>
           <div class="cs-stat"><div class="n">53s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
           <div class="cs-stat"><div class="n">7 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
         </div>
-        <p class="mh-tldr">TL;DR: one script file in, a captioned and dubbed short out. $14.20 all-in on the logged run. Every stage gated and receipted. A customer team runs the next one from the <a href="#starter-kit">handoff kit</a>.</p>
+        <p class="mh-tldr">TL;DR: one script file in, a captioned and dubbed short out. $8.26 of logged cost carried by the artifacts in the cut. Every stage gated and receipted. A customer team runs the next one from the <a href="#starter-kit">handoff kit</a>.</p>
       </div>
       <div class="mh-reel">
         <div class="cs-video">
@@ -357,7 +357,7 @@
       </div>
       <div class="col after">
         <div class="c-k">This run</div>
-        <div class="c-b">One command from one operator. This cut, narration, score, ten creatively directed and reviewed generated shots, a measured sound mix, and a Spanish dub, cost $14.20 all-in including every retake, and every call is logged, so the "what does a finished minute cost" question has a receipt instead of a guess. Change one line and one beat re-renders: iterations in minutes, not meetings.</div>
+        <div class="c-b">One command from one operator. This cut, narration, score, ten creatively directed and reviewed generated shots, a measured sound mix, and a Spanish dub: the artifacts in the cut carry $8.26 of logged API cost in the committed manifest, and every call is logged, so the "what does a finished minute cost" question has a receipt instead of a guess. Change one line and one beat re-renders: iterations in minutes, not meetings.</div>
       </div>
     </div>
     <div class="cs-callout" style="margin-top:22px;">
@@ -376,7 +376,7 @@
 
       <p><strong>Model choices, and one honest boundary.</strong> The audio stack runs end-to-end through the ElevenLabs API: Text-to-Speech for narration, Eleven Music v2 for a licensed, commercially-cleared score, the Sound Effects API for accent beats, and Dubbing for the Spanish cut. Video generation sits behind a <em>pluggable provider adapter</em>: one thin module the pipeline calls per beat, routed today to a text-to-video model (Veo 3.1, via fal.ai); swapping providers is a config change, not a rewrite. And the beats that carry the pipeline's own evidence, the script, the cost manifest, the reroll command, the receipt, are not generated at all. They are rendered deterministically in code from the real artifacts, because for those shots the proof reads better than a prompt. Knowing which beats deserve a model and which deserve the actual data is the judgment call the role is about.</p>
 
-      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency; cached artifacts carry their original cost forward, so the receipt reflects the whole cut, not just the last re-run. The artifacts in this cut carry <strong>$9.51</strong> of logged cost (the number the on-screen receipt bakes): $0.28 for the complete audio stack, $5.36 for the ten generated shots including the review board's retakes, $3.50 for creative direction, $0.37 for clip review. Getting to the shipped version added the board's extra re-rolls of one stubborn text-bearing shot, a full score re-render, the foley experiments, and the Spanish dub renders: <strong>$14.20 all-in</strong>, every line item logged, including the retries. The manifest is <a href="https://github.com/mitwilli-create/broll-pipeline/blob/main/output/run-manifest.json" rel="noopener">committed in the public repo</a>, and beat twelve of the video is that manifest, rendered as a thermal receipt. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
+      <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency; cached artifacts carry their original cost forward, so the receipt reflects the whole cut, not just the last re-run. The committed manifest carries <strong>$8.26</strong> for the artifacts in this cut: $0.28 for the complete audio stack, $4.40 for the ten generated shots, $3.50 for creative direction, $0.08 for clip review; summing the <a href="https://github.com/mitwilli-create/broll-pipeline/blob/main/output/run-manifest.json" rel="noopener">committed manifest</a> reproduces it line for line. Getting to the shipped version cost more as it ran: the review board's extra re-rolls of one stubborn text-bearing shot, a full score re-render, the foley experiments, and the Spanish dub renders were logged at build time and brought the at-build ledger to about $14, spend a post-cut re-render no longer carries. One honesty note on the video itself: beat twelve renders the manifest as a thermal receipt, and it baked the manifest state at cut time, $9.51 carried, before that consolidation. That single file answers the customer's real question, "what does one finished minute cost," without a spreadsheet or a guess.</p>
 
       <p><strong>The creative council.</strong> Prompting shots one at a time produces b-roll that reads as disconnected stock, so generation is directed by a council of seven specialist personas (cinematographer, story producer, video researcher, sound designer, motion designer, music composer, audience-engagement expert) running in parallel on the Anthropic API. A creative director synthesizes their notes into one edit decision brief: a single visual system, a hook for the first two seconds, pacing built for short attention spans, and sound design motivated by what is on screen. After generation, the council's review board inspects frames from every generated clip against the brief, rejects unacceptable takes, and re-prompts and regenerates them. The ten shots in this cut share one visual system the council wrote, and several are retakes the review board demanded. Sound gets the same treatment: stems are gain-staged to measured loudness targets and mixed with the voice always on top, and a blind audio reviewer that can actually hear the cut scores the mix with timestamps until it is fit to ship. The pipeline also carries a per-shot video-to-audio foley stage (a model watches each shot's frames and scores the natural sound a live microphone would have caught); the sound-design judgment for this cut was to leave it out, because screen-heavy footage with little physical action does not motivate foley, and invented sound reads as artifact. Knowing when not to add sound is part of the craft.</p>
 
@@ -407,7 +407,7 @@
     </div>
 
     <div class="run-bar">
-      <span class="run-status" data-runstatus>the logged run: 60 calls, $9.51 carried by the artifacts in the cut</span>
+      <span class="run-status" data-runstatus>the logged run: 60 calls, $8.26 carried by the artifacts in the cut</span>
       <button class="run-replay" type="button" data-runreplay hidden>&#8635; replay the run</button>
     </div>
 
@@ -518,7 +518,7 @@
         <div class="r-rule"></div>
         <div class="manifest r-manifest">
           <table>
-            <caption>ElevenLabs rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>; video rate from the provider's model page, both accessed 2026-07-08. Per-short figures are the actual logged costs of the 53-second cut above: $9.51 carried by the artifacts in the cut (the number this receipt bakes), plus the review board's extra retakes, the score and foley re-rolls, and the Spanish dub renders, $14.20 all-in, logged per call to output/run-manifest.json, committed in the repo. Video generation and creative direction are the cost drivers; the six code-rendered beats cost nothing to regenerate, which is what makes iteration cheap.</caption>
+            <caption>ElevenLabs rates from <a href="https://elevenlabs.io/pricing" rel="noopener">elevenlabs.io/pricing</a>; video rate from the provider's model page, both accessed 2026-07-08. Per-short figures are the actual logged costs of the 53-second cut above: $8.26 carried by the artifacts in the cut, per the committed output/run-manifest.json; the review board's extra retakes, the score and foley re-rolls, and the Spanish dub renders ran the at-build ledger to about $14 as they were logged, spend a post-cut re-render no longer carries. Video generation and creative direction are the cost drivers; the six code-rendered beats cost nothing to regenerate, which is what makes iteration cheap.</caption>
             <thead>
               <tr><th scope="col">Stage</th><th scope="col">Rate</th><th scope="col" class="mono">~60s short, model estimate</th></tr>
             </thead>
@@ -531,22 +531,22 @@
               <tr><td>Visuals (mograph beats, 6 shots)</td><td class="mono">rendered in code</td><td class="mono">$0.00</td></tr>
               <tr><td>Per-shot foley (video-to-audio; for action footage, unused in this cut)</td><td class="mono">~$0.001 / sec</td><td class="mono">~$0.04</td></tr>
               <tr><td>Creative council (direction + per-clip review)</td><td class="mono">Anthropic API</td><td class="mono">~$5.45</td></tr>
-              <tr class="total"><td>Full stack, per short (estimate; this run logged $9.51 carried / $14.20 all-in below)</td><td class="mono">n/a</td><td class="mono">~$13.00</td></tr>
+              <tr class="total"><td>Full stack, per short (estimate; this run carries $8.26 in the committed manifest below)</td><td class="mono">n/a</td><td class="mono">~$13.00</td></tr>
             </tbody>
           </table>
         </div>
         <div class="r-rule"></div>
         <div data-r-lines>
         <div class="r-line"><span>audio stack: TTS + music + SFX</span><span>$0.28</span></div>
-        <div class="r-line"><span>generated shots incl. retakes</span><span>$5.36</span></div>
+        <div class="r-line"><span>generated shots (10)</span><span>$4.40</span></div>
         <div class="r-line"><span>creative direction, council</span><span>$3.50</span></div>
-        <div class="r-line"><span>clip review board</span><span>$0.37</span></div>
+        <div class="r-line"><span>clip review board</span><span>$0.08</span></div>
         </div>
         <div class="r-rule"></div>
-        <div class="r-line r-sub"><span>carried by the artifacts</span><span data-r-artifacts>$9.51</span></div>
-        <div class="r-line r-total"><span>all-in, every retake + dub</span><span data-r-allin>$14.20</span></div>
+        <div class="r-line r-total"><span>carried by the artifacts</span><span data-r-artifacts>$8.26</span></div>
+        <div class="r-line r-sub"><span>at-build ledger, retakes + dub incl.</span><span data-r-allin>~$14</span></div>
         <div class="r-rule"></div>
-        <div class="r-foot">every call logged &middot; cached artifacts carry original cost &middot; manifest committed in the public repo</div>
+        <div class="r-foot">every call logged &middot; cached artifacts carry original cost &middot; summing the committed manifest reproduces the $8.26</div>
       </div>
       <button class="r-replay" type="button" data-printreplay hidden>&#8635; print again</button>
     </aside>

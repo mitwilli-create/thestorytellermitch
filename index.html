@@ -245,7 +245,7 @@
           <img class="sys-illo" src="assets/stills/hero-machine-plate-hd.jpg" width="1446" height="1080" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." fetchpriority="high">
         </div>
         <div class="sys-body">
-          <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $14.20</span></div>
+          <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $8.26</span></div>
           <pre class="sys-diagram" aria-hidden="true"><span class="n">input/script.md</span>
   <span class="d">│</span>  parse <span class="d">→</span> beats
   <span class="d">├─▶</span> <span class="n">voiceover</span>  <span class="a">ElevenLabs TTS</span>
@@ -489,7 +489,7 @@
       const d=document.querySelector('.sys-diagram'); if(d) d.classList.add('sig-pulse','pulsing');
       const r=document.querySelector('.sys-k .r');
       if(r){
-        const t0=performance.now(), dur=800, end=14.20;
+        const t0=performance.now(), dur=800, end=8.26;
         const step=(t)=>{
           const k=Math.min(1,(t-t0)/dur), e=1-(1-k)*(1-k);
           r.textContent='run receipt $'+(k<1?(end*e):end).toFixed(2);

@@ -15,7 +15,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Projects
 
-**broll-pipeline** · Seven-stage AI video pipeline on the ElevenLabs stack: script in, produced and captioned short out. Live demo: a 53-second creative-directed short with a Spanish dub at $14.20 all-in, every API call logged to a run manifest. The repo README is the build walkthrough: quick-start in mock or live mode, a staged pipeline diagram, the full cost model, and a week-long adoption plan. Public at github.com/mitwilli-create/broll-pipeline.
+**broll-pipeline** · Seven-stage AI video pipeline on the ElevenLabs stack: script in, produced and captioned short out. Live demo: a 53-second creative-directed short with a Spanish dub; $8.26 of logged cost carried by the artifacts in the cut, every API call logged to the committed run manifest. The repo README is the build walkthrough: quick-start in mock or live mode, a staged pipeline diagram, the full cost model, and a week-long adoption plan. Public at github.com/mitwilli-create/broll-pipeline.
 
 **voice-os** · Six-axis voice scoring, dual-persona routing, and QA gates calibrated on a multi-million-word corpus; codified voice "Constitution" plus banned-phrase checker.
 
