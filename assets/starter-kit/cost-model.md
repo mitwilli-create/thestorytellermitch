@@ -9,7 +9,7 @@ ElevenLabs API rates, July 2026. Every number below is either a published rate (
 | Music (Eleven Music v2) | $0.15 per minute | ~$0.15 |
 | Sound effects | $0.12 per minute | ~$0.07 |
 | Dubbing, per target language | $0.33 to $0.50 per minute | ~$0.33 to $0.50 |
-| Generated shots (adapter to Veo 3.1 Fast) | $0.10 per second | ~$2.00 for 3 shots |
+| Generated shots (adapter to Veo 3.1 Fast) | $0.10 per second at 720p ($0.12 at 1080p, $0.30 at 4K) | ~$2.00 for 3 shots at 720p |
 | Mograph beats (Playwright render) | $0 | $0.00 |
 
 ## Receipts (the logged demo run, output/run-manifest.json)

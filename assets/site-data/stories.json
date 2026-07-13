@@ -64,7 +64,8 @@
       "still": {
         "src": "assets/stills/stream-launch-night.jpg",
         "cap": "From the broadcast · The Stream, 2011",
-        "alt": "The Stream launch-night broadcast frame"
+        "alt": "The Stream launch-night broadcast frame",
+        "clip": "aje-stream-2011-global-reactions-bin-laden-death-bahrain"
       },
       "media": [
         {
@@ -235,16 +236,15 @@
         "The coverage ran. HuffPost Live didn't retract, and there was no public blowback. The segments held because the risk analysis was baked into the workflow before the moment of decision, not reviewed after. That period is why I know I can hold two filters at once, editorial quality and institutional exposure, at live speed, without letting either collapse the other."
       ],
       "pull": "That's not caution. That's architecture.",
-      "clipSlugs": [
-        "huffpost-2013-jenna-miscavige-beyond-belief"
-      ],
+      "clipSlugs": [],
       "media": [
         {
           "type": "img",
           "src": "assets/stills/mc-jenna-huffpostlive-2013.jpg",
           "cap": "Jenna Miscavige Hill on the HuffPost Live set, 2013 · frame from the broadcast",
           "alt": "Jenna Miscavige Hill and the host on the HuffPost Live couch, newsroom behind them",
-          "after": 0
+          "after": 0,
+          "clip": "huffpost-2013-jenna-miscavige-beyond-belief"
         },
         {
           "type": "img",
@@ -263,10 +263,16 @@
           "after": 0
         },
         {
-          "type": "img",
-          "src": "assets/stills/huffpost-live-set.jpg",
-          "cap": "The HuffPost Live set, New York · from the broadcast",
-          "alt": "Host and guest in conversation on the HuffPost Live couch set",
+          "type": "term",
+          "title": "the parallel filter · run live, invisible on air",
+          "lines": [
+            "input   live viewer comments, defector testimony",
+            "filter  personal account vs organizational fact",
+            "        on-record sourcing vs implication",
+            "        every guest weighed: credibility x exposure",
+            "speed   decisions inside the broadcast window",
+            "output  coverage that ran, and held"
+          ],
           "after": 0
         },
         {
@@ -631,14 +637,6 @@
       },
       "media": [
         {
-          "type": "img",
-          "src": "assets/stills/illo-triage-agent-hd.jpg",
-          "cap": "The system diagram · triage, revise, escalate",
-          "alt": "System diagram: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human",
-          "preview": "assets/cinemagraphs/illo-triage-agent-c-loop.mp4",
-          "previewLabel": "▸ in motion"
-        },
-        {
           "type": "term",
           "title": "DEPLOYMENT.md · the operator runbook, public repo",
           "lines": [
@@ -677,19 +675,12 @@
       "pull": "I treat voice as infrastructure, not magic.",
       "clipSlugs": [],
       "still": {
-        "src": "assets/stills/illo-digital-twin-detail.jpg",
-        "cap": "The gate that measures the voice · detail from the system illustration",
-        "alt": "Detail of the digital-twin diagram: tangled lines meeting a glowing vertical gate and leaving as one clean waveform"
+        "src": "assets/stills/illo-digital-twin-hd.jpg",
+        "preview": "assets/cinemagraphs/illo-digital-twin-loop.mp4",
+        "cap": "The system diagram · a voice encoded as checkable rules · system illustration, generated · Gemini image + Veo motion, 2026",
+        "alt": "System diagram: a waveform passing through six measuring gates before it ships"
       },
       "media": [
-        {
-          "type": "img",
-          "src": "assets/stills/illo-digital-twin-hd.jpg",
-          "cap": "The system diagram · a voice encoded as checkable rules",
-          "alt": "System diagram: a waveform passing through six measuring gates before it ships",
-          "preview": "assets/cinemagraphs/illo-digital-twin-loop.mp4",
-          "previewLabel": "▸ in motion"
-        },
         {
           "type": "term",
           "title": "voice-os · six axes, one gate",
@@ -799,19 +790,12 @@
         "broll-pipeline-2026"
       ],
       "still": {
-        "src": "assets/stills/illo-agent-fleet.jpg",
+        "src": "assets/stills/illo-agent-fleet-hd.jpg",
+        "preview": "assets/cinemagraphs/illo-agent-fleet-c-loop.mp4",
         "cap": "The fleet · system illustration, generated · Gemini image + Veo motion, 2026",
         "alt": "Constellation-style diagram of fifty agent nodes around one orchestrator"
       },
       "media": [
-        {
-          "type": "img",
-          "src": "assets/stills/illo-agent-fleet-hd.jpg",
-          "cap": "The fleet diagram · one orchestrator, fifty agents",
-          "alt": "System diagram: a fleet of small agent nodes orbiting one central orchestrator node",
-          "preview": "assets/cinemagraphs/illo-agent-fleet-c-loop.mp4",
-          "previewLabel": "▸ in motion"
-        },
         {
           "type": "term",
           "title": "launchctl · the fleet, live",
