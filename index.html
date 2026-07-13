@@ -110,8 +110,14 @@
        the produced short leads, the practice cells sit beside it */
     #ai-native{padding:56px 0 0}
     .ainative-grid{display:grid;gap:32px}
-    @media(min-width:1024px){.ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}}
-    .ainative-grid .film{aspect-ratio:16/9}
+    /* the tile reuses .film.wide, whose span-4 belongs to the old film-grid;
+       inside this two-column grid it must occupy exactly one cell */
+    .ainative-grid .film{grid-column:auto;aspect-ratio:16/9}
+    @media(min-width:1024px){
+      .ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
+      .ainative-grid .film{grid-column:1;grid-row:1}
+      .ainative-grid .ai-cells{grid-column:2;grid-row:1}
+    }
     .ai-cells{display:flex;flex-direction:column;justify-content:space-between;gap:0}
     .ai-cells .cell{border-bottom:1px solid var(--line);padding:18px 0}
     .ai-cells .cell:first-child{padding-top:0}

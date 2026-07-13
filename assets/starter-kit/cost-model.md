@@ -1,31 +1,31 @@
 # broll-pipeline cost model
-ElevenLabs API rates, July 2026. Every number below is either a published rate or a receipt from a logged run; the two are labeled so you can tell which is which.
+ElevenLabs API rates, July 2026. Every number below is either a published rate (an estimate until your run logs it) or a receipt from the logged demo run; the two are labeled so you can tell which is which. Where they diverge, trust the receipt: it is what the API actually billed.
 
 ## Rates (published, per the ElevenLabs API pricing at time of writing)
 
-| Stage | Rate | Typical 60s short |
+| Stage | Rate | Estimate for a 60s short |
 |---|---|---|
 | Voiceover (TTS Multilingual v2) | $0.10 per 1k characters | ~$0.10 |
-| Music (Eleven Music v2) | $0.15 per minute | ~$0.18 |
-| Sound effects | $0.12 per minute | ~$0.04 |
-| Dubbing, per target language | $0.33 to $0.50 per minute | ~$0.58 |
+| Music (Eleven Music v2) | $0.15 per minute | ~$0.15 |
+| Sound effects | $0.12 per minute | ~$0.07 |
+| Dubbing, per target language | $0.33 to $0.50 per minute | ~$0.33 to $0.50 |
 | Generated shots (adapter to Veo 3.1 Fast) | $0.10 per second | ~$2.00 for 3 shots |
 | Mograph beats (Playwright render) | $0 | $0.00 |
 
-The "typical" column is an estimate. The receipts below are not.
+## Receipts (the logged demo run, output/run-manifest.json)
 
-## Receipts (the logged demo run, output/run-manifest.json, 60 calls)
+The published 53-second cut, as its receipt prints them:
 
 | Line | Cost | Basis |
 |---|---|---|
-| Voiceover, 16 beats | $0.06 | receipt, carried by cached artifacts |
-| Visuals, 6 mograph + 10 generated shots | $4.40 | receipt |
-| Creative council, direction + review board | $3.59 | receipt (Anthropic API) |
-| Score, 75 second bed | $0.14 | receipt |
-| Sound effects, 4 cues + ambience | ~$0.32 | receipt |
-| Production subtotal carried by the cut | $9.51 | sum of manifest lines |
-| Retakes rejected along the way + Spanish dub | remainder | receipt |
-| All-in for the published 53 second cut | $14.20 | full ledger |
+| Audio stack (TTS + music + SFX) | $0.28 | receipt |
+| Generated shots, retakes included | $5.36 | receipt |
+| Creative direction (council) | $3.50 | receipt |
+| Clip review board | $0.37 | receipt |
+| Carried by the artifacts in the cut | $9.51 | sum of the four lines above |
+| All-in, with extra re-rolls, score and foley experiments, and the Spanish dub | $14.20 | full ledger |
+
+Two receipt details worth knowing before you budget: the demo's 75-second music bed billed $0.14, right on the published rate, and the logged Spanish dub billed $0.44 for the 53-second cut, inside the published range. Creative direction is an Anthropic API cost, not an ElevenLabs one; it is in the ledger because the manifest logs every call, whoever bills it.
 
 ## The math that matters for a customer
 

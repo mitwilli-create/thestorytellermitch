@@ -20,7 +20,7 @@ One plain-text script goes in. A finished, captioned vertical short comes out, w
 4. Read the last lines of `output/run-manifest.json` for what it cost.
 
 ## The retake path (this is where the pipeline earns its keep)
-- One shot is wrong: `node pipeline.mjs --reroll-beat 4` retakes beat 4 (counting from 0) and keeps everything else. You pay for one shot, not a run.
+- One shot is wrong: `node pipeline.mjs --reroll-beat 4` retakes beat index 4, which is the FIFTH `##` block in your script because the index counts from zero. Everything else is kept; you pay for one shot, not a run.
 - The narration changed: edit the beat's VO line and re-run. Content-hash caching regenerates only what changed.
 - You want a free draft first: `node pipeline.mjs --skip-gen` renders motion-graphics fallbacks for every generated shot at $0, so you can check the cut's rhythm before spending on visuals.
 
