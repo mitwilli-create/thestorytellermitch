@@ -63,6 +63,10 @@
     {
       "key": "independent",
       "label": "Independent"
+    },
+    {
+      "key": "cnn",
+      "label": "CNN"
     }
   ],
   "eras": [
@@ -2082,7 +2086,7 @@
       "era": "2013-2015",
       "type": "News Event",
       "title": "Jorge Ramos ejected from Trump press conference, Dubuque",
-      "subtitle": "Univision's full cut of the August 25, 2015 presser. Security removes Ramos at 0:33; he returns at 16:12 and presses his immigration question.",
+      "subtitle": "The official Univision upload of the August 25, 2015 presser, played here via YouTube rather than the site archive. Security removes Ramos at 0:33; he returns at 16:12 and presses his immigration question.",
       "duration": "24m10s",
       "durationSec": 1450,
       "poster": "assets/posters/fusion-2015-trump-ramos-dubuque-presser.jpg",
@@ -2144,6 +2148,58 @@
         "local": "media/ajp-2022-backspace-china-threat.mp4",
         "streamId": null,
         "youtubeId": "KuPuXAUXZjY"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
+    },
+    {
+      "slug": "cnn-2016-newday-pawlenty-rubio-endorsement",
+      "published": false,
+      "bucket": "live-broadcasts",
+      "outlet": "cnn",
+      "outletLabel": "CNN",
+      "year": "2016",
+      "era": "2015-2018",
+      "type": "Segment",
+      "title": "Pawlenty endorses Rubio on New Day",
+      "subtitle": "Tim Pawlenty announces his Rubio endorsement live on the New Day set, February 23, 2016. Official CNN upload; plays via YouTube.",
+      "duration": "5m23s",
+      "durationSec": 323,
+      "poster": "assets/posters/cnn-2016-newday-pawlenty-rubio-endorsement.jpg",
+      "hoverPreview": "assets/previews/cnn-2016-newday-pawlenty-rubio-endorsement.mp4",
+      "previewStart": 93,
+      "media": {
+        "local": "media/cnn-2016-newday-pawlenty-rubio-endorsement.mp4",
+        "streamId": null,
+        "youtubeId": "q5cFo9wEsV8"
+      },
+      "startHere": false,
+      "startHereRank": null,
+      "caseStudy": null,
+      "sourceFile": null
+    },
+    {
+      "slug": "cnn-2016-newday-trump-riots-warning",
+      "published": false,
+      "bucket": "live-broadcasts",
+      "outlet": "cnn",
+      "outletLabel": "CNN",
+      "year": "2016",
+      "era": "2015-2018",
+      "type": "Segment",
+      "title": "Trump warns of riots, by phone on New Day",
+      "subtitle": "The morning after the March 15, 2016 primaries, Donald Trump tells New Day he expects riots if the GOP denies him the nomination. Official CNN upload; plays via YouTube.",
+      "duration": "1m46s",
+      "durationSec": 106,
+      "poster": "assets/posters/cnn-2016-newday-trump-riots-warning.jpg",
+      "hoverPreview": "assets/previews/cnn-2016-newday-trump-riots-warning.mp4",
+      "previewStart": 9.5,
+      "media": {
+        "local": "media/cnn-2016-newday-trump-riots-warning.mp4",
+        "streamId": null,
+        "youtubeId": "VOuxOVaWYws"
       },
       "startHere": false,
       "startHereRank": null,

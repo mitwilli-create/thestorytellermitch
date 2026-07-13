@@ -17,13 +17,21 @@
     .tl-hero .display{font-size:clamp(42px,7.4vw,110px)}
     .tl-sub{margin-top:26px;max-width:620px;font-size:18px;color:var(--bone-soft);line-height:1.6}
 
-    .tl{position:relative;max-width:900px;margin:0 auto;padding:40px 0 80px}
+    /* top padding clears the first era's plate overhang (64px) so the
+       numeral never rides up into the hero band */
+    .tl{position:relative;max-width:900px;margin:0 auto;padding:88px 0 80px}
     .tl-rail{position:absolute;left:29px;top:0;bottom:0;width:1px;background:var(--line)}
     .tl-fill{position:absolute;left:29px;top:0;width:1px;height:0;background:var(--blood-soft);
       transition:height .15s linear}
-    .era{position:relative;padding:0 0 96px 92px}
+    /* --plate-clear reserves in-flow ground for the year plate so it can
+       never sit on content (Mitchell, capstone-3): plate height is
+       font-size (line-height 1) + 24px padding + 2px border; it hangs
+       64px above the era top, so the remainder plus breathing room is
+       cleared here. The dot rides the same offset to stay on the first line. */
+    .era{position:relative;--plate-clear:calc(clamp(56px,8vw,112px) - 10px);
+      padding:var(--plate-clear) 0 96px 92px}
     .era:last-child{padding-bottom:20px}
-    .era-dot{position:absolute;left:22px;top:6px;width:15px;height:15px;border:1px solid var(--line-2);
+    .era-dot{position:absolute;left:22px;top:calc(var(--plate-clear) + 6px);width:15px;height:15px;border:1px solid var(--line-2);
       background:var(--bg);transform:rotate(45deg);transition:all .6s var(--ease);z-index:2}
     .era.in .era-dot{border-color:var(--blood-soft);background:var(--blood)}
     /* node tick: the dot connects to its era content so the rail reads as
@@ -129,6 +137,10 @@
     .era-context--overlay{position:relative;z-index:2;margin-bottom:-72px;max-width:520px;
       box-shadow:0 18px 44px rgba(0,0,0,.55)}
     @media(max-width:860px){.era-context--overlay{margin-bottom:18px;box-shadow:none}}
+    /* the photo scrims (.oncam::before/::after, z1/z2) escape into the
+       era-side stacking context and wash over the overlay card's last
+       lines; isolating the figure keeps its scrims on the photo */
+    .era-side .oncam{isolation:isolate}
 
     /* deliberate sparse-era treatment (CNN) */
     .era--sparse::before{opacity:.07}
@@ -240,12 +252,13 @@
       .era-side .era-context--overlay{margin-bottom:-72px;max-width:none}
       .era:not(.era--moment) > .era-metrics{grid-column:2}
       .em .n{font-size:clamp(36px,4.6vw,64px)}
+      .era{--plate-clear:calc(clamp(52px,7vw,96px) - 2px)}
       .era::before{font-size:clamp(52px,7vw,96px);top:-56px}
     }
     /* timeline-05: the Clinton moment escapes the rail as a full-bleed
        letterboxed band; the monitor centers at ~760px. Poster +
        click-to-play only, wiring unchanged. */
-    .era--moment{margin-inline:calc(50% - 50vw);padding:72px max(24px,calc(50vw - 380px)) 76px;
+    .era--moment{margin-inline:calc(50% - 50vw);padding:88px max(24px,calc(50vw - 380px)) 76px;
       background:#060607;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
     .era--moment .era-dot{display:none}
     .era--moment::before{right:max(24px,calc(50vw - 380px))}
@@ -261,7 +274,7 @@
     @media(max-width:860px){
       .tl-hero{padding:130px 0 40px}
       .tl-rail,.tl-fill{left:7px}
-      .era{padding-left:44px;padding-bottom:78px}
+      .era{--plate-clear:clamp(40px,10vw,64px);padding-left:44px;padding-bottom:78px}
       .era-dot{left:0}
       .era-clips{flex-wrap:wrap}
       .era-clips--strip{flex-wrap:nowrap}
@@ -475,8 +488,8 @@
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
-        <a href="work.html"><img src="assets/stills/cnn-newsroom-2012-ccby-atkeison.jpg" alt="CNN newsroom, Atlanta" loading="lazy"><span class="cl">A CNN newsroom · C. Atkeison · CC BY</span></a>
-        <a href="work.html"><img src="assets/stills/mc-trump-2016.jpg" alt="Donald Trump at a 2016 campaign rally" loading="lazy"><span class="cl">The 2016 cycle · Gage Skidmore · CC BY-SA</span></a>
+        <a href="https://www.youtube.com/watch?v=q5cFo9wEsV8" data-youtube="q5cFo9wEsV8" data-preview="assets/previews/cnn-2016-newday-pawlenty-rubio-endorsement.mp4"><img src="assets/posters/cnn-2016-newday-pawlenty-rubio-endorsement.jpg" alt="The New Day set: Alisyn Camerota interviews Tim Pawlenty on the monitor wall as he announces his Rubio endorsement, February 23, 2016" loading="lazy"><span class="cl">On the New Day set · Feb 23, 2016 · CNN</span></a>
+        <a href="https://www.youtube.com/watch?v=VOuxOVaWYws" data-youtube="VOuxOVaWYws" data-preview="assets/previews/cnn-2016-newday-trump-riots-warning.mp4"><img src="assets/posters/cnn-2016-newday-trump-riots-warning.jpg" alt="Donald Trump by phone on New Day the morning after the March 15, 2016 primaries, under the chyron: Trump warns of riots if he isn't GOP nominee" loading="lazy"><span class="cl">Trump phones in · Mar 16, 2016 · CNN</span></a>
       </div>
       </div>
     </div>
@@ -596,7 +609,7 @@
   </figure>
   <p class="cb-ctx" id="cb-ctx"></p>
   <div class="cb-row">
-    <a id="cb-link" href="#">Open in the archive</a>
+    <a id="cb-link" href="work.html">Open in the archive</a>
     <button id="cb-close" type="button">Close</button>
   </div>
 </dialog>
@@ -772,7 +785,8 @@
       cbLink.href=href;
       cbLink.textContent = href.indexOf('work.html')===0 ? 'See it on the reel' :
         href.indexOf('stories.html')===0 ? 'Read the story' :
-        href.indexOf('https://www.c-span.org')===0 ? 'Full hearing on C-SPAN' : 'Open the breakdown';
+        href.indexOf('https://www.c-span.org')===0 ? 'Full hearing on C-SPAN' :
+        href.indexOf('https://www.youtube.com')===0 ? 'Watch the source upload' : 'Open the breakdown';
       if(href.indexOf('https://')===0){ cbLink.target='_blank'; cbLink.rel='noopener'; } else { cbLink.removeAttribute('target'); cbLink.removeAttribute('rel'); }
       clipbox.showModal();
     });
