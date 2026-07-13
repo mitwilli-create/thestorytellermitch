@@ -20,5 +20,5 @@ SECONDS: 5
 # - Keep each VO line to one breath. The edit cuts visuals to the voiceover length.
 # - VISUAL lines are direction, not decoration: subject, movement, mood, in that order.
 # - A beat can also declare VISUAL-MODE: mograph (rendered from the pipeline's own
-#   artifacts, costs nothing) or gen (an AI-generated shot, the cost driver).
+# artifacts, costs nothing) or gen (an AI-generated shot, the cost driver).
 # - Target 12 to 16 beats for a 50 to 70 second short.
