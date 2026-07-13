@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flows Template A · Article to Audio Edition · Mitchell Williams</title>
+  <meta name="description" content="Reusable ElevenCreative Flows template: turn any written article into a branded, narrated audio edition with verified captions, localized into every language your audience reads you in. Part of the Article to Audience spec bundle.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc pre{background:var(--surface);border:1px solid var(--line);padding:16px 18px;overflow-x:auto;
+      font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--bone-soft);margin:0 0 16px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .tbl-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+    .doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+    .doc th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .doc td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.6;vertical-align:top}
+    .doc tr:last-child td{border-bottom:none}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>Flows Template A · Article to Audio Edition</h1>
+    <div class="prov">Built as part of the Article to Audience spec bundle for the ElevenLabs Forward Deployed Creative role. Cost figures are measured actuals from the bundle's logged run manifest (2026-07-12) or published list rates as cited inline. The Harbor Ledger is a fictional publication created for the demo. No company named in these documents is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+<p><strong>What it does:</strong> Turns any written article into a branded, narrated audio edition with verified captions, in every language your audience reads you in. Paste text in, get publish-ready audio out, with the same publication voice on every story.</p>
+<p><strong>Who gets the most out of it:</strong> Digital publishers and newsrooms that want an audio edition without hiring narrators per story, and content teams localizing daily briefs for more than one market.</p>
+<p>Build time in the ElevenLabs UI: about 25 minutes the first time, under 5 to reuse once saved as a template.</p>
+<h2>Inputs and outputs</h2>
+<div class="tbl-wrap"><table>
+<tbody><tr><td><strong>In</strong></td><td>Article text (any length), publication voice ID, target language list</td></tr>
+<tr><td><strong>Out</strong></td><td>Narrated master audio (EN), localized audio per language, caption files verified against the audio, optional music bed under the read</td></tr></tbody>
+</table></div>
+<h2>The flow at a glance</h2>
+<pre>[Text: article]──▶[Text to Speech: publication voice]──▶[Composition]──▶ audio edition (EN)
+[Text: music prompt]──▶[Music]───────────────────────────▶[Composition]
+[Text: article ES]──▶[Text to Speech: same voice, ES]──▶ audio edition (ES)   (UI lane)
+        or
+narration file ──▶ Dubbing (separate product) ──▶ voice-preserving ES track    (dub lane)</pre>
+<h2>Click-by-click build (ElevenCreative Flows)</h2>
+<p>Numbered steps assume a signed-in ElevenLabs account with ElevenCreative access. Where a step happens outside Flows, the step says so.</p>
+<h3>Part 1: the narration spine (about 8 minutes)</h3>
+<ol>
+<li>From the ElevenCreative dashboard, select <strong>+ New Flow</strong>. You get a blank canvas.</li>
+<li>Right-click the canvas (or use the bottom toolbar) and add a <strong>Text</strong> node. Paste the article body into it. Keep the headline out; you will read that separately if you want a spoken intro.</li>
+<li>Add a <strong>Text to Speech</strong> node the same way.</li>
+<li>Drag from the Text node's output port to the Text to Speech node's input port to connect them.</li>
+<li>In the Text to Speech node, pick the publication voice. Use one designed or cloned voice for every story so listeners learn the sound of your brand. Set the model to the current multilingual model so the same voice can read other languages later.</li>
+<li>Hover over <strong>Run</strong> on the Text to Speech node to see the credit cost before you spend it, then run it. Listen to the take. If the read is flat, adjust the voice settings and re-run: only this node and nodes downstream of it regenerate.</li>
+</ol>
+<h3>Part 2: the music bed (about 5 minutes, optional)</h3>
+<ol start="7">
+<li>Add a second <strong>Text</strong> node with a short music brief, for example: "warm, understated editorial underscore, felt piano, low dynamic range, sits under a spoken voice, instrumental only."</li>
+<li>Add a <strong>Music</strong> node, connect the text node to it, and run it.</li>
+<li>Add a <strong>Composition</strong> node. Connect both the Text to Speech output and the Music output into it. Set the music track well under the voice; the voice must stay unambiguously on top. Preview inside the Composition node.</li>
+</ol>
+<h3>Part 3: localization (about 7 minutes)</h3>
+<p>Two lanes. Pick per story.</p>
+<ul>
+<li><strong>UI lane (all inside Flows):</strong> duplicate the article Text node, replace the body with the translated text, and connect it to a second <strong>Text to Speech</strong> node using the same publication voice on the multilingual model. Run it. Same voice, new language, fully non-destructive: the English branch is untouched.</li>
+<li><strong>Dub lane (voice-preserving, outside Flows):</strong> download the narration audio and run it through <strong>Dubbing</strong> in the ElevenLabs dashboard (Products, then Dubbing) with the target language set. Dubbing carries the original voice's delivery into the target language. This is the lane the demo video in this bundle used for Spanish. Dubbing is not a Flows node today; treat it as a one-click side trip and say so to customers rather than papering over it.</li>
+</ul>
+<h3>Part 4: captions, verified (about 5 minutes, outside Flows)</h3>
+<ol start="10">
+<li>Run the finished narration through <strong>Speech to Text</strong> (Scribe) via the dashboard or API to get word-level timestamps.</li>
+<li>Diff the transcript against the source article. In this bundle's demo the read came back with 65 of 68 source words matched exactly, and every miss was a formatting difference (the model wrote "400" for "four hundred"), so the read itself was verbatim. That diff is your caption QA receipt: captions built from the STT output are verified against what was actually spoken, not against what you hoped was spoken.</li>
+<li>Export the caption file (SRT or VTT) from the word timestamps. Repeat for each language track.</li>
+</ol>
+<h3>Part 5: save it as a template (about 3 minutes)</h3>
+<ol start="13">
+<li>In the Flow, mark the article Text node (and the translated text node if you use the UI lane) as <strong>input nodes</strong>, and mark the Composition output as the <strong>output node</strong>. At least one output node is required.</li>
+<li>Run the template once end to end to validate it.</li>
+<li>Share it: <strong>Workspace</strong> so the whole team can run it, or <strong>Link only</strong> for a specific customer. Publishing to <strong>Explore</strong> submits it for public approval.</li>
+</ol>
+<h2>Cost per run (verifiable math only)</h2>
+<p>Measured actuals from this bundle's demo (70-word brief, logged in the bundle's run manifest, <code>demo/manifest.json</code>):</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Step</th><th>Measured</th></tr></thead>
+<tbody><tr><td>TTS narration, 364 chars</td><td>$0.036</td></tr>
+<tr><td>STT caption verification, EN + ES</td><td>$0.003</td></tr>
+<tr><td>Music bed, 46s</td><td>$0.115</td></tr>
+<tr><td>Spanish dub, 24s</td><td>$0.229</td></tr>
+<tr><td><strong>Total, two languages</strong></td><td><strong>$0.38</strong></td></tr></tbody>
+</table></div>
+<p>Scaled with published list rates (TTS $0.10 per 1,000 characters on the multilingual model, Scribe $0.22 per hour, dubbing $0.33 to $0.50 per minute): an 800-word article (about 4,800 characters, roughly 5 minutes of audio) runs about $0.48 to narrate, under $0.02 to caption-verify, and $1.65 to $2.50 per additional language via dubbing. A five-story daily briefing in two languages prices in single-digit dollars per day. Have the customer check current rates at elevenlabs.io/pricing/api before quoting; prices moved down in June 2026 and may move again.</p>
+<h2>What the AE should watch for (adoption signal)</h2>
+<p>The template is adopted when the customer's own producers run it on their own stories without you in the room. Ask for the flow's run history on the second call: repeat runs by named editors on paying workspaces are the signal that counts.</p>
+<h2>Known boundaries (say them out loud)</h2>
+<ul>
+<li>Speech to Text and Dubbing are separate ElevenLabs products today, not Flows nodes. The guide routes around that honestly; do not promise a single-canvas version until it ships.</li>
+<li>The UI localization lane needs translated text as input; translation itself happens in the customer's existing tooling or the dub lane.</li>
+<li>Voice consistency across languages is strongest on the dub lane, since dubbing preserves the source delivery.</li>
+</ul>
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="../shared/reveal.js?v=20260711e"></script>
+<script src="../shared/audio.js?v=20260711c"></script>
+</body>
+</html>

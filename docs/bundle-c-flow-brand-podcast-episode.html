@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flows Template B · Brand Podcast Episode · Mitchell Williams</title>
+  <meta name="description" content="Reusable ElevenCreative Flows template: turn an episode outline into a scripted, voiced, sound-designed podcast episode on one canvas. Part of the Article to Audience spec bundle.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc pre{background:var(--surface);border:1px solid var(--line);padding:16px 18px;overflow-x:auto;
+      font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--bone-soft);margin:0 0 16px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .tbl-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+    .doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+    .doc th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .doc td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.6;vertical-align:top}
+    .doc tr:last-child td{border-bottom:none}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>Flows Template B · Brand Podcast Episode</h1>
+    <div class="prov">Built as part of the Article to Audience spec bundle for the ElevenLabs Forward Deployed Creative role. Cost figures are measured actuals from the bundle's logged run manifest (2026-07-12) or published list rates as cited inline. The Harbor Ledger is a fictional publication created for the demo. No company named in these documents is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+<p><strong>What it does:</strong> Turns an episode outline into a scripted, voiced, sound-designed podcast episode: intro music, a consistent host voice, scene-level sound design, and a mixed master, all on one Flows canvas. Outline in Monday, episode out Monday afternoon.</p>
+<p><strong>Who gets the most out of it:</strong> Brand and content-marketing teams that want a recurring branded show without studio bookings, and media companies piloting new show formats before committing production budget.</p>
+<p>Build time in the ElevenLabs UI: about 30 minutes the first time, under 10 to reuse once saved as a template.</p>
+<h2>Inputs and outputs</h2>
+<div class="tbl-wrap"><table>
+<tbody><tr><td><strong>In</strong></td><td>Episode outline (bullet points), host voice ID, show music brief, optional second voice for a two-hander</td></tr>
+<tr><td><strong>Out</strong></td><td>Full episode audio with cold open, music, voiced segments, and sound design layered in one Composition, ready for the customer's podcast host</td></tr></tbody>
+</table></div>
+<h2>The flow at a glance</h2>
+<pre>outline ──▶ script (Flows Agent chat or your LLM) ──▶ [Text: segment 1..n]
+[Text: seg 1]──▶[TTS: host voice]──┐
+[Text: seg 2]──▶[TTS: host voice]──┤
+[Text: music brief]──▶[Music]──────┼──▶[Composition]──▶ episode master
+[Text: sfx brief]──▶[Sound Effects]┘</pre>
+<h2>Click-by-click build (ElevenCreative Flows)</h2>
+<h3>Part 1: outline to script (about 8 minutes)</h3>
+<ol>
+<li>From the ElevenCreative dashboard, select <strong>+ New Flow</strong>.</li>
+<li>Open the chat side panel and give the <strong>Flows Agent</strong> your outline with a brief like: "Draft a 4-minute episode script from this outline. Conversational, one host, short sentences, a cold open, and a sign-off that names the show." The agent can create and connect nodes for you; set its permission mode to <strong>Approve each</strong> the first time so you see every node it adds and every credit it wants to spend before it spends it.</li>
+<li>Review the draft in the Text nodes it creates. Edit by hand; the script is the product, spend your judgment here. If you prefer your own LLM for drafting, paste its output into <strong>Text</strong> nodes yourself, one node per segment (cold open, body segments, sign-off). One node per segment keeps retakes cheap: a flubbed segment re-runs alone.</li>
+</ol>
+<h3>Part 2: the host voice (about 6 minutes)</h3>
+<ol start="4">
+<li>Add a <strong>Text to Speech</strong> node per script segment and connect each Text node to its own TTS node.</li>
+<li>Pick one host voice and use it in every TTS node. Same voice every episode; the voice is the show's brand. A designed voice from the voice library or a consented clone both work.</li>
+<li>Hover <strong>Run</strong> on each TTS node to see the credit cost, then run them. Listen to every take end to end. Re-run only the segments that read flat: the non-destructive canvas means the good takes stay put.</li>
+</ol>
+<h3>Part 3: music and sound design (about 8 minutes)</h3>
+<ol start="7">
+<li>Add a <strong>Text</strong> node with the show's music brief, for example: "confident mid-tempo theme, warm synth and light percussion, builds for 6 seconds then settles into a loopable bed, instrumental." Connect it to a <strong>Music</strong> node and run it.</li>
+<li>For each scene that earns a sound moment (a cold-open sting, a transition), add a <strong>Sound Effects</strong> node with a specific brief. Name the physical source and the space, for example "single soft page turn in a quiet room, close mic," not "whoosh." Sparse is the craft: effects sit on transitions, ducked under the voice, never mid-sentence attention grabs.</li>
+<li>Add a <strong>Composition</strong> node and connect every TTS output, the Music output, and each Sound Effects output into it. Order the segments on the Composition timeline, tuck the music under the voice, and place effects on the cuts. The voice stays unambiguously on top at every moment; if music ever competes with the host, pull it down, not the voice up.</li>
+</ol>
+<h3>Part 4: master and ship (about 5 minutes)</h3>
+<ol start="10">
+<li>Preview the full Composition top to tail once without touching anything. Note timestamps of anything that pokes out.</li>
+<li>Export the composition as the episode master. For finer timeline control, captions, or an episode-art video version, export to <strong>ElevenCreative Studio</strong> and finish there.</li>
+<li>Loudness-check the master in the customer's usual QA path before it goes to their podcast host (streaming platforms normalize around -16 to -14 LUFS; the customer's distributor will have a spec).</li>
+</ol>
+<h3>Part 5: save it as a template (about 3 minutes)</h3>
+<ol start="13">
+<li>Mark the outline and script Text nodes as <strong>input nodes</strong> and the Composition as the <strong>output node</strong>, run it once end to end to validate, then share to the customer's <strong>Workspace</strong>.</li>
+<li>Hand the customer the run history after episode one: the receipt of what each segment cost is the strongest renewal argument you have.</li>
+</ol>
+<h2>Cost per run (verifiable math only)</h2>
+<p>List-rate arithmetic for a 4-minute episode (about 3,600 characters of script at a typical read pace):</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Step</th><th>List-rate math</th><th>Cost</th></tr></thead>
+<tbody><tr><td>Host voice, 3,600 chars</td><td>$0.10 per 1k chars (multilingual model)</td><td>$0.36</td></tr>
+<tr><td>Theme + bed, 1 min</td><td>measured $0.115 for 46s in this bundle's demo</td><td>~$0.15</td></tr>
+<tr><td>3 sound-design moments</td><td>single-generation sound effects</td><td>pennies at credit rates</td></tr>
+<tr><td><strong>Episode total</strong></td><td></td><td><strong>about $0.55 plus agent-chat tokens</strong></td></tr></tbody>
+</table></div>
+<p>A weekly show runs about $30 a year in generation at these rates. The honest comparison an AE can make without a citation: the customer's current per-episode production line items, from their own invoices. Never quote a competitor's or studio's rate you cannot source; ask the customer what an episode costs them today and let their number do the work. Rates: elevenlabs.io/pricing/api (verify before quoting; June 2026 lowered prices).</p>
+<h2>What the AE should watch for (adoption signal)</h2>
+<p>Adopted means episode three ships without you on the call. The run history shows the customer's own team re-running the template with new outlines; that, plus the template cited in your deal notes, is the metric that counts.</p>
+<h2>Known boundaries (say them out loud)</h2>
+<ul>
+<li>Script quality is the ceiling. The agent drafts fast, but a brand voice needs a human edit pass; position the template as removing production labor, not editorial judgment.</li>
+<li>Multi-host banter with overlapping speech is beyond a clean TTS-per-segment build today; a two-hander works as alternating segments.</li>
+<li>Flows Agent chat bills by token volume on top of generation credits; keep <strong>Approve each</strong> on until the customer trusts the spend pattern.</li>
+</ul>
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="../shared/reveal.js?v=20260711e"></script>
+<script src="../shared/audio.js?v=20260711c"></script>
+</body>
+</html>
