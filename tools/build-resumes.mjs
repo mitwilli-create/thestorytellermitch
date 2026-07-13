@@ -97,7 +97,10 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 // bare portfolio/profile URLs still auto-link. Site-relative-only md links keep
 // LINK_RE from re-matching inside generated hrefs.
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
+// `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
+// numbers read as logged evidence, not prose claims.
 const inline = (s) => esc(s)
+  .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
   .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   .replace(/\[([^\]]+)\]\(((?:\.\.\/|#)[\w./#-]+)\)/g, '<a href="$2">$1</a>')
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
@@ -209,6 +212,7 @@ export function page({ name, pillars, contact, sections }, lane) {
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
     .rl li::before{content:"·";position:absolute;left:2px;color:var(--blood-soft)}
+    .rnum{font-family:'JetBrains Mono',monospace;font-size:0.92em;font-variant-numeric:tabular-nums}
     .rrole{margin:16px 0 6px}
     .rrole-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--bone);letter-spacing:-0.01em}
     .rrole-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);margin:3px 0 10px}
@@ -266,6 +270,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:${rh}pt;break-after:avoid}
       .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
+      .rnum{font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
