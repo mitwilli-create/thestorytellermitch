@@ -5,11 +5,11 @@ July 2026. Two kinds of numbers below, labeled: published rates (estimates until
 
 | Stage | Provider | Rate | Estimate for a 60s short |
 |---|---|---|---|
-| Voiceover (TTS Multilingual v2) | ElevenLabs | $0.10 per 1k characters | ~$0.10 |
+| Voiceover (TTS Multilingual v2) | ElevenLabs | $0.10 per 1k characters | ~$0.06 (the demo's 16 beats ran ~600 characters) |
 | Music (Eleven Music v2) | ElevenLabs | $0.15 per minute | ~$0.15 |
 | Sound effects | ElevenLabs | billed per generation; a handful of short cues | ~$0.07 for 5 generations |
 | Dubbing, per target language | ElevenLabs | $0.33 to $0.50 per minute | ~$0.33 to $0.50 |
-| Generated shots (adapter to Veo 3.1 Fast) | Google (via fal adapter) | $0.10 per second at 720p ($0.12 at 1080p, $0.30 at 4K) | ~$2.00 for 3 shots at 720p |
+| Generated shots (adapter to Veo 3.1 Fast) | Google (via fal adapter) | $0.10 per second at 720p or 1080p without audio ($0.15 per second with audio; 4K higher) | ~$2.00 for 3 shots |
 | Mograph beats (Playwright render) | local | $0 | $0.00 |
 
 ## The logged demo run (manifest-derived, output/run-manifest.json)

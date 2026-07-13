@@ -9,7 +9,7 @@ One plain-text script goes in. A finished, captioned vertical short comes out, w
 ## One-time setup (10 minutes, or hand this part to IT)
 1. Install Node 20+ and ffmpeg.
 2. `git clone https://github.com/mitwilli-create/broll-pipeline && cd broll-pipeline && npm install`
-3. `cp .env.example .env` and fill in the keys (see config.example.env in this kit).
+3. `cp .env.example .env` and fill in the keys. This kit's `config.example.env` is the same template with each key annotated; the repo's copy is named `.env.example`.
 4. Dry-check before spending: `node pipeline.mjs --mock` runs the whole pipeline end to end at $0 (system voice, color cards) and proves keys, tools, and the edit path before any paid call.
 
 ## The happy path

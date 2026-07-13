@@ -555,7 +555,8 @@
       },
       "startHere": false,
       "caseStudy": null,
-      "sourceFile": "AJP_2016-2018_How-The-Media-Fails_Social-Video_3m1s.mp4"
+      "sourceFile": "AJP_2016-2018_How-The-Media-Fails_Social-Video_3m1s.mp4",
+      "startHereRank": null
     },
     {
       "slug": "ajp-2016-how-to-handle-a-racist-rant",
@@ -658,7 +659,8 @@
       },
       "startHere": false,
       "caseStudy": null,
-      "sourceFile": "AJP_2016-2018_Surviving-An-Atomic-Bomb_Documentary-Short_3m56s.mp4"
+      "sourceFile": "AJP_2016-2018_Surviving-An-Atomic-Bomb_Documentary-Short_3m56s.mp4",
+      "startHereRank": null
     },
     {
       "slug": "ajp-2016-the-dangerous-divide-in-venezuela",
@@ -1389,7 +1391,8 @@
       },
       "startHere": false,
       "caseStudy": null,
-      "sourceFile": "FUSION_2013-2015_America-With-Jorge-Ramos_Showreel_43m50s.mp4"
+      "sourceFile": "FUSION_2013-2015_America-With-Jorge-Ramos_Showreel_43m50s.mp4",
+      "startHereRank": null
     },
     {
       "slug": "fusion-2013-america-with-jorge-ramos-december-5",
@@ -1986,7 +1989,8 @@
       },
       "startHere": false,
       "caseStudy": null,
-      "sourceFile": null
+      "sourceFile": null,
+      "startHereRank": null
     },
     {
       "slug": "google-lifeatgoogle-2019-application-engineer",
@@ -2073,7 +2077,7 @@
       "published": true,
       "bucket": "live-broadcasts",
       "outlet": "fusion",
-      "outletLabel": "Fusion · news event",
+      "outletLabel": "Univision",
       "year": "2015",
       "era": "2013-2015",
       "type": "News Event",

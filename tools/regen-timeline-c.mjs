@@ -54,6 +54,7 @@ const scoresFile = loop.replace('.mp4', '-scd.txt');
 execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', doubled, '-vf', `scdet=threshold=0,metadata=print:file=${scoresFile}`, '-f', 'null', '-']);
 const txt = readFileSync(scoresFile, 'utf8');
 const entries = [...txt.matchAll(/pts_time:([\d.]+)[\s\S]*?lavfi\.scd\.score=([\d.]+)/g)].map(m => ({ t: +m[1], score: +m[2] }));
+if (!entries.length) { console.error('[timeline-c] scdet produced no parseable scores; refusing to pass an unmeasured seam'); process.exit(2); }
 const seam = entries.filter(e => Math.abs(e.t - loopDur) < 0.15).reduce((mx, e) => Math.max(mx, e.score), 0);
 
 // palette vs approved still
@@ -70,8 +71,11 @@ const yMin = Math.min(...ys), yMax = Math.max(...ys);
 const montage = resolve(work, 'montage.png');
 ff(['-i', loop, '-vf', `select='eq(n\\,0)+eq(n\\,${Math.round(loopDur * 12)})+eq(n\\,${Math.round(loopDur * 24 - 2)})',scale=480:-1,tile=3x1`, '-frames:v', '1', montage]);
 
-console.log(`[timeline-c] seam=${seam.toFixed(3)} (gate <2) palette=${JSON.stringify(palette)} luma=[${yMin.toFixed(1)},${yMax.toFixed(1)}]`);
-if (seam >= 2 || !palette.pass) { console.error('[timeline-c] FAILED gates; inspect ' + work); process.exit(2); }
+// luma flatness gate: a cycle-wide average-brightness span above ~3.5
+// reads as a visible pulse at hero scale (accepted references run 0.1-2.2)
+const LUMA_SPAN_MAX = 3.5;
+console.log(`[timeline-c] seam=${seam.toFixed(3)} (gate <2) palette=${JSON.stringify(palette)} luma=[${yMin.toFixed(1)},${yMax.toFixed(1)}] (span gate <=${LUMA_SPAN_MAX})`);
+if (seam >= 2 || !palette.pass || (yMax - yMin) > LUMA_SPAN_MAX) { console.error('[timeline-c] FAILED gates; inspect ' + work); process.exit(2); }
 
 // encodes: 1920 hero plate + 960w mobile variant, new -c names
 const enc = (w, crf264, crfVp9, name) => {
