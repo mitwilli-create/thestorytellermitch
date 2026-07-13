@@ -170,6 +170,11 @@
        applied by JS after load so the reel never becomes the LCP. */
     .masthead{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px 56px;align-items:start}
     .mh-main .cs-stat-grid{margin-top:28px;max-width:640px}
+    .mh-tldr{margin:22px 0 0;max-width:640px;font-family:'JetBrains Mono',monospace;font-size:11.5px;
+      line-height:1.75;letter-spacing:0.02em;color:var(--bone-soft);
+      border-top:1px solid var(--line);padding-top:14px}
+    .mh-tldr a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    .mh-tldr a:hover{color:var(--bone)}
     .mh-reel .cs-video{max-width:320px}
     /* bp-05: one language/voice console adjacent to the player */
     .lang-console{border:1px solid var(--line);background:var(--surface);padding:14px 16px;
@@ -289,6 +294,7 @@
           <div class="cs-stat"><div class="n">53s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
           <div class="cs-stat"><div class="n">7 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
         </div>
+        <p class="mh-tldr">TL;DR: one script file in, a captioned and dubbed short out. $14.20 all-in on the logged run. Every stage gated and receipted. A customer team runs the next one from the <a href="#starter-kit">handoff kit</a>.</p>
       </div>
       <div class="mh-reel">
         <div class="cs-video">
@@ -321,13 +327,8 @@
   <div class="wrap">
     <div class="voice-console" role="region" aria-labelledby="voice-console-label">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
-        <span class="vc-label">synthetic voice, cloned with consent</span>
-      </div>
-      <div class="vc-body">
-        <button class="vc-play" type="button" disabled aria-label="Narration coming soon">&#9654;</button>
-        <div class="vc-wave vc-wave--placeholder" aria-hidden="true"></div>
-        <span class="vc-status">narration coming &middot; voice retake in progress</span>
+        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
+        <span class="vc-label">recorded narration available on request</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>Hi, I'm Mitchell Williams. broll-pipeline is a quick-cut production workflow I built for newsroom and brand teams shipping short-form video on the ElevenLabs stack. Two crafts merged: eight years producing live news, then years building content systems at Google. Feed it one plain-text script, and it orchestrates narration, score, sound, visuals, even an optional dub, into a finished, captioned cut. Every generation step logs to a costed, reproducible run manifest. The demo film is fifty-three seconds: six beats are motion graphics rendered from the pipeline's own artifacts, and ten are AI-generated shots directed by a creative council and checked by a review board. All in, retakes included, that cut cost fourteen dollars and twenty cents. But the point isn't the fifty-three seconds. It's the loop: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can run it themselves.</p></details>
     </div>
@@ -466,6 +467,43 @@
   </div>
 </section>
 
+<section id="flows">
+  <div class="wrap">
+    <div class="cs-h2">As a Flows template</div>
+    <p class="cs-body">ElevenCreative Flows is ElevenLabs' node-based canvas: generation steps chained output port to input port, re-runnable one node at a time, with 50-plus image and video models sitting beside the audio stack. This pipeline runs as external orchestration today, and its stages map onto the canvas almost one to one. Here is the translation, node by node.</p>
+    <div class="diagram" role="img" aria-label="Mapping of the seven pipeline stages to ElevenCreative Flows nodes: parse becomes text input, voiceover a Text to Speech node, visuals image and video generation nodes, score a Music node, sfx a Sound Effects node, assemble a Composition node exporting to Studio; dubbing and the accountability layer stay in external orchestration.">
+<span class="prod">pipeline stage</span>                <span class="prod">ElevenCreative Flows node</span>
+<span class="node">[1] parseScript</span>  <span class="arrow">──▶</span>  Text input <span class="arrow">·</span> one per beat: narration line, visual prompt, seconds
+<span class="node">[2] voiceover</span>    <span class="arrow">──▶</span>  <span class="api">Text to Speech node</span> <span class="arrow">·</span> same cloned voice, latest Eleven models
+<span class="node">[3] visuals</span>      <span class="arrow">──▶</span>  <span class="api">Image / Video Generation nodes</span> <span class="arrow">·</span> Veo and 50+ models on-canvas
+<span class="node">[4] score</span>        <span class="arrow">──▶</span>  <span class="api">Music node</span> <span class="arrow">·</span> Eleven Music against the rough cut
+<span class="node">[5] sfx</span>          <span class="arrow">──▶</span>  <span class="api">Sound Effects node</span> <span class="arrow">·</span> per-cue accents
+<span class="node">[6] assemble</span>     <span class="arrow">──▶</span>  <span class="api">Composition node</span> <span class="arrow">→</span> export to ElevenCreative Studio for timeline finishing
+<span class="node">[7] dub</span>          <span class="arrow">──▶</span>  <span class="api">Dubbing API</span> <span class="arrow">·</span> stays an API call; Flows has no dubbing node yet
+<span class="arrow">─────────────────────────────────────────────────────────────</span>
+<span class="prod">stays outside the canvas:</span> manifests, cost ledger, QA gates, retakes
+                <span class="arrow">──▶</span>  external orchestration, until Flows' programmatic API ships
+    </div>
+    <p class="cs-body">What moves onto the canvas: the five generation stages. Narration becomes a Text to Speech node, the score a Music node, accent sounds a Sound Effects node, the directed shots Image and Video Generation nodes carrying the same per-beat prompts, and the layered preview a Composition node that exports straight to ElevenCreative Studio when a cut needs timeline-level finishing. Flows re-runs a single node and touches only its downstream path, so the retake economics the receipt below prices stay intact: fix one shot, pay for one shot.</p>
+    <p class="cs-body">What stays in external orchestration, for now: script parsing, the run manifest, the cost ledger, QA gates, and automated retakes. Flows bills per node execution and its programmatic API is on the product roadmap rather than shipped, so the accountability layer this page demonstrates still lives in code wrapping the canvas. That boundary, what belongs on the canvas versus what belongs in the wrapper, is a real deployment decision and the first thing I'd map with a customer team.</p>
+    <p class="cs-body">How it ships: build the flow once, save it as a template, and share it at the workspace tier. The customer's operators then reuse the same graph with different inputs per campaign, and a template shared by link travels to an agency partner without workspace access. The handoff kit below is written for exactly that moment: the next piece gets made by a creative teammate, not by the engineer who drew the graph.</p>
+  </div>
+</section>
+
+<section id="starter-kit" style="padding-top:0">
+  <div class="wrap">
+    <div class="cs-h2">The handoff kit</div>
+    <p class="cs-body">The role this pipeline argues for isn't "builds pipelines", it's "leaves the customer able to run them." So the handoff artifacts are part of the artifact. Four files, written for a producer, not an engineer: the example script with the beat format documented inline, a config template, the cost model with the math shown, and an operator runbook that covers the happy path, the retake path, and what to do when a stage fails.</p>
+    <div class="cs-cta">
+      <a class="btn" href="assets/starter-kit/broll-starter-kit.zip" download><span>Starter kit (zip)</span></a>
+      <a class="btn" href="assets/starter-kit/operator-runbook.md" download><span>Operator runbook</span></a>
+      <a class="btn" href="assets/starter-kit/script.example.md" download><span>Example script</span></a>
+      <a class="btn" href="assets/starter-kit/cost-model.md" download><span>Cost model</span></a>
+    </div>
+    <p class="cs-body" style="margin-top:18px">The runbook is the test of the whole idea: if a mid-level producer can't run the next short from it without me in the room, the handoff failed. Every gate it references maps to a customer-deployment analog on the <a href="systems.html#handoff">systems page</a>.</p>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="cs-h2">Cost model · ElevenLabs API · July 2026</div>
@@ -525,6 +563,7 @@
     </div>
     <div class="cs-body" style="margin-top:24px;">
       <p>A forward-deployed creative is a creative solutions architect and an enablement lead, not a designer for hire. The job: embed with a customer, understand their production pipeline, prototype an AI-native replacement, package it as a template, teach it. That is the loop this artifact runs. It is also the loop I ran for <a href="timeline.html">eight years in live newsrooms</a> and then at Google, <a href="projects.html">building production AI enablement since 2024</a> for a community of 1,000+ senior engineers.</p>
+      <p style="margin-top:18px"><strong>Against the posting, this page is direct evidence of four requirements:</strong> "build and demonstrate AI-powered creative workflows", every ElevenLabs modality driven live rather than described; "design reusable workflow templates, guides, best practices", the <a href="#flows">Flows mapping</a> and the <a href="#starter-kit">handoff kit</a>; "translate technical capability into creative and business opportunity", the receipt and the retake economics; "localization and dubbing", the Spanish and Japanese cuts above.</p>
     </div>
     <div class="cs-cta">
       <a class="btn solid" href="https://github.com/mitwilli-create/broll-pipeline" rel="noopener"><span>See the code on GitHub</span></a>

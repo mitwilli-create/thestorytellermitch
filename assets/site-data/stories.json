@@ -709,7 +709,7 @@
         {
           "type": "img",
           "src": "assets/stills/illo-voice-os-hd.jpg",
-          "cap": "voice-os, the public rebuild · system illustration, generated",
+          "cap": "voice-os, the public rebuild · system illustration, generated · Gemini image + Veo motion, 2026",
           "alt": "System illustration: a written corpus streams into a six-axis radar gauge flanked by two reviewers, exiting as a single gated draft",
           "preview": "assets/cinemagraphs/illo-voice-os-c-loop.mp4",
           "previewLabel": "▸ in motion",
@@ -800,7 +800,7 @@
       ],
       "still": {
         "src": "assets/stills/illo-agent-fleet.jpg",
-        "cap": "The fleet · system illustration, generated",
+        "cap": "The fleet · system illustration, generated · Gemini image + Veo motion, 2026",
         "alt": "Constellation-style diagram of fifty agent nodes around one orchestrator"
       },
       "media": [

@@ -105,10 +105,12 @@
         "streamId": null,
         "youtubeId": null
       },
-      "startHere": false,
-      "startHereRank": null,
+      "startHere": true,
+      "startHereRank": 1,
       "caseStudy": "broll-pipeline.html",
-      "sourceFile": null
+      "sourceFile": null,
+      "startHereRole": "built and directed the pipeline",
+      "startHereWhy": "The job in one artifact: voice, music, sound, and a Spanish dub on the ElevenLabs stack, $14.20 all-in, every call logged."
     },
     {
       "slug": "aje-stream-2010-a-look-into-islams-holy-pilgrimage",
@@ -551,8 +553,7 @@
         "streamId": "03e2eb8b3b65c04eb3d663a95a215d0f",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 4,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_How-The-Media-Fails_Social-Video_3m1s.mp4"
     },
@@ -655,8 +656,7 @@
         "streamId": "fd25d79f821f0513a5002f9dd7199574",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 6,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "AJP_2016-2018_Surviving-An-Atomic-Bomb_Documentary-Short_3m56s.mp4"
     },
@@ -1020,9 +1020,11 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 3,
+      "startHereRank": 2,
       "caseStudy": null,
-      "sourceFile": "AJP_2017_Measles-Outbreaks-USA-VIRAL-50M-Views_Social-Video_2m5s.mp4"
+      "sourceFile": "AJP_2017_Measles-Outbreaks-USA-VIRAL-50M-Views_Social-Video_2m5s.mp4",
+      "startHereRole": "senior producer, designed the format",
+      "startHereWhy": "Taste at scale: the day-of explainer format engineered to travel. 50 million views."
     },
     {
       "slug": "ajp-2017-meet-steve-bannon-political-profile",
@@ -1098,9 +1100,11 @@
         "youtubeId": null
       },
       "startHere": true,
-      "startHereRank": 5,
+      "startHereRank": 3,
       "caseStudy": null,
-      "sourceFile": "AJP_2017_San-Juan-Mayor-Speaks-Out-Hurricane-Maria_Social-Video_1m16s.mp4"
+      "sourceFile": "AJP_2017_San-Juan-Mayor-Speaks-Out-Hurricane-Maria_Social-Video_1m16s.mp4",
+      "startHereRole": "senior producer",
+      "startHereWhy": "Storytelling under pressure: field coverage that fed a congressional FEMA probe."
     },
     {
       "slug": "ajp-2017-should-congress-handle-daca-immigration",
@@ -1383,8 +1387,7 @@
         "streamId": "ab1fd4776fb5231713a07d9e7935c5ab",
         "youtubeId": null
       },
-      "startHere": true,
-      "startHereRank": 7,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": "FUSION_2013-2015_America-With-Jorge-Ramos_Showreel_43m50s.mp4"
     },
@@ -1981,8 +1984,7 @@
         "streamId": null,
         "youtubeId": "ohtLXCwC-oU"
       },
-      "startHere": true,
-      "startHereRank": 2,
+      "startHere": false,
       "caseStudy": null,
       "sourceFile": null
     },
@@ -2008,9 +2010,11 @@
         "youtubeId": "rGtcmKIZi5c"
       },
       "startHere": true,
-      "startHereRank": 1,
+      "startHereRank": 4,
       "caseStudy": null,
-      "sourceFile": null
+      "sourceFile": null,
+      "startHereRole": "produced end to end",
+      "startHereWhy": "Reference content inside an enterprise: a Google recruitment film, brief to publish."
     },
     {
       "slug": "google-lifeatgoogle-2019-interview-prep-coding",

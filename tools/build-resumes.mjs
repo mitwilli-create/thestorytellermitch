@@ -15,7 +15,7 @@ const SRC = process.env.RESUME_SRC || join(ROOT, 'resumes-src');
 const OUT = join(ROOT, 'resume');
 
 export const LANES = {
-  'mitchell-williams-forward-deployed':       { slug: 'forward-deployed',       title: 'Forward Deployed Engineer / Creative' },
+  'mitchell-williams-forward-deployed':       { slug: 'forward-deployed',       title: 'Forward Deployed Creative' },
   'mitchell-williams-ai-solutions-architect': { slug: 'ai-solutions-architect', title: 'AI Solutions Architect' },
   'mitchell-williams-ai-enablement':          { slug: 'ai-enablement',          title: 'AI Enablement / Transformation Lead' },
   'mitchell-williams-ai-program-manager':     { slug: 'ai-program-manager',     title: 'AI / Technical Program Manager' },

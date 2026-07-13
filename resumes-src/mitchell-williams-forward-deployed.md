@@ -11,7 +11,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 career-ops runs 52 scheduled agents daily and has produced 1,150+ scored role reports, CI-green under a unified spend cap. A digital twin built for a Google VP cut executive-comms review back-and-forth by about 70% (internal, self-measured). A citation-gated tax agent caught a ~$19K error filing software defended as correct.
 
-**Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product.
+**Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product. The Google role runs through August 2026; the build practice above is concurrent, and I'm available on customary notice.
 
 ## Projects
 

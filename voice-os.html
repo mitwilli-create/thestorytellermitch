@@ -91,13 +91,8 @@
   <div class="wrap">
     <div class="voice-console" role="region" aria-labelledby="voice-console-label">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
-        <span class="vc-label">synthetic voice, cloned with consent</span>
-      </div>
-      <div class="vc-body">
-        <button class="vc-play" type="button" disabled aria-label="Narration coming soon">&#9654;</button>
-        <div class="vc-wave vc-wave--placeholder" aria-hidden="true"></div>
-        <span class="vc-status">narration coming &middot; voice retake in progress</span>
+        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
+        <span class="vc-label">recorded narration available on request</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and voice-os is my measured voice operating system. Most tools that claim to sound like you are just a prompt and a few examples, with no way to tell a near miss from a real match. Mine is different. It ingests a writing corpus with full provenance, mines how my voice actually behaves across contexts, then drafts through a generative persona and an adversarial persona that stress-tests the result. It scores every draft on six axes, rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register, against a threshold calibrated to what my own writing actually scores. Below that bar, it revises, or it refuses to ship. The engine began as an executive voice system I built at Google, a digital twin calibrated on almost seven million words of a VP's communications. This is its personal successor. "Sounds like me" stops being a vibe and becomes a spec.</p></details>
     </div>
@@ -110,7 +105,7 @@
       <div class="cine" data-cine="assets/cinemagraphs/illo-voice-os-c-hd" data-cine-m="assets/cinemagraphs/illo-voice-os-c-loop">
         <img width="1376" height="768" src="assets/stills/illo-voice-os-hd.jpg" alt="System illustration: a written corpus streams into a six-axis radar gauge flanked by a generative and an adversarial reviewer, then exits as a single draft sealed with a check mark once it clears the threshold ring." loading="lazy">
       </div>
-      <figcaption>system illustration, generated</figcaption>
+      <figcaption>system illustration, generated · Gemini image + Veo motion, 2026</figcaption>
     </figure>
   </div>
 </section>
@@ -217,6 +212,36 @@
   </div>
 </section>
 
+<section id="worked-run">
+  <div class="wrap">
+    <div class="cs-h2">One run, fully visible</div>
+    <p class="cs-body">Everything below comes from a single logged run on 2026-07-12 (run id <code>capstone-voiceos-demo-20260712c</code>), shown in full rather than summarized. Context: a document for an external audience, high stakes, goal inform. The mined gate threshold for that context: <code>0.650</code>. The system retrieved three real exemplars from the corpus (two broadcast transcripts, one internal presentation), fused seven knowledge-base patterns and five mined patterns into guidance, and flagged two measured register drifts it should correct for. Then it drafted.</p>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">The draft in · scored 0.610, gate says revise</div>
+        <div class="c-b">"The broll pipeline automates short-form video production. It takes a script file and produces a complete video with narration, music, and sound effects. The system uses the ElevenLabs API for its audio stages. It also produces dubbed versions in other languages. The demo video is 53 seconds long and cost $14.20 to produce, including all retakes. Every API call gets logged to a manifest file, so costs are fully transparent. This approach could be useful for content teams that need to produce videos quickly."</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">The draft out · scored 0.740, gate says pass</div>
+        <div class="c-b">"The broll pipeline automates short-form video production, script file in, complete video out, narration and music and sound effects, all of it. It runs the ElevenLabs API for the audio stages. It dubs versions in other languages too. The demo video: 53 seconds, $14.20 to produce, retakes included. Every API call gets logged to a manifest file, costs fully transparent, nothing hidden. This is how content teams produce videos fast."</div>
+      </div>
+    </div>
+    <div class="diagram" role="img" aria-label="Six-axis scorecard for the run: overall fidelity moved from 0.610 to 0.740 against a 0.650 threshold. Risk tolerance moved from 0.379 to 0.871, editorial register from 0.750 to 0.798, sentence rhythm from 0.000 to 0.241; rhetorical pace, escalation pattern, and hedging behavior held at 0.798, 0.801, and 0.931.">
+<span class="prod">axis</span>                 <span class="prod">revision 0</span>   <span class="prod">revision 1</span>   <span class="prod">moved</span>
+<span class="node">rhetorical pace</span>        0.798        0.798       <span class="arrow">·</span>
+<span class="node">risk tolerance</span>         0.379        <span class="api">0.871</span>       <span class="api">+0.492  ← the needle</span>
+<span class="node">sentence rhythm</span>        0.000        0.241       +0.241  <span class="prod">(still the weak axis, and it says so)</span>
+<span class="node">escalation pattern</span>     0.801        0.801       <span class="arrow">·</span>
+<span class="node">hedging behavior</span>       0.931        0.931       <span class="arrow">·</span>
+<span class="node">editorial register</span>     0.750        0.798       +0.048
+<span class="arrow">──────────────────────────────────────────────────</span>
+<span class="node">overall fidelity</span>       0.610        <span class="api">0.740</span>       <span class="prod">gate 0.650 → PASS, revision 1</span>
+    </div>
+    <p class="cs-body">The adversarial critique that forced the revision, quoted from the run log: <em>"hedging_behavior 0.04 requires near-total certainty, but 'could be useful' and 'that need to produce videos quickly' are exactly the soft qualifiers a 0.04 voice would never allow"</em>, and <em>"the ending deflates rather than builds; it trails off weaker than it started."</em> The revision deleted the hedge, staked the claim, and rebuilt the close. Risk tolerance is what moved the gate.</p>
+    <p class="cs-body">The counterexample matters as much as the pass. The same day, a deliberately hype-flavored draft ("game-changing", "revolutionizing", "stay tuned") went through the same loop in a LinkedIn context: four revisions, fidelity peaked at 0.669, and the gate returned <strong>reject</strong>. It would not ship. A voice gate that only ever says yes is a rubber stamp; this one declines work that misses, and logs why.</p>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="cs-h2">Why it matters</div>
@@ -225,6 +250,7 @@
     </div>
     <div class="cs-callout" style="margin-top:24px;">
       <p>The taste stays human. The measurement makes "sounds like me" a spec the machine can actually be held to, instead of a vibe it is trusted to approximate.</p>
+      <p style="margin-top:18px"><strong>Against the Forward Deployed Creative posting, this page is evidence of:</strong> "reference content and prototypes that set the standard", a quality bar expressed as numbers a customer can hold their own runs to; "best practices", pass, revise, and reject as explicit logged decisions rather than opinions; "educate and train customer teams", a gate whose reasoning is visible is a gate you can teach; and brand-voice governance, the exact discipline an enterprise asks for before it lets generation near its name.</p>
     </div>
     <div class="cs-cta" style="margin-top:40px;">
       <a class="btn solid" href="https://github.com/mitwilli-create/voice-os" rel="noopener"><span>See the code on GitHub</span></a>

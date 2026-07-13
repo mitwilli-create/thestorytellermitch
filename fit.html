@@ -53,6 +53,12 @@
     .cluster-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
       color:var(--dim);margin:46px 0 8px;scroll-margin-top:110px}
     .cluster-h:first-child{margin-top:0}
+    .cluster-h--lead{color:var(--blood-soft)}
+    /* fit-05 (capstone): the target role reads dominant; the accordion
+       carries a left mark and a larger label, the atlas selects it first */
+    details.role--lead{border-left:2px solid var(--blood-soft);padding-left:20px}
+    details.role--lead summary .r-label{font-size:clamp(22px,3vw,32px)}
+    .js-atlas details.role--lead{border-left:none;padding-left:0}
     details.role{scroll-margin-top:96px}
     /* fit-03: evidence links ride a 220px side column inside the open pitch */
     @media(min-width:1024px){
@@ -147,6 +153,7 @@
     <p class="fit-sub">You're hiring for a discipline, not a resume keyword. This page lists the roles I'm pursuing, each with the case for why I'm the hire, plus links to the work that backs it. Match it to your req, then open it.</p>
     <div class="fit-router">
       <span class="fr-k">Hiring for:</span>
+      <a class="fr-chip" href="#forward-deployed">Forward Deployed Creative</a>
       <a class="fr-chip" href="#cluster-story">Editorial &amp; comms</a>
       <a class="fr-chip" href="#cluster-build">Engineering &amp; AI</a>
       <a class="fr-chip" href="#roles">Everything</a>
@@ -158,9 +165,33 @@
   <div class="wrap">
     <div class="role-list" id="roles">
 
+      <div class="cluster-h cluster-h--lead" id="cluster-lead">The target role</div>
+
+      <details class="role role--lead" open id="forward-deployed">
+        <summary>
+          <span class="r-label">Forward Deployed Creative</span>
+          <span class="r-mark">+</span>
+          <span class="r-hook">Embed, learn the pipeline, ship the replacement, package it, teach it.</span>
+        </summary>
+        <div class="r-body">
+          <p class="r-fit">The forward-deployed loop is the job I've done for years under a different name: embed with a team, learn their pipeline, build the thing that replaces the slow part, package it so it travels, <a href="comms-triage-agent.html">teach them to run it</a>. Some companies post it as Forward Deployed Engineer; the work is the same loop.</p>
+          <p class="r-fit">I spent <a href="timeline.html#era-wdrb">8 years embedded in live newsrooms</a>, where the workflow was the product.</p>
+          <p class="r-fit">My broll-pipeline shows the whole loop: a 7-stage pipeline on the ElevenLabs stack, public on GitHub, with a costed 53-second live demo covering narration, score, sound, creative-directed generated shots, and a Spanish dub at $14.20 all-in, every retake logged.</p>
+          <p class="r-fit">The prototype isn't a deck. It ships with receipts.</p>
+          <div class="r-links">
+            <a href="for-elevenlabs.html">the 12-minute review path</a>
+            <a href="resume/forward-deployed.html">resume, online</a>
+            <a href="assets/resumes/mitchell-williams-forward-deployed.pdf">resume (PDF)</a>
+            <a href="broll-pipeline.html">broll-pipeline: the 7-stage build</a>
+            <a href="https://github.com/mitwilli-create/broll-pipeline">the repo, public on GitHub</a>
+            <a href="systems.html">how this site itself ships: the gates</a>
+          </div>
+        </div>
+      </details>
+
       <div class="cluster-h" id="cluster-story">Editorial &amp; comms</div>
 
-      <details class="role" open id="content-editorial">
+      <details class="role" id="content-editorial">
         <summary>
           <span class="r-label">Content Producer / Editorial Lead</span>
           <span class="r-mark">+</span>
@@ -220,28 +251,6 @@
       </details>
 
       <div class="cluster-h" id="cluster-build">Engineering &amp; AI</div>
-
-      <details class="role" id="forward-deployed">
-        <summary>
-          <span class="r-label">Forward Deployed Engineer / Creative</span>
-          <span class="r-mark">+</span>
-          <span class="r-hook">Embed, learn the pipeline, ship the replacement, package it, teach it.</span>
-        </summary>
-        <div class="r-body">
-          <p class="r-fit">The forward-deployed loop is the job I've done for years under a different name: embed with a team, learn their pipeline, build the thing that replaces the slow part, package it so it travels, <a href="comms-triage-agent.html">teach them to run it</a>.</p>
-          <p class="r-fit">I spent <a href="timeline.html#era-wdrb">8 years embedded in live newsrooms</a>, where the workflow was the product.</p>
-          <p class="r-fit">My broll-pipeline shows the whole loop: a 7-stage pipeline on the ElevenLabs stack, public on GitHub, with a costed 53-second live demo covering narration, score, sound, creative-directed generated shots, and a Spanish dub at $14.20 all-in, every retake logged.</p>
-          <p class="r-fit">The prototype isn't a deck. It ships with receipts.</p>
-          <div class="r-links">
-            <a href="resume/forward-deployed.html">resume, online</a>
-            <a href="assets/resumes/mitchell-williams-forward-deployed.pdf">resume (PDF)</a>
-            <a href="broll-pipeline.html">broll-pipeline: the 7-stage build</a>
-            <a href="https://github.com/mitwilli-create/broll-pipeline">the repo, public on GitHub</a>
-            <a href="projects.html">all projects</a>
-            <a href="systems.html">how this site itself ships: the gates</a>
-          </div>
-        </div>
-      </details>
 
       <details class="role" id="ai-solutions-architect">
         <summary>
@@ -403,9 +412,9 @@
   function openFromHash(){
     if(!location.hash) return;
     let id=location.hash.slice(1); id=HASH_ALIAS[id]||id;
-    if(document.body.classList.contains('js-atlas')&&(id==='cluster-story'||id==='cluster-build'||id==='roles')){
-      const target=id==='cluster-build'
-        ? roles.find(d=>clusterOf(d)==='cluster-build')
+    if(document.body.classList.contains('js-atlas')&&(id==='cluster-lead'||id==='cluster-story'||id==='cluster-build'||id==='roles')){
+      const target=(id==='cluster-story'||id==='cluster-build')
+        ? roles.find(d=>clusterOf(d)===id)
         : roles[0];
       if(target){select(target.id,false);shell.scrollIntoView({behavior:'instant',block:'start'});}
       return;

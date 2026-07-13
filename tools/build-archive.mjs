@@ -25,6 +25,10 @@ function tile(c, sizeClass, inBucket) {
   const preview = c.hoverPreview
     ? `\n    <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="${esc(c.hoverPreview)}" poster="${esc(c.poster)}"></video>`
     : '';
+  // band tiles carry the role held and a one-line why-it-matters caption;
+  // bucket tiles keep the compact duration-only stat
+  const stat = !inBucket && c.startHereRole ? `${c.duration} · ${c.startHereRole}` : c.duration;
+  const why = !inBucket && c.startHereWhy ? `\n      <div class="m-why">${esc(c.startHereWhy)}</div>` : '';
   return `  <a class="film ${sizeClass} reveal" href="${esc(nojsHref(c))}"
      data-clip="${esc(c.slug)}" data-bucket="${esc(c.bucket)}" data-outlet="${esc(c.outlet)}" data-era="${esc(c.era)}"
      data-tag="${esc(tag)}" data-title="${esc(c.title)}" data-sub="${esc(c.subtitle)}"
@@ -34,7 +38,7 @@ function tile(c, sizeClass, inBucket) {
     <div class="meta">
       <div class="m-tag">${esc(tag)}${pick}</div>
       <div class="m-title">${esc(c.title)}</div>
-      <div class="m-stat">${esc(c.duration)}</div>
+      <div class="m-stat">${esc(stat)}</div>${why}
     </div>
   </a>`;
 }
@@ -45,12 +49,15 @@ const pub = m.clips.filter((c) => c.published);
 // work-05: reviewer-cut mosaic: one lead tile + supporting thirds, labeled
 // explicitly so the curated row never reads as separate content
 const start = pub.filter((c) => c.startHere).sort((a, b) => a.startHereRank - b.startHereRank);
+const totalSec = start.reduce((s, c) => s + (c.durationSec || 0), 0);
+const totalMin = Math.round(totalSec / 60 * 2) / 2;
+const totalLabel = totalMin === Math.floor(totalMin) ? `${totalMin}` : `${Math.floor(totalMin)}½`;
 const startHtml = `<section class="starthere" id="starthere">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">00</span>
-      <h2 class="sec-title">Start here</h2>
-      <span class="sec-note">Reviewer cut &middot; ${(['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][start.length] || start.length)} pieces, refiled in the buckets below</span>
+      <h2 class="sec-title">Forward Deployed Creative</h2>
+      <span class="sec-note">Start here &middot; ${(['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'][start.length] || start.length)} curated pieces, about ${totalLabel} minutes end to end, refiled in the buckets below</span>
     </div>
     <div class="film-grid">
 ${start.map((c, i) => tile(c, i === 0 ? 'wide' : 'third')).join('\n')}

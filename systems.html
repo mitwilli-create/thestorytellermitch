@@ -94,10 +94,40 @@
   </div>
 </section>
 
+<section style="padding-top:0" id="handoff">
+  <div class="wrap">
+    <h2 class="mini">The same gates, deployed at a customer</h2>
+    <p class="sys-sub" style="margin-top:0;font-size:15.5px">A forward-deployed engagement doesn't end when the pipeline works; it ends when the customer's team runs the pipeline and the quality holds without the builder in the room. That's what these gates are for. Each one maps to its analog in a customer deployment.</p>
+    <ul class="gate-list" style="margin-top:28px">
+      <li><strong>Definition audit → asset masters</strong>Every deliverable serves at the definition the customer's surfaces need: the same headless walk, run against their CDN masters instead of mine.</li>
+      <li><strong>Bake drift → template governance</strong>Generated campaign variants must match the approved master template exactly. Hand edits inside generated regions fail the build there for the same reason they fail it here.</li>
+      <li><strong>Loudness → per-brand audio spec</strong>The -16 LUFS target becomes the brand's own loudness spec, held across every deliverable and every dub language, measured, not eyeballed.</li>
+      <li><strong>Loop seams → publish gates for motion assets</strong>Any looping brand asset gets its boundary measured before it ships, so nothing on a customer's homepage visibly jumps.</li>
+      <li><strong>Accessibility → compliance receipts</strong>Keyboard, touch, and reduced-motion paths exercised on every branded playable surface, with a dated record legal can cite.</li>
+      <li><strong>Code review + outside eyes → creative review board</strong>Templates and configs reviewed to zero majors before handoff; each campaign round gets an independent review pass before publish, the pattern this site runs with a seven-model panel.</li>
+      <li><strong>Edge freshness → launch verification</strong>The campaign is live when the customer's edge actually serves the new bytes, not when the deploy said so.</li>
+    </ul>
+    <p class="sys-note"><b style="color:var(--bone)">Worked example, localization.</b> A marketing team localizes one hero campaign across three languages through the Dubbing API, the same stage the <a href="broll-pipeline.html">broll pipeline</a> runs for its Spanish and Japanese cuts. The loudness gate becomes the per-language LUFS check across dub tracks. The definition audit covers each localized cut's masters. Bake drift keeps every regional variant pinned to the approved master. Outside eyes adds a native-speaker pass per market. Edge freshness confirms each region serves the new cut before anyone announces it. Day one of the engagement is building that workflow; day thirty is these gates running on their own, which is why the <a href="broll-pipeline.html#starter-kit">operator starter kit</a> is written for the customer's producer, not for me.</p>
+
+    <h2 class="mini" style="margin-top:64px">The interaction contract, published</h2>
+    <p class="sys-sub" style="margin-top:0;font-size:15.5px">Every playable tile on this site holds the same contract, exercised rather than assumed: 153 tiles across 5 pages in the last sweep, 114 of 114 hover previews muted, two bugs found and fixed the same day.</p>
+    <ul class="gate-list" style="margin-top:28px">
+      <li><strong>Hover</strong>A muted preview plays inside the tile's own bounds, showing the same clip the thumbnail comes from. Desktop sugar only; it carries no meaning the tile doesn't.</li>
+      <li><strong>Click and tap</strong>One action opens the in-page theater with visible controls. No two-step preview grammar on touch; the first tap plays the artifact.</li>
+      <li><strong>Keyboard</strong>Enter and Space open the same theater; Escape closes it and focus returns to the tile that opened it; focus stays inside the theater while it's open.</li>
+      <li><strong>Reduced motion</strong>Previews hold their poster frame. Nothing autoplays for a viewer who asked it not to.</li>
+      <li><strong>Screen readers</strong>Tiles carry labels naming the piece and the role; decorative previews are hidden from assistive tech.</li>
+      <li><strong>Captions</strong>The produced short ships with English captions and dubbed Spanish and Japanese cuts with caption tracks; archive clips carry title, role, and duration metadata on every tile.</li>
+    </ul>
+  </div>
+</section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <h2 class="mini">The record</h2>
     <div class="ledger">
+      <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Adversarial review, capstone:</b> ten reviewer personas across six models filed 232 issues against a live-rendered dossier of every page; two hiring-manager adjudicators cut them to nine blocking fixes, each with a written acceptance test. All nine shipped the same day.</span></div>
+      <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Voice gate on new prose:</b> the round's outward copy batch-passed at 0.700 against a 0.650 calibrated threshold, zero banned phrases. One full run, scorecard and critique included, is published on the <a href="voice-os.html#worked-run" style="color:inherit;border-bottom:1px solid var(--blood-soft)">voice-os page</a>.</span></div>
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Definition audit, third pass:</b> 877 rendered elements across 29 pages at two viewports. The first pass flagged 49; re-sourcing and gated regeneration closed all but one.</span></div>
       <div class="row reveal flag flag--closed"><span class="d">2026-07-12</span><span class="t"><b>Last audit flag closed, zero open.</b> The final flag, an on-camera still served at 1400 wide, was re-cut from its 1080p master at 1920 with the face fully in frame; the approved shirt retouch was re-applied and composited over untouched master pixels.</span></div>
       <div class="row reveal"><span class="d">2026-07-12</span><span class="t"><b>Throttled-harness pass</b> (10 Mbps, 40 ms RTT, 4x CPU, 390 wide): largest contentful paint 288 to 1024 ms across changed pages; layout shift zero.</span></div>

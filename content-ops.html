@@ -91,13 +91,8 @@
   <div class="wrap">
     <div class="voice-console" role="region" aria-labelledby="voice-console-label">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
-        <span class="vc-label">synthetic voice, cloned with consent</span>
-      </div>
-      <div class="vc-body">
-        <button class="vc-play" type="button" disabled aria-label="Narration coming soon">&#9654;</button>
-        <div class="vc-wave vc-wave--placeholder" aria-hidden="true"></div>
-        <span class="vc-status">narration coming &middot; voice retake in progress</span>
+        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
+        <span class="vc-label">recorded narration available on request</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and content-ops is a production system I built to turn one idea into the right post for every place it lands. Cross-posting the same block of text everywhere is why so much content reads as noise, so this system treats each surface, Substack, LinkedIn, X, Hacker News, Reddit, Discord, GitHub, TikTok, YouTube, as its own medium with its own mechanics. It scouts live angles into a ledger, drafts a master version, then adapts that master for four distinct audiences. Every draft runs through one deterministic voice and format gate, so what counts as on-voice has one answer, not several. And nothing publishes on its own. The system drafts, stages, and proposes, then stops. I press send, every time. It's the same loop I ran for years in newsrooms and in Google's internal comms, automated wherever the work was mechanical instead of editorial.</p></details>
     </div>
@@ -110,7 +105,7 @@
       <div class="cine" data-cine="assets/cinemagraphs/illo-content-ops-b-loop">
         <img width="1376" height="768" src="assets/stills/illo-content-ops-hd.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several differently shaped output cards, one picked out in accent, beneath four evenly spaced markers standing for four audiences." loading="lazy">
       </div>
-      <figcaption>system illustration, generated</figcaption>
+      <figcaption>system illustration, generated · Gemini image + Veo motion, 2026</figcaption>
     </figure>
   </div>
 </section>
@@ -224,6 +219,28 @@
   </div>
 </section>
 
+<section id="worked-run">
+  <div class="wrap">
+    <div class="cs-h2">One story, the real run</div>
+    <p class="cs-body">This is an actual run from the repo, July 2026: Mike Krieger's session at the AI Engineer World's Fair, from a verbatim transcript I captured in the room to a published essay. Every artifact below exists in the drafts folder with its gate scores; nothing here is a mock-up.</p>
+    <p class="cs-body"><strong>Source to master.</strong> The transcript went in; the master draft came out arguing a specific editorial angle: everyone clipped the "Claude is now writing Claude" stat, and the stat wasn't the story. Master headline: <em>"Everyone Clipped the Wrong Line From Mike Krieger."</em></p>
+    <p class="cs-body"><strong>Master to surfaces.</strong> The LinkedIn adaptation went through two drafts and a voicing pass; the long-form version became the Substack essay, retitled at the edit desk to <em>"What Do AI Employees Know About Using LLMs That I Don't?"</em> with the dek <em>"Their edge isn't IQ. It's a workflow you can steal."</em> Same reporting, two different doors, because the surfaces reward different entries.</p>
+    <div class="cs-compare">
+      <div class="col">
+        <div class="c-k">LinkedIn, first draft</div>
+        <div class="c-b">"Everyone who watched Mike Krieger at the AI Engineer World's Fair walked out quoting the same stat: Claude writes most of Anthropic's code now, north of 80 percent. Great line. It wasn't the story."</div>
+      </div>
+      <div class="col after">
+        <div class="c-k">LinkedIn, voiced final</div>
+        <div class="c-b">"I spent last week at the AI Engineer World's Fair, and the sharpest thing I saw wasn't a product launch. It was Mike Krieger, who built Instagram, describing how he actually works at Anthropic now."</div>
+      </div>
+    </div>
+    <p class="cs-body"><strong>The gate, with numbers.</strong> The essay's final voice pass scored 17 sections at an average fidelity of 0.698 (range 0.580 to 0.797), retention 1.185 against a 0.7 floor, zero em dashes, zero banned words: guard <code>PASS</code>. Before that pass, the pre-publish review returned <em>partial</em> with five named gaps, each logged, each resolved or explicitly waived with a reason.</p>
+    <p class="cs-body"><strong>The human edit, logged.</strong> The final edit log is part of the artifact: reworked the opening two paragraphs to name what actually flipped in Krieger's work; cut an infographic the piece didn't earn; re-bulleted a run-on list; softened two lines the review flagged as over-asserted; removed one unsourced claim while keeping the sourced one beside it. Published at 2,599 words. <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" rel="noopener">The essay is live</a>; judge the taste directly.</p>
+    <p class="cs-body">One honesty note: this story ran to the surfaces its angle earned, the essay and LinkedIn. The playbooks cover more surfaces, and every adaptation passes the same gate; the run above is what shipping one story actually looks like, edit log and all.</p>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="cs-h2">Why it matters</div>
@@ -232,6 +249,9 @@
     </div>
     <div class="cs-callout" style="margin-top:24px;">
       <p>Source the angle. Draft the master. Shape it for the room it lands in. Gate the voice. Then stop, and let a person send it. The machine carries the load; the judgment stays mine.</p>
+    </div>
+    <div class="cs-body" style="margin-top:24px;">
+      <p><strong>Against the Forward Deployed Creative posting, this page is evidence of:</strong> "produce case studies usable across sales, marketing, and customer success", the run above is the template, edit log included; "act as an external creative evangelist through published work", the essay shipped and is linked; brand safety and approvals discipline, a deterministic voice gate with a human holding the send button; and the enterprise comms muscle underneath it, the same desk that ran executive communications inside Google.</p>
     </div>
     <div class="cs-cta" style="margin-top:40px;">
       <a class="btn solid" href="https://github.com/mitwilli-create/content-ops" rel="noopener"><span>See the code on GitHub</span></a>

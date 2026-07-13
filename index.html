@@ -4,10 +4,10 @@
   <script>document.documentElement.classList.remove('no-js')</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mitchell Williams · Storyteller × Builder</title>
-  <meta name="description" content="Eight years in live newsrooms, eight years at Google, building production AI there since 2024. I build AI-native storytelling workflows and lead executive communications.">
-  <meta property="og:title" content="Mitchell Williams · Storyteller × Builder">
-  <meta property="og:description" content="AI-native storytelling workflows. Ex-CNN / AJ+ / Al Jazeera, ex-Google. Building on the ElevenLabs stack.">
+  <title>Mitchell Williams · Forward Deployed Creative</title>
+  <meta name="description" content="Forward Deployed Creative for AI media workflows: voice, music, video, dubbing, training, customer handoff. Eight years in live newsrooms, eight at Google, building production AI since 2024.">
+  <meta property="og:title" content="Mitchell Williams · Forward Deployed Creative">
+  <meta property="og:description" content="AI media workflows with receipts: voice, music, video, dubbing. Ex-CNN / AJ+ / Al Jazeera, ex-Google. Building on the ElevenLabs stack.">
   <meta property="og:type" content="profile">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
@@ -96,6 +96,26 @@
       .hero-cta .btn{background:var(--bg)}
       .hero-cta .btn.solid{background:var(--blood)}
     }
+    /* index-07: the ElevenLabs review-path band, one line of hospitality
+       between the marquee and the work; the company naming lives here and
+       on the path page, never in the hero */
+    .elpath-band{padding:40px 0 0}
+    .elpath{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;
+      border:1px solid var(--line-2);background:var(--surface);padding:22px 26px}
+    .elpath .ep-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;
+      text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
+    .elpath .ep-t{flex:1 1 320px;font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin:0}
+    .elpath .btn{flex:0 0 auto}
+    /* index-08: AI-native production splits from the broadcast years;
+       the produced short leads, the practice cells sit beside it */
+    #ai-native{padding:56px 0 0}
+    .ainative-grid{display:grid;gap:32px}
+    @media(min-width:1024px){.ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}}
+    .ainative-grid .film{aspect-ratio:16/9}
+    .ai-cells{display:flex;flex-direction:column;justify-content:space-between;gap:0}
+    .ai-cells .cell{border-bottom:1px solid var(--line);padding:18px 0}
+    .ai-cells .cell:first-child{padding-top:0}
+    .ai-cells .cell:last-child{border-bottom:none;padding-bottom:0}
     /* index-02: the work section tucks closer to the marquee (theme default 120px) */
     #work{padding:56px 0 0}
     /* index-03: Selected Work rides a horizontal snap strip
@@ -189,15 +209,19 @@
       <div class="hero-main">
         <div class="kicker">Mitchell Williams · Production AI since 2024</div>
         <h1 class="display">
-          <span class="ln"><span>Forward-</span></span>
+          <span class="ln"><span>Forward</span></span>
           <span class="ln"><span class="accent">deployed</span></span>
-          <span class="ln"><span>AI builder.</span></span>
+          <span class="ln"><span>creative.</span></span>
         </h1>
-        <p class="hero-sub">Eight years in live newsrooms, eight at Google. I build the workflows where craft meets the machine: production AI agents, creative pipelines, and the enablement that makes them stick.</p>
+        <p class="hero-sub">AI media workflows for enterprise production: voice, music, video, dubbing, training, customer handoff. Eight years in live newsrooms, eight at Google. I embed with a creative team, build the pipeline, prove the cost, and teach the team to run it.</p>
         <div class="hero-facts">
           <div class="fact-row">
-            <span class="f-k">Target roles</span>
-            <span class="f-v">Forward Deployed Engineer / Creative · AI Solutions Architect · AI Enablement · Comms Lead · DevRel · AI Editorial</span>
+            <span class="f-k">Target role</span>
+            <span class="f-v">Forward Deployed Creative</span>
+          </div>
+          <div class="fact-row">
+            <span class="f-k">Adjacent lanes</span>
+            <span class="f-v">AI Solutions Architect · AI Enablement · DevRel · Comms &amp; Editorial</span>
           </div>
           <div class="fact-row">
             <span class="f-k">Logistics</span>
@@ -205,9 +229,9 @@
           </div>
         </div>
         <div class="hero-cta">
-          <a class="btn solid" href="fit.html"><span>See role fit</span></a>
-          <a class="btn" href="assets/mitchell-williams-resume.pdf"><span>Resume (PDF)</span></a>
-          <a class="btn" href="projects.html"><span>AI projects</span></a>
+          <a class="btn solid" href="for-elevenlabs.html"><span>Start the 12-minute review path</span></a>
+          <a class="btn" href="resume/forward-deployed.html"><span>The FDC resume</span></a>
+          <a class="btn" href="fit.html"><span>Role fit</span></a>
         </div>
       </div>
       <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline breakdown: one script in, a produced short out, every API call costed">
@@ -251,15 +275,25 @@
   </div>
 </div>
 
-<section id="work">
+<section class="elpath-band" aria-label="ElevenLabs review path">
+  <div class="wrap">
+    <div class="elpath reveal">
+      <span class="ep-k">Reviewing for ElevenLabs?</span>
+      <p class="ep-t">A sequenced review path for the Forward Deployed Creative role: the produced short, the Flows mapping, the reel, the handoff kit, the resume. About 12 minutes end to end.</p>
+      <a class="btn" href="for-elevenlabs.html"><span>Open the path</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="ai-native">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">01</span>
-      <h2 class="sec-title">Selected Work</h2>
-      <span class="sec-note">Live broadcast, social video, and AI-native production</span>
+      <h2 class="sec-title">AI-Native Production</h2>
+      <span class="sec-note">The current practice: pipelines on the ElevenLabs stack, with receipts</span>
     </div>
 
-    <div class="film-grid" role="region" aria-label="Selected work">
+    <div class="ainative-grid">
       <!-- Real, playable: the ElevenLabs pipeline output -->
       <a class="film wide reveal" href="broll-pipeline.html">
         <video src="assets/broll-short-n16.mp4" poster="assets/posters/home-broll.jpg" muted loop playsinline preload="metadata"></video>
@@ -269,7 +303,33 @@
           <div class="m-stat">Voice · music · sound · dub, orchestrated and costed →</div>
         </div>
       </a>
+      <div class="ai-cells">
+        <div class="cell reveal">
+          <div class="c-k"><a href="voice-os.html">voice-os</a></div>
+          <div class="c-b">Six-axis voice scoring that gates every draft against a measured corpus. <a href="voice-os.html">One full run, scores visible</a>.</div>
+        </div>
+        <div class="cell reveal">
+          <div class="c-k"><a href="content-ops.html">content-ops</a></div>
+          <div class="c-b">One story shaped for every surface it lands on. <a href="content-ops.html">A real run, drafts through publish</a>.</div>
+        </div>
+        <div class="cell reveal">
+          <div class="c-k"><a href="systems.html">systems &amp; checks</a></div>
+          <div class="c-b">The gates this site ships through: definition, loudness, seams, accessibility, code review. <a href="systems.html">The ledger is public</a>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">The Broadcast Years</h2>
+      <span class="sec-note">Live broadcast and social video, 2010 to 2018 · <a href="work.html">the full reel</a></span>
+    </div>
+
+    <div class="film-grid" role="region" aria-label="Selected broadcast work">
       <a class="film tall reveal" href="work.html#play-aje-stream-2011-global-reactions-bin-laden-death-bahrain"
          data-clip="aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-tag="Al Jazeera · The Stream · Live Coverage · 2011"
          data-title="The night bin Laden's death broke" data-sub="Live global reaction coverage from The Stream's launch era, on a 250M-household network."
@@ -350,7 +410,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-num">02</span>
+      <span class="sec-num">03</span>
       <h2 class="sec-title"><a href="timeline.html">The Arc</a></h2>
       <span class="sec-note"><a href="timeline.html">scroll the full timeline &rarr;</a></span>
     </div>
