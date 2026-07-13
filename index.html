@@ -4,10 +4,10 @@
   <script>document.documentElement.classList.remove('no-js')</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mitchell Williams · Forward Deployed Creative</title>
-  <meta name="description" content="Forward Deployed Creative for AI media workflows: voice, music, video, dubbing, training, customer handoff. Eight years in live newsrooms, eight at Google, building production AI since 2024.">
-  <meta property="og:title" content="Mitchell Williams · Forward Deployed Creative">
-  <meta property="og:description" content="AI media workflows with receipts: voice, music, video, dubbing. Ex-CNN / AJ+ / Al Jazeera, ex-Google. Building on the ElevenLabs stack.">
+  <title>Mitchell Williams · Newsrooms, Google, AI-native systems</title>
+  <meta name="description" content="AI media workflows for enterprise production: voice, music, video, dubbing, training, customer handoff. Eight years in live newsrooms, eight at Google, building production AI since 2024.">
+  <meta property="og:title" content="Mitchell Williams · Newsrooms, Google, AI-native systems">
+  <meta property="og:description" content="AI media workflows with receipts: voice, music, video, dubbing. Ex-CNN / AJ+ / Al Jazeera, ex-Google. Production AI since 2024.">
   <meta property="og:type" content="profile">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
@@ -29,6 +29,29 @@
     .f-v{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.75;
       letter-spacing:0.02em;color:var(--bone-soft)}
     .hero-cta{margin-top:36px}
+    /* multirole-derisk: role-router strip, first viewport; kicker grammar,
+       lighter than the fact rows. FDC stays first and marked. */
+    .hero-routes{margin-top:26px;max-width:660px;display:flex;flex-wrap:wrap;align-items:baseline;
+      gap:6px 10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;
+      line-height:1.8;opacity:0;transform:translateY(20px);
+      transition:opacity 1s var(--ease) .66s,transform 1s var(--ease) .66s}
+    .revealed .hero-routes{opacity:1;transform:none}
+    .hero-routes .hr-k{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blood-soft)}
+    .hero-routes a{color:var(--bone-soft);border-bottom:1px solid var(--line-2);
+      transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
+    .hero-routes a:hover{color:var(--bone);border-color:var(--blood-soft)}
+    .hero-routes .hr-dot{color:var(--dim)}
+    .hero-routes .hr-tag{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--blood-soft);margin-left:7px}
+    /* short desktop viewports: tighten the hero rhythm so the router strip
+       clears the fold; every reviewer sees their lane in the first glance */
+    @media(min-width:1121px) and (max-height:960px){
+      .hero .kicker{margin-bottom:22px}
+      .hero-sub{margin-top:22px}
+      .hero-facts{margin-top:20px;gap:9px}
+      .hero-cta{margin-top:26px}
+      .hero-routes{margin-top:18px}
+    }
     .hero-sys{display:block;background:var(--surface);border:1px solid var(--line-2);
       opacity:0;overflow:hidden;
       transition:opacity 1s var(--ease) .8s,border-color .3s var(--ease)}
@@ -85,7 +108,7 @@
     .hero-sys:hover .sys-cine video{filter:grayscale(0) contrast(1.05)}
     /* sig-band video sits under the band's edge-fade overlay */
     .sig-band video{object-position:center}
-    .no-js .hero-facts,.no-js .hero-sys{opacity:1;transform:none}
+    .no-js .hero-facts,.no-js .hero-sys,.no-js .hero-routes{opacity:1;transform:none}
     @media(max-width:1120px){
       /* index-01 (mobile only): pull the proof card up so it peeks into
          the first viewport; DOM order unchanged, H1 first. The CTA row
@@ -93,6 +116,7 @@
       .hero-grid{grid-template-columns:1fr;gap:28px}
       .hero-sys{max-width:520px;margin-top:-8vh}
       .hero-cta{position:relative;z-index:2}
+      .hero-routes{position:relative;z-index:2}
       .hero-cta .btn{background:var(--bg)}
       .hero-cta .btn.solid{background:var(--blood)}
     }
@@ -198,7 +222,7 @@
   <div class="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html">AI Projects</a>
-    <a href="assets/mitchell-williams-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    <a href="resume.html">Resume</a>
     <a href="comms.html">Comms &amp; Editorial</a>
     <a href="work.html">Reel</a>
     <a href="timeline.html">Timeline</a>
@@ -222,8 +246,8 @@
         <p class="hero-sub">AI media workflows for enterprise production: voice, music, video, dubbing, training, customer handoff. Eight years in live newsrooms, eight at Google. I embed with a creative team, build the pipeline, prove the cost, and teach the team to run it.</p>
         <div class="hero-facts">
           <div class="fact-row">
-            <span class="f-k">Target role</span>
-            <span class="f-v">Forward Deployed Creative</span>
+            <span class="f-k">Primary target</span>
+            <span class="f-v">Forward Deployed Creative · ElevenLabs</span>
           </div>
           <div class="fact-row">
             <span class="f-k">Adjacent lanes</span>
@@ -236,9 +260,21 @@
         </div>
         <div class="hero-cta">
           <a class="btn solid" href="for-elevenlabs.html"><span>Start the 12-minute review path</span></a>
-          <a class="btn" href="resume/forward-deployed.html"><span>The FDC resume</span></a>
+          <a class="btn" href="resume.html"><span>Resume by role</span></a>
           <a class="btn" href="fit.html"><span>Role fit</span></a>
         </div>
+        <nav class="hero-routes" aria-label="Role-specific review paths">
+          <span class="hr-k">Reviewing for a role?</span>
+          <a href="for-elevenlabs.html">Forward Deployed Creative<span class="hr-tag">priority path</span></a>
+          <span class="hr-dot" aria-hidden="true">·</span>
+          <a href="for-anthropic.html">Internal content producer</a>
+          <span class="hr-dot" aria-hidden="true">·</span>
+          <a href="for-comms-leadership.html">Communications leadership</a>
+          <span class="hr-dot" aria-hidden="true">·</span>
+          <a href="fit.html#devrel-education">DevRel &amp; developer education</a>
+          <span class="hr-dot" aria-hidden="true">·</span>
+          <a href="resume.html">All seven lanes</a>
+        </nav>
       </div>
       <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline breakdown: one script in, a produced short out, every API call costed">
         <div class="cine sys-cine" data-cine="assets/cinemagraphs/hero-machine-plate-loop" data-cine-m="assets/cinemagraphs/hero-machine-plate-loop-m">
