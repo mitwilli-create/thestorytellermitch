@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Script, Five Markets · Without the Compliance Tier · Mitchell Williams</title>
+  <meta name="description" content="The same multi-market workflow worked through for a non-alcohol category: TARDEO, a fictional Spanish snack brand. What carries over, what drops, and what the receipts-based math projects to when no alcohol rules apply.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .tbl-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+    .doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+    .doc th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .doc td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.6;vertical-align:top}
+    .doc tr:last-child td{border-bottom:none}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>The Same Workflow, No Compliance Tier</h1>
+    <div class="prov">A worked plan, not a produced video: it maps the measured MERIDIEM workflow onto a non-alcohol category so the generalization is inspectable. Cost lines marked "measured" are actuals from the bundle's <a href="bundle-b-receipts.csv">logged receipts</a>; lines marked "projected" apply those same measured rates to this plan. TARDEO is a fictional Spanish snack brand created for this page. No company named here is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+
+<p>The MERIDIEM demo is deliberately set in the hardest consumer category: alcohol, where France's Loi Evin and Italy's sport-association rules force a three-tier compliance structure. A fair question follows: how much of the workflow is really about the category? This page answers it by working the same brief for <strong>TARDEO, a fictional Spanish toasted-corn snack</strong>, a category with no alcohol rules at all. Snacking, beauty, fashion, mobility: the mapping below holds for any category where the product is identical across markets but the moment of use is cultural.</p>
+
+<h2>What carries over unchanged</h2>
+<ul>
+<li><strong>The master-plus-exports structure.</strong> One home-market master (a Madrid plaza at the tardeo hour, the late-afternoon social ritual the brand is named for), then per-market exports that swap the voice track, the music bed, and the culturally-marked wardrobe in the two people beats. The film itself never changes.</li>
+<li><strong>The cloned brand voice across every market.</strong> Same <code>voice_id</code>, per-beat TTS calls, localized copy per market. Nothing in that chain knows or cares what the product is.</li>
+<li><strong>The QA gates.</strong> Frame-level label pass, blind audio review, persona board, caption verification. The label gate matters in every category: for MERIDIEM it caught a hallucinated alcohol declaration; for a snack it would catch invented nutrition claims, which EU food-information rules (Regulation 1169/2011) police just as hard.</li>
+<li><strong>The templates.</strong> Both Flows packs run as-is: the multi-market ad variant and the social cutdown are category-blind. So is the <a href="bundle-b-api-appendix.html">API version</a>.</li>
+</ul>
+
+<h2>What drops</h2>
+<ul>
+<li><strong>The entire compliance tier.</strong> No sport-free re-dress for France and Italy, no product-only French cut, no per-market counsel pass on lifestyle framing. Seven markets ship the same single tier.</li>
+<li><strong>The category disclaimers.</strong> No responsible-consumption line, no health warning block reserved in the end card.</li>
+</ul>
+
+<h2>The eight beats, remapped</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Beat</th><th>MERIDIEM (measured)</th><th>TARDEO (worked plan)</th></tr></thead>
+<tbody>
+<tr><td>1 · place</td><td>Cordoba golden hour, Roman bridge</td><td>Madrid plaza, late afternoon, terrace filling up</td></tr>
+<tr><td>2 · mood</td><td>Rooftops, low sun</td><td>Awnings, long shadows, the pause before evening plans</td></tr>
+<tr><td>3 · product hero</td><td>Can in crushed ice, label crisp</td><td>Bag standing on a marble bar top, label crisp, kernels scattered</td></tr>
+<tr><td>4 · product action</td><td>Pour into a stemmed glass</td><td>Bag opens, a handful shared into a small terrace bowl</td></tr>
+<tr><td>5 · people (per-market)</td><td>Match-night toast, market-color jerseys</td><td>Friends around a terrace table erupting at a shared story, market-styled streetwear</td></tr>
+<tr><td>6 · people (per-market)</td><td>Photos beat, jerseys</td><td>One friend photographing the table's spread, market styling</td></tr>
+<tr><td>7 · resolution</td><td>Two glasses and the can on the ledge</td><td>The half-empty bowl and the bag as the plaza lights come on</td></tr>
+<tr><td>8 · end card</td><td>Can, glass, Spanish tagline in type</td><td>Bag, bowl, Spanish tagline in type (the home-market signature line carries, same brand-canon pattern)</td></tr>
+</tbody>
+</table></div>
+
+<h2>The math, projected from the measured rates</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Line item</th><th>Basis</th><th>Cost</th></tr></thead>
+<tbody>
+<tr><td>Master (8 beats: voice, music, SFX, AI visuals incl. retakes)</td><td>measured on MERIDIEM</td><td>4.13 USD</td></tr>
+<tr><td>Each export market (localized VO + market bed + two people shots re-dressed)</td><td>measured on MERIDIEM</td><td>about 0.93 USD</td></tr>
+<tr><td>Compliance variants</td><td>none needed in this category</td><td>0 USD, and zero schedule risk</td></tr>
+<tr><td><strong>Seven-market set, projected</strong></td><td>same measured rates, this plan</td><td><strong>about 9.70 USD in generation</strong></td></tr>
+</tbody>
+</table></div>
+<p>The honest difference from the alcohol version is not the generation bill, it is the removed coordination: no counsel review per market, no second wardrobe pass for two markets, no separate French cut to QA. In the MERIDIEM set those compliance variants cost 0 USD of generation but real review time; here that line disappears entirely. The category-specific work that remains is the same work every category has: transcreation of eight lines per market and a label-accuracy gate tuned to the category's regulator.</p>
+
+<p>Run it yourself: the <a href="bundle-b-flow-multi-market-ad-variant.html">multi-market template</a> takes this plan as its inputs without modification (swap the scripts and the master visual; the voice, music, and composition lanes do not change). The receipts pattern that prices it to the cent is in the <a href="bundle-b-api-appendix.html">API appendix</a>.</p>
+
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+</body>
+</html>

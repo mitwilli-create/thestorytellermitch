@@ -1,0 +1,96 @@
+manifest,started_utc,stage,market,item,detail,request_id,cost_source,cost_usd
+label-fix-manifest,2026-07-13T05:47:45.769Z,retake,,,non-alcoholic label pin (5.3% ALC/VOL hallucination retake),019f5a02-b0a3-7c60-a8b7-65f1398a2490,logged,0.4800
+polish-manifest,2026-07-13T17:10:57.928Z,sfx,,pour-v2,,,logged,0.0080
+qc-fixes-manifest,2026-07-13T16:37:02.210Z,qc-fix,,pour,,019f5c56-d646-7e72-aa27-c3cb266eb64b,logged,0.6000
+qc-fixes-manifest,2026-07-13T16:37:02.210Z,qc-fix,,resolution,,019f5c59-e349-7621-b6f5-5e57a0c152a1,logged,0.4000
+qc-fixes-manifest,2026-07-13T16:37:02.210Z,qc-fix,,endcard-composite,,,logged,0.0000
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,es,es,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,en,en,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,fr,fr,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,pt,pt,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,it,it,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,de,de,,,logged,0.1125
+round4-manifest,2026-07-13T18:08:25.126Z,music-45,nl,nl,,,logged,0.1125
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-0,32 chars,,logged,0.0032
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-1,57 chars,,logged,0.0057
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-2,47 chars,,logged,0.0047
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-3,27 chars,,logged,0.0027
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-4,37 chars,,logged,0.0037
+run-manifest-hero,2026-07-13T05:11:25.487Z,voiceover,,beat-5,31 chars,,logged,0.0031
+run-manifest-hero,2026-07-13T05:11:25.487Z,council,,,claude-opus-4-8; 6 shots,,estimate,2.0718
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-4,4s requested; gen; live,019f59e5-abf8-7c20-b523-01094c61f65d,estimate,0.4000
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-3,4s requested; gen; live,019f59e5-abec-7752-aa46-70c08ab27d88,estimate,0.4000
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-5,4s requested; gen; animated,019f59e5-dff1-7840-87f5-5b923c9fa6d8,estimate,0.4800
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-1,4s requested; gen; animated,019f59e5-e0b4-73e1-9898-9fe6e21a2820,estimate,0.4800
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-0,4s requested; gen; live,019f59e5-abf1-7e61-b622-900c97c2ad66,estimate,0.4000
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-2,4s requested; gen; live,019f59e5-abf6-7532-94dd-b0ea4ad39a95,estimate,0.4000
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-0,,,logged,0.0784
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-1,,,logged,0.0926
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-1,gen; animated,019f59e8-b475-7852-801e-6a9d03cfab38,estimate,0.4800
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-1,,,logged,0.1101
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-2,,,logged,0.0935
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-2,gen; live,019f59eb-5f46-7e21-b311-42b39c2d4ebd,estimate,0.4000
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-2,,,logged,0.0908
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-3,,,logged,0.0705
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-4,,,logged,0.0770
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-5,,,logged,0.1007
+run-manifest-hero,2026-07-13T05:11:25.487Z,visuals,,beat-5,gen; animated,019f59ee-4662-76b2-ae47-2dcef5554ae8,estimate,0.4800
+run-manifest-hero,2026-07-13T05:11:25.487Z,review,,beat-5,,,logged,0.0935
+run-manifest-hero,2026-07-13T05:11:25.487Z,score,,,25s; music_v2,,logged,0.0625
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-0,,,logged,0.0036
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-1,,,logged,0.0048
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-2,,,logged,0.0036
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-3,,,logged,0.0042
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-4,,,logged,0.0048
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,sfx,,beat-5,,,logged,0.0048
+run-manifest-hero,2026-07-13T05:11:25.487Z,audio-qa,,,,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,ambience,,,,,logged,0.0500
+run-manifest-hero,2026-07-13T05:11:25.487Z,mix,,,three layers under the voice,,logged,0.0000
+run-manifest-hero,2026-07-13T05:11:25.487Z,assemble,,,,,logged,0.0000
+shots-v3-manifest,2026-07-13T18:21:06.746Z,shot,,party-photos-fr,,019f5cb6-1e70-7c02-9de1-967a5bfbf5f4,logged,0.4000
+v2-build-manifest,2026-07-13T14:17:22.400Z,market-build,es,spot-es.mp4,,,logged,0.0000
+v3-build-manifest,2026-07-13T18:23:45.375Z,market-build,fr,spot-fr.mp4,,,logged,0.0000
+v3-build-manifest,2026-07-13T18:23:45.375Z,market-build,fr-product-only,spot-fr-product-only.mp4,people/celebration beats removed,,logged,0.0000
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-0,30 chars,,logged,0.0030
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-1,55 chars,,logged,0.0055
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-2,47 chars,,logged,0.0047
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-3,42 chars,,logged,0.0042
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-4,50 chars,,logged,0.0050
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,de,beat-5,38 chars,,logged,0.0038
+variants-manifest,2026-07-13T05:26:51.375Z,score,de,,24s,,logged,0.0600
+variants-manifest,2026-07-13T05:26:51.375Z,ambience,de,,24s,,logged,0.0480
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-0,41 chars,,logged,0.0041
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-1,53 chars,,logged,0.0053
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-2,51 chars,,logged,0.0051
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-3,42 chars,,logged,0.0042
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-4,60 chars,,logged,0.0060
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,fr,beat-5,33 chars,,logged,0.0033
+variants-manifest,2026-07-13T05:26:51.375Z,score,fr,,25s,,logged,0.0625
+variants-manifest,2026-07-13T05:26:51.375Z,ambience,fr,,25s,,logged,0.0500
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-0,27 chars,,logged,0.0027
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-1,49 chars,,logged,0.0049
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-2,51 chars,,logged,0.0051
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-3,40 chars,,logged,0.0040
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-4,61 chars,,logged,0.0061
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,es,beat-5,32 chars,,logged,0.0032
+variants-manifest,2026-07-13T05:26:51.375Z,score,es,,25s,,logged,0.0625
+variants-manifest,2026-07-13T05:26:51.375Z,ambience,es,,25s,,logged,0.0500
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-0,32 chars,,logged,0.0032
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-1,47 chars,,logged,0.0047
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-2,53 chars,,logged,0.0053
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-3,43 chars,,logged,0.0043
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-4,56 chars,,logged,0.0056
+variants-manifest,2026-07-13T05:26:51.375Z,voiceover,it,beat-5,32 chars,,logged,0.0032
+variants-manifest,2026-07-13T05:26:51.375Z,score,it,,24s,,logged,0.0600
+variants-manifest,2026-07-13T05:26:51.375Z,ambience,it,,24s,,logged,0.0480
+TOTAL,,,,,sum of surviving logged manifests only; the whole-bundle figure (about 17.40 USD across all three produced versions) is read from the provider dashboards because some per-run receipt files were overwritten by cache-served reruns (bug logged in the README),,,10.1833

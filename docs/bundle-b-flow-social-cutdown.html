@@ -74,6 +74,19 @@
 <li><strong>Studio half:</strong> trim the hero to the three cutdown lengths, drop in the hook VO, and generate captions. Documented below as a fixed 10 minute checklist the operator repeats per campaign.</li>
 </ul>
 
+<h3>Models used per step (versioned, cited)</h3>
+<p>Model names drift; pin the model in the template notes and cite the models reference at elevenlabs.io/docs (IDs below checked 2026-07-13). Re-check before a paid run.</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Step</th><th>Model</th><th>Why this one</th></tr></thead>
+<tbody>
+<tr><td>Text to Speech nodes (the three hooks)</td><td><code>eleven_v3</code> (GA, 70+ languages)</td><td>Short expressive hook lines are exactly its case. The demo set's scripted production ran <code>eleven_multilingual_v2</code> (GA); both are receipt-logged decisions, not defaults.</td></tr>
+<tr><td>Image Generation node (optional end card)</td><td>a text-capable image model</td><td>The tagline must stay legible; this bundle's end-card still was generated with nano banana 2 (via fal, outside ElevenLabs) for exactly that reason.</td></tr>
+<tr><td>Sound Effects node (optional closing accent)</td><td>ElevenLabs SFX</td><td>One generation per accent, 200 credits each per the public pricing page.</td></tr>
+<tr><td>Caption generation and check (Studio half)</td><td><code>scribe_v2</code></td><td>Generate, then check every line against the audio before burn-in; unchecked machine captions in a language nobody reads are a no-ship.</td></tr>
+</tbody>
+</table></div>
+<p>The engineer's version of the workflow, endpoint by endpoint, is the <a href="bundle-b-api-appendix.html">API appendix</a>.</p>
+
 <h2>3. Click-by-click: the Flows half (target: under 15 minutes)</h2>
 <ol>
 <li>Create a new flow named <code>Social cutdown kit</code>.</li>

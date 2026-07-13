@@ -80,7 +80,7 @@ They need 9:16 cutdowns per market per platform, yesterday. The social cutdown t
 They already sell language services; this makes their unit economics dramatically better on short-form ad work. Position as capability expansion, not replacement.</p>
 
 <h3>Per-market cost math (public numbers you can defend)</h3>
-<p>All rates are from public pricing pages as of July 2026: elevenlabs.io/pricing (credits: TTS 1 credit per character, Eleven Music 900 credits per minute, sound effects 200 credits per generation) and fal.ai model pages (Veo 3.1 Fast at 0.10 USD per second of generated video at 720/1080p without audio; generated audio runs 0.15 USD per second). The measured receipts for this exact demo set are in the bundle's <code>receipts/</code> folder.</p>
+<p>All rates are from public pricing pages as of July 2026: elevenlabs.io/pricing (credits: TTS 1 credit per character, Eleven Music 900 credits per minute, sound effects 200 credits per generation) and fal.ai model pages (Veo 3.1 Fast at 0.10 USD per second of generated video at 720/1080p without audio; generated audio runs 0.15 USD per second). The measured receipts for this exact demo set are in the bundle's <code>receipts/</code> folder and published line by line, request IDs included, as <a href="bundle-b-receipts.csv">bundle-b-receipts.csv</a>.</p>
 <p><strong>One 35 second Spanish master (MERIDIEM, produced for this kit):</strong></p>
 <div class="tbl-wrap"><table>
 <thead><tr><th>Line item</th><th>What it was</th><th>Measured cost</th></tr></thead>
@@ -104,6 +104,32 @@ They already sell language services; this makes their unit economics dramaticall
 </table></div>
 <p>The sentence that closes meetings: the master cost 4.13 USD; every export market after it cost about 0.93 USD (0.13 voice and music; 0.80 for the two crowd shots re-dressed in market colors) and an afternoon, and the French compliance cut was free. Then ask what their last regional adaptation cost and let their number sit next to yours. Do not invent their baseline; their own invoice is more persuasive than any industry average.</p>
 <p>On subscription plans the same math holds in credits: a 35 second localized voice pass runs a few hundred credits, a market music bed under 600. A Creator plan (22 USD per month, 121,000 credits, per the public pricing page) covers multiple full market adaptations per month; production teams land on Pro or Scale.</p>
+
+<h3>API cost against all-in cost (the CFO's "versus what?")</h3>
+<p>The tables above are generation spend only, and saying so out loud is what keeps the number credible. A real adaptation still carries human lines the API never sees, and this demo carried them too:</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Cost layer</th><th>In the receipts?</th><th>What it was on this demo set</th></tr></thead>
+<tbody>
+<tr><td>Generation (voice, music, SFX, visuals)</td><td>Yes, per call with request IDs</td><td>4.13 USD master, about 0.93 USD per export market; about 17.40 USD across all three produced versions of the bundle</td></tr>
+<tr><td>Transcreation (8 lines per market, written and reviewed)</td><td>No</td><td>Human work: the per-line transcreation notes ship in the kit's localized scripts</td></tr>
+<tr><td>QA and review cycles (blind audio reviews, persona board, retake decisions)</td><td>Verdicts logged; time is not</td><td>Three mix iterations and a client-notes revision cycle, documented in <a href="bundle-b-qa-trail.html">the QA trail</a></td></tr>
+<tr><td>Compliance and counsel review (regulated categories)</td><td>No</td><td>Structurally cheap here (re-edits of approved assets), but counsel time is real and per market</td></tr>
+<tr><td>Producer and edit time</td><td>No</td><td>About an afternoon per market on this set</td></tr>
+</tbody>
+</table></div>
+<p>When you price for a client, quote generation plus the human lines. The workflow's honest claim is narrower and stronger: it collapses the generation line to receipts-provable cents and shortens the human lines (fewer sessions to book, fewer licenses to chase), it does not delete them.</p>
+
+<h3>What the traditional route bills for the same deliverable (published rate cards only)</h3>
+<p>Never invent a prospect's baseline; when you need an external anchor before their invoice arrives, use published cards and mark what they leave out. Replacing just the two per-market line items this workflow generates, at list prices:</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Line item (per market, per :30)</th><th>Published rate</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>VO talent session, :30 spot</td><td>365 USD (audio wild spot, 13-week) to 630 USD (TV wild spot, all broadcast markets, 4-week)</td><td>SAG-AFTRA published scale, 2025, via the Voice Over Resource Guide rate tables</td></tr>
+<tr><td>Music license, per track</td><td>49 USD (web standard) to 199 USD (broadcast premium)</td><td>PremiumBeat published list prices</td></tr>
+<tr><td><strong>Floor, talent and music list prices alone</strong></td><td><strong>roughly 400 to 830 USD per market</strong></td><td>vs. about 0.93 USD generation on this workflow</td></tr>
+</tbody>
+</table></div>
+<p>That range is deliberately a floor: transcreation, studio time, editing, and usage renewals have no single published card, so they are excluded rather than guessed. Union scale also buys things a generated read does not (a performer, residual rights structures); the comparison is about the adaptation workflow, not the worth of talent. Their own invoice, when they pull it, will be higher than this floor, which is exactly why you still ask for it.</p>
 
 <h2>Page 2: The first meeting, and the templates</h2>
 <h3>Demo flow for a first meeting (12 minutes)</h3>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Script, Five Markets · API Appendix · Mitchell Williams</title>
+  <meta name="description" content="Every Flows node in the Bundle B templates mapped to the API call an engineer would script, with the exact endpoints and model IDs this bundle was actually produced with, plus a pseudo-code walkthrough of one market export.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .doc pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--bone-soft);
+      background:var(--surface);border:1px solid var(--line);padding:18px 20px;overflow-x:auto;margin:0 0 18px}
+    .doc pre code{background:none;border:none;padding:0}
+    .tbl-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+    .doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+    .doc th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .doc td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.6;vertical-align:top}
+    .doc tr:last-child td{border-bottom:none}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>One Script, Five Markets · API Appendix</h1>
+    <div class="prov">Built as part of the One Script, Five Markets spec bundle for the ElevenLabs Forward Deployed Creative role. Endpoints and model IDs below are the ones this bundle was actually produced with (request IDs in <a href="bundle-b-receipts.csv">the receipts CSV</a>), checked against the live API reference 2026-07-13. Endpoints and model names drift; the reference at elevenlabs.io/docs is the source of truth. MERIDIEM is a fictional canned Spanish white wine created for the demo.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+
+<p>The two Flows templates in this kit (<a href="bundle-b-flow-multi-market-ad-variant.html">multi-market ad variant</a>, <a href="bundle-b-flow-social-cutdown.html">social cutdown</a>) are click-by-click canvas builds. This appendix is the same workflow for an engineer: every node mapped to the API call you would script. It is not hypothetical. The demo set itself was produced through these HTTP endpoints by a scripted pipeline, and every call below has a logged request ID in the receipts. Flows and the API are two front doors to the same machinery; a team can start in the canvas and graduate to a script without changing the workflow.</p>
+
+<h2>Node-to-API map</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Flows node</th><th>API surface</th><th>Model used in this bundle</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Text</strong></td><td>No call. The node's content becomes the request payload of whatever it feeds.</td><td></td><td>In a script this is your transcreated copy, one string per market.</td></tr>
+<tr><td><strong>Text to Speech</strong></td><td><code>POST /v1/text-to-speech/{voice_id}</code></td><td><code>eleven_multilingual_v2</code> (receipts); <code>eleven_v3</code> is the GA pick for maximum expressiveness</td><td>One call per beat, not per spot: per-beat calls keep a retake surgical (regenerate 30 characters, not the whole read). The brand voice is the <code>voice_id</code>; the same ID serves every market.</td></tr>
+<tr><td><strong>Music</strong></td><td><code>POST /v1/music</code></td><td><code>music_v2</code> (Eleven Music)</td><td>Body: <code>prompt</code>, <code>music_length_ms</code>, <code>force_instrumental</code>. One call per market bed; ask for spot length plus a tail so you can trim to the measured loud window.</td></tr>
+<tr><td><strong>SFX / ambience</strong></td><td><code>POST /v1/sound-generation</code></td><td>ElevenLabs SFX</td><td>Body: <code>text</code>, <code>duration_seconds</code>. One diegetic ambience shared across every market, per-shot effects on top.</td></tr>
+<tr><td><strong>Upload Media</strong></td><td>No equivalent needed: your script already holds the master visual file (local path or URL).</td><td></td><td>In Flows one upload node feeds every market lane; in a script the file feeds every market's mix step.</td></tr>
+<tr><td><strong>Composition</strong></td><td>No public single endpoint. The scripted equivalent is a mixer: this bundle used an ffmpeg filtergraph with measured linear gain staging.</td><td></td><td>Honest seam: composition inside Flows is a canvas capability. An API-only pipeline owns the mix itself, which is also where loudness targets (-14 LUFS here) get enforced.</td></tr>
+<tr><td><strong>Captions check</strong> (Studio half of the cutdown template)</td><td><code>POST /v1/speech-to-text</code></td><td><code>scribe_v2</code></td><td>Transcribe the finished mix and diff it against the script: word-for-word caption verification, the same check the QA trail logs.</td></tr>
+<tr><td><strong>Visuals</strong> (outside ElevenLabs)</td><td>fal queue API, <code>queue.fal.run/fal-ai/veo3.1/fast</code>; stills via nano banana 2, then image-to-video</td><td>Veo 3.1 Fast; nano banana 2 for legible label type</td><td>Rates: 0.10 USD per second at 720/1080p without audio, 0.15 with audio (fal model page). Generated audio was not used; sound is ElevenLabs end to end.</td></tr>
+</tbody>
+</table></div>
+
+<h2>One market export, in pseudo-code</h2>
+<p>The shape of the whole workflow, one market at a time. Error handling, caching, and receipt logging trimmed for readability; the real pipeline logs every request ID and cost into the manifests behind <a href="bundle-b-receipts.csv">the receipts CSV</a>.</p>
+<pre><code>const XI = 'https://api.elevenlabs.io';
+const H  = { 'xi-api-key': KEY, 'Content-Type': 'application/json' };
+
+// 1. voice: one TTS call per beat, same brand voice_id every market
+for (const beat of market.beats) {
+  const r = await fetch(`${XI}/v1/text-to-speech/${BRAND_VOICE_ID}`, {
+    method: 'POST', headers: H,
+    body: JSON.stringify({ text: beat.vo, model_id: 'eleven_v3' }),
+  });
+  beat.voice = await r.arrayBuffer();          // mp3 bytes
+}
+
+// 2. market music bed (the master's visuals stay untouched)
+const bed = await fetch(`${XI}/v1/music`, {
+  method: 'POST', headers: H,
+  body: JSON.stringify({
+    prompt: market.musicPrompt,                 // e.g. 'jazz-tinged, brushed drums, aperitif mood'
+    music_length_ms: SPOT_MS + 2000,
+    model_id: 'music_v2', force_instrumental: true,
+  }),
+});
+
+// 3. shared ambience (generated once, reused by every market)
+const air = await fetch(`${XI}/v1/sound-generation`, {
+  method: 'POST', headers: H,
+  body: JSON.stringify({ text: 'warm evening rooftop air, distant city', duration_seconds: SPOT_S }),
+});
+
+// 4. compose: master visuals + per-beat voice + bed + ambience.
+//    Flows does this in the Composition node; a script owns the mix.
+//    Here: ffmpeg filtergraph, voice on top, measured linear gain, -14 LUFS.
+mix({ visuals: MASTER_MP4, voice: market.beats, music: bed, ambience: air });
+
+// 5. verify captions word-for-word against the finished mix
+const stt = await fetch(`${XI}/v1/speech-to-text`, {
+  method: 'POST', headers: { 'xi-api-key': KEY },
+  body: form({ file: market.mix, model_id: 'scribe_v2' }),
+});
+diff(stt.words, market.script);                 // any mismatch is a no-ship
+</code></pre>
+
+<h2>Cost instrumentation is part of the workflow</h2>
+<p>Every call above returns enough to price itself: TTS bills per character, Music per minute, SFX per generation, video per second. The pipeline writes each call's cost and request ID into a manifest as it runs, which is how this kit can publish <a href="bundle-b-receipts.csv">a CSV of 94 logged calls</a> instead of an estimate. If you script one thing from this page, script that: the receipts are what turn a cost claim into a cost proof.</p>
+
+<p>Model IDs cited from the live models reference (elevenlabs.io/docs, checked 2026-07-13): <code>eleven_v3</code> (GA), <code>eleven_multilingual_v2</code> (GA), <code>music_v2</code>, <code>scribe_v2</code>. Treat model choice as a versioned decision: name it in the template, cite the reference, and re-check before a paid run.</p>
+
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+</body>
+</html>

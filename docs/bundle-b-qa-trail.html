@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Script, Five Markets · The QA No-Ship Trail · Mitchell Williams</title>
+  <meta name="description" content="The published QA trail for the One Script, Five Markets spec bundle: every gate that said no-ship, what it caught, what the fix cost, and the ceiling that is still open. The receipts are the case study.">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css">
+  <style>
+    .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
+    .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
+    .prov{margin-top:20px;max-width:760px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;
+      letter-spacing:0.03em;color:var(--mute);line-height:1.7}
+    .doc{max-width:820px;padding:56px 0 96px}
+    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
+    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc strong{color:var(--bone)}
+    .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
+    .doc li{margin-bottom:6px}
+    .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
+    .tbl-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+    .doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+    .doc th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--blood-soft);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+    .doc td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--bone-soft);line-height:1.6;vertical-align:top}
+    .doc tr:last-child td{border-bottom:none}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Open navigation menu">
+  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
+  <div class="nav-links">
+    <a href="../comms.html">Comms</a>
+    <a href="../writing.html">Writing room</a>
+    <a href="../stories.html">Stories</a>
+    <a href="../impact.html">Impact</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="doc-hero">
+  <div class="wrap">
+    <div class="kicker">Spec work · ElevenLabs customer kit · 2026</div>
+    <h1>One Script, Five Markets · The QA No-Ship Trail</h1>
+    <div class="prov">Built as part of the One Script, Five Markets spec bundle for the ElevenLabs Forward Deployed Creative role. Every verdict on this page is quoted from a logged review artifact in the bundle's receipts folder; the inspectable call log is <a href="bundle-b-receipts.csv">bundle-b-receipts.csv</a>. MERIDIEM is a fictional canned Spanish white wine created for the demo. No company named in this document is claimed as an ElevenLabs client.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <p class="backlink" style="margin-bottom:36px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+
+<p>Most spec work shows you its highlight reel. This page is the opposite: every gate in this bundle's pipeline that said <strong>no-ship</strong>, what it caught, what the fix cost, and the one ceiling that is still open. It is published on purpose. A workflow you would trust with a real brand shows you its gates, because things go wrong on schedule, inside gates, with receipts.</p>
+
+<h2>The gates, in the order they fired</h2>
+
+<h3>1. Frame-level label pass · hallucinated alcohol declaration</h3>
+<p>Back when the brand was still soft-drink-positioned, an accepted product take carried a hallucinated <strong>5.3% ALC/VOL</strong> mark on the can. A frame-level label pass caught it; the shot was retaken with a pinned non-alcoholic label spec. Cost of the retake: 0.48 USD, request ID <code>019f5a02-b0a3</code> in the receipts (<code>label-fix-manifest.json</code>). In a regulated category, this is the class of error that ends a client relationship; the gate exists because generation invents details exactly where the law cares most.</p>
+
+<h3>2. Council review board · forced product-shot retake</h3>
+<p>The creative council's review board rejected the first product hero and forced a retake before the master could lock. The rejected takes and the accepted one are both in the production log; the point of keeping both is that the delta is visible.</p>
+
+<h3>3. Blind audio review · three no-ship verdicts before the mix passed</h3>
+<p>A blind reviewer (a multimodal model that can hear, given the cut with zero context: no version history, no knowledge that the piece is AI-made) scored the soundtrack like a re-recording mixer deciding whether a paying client should ship it. Its no-ship verdicts drove three mix iterations: a de-esser and treble shelf on the voice, measured linear gain staging end to end so nothing pumps, one-second ring-out tails on every effect, and a single diegetic ambience under every language cut. The per-spot review reports (<code>blind-review-spot-*.md</code>) ship in the receipts folder.</p>
+
+<h3>4. Persona review board · the version-three blockers</h3>
+<p>A three-persona review board with a hiring-manager adjudicator watched the actual cuts and caught three blockers: a hallucinated second SKU on the generated end card, a bottle appearing in a canned-wine pour, and red wine reading in a white-wine close. Each was fixed and receipted (<code>persona-review.md</code>, <code>qc-fixes-manifest.json</code>).</p>
+
+<h3>5. Post-publication rebuild QC · the red wine came back</h3>
+<p>When France and Italy moved to the sport-free compliance tier, the rebuilt French photos beat rolled dark red wine into a white-wine spot again. The QC pass on the fresh render caught it, the wine color was pinned in the shot spec, and one clip was regenerated for 0.40 USD (request ID <code>019f5cb6-1e70</code>, <code>shots-v3-manifest.json</code>). The defective take is kept in the kit on purpose, next to the fix.</p>
+
+<h3>6. Blind voice-consistency pass · the open finding</h3>
+<p>After the bundle shipped, a blind multilingual review (same protocol: no context, scored like a dubbing director) watched the reel, the French compliance cut, and the seven-language proof clip. The load-bearing claim held: <strong>same voice identity across all seven languages, 7/10 in all three independent reviews</strong>, and the burned captions verified word for word against the audio. The same pass also named the honest ceiling: to a native-calibrated ear, the export-language deliveries read flatter than the Spanish master (Dutch, Italian, and German drew the lowest prosody scores), and the reviewer called the full reel no-ship for premium paid broadcast while passing it for organic social. The full reports (<code>voice-review-*.md</code>) are in the receipts folder. The retake path is cheap and named: regenerate only the weak language's voice track (about 0.04 USD per market) with a native-speaker read-through before a paid-media buy. One reviewer note is brand canon rather than a defect: the end card keeps the Spanish tagline in type across every market while the voice localizes, the same pattern as a Spanish brand keeping its home-market signature line.</p>
+
+<h2>Two measured pipeline bugs, documented for reuse</h2>
+<ul>
+<li><strong>Music beds open quiet and die at the tail.</strong> Generated beds ramp in over several seconds and decay early. Fix: measure each stem's loud window and trim to it before looping.</li>
+<li><strong>ffmpeg's alimiter silently undoes loudness trims.</strong> It defaults to auto-leveling. Fix: <code>level=false</code>, then trust your measured gain staging.</li>
+</ul>
+
+<h2>The known ceiling</h2>
+<p>Single-shot generated foley realism. The current set uses prompt-generated effects per shot; the next rung is per-shot video-to-audio foley, a documented stage in the production repository's sound stack. Naming the ceiling is part of the credibility: a buyer should hear the limit from the seller first.</p>
+
+<p>Every number above traces to a logged API call: <a href="bundle-b-receipts.csv">download the full receipts CSV</a>. The kit this trail belongs to: <a href="bundle-b-gtm-playbook.html">GTM playbook</a> · <a href="bundle-b-flow-multi-market-ad-variant.html">multi-market template</a> · <a href="bundle-b-flow-social-cutdown.html">social cutdown template</a> · <a href="bundle-b-workshop-kit.html">workshop kit</a> · <a href="bundle-b-ae-deck.html">first-meeting deck</a>.</p>
+
+    <p class="backlink" style="margin-top:44px"><a href="../for-elevenlabs.html#specwork">Back to the review path</a></p>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+</body>
+</html>

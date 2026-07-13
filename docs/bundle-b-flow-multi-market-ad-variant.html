@@ -77,6 +77,18 @@
 <li>Transcreated copy per market, one short paragraph or beat list each.</li>
 </ol>
 
+<h3>Models used per step (versioned, cited)</h3>
+<p>Model names drift; treat model choice as a versioned decision that lives in the template notes, cited against the models reference at elevenlabs.io/docs (IDs below checked 2026-07-13). Re-check before a paid run.</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Step</th><th>Model</th><th>Why this one</th></tr></thead>
+<tbody>
+<tr><td>Text to Speech nodes (every market lane)</td><td><code>eleven_v3</code> (GA, 70+ languages)</td><td>The expressiveness pick for multilingual brand reads. The scripted production of this demo set ran <code>eleven_multilingual_v2</code> (GA, 29 languages), the steadier long-line workhorse; both IDs are receipt-logged decisions, not defaults.</td></tr>
+<tr><td>Music nodes (master and market beds)</td><td><code>music_v2</code> (Eleven Music)</td><td>Prompt-to-bed generation with length control (<code>music_length_ms</code> in the API).</td></tr>
+<tr><td>Caption verification (Studio half, when captions ship)</td><td><code>scribe_v2</code></td><td>Transcribe the finished mix and diff it word for word against the script before burning captions.</td></tr>
+</tbody>
+</table></div>
+<p>The engineer's version of every step, endpoint by endpoint with the request IDs this demo actually logged, is the <a href="bundle-b-api-appendix.html">API appendix</a>.</p>
+
 <h2>3. Click-by-click build (target: under 25 minutes)</h2>
 <h3>Create the canvas</h3>
 <ol>
