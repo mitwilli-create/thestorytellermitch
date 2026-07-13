@@ -59,8 +59,9 @@ const scoresFile = loop.replace('.mp4', '-scd.txt');
 execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', doubled, '-vf', `scdet=threshold=0,metadata=print:file=${scoresFile}`, '-f', 'null', '-']);
 const txt = readFileSync(scoresFile, 'utf8');
 const entries = [...txt.matchAll(/pts_time:([\d.]+)[\s\S]*?lavfi\.scd\.score=([\d.]+)/g)].map(m => ({ t: +m[1], score: +m[2] }));
-if (!entries.length) { console.error('[hero-8s] scdet produced no parseable scores; refusing to pass an unmeasured seam'); process.exit(2); }
-const seam = entries.filter(e => Math.abs(e.t - loopDur) < 0.15).reduce((mx, e) => Math.max(mx, e.score), 0);
+const atSeam = entries.filter(e => Math.abs(e.t - loopDur) < 0.15);
+if (!atSeam.length) { console.error(`[hero-8s] no scdet scores within 0.15s of the seam at t=${loopDur}; refusing to pass an unmeasured seam`); process.exit(2); }
+const seam = atSeam.reduce((mx, e) => Math.max(mx, e.score), 0);
 
 // palette vs approved still
 const poster = resolve(work, 'poster.jpg');
