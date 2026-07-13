@@ -63,7 +63,17 @@
       stroke-dasharray:6 94;animation:rp-travel 9s linear infinite}
     .rp-glow{stroke:#f4c67a;stroke-width:12;opacity:.5;filter:blur(7px)}
     .rp-trace{stroke:#fff3d6;stroke-width:3.5;opacity:.9}
+    /* second comet, half a cycle behind, slightly cooler so the two read
+       as traffic on the line rather than a doubled artifact */
+    .rp-glow2,.rp-trace2{animation-delay:-4.5s}
+    .rp-glow2{stroke:#d9b06a;stroke-width:10;opacity:.4;filter:blur(7px)}
+    .rp-trace2{stroke:#f7e7c2;stroke-width:3;opacity:.8}
+    /* the verdict plate breathes: a soft warm radial bloom over the seal,
+       drawn in code because three gated Veo attempts each invented new
+       objects; deterministic beats generated here */
+    .rp-verdict{animation:rp-breathe 5.4s ease-in-out infinite;transform-origin:1676px 336px}
     @keyframes rp-travel{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+    @keyframes rp-breathe{0%,100%{opacity:.12}50%{opacity:.5}}
     @media(prefers-reduced-motion:reduce){.rp-pulse{display:none}}
   </style>
 </head>
@@ -96,8 +106,18 @@
          path tracks the illustration at any viewport; hidden with the plate
          under 1120 and under prefers-reduced-motion -->
     <svg class="rp-pulse" viewBox="0 0 1920 1072" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="rp-vg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f4c67a" stop-opacity=".55"/>
+          <stop offset="55%" stop-color="#c97f4a" stop-opacity=".22"/>
+          <stop offset="100%" stop-color="#c97f4a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="rp-verdict" cx="1676" cy="336" rx="150" ry="128" fill="url(#rp-vg)"/>
       <path class="rp-glow" pathLength="100" d="M 932 636 L 944 614 L 956 592 L 969 570 L 981 548 L 993 525 L 1006 503 L 1021 483 L 1047 471 L 1075 462 L 1103 452 L 1132 443 L 1160 433 L 1186 418 L 1208 397 L 1235 387 L 1263 378 L 1291 370 L 1319 361 L 1346 353 L 1374 360 L 1402 348 L 1431 344 L 1457 362 L 1479 385 L 1497 393 L 1509 419 L 1516 448 L 1530 474 L 1538 501 L 1557 522 L 1580 538 L 1603 551 L 1622 567 L 1619 599 L 1613 620 L 1606 642 L 1600 663 L 1594 685 L 1588 706 L 1581 728 L 1566 747 L 1555 776 L 1544 805 L 1529 830 L 1513 855 L 1497 880 L 1475 890 L 1446 887 L 1417 882 L 1388 878 L 1359 873 L 1330 869 L 1300 864 L 1271 860 L 1242 854 L 1216 842 L 1188 832 L 1161 823 L 1134 812 L 1107 802 L 1080 791 L 1053 781 L 1026 770 L 998 762 L 968 752 L 939 731 L 917 699 L 921 661 Z"/>
       <path class="rp-trace" pathLength="100" d="M 932 636 L 944 614 L 956 592 L 969 570 L 981 548 L 993 525 L 1006 503 L 1021 483 L 1047 471 L 1075 462 L 1103 452 L 1132 443 L 1160 433 L 1186 418 L 1208 397 L 1235 387 L 1263 378 L 1291 370 L 1319 361 L 1346 353 L 1374 360 L 1402 348 L 1431 344 L 1457 362 L 1479 385 L 1497 393 L 1509 419 L 1516 448 L 1530 474 L 1538 501 L 1557 522 L 1580 538 L 1603 551 L 1622 567 L 1619 599 L 1613 620 L 1606 642 L 1600 663 L 1594 685 L 1588 706 L 1581 728 L 1566 747 L 1555 776 L 1544 805 L 1529 830 L 1513 855 L 1497 880 L 1475 890 L 1446 887 L 1417 882 L 1388 878 L 1359 873 L 1330 869 L 1300 864 L 1271 860 L 1242 854 L 1216 842 L 1188 832 L 1161 823 L 1134 812 L 1107 802 L 1080 791 L 1053 781 L 1026 770 L 998 762 L 968 752 L 939 731 L 917 699 L 921 661 Z"/>
+      <path class="rp-glow rp-glow2" pathLength="100" d="M 932 636 L 944 614 L 956 592 L 969 570 L 981 548 L 993 525 L 1006 503 L 1021 483 L 1047 471 L 1075 462 L 1103 452 L 1132 443 L 1160 433 L 1186 418 L 1208 397 L 1235 387 L 1263 378 L 1291 370 L 1319 361 L 1346 353 L 1374 360 L 1402 348 L 1431 344 L 1457 362 L 1479 385 L 1497 393 L 1509 419 L 1516 448 L 1530 474 L 1538 501 L 1557 522 L 1580 538 L 1603 551 L 1622 567 L 1619 599 L 1613 620 L 1606 642 L 1600 663 L 1594 685 L 1588 706 L 1581 728 L 1566 747 L 1555 776 L 1544 805 L 1529 830 L 1513 855 L 1497 880 L 1475 890 L 1446 887 L 1417 882 L 1388 878 L 1359 873 L 1330 869 L 1300 864 L 1271 860 L 1242 854 L 1216 842 L 1188 832 L 1161 823 L 1134 812 L 1107 802 L 1080 791 L 1053 781 L 1026 770 L 998 762 L 968 752 L 939 731 L 917 699 L 921 661 Z"/>
+      <path class="rp-trace rp-trace2" pathLength="100" d="M 932 636 L 944 614 L 956 592 L 969 570 L 981 548 L 993 525 L 1006 503 L 1021 483 L 1047 471 L 1075 462 L 1103 452 L 1132 443 L 1160 433 L 1186 418 L 1208 397 L 1235 387 L 1263 378 L 1291 370 L 1319 361 L 1346 353 L 1374 360 L 1402 348 L 1431 344 L 1457 362 L 1479 385 L 1497 393 L 1509 419 L 1516 448 L 1530 474 L 1538 501 L 1557 522 L 1580 538 L 1603 551 L 1622 567 L 1619 599 L 1613 620 L 1606 642 L 1600 663 L 1594 685 L 1588 706 L 1581 728 L 1566 747 L 1555 776 L 1544 805 L 1529 830 L 1513 855 L 1497 880 L 1475 890 L 1446 887 L 1417 882 L 1388 878 L 1359 873 L 1330 869 L 1300 864 L 1271 860 L 1242 854 L 1216 842 L 1188 832 L 1161 823 L 1134 812 L 1107 802 L 1080 791 L 1053 781 L 1026 770 L 998 762 L 968 752 L 939 731 L 917 699 L 921 661 Z"/>
     </svg>
   </figure>
   <div class="wrap">
