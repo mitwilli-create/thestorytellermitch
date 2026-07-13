@@ -7,9 +7,9 @@ July 2026. Two kinds of numbers below, labeled: published rates (estimates until
 |---|---|---|---|
 | Voiceover (TTS Multilingual v2) | ElevenLabs | $0.10 per 1k characters | ~$0.06 (the demo's 16 beats ran ~600 characters) |
 | Music (Eleven Music v2) | ElevenLabs | $0.15 per minute | ~$0.15 |
-| Sound effects | ElevenLabs | billed per generation; a handful of short cues | ~$0.07 for 5 generations |
+| Sound effects | ElevenLabs | billed per generation (as of July 2026; short cues run about a cent and a half each) | ~$0.07, the demo's 5 logged generations |
 | Dubbing, per target language | ElevenLabs | $0.33 to $0.50 per minute | ~$0.33 to $0.50 |
-| Generated shots (adapter to Veo 3.1 Fast) | Google (via fal adapter) | $0.10 per second at 720p or 1080p without audio ($0.15 per second with audio; 4K higher) | ~$2.00 for 3 shots |
+| Generated shots (adapter to Veo 3.1 Fast) | Google (via fal adapter) | $0.10 per second at 720p or 1080p without audio ($0.15 per second with audio; 4K higher) | ~$2.00 for 3 shots totaling ~20 generated seconds |
 | Mograph beats (Playwright render) | local | $0 | $0.00 |
 
 ## The logged demo run (manifest-derived, output/run-manifest.json)
@@ -29,13 +29,16 @@ Two details worth knowing before you budget: the demo's 75-second music bed logg
 
 ## The math that matters for a customer
 
-- Video generation is the cost driver. Everything else rounds to pocket change.
+- Two lines drive the budget: video generation ($5.36 on the demo run) and the
+  creative-direction layer if you run one ($3.87 for the demo's council plus
+  review board). The audio stack rounds to pocket change.
 - Mograph beats cost nothing and regenerate deterministically, so the mograph-to-gen
   ratio in the script is your main budget dial.
 - A single-beat retake (`--reroll-beat N`) re-pays for one shot, not the run.
   Content-hash caching means a full re-run only regenerates what changed.
 - `--budget 25` sets a hard spend ceiling; the pipeline stops before crossing it.
-- Rule of thumb at these rates: a 60 second short with 3 generated shots and the
-  rest mograph lands near $3; a fully generated, creative-directed short with
-  retakes lands near $15. Both numbers come with an itemized manifest that
-  shows exactly how they were computed.
+- Two worked scenarios at these rates, both from the tables above: a lean
+  60-second short (3 generated shots, ~20 generated seconds, rest mograph, no
+  direction layer) lands near $2.30 all-in; the demo's fully directed,
+  retake-included, dubbed cut landed at $14.20. Every run prints the itemized
+  manifest that shows which scenario you actually got.
