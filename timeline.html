@@ -726,6 +726,16 @@
     });
   });
 
+  // deep-link support: /timeline.html#era-ajplus lands on that era even after
+  // late layout (lazy media) invalidates the browser's native anchor jump
+  function eraFromHash(){
+    if(!location.hash) return;
+    var t=document.getElementById(location.hash.slice(1));
+    if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+  }
+  window.addEventListener('load', eraFromHash);
+  addEventListener('hashchange', eraFromHash);
+
   // mobile chapter pill -> jump dialog
   var mapbox=document.getElementById('mapbox');
   pill.addEventListener('click',function(){ mapbox.showModal(); });
