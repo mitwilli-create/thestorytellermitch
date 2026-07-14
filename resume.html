@@ -28,6 +28,10 @@
       letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
     .rs-row:hover .rs-get{color:var(--bone)}
     .rs-start{margin-top:30px}
+    /* .btn is inline and fragments across line boxes when this long label
+       wraps (detached fill slab); every other .btn sits in a flex row and
+       gets blockified. Keep this one a single box. */
+    .rs-start .btn{display:inline-block}
     .fit-router{display:flex;gap:10px;align-items:center;margin-top:24px;flex-wrap:wrap}
     .fr-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
     .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
