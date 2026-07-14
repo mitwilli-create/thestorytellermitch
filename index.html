@@ -56,7 +56,13 @@
        cleanly under row 1 and fills the width the two cards leave empty. Facts
        run as a three-up spec row; the CTAs and role-router share the row below,
        actions left, router right. */
-    .hero-lower{grid-column:1/-1;grid-row:2;padding-top:32px;border-top:1px solid var(--line)}
+    /* the divider is a breath, not just a rule: generous space above and below,
+       a brighter hairline, and a short oxblood tick at the left (echoing the
+       kicker) mark a deliberate section break after the dense hero copy */
+    .hero-lower{grid-column:1/-1;grid-row:2;position:relative;margin-top:34px;padding-top:54px;
+      border-top:1px solid var(--line-2)}
+    .hero-lower::before{content:'';position:absolute;top:-1px;left:0;width:64px;height:2px;
+      background:var(--blood-soft)}
     .hero-lower .hero-facts{max-width:none;margin-top:0;
       display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
     .hero-lower .fact-row{display:flex;flex-direction:column;gap:9px;align-items:stretch}
@@ -67,7 +73,17 @@
     .hero-lower-actions{margin-top:34px;display:flex;justify-content:space-between;
       align-items:center;gap:18px 40px;flex-wrap:wrap;padding-right:120px}
     .hero-lower .hero-cta{margin-top:0}
-    .hero-lower .hero-routes{margin-top:0;max-width:none}
+    /* router chip: a bordered wayfinding module with an oxblood edge so the
+       "reviewing for a specific role?" prompt reads as a distinct call, not
+       another line of mono text lost in the band */
+    .hero-lower .hero-routes{margin-top:0;max-width:none;gap:2px 12px;
+      padding:11px 16px;border:1px solid var(--line-2);border-left:2px solid var(--blood);
+      background:var(--surface);transition:border-color var(--dur-micro) var(--ease-micro)}
+    .hero-lower .hero-routes:hover{border-color:var(--blood-soft)}
+    .hero-lower .hero-routes a{color:var(--bone);border-bottom:0}
+    .hero-lower .hero-routes .hr-arw{color:var(--blood-soft);display:inline-block;
+      transition:transform var(--dur-micro) var(--ease-micro)}
+    .hero-lower .hero-routes a:hover .hr-arw{transform:translateX(3px)}
     /* each current-search role links to its matching role on fit.html (which
        opens that role from the hash); same link treatment as the router */
     .hero-lower .f-v a{color:inherit;border-bottom:1px solid var(--line-2);
@@ -162,7 +178,8 @@
          CTAs + router), the machine peek, then the film */
       /* the band is a full-width divider only on desktop; on mobile it flows
          inline and the facts revert to stacked label-and-value rows */
-      .hero-lower{border-top:0;padding-top:0}
+      .hero-lower{border-top:0;padding-top:0;margin-top:0}
+      .hero-lower::before{display:none}
       .hero-lower .hero-facts{display:flex;flex-direction:column;gap:9px}
       .hero-lower .fact-row{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:baseline}
       .hero-lower .f-v{font-size:12.5px;line-height:1.75}
@@ -331,7 +348,7 @@
           </div>
           <div class="fact-row">
             <span class="f-k">Core proof</span>
-            <span class="f-v">Live newsrooms · Google senior-engineering comms · AI-native production systems</span>
+            <span class="f-v"><a href="timeline.html#era-wdrb">Live newsrooms</a> · <a href="timeline.html#era-corpeng">Google senior-engineering comms</a> · <a href="timeline.html#era-now">AI-native production systems</a></span>
           </div>
           <div class="fact-row">
             <span class="f-k">Logistics</span>
@@ -346,7 +363,7 @@
           </div>
           <nav class="hero-routes" aria-label="Role-specific review paths">
             <span class="hr-k">Reviewing for a specific role?</span>
-            <a href="fit.html">The role-fit page routes you</a>
+            <a href="fit.html">The role-fit page routes you <span class="hr-arw" aria-hidden="true">→</span></a>
           </nav>
         </div>
       </div>
