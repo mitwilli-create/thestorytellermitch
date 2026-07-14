@@ -64,6 +64,7 @@
     v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
     if (d.poster) v.poster = d.poster;
     v.src = d.local;
+    if (d.vtt) { const tr = document.createElement('track'); tr.kind = 'captions'; tr.src = d.vtt; tr.srclang = 'en'; tr.label = 'English'; tr.default = true; v.appendChild(tr); }
     if (window.__sound) __sound.voice(v); // clip audio ducks the bed like narration
     stage.appendChild(v);
   }

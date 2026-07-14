@@ -1,0 +1,115 @@
+1
+00:00:00,079 --> 00:00:02,729
+The film on this site's front page cost
+
+2
+00:00:02,740 --> 00:00:07,269
+$14.20 to produce, start to finish,
+
+3
+00:00:07,399 --> 00:00:10,689
+all in, and I can document every cent.
+
+4
+00:00:10,859 --> 00:00:13,289
+Here's the problem with most portfolios,
+
+5
+00:00:13,439 --> 00:00:15,409
+you have to take their word for it.
+
+6
+00:00:15,500 --> 00:00:18,769
+A nice reel, big claims, no receipts.
+
+7
+00:00:18,979 --> 00:00:20,589
+This site works differently.
+
+8
+00:00:21,319 --> 00:00:25,189
+It runs like a newsroom. Every claim links
+
+9
+00:00:25,079 --> 00:00:28,609
+to a source. Every illustration says how
+
+10
+00:00:28,499 --> 00:00:31,189
+it was made and the systems that made them
+
+11
+00:00:31,079 --> 00:00:33,029
+are public. Take the flagship,
+
+12
+00:00:33,079 --> 00:00:36,589
+PictureLock. Step one, you hand it a plaintext
+
+13
+00:00:36,579 --> 00:00:39,849
+script. Step two, it generates the narration,
+
+14
+00:00:39,859 --> 00:00:41,810
+the score, the sound design,
+
+15
+00:00:41,820 --> 00:00:44,669
+the shots, the captions, even a Spanish
+
+16
+00:00:44,619 --> 00:00:51,499
+dub. Step three, it logs every call,
+
+17
+00:00:51,429 --> 00:00:54,979
+model, and cost to a run manifest and prints
+
+18
+00:00:54,869 --> 00:00:58,339
+the receipt. That's how a 53-second film
+
+19
+00:00:58,309 --> 00:01:01,439
+lands at $14.20. And the same gates that
+
+20
+00:01:01,349 --> 00:01:03,979
+checked it, check this whole site; voice
+
+21
+00:01:03,890 --> 00:01:08,259
+scoring, code review, resolution audits.
+
+22
+00:01:08,309 --> 00:01:11,439
+Public, dated, zero open flags.
+
+23
+00:01:11,859 --> 00:01:13,969
+Even this voice is synthetic,
+
+24
+00:01:14,039 --> 00:01:16,469
+cloned from me with my consent.
+
+25
+00:01:17,079 --> 00:01:21,589
+I'm Mitchell. If you're hiring for AI production
+
+26
+00:01:21,499 --> 00:01:24,149
+work, there's a 12-minute path from start
+
+27
+00:01:24,039 --> 00:01:25,829
+to verdict. So look around,
+
+28
+00:01:25,880 --> 00:01:27,989
+check the receipts, and when you're ready,
+
+29
+00:01:28,139 --> 00:01:29,009
+come find me.
