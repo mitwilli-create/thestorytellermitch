@@ -32,6 +32,17 @@ const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').
 // as a \u2014 escape so the census never flags this file)
 const scrub = (s) => String(s ?? '').replace(/\s*\u2014\s*/g, ', ').replace(/\u2014/g, ', ');
 const cdata = (s) => { const m = /^<!\[CDATA\[([\s\S]*?)\]\]>$/.exec(String(s ?? '').trim()); return m ? m[1] : String(s ?? '').trim(); };
+// Substack truncates the RSS <description> (the subhead) at ~200 chars,
+// frequently mid-word ("...getting wro"). Left as-is it stitches a broken
+// word into the featured excerpt, so trim back to the last complete
+// sentence; if the subhead carries no sentence break at all, drop only the
+// dangling partial token. A subhead that already ends cleanly is untouched.
+const detruncate = (s) => {
+  s = String(s ?? '').trim();
+  if (!s || /[.!?…"')\]]$/.test(s)) return s;
+  const cut = s.replace(/[^.!?…]*$/, '').trim();
+  return cut || s.replace(/\s*\S+$/, '').trim();
+};
 const stripHtml = (s) => String(s ?? '')
   .replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<script[\s\S]*?<\/script>/gi, ' ')
   .replace(/<[^>]+>/g, ' ')
@@ -53,7 +64,7 @@ function parseItems(xml) {
     const title = scrub(stripHtml(tag('title')));
     const link = tag('link');
     const pub = tag('pubDate');
-    const sub = scrub(stripHtml(tag('description')));
+    const sub = detruncate(scrub(stripHtml(tag('description'))));
     const body = scrub(stripHtml(tag('content:encoded')));
     if (!title || !link) continue;
     const combined = (sub ? sub + ' ' : '') + body;
