@@ -23,7 +23,11 @@
        columns don't fit the standard measure without crushing hero-main's
        text column and overflowing the vw-sized H1 */
     .hero .wrap{max-width:1392px}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 240px 400px;gap:40px;align-items:start}
+    /* the film column is sized so the native 9:16 card stands the same height
+       as the 400px machine card to its right (524px ~= 295 * 16/9), so the two
+       proofs read as a flush, aligned pair rather than a small tile beside a
+       large graphic */
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 295px 400px;gap:40px;align-items:start}
     .hero-main{grid-column:1;grid-row:1}
     .hero-film{grid-column:2;grid-row:1}
     .hero .display{font-size:clamp(44px,5.4vw,78px)}
@@ -112,6 +116,13 @@
     .hero-film .m-tag{display:block;font-size:9px;letter-spacing:0.1em}
     .hero-film .m-title{font-size:14px}
     .hero-film .m-stat{font-size:10px}
+    /* the shared theater sizes its stage 16:9 and fills it width-first; a
+       portrait 9:16 clip (this page's only theater video) then renders taller
+       than the viewport and runs off-screen. Size the video by its natural
+       shape, capped to the viewport height, so the whole film and its controls
+       stay on screen. Scoped to this page; the reel's 16:9 clips are elsewhere. */
+    .theater-stage{aspect-ratio:auto;height:auto;min-height:0}
+    .theater-stage video{width:auto;height:auto;max-width:100%;max-height:calc(92vh - 185px)}
     .sys-illo{display:block;width:100%;height:190px;object-fit:cover;object-position:center 46%;
       border-bottom:1px solid var(--line);background:var(--bg);
       filter:grayscale(0.12) contrast(1.03);transition:filter .4s var(--ease)}
