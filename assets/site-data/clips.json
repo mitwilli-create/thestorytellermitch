@@ -102,7 +102,7 @@
       "duration": "94s",
       "durationSec": 94,
       "poster": "assets/picture-lock-explainer-poster.jpg",
-      "hoverPreview": "assets/picture-lock-explainer.mp4",
+      "hoverPreview": "assets/previews/picture-lock-explainer.mp4",
       "previewStart": 0,
       "media": {
         "local": "assets/picture-lock-explainer.mp4",
