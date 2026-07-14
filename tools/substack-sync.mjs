@@ -151,7 +151,7 @@ async function main() {
   // disclosure so the section stays finite and scannable as the weekly
   // series grows (no infinite scroll).
   const VISIBLE_CARDS = 6;
-  const card = (p) => `      <a class="ecard" href="${esc(p.link)}" rel="noopener">
+  const card = (p) => `      <a class="ecard" href="${esc(p.link)}" target="_blank" rel="noopener">
         <span class="ec-k">${esc(cardLabel(p.date, p.num))}</span>
         <strong class="ec-t">${esc(p.title)}</strong>
         <span class="ec-d">${esc(p.excerpt)}</span>
