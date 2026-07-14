@@ -51,6 +51,23 @@
       transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
     .hero-routes a:hover{color:var(--bone);border-color:var(--blood-soft)}
     .hero-routes .hr-dot{color:var(--dim)}
+    /* hero-lower: full-width spec band on grid row 2 (2026-07-14). The h1+subs
+       column and the machine card are near-equal height, so this band drops
+       cleanly under row 1 and fills the width the two cards leave empty. Facts
+       run as a three-up spec row; the CTAs and role-router share the row below,
+       actions left, router right. */
+    .hero-lower{grid-column:1/-1;grid-row:2;padding-top:32px;border-top:1px solid var(--line)}
+    .hero-lower .hero-facts{max-width:none;margin-top:0;
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+    .hero-lower .fact-row{display:flex;flex-direction:column;gap:9px;align-items:stretch}
+    .hero-lower .f-v{font-size:13px;line-height:1.7}
+    /* actions share the row: buttons left, role-router right. The right pad
+       keeps the router clear of the fixed sound toggle that floats in the
+       bottom-right corner. */
+    .hero-lower-actions{margin-top:34px;display:flex;justify-content:space-between;
+      align-items:center;gap:18px 40px;flex-wrap:wrap;padding-right:120px}
+    .hero-lower .hero-cta{margin-top:0}
+    .hero-lower .hero-routes{margin-top:0;max-width:none}
     /* short desktop viewports: tighten the hero rhythm so the router strip
        clears the fold; every reviewer sees their lane in the first glance */
     @media(min-width:1121px) and (max-height:960px){
@@ -135,7 +152,17 @@
          and routes strip ride above the plate on their own bg so text
          and tap targets never lose to the overlap. */
       .hero-grid{grid-template-columns:1fr;gap:28px}
-      .hero-main,.hero-film,.hero-sys{grid-column:auto;grid-row:auto}
+      .hero-main,.hero-film,.hero-sys,.hero-lower{grid-column:auto;grid-row:auto}
+      /* single column flows in DOM order: h1/subs, the spec band (facts +
+         CTAs + router), the machine peek, then the film */
+      /* the band is a full-width divider only on desktop; on mobile it flows
+         inline and the facts revert to stacked label-and-value rows */
+      .hero-lower{border-top:0;padding-top:0}
+      .hero-lower .hero-facts{display:flex;flex-direction:column;gap:9px}
+      .hero-lower .fact-row{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:baseline}
+      .hero-lower .f-v{font-size:12.5px;line-height:1.75}
+      .hero-lower-actions{margin-top:26px;flex-direction:column;align-items:flex-start;gap:0;padding-right:0}
+      .hero-lower .hero-routes{margin-top:18px}
       .hero-sys{max-width:520px;margin-top:-8vh}
       .hero-cta{position:relative;z-index:2}
       .hero-routes{position:relative;z-index:2;background:var(--bg);padding-bottom:12px}
@@ -286,6 +313,12 @@
         <p class="hero-sub">Comms and content expert: sixteen years of audience engagement across most mainstream digital platforms, from live news and social video to Google's engineering org.</p>
         <p class="hero-sub">Now building AI production systems: voice, music, video, dubbing, multi-agent editorial, every run logged and costed.</p>
         <p class="hero-sub">If you're hiring a forward deployed builder, a media expert, or a storyteller, you're in the right place.</p>
+      </div>
+      <!-- hero-lower sits after hero-main in the DOM (reading + focus order:
+           facts and CTAs before the two proof cards); grid-row:2 places it
+           visually below the cards on desktop, single-column flow stacks it
+           in the same order on mobile -->
+      <div class="hero-lower">
         <div class="hero-facts">
           <div class="fact-row">
             <span class="f-k">Current search</span>
@@ -300,15 +333,17 @@
             <span class="f-v">16 yrs (8 newsrooms + 8 Google) · Seattle · US citizen, no sponsorship · Remote or relocate</span>
           </div>
         </div>
-        <div class="hero-cta">
-          <a class="btn solid" href="work.html#starthere"><span>See the work</span></a>
-          <a class="btn" href="resume.html"><span>Resume by role</span></a>
-          <a class="btn" href="fit.html"><span>Role fit</span></a>
+        <div class="hero-lower-actions">
+          <div class="hero-cta">
+            <a class="btn solid" href="work.html#starthere"><span>See the work</span></a>
+            <a class="btn" href="resume.html"><span>Resume by role</span></a>
+            <a class="btn" href="fit.html"><span>Role fit</span></a>
+          </div>
+          <nav class="hero-routes" aria-label="Role-specific review paths">
+            <span class="hr-k">Reviewing for a specific role?</span>
+            <a href="fit.html">The role-fit page routes you</a>
+          </nav>
         </div>
-        <nav class="hero-routes" aria-label="Role-specific review paths">
-          <span class="hr-k">Reviewing for a specific role?</span>
-          <a href="fit.html">The role-fit page routes you</a>
-        </nav>
       </div>
       <a class="hero-sys" href="picture-lock.html" aria-label="PictureLock breakdown: one script in, a produced short out, every API call costed">
         <div class="cine sys-cine" data-cine="assets/cinemagraphs/hero-machine-plate-loop" data-cine-m="assets/cinemagraphs/hero-machine-plate-loop-m">
