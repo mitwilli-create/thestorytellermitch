@@ -34,9 +34,8 @@
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
-  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Toggle navigation menu">
-  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
-  <div class="nav-links">
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
     <a href="../fit.html">Role Fit</a>
     <a href="../projects.html">AI Projects</a>
     <a href="../resume.html">Resume</a>
@@ -137,5 +136,6 @@ The workflow feeds your existing approval chain, it does not bypass it. Every as
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
   </div>
 </footer>
+<script src="../shared/reveal.js?v=20260713b"></script>
 </body>
 </html>

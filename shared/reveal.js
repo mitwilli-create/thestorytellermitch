@@ -5,6 +5,24 @@
 // window.__motionOK is the sitewide motion gate: false under
 // prefers-reduced-motion. Hover-play video, cinemagraphs, and any new
 // animation must check it before moving anything.
+// Mobile nav toggle: real <button> driving .nav-open on the ancestor .nav,
+// replacing the old checkbox hack that display:none removed from the tab order.
+(() => {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = btn && btn.closest('.nav');
+  const links = nav && nav.querySelector('.nav-links');
+  if (!btn || !nav || !links) return;
+  const close = () => { nav.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) { close(); btn.focus(); }
+  });
+  matchMedia('(min-width:861px)').addEventListener('change', (e) => { if (e.matches) close(); });
+})();
+
 (() => {
   const rm = matchMedia('(prefers-reduced-motion: reduce)');
   window.__motionOK = !rm.matches;
