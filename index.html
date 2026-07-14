@@ -111,11 +111,12 @@
     @media(max-width:1120px){
       /* index-01 (mobile only): pull the proof card up so it peeks into
          the first viewport; DOM order unchanged, H1 first. The CTA row
-         rides above the plate so tap targets never lose to the overlap. */
+         and routes strip ride above the plate on their own bg so text
+         and tap targets never lose to the overlap. */
       .hero-grid{grid-template-columns:1fr;gap:28px}
       .hero-sys{max-width:520px;margin-top:-8vh}
       .hero-cta{position:relative;z-index:2}
-      .hero-routes{position:relative;z-index:2}
+      .hero-routes{position:relative;z-index:2;background:var(--bg);padding-bottom:12px}
       .hero-cta .btn{background:var(--bg)}
       .hero-cta .btn.solid{background:var(--blood)}
     }
