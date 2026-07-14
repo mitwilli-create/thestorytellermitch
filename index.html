@@ -127,13 +127,37 @@
     .ainative-grid .film{grid-column:auto;aspect-ratio:16/9}
     @media(min-width:1024px){
       .ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
-      .ainative-grid .film{grid-column:1;grid-row:1}
+      /* the tile fills its track and lets the video's cover-crop frame it;
+         with an aspect-ratio here, stretch drives WIDTH across both columns
+         once the cells column grows taller than 16/9 (found 2026-07-13:
+         the boxed cells made the film overlay and intercept their clicks) */
+      .ainative-grid .film{grid-column:1;grid-row:1;aspect-ratio:auto;height:100%}
       .ainative-grid .ai-cells{grid-column:2;grid-row:1}
     }
-    .ai-cells{display:flex;flex-direction:column;justify-content:space-between;gap:0}
-    .ai-cells .cell{border-bottom:1px solid var(--line);padding:18px 0}
-    .ai-cells .cell:first-child{padding-top:0}
-    .ai-cells .cell:last-child{border-bottom:none;padding-bottom:0}
+    /* index-09 (2026-07-13): the three practice cells become whole-tile
+       anchors in the comms-page a.etile idiom: boxed, hover-lifted, one
+       link each, with a mono micro-diagram and a receipt line. */
+    .ai-cells{display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+    .ai-cells .cell{display:flex;flex-direction:column;gap:9px;flex:1;color:inherit;
+      background:var(--surface);border:1px solid var(--line);padding:20px 22px 17px;
+      transition:border-color var(--dur-micro) var(--ease-micro),transform var(--dur-move) var(--ease)}
+    .ai-cells .cell:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .ai-cells .cell:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .ai-cells .c-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);transition:color var(--dur-micro) var(--ease-micro)}
+    .ai-cells .cell:hover .c-k{color:var(--bone)}
+    .ai-cells .c-diag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);
+      letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      border-bottom:1px solid var(--line);padding-bottom:9px;transition:color .3s var(--ease)}
+    .ai-cells .cell:hover .c-diag{color:var(--bone-soft)}
+    .ai-cells .c-b{font-size:14.5px;color:var(--bone-soft);line-height:1.55}
+    .ai-cells .c-r{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--mute);
+      letter-spacing:0.04em;font-variant-numeric:tabular-nums}
+    .ai-cells .c-go{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);margin-top:auto;padding-top:4px}
+    .ai-cells .c-go::after{content:'→';margin-left:6px;display:inline-block;
+      transition:transform var(--dur-micro) var(--ease-micro)}
+    .ai-cells .cell:hover .c-go::after{transform:translateX(4px)}
     /* index-02: the work section tucks closer to the marquee (theme default 120px) */
     #work{padding:56px 0 0}
     /* index-03: Selected Work rides a horizontal snap strip
@@ -316,18 +340,27 @@
         </div>
       </a>
       <div class="ai-cells">
-        <div class="cell reveal">
-          <div class="c-k"><a href="voice-os.html">voice-os</a></div>
-          <div class="c-b">Six-axis voice scoring that gates every draft against a measured corpus. <a href="voice-os.html">One full run, scores visible</a>.</div>
-        </div>
-        <div class="cell reveal">
-          <div class="c-k"><a href="content-ops.html">content-ops</a></div>
-          <div class="c-b">One story shaped for every surface it lands on. <a href="content-ops.html">A real run, drafts through publish</a>.</div>
-        </div>
-        <div class="cell reveal">
-          <div class="c-k"><a href="systems.html">systems &amp; checks</a></div>
-          <div class="c-b">The gates this site ships through: definition, loudness, seams, accessibility, code review. <a href="systems.html">The ledger is public</a>.</div>
-        </div>
+        <a class="cell reveal" href="voice-os.html">
+          <span class="c-k">voice-os</span>
+          <span class="c-diag" aria-hidden="true">draft → six axes → gate ≥ 0.650</span>
+          <span class="c-b">Six-axis voice scoring that gates every draft against a measured corpus. No pass, no publish.</span>
+          <span class="c-r">one traced run · 0.610 → 0.740 against the 0.650 gate</span>
+          <span class="c-go">the full run, scores visible</span>
+        </a>
+        <a class="cell reveal" href="content-ops.html">
+          <span class="c-k">content-ops</span>
+          <span class="c-diag" aria-hidden="true">one master → every surface</span>
+          <span class="c-b">One story shaped for every surface it lands on, drafts through publish.</span>
+          <span class="c-r">one real run · fidelity 0.698, pass · human edit log kept</span>
+          <span class="c-go">the run, end to end</span>
+        </a>
+        <a class="cell reveal" href="systems.html">
+          <span class="c-k">systems &amp; checks</span>
+          <span class="c-diag" aria-hidden="true">verify → loudness → seams → a11y → review</span>
+          <span class="c-b">The gates this site ships through, and the record of every round.</span>
+          <span class="c-r">the ledger is public · every row dated</span>
+          <span class="c-go">the standing gates</span>
+        </a>
       </div>
     </div>
   </div>
