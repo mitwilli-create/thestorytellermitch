@@ -4,7 +4,7 @@ Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agen
 
 ## What this repo is
 
-Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS/JS served as Cloudflare Workers Static Assets (the "thestorytellermitch" Worker; migrated off Cloudflare Pages 2026-07-10). Deploys are manual via `tools/deploy.sh` (push to `main` does NOT auto-deploy; see Commands). Narrative case studies from eight years in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
+Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS/JS served as Cloudflare Workers Static Assets (the "thestorytellermitch" Worker; migrated off Cloudflare Pages 2026-07-10). Deploys are manual via `tools/deploy.sh` (push to `main` does NOT auto-deploy; see Commands). Narrative case studies from a decade in newsrooms (CNN, AJ+, Al Jazeera) and eight at Google, plus AI-native production work on the ElevenLabs stack. This is outward-facing professional brand: copy and visual changes need Mitchell's review before they ship.
 
 ## Hard constraints
 

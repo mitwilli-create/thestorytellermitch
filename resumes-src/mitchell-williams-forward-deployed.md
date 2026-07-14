@@ -63,7 +63,7 @@ Owned the communications and content that enabled technical outcomes for Google'
 - Directed the communications, content, and logistics strategy for the Q1-2020 global remote-work shift, driving an `80%` increase in self-provisioning efficiency the following quarter.
 - Ran the engineering talent-branding video portfolio end to end, from field shoots to publication: `1.7M+` YouTube views across the portfolio.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of forward-deployed work: embed in the workflow, ship under deadline, hand off a system that runs without you.**
 

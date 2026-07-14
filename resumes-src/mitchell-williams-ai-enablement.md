@@ -76,7 +76,7 @@ Owned communications and content for Google's internal IT org and its global hel
 - **Action:** Audited the self-help corpus and rewrote the highest-traffic, lowest-solve articles.
 - **Impact:** Self-service solvability up 9.03%, roughly 10,670 fewer tickets per year.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of enablement: adoption earned through legibility and trust, one broadcast at a time.**
 
