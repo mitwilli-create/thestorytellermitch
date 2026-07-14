@@ -50,8 +50,11 @@
       color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}
     .fr-chip:hover{border-color:var(--blood-soft);color:var(--blood-soft)}
     .fr-chip:focus-visible{border-color:var(--blood-soft);outline:none}
-    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
-      color:var(--dim);margin:46px 0 8px;scroll-margin-top:110px}
+    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--bone);margin:56px 0 12px;scroll-margin-top:110px;
+      display:flex;align-items:center;gap:14px}
+    .cluster-h::before{content:'';width:34px;height:1px;background:var(--blood-soft);flex:none}
+    .cluster-h::after{content:'';flex:1;height:1px;background:var(--line)}
     .cluster-h:first-child{margin-top:0}
     .cluster-h--lead{color:var(--blood-soft)}
     /* fit-05 (capstone): the target role reads dominant; the accordion
@@ -218,7 +221,7 @@
 
       <details class="role" id="comms-manager">
         <summary>
-          <span class="r-label">Communications Manager (AI-native)</span>
+          <span class="r-label">Communications Lead / Director (AI-native)</span>
           <span class="r-mark">+</span>
           <span class="r-hook">Exec comms for Google's most senior engineers. Every claim sourced.</span>
         </summary>

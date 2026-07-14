@@ -19,7 +19,7 @@ export const LANES = {
   'mitchell-williams-ai-solutions-architect': { slug: 'ai-solutions-architect', title: 'AI Solutions Architect' },
   'mitchell-williams-ai-enablement':          { slug: 'ai-enablement',          title: 'AI Enablement / Transformation Lead' },
   'mitchell-williams-ai-program-manager':     { slug: 'ai-program-manager',     title: 'AI / Technical Program Manager' },
-  'mitchell-williams-comms-manager':          { slug: 'comms-manager',          title: 'Communications Manager (AI-native)' },
+  'mitchell-williams-comms-manager':          { slug: 'comms-manager',          title: 'Communications Lead / Director (AI-native)' },
   'mitchell-williams-devrel-education':       { slug: 'devrel-education',       title: 'Developer Education / DevRel' },
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };

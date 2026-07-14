@@ -32,8 +32,11 @@
     .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}
     .fr-chip:hover{border-color:var(--blood-soft);color:var(--blood-soft)}
-    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
-      color:var(--dim);margin:42px 0 4px;scroll-margin-top:110px}
+    .cluster-h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--bone);margin:56px 0 10px;scroll-margin-top:110px;
+      display:flex;align-items:center;gap:14px}
+    .cluster-h::before{content:'';width:34px;height:1px;background:var(--blood-soft);flex:none}
+    .cluster-h::after{content:'';flex:1;height:1px;background:var(--line)}
     .cluster-h:first-child{margin-top:0}
     .rs-row{scroll-margin-top:96px}
     .rs-note{max-width:900px;margin:0 auto 80px;font-family:'JetBrains Mono',monospace;
@@ -94,7 +97,7 @@
       <span class="rs-pillars">Internal storytelling across formats · editorial systems and voice governance · AI-assisted creative pipelines</span>
     </a>
     <a class="rs-row" href="resume/comms-manager.html" id="rs-comms-manager">
-      <span class="rs-role">Communications Manager (AI-native)</span>
+      <span class="rs-role">Communications Lead / Director (AI-native)</span>
       <span class="rs-get">View resume →</span>
       <span class="rs-pillars">Product and technical communications · production AI agent building · sourced-claim discipline</span>
     </a>
