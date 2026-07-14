@@ -8,7 +8,7 @@ Writing portfolio: thestorytellermitch.com/writing
 
 ## Summary
 
-**Communications manager who understands what the models actually do, because the audience can tell when you do not.** Journalist, then communications and content strategist, then applied-AI builder; the habit that carries through: every claim gets a source.
+**Communications leader who understands what the models actually do, because the audience can tell when you do not.** Journalist, then communications and content strategist, then applied-AI builder; the habit that carries through: every claim gets a source.
 
 **Eight years at Google in executive and engineering communications.** Wrote for then-CIO Ben Fried at Corporate Engineering, then ran communications for Google's 1,000+ most senior engineers at Cross-Google Engineering (xGE), building two production LLM agents for the communications function itself.
 
