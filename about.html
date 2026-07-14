@@ -224,6 +224,10 @@
     </article>
     <aside class="site-meta" aria-label="The site itself: walkthrough, narration, and build record">
       <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
+        <!-- when the on-camera clip ships, replace the placeholder card below with a
+             video element (controls playsinline data-endcard, plus this frame's poster)
+             inside this frame; shared/endcard.js (already loaded on this page) then
+             presents the review-path CTA when playback ends. -->
         <div class="wt-frame oncam">
           <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
           <div class="wt-card">
@@ -269,5 +273,6 @@
 
 <script src="shared/reveal.js?v=20260713b"></script>
 <script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/endcard.js?v=20260713a"></script>
 </body>
 </html>

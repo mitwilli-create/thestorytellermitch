@@ -154,6 +154,19 @@
     .btn.solid{background:var(--blood);border-color:var(--blood)}
     .btn.solid:hover{color:var(--bone)}
     .btn.solid::before{background:var(--blood-soft)}
+    /* player end-card: injected by shared/endcard.js when a cut finishes
+       ('ended'); routes the viewer onward to the 12-minute review path.
+       The scrim ignores the pointer so the player's native controls stay
+       reachable underneath; only the CTA takes the click. No-JS players
+       never get one (JS owns the whole lifecycle). Host box must be
+       position:relative (.cs-video and .wt-frame both are). */
+    .endcard{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;
+      padding:18px;background:rgba(10,10,11,0.78);pointer-events:none;opacity:0;visibility:hidden;
+      transition:opacity var(--dur-move) var(--ease),visibility 0s linear var(--dur-move)}
+    .endcard.is-on{opacity:1;visibility:visible;
+      transition:opacity var(--dur-move) var(--ease),visibility 0s}
+    .endcard .btn{pointer-events:auto;text-align:center;max-width:100%;background:var(--bg)}
+    .endcard .btn.solid{background:var(--blood)}
     .scrollcue{position:absolute;bottom:34px;left:40px;font-family:'JetBrains Mono',monospace;
       font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);
       opacity:0;transition:opacity var(--dur-set) var(--ease) 1.2s}
