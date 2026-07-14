@@ -178,9 +178,11 @@ for (const prev of prior?.clips ?? []) {
   if (!prev.sourceFile && !clips.some((c) => c.slug === prev.slug)) clips.push(prev);
 }
 
-// picture-lock flagship tile (assets already in repo; case-study child page)
-if (!clips.some((c) => c.slug === 'broll-pipeline-2026')) {
-  clips.unshift({
+// picture-lock flagship tile (assets already in repo; case-study child page).
+// Upserted: paths and copy refresh on every re-seed, while curated playback
+// ids (streamId/youtubeId) on an existing entry are preserved.
+{
+  const flagship = {
     slug: 'broll-pipeline-2026',
     published: true,
     bucket: 'ai-native',
@@ -201,7 +203,14 @@ if (!clips.some((c) => c.slug === 'broll-pipeline-2026')) {
     startHereRank: 1,
     caseStudy: 'picture-lock.html',
     sourceFile: null,
-  });
+  };
+  const i = clips.findIndex((c) => c.slug === flagship.slug);
+  if (i === -1) {
+    clips.unshift(flagship);
+  } else {
+    const prev = clips[i];
+    clips[i] = { ...prev, ...flagship, media: { ...flagship.media, streamId: prev.media?.streamId ?? null, youtubeId: prev.media?.youtubeId ?? null } };
+  }
 }
 
 const manifest = {
