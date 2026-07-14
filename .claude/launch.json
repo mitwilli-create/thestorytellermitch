@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8990"],
       "port": 8990
+    },
+    {
+      "name": "site-node",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/serve.mjs"],
+      "port": 8990
     }
   ]
 }
