@@ -7,7 +7,6 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Summary
 
-<!-- The list below names GitHub repo slugs on purpose (picture-lock stays lowercase like voice-os et al.); the PictureLock display name is used in Projects. -->
 **Applied-AI builder who teaches by shipping: I publish working agent pipelines with the receipts, then write the operator runbook so someone else can run them.** The public builds are at github.com/mitwilli-create: picture-lock, voice-os, tax-verification-agent, comms-triage-agent, and monolith.
 
 **Eight years at Google turning complex technical work into training, documentation, and community that get people to adopt it.** The last two designing and running the internal technical-education programs for the company's 1,000+ most senior engineers and building two production LLM agents solo, one of which cut a VP's executive-comms review cycle by about 70% (internal, self-measured). Six years earlier I overhauled Day-One technical onboarding into a self-service curriculum for 75,000+ new hires at 88% CSAT.
