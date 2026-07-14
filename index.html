@@ -161,11 +161,6 @@
     .ai-cells .c-go::after{content:'→';margin-left:6px;display:inline-block;
       transition:transform var(--dur-micro) var(--ease-micro)}
     .ai-cells .cell:hover .c-go::after{transform:translateX(4px)}
-    /* marquee stops link to their timeline eras; pause the crawl so they're clickable */
-    .marquee-track a{color:inherit;text-decoration:none}
-    .marquee-track a:hover,.marquee-track a:focus-visible{color:var(--bone)}
-    .marquee-track a:hover b,.marquee-track a:focus-visible b{color:var(--blood-soft)}
-    .marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
     /* index-02: the work section tucks closer to the marquee (theme default 120px) */
     #work{padding:56px 0 0}
     /* index-03: Selected Work rides a horizontal snap strip
@@ -314,22 +309,22 @@
   <div class="scrollcue"><span>↓ &nbsp; Scroll</span></div>
 </header>
 
-<nav class="marquee" aria-label="Career stops, linked to the timeline">
+<div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <a href="timeline.html#era-stream">Al Jazeera <b>The Stream</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-ajplus"><b>AJ+</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-huffpost">HuffPost <b>Live</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-fusion">Fusion <b>ABC · Univision</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-xge"><b>Google</b> xGE</a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-now"><b>AI-native</b> production</a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-stream" tabindex="-1" aria-hidden="true">Al Jazeera <b>The Stream</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-ajplus" tabindex="-1" aria-hidden="true"><b>AJ+</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-huffpost" tabindex="-1" aria-hidden="true">HuffPost <b>Live</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-fusion" tabindex="-1" aria-hidden="true">Fusion <b>ABC · Univision</b></a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-xge" tabindex="-1" aria-hidden="true"><b>Google</b> xGE</a><span class="dot" aria-hidden="true">/</span>
-    <a href="timeline.html#era-now" tabindex="-1" aria-hidden="true"><b>AI-native</b> production</a><span class="dot" aria-hidden="true">/</span>
+    <span>Al Jazeera <b>The Stream</b></span><span class="dot">/</span>
+    <span><b>AJ+</b></span><span class="dot">/</span>
+    <span>HuffPost <b>Live</b></span><span class="dot">/</span>
+    <span>Fusion <b>ABC · Univision</b></span><span class="dot">/</span>
+    <span><b>Google</b> xGE</span><span class="dot">/</span>
+    <span><b>AI-native</b> production</span><span class="dot">/</span>
+    <span>Al Jazeera <b>The Stream</b></span><span class="dot">/</span>
+    <span><b>AJ+</b></span><span class="dot">/</span>
+    <span>HuffPost <b>Live</b></span><span class="dot">/</span>
+    <span>Fusion <b>ABC · Univision</b></span><span class="dot">/</span>
+    <span><b>Google</b> xGE</span><span class="dot">/</span>
+    <span><b>AI-native</b> production</span><span class="dot">/</span>
   </div>
-</nav>
+</div>
 
 <section id="ai-native">
   <div class="wrap">
