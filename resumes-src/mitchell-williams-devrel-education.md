@@ -15,7 +15,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Projects
 
-**picture-lock** · Seven-stage AI video pipeline on the ElevenLabs stack: script in, produced and captioned short out. Live demo: a 53-second creative-directed short with a Spanish dub; $8.26 of logged cost carried by the artifacts in the cut, every API call logged to the committed run manifest. The repo README is the build walkthrough: quick-start in mock or live mode, a staged pipeline diagram, the full cost model, and a week-long adoption plan. Public at github.com/mitwilli-create/picture-lock.
+**PictureLock** · Seven-stage AI video pipeline on the ElevenLabs stack: script in, produced and captioned short out. Live demo: a 53-second creative-directed short with a Spanish dub; $8.26 of logged cost carried by the artifacts in the cut, every API call logged to the committed run manifest. The repo README is the build walkthrough: quick-start in mock or live mode, a staged pipeline diagram, the full cost model, and a week-long adoption plan. Public at github.com/mitwilli-create/picture-lock.
 
 **voice-os** · Six-axis voice scoring, dual-persona routing, and QA gates calibrated on a multi-million-word corpus; codified voice "Constitution" plus banned-phrase checker.
 

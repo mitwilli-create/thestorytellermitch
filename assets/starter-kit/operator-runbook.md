@@ -1,4 +1,4 @@
-# picture-lock operator runbook
+# PictureLock operator runbook
 Written for a producer, not an engineer. If you can write a script and read a folder, you can run this. The engineer who built the pipeline should not need to be in the room.
 
 Repo: https://github.com/mitwilli-create/picture-lock
