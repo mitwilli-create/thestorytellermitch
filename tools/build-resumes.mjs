@@ -39,7 +39,7 @@ const TERM_LINKS = [
   ['Communications-triage agent', '../comms-triage-agent.html'],
   ['comms-triage agent', '../comms-triage-agent.html'],
   ['comms-triage', '../comms-triage-agent.html'],
-  ['broll-pipeline', '../broll-pipeline.html'],
+  ['picture-lock', '../picture-lock.html'],
   ['content-ops', '../content-ops.html'],
   ['voice-os', '../voice-os.html'],
   ['career-ops', '../career-ops.html'],

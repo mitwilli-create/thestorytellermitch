@@ -96,7 +96,7 @@
     "reason": "YouTube 1080p ceiling on the start-here wide card (740x709 cell wants 1134px-tall source); regular cells pass at 2.26x"
   },
   {
-    "src": "assets/stills/illo-broll-machine-hd.jpg",
+    "src": "assets/stills/illo-picture-lock-machine-hd.jpg",
     "reason": "nano-banana-2 output at native 1446x1080; larger needs an art regeneration decision"
   },
   {
@@ -108,15 +108,15 @@
     "reason": "book cover scan, 400x604 is the source; renders 1.15x only at 390"
   },
   {
-    "src": "assets/broll-poster.jpg",
+    "src": "assets/picture-lock-poster.jpg",
     "reason": "pipeline output master is 1080x1920; the start-here wide card (740px cell) is its largest render; 1.46x is the source ceiling"
   },
   {
-    "src": "assets/broll-short-n16.mp4",
+    "src": "assets/picture-lock-short-n16.mp4",
     "reason": "pipeline output master is 1080x1920 vertical; index AI-native tile capped at the 7fr column (~635px, 1.70x); larger renders are the source ceiling"
   },
   {
-    "src": "assets/posters/home-broll.jpg",
+    "src": "assets/posters/home-picture-lock.jpg",
     "reason": "poster derived from the 1080-wide pipeline master; renders 1.89x in the capped AI-native tile"
   }
 ]

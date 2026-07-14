@@ -3,7 +3,7 @@
 // chosen still into the site's engraved-technical cinemagraph loop.
 // Recipe validated end-to-end on fit-cand-steps.jpg -> fill-fit2-loop
 // (2026-07-12): scdet seam 0.05 on a doubled clip, palette-check clean,
-// <1MB mp4/webm at 960w. Mirrors broll-pipeline's scripts/_fill-plates.mjs
+// <1MB mp4/webm at 960w. Mirrors picture-lock's scripts/_fill-plates.mjs
 // but parameterized by page/prompt so it works for any new page.
 //
 // Usage:

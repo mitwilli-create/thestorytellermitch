@@ -1,5 +1,5 @@
 {
- "_provenance": "Distilled from broll-pipeline output/run-manifest.json as committed in the public repo (run started 2026-07-09T02:50:17.107Z, 60 logged calls). Stage costs = live spend plus original cost carried by cached artifacts. Receipt line items sum to $8.26 and reconcile line for line against the committed manifest.",
+ "_provenance": "Distilled from picture-lock output/run-manifest.json as committed in the public repo (run started 2026-07-09T02:50:17.107Z, 60 logged calls). Stage costs = live spend plus original cost carried by cached artifacts. Receipt line items sum to $8.26 and reconcile line for line against the committed manifest.",
  "started": "2026-07-09T02:50:17.107Z",
  "script": "input/script.md",
  "totalCalls": 60,
