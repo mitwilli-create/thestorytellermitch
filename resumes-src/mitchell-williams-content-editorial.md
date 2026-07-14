@@ -38,7 +38,7 @@ Communications lead for the horizontal org that drives technical change across G
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** Comms-inbox intake consumed operator hours on low-complexity requests.
 - **Action:** Built and deployed an autonomous triage agent, documented end to end and handed off with a full operator runbook.
-- **Impact:** Designed to auto-handle ~55% of inbound requests without escalation (est.) and projected to recapture ~160 operator hours a year (est.).
+- **Impact:** Designed to auto-handle ~60% of inbound requests without escalation (est.) and projected to recapture ~160 operator hours a year (est.).
 
 #### xGE Connects, peer-led workshop series
 - **Problem:** Senior engineers' expertise was not reaching the tier below repeatably.

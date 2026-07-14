@@ -51,7 +51,7 @@ Communications lead and program manager for the internal org driving technical c
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** Senior-IC comms intake consumed operator hours on low-complexity requests.
 - **Action:** Built and deployed an autonomous three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing.
-- **Impact:** Designed to auto-handle roughly 55% of inbound requests without escalation (est.); documented end-to-end and handed off with a full operator runbook.
+- **Impact:** Designed to auto-handle roughly 60% of inbound requests without escalation (est.); documented end-to-end and handed off with a full operator runbook.
 
 ### Senior Communications & Content Strategist
 **Google · Corporate Engineering (TechStop)** | April 2018 – June 2024

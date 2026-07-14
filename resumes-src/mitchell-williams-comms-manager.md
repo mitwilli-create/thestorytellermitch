@@ -37,7 +37,7 @@ Communications lead and program manager for xGE, the horizontal org that drives 
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** High-volume comms intake consumed operator hours on low-complexity requests.
 - **Action:** Built and deployed an autonomous three-prompt pipeline (triage, revise in Smart Brevity, escalate) with knowledge-base loading and tiered routing.
-- **Impact:** Designed to auto-handle roughly 55% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full operator runbook.
+- **Impact:** Designed to auto-handle roughly 60% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full operator runbook.
 
 #### Approvals governance, cross-org scope
 - **Problem:** Cross-org technical mandates stalled without a clear approvals framework.
