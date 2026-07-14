@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260712e">
+  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
   <style>
     .sys-hero{padding:170px 0 96px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
@@ -49,9 +49,8 @@
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
-  <input type="checkbox" id="navcheck" class="nav-check" aria-label="Toggle navigation menu">
-  <label for="navcheck" class="nav-toggle"><span></span><span></span></label>
-  <div class="nav-links">
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html">AI Projects</a>
     <a href="resume.html">Resume</a>
@@ -125,7 +124,7 @@
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260711e"></script>
+<script src="shared/reveal.js?v=20260713b"></script>
 <script src="shared/audio.js?v=20260711c"></script>
 </body>
 </html>
