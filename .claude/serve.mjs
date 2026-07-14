@@ -25,4 +25,6 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(404).end('not found');
   }
-}).listen(8990, () => console.log('serving on http://localhost:8990'));
+}).listen(process.env.PORT ?? 8990, function () {
+  console.log(`serving on http://localhost:${this.address().port}`);
+});

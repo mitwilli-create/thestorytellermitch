@@ -11,7 +11,8 @@
       "name": "site-node",
       "runtimeExecutable": "node",
       "runtimeArgs": [".claude/serve.mjs"],
-      "port": 8990
+      "port": 8990,
+      "autoPort": true
     }
   ]
 }
