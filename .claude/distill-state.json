@@ -1,0 +1,53 @@
+{
+  "topic": "thestorytellermitch.com",
+  "generatedBy": "distill-session-preferences",
+  "lastRun": "2026-07-14",
+  "sourceWindow": { "days": 4, "sessionsScanned": 110, "signalCount": 68 },
+  "rules": [
+    {
+      "id": "6192d4f52c",
+      "text": "Motion/animation must read as one continuous, non-looping movement — no jump cuts, no visible loop point, and it should start animating the moment the viewer reaches it (no dead delay). When Mitchell flags an animation as blurry, jumpy, or \"not enough,\" the fix is smoother/longer continuous motion, not just a technical patch.",
+      "evidenceCount": 5,
+      "firstSeen": "2026-07-12",
+      "lastSeen": "2026-07-14",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "3f15fb07ee",
+      "text": "Break up any dense block of body text into smaller, scannable paragraphs — Mitchell corrects \"wall of text\" formatting on sight, on any page.",
+      "evidenceCount": 3,
+      "firstSeen": "2026-07-13",
+      "lastSeen": "2026-07-13",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "88e1f410c1",
+      "text": "Repeated UI elements (chips, cards, cell borders, hover states) must be visually consistent and must never overlap adjacent text or images. \"Cohesion\" is a recurring explicit ask — when one instance of a pattern has a treatment (e.g. a hover border), every instance should.",
+      "evidenceCount": 4,
+      "firstSeen": "2026-07-12",
+      "lastSeen": "2026-07-13",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "8c471591a0",
+      "text": "Run a fact-check / accuracy pass on copy before treating it as final — Mitchell has caught factually incorrect timeline pop-out text and redundant/ambiguous/misleading sentences after the fact. Prefer catching this proactively over waiting for correction.",
+      "evidenceCount": 3,
+      "firstSeen": "2026-07-11",
+      "lastSeen": "2026-07-14",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "7bd01f84ea",
+      "text": "Don't ship a section or page with dead/empty space, or a static region whose siblings have imagery or motion — fill empty space with an image or animation and match the treatment across the set. Mitchell repeatedly flags areas that \"read as empty\" or lack the animation their neighbors have.",
+      "evidenceCount": 4,
+      "firstSeen": "2026-07-11",
+      "lastSeen": "2026-07-14",
+      "status": "active",
+      "supersedes": []
+    }
+  ]
+}
