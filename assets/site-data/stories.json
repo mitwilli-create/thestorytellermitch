@@ -610,7 +610,7 @@
       "title": "The triage agent, handed off",
       "body": [
         "The comms intake at Google Cross-Google Engineering was high volume and judgment-heavy: requests from senior engineers landing faster than a human first-pass could honestly serve. Most of that first pass didn't need a human. It needed classification, a competent revision, and a clear rule for when to escalate. So I built the agent that does exactly that. Solo, inside the tools the team already ran on.",
-        "The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was built to auto-handle roughly 55 percent of inbound, and projected to recapture around 160 operational hours a year. Both were design targets I documented, not trophies I claimed.",
+        "The architecture is deliberately conservative: three sequential prompts, triage then revise then escalate, with a confidence threshold that routes anything the model is unsure about to a human instead of letting it guess. It was built to auto-handle roughly 60 percent of inbound, and projected to recapture around 160 operational hours a year. Both were design targets I documented, not trophies I claimed.",
         "The part I'm proudest of is the exit. I documented the system end to end and handed it off with a full operator runbook, so it belongs to the team, not to me. A sanitized public demo of the architecture lives on my GitHub.",
         "What it proves: I build systems that survive my own departure, and I report their numbers the way an engineer would. Targets as targets."
       ],
