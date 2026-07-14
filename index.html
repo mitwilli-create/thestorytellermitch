@@ -68,6 +68,11 @@
       align-items:center;gap:18px 40px;flex-wrap:wrap;padding-right:120px}
     .hero-lower .hero-cta{margin-top:0}
     .hero-lower .hero-routes{margin-top:0;max-width:none}
+    /* each current-search role links to its matching role on fit.html (which
+       opens that role from the hash); same link treatment as the router */
+    .hero-lower .f-v a{color:inherit;border-bottom:1px solid var(--line-2);
+      transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
+    .hero-lower .f-v a:hover{color:var(--bone);border-color:var(--blood-soft)}
     /* short desktop viewports: tighten the hero rhythm so the router strip
        clears the fold; every reviewer sees their lane in the first glance */
     @media(min-width:1121px) and (max-height:960px){
@@ -322,7 +327,7 @@
         <div class="hero-facts">
           <div class="fact-row">
             <span class="f-k">Current search</span>
-            <span class="f-v">Forward Deployed Creative · Content &amp; Editorial Leadership · Comms Leadership · DevRel &amp; Education</span>
+            <span class="f-v"><a href="fit.html#forward-deployed">Forward Deployed Creative</a> · <a href="fit.html#content-editorial">Content &amp; Editorial Leadership</a> · <a href="fit.html#comms-manager">Comms Leadership</a> · <a href="fit.html#devrel-education">DevRel &amp; Education</a></span>
           </div>
           <div class="fact-row">
             <span class="f-k">Core proof</span>
@@ -380,7 +385,6 @@
       </a>
     </div>
   </div>
-  <div class="scrollcue"><span>↓ &nbsp; Scroll</span></div>
 </header>
 
 <div class="marquee" aria-hidden="true">
