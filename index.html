@@ -216,11 +216,32 @@
     .ainative-grid > .film{grid-column:auto;aspect-ratio:16/9}
     @media(min-width:1024px){
       .ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
-      /* the tile fills its track and lets the video's cover-crop frame it;
+      /* the tile fills its track to stand the same height as the three cells;
          with an aspect-ratio here, stretch drives WIDTH across both columns
          once the cells column grows taller than 16/9 (found 2026-07-13:
-         the boxed cells made the film overlay and intercept their clicks) */
-      .ainative-grid > .film{grid-column:1;grid-row:1;aspect-ratio:auto;height:100%}
+         the boxed cells made the film overlay and intercept their clicks).
+         The explainer poster is a WIDE 16/9 receipt card (play window · the
+         $14.20 receipt · three chips edge to edge), so the old cover-crop into
+         this near-square box guillotined the receipt and magnified the grain
+         (cutoff + pixelated, fixed 2026-07-14). Rebuild the tile as the hero
+         PictureLock card's shape: the whole poster shown 16/9 (contain, so
+         nothing is cropped and it downscales sharp) in a frame up top, then a
+         caption panel fills the rest of the column height so no dead band is
+         left. The poster's own bg (#14130f) matches the tile, so the frame's
+         letterbox is seamless. */
+      .ainative-grid > .film{grid-column:1;grid-row:1;aspect-ratio:auto;height:100%;
+        background:#14130f;display:flex;flex-direction:column}
+      .ainative-grid > .film .ai-frame{position:relative;flex:1 1 auto;min-height:0;
+        display:block;overflow:hidden}
+      .ainative-grid > .film .thumb,
+      .ainative-grid > .film .preview{object-fit:contain;object-position:center}
+      /* the play affordance centers on the poster, not the whole column */
+      .ainative-grid > .film .meta{position:relative;left:auto;right:auto;bottom:auto;
+        z-index:1;flex:0 0 auto;background:none;padding:16px 22px 18px;
+        border-top:1px solid var(--line);display:flex;flex-direction:column;
+        justify-content:center;gap:5px}
+      .ainative-grid > .film .m-tag{display:block;font-family:'JetBrains Mono',monospace;
+        font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--blood-soft)}
       .ainative-grid .ai-cells{grid-column:2;grid-row:1}
     }
     /* second row: two playable spec pieces under the film + cells; the
@@ -459,9 +480,11 @@
          data-tag="Independent · AI-native · System Explainer · 2026" data-title="Every claim links to a source" data-sub="The 94-second site explainer: the newsroom rules this site runs on, the seven-stage pipeline behind the flagship film, and the gates that check the whole site, narrated by the cloned voice it describes."
          data-poster="assets/picture-lock-explainer-poster.jpg" data-local="assets/picture-lock-explainer.mp4" data-stream-id="" data-vtt="assets/picture-lock-explainer.vtt" data-case="picture-lock.html"
          aria-label="Play the 94-second site explainer">
-        <img class="thumb" src="assets/picture-lock-explainer-poster.jpg" alt="The site explainer opens on its receipt: the film on this page cost $14.20" loading="lazy" decoding="async">
-        <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/picture-lock-explainer.mp4" poster="assets/picture-lock-explainer-poster.jpg"></video>
-        <div class="play-o"></div>
+        <div class="ai-frame">
+          <img class="thumb" src="assets/picture-lock-explainer-poster.jpg" alt="The site explainer opens on its receipt: the film on this page cost $14.20" loading="lazy" decoding="async">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/picture-lock-explainer.mp4" poster="assets/picture-lock-explainer-poster.jpg"></video>
+          <div class="play-o"></div>
+        </div>
         <div class="meta">
           <div class="m-tag">AI-native · system explainer</div>
           <div class="m-title">Every claim links to a source</div>
