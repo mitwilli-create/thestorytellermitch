@@ -213,15 +213,25 @@
     .ainative-grid{display:grid;gap:32px}
     /* the tile reuses .film.wide, whose span-4 belongs to the old film-grid;
        inside this two-column grid it must occupy exactly one cell */
-    .ainative-grid .film{grid-column:auto;aspect-ratio:16/9}
+    .ainative-grid > .film{grid-column:auto;aspect-ratio:16/9}
     @media(min-width:1024px){
       .ainative-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
       /* the tile fills its track and lets the video's cover-crop frame it;
          with an aspect-ratio here, stretch drives WIDTH across both columns
          once the cells column grows taller than 16/9 (found 2026-07-13:
          the boxed cells made the film overlay and intercept their clicks) */
-      .ainative-grid .film{grid-column:1;grid-row:1;aspect-ratio:auto;height:100%}
+      .ainative-grid > .film{grid-column:1;grid-row:1;aspect-ratio:auto;height:100%}
       .ainative-grid .ai-cells{grid-column:2;grid-row:1}
+    }
+    /* second row: two playable spec pieces under the film + cells; the
+       MERIDIEM master keeps its true vertical 9/16 frame beside the 16/9
+       audio edition (76/24 split ≈ equal heights at desktop) */
+    .ai-films{grid-column:1/-1;display:grid;gap:32px}
+    .ai-films .film{aspect-ratio:16/9}
+    .ai-films .film.vert{aspect-ratio:9/16;width:100%;max-width:min(380px,80vw);justify-self:center}
+    @media(min-width:1024px){
+      .ai-films{grid-template-columns:minmax(0,76fr) minmax(0,24fr);align-items:stretch}
+      .ai-films .film.vert{aspect-ratio:auto;height:100%;max-width:none;justify-self:stretch}
     }
     /* index-09 (2026-07-13): the three practice cells become whole-tile
        anchors in the comms-page a.etile idiom: boxed, hover-lifted, one
@@ -478,6 +488,34 @@
           <span class="c-b">The gates this site ships through, and the record of every round.</span>
           <span class="c-r">the ledger is public · every row dated</span>
           <span class="c-go">the standing gates</span>
+        </a>
+      </div>
+      <div class="ai-films">
+        <a class="film reveal" href="work.html#play-bundlec-article-to-audience-2026"
+           data-clip="bundlec-article-to-audience-2026" data-tag="Independent · AI-native · Audio Edition Demo · 2026"
+           data-title="Article to Audience · brief in, branded audio edition out" data-sub="A 70-word metro brief becomes a branded audio edition: one publication voice, captions verified word by word against the audio, an original underscore, then the same piece switches to Spanish with the read intact."
+           data-poster="assets/bundlec-article-poster.jpg" data-stream-id="" data-local="assets/bundlec-article-to-audience.mp4" data-case="docs/bundle-c-flow-article-to-audio-edition.html">
+          <img class="thumb" src="assets/bundlec-article-poster.jpg" alt="Article to Audience audio edition demo" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/bundlec-article-to-audience.mp4" poster="assets/bundlec-article-poster.jpg"></video>
+          <div class="play-o"></div>
+          <div class="meta">
+            <div class="m-tag">AI-native · audio edition</div>
+            <div class="m-title">Article to Audience · brief in, branded audio edition out</div>
+            <div class="m-stat">44s · $0.38 of logged API calls</div>
+          </div>
+        </a>
+        <a class="film vert reveal" href="work.html#play-bundleb-meridiem-es-2026"
+           data-clip="bundleb-meridiem-es-2026" data-tag="Independent · AI-native · Spec Spot · 2026"
+           data-title="MERIDIEM · one script, seven markets" data-sub="The 35-second Spanish master for a fictional canned Spanish white wine. It exports to six more markets in the same cloned brand voice, compliance-tiered where alcohol rules demand it."
+           data-poster="assets/bundleb-spot-es-poster.jpg" data-stream-id="" data-local="assets/bundleb-spot-es.mp4" data-case="docs/bundle-b-market-cuts.html">
+          <img class="thumb" src="assets/bundleb-spot-es-poster.jpg" alt="MERIDIEM spec spot, Spanish master" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/bundleb-spot-es.mp4" poster="assets/bundleb-spot-es-poster.jpg"></video>
+          <div class="play-o"></div>
+          <div class="meta">
+            <div class="m-tag">AI-native · spec spot</div>
+            <div class="m-title">MERIDIEM · one script, seven markets</div>
+            <div class="m-stat">35s master · $4.13 of logged generation</div>
+          </div>
         </a>
       </div>
     </div>

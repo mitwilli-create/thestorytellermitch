@@ -143,6 +143,56 @@
       "startHereWhy": "The job in one artifact: voice, music, sound, and a Spanish dub on the ElevenLabs stack, $8.26 of logged cost carried by the artifacts in the cut, every call receipted in the committed manifest."
     },
     {
+      "slug": "bundleb-meridiem-es-2026",
+      "published": true,
+      "bucket": "ai-native",
+      "outlet": "independent",
+      "outletLabel": "Independent · AI-native",
+      "year": "2026",
+      "era": "2019-2026",
+      "type": "Spec Spot",
+      "title": "MERIDIEM · one script, seven markets",
+      "subtitle": "The 35-second Spanish master for a fictional canned Spanish white wine. It exports to six more markets in the same cloned brand voice, compliance-tiered where alcohol rules demand it. $4.13 of logged generation.",
+      "duration": "35s",
+      "durationSec": 35,
+      "poster": "assets/bundleb-spot-es-poster.jpg",
+      "hoverPreview": "assets/bundleb-spot-es.mp4",
+      "previewStart": 0,
+      "media": {
+        "local": "assets/bundleb-spot-es.mp4",
+        "streamId": null,
+        "youtubeId": null
+      },
+      "startHere": false,
+      "caseStudy": "docs/bundle-b-market-cuts.html",
+      "sourceFile": null
+    },
+    {
+      "slug": "bundlec-article-to-audience-2026",
+      "published": true,
+      "bucket": "ai-native",
+      "outlet": "independent",
+      "outletLabel": "Independent · AI-native",
+      "year": "2026",
+      "era": "2019-2026",
+      "type": "Audio Edition Demo",
+      "title": "Article to Audience · brief in, branded audio edition out",
+      "subtitle": "A 70-word metro brief becomes a branded audio edition: one publication voice, captions verified word by word against the audio, an original underscore, then the same piece switches to Spanish with the read intact. $0.38 of logged API calls.",
+      "duration": "44s",
+      "durationSec": 44,
+      "poster": "assets/bundlec-article-poster.jpg",
+      "hoverPreview": "assets/bundlec-article-to-audience.mp4",
+      "previewStart": 0,
+      "media": {
+        "local": "assets/bundlec-article-to-audience.mp4",
+        "streamId": null,
+        "youtubeId": null
+      },
+      "startHere": false,
+      "caseStudy": "docs/bundle-c-flow-article-to-audio-edition.html",
+      "sourceFile": null
+    },
+    {
       "slug": "aje-stream-2010-a-look-into-islams-holy-pilgrimage",
       "published": true,
       "bucket": "interviews-panels",
