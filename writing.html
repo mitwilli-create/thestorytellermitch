@@ -13,18 +13,41 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="shared/theme.css?v=20260713b">
   <style>
-    /* writing-02 (layout half): hero reserves bottom room for the featured
-       essay card that overlaps its lower-right edge */
-    .wr-hero{padding:170px 0 120px;border-bottom:1px solid var(--line)}
+    .wr-hero{padding:170px 0 84px;border-bottom:1px solid var(--line)}
     .wr-hero .display{font-size:clamp(38px,6.2vw,88px)}
     .wr-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
     section{padding:76px 0}
-    .feat-essay{position:relative;z-index:2;max-width:560px;margin:-96px 0 72px auto;
-      background:var(--surface);border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);
-      padding:28px 30px}
-    .feat-essay .art-title{font-size:clamp(22px,2.4vw,28px)}
-    .feat-essay .art-intro{margin-bottom:0}
-    /* writing-01: essays + script left, redacted docs right with an 8vh offset */
+    /* essays: uniform equal-weight card grid, baked by tools/substack-sync.mjs */
+    .essays-rubric{max-width:720px;font-size:15.5px;color:var(--bone-soft);line-height:1.65;margin:0 0 30px}
+    /* two-up on desktop: fills cleanly at the current essay count and grows
+       as rows of two (a 3-up grid would leave an empty trailing cell until
+       the weekly series catches up) */
+    .essay-cards{display:grid;grid-template-columns:1fr;gap:16px;max-width:768px}
+    @media(min-width:600px){.essay-cards{grid-template-columns:1fr 1fr}}
+    .ecard{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+      padding:22px 22px 20px;display:flex;flex-direction:column;gap:11px;min-height:212px;
+      transition:border-color .3s var(--ease),transform .4s var(--ease)}
+    .ecard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .ecard:focus-visible{border-color:var(--blood-soft);outline:none}
+    .ec-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .ec-t{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;color:var(--bone);line-height:1.2;
+      display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .ec-d{font-size:13.5px;color:var(--mute);line-height:1.6;
+      display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .ec-cta{margin-top:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--bone);transition:color var(--dur-micro) var(--ease-micro)}
+    .ecard:hover .ec-cta{color:var(--blood-soft)}
+    .essay-more{margin-top:16px;max-width:768px}
+    .essay-more summary{list-style:none;cursor:pointer;font-family:'JetBrains Mono',monospace;
+      font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blood-soft);padding:8px 0}
+    .essay-more summary::-webkit-details-marker{display:none}
+    .essay-more summary::before{content:'+ '}
+    .essay-more[open] summary::before{content:'- '}
+    .essay-more summary:hover{color:var(--bone)}
+    .essay-more summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .essay-more .essay-cards{margin-top:14px}
+    /* writing-01: script left, redacted docs right with an 8vh offset */
     .wr-grid{display:grid;grid-template-columns:1fr}
     @media(min-width:1024px){
       .wr-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 72px}
@@ -33,21 +56,12 @@
     }
     @media(max-width:1023px){
       .wr-hero{padding-bottom:56px}
-      .feat-essay{margin:48px 0 0;max-width:100%}
       .wr-col-docs{margin-top:76px}
     }
-    /* earlier essays: baked by tools/substack-sync.mjs */
-    .essay-list{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-bottom:36px}
-    .el-row{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
-    .el-row .el-d{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--dim);min-width:96px}
-    .el-row .el-t{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:var(--bone-soft);line-height:1.3;
-      transition:color var(--dur-micro) var(--ease-micro)}
-    .el-row:hover .el-t{color:var(--blood-soft)}
     /* writing-03: pull-quote band (pattern from stories.html .pull) */
     .pull{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);
       line-height:1.25;letter-spacing:-0.01em;color:var(--bone);border-left:2px solid var(--blood-soft);
-      padding:8px 0 8px 24px;margin:0 0 44px}
+      padding:8px 0 8px 24px;margin:0 0 32px}
     #redacted-docs{scroll-margin-top:86px}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
@@ -87,11 +101,6 @@
     .dcard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--bone);display:block;margin-bottom:8px;line-height:1.25}
     .dcard .dc-b{font-size:13.5px;color:var(--mute);line-height:1.6;display:block}
     .dcard .dc-b a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .slot{border:1px dashed var(--line);padding:28px;max-width:760px}
-    .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
-      text-transform:uppercase;color:var(--mute);margin-bottom:12px}
-    .slot p{font-size:15.5px;color:var(--bone-soft);line-height:1.65}
-    .slot a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     @media(max-width:860px){
       .wr-hero{padding:130px 0 40px}
       .script{padding:24px 22px}
@@ -109,6 +118,7 @@
   <div class="nav-links" id="nav-links">
     <a href="fit.html">Role Fit</a>
     <a href="projects.html">AI Projects</a>
+    <a href="writing.html" aria-current="page">Writing</a>
     <a href="resume.html">Resume</a>
     <a href="comms.html">Comms &amp; Editorial</a>
     <a href="work.html">Reel</a>
@@ -130,39 +140,45 @@
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Nothing in this room is invented for display. What ships here is writing that actually ran: published scripts exactly as they were broadcast, internal documentation from both Google roles published with redaction rather than reconstruction, public technical writing from the repos, and essays as they publish. Executive client work stays internal: described on the comms page, never excerpted.</p>
+    <p class="wr-sub">Nothing in this room is invented for display. What ships here is writing that actually ran. Scripts appear exactly as broadcast. Internal Google documents are published with redaction, not reconstruction. Public technical writing links to the repos, and essays appear the day they publish. Executive client work stays internal: described on the comms page, never excerpted.</p>
   </div>
 </header>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <!-- WRITING:FEAT:START -->
-    <div class="feat-essay reveal">
-      <div class="art-label">Essay · Substack · July 2026 · #02 in the weekly series</div>
-      <div class="art-title">I Engineered a VP's Voice. The AI Infrastructure Industry Could Learn a Thing or Two.</div>
-      <p class="art-intro">I spent months building a system that writes like one specific leader. The hard part wasn't the writing, it was learning how she decides. At Google, I built a response system for a vice president. Not a chatbot with her … <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" rel="noopener">Read it on Substack.</a></p>
-    </div>
-    <!-- WRITING:FEAT:END -->
-    <div class="wr-grid">
-    <div class="wr-col-essays">
     <h2 class="mini reveal">Essays · weekly</h2>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
-    <!-- WRITING:LIST:START -->
-    <div class="essay-list reveal">
-      <a class="el-row" href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" rel="noopener"><span class="el-d">Jul 9, 2026</span><span class="el-t">What Do AI Employees Know About Using LLMs That I Don't?</span></a>
+    <p class="essays-rubric reveal">New long-form writing on AI-native production, executive communications, and what newsrooms teach about both. Each essay is linked here the day it publishes.</p>
+    <!-- WRITING:CARDS:START -->
+    <div class="essay-cards reveal">
+      <a class="ecard" href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" rel="noopener">
+        <span class="ec-k">Essay · Substack · Jul 2026 · #02</span>
+        <strong class="ec-t">I Engineered a VP's Voice. The AI Infrastructure Industry Could Learn a Thing or Two.</strong>
+        <span class="ec-d">I spent months building a system that writes like one specific leader. The hard part wasn't the writing, it was learning how she decides. At Google, I built a response system for a vice president. Not a chatbot with her …</span>
+        <span class="ec-cta">Read on Substack &#8599;</span>
+      </a>
+      <a class="ecard" href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" rel="noopener">
+        <span class="ec-k">Essay · Substack · Jul 2026 · #01</span>
+        <strong class="ec-t">What Do AI Employees Know About Using LLMs That I Don't?</strong>
+        <span class="ec-d">Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude. So when someone at the AI Engineer World's Fair asked him how he actually uses …</span>
+        <span class="ec-cta">Read on Substack &#8599;</span>
+      </a>
     </div>
-    <!-- WRITING:LIST:END -->
-    <div class="slot reveal">
-      <div class="sl-k">Substack · new essays weekly</div>
-      <p>New long-form writing lands here every week: AI-native production, executive communications, and what newsrooms teach you about both. Each essay gets linked from this room the day it publishes.</p>
-    </div>
-    <figure class="oncam oncam--card reveal" style="margin:56px 0">
+    <!-- WRITING:CARDS:END -->
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="wr-grid">
+    <div class="wr-col-script">
+    <figure class="oncam oncam--card reveal" style="margin:0 0 40px">
       <img src="assets/stills/oncam/barenec-130.jpg" alt="Mitchell Williams field-interviewing with a Fusion microphone on location" loading="lazy">
       <figcaption class="oncam-cap">fusion. on location, mic in hand.</figcaption>
     </figure>
     <div class="artifact">
       <div class="art-label reveal">Public record · Al Jazeera's AJ+ · 2017 · script as broadcast</div>
-      <div class="art-title reveal">The measles script: 50 million views in 125 seconds</div>
+      <div class="art-title reveal">The measles script: 125 seconds, 50 million views</div>
       <p class="art-intro reveal">This is the script of my biggest piece, word for word as it was broadcast. Policy journalism built for a two-minute social window: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch it in the archive</a> and read along.</p>
       <div class="script reveal">
         <div class="d-k">Script · 2 minutes 5 seconds · as broadcast</div>
