@@ -68,7 +68,7 @@ Owned documentation, self-help articles, and onboarding content for Google's int
 - **Action:** Audited the self-help content corpus and rewrote the highest-traffic, lowest-solve articles.
 - **Impact:** Lifted self-service solvability 9.03%, roughly 10,670 fewer tickets per year.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of developer education: complex systems explained under constraint, to a skeptical audience, with no room for hand-waving.**
 

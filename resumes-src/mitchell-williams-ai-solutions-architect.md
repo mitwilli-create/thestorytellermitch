@@ -74,7 +74,7 @@ Owned communications and content enabling technical outcomes for a global, mixed
 - **Action:** Audited the self-help corpus and rewrote the highest-traffic, lowest-solve articles.
 - **Impact:** Self-service solvability up 9.03%, roughly 10,670 fewer tickets per year.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of solutions architecture: messy human requirements translated, live and under deadline, into boundaries a system can hold.**
 

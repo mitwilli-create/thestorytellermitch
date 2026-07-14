@@ -7,7 +7,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Summary
 
-**I build and run governance programs for technical organizations: the gates, intake cadences, and source-of-truth frameworks that move cross-org mandates from stalled to approved.** The arc runs journalist to communications and content strategist to applied-AI builder; a live rundown is a program plan with zero slack, and sixteen years of newsroom and Google deadlines built that discipline.
+**I build and run governance programs for technical organizations: the gates, intake cadences, and source-of-truth frameworks that move cross-org mandates from stalled to approved.** The arc runs journalist to communications and content strategist to applied-AI builder; a live rundown is a program plan with zero slack, and eighteen years of newsroom and Google deadlines built that discipline.
 
 **Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:** the approvals governance gate, the intake prioritization sequencing a concurrent-mandate portfolio, the senior-IC program cadence, and production AI agents, including a digital twin that cut VP review cycles by about 70% (internal, self-measured).
 
@@ -79,7 +79,7 @@ Repos public at github.com/mitwilli-create.
 
 **tax-verification-agent** · Citation-gated verification over a four-layer IRS knowledge base on Claude; caught a ~$19K multi-state error that filing software pre-filled and defended as correct.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of governance under deadline: intake, sequence, gate, ship, every day at air time.**
 

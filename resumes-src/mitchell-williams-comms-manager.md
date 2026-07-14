@@ -74,7 +74,7 @@ Code public at github.com/mitwilli-create.
 
 **career-ops** · Extended an open-source pipeline into a cost-governed multi-agent system: 52 scheduled agents, Claude Code skills and MCP servers, live operations dashboard. CI-green; public on GitHub.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of product and technical communications: the message lands the first time, under deadline, in the principal's voice.**
 

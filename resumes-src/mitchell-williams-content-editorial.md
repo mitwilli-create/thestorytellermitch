@@ -65,7 +65,7 @@ Owned the communications and content (documentation, self-help, onboarding, vide
 - **Action:** Overhauled it into a self-service curriculum a new hire completes without a facilitator.
 - **Impact:** Delivered to 75,000+ new hires at an 88% CSAT score.
 
-## Earlier Career: Live National News (2010 – 2018)
+## Earlier Career: Live National News (2007 – 2018)
 
 **The engine of live news is the engine of internal storytelling:** the message lands the first time, under deadline, in the voice of the person whose name carries it.
 
