@@ -76,11 +76,11 @@ function parseItems(xml) {
 }
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const label = (iso, num) => {
+// compact card label, e.g. "Essay · Substack · Jul 2026 · #02"
+const cardLabel = (iso, num) => {
   const d = iso ? new Date(iso) : new Date();
-  return `Essay · Substack · ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()} · #${String(num).padStart(2, '0')} in the weekly series`;
+  return `Essay · Substack · ${MONTHS[d.getUTCMonth()].slice(0, 3)} ${d.getUTCFullYear()} · #${String(num).padStart(2, '0')}`;
 };
-const short = (iso) => { const d = new Date(iso); return `${MONTHS[d.getUTCMonth()].slice(0,3)} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
 
 function splice(src, re, replacement, what) {
   if (!re.test(src)) throw new Error(`substack-sync: ${what} not found in writing.html: refusing to write a stale bake`);
@@ -146,26 +146,35 @@ async function main() {
     } catch { /* unparseable previous json: fall through and rewrite */ }
   }
 
-  const feat = posts[0];
-  const featHtml = `<!-- WRITING:FEAT:START -->
-    <div class="feat-essay reveal">
-      <div class="art-label">${esc(label(feat.date, feat.num))}</div>
-      <div class="art-title">${esc(feat.title)}</div>
-      <p class="art-intro">${esc(feat.excerpt)} <a href="${esc(feat.link)}" rel="noopener">Read it on Substack.</a></p>
-    </div>
-    <!-- WRITING:FEAT:END -->`;
-  const rest = posts.slice(1);
-  const listHtml = `<!-- WRITING:LIST:START -->${rest.length ? `
-    <div class="essay-list reveal">
-${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener"><span class="el-d">${esc(p.date ? short(p.date) : '')}</span><span class="el-t">${esc(p.title)}</span></a>`).join('\n')}
-    </div>
-    ` : '\n    '}<!-- WRITING:LIST:END -->`;
+  // uniform equal-weight essay cards, newest first. The newest VISIBLE_CARDS
+  // stay in the open grid; any older essays fold into a native <details>
+  // disclosure so the section stays finite and scannable as the weekly
+  // series grows (no infinite scroll).
+  const VISIBLE_CARDS = 6;
+  const card = (p) => `      <a class="ecard" href="${esc(p.link)}" target="_blank" rel="noopener">
+        <span class="ec-k">${esc(cardLabel(p.date, p.num))}</span>
+        <strong class="ec-t">${esc(p.title)}</strong>
+        <span class="ec-d">${esc(p.excerpt)}</span>
+        <span class="ec-cta">Read on Substack &#8599;</span>
+      </a>`;
+  const head = posts.slice(0, VISIBLE_CARDS);
+  const tail = posts.slice(VISIBLE_CARDS);
+  const cardsHtml = `<!-- WRITING:CARDS:START -->
+    <div class="essay-cards reveal">
+${head.map(card).join('\n')}
+    </div>${tail.length ? `
+    <details class="essay-more reveal">
+      <summary>Show older essays (${tail.length})</summary>
+      <div class="essay-cards">
+${tail.map(card).join('\n')}
+      </div>
+    </details>` : ''}
+    <!-- WRITING:CARDS:END -->`;
 
   // splice first, persist after: a missing marker throws before either
   // file is touched, so json and page can never go inconsistent
   let page = readFileSync(PAGE, 'utf8');
-  page = splice(page, /<!-- WRITING:FEAT:START -->[\s\S]*?<!-- WRITING:FEAT:END -->/, featHtml, 'WRITING:FEAT markers');
-  page = splice(page, /<!-- WRITING:LIST:START -->[\s\S]*?<!-- WRITING:LIST:END -->/, listHtml, 'WRITING:LIST markers');
+  page = splice(page, /<!-- WRITING:CARDS:START -->[\s\S]*?<!-- WRITING:CARDS:END -->/, cardsHtml, 'WRITING:CARDS markers');
   // best-effort pair consistency: each artifact lands via temp+rename
   // (atomic per file), the page renames first, and a failed second
   // rename restores the page from its snapshot. A torn state remains
@@ -185,7 +194,7 @@ ${rest.map((p) => `      <a class="el-row" href="${esc(p.link)}" rel="noopener">
     renameSync(pageBak, PAGE); // rollback is itself an atomic rename
     throw e;
   }
-  console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (featured: ${feat.title})`);
+  console.log(`substack-sync: baked ${posts.length} post${posts.length === 1 ? '' : 's'} (newest: ${posts[0].title})`);
 }
 
 // template regressions (missing markers) exit 1 so deploy.sh logs them
