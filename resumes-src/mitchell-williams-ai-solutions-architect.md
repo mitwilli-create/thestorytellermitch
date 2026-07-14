@@ -25,7 +25,7 @@ Repos public at github.com/mitwilli-create.
 
 **career-ops** · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, 52 scheduled agents, 1,150+ scored role reports, live dashboard under a unified spend cap. CI-green; public on GitHub.
 
-**picture-lock** · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short with a Spanish dub; the committed run manifest carries $8.26 for the artifacts in the cut, every call logged.
+**PictureLock** · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short with a Spanish dub; the committed run manifest carries $8.26 for the artifacts in the cut, every call logged.
 
 ## Fit for AI Solutions Architecture
 
