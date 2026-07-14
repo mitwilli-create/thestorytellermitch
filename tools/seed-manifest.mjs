@@ -85,7 +85,7 @@ const DROPPED_DUPES = new Set([
   'AJP_2017_Truvada-PrEP-Not-Just-For-Gay-Men_Short-Cut_7m26s.mp4',
 ]);
 
-// Curated Start-here row (broll tile is rank 1, added below).
+// Curated Start-here row (picture-lock tile is rank 1, added below).
 const START_HERE = {
   'AJP_2017_Measles-Outbreaks-USA-VIRAL-50M-Views_Social-Video_2m5s.mp4': 2,
   'AJE-STREAM_2011_Global-Reactions-Bin-Laden-Death-Bahrain_Live-Coverage_45m11s.mp4': 3,
@@ -173,14 +173,16 @@ const clips = inventory.filter((row) => !DROPPED_DUPES.has(row.file)).map((row) 
 });
 
 // Carry over prior manifest clips that are NOT derived from the inventory
-// (broll flagship, YouTube embeds) so hand-added entries survive re-seeds.
+// (picture-lock flagship, YouTube embeds) so hand-added entries survive re-seeds.
 for (const prev of prior?.clips ?? []) {
   if (!prev.sourceFile && !clips.some((c) => c.slug === prev.slug)) clips.push(prev);
 }
 
-// broll pipeline flagship tile (assets already in repo; case-study child page)
-if (!clips.some((c) => c.slug === 'broll-pipeline-2026')) {
-  clips.unshift({
+// picture-lock flagship tile (assets already in repo; case-study child page).
+// Upserted: paths and copy refresh on every re-seed, while curated playback
+// ids (streamId/youtubeId) on an existing entry are preserved.
+{
+  const flagship = {
     slug: 'broll-pipeline-2026',
     published: true,
     bucket: 'ai-native',
@@ -190,18 +192,25 @@ if (!clips.some((c) => c.slug === 'broll-pipeline-2026')) {
     era: '2022-2023',
     type: 'AI Pipeline Demo',
     title: 'One script in, a produced short out',
-    subtitle: 'The broll pipeline: seven stages, ElevenLabs stack, every call logged',
+    subtitle: 'picture-lock: seven stages, ElevenLabs stack, every call logged',
     duration: '0m15s',
     durationSec: 15,
-    poster: 'assets/broll-poster.jpg',
-    hoverPreview: 'assets/broll-short.mp4',
+    poster: 'assets/picture-lock-poster.jpg',
+    hoverPreview: 'assets/picture-lock-short.mp4',
     previewStart: 0,
-    media: { local: 'assets/broll-short.mp4', streamId: null, youtubeId: null },
+    media: { local: 'assets/picture-lock-short.mp4', streamId: null, youtubeId: null },
     startHere: true,
     startHereRank: 1,
-    caseStudy: 'broll-pipeline.html',
+    caseStudy: 'picture-lock.html',
     sourceFile: null,
-  });
+  };
+  const i = clips.findIndex((c) => c.slug === flagship.slug);
+  if (i === -1) {
+    clips.unshift(flagship);
+  } else {
+    const prev = clips[i];
+    clips[i] = { ...prev, ...flagship, media: { ...flagship.media, streamId: prev.media?.streamId ?? null, youtubeId: prev.media?.youtubeId ?? null } };
+  }
 }
 
 const manifest = {

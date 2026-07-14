@@ -16,7 +16,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 ## Selected Builds
 
 - **tax-verification-agent** · Citation-gated verification on Claude over a four-layer IRS knowledge base; every claim cites its source or surfaces as a placeholder. Caught a ~$19K multi-state error that filing software pre-filled and defended as correct. Public on GitHub.
-- **broll-pipeline** · Seven-stage script-to-short creative-AI pipeline in Node and ffmpeg on the ElevenLabs stack; every API call logs to a committed run manifest. Live demo: a 53-second creative-directed short plus Spanish dub; the artifacts in the cut carry $8.26 of logged cost in the committed run manifest. Public on GitHub.
+- **picture-lock** · Seven-stage script-to-short creative-AI pipeline in Node and ffmpeg on the ElevenLabs stack; every API call logs to a committed run manifest. Live demo: a 53-second creative-directed short plus Spanish dub; the artifacts in the cut carry $8.26 of logged cost in the committed run manifest. Public on GitHub.
 - **career-ops** · Cost-governed multi-agent system, dozens of automations operated daily: multi-LLM council with dealbreaker adjudication, autonomous regression-guard and bug-resolver pipeline, Claude Code skills and MCP servers, live operations dashboard. CI-green, test-covered.
 - **Executive digital twin (Google xGE)** · Gemini agent with a voice "Constitution" plus a banned-phrase verification checklist; drafted high-stakes VP communications, cutting review back-and-forth with the VP by about 70% (internal, self-measured). voice-os, its public personal descendant, is on GitHub.
 

@@ -2,7 +2,7 @@
 // Generate 4s silent hover-preview loops for Start-here clips only.
 // Reads previewStart per clip; writes assets/previews/<slug>.mp4 and sets
 // hoverPreview in clips.json. Skips clips whose media.local is not under media/
-// (e.g. the broll tile, which already ships its own short as the preview).
+// (e.g. the picture-lock tile, which already ships its own short as the preview).
 import { readFileSync, writeFileSync, existsSync, statSync, mkdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { resolve, dirname } from 'node:path';

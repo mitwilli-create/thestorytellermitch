@@ -201,7 +201,7 @@
       .hero-sys{transition:opacity 500ms var(--ease) .7s,border-color var(--dur-micro) var(--ease-micro)}
     }
     /* hero card joins the hub-card morph family: clicking through to
-       broll-pipeline morphs the machine plate into the case hero illo */
+       picture-lock morphs the machine plate into the case hero illo */
     @view-transition{navigation:auto}
     .nav{view-transition-name:site-nav}
     ::view-transition-old(root){animation:vt-out 280ms var(--ease-exit) both}
@@ -276,12 +276,12 @@
           <a href="resume.html">All seven lanes</a>
         </nav>
       </div>
-      <a class="hero-sys" href="broll-pipeline.html" aria-label="broll-pipeline breakdown: one script in, a produced short out, every API call costed">
+      <a class="hero-sys" href="picture-lock.html" aria-label="picture-lock breakdown: one script in, a produced short out, every API call costed">
         <div class="cine sys-cine" data-cine="assets/cinemagraphs/hero-machine-plate-loop" data-cine-m="assets/cinemagraphs/hero-machine-plate-loop-m">
-          <img class="sys-illo" src="assets/stills/hero-machine-plate-hd.jpg" width="1446" height="1080" alt="Exploded technical illustration of the broll-pipeline as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." fetchpriority="high">
+          <img class="sys-illo" src="assets/stills/hero-machine-plate-hd.jpg" width="1446" height="1080" alt="Exploded technical illustration of the picture-lock as a machine: a script feeds in, seven chambers process voice, film, score, and sound, and a finished short comes out." fetchpriority="high">
         </div>
         <div class="sys-body">
-          <div class="sys-k"><span>broll-pipeline</span><span class="r">run receipt $8.26</span></div>
+          <div class="sys-k"><span>picture-lock</span><span class="r">run receipt $8.26</span></div>
           <pre class="sys-diagram" aria-hidden="true"><span class="n">input/script.md</span>
   <span class="d">│</span>  parse <span class="d">→</span> beats
   <span class="d">├─▶</span> <span class="n">voiceover</span>  <span class="a">ElevenLabs TTS</span>
@@ -337,11 +337,11 @@
 
     <div class="ainative-grid">
       <!-- Real, playable: the ElevenLabs pipeline output -->
-      <a class="film wide reveal" href="broll-pipeline.html">
-        <video src="assets/broll-short-n16.mp4" poster="assets/posters/home-broll.jpg" muted loop playsinline preload="metadata"></video>
+      <a class="film wide reveal" href="picture-lock.html">
+        <video src="assets/picture-lock-short-n16.mp4" poster="assets/posters/home-picture-lock.jpg" muted loop playsinline preload="metadata"></video>
         <div class="meta">
           <div class="m-tag">AI-native · ElevenLabs stack</div>
-          <div class="m-title">broll-pipeline · script to produced short</div>
+          <div class="m-title">picture-lock · script to produced short</div>
           <div class="m-stat">Voice · music · sound · dub, orchestrated and costed →</div>
         </div>
       </a>
@@ -508,8 +508,8 @@
 <script src="shared/clipplay.js?v=20260712b"></script>
 <script>
   // name the hero machine plate at click time so the cross-document
-  // transition morphs it into broll-pipeline's case hero illo
-  document.querySelectorAll('a.hero-sys[href="broll-pipeline.html"]').forEach((a)=>{
+  // transition morphs it into picture-lock's case hero illo
+  document.querySelectorAll('a.hero-sys[href="picture-lock.html"]').forEach((a)=>{
     a.addEventListener('click',()=>{
       const fig=a.querySelector('.sys-cine');
       if(fig) fig.style.viewTransitionName='proj-illo';
@@ -543,7 +543,7 @@
     __sound.sub(on=>{ if(on) bed(); });
     if(__sound.on) bed();
   }
-  // hover-play the broll tile (real src, no .preview class); the journalism
+  // hover-play the picture-lock tile (real src, no .preview class); the journalism
   // tiles' hover previews and click-to-theater are wired by clipplay.js.
   document.querySelectorAll('.film video:not(.preview)').forEach(v=>{
     const c=v.closest('.film');

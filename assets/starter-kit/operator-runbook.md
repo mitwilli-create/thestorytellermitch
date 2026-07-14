@@ -1,14 +1,14 @@
-# broll-pipeline operator runbook
+# picture-lock operator runbook
 Written for a producer, not an engineer. If you can write a script and read a folder, you can run this. The engineer who built the pipeline should not need to be in the room.
 
-Repo: https://github.com/mitwilli-create/broll-pipeline
+Repo: https://github.com/mitwilli-create/picture-lock
 
 ## What you are operating
 One plain-text script goes in. A finished, captioned vertical short comes out, with narration, score, sound effects, and visuals generated and assembled automatically. Every API call is logged to `output/run-manifest.json` with its estimated cost, computed from the published rate at call time, so you always know what a run spent and why. Reconcile exact charges in your provider dashboards; the manifest is the itemized ledger they should match.
 
 ## One-time setup (10 minutes, or hand this part to IT)
 1. Install Node 20+ and ffmpeg.
-2. `git clone https://github.com/mitwilli-create/broll-pipeline && cd broll-pipeline && npm install`
+2. `git clone https://github.com/mitwilli-create/picture-lock && cd picture-lock && npm install`
 3. `cp .env.example .env` and fill in the keys. This kit's `config.example.env` is the same template with each key annotated; the repo's copy is named `.env.example`.
 4. Dry-check before spending: `node pipeline.mjs --mock` runs the whole pipeline end to end at $0 (system voice, color cards) and proves keys, tools, and the edit path before any paid call.
 
