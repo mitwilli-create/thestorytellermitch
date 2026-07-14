@@ -32,7 +32,7 @@ function tile(c, sizeClass, inBucket) {
   return `  <a class="film ${sizeClass} reveal" href="${esc(nojsHref(c))}"
      data-clip="${esc(c.slug)}" data-bucket="${esc(c.bucket)}" data-outlet="${esc(c.outlet)}" data-era="${esc(c.era)}"
      data-tag="${esc(tag)}" data-title="${esc(c.title)}" data-sub="${esc(c.subtitle)}"
-     data-poster="${esc(c.poster)}" data-local="${esc(c.media.local)}" data-stream-id="${esc(c.media.streamId ?? '')}"${c.media.youtubeId ? ` data-youtube-id="${esc(c.media.youtubeId)}"` : ''}${c.caseStudy ? ` data-case="${esc(c.caseStudy)}"` : ''}>
+     data-poster="${esc(c.poster)}" data-local="${esc(c.media.local)}" data-stream-id="${esc(c.media.streamId ?? '')}"${c.media.vtt ? ` data-vtt="${esc(c.media.vtt)}"` : ''}${c.media.youtubeId ? ` data-youtube-id="${esc(c.media.youtubeId)}"` : ''}${c.caseStudy ? ` data-case="${esc(c.caseStudy)}"` : ''}>
     <img class="thumb" src="${esc(c.poster)}" alt="${esc(c.title)}" loading="lazy" decoding="async">${preview}
     <div class="play-o"></div>
     <div class="meta">
