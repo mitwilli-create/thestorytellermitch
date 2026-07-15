@@ -1,4 +1,4 @@
-// shared/audio.js — the site's opt-in sound engine. Muted by default,
+// shared/audio.js: the site's opt-in sound engine. Muted by default,
 // zero autoplay ever: nothing here makes a sound until the visitor flips
 // the persistent toggle (score, diegetic) or presses play on a narration
 // console (voice, an explicit per-element gesture).

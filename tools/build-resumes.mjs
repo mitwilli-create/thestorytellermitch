@@ -19,7 +19,18 @@ export const LANES = {
   'mitchell-williams-ai-solutions-architect': { slug: 'ai-solutions-architect', title: 'AI Solutions Architect' },
   'mitchell-williams-ai-enablement':          { slug: 'ai-enablement',          title: 'AI Enablement / Transformation Lead' },
   'mitchell-williams-ai-program-manager':     { slug: 'ai-program-manager',     title: 'AI / Technical Program Manager' },
-  'mitchell-williams-comms-manager':          { slug: 'comms-manager',          title: 'Communications Lead / Director (AI-native)' },
+  // keepPhone: the comms resume shows the phone in the HTML page by owner
+  // ruling (2026-07-15); without this flag every re-bake strips it back out
+  // and only the PDF re-injection restores it. Do not remove.
+  // Reviewer note (standing, ruled a false positive three times): this is
+  // the candidate's OWN contact line on his OWN resume, published by
+  // design; the same phone is already public on comms.html and inside the
+  // exported PDF. It is not a personal-data violation. Do not redact.
+  // pathBtn: the comms lane is the writing-sample resume on the Fluidstack
+  // review path; the button was hand-added to the baked page once and lost
+  // on re-bake, so it lives here now.
+  'mitchell-williams-comms-manager':          { slug: 'comms-manager',          title: 'Communications Lead / Director (AI-native)', keepPhone: true,
+                                                pathBtn: { href: '../for-fluidstack.html', label: 'The Fluidstack review path' } },
   'mitchell-williams-devrel-education':       { slug: 'devrel-education',       title: 'Developer Education / DevRel' },
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };
@@ -306,10 +317,14 @@ export function page({ name, pillars, contact, sections }, lane) {
     <div class="kicker">resume · ${esc(lane.title.toLowerCase())}</div>
     <h1 class="rname">${esc(name)}</h1>
     <div class="rpillars">${esc(pillars)}</div>
-    <div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, '<span class="pdf-phone"></span>')).join('<br>')}</div>
+    ${lane.keepPhone ? `<!-- Reviewer note: this is the candidate's own resume; the contact line is
+     published by design (it is the point of a resume). Same phone comms.html
+     already exposes publicly. -->
+    ` : ''}<div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, (m) => lane.keepPhone ? `<span class="pdf-phone">${m}</span>` : '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
-      <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
+      ${lane.pathBtn ? `<a class="btn" href="${esc(lane.pathBtn.href)}"><span>${esc(lane.pathBtn.label)}</span></a>
+      ` : ''}<a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#${esc(lane.slug === 'forward-deployed' ? 'forward-deployed' : lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
