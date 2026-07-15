@@ -46,13 +46,14 @@
     .wr-skim .sp-dot{color:var(--blood-soft)}
     .wr-skim-nav,.wr-skim-go{display:inline-flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
     .wr-skim-nav{padding-right:20px}
-    .wr-skim-go{border-left:1px solid var(--line-2);padding-left:20px}
+    .wr-skim-go{border-left:1px solid var(--line-2);padding-left:20px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+    .wr-skim-links{display:inline-flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
     .wr-skim-q{color:var(--blood-soft);font-size:13px;font-weight:700}
     .wr-skim-nav a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
     .wr-skim-nav a:hover{color:var(--blood-soft)}
-    .wr-skim-go a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+    .wr-skim-go a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);padding-bottom:2px;
       transition:color var(--dur-micro) var(--ease-micro)}
-    .wr-skim-go a:hover{color:var(--bone)}
+    .wr-skim-go a:hover{color:var(--blood-text)}
     .wr-skim a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
     @media(max-width:640px){.wr-skim-go{border-left:0;padding-left:0}}
     section{padding:52px 0}
@@ -287,9 +288,11 @@
       </span>
       <span class="wr-skim-go">
         <span class="wr-skim-q">Screening for a comms role? Start with these three</span>
-        <a href="docs/fluidstack-positioning-memo.html">the positioning memo</a><span class="sp-dot">·</span>
-        <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">the VP-voice essay</a><span class="sp-dot">·</span>
-        <a href="#redacted-docs">the Google case studies</a>
+        <span class="wr-skim-links">
+          <a href="docs/fluidstack-positioning-memo.html">the positioning memo</a><span class="sp-dot">·</span>
+          <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">the VP-voice essay</a><span class="sp-dot">·</span>
+          <a href="#redacted-docs">the Google case studies</a>
+        </span>
       </span>
     </nav>
   </div>
