@@ -6,3 +6,6 @@ tools/still-candidates/
 .env
 node_modules
 __pycache__/
+
+# cloud-sync conflict twins (iCloud "name 2.ext" duplicates): never track, never ship
+* 2.*
