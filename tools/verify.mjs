@@ -12,7 +12,7 @@
 //      fields the bakers depend on
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -30,8 +30,16 @@ for (const [baker, artifact] of [['build-stories.mjs', 'stories.html'], ['build-
 
 // ---- 2. em-dash census -----------------------------------------------
 const censusFiles = [];
+// Directories with no deployable .html (or that we never census): skipped by the recursive walk.
+const IGNORE_DIRS = new Set(['.git', 'node_modules', '.claude', '.wrangler', 'media', 'design', 'output']);
 const push = (dir, re) => { for (const f of readdirSync(resolve(SITE, dir))) if (re.test(f)) censusFiles.push((dir ? dir + '/' : '') + f); };
-push('', /\.html$/); push('shared', /\.css$/); push('assets/site-data', /\.json$/); push('tools', /\.mjs$/); push('assets', /\.srt$/);
+// Recursive: root-level *.html plus subdirectory pages (docs/, resume/) all get censused.
+const walk = (dir, re) => { for (const ent of readdirSync(resolve(SITE, dir), { withFileTypes: true })) {
+  const rel = (dir ? dir + '/' : '') + ent.name;
+  if (ent.isDirectory()) { if (!IGNORE_DIRS.has(ent.name)) walk(rel, re); }
+  else if (re.test(ent.name)) censusFiles.push(rel);
+} };
+walk('', /\.html$/); push('shared', /\.css$/); push('assets/site-data', /\.json$/); push('tools', /\.mjs$/); push('assets', /\.srt$/);
 const EM = String.fromCharCode(0x2014); // constructed so this file stays census-clean
 let dashHits = 0;
 for (const f of censusFiles) {
@@ -46,15 +54,22 @@ if (!dashHits) ok(`em-dash census clean across ${censusFiles.length} files`);
 
 // ---- 3. asset references ----------------------------------------------
 let refCount = 0, refBad = 0;
+const MEDIA = resolve(SITE, 'media');
+const under = (p, root) => p === root || p.startsWith(root + sep);
 for (const f of censusFiles.filter((f) => f.endsWith('.html'))) {
+  const fileDir = dirname(resolve(SITE, f)); // resolve refs relative to the page, so ../ paths in docs/ + resume/ work
   const html = readFileSync(resolve(SITE, f), 'utf8');
   for (const m of html.matchAll(/(?:src|href|poster)="([^"#][^"]*)"/g)) {
     const url = m[1];
-    if (/^(https?:|mailto:|tel:|data:|back$|forward$)/.test(url)) continue;
+    // skip external / non-file schemes; // is protocol-relative (also external)
+    if (/^(https?:|mailto:|tel:|data:|\/\/|back$|forward$)/.test(url)) continue;
     const path = url.split('#')[0].split('?')[0];
-    if (path.startsWith('media/')) continue; // gitignored self-host payloads
+    // root-relative (/x) resolves under SITE; page-relative (x, ../x) resolves against the page dir
+    const abs = path.startsWith('/') ? resolve(SITE, path.replace(/^\/+/, '')) : resolve(fileDir, path);
+    if (under(abs, MEDIA)) continue; // gitignored self-host payloads
     refCount++;
-    if (!existsSync(resolve(SITE, path))) { refBad++; fail.push(`asset-ref: ${f} references missing ${path}`); }
+    // anything resolving outside SITE is not a deployable asset -> treat as missing
+    if (!under(abs, SITE) || !existsSync(abs)) { refBad++; fail.push(`asset-ref: ${f} references missing ${path}`); }
   }
 }
 if (!refBad) ok(`asset references resolve (${refCount} local refs)`);
