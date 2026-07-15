@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Communications · Mitchell Williams</title>
+  <meta name="description" content="Executive and internal communications leadership: a decade in live newsrooms, eight years at Google writing for a VP and a CIO, and the AI infrastructure that lets a comms function scale.">
+  <meta property="og:title" content="Communications · Mitchell Williams">
+  <meta property="og:description" content="Executive and internal communications leadership, with the systems to make it scale.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
+  <style>
+    .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
+    .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
+    .comms-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
+    .comms-sub p{margin:0 0 16px}
+    .comms-sub p:last-child{margin-bottom:0}
+    .comms-sub a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .comms-sub a:hover{color:var(--blood-text)}
+    section{padding:76px 0}
+    /* comms-01: the credentials block rises into the hero's lower third.
+       The hero reserves the room (so its own text reads first and nothing
+       shifts); the section pulls up over the reserved band. */
+    @media(min-width:861px) and (min-height:800px){
+      .comms-hero{padding-bottom:calc(56px + 15vh);border-bottom:none}
+      .sec-cred{margin-top:-15vh;position:relative;z-index:2;padding-top:0}
+    }
+    /* comms-05: the three enablement tiles ride directly under the
+       overlapped fact grid, one shared sec-lock for the merged section */
+    .enable-grid{margin-top:14px}
+    /* comms-02: the jump row pins as a slim bar once the hero scrolls out */
+    .jump-row.pinned{position:fixed;top:62px;left:0;right:0;z-index:90;margin:0;
+      background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--line);padding:0 40px;height:40px;
+      display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+    .jump-row.pinned .chip{border-color:transparent;padding:6px 10px;font-size:10px;white-space:nowrap}
+    .jump-row .chip.is-here{color:var(--bone)}
+    .jump-row.pinned .chip.is-here{text-decoration:underline;text-decoration-color:var(--blood-soft);
+      text-decoration-thickness:2px;text-underline-offset:6px;background:none;border-color:transparent}
+    @media(max-width:640px){.jump-row.pinned{display:none}}
+    section [id]{scroll-margin-top:86px}
+    /* section lockups: mono eyebrow + Archivo title, one notch below the
+       home .sec-title (council-adjudicated 2026-07-11) */
+    .sec-lock{margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:20px;max-width:1040px}
+    .sec-lock .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:12px;font-weight:500}
+    .sec-lock h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,40px);
+      letter-spacing:-0.02em;text-transform:uppercase;line-height:1.05;color:var(--bone);margin:0}
+    h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
+      letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:28px;font-weight:500}
+    /* jump chips under the intro: static row, mono chip language */
+    .jump-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+    .jump-row .chip{text-decoration:none}
+    /* seat cells that navigate carry a visible affordance */
+    a.fact,a.etile{display:block;color:inherit;transition:border-color var(--dur-micro) var(--ease-micro),transform var(--dur-move) var(--ease)}
+    a.fact:hover,a.etile:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    a.fact:focus-visible,a.etile:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .fact .go-mark,.etile .go-mark{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin-top:12px}
+    /* system cells: illustration thumb under the name, hover-animated */
+    .sys-thumb{display:block;margin-top:12px;border:1px solid var(--line);overflow:hidden;
+      transition:border-color var(--dur-micro) var(--ease-micro)}
+    .sys-thumb:hover{border-color:var(--blood-soft)}
+    .sys-thumb img{display:block;width:100%;height:auto}
+    /* enablement tiles: three-up row under the fact grid (comms-05) */
+    .enable-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
+    .etile{background:var(--surface);border:1px solid var(--line);padding:26px 24px}
+    .etile .e-n{font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;color:var(--bone);
+      font-variant-numeric:tabular-nums;line-height:1.1}
+    .etile .e-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);margin:10px 0 8px}
+    .etile .e-b{font-size:14.5px;color:var(--bone-soft);line-height:1.6}
+    .enable-illo{max-width:1040px;margin-top:14px}
+    /* comms-03: the oncam divider becomes the Judgment section's opening
+       backdrop plate; the lockup rises over its lower edge. (The council's
+       sticky-frame variant is dropped by its own rule: the prose measures
+       under 2x the frame height at 1440.) */
+    .judg-sec{position:relative}
+    .judg-backdrop{position:absolute;top:0;left:0;right:0;height:320px;margin:0;overflow:hidden}
+    .judg-backdrop img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .judg-sec .wrap{position:relative;z-index:1}
+    .judg-sec{padding-top:200px}
+    @media(max-width:860px){
+      .judg-backdrop{height:200px}
+      .judg-sec{padding-top:130px}
+    }
+    /* judgment: prose left, the broadcast frame fills screen right */
+    .judg-grid{display:grid;grid-template-columns:minmax(0,620px) minmax(340px,1fr);gap:48px;align-items:start;max-width:1180px}
+    .judg-figure{display:block;margin:0}
+    .judg-figure .oncam{border:1px solid var(--line)}
+    .judg-figure:hover .oncam{border-color:var(--blood-soft)}
+    .judg-figure img{width:100%;height:auto;display:block}
+    /* the figure is a clip-backed tile: hover preview + theater via clipplay.js */
+    .judg-figure .mplay{position:relative;display:block}
+    .judg-figure video.preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .judg-figure .play-o{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+      width:54px;height:54px;border:1px solid var(--line-2);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;transition:all var(--dur-micro) var(--ease-micro);
+      background:rgba(10,10,11,0.4);backdrop-filter:blur(2px)}
+    .judg-figure .mplay:hover .play-o{border-color:var(--bone);background:rgba(10,10,11,0.25)}
+    .judg-figure .mplay:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .judg-figure .play-o::after{content:'';border-left:12px solid var(--bone);
+      border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+    .judg-figure .jf-go{display:inline-block;margin-top:10px;font-family:'JetBrains Mono',monospace;
+      font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-soft)}
+    .judg-figure:hover .jf-go{color:var(--bone)}
+    @media(max-width:1120px){.judg-grid{grid-template-columns:1fr}.judg-figure{max-width:520px}}
+    /* talk-to-me: the page's one loud card. Full content width, each fact
+       on its own ruled line (round-2, Mitchell 2026-07-12) */
+    /* capstone-2 (Mitchell): condensed + bolder so the card doesn't sink
+       into the page background: blood-tinted panel, full oxblood frame,
+       larger head, facts in two columns instead of a tall single stack */
+    .talk-card{max-width:1180px;
+      background:var(--surface);
+      border:1px solid var(--blood-soft);border-left:3px solid var(--blood);padding:38px 42px}
+    .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.9vw,46px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:14px}
+    .talk-card .t-lead{font-size:clamp(18px,2vw,22px);line-height:1.6;color:var(--bone);margin:0 0 20px}
+    .talk-card .t-facts{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+    .talk-card .t-facts p{font-size:16px;line-height:1.6;color:var(--bone-soft);margin:0;
+      padding:11px 0;border-bottom:1px solid var(--line)}
+    @media(max-width:860px){.talk-card{padding:30px 24px}.talk-card .t-facts{grid-template-columns:1fr}}
+    .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .talk-card a:hover{color:var(--blood-text)}
+    .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
+    .talk-card .t-mail:hover{color:var(--bone)}
+    .fs-return{margin:-22px 0 30px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .fs-return a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+    .fs-return a:hover{color:var(--blood-soft)}
+    @media(hover:none){
+      .sys-thumb{position:relative}
+      .sys-thumb::after{content:'\25B8 open';position:absolute;right:10px;bottom:10px;
+        font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--bone);background:rgba(10,10,11,0.72);border:1px solid var(--line-2);padding:4px 9px}
+    }
+    .t-actions{display:none}
+    @media(pointer:coarse){
+      .t-actions{display:flex;flex-direction:column;gap:10px;margin:0 0 20px}
+      .t-actions .btn{text-align:center}
+      .talk-card .t-lead{margin-bottom:12px}
+    }
+    .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
+    .fact{background:var(--surface);border:1px solid var(--line);padding:24px 22px}
+    .fact .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;color:var(--bone);line-height:1.1}
+    .fact .l{margin-top:10px;font-size:14px;color:var(--mute);line-height:1.55}
+    .prose{max-width:740px;font-size:16.5px;line-height:1.75;color:var(--bone-soft)}
+    .prose p{margin-bottom:18px}
+    .prose strong{color:var(--bone)}
+        /* comms-04: the four systems compose as a 2x2 card grid: thumb up
+       top, name, body; hover-cinemagraph behavior unchanged */
+    .sys-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:1040px}
+    .sys{background:var(--surface);border:1px solid var(--line);padding:24px 22px;
+      display:flex;flex-direction:column;gap:14px}
+    .sys-name{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);
+      display:flex;flex-direction:column-reverse;gap:14px}
+    .sys-name .sys-thumb{margin-top:0}
+    .sys-body{font-size:14.5px;color:var(--bone-soft);line-height:1.65}
+        .slot{border:1px dashed var(--line);padding:28px;max-width:740px;background:transparent}
+    .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+    .slot p{font-size:15.5px;color:var(--bone-soft);line-height:1.65}
+    .cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
+    .ccard{background:var(--surface);border:1px solid var(--line);padding:26px;display:block;
+      transition:border-color .3s var(--ease),transform .4s var(--ease)}
+    .ccard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
+    .ccard:focus-visible{border-color:var(--blood-soft);outline:none}
+    .ccard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;color:var(--bone);display:block;margin-bottom:8px}
+    .ccard span{font-size:14px;color:var(--mute);line-height:1.55}
+    @media(max-width:960px){.fact-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:860px){
+      .comms-hero{padding:130px 0 44px}
+      .sys-list{grid-template-columns:1fr}
+      .cta-cards{grid-template-columns:1fr}
+      .enable-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){.fact-grid{grid-template-columns:1fr}}
+    @media (prefers-reduced-motion: reduce){ .reveal{opacity:1 !important;transform:none !important;transition:none !important} }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html" aria-current="page">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="comms-hero fill-host">
+  <figure class="fill-hero cine" data-cine="assets/cinemagraphs/fill-comms-loop" aria-hidden="true">
+    <img src="assets/stills/fill-comms-hd.jpg" alt="" width="1376" height="768" loading="lazy">
+  </figure>
+  <div class="wrap">
+    <div class="kicker">Executive &amp; internal communications · the comms-first view</div>
+    <p class="fs-return"><a href="for-fluidstack.html">&larr; the Fluidstack review path</a></p>
+    <h1 class="display">
+      <span class="ln"><span>The message</span></span>
+      <span class="ln"><span class="accent">lands.</span></span>
+    </h1>
+    <div class="comms-sub">
+      <p>A decade producing live news in network control rooms. Eight years at Google, where I led communications for the horizontal org that drives technical change across the company, wrote for a VP and Google's then-CIO, and built AI infrastructure so the comms function scales instead of drowning.</p>
+      <p>This page is the communications-first view of that career: executive voice, internal narrative, approvals discipline, and the judgment that keeps high-stakes coverage defensible. It stands on its own.</p>
+      <p>The <a href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
+    </div>
+    <nav class="jump-row" aria-label="Jump to a section of this page">
+      <a class="chip" href="#the-seat-i-held">Seat</a>
+      <a class="chip" href="#enablement">Enablement</a>
+      <a class="chip" href="#judgment">Judgment</a>
+      <a class="chip" href="#infrastructure">Systems</a>
+      <a class="chip" href="#read-the-work">Artifacts</a>
+      <a class="chip" href="#talk-to-me">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="sec-cred">
+  <div class="wrap">
+    <div class="sec-lock reveal" id="the-seat-i-held">
+      <span class="eyebrow">01 &middot; Seat + enablement</span>
+      <h2>The seat I held</h2>
+    </div>
+    <div class="fact-grid">
+      <a class="fact reveal" href="timeline.html"><div class="n">1,000+</div><div class="l">Principal, Distinguished, and Fellow engineers served as the org's communications lead. An analytical, truth-seeking audience that notices spin instantly.</div><span class="go-mark">the era, on the timeline &rarr;</span></a>
+      <a class="fact reveal" href="stories.html#digital-twin"><div class="n">VP + CIO</div><div class="l">VP-level executive communications at the Office of Cross Google Engineering (xGE), where I wrote directly for principals, and C-suite writing for Google's then-CIO in Corporate Engineering.</div><span class="go-mark">how the VP's voice became a system &rarr;</span></a>
+      <a class="fact reveal" href="writing.html"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual Sr. Tech IC Summit (600+ attendees) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div><span class="go-mark">the writing, word for word &rarr;</span></a>
+      <a class="fact reveal" href="writing.html#redacted-docs"><div class="n">Three tiers</div><div class="l">Authored the org's three-tier communications operating model and its multi-channel strategy: routine requests move fast, high-stakes work gets full partnership.</div><span class="go-mark">the internal docs, redacted &rarr;</span></a>
+      <a class="fact reveal" href="comms-triage-agent.html"><div class="n">Cadence</div><div class="l">Ran the recurring approval-intake prioritization meetings and drove cross-org security and memory-safety mandates through to approval, working alongside engineering leads and program owners.</div><span class="go-mark">the intake, rebuilt as an agent &rarr;</span></a>
+      <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at Al Jazeera's AJ+ during its 500M-weekly-view era (public source). Three I coached moved from behind the camera to on-air principals; two carry Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>
+    </div>
+    <div class="enable-grid" id="enablement">
+      <a class="etile reveal" href="timeline.html#era-corpeng">
+        <div class="e-n">75,000+</div>
+        <div class="e-k">Day-One, rebuilt</div>
+        <div class="e-b">Rebuilt Google's Day-One technical orientation into self-service onboarding for 75,000+ new hires, at 88% CSAT (internal metric).</div>
+        <span class="go-mark">the corp eng era &rarr;</span>
+      </a>
+      <a class="etile reveal" href="timeline.html#era-xge">
+        <div class="e-n">On stage</div>
+        <div class="e-k">Peer-led speaker series</div>
+        <div class="e-b">Designed the peer-led speaker series that puts the senior-engineer community's own voices on stage for each other.</div>
+        <span class="go-mark">the xge era &rarr;</span>
+      </a>
+      <a class="etile reveal" href="work.html#social-explainers">
+        <div class="e-n">On camera</div>
+        <div class="e-k">Teaching in public</div>
+        <div class="e-b">Public interview-prep and recruitment video for Google's talent brand.</div>
+        <span class="go-mark">on the reel &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="judg-sec">
+  <!-- backdrop img stays decorative (alt="") but the CC attribution in the
+       figcaption is exposed to assistive tech -->
+  <figure class="judg-backdrop oncam">
+    <img src="assets/stills/mc-scientology-bigblue-2009-2x.jpg" alt="" loading="lazy">
+    <figcaption class="oncam-cap">scientology's "big blue," los angeles &middot; PictorialEvidence &middot; cc by-sa</figcaption>
+  </figure>
+  <div class="wrap">
+    <div class="sec-lock reveal" id="judgment">
+      <span class="eyebrow">02 &middot; Editorial judgment</span>
+      <h2>Judgment when counsel is in the room</h2>
+    </div>
+    <div class="judg-grid">
+    <div class="prose reveal">
+      <p>Comms leadership gets tested when Legal is on the call. Twice, that test ran live on air. At HuffPost Live I <a href="stories.html#scientology-live-coverage">covered Scientology while the network was under active legal scrutiny</a>. Counsel drew hard lines. I built the editorial filter that got every segment through review without losing the story. Then Fusion. I <a href="stories.html#fusion-ramos-lawsuit">produced Jorge Ramos's flagship weekly under a $500 million lawsuit</a>. Half a billion dollars on the line. The coverage ran. We stayed the reporter, never the headline.</p>
+      <p>Same discipline carried into Google. Executive comms under regulatory and litigation scrutiny. The first draft has to anticipate the review, not fight it.</p>
+    </div>
+    <figure class="judg-figure reveal">
+      <div class="oncam">
+        <a class="mplay" href="https://www.youtube.com/watch?v=7yCKKcg8JG0" data-clip-play data-clip="huffpost-2013-jenna-miscavige-beyond-belief" data-tag="HuffPost Live &middot; Live Interview &middot; 2013" data-title="Jenna Miscavige Hill on leaving Scientology" data-sub="The church leader's niece on her memoir Beyond Belief, interviewed by Ahmed Shihab-Eldin." data-poster="assets/posters/huffpost-2013-jenna-miscavige-beyond-belief.jpg" data-youtube-id="7yCKKcg8JG0" aria-label="Play: Jenna Miscavige Hill on leaving Scientology">
+          <img src="assets/posters/huffpost-2013-jenna-miscavige-beyond-belief.jpg" alt="Jenna Miscavige Hill on the HuffPost Live set, her author lower-third on screen" width="854" height="480" loading="lazy">
+          <video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/huffpost-2013-jenna-miscavige-beyond-belief.mp4"></video>
+          <span class="play-o" aria-hidden="true"></span>
+        </a>
+      </div>
+      <figcaption class="oncam-cap">jenna miscavige hill &middot; huffpost live, feb 2013 &middot; from the broadcast</figcaption>
+      <a class="jf-go" href="stories.html#scientology-live-coverage">the scientology coverage, the full story &rarr;</a>
+    </figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-lock reveal" id="infrastructure">
+      <span class="eyebrow">03 &middot; Systems</span>
+      <h2>Infrastructure so the function scales</h2>
+    </div>
+    <p class="prose reveal" style="margin-bottom:26px">While leading communications, I built the systems a modern comms function needs. Not a career change. The same job, given leverage: faster approvals, a consistent executive voice, claims that hold, and a response ready before the hard story runs. The same fluency also carries the <a href="fit.html#forward-deployed">Forward Deployed Creative case</a>, one page over.</p>
+    <div class="sys-list">
+      <div class="sys reveal">
+        <div class="sys-name"><a href="stories.html#digital-twin">Executive digital twin</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-digital-twin-loop" href="stories.html#digital-twin" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-digital-twin-hd.jpg" width="1920" height="1072" alt="" loading="lazy"></a>
+        </div>
+        <div class="sys-body">A writing system encoding one VP's voice: a constitution of voice rules plus a banned-phrase checklist, built in partnership with the principal it serves and used to draft high-stakes executive communications. It cut review back-and-forth with the VP by about 70%: self-measured; a reference can confirm it. The voice encoding is consensual, documented, and auditable; the principal always holds final sign-off.</div>
+      </div>
+      <div class="sys reveal">
+        <div class="sys-name"><a href="comms-triage-agent.html">Comms triage agent</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-triage-agent-c-loop" href="comms-triage-agent.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-triage-agent-hd.jpg" width="1920" height="1072" alt="" loading="lazy"></a>
+        </div>
+        <div class="sys-body">An autonomous intake pipeline for the org's communications requests: triage, revise, escalate, with a confidence threshold that routes anything uncertain to a human. Documented end to end and handed off with a full operator runbook. Designed to auto-handle roughly 60% of inbound requests and projected to recapture about 160 operational hours a year; both are design targets, reported as targets.</div>
+      </div>
+      <div class="sys reveal">
+        <div class="sys-name"><a href="voice-os.html">voice-os</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-voice-os-c-loop" href="voice-os.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-voice-os-hd.jpg" width="1920" height="1072" alt="" loading="lazy"></a>
+        </div>
+        <div class="sys-body">The methodology rebuilt in public: an <a href="https://github.com/mitwilli-create/voice-os">open-source pipeline</a> that scores any draft against a target voice on six stylistic axes and gates anything below threshold. The repo documentation is linked from the <a href="writing.html">writing room</a>.</div>
+      </div>
+      <div class="sys reveal">
+        <div class="sys-name"><a href="career-ops.html">Agent orchestration</a>
+          <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-agent-fleet-c-loop" href="career-ops.html" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-agent-fleet-hd.jpg" width="1920" height="1072" alt="" loading="lazy"></a>
+        </div>
+        <div class="sys-body">On my own time: a multi-model agent orchestration system with cost governance, scheduled autonomous jobs, and a live operations dashboard. For a comms leader, the point is fluency: I can read what the models actually do, so I can communicate about them without hand-waving.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-lock reveal" id="read-the-work">
+      <span class="eyebrow">04 &middot; Artifacts</span>
+      <h2>Read the work</h2>
+    </div>
+    <div class="cta-cards">
+      <a class="ccard reveal" href="writing.html">
+        <strong>The writing room</strong>
+        <span>Real writing, word for word: published scripts as broadcast, redacted internal documentation from both Google roles, and weekly essays as they land.</span>
+      </a>
+      <a class="ccard reveal" href="stories.html">
+        <strong>Three stories for comms hiring managers</strong>
+        <span>Ramos under a $500M lawsuit. Scientology under legal scrutiny. An executive's voice encoded as a system.</span>
+      </a>
+      <a class="ccard reveal" href="picture-lock.html">
+        <strong>Writing for the ear</strong>
+        <span>One plain-text script becomes a produced, captioned short with a receipt. The same writing discipline, pointed at production.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:96px">
+  <div class="wrap">
+    <div class="sec-lock reveal" id="talk-to-me">
+      <span class="eyebrow">05 &middot; Contact</span>
+      <h2>Talk to me</h2>
+    </div>
+    <div class="talk-card reveal">
+      <div class="t-h">Hiring for comms that can build?</div>
+      <p class="t-lead">Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or call <a class="t-mail" href="tel:+18122196077">(812) 219-6077</a>.</p>
+      <div class="t-actions">
+        <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams"><span>Email mitwilli@gmail.com</span></a>
+        <a class="btn" href="tel:+18122196077"><span>Call (812) 219-6077</span></a>
+      </div>
+      <div class="t-facts">
+        <p>The <a href="assets/resumes/mitchell-williams-comms-manager.pdf" target="_blank" rel="noopener">comms resume PDF</a> is one click, no form.</p>
+        <p>Seattle-based, open to relocation, US citizen.</p>
+        <p>I move fast, whatever process you run.</p>
+        <p>References who can vouch for the ghostwriting and the review-cycle numbers are available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/clipplay.js?v=20260715a"></script>
+<script>
+  // comms-02: the jump row pins as a slim scrollspy bar once the hero
+  // scrolls out (>=641px; the static row is untouched without JS)
+  (()=>{
+    const jump=document.querySelector('.jump-row');
+    const hero=document.querySelector('.comms-hero');
+    if(!jump||!hero||!('IntersectionObserver' in window)) return;
+    const ph=document.createElement('div');
+    ph.setAttribute('aria-hidden','true');ph.style.height='0';
+    jump.after(ph);
+    const pinIO=new IntersectionObserver(([e])=>{
+      const pin=!e.isIntersecting&&innerWidth>640;
+      if(pin&&!jump.classList.contains('pinned')) ph.style.height=jump.offsetHeight+'px';
+      jump.classList.toggle('pinned',pin);
+      if(!pin) ph.style.height='0';
+    });
+    pinIO.observe(hero);
+    const chips=[...jump.querySelectorAll('.chip')];
+    const targets=chips.map(c=>document.getElementById(c.getAttribute('href').slice(1))).filter(Boolean);
+    let spyTick=false;
+    const spy=()=>{
+      spyTick=false;
+      let cur=null;
+      for(const t of targets){ if(t.getBoundingClientRect().top<=innerHeight*0.3) cur=t; }
+      chips.forEach(c=>c.classList.toggle('is-here',!!cur&&c.getAttribute('href')==='#'+cur.id));
+    };
+    addEventListener('scroll',()=>{ if(!spyTick){spyTick=true;requestAnimationFrame(spy);} },{passive:true});
+    spy();
+  })();
+</script>
+</body>
+</html>
