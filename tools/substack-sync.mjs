@@ -25,7 +25,11 @@ const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const PAGE = resolve(SITE, 'writing.html');
 const DATA = resolve(SITE, 'assets/site-data/writing.json');
 const FEED = 'https://storytellermitch.substack.com/feed';
-const INTRO_WORDS = 40;
+// Card descriptions render under a 3-line clamp (.ec-d, ~48 chars/line at
+// the two-up card width); a straight word cut clips mid-sentence inside
+// that clamp. Budget in characters so the excerpt both ends on a sentence
+// boundary AND fits the visible box.
+const EXCERPT_CHARS = 150;
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // outward copy rides the site-wide em-dash ban (the dash appears only
@@ -42,6 +46,27 @@ const detruncate = (s) => {
   if (!s || /[.!?…"')\]]$/.test(s)) return s;
   const cut = s.replace(/[^.!?…]*$/, '').trim();
   return cut || s.replace(/\s*\S+$/, '').trim();
+};
+// Accumulate whole sentences while they fit the clamp budget, so cards
+// never clip mid-sentence; only when the first sentence alone overflows
+// the budget do we fall back to a word cut with an ellipsis.
+const clampExcerpt = (s) => {
+  s = String(s ?? '').trim();
+  if (s.length <= EXCERPT_CHARS) return s;
+  const sentences = s.match(/[^.!?…]+[.!?…]+["')\]]*(?:\s+|$)/g) || [];
+  let out = '';
+  for (const seg of sentences) {
+    if ((out + seg).trim().length > EXCERPT_CHARS) break;
+    out += seg;
+  }
+  out = out.trim();
+  if (out) return out;
+  let cut = '';
+  for (const w of s.split(/\s+/).filter(Boolean)) {
+    if (`${cut} ${w}`.trim().length > EXCERPT_CHARS - 2) break;
+    cut = `${cut} ${w}`.trim();
+  }
+  return `${cut} …`;
 };
 const stripHtml = (s) => String(s ?? '')
   .replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<script[\s\S]*?<\/script>/gi, ' ')
@@ -68,8 +93,7 @@ function parseItems(xml) {
     const body = scrub(stripHtml(tag('content:encoded')));
     if (!title || !link) continue;
     const combined = (sub ? sub + ' ' : '') + body;
-    const words = combined.split(/\s+/).filter(Boolean);
-    const excerpt = words.slice(0, INTRO_WORDS).join(' ') + (words.length > INTRO_WORDS ? ' …' : '');
+    const excerpt = clampExcerpt(combined);
     items.push({ title, link, date: pub ? new Date(pub).toISOString() : null, excerpt });
   }
   return items;

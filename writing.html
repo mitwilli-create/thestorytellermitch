@@ -34,6 +34,21 @@
     .wr-spine a:hover{color:var(--bone)}
     .wr-spine a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
     .wr-spine .sp-dot{color:var(--blood-soft)}
+    /* slim return link to the review path (pre-approved) */
+    .wr-back{margin:0 0 26px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .wr-back a{color:var(--bone-soft);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .wr-back a:hover{color:var(--bone)}
+    .wr-back a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
+    /* role-neutral screening skim strip (pre-approved) */
+    .wr-skim{margin-top:30px;border:1px solid var(--line);padding:14px 18px;max-width:820px;
+      display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;
+      font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .wr-skim-q{color:var(--blood-soft)}
+    .wr-skim a{color:var(--bone-soft);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .wr-skim a:hover{color:var(--bone)}
+    .wr-skim a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
     section{padding:52px 0}
     .wr-work{border-top:1px solid var(--line);padding-bottom:96px}
     #essays,#script,#redacted-docs{scroll-margin-top:96px}
@@ -92,6 +107,7 @@
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
     h2.mini::before{content:'';width:52px;height:1px;background:var(--blood-soft);
       display:inline-block;vertical-align:middle;margin-right:14px}
+    h2.mini .mini-note{color:var(--dim)}
     .artifact{max-width:860px;margin-bottom:8px}
     .art-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--mute);border:1px solid var(--line);display:inline-block;
@@ -162,6 +178,8 @@
       .av-cue{color:#7a2c24}
       .av-vo{color:#111}
     }
+    /* mono source-type tag on load-bearing metrics (pre-approved, site-wide system) */
+    .src-t{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--dim);white-space:nowrap}
     .src-line{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);line-height:1.6}
     .src-line a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px}
@@ -174,9 +192,9 @@
        motion rule bans; the 240ms cascade IS the continuous movement).
        Delays live on the .in state and reset on hover/focus so interaction
        stays instant. */
-    .doc-cards .dcard.in:nth-child(2){transition-delay:.08s}
-    .doc-cards .dcard.in:nth-child(3){transition-delay:.16s}
-    .doc-cards .dcard.in:nth-child(4){transition-delay:.24s}
+    .doc-cards .dgroup:nth-child(2) .dcard.in{transition-delay:.08s}
+    .doc-cards .dgroup:nth-child(3) .dcard.in{transition-delay:.16s}
+    .doc-cards .dgroup:nth-child(4) .dcard.in{transition-delay:.24s}
     .doc-cards .dcard.in:hover,.doc-cards .dcard.in:focus-visible{transition-delay:0s}
     .dcard .dc-k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:10px}
@@ -191,6 +209,20 @@
       transition:all var(--dur-micro) var(--ease-micro)}
     .dc-chips a:hover{border-color:var(--blood-soft);color:var(--bone)}
     .dc-chips a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    /* short verbatim excerpts from the already-published redacted docs,
+       behind the site's fold pattern; no new disclosure (pre-approved) */
+    .dcard-fold{margin-top:10px}
+    .dcard-fold summary{list-style:none;cursor:pointer;font-family:'JetBrains Mono',monospace;
+      font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blood-soft);padding:4px 0}
+    .dcard-fold summary::-webkit-details-marker{display:none}
+    .dcard-fold summary::before{content:'+ '}
+    .dcard-fold[open] summary::before{content:'- '}
+    .dcard-fold summary:hover{color:var(--bone)}
+    .dcard-fold summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .dcard-fold blockquote{margin:8px 0 0;padding:10px 0 10px 16px;border-left:2px solid var(--blood-soft);
+      font-size:13px;color:var(--bone-soft);line-height:1.7}
+    .dcard-fold .fold-cue{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:8px}
     .wr-note{max-width:720px;margin-top:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
     .wr-note a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     /* mobile-only genre divider: the spine's job, restated where the stack
@@ -242,6 +274,7 @@
     <img src="assets/stills/fill-writing-hd.jpg" alt="" width="1376" height="768" loading="lazy">
   </figure>
   <div class="wrap">
+    <p class="wr-back"><a href="for-fluidstack.html">&larr; back to the Fluidstack review path</a></p>
     <div class="kicker">Real writing · word for word · checkable at the source</div>
     <h1 class="display">
       <span class="ln"><span>The writing</span></span>
@@ -254,12 +287,18 @@
       <a href="#script">The script</a><span class="sp-dot">·</span>
       <a href="#redacted-docs">Internal docs</a>
     </nav>
+    <nav class="wr-skim" aria-label="Screening skim path">
+      <span class="wr-skim-q">Screening for a comms role? Start with these three</span>
+      <a href="docs/fluidstack-positioning-memo.html">the positioning memo</a><span class="sp-dot">·</span>
+      <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">the VP-voice essay</a><span class="sp-dot">·</span>
+      <a href="#redacted-docs">the redacted Google docs</a>
+    </nav>
   </div>
 </header>
 
 <section style="padding-top:0" id="essays">
   <div class="wrap">
-    <h2 class="mini reveal">Essays · weekly</h2>
+    <h2 class="mini reveal">Essays · weekly <span class="mini-note">· new series, launched July 2026</span></h2>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
     <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a></div>
     <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Each essay is linked here the day it publishes.</p>
@@ -268,13 +307,13 @@
       <a class="ecard" href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">
         <span class="ec-k">Essay · Substack · Jul 2026 · #02</span>
         <strong class="ec-t">I Engineered a VP's Voice. The AI Infrastructure Industry Could Learn a Thing or Two.</strong>
-        <span class="ec-d">I spent months building a system that writes like one specific leader. The hard part wasn't the writing, it was learning how she decides. At Google, I built a response system for a vice president. Not a chatbot with her …</span>
+        <span class="ec-d">I spent months building a system that writes like one specific leader. The hard part wasn't the writing, it was learning how she decides.</span>
         <span class="ec-cta">Read on Substack &#8599;</span>
       </a>
       <a class="ecard" href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">
         <span class="ec-k">Essay · Substack · Jul 2026 · #01</span>
         <strong class="ec-t">What Do AI Employees Know About Using LLMs That I Don't?</strong>
-        <span class="ec-d">Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude. So when someone at the AI Engineer World's Fair asked him how he actually uses …</span>
+        <span class="ec-d">Their edge isn't IQ. It's a workflow you can steal. Mike Krieger built Instagram. Now he builds AI products at Anthropic, the company behind Claude.</span>
         <span class="ec-cta">Read on Substack &#8599;</span>
       </a>
     </div>
@@ -294,7 +333,7 @@
     <div class="artifact">
       <div class="art-label reveal">AJ+ · 2017 · script as broadcast</div>
       <div class="art-title reveal">The measles script: 125 seconds, <span class="ox-i">50 million views</span></div>
-      <p class="art-intro reveal">Policy journalism built for a <strong>125-second social window</strong>: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. Broadcast by AJ+ in 2017, it reached 50 million views. The script runs below word for word, production cues intact.</p>
+      <p class="art-intro reveal">Policy journalism built for a <strong>125-second social window</strong>: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. Broadcast by AJ+ in 2017, it reached 50 million views <span class="src-t">(public source)</span>. The script runs below word for word, production cues intact.</p>
       <div class="proof-row reveal">
         <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch the broadcast</a>
         <a href="impact.html">Verify the view count</a>
@@ -456,24 +495,43 @@
     <h2 class="mini reveal" id="redacted-docs">Programmatic documentation · the Google roles, redacted</h2>
     <p class="art-intro reveal">Three internal documents from two Google roles, <strong class="ox">published with redaction, not reconstruction</strong>. Names, internal tools, links, and internal figures are bracketed. Everything else is <strong class="wt">verbatim</strong>. Each page states exactly what was redacted.</p>
     <div class="doc-cards">
+      <div class="dgroup">
       <a class="dcard reveal" href="docs/xge-operations-guide.html">
         <span class="dc-k">Google xGE · 2026 · operator runbook</span>
         <strong>Comms Agent: Phase 1 Operations Guide</strong>
         <span class="dc-b">The handoff runbook for the communications-triage agent: what the system does on its own, what the human handles, escalation rules, error paths, and the metrics framework, written so the team could run it without me.</span>
         <span class="dc-r">redacted: names · internal tools · links · ids</span>
       </a>
+      <details class="dcard-fold reveal">
+        <summary>peek inside · verbatim</summary>
+        <blockquote>"You'll see: Nothing (unless there's an error). Requester sees: Email with link to their revised draft."<span class="fold-cue">from the low-touch path the agent completes end to end</span></blockquote>
+      </details>
+      </div>
+      <div class="dgroup">
       <a class="dcard reveal" href="docs/orientation-pilot-script.html">
         <span class="dc-k">Google Corporate Engineering · video script</span>
         <strong>PILOT SCRIPT: Introduction to Techstop</strong>
-        <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to <strong>75,000+ new hires</strong> at an <strong class="ox">88% CSAT</strong>. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
+        <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to <strong>75,000+ new hires</strong> at an <strong class="ox">88% CSAT</strong> <span class="src-t">(internal, self-measured)</span>. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
         <span class="dc-r">redacted: speaker names · app names · links · figures</span>
       </a>
+      <details class="dcard-fold reveal">
+        <summary>peek inside · verbatim</summary>
+        <blockquote>"Whatever IT problem you may be up against, go-slash-techstop is here to help."<span class="fold-cue">visual cue, same row: animation (idea: logos turn into a tool the Googler character uses to fight off an IT-problem monster)</span></blockquote>
+      </details>
+      </div>
+      <div class="dgroup">
       <a class="dcard reveal" href="docs/techstop-help-article.html">
         <span class="dc-k">Google TechStop · self-help article</span>
         <strong>Troubleshoot security key issues</strong>
-        <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability <strong>9.03%</strong> (about <strong>10,670 fewer tickets</strong> a year).</span>
+        <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability <strong>9.03%</strong> (about <strong>10,670 fewer tickets</strong> a year) <span class="src-t">(internal, self-measured)</span>.</span>
         <span class="dc-r">redacted: shortlinks · corp urls · hostnames · policy names</span>
       </a>
+      <details class="dcard-fold reveal">
+        <summary>peek inside · verbatim</summary>
+        <blockquote>"Touch the security key and watch if the light turns on. If it does not, and it's a USB-A security key, it might be upside-down, reinsert it properly. (USB Type-C keys can be plugged in either orientation)."<span class="fold-cue">from "nothing happens when I touch my security key"</span></blockquote>
+      </details>
+      </div>
+      <div class="dgroup">
       <div class="dcard reveal">
         <span class="dc-k">Public repos · already sanitized</span>
         <strong>The public documentation suite</strong>
@@ -483,6 +541,7 @@
           <a href="https://github.com/mitwilli-create/voice-os">voice-os &#8599;</a>
           <a href="https://github.com/mitwilli-create/picture-lock">picture-lock &#8599;</a>
         </span>
+      </div>
       </div>
     </div>
     <p class="wr-note reveal">Executive client work stays internal: described on the <a href="comms.html">comms page</a>, <strong>never excerpted</strong>.</p>
@@ -500,7 +559,7 @@
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
         <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
         <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
-        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">resume (PDF)</a>
       </div>
     </div>
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>

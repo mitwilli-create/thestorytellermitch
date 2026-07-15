@@ -32,7 +32,7 @@ Communications lead and program manager for xGE, the horizontal org that drives 
 #### Executive-communications digital twin (Gemini)
 - **Problem:** VP communications required long review cycles to hold a consistent voice.
 - **Action:** Built a Gemini agent around a codified "Constitution" of voice rules and a banned-phrase verification checklist.
-- **Impact:** Cut review back-and-forth with the VP by about 70%, an internal, self-measured figure.
+- **Impact:** Cut review back-and-forth with the VP by about 70%: self-measured; a reference can confirm it.
 
 #### Communications-triage agent (Apps Script + Gemini)
 - **Problem:** High-volume comms intake consumed operator hours on low-complexity requests.

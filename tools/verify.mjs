@@ -39,7 +39,7 @@ const walk = (dir, re) => { for (const ent of readdirSync(resolve(SITE, dir), { 
   if (ent.isDirectory()) { if (!IGNORE_DIRS.has(ent.name)) walk(rel, re); }
   else if (re.test(ent.name)) censusFiles.push(rel);
 } };
-walk('', /\.html$/); push('shared', /\.css$/); push('assets/site-data', /\.json$/); push('tools', /\.mjs$/); push('assets', /\.srt$/);
+walk('', /\.html$/); push('shared', /\.(css|js)$/); push('assets/site-data', /\.json$/); push('tools', /\.mjs$/); push('assets', /\.srt$/);
 const EM = String.fromCharCode(0x2014); // constructed so this file stays census-clean
 let dashHits = 0;
 for (const f of censusFiles) {
