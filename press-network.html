@@ -11,12 +11,13 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     .pn-hero{padding:170px 0 72px;border-bottom:1px solid var(--line)}
     .pn-hero .display{font-size:clamp(40px,6.4vw,92px)}
     .pn-sub{margin-top:26px;max-width:660px;font-size:18px;color:var(--bone-soft);line-height:1.65}
-    .pn-sub a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    .pn-sub a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .pn-sub a:hover{color:var(--blood-text)}
     section{padding:72px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:28px;font-weight:500}
@@ -55,8 +56,8 @@
     .pr-m b{color:var(--blood-text);font-weight:400}
     @media(max-width:720px){.pn-row{grid-template-columns:1fr;gap:6px;padding:14px 18px}}
     .pn-note{max-width:720px;font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-top:8px}
-    .pn-note a{color:inherit;border-bottom:1px solid var(--blood-soft)}
-    .pn-note a:hover{color:var(--bone)}
+    .pn-note a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .pn-note a:hover{color:var(--blood-text)}
     .pn-note strong{color:var(--bone);font-weight:600}
     .pn-held{max-width:720px;margin-top:26px;padding:18px 22px;border:1px solid var(--line-2);
       border-left:2px solid var(--blood-soft);background:var(--surface);border-radius:3px;

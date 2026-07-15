@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     .sys-hero{padding:170px 0 96px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
@@ -55,8 +55,8 @@
       text-transform:uppercase;color:var(--blood-soft);min-width:96px}
     .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
     .path .t b{color:var(--bone);font-weight:600}
-    .path .t a{color:inherit;border-bottom:1px solid var(--blood-soft)}
-    .path .t a:hover{color:var(--bone)}
+    .path .t a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .path .t a:hover{color:var(--blood-text)}
     .path-total{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--dim);margin-top:18px}
     .map-list{list-style:none;margin:0;padding:0;max-width:760px}
@@ -64,18 +64,19 @@
       line-height:1.65;color:var(--bone-soft)}
     .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px;font-weight:500}
-    .map-list li a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    .map-list li a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .map-list li a:hover{color:var(--blood-text)}
     .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
-    .narrative-prose a{color:inherit;border-bottom:1px solid var(--blood-soft)}
-    .narrative-prose a:hover{color:var(--bone)}
+    .narrative-prose a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .narrative-prose a:hover{color:var(--blood-text)}
     #narrative{scroll-margin-top:86px}
     .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line);border-left:1px solid var(--blood-soft);
       background:var(--surface);padding:20px 24px;border-radius:3px}
     .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
     .ed-lane .el-b{font-size:15px;line-height:1.7;color:var(--bone-soft);margin:0}
-    .ed-lane .el-b a{color:inherit;border-bottom:1px solid var(--blood-soft)}
-    .ed-lane .el-b a:hover{color:var(--bone)}
+    .ed-lane .el-b a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .ed-lane .el-b a:hover{color:var(--blood-text)}
     @media(pointer:coarse){
       /* vertical padding alone grows the tap target on inline links without
          blockifying them (inline-block made long in-prose links drop to their

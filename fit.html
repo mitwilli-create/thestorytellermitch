@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     /* fit-02: hero on the shared fill-hero plate (comms/work/stories
        pattern): the cinemagraph edge-bleeds the right 46% behind the
@@ -42,9 +42,10 @@
     details.role .r-fit:last-of-type{margin-bottom:0}
     details.role .r-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
     details.role .r-links a{font-family:'JetBrains Mono',monospace;font-size:11px;
-      letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);
-      border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
-    details.role .r-links a:hover{color:var(--blood-soft)}
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--blood-text);
+      border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    details.role .r-links a:hover{color:var(--bone)}
     .fr-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
     .fr-chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--bone);border:1px solid var(--line);padding:9px 15px;text-decoration:none;transition:border-color .25s var(--ease),color .25s var(--ease)}

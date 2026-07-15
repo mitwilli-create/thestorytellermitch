@@ -32,6 +32,7 @@
       --blood:#8a3a33;      /* restrained oxblood accent, used sparingly */
       --blood-soft:#b1554c;
       --blood-text:#c4685d; /* blood-soft lifted for small text: 5.2:1 on --bg */
+      --blood-hairline:rgba(196,104,93,0.35); /* tier-3 inline-link underline */
       --ease:var(--ease-reveal); /* legacy alias; every var(--ease) now rides the reveal curve */
       --maxw:1200px;
 
@@ -311,8 +312,29 @@ html{scrollbar-gutter:stable}
   text-transform:uppercase;color:var(--dim);margin-right:8px;min-width:64px}
 a.chip{text-decoration:none;display:inline-block}
 .starthere[id],.bucket[id]{scroll-margin-top:76px}
-/* in-content links: house style (matches per-page .prose a rules on comms/about) */
-.prose a,.sys-body a,.sys-name a,.r-fit a,.story p a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+/* ---------- three-tier hyperlink system (writing-room council 7/7 · 2026-07-15) ----------
+   tier 1 · proof/verify: the link IS the claim's evidence; blood-text ink, solid underline,
+            hover lifts to bone. Lives in mono proof rows, source lines, verify links.
+   tier 2 · nav/anchor: wayfinding chrome (returns, backlinks, section indexes); muted mono,
+            no persistent underline, oxblood on hover.
+   tier 3 · inline body: prose links; bone text, hairline low-alpha underline, full oxblood
+            text on hover.
+   Per-page element rules mirror these exact values; new markup should reach for the classes. */
+.lnk-proof{color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+  transition:color var(--dur-micro) var(--ease-micro)}
+.lnk-proof:hover{color:var(--bone)}
+.lnk-nav{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+.lnk-nav:hover{color:var(--blood-soft)}
+.lnk-inline{color:var(--bone);border-bottom:1px solid var(--blood-hairline);
+  transition:color var(--dur-micro) var(--ease-micro)}
+.lnk-inline:hover{color:var(--blood-text)}
+.lnk-proof:focus-visible,.lnk-nav:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
+.lnk-inline:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+/* default focus ring for any anchor a page hasn't styled itself */
+a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+/* in-content links: house style = tier 3 (matches per-page .prose a rules on comms/about) */
+.prose a,.sys-body a,.sys-name a,.r-fit a,.story p a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
+.prose a:hover,.sys-body a:hover,.sys-name a:hover,.r-fit a:hover,.story p a:hover{color:var(--blood-text)}
 /* header contact CTA: bordered on desktop, plain list item in the mobile menu */
 @media(min-width:861px){
   .nav-links .nav-cta{border:1px solid var(--blood-soft);padding:8px 14px;opacity:1}

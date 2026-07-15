@@ -11,13 +11,14 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     .st-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .st-hero .display{font-size:clamp(42px,7.4vw,110px)}
     .st-sub{margin-top:26px;max-width:640px;font-size:18px;color:var(--bone-soft);line-height:1.6}
     .comms-pointer{margin-top:18px;max-width:640px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.04em;color:var(--mute);line-height:1.7}
-    .comms-pointer a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .comms-pointer a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .comms-pointer a:hover{color:var(--blood-text)}
     /* round-3 A2 (Mitchell): the layout anchors LEFT at every desktop width,
        killing the dead column that used to sit left of the rail; the rail
        widens to 310px and its type steps up to 14px mono, one line per label
@@ -25,8 +26,8 @@
     .st-wrap{max-width:none}
     .st-layout{display:grid;grid-template-columns:310px minmax(0,720px);gap:56px;align-items:start;justify-content:start}
     .fs-return{margin:-20px 0 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
-    .fs-return a{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
-    .fs-return a:hover{color:var(--bone)}
+    .fs-return a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+    .fs-return a:hover{color:var(--blood-soft)}
     .stidx-toggle{display:none;align-items:center;gap:8px;width:100%;text-align:left;cursor:pointer;
       background:none;border:0;border-bottom:1px solid var(--line);padding:12px 2px;
       font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
@@ -40,7 +41,7 @@
     .st-index a{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.05em;
       text-transform:uppercase;color:var(--dim);padding:9px 0 9px 16px;border-left:1px solid var(--line);
       transition:color .25s var(--ease),border-color .25s var(--ease);line-height:1.4;white-space:nowrap}
-    .st-index a:hover{color:var(--bone)}
+    .st-index a:hover{color:var(--blood-soft)}
     .st-index a.on{color:var(--blood-soft);border-left-color:var(--blood-soft)}
     .story{padding:0 0 88px;max-width:720px;scroll-margin-top:92px}
     .story:last-child{padding-bottom:20px}
