@@ -238,8 +238,12 @@
     .dcard--x{position:relative}
     .dcard--x .dc-t{color:inherit}
     .dcard--x .dc-t::after{content:'';position:absolute;inset:0}
-    .dcard--x .dc-t:focus-visible{outline:none}
-    .dcard--x:has(.dc-t:focus-visible){outline:2px solid var(--blood-soft);outline-offset:3px}
+    /* the card-level focus ring needs :has(); only remove the native ring
+       where the replacement can actually render */
+    @supports selector(:has(a)){
+      .dcard--x .dc-t:focus-visible{outline:none}
+      .dcard--x:has(.dc-t:focus-visible){outline:2px solid var(--blood-soft);outline-offset:3px}
+    }
     .dcard-fold{position:relative;z-index:1;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
     .dcard-fold summary{list-style:none;cursor:pointer;font-family:'JetBrains Mono',monospace;
       font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--blood-soft);padding:4px 0}
@@ -332,7 +336,7 @@
     <div class="es-rail">
     <h2 class="mini reveal">Essays · weekly <span class="mini-note">· new series, launched July 2026</span></h2>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
-    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a> · second card</div>
+    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a> · the second card below</div>
     <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
     </div>
     <div class="es-col">

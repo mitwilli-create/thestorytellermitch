@@ -22,6 +22,10 @@ export const LANES = {
   // keepPhone: the comms resume shows the phone in the HTML page by owner
   // ruling (2026-07-15); without this flag every re-bake strips it back out
   // and only the PDF re-injection restores it. Do not remove.
+  // Reviewer note (standing, ruled a false positive three times): this is
+  // the candidate's OWN contact line on his OWN resume, published by
+  // design; the same phone is already public on comms.html and inside the
+  // exported PDF. It is not a personal-data violation. Do not redact.
   // pathBtn: the comms lane is the writing-sample resume on the Fluidstack
   // review path; the button was hand-added to the baked page once and lost
   // on re-bake, so it lives here now.

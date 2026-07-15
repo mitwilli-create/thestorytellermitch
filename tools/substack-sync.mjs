@@ -53,11 +53,17 @@ const detruncate = (s) => {
 const clampExcerpt = (s) => {
   s = String(s ?? '').trim();
   if (s.length <= EXCERPT_CHARS) return s;
-  const sentences = s.match(/[^.!?…]+[.!?…]+["')\]]*(?:\s+|$)/g) || [];
+  // Sticky-anchored scan: every sentence must start exactly where the last
+  // one ended. An unanchored match() would skip an unmatchable prefix
+  // ("Version 1.2 is stable.") and open the excerpt mid-token ("2 is
+  // stable."). Closing-quote class includes the curly variants feeds emit.
+  const re = /[^.!?…]+[.!?…]+["')\]”’]*(?:\s+|$)/y;
   let out = '';
-  for (const seg of sentences) {
-    if ((out + seg).trim().length > EXCERPT_CHARS) break;
-    out += seg;
+  while (re.lastIndex < s.length) {
+    const m = re.exec(s);
+    if (!m) break;
+    if ((out + m[0]).trim().length > EXCERPT_CHARS) break;
+    out += m[0];
   }
   out = out.trim();
   if (out) return out;
@@ -66,6 +72,8 @@ const clampExcerpt = (s) => {
     if (`${cut} ${w}`.trim().length > EXCERPT_CHARS - 2) break;
     cut = `${cut} ${w}`.trim();
   }
+  // a single token longer than the whole budget still gets a char prefix
+  if (!cut) cut = s.slice(0, EXCERPT_CHARS - 2).trimEnd();
   return `${cut} …`;
 };
 const stripHtml = (s) => String(s ?? '')
