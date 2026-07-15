@@ -30,7 +30,8 @@
       --line:rgba(236,232,225,0.10);
       --line-2:rgba(236,232,225,0.18);
       --blood:#8a3a33;      /* restrained oxblood accent, used sparingly */
-      --blood-soft:#b1554c;
+      --blood-soft:#b6584e; /* lifted a tad 2026-07-15 (was #b1554c): kickers/labels read warm, not muddy */
+      --blood-band:#b6584e; /* emphasis-band ground; white-on-band 4.67:1 AA; never darker than this */
       --blood-text:#c4685d; /* blood-soft lifted for small text: 5.2:1 on --bg */
       --blood-hairline:rgba(196,104,93,0.35); /* tier-3 inline-link underline */
       --ease:var(--ease-reveal); /* legacy alias; every var(--ease) now rides the reveal curve */
@@ -330,6 +331,27 @@ a.chip{text-decoration:none;display:inline-block}
 .lnk-inline:hover{color:var(--blood-text)}
 .lnk-proof:focus-visible,.lnk-nav:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
 .lnk-inline:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+/* ---------- emphasis bands: body-prose ox anchors (owner ruling 2026-07-15) ----------
+   Bolded-oxblood body text read too dark against the near-black ground; every
+   body-prose ox anchor now renders as bold white on a brightened oxblood band,
+   the selection-highlight look, deliberately. Bands ride --blood-band (white-on-band
+   4.67:1, AA). box-decoration-break keeps the band across line wraps. Links inside
+   a band go white with a visible underline. Do-block bold leads are plain <strong>
+   (no .ox) and stay band-free by class. Pages must not re-color strong.ox except
+   to mirror these values where local specificity demands it. */
+strong.ox,a.ox-link{color:#fff;font-weight:700;background:var(--blood-band);
+  padding:1px 6px;border-radius:2px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55);
+  transition:border-color var(--dur-micro) var(--ease-micro)}
+a.ox-link{border-bottom:1px solid rgba(255,255,255,0.55);
+  transition:border-color var(--dur-micro) var(--ease-micro)}
+strong.ox a:hover,a.ox-link:hover{color:#fff;border-bottom-color:#fff}
+strong.ox a:focus-visible,a.ox-link:focus-visible{outline:1px solid #fff;outline-offset:2px}
+@media print{
+  strong.ox,a.ox-link{background:none !important;color:#8a3a33 !important;padding:0 !important}
+  strong.ox a{color:#8a3a33 !important;border-bottom-color:#8a3a33 !important}
+}
 /* default focus ring for any anchor a page hasn't styled itself */
 a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
 /* in-content links: house style = tier 3 (matches per-page .prose a rules on comms/about) */
