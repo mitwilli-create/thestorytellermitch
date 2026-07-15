@@ -15,8 +15,28 @@
   <style>
     .wr-hero{padding:170px 0 84px;border-bottom:1px solid var(--line)}
     .wr-hero .display{font-size:clamp(38px,6.2vw,88px)}
+    /* the illustration's drawn page-frame gets cut by the viewport edge and
+       reads as an orphan rectangle; fade the right edge so it dissolves */
+    .wr-hero .fill-hero::after{background:linear-gradient(to right,#0a0a0b 6%,rgba(10,10,11,0.25) 40%,rgba(10,10,11,0) 54%,rgba(10,10,11,0.55) 66%,rgba(10,10,11,0.96) 76%,#0a0a0b 86%)}
     .wr-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
-    section{padding:76px 0}
+    /* emphasis system from the memo: bone default, one oxblood anchor per
+       section, white for the page's single hinge */
+    .wr-sub strong,.art-intro strong,.essays-rubric strong,.wr-note strong{color:var(--bone);font-weight:700}
+    .dcard .dc-b strong{display:inline;font-family:inherit;font-size:inherit;line-height:inherit;margin:0;color:var(--bone);font-weight:700}
+    strong.ox{color:var(--blood-soft)}
+    .dcard .dc-b strong.ox{color:var(--blood-soft)}
+    strong.wt{color:#fff}
+    /* three-genre spine: mono index of the room */
+    .wr-spine{margin-top:30px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--mute);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+    .wr-spine a{color:var(--bone-soft);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .wr-spine a:hover{color:var(--bone)}
+    .wr-spine a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
+    .wr-spine .sp-dot{color:var(--blood-soft)}
+    section{padding:52px 0}
+    .wr-work{border-top:1px solid var(--line);padding-bottom:96px}
+    #essays,#script,#redacted-docs{scroll-margin-top:96px}
     /* essays: uniform equal-weight card grid, baked by tools/substack-sync.mjs */
     .essays-rubric{max-width:720px;font-size:15.5px;color:var(--bone-soft);line-height:1.65;margin:0 0 30px}
     /* two-up on desktop: fills cleanly at the current essay count and grows
@@ -24,11 +44,11 @@
        the weekly series catches up) */
     .essay-cards{display:grid;grid-template-columns:1fr;gap:16px;max-width:768px}
     @media(min-width:600px){.essay-cards{grid-template-columns:1fr 1fr}}
-    .ecard{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+    .ecard{background:var(--surface);border:1px solid var(--line);
       padding:22px 22px 20px;display:flex;flex-direction:column;gap:11px;min-height:212px;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .ecard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
-    .ecard:focus-visible{border-color:var(--blood-soft);outline:none}
+    .ecard:focus-visible{outline:2px solid var(--blood-soft);outline-offset:3px}
     .ec-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft)}
     .ec-t{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;color:var(--bone);line-height:1.2;
@@ -50,8 +70,10 @@
     /* writing-01: script left, redacted docs right with an 8vh offset */
     .wr-grid{display:grid;grid-template-columns:1fr}
     @media(min-width:1024px){
-      .wr-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 72px}
-      .wr-col-docs{margin-top:8vh}
+      .wr-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 72px;align-items:start}
+      /* docs column pins while the longer script column scrolls, so the
+         juxtaposition holds and the column never trails dead space */
+      .wr-col-docs{margin-top:8vh;position:sticky;top:90px}
       .wr-grid .doc-cards{grid-template-columns:1fr}
     }
     @media(max-width:1023px){
@@ -61,10 +83,15 @@
     /* writing-03: pull-quote band (pattern from stories.html .pull) */
     .pull{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);
       line-height:1.25;letter-spacing:-0.01em;color:var(--bone);border-left:2px solid var(--blood-soft);
-      padding:8px 0 8px 24px;margin:0 0 32px}
-    #redacted-docs{scroll-margin-top:86px}
+      padding:8px 0 8px 24px;margin:0 0 10px}
+    .pull-src{margin:0 0 30px;padding-left:26px;font-family:'JetBrains Mono',monospace;font-size:11px;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
+    .pull-src a{color:var(--bone-soft);border-bottom:1px solid var(--blood-soft);padding-bottom:1px}
+    .pull-src a:hover{color:var(--bone)}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
+    h2.mini::before{content:'';width:52px;height:1px;background:var(--blood-soft);
+      display:inline-block;vertical-align:middle;margin-right:14px}
     .artifact{max-width:860px;margin-bottom:8px}
     .art-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--mute);border:1px solid var(--line);display:inline-block;
@@ -73,7 +100,18 @@
       color:var(--bone);line-height:1.15;margin-bottom:14px}
     .art-intro{max-width:720px;font-size:16px;color:var(--bone-soft);line-height:1.7;margin-bottom:28px}
     .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .script{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:30px 32px;max-width:760px}
+    .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--blood-text)}
+    .pull-src a:focus-visible,.art-intro a:focus-visible,.src-line a:focus-visible,
+    .dc-b a:focus-visible,.wr-note a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .ox-i{color:var(--blood-soft)}
+    /* proof links that survive a skim */
+    .proof-row{display:flex;flex-wrap:wrap;gap:10px 26px;margin:-8px 0 26px;
+      font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .proof-row a{color:var(--bone-soft);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .proof-row a:hover{color:var(--bone)}
+    .proof-row a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
+    .script{background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--blood-soft);padding:30px 32px;max-width:768px}
     .script .d-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:18px}
     .script p{font-size:15px;line-height:1.85;color:var(--bone-soft);margin-bottom:14px}
@@ -130,15 +168,49 @@
     .dcard{background:var(--surface);border:1px solid var(--line);padding:24px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .dcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
-    .dcard:focus-visible{border-color:var(--blood-soft);outline:none}
+    .dcard:focus-visible{outline:2px solid var(--blood-soft);outline-offset:3px}
+    /* cards cascade in rather than popping at once (owner-approved council
+       item C27: a simultaneous four-card pop reads as a jump cut, which the
+       motion rule bans; the 240ms cascade IS the continuous movement).
+       Delays live on the .in state and reset on hover/focus so interaction
+       stays instant. */
+    .doc-cards .dcard.in:nth-child(2){transition-delay:.08s}
+    .doc-cards .dcard.in:nth-child(3){transition-delay:.16s}
+    .doc-cards .dcard.in:nth-child(4){transition-delay:.24s}
+    .doc-cards .dcard.in:hover,.doc-cards .dcard.in:focus-visible{transition-delay:0s}
     .dcard .dc-k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:10px}
     .dcard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--bone);display:block;margin-bottom:8px;line-height:1.25}
     .dcard .dc-b{font-size:13.5px;color:var(--mute);line-height:1.6;display:block}
     .dcard .dc-b a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .dcard .dc-r{display:block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
+    .dc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .dc-chips a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--bone-soft);border:1px solid var(--line-2);padding:6px 10px;
+      transition:all var(--dur-micro) var(--ease-micro)}
+    .dc-chips a:hover{border-color:var(--blood-soft);color:var(--bone)}
+    .dc-chips a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .wr-note{max-width:720px;margin-top:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
+    .wr-note a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    /* mobile-only genre divider: the spine's job, restated where the stack
+       changes subject */
+    .wr-divide{display:none}
+    @media(max-width:1023px){
+      .wr-divide{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
+        letter-spacing:0.14em;text-transform:uppercase;color:var(--blood-soft);margin-bottom:34px}
+      .wr-divide::before{content:'';display:inline-block;width:52px;height:1px;
+        background:var(--blood-soft);vertical-align:middle;margin-right:14px}
+    }
+    /* below 1120 the theme hides the hero art entirely; bring it back as a
+       low-opacity plate behind the text instead of a black slab */
+    @media(max-width:1120px){
+      .wr-hero .fill-hero{display:block;left:0;right:0;width:100%;opacity:0.3}
+      .wr-hero .fill-hero::after{background:linear-gradient(to bottom,rgba(10,10,11,0.55),rgba(10,10,11,0.8) 66%,#0a0a0b 100%)}
+    }
     @media(max-width:860px){
       .wr-hero{padding:130px 0 40px}
-      .script{padding:24px 22px}
+      .script{padding:20px 16px}
       .doc-cards{grid-template-columns:1fr}
     }
     @media (prefers-reduced-motion: reduce){ .reveal{opacity:1 !important;transform:none !important;transition:none !important} }
@@ -175,15 +247,22 @@
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Nothing in this room is invented for display. What ships here is writing that actually ran. Scripts appear exactly as broadcast. Internal Google documents are published with redaction, not reconstruction. Public technical writing links to the repos, and essays appear the day they publish. Executive client work stays internal: described on the comms page, never excerpted.</p>
+    <p class="wr-sub">Nothing in this room is invented for display. <strong class="ox">Everything here shipped.</strong> Scripts appear exactly as broadcast, internal Google documents are published with redaction, public technical writing links to the repos, and essays land the day they publish.</p>
+    <nav class="wr-spine" aria-label="Sections on this page">
+      <span>In this room</span><span class="sp-dot">·</span>
+      <a href="#essays">Essays</a><span class="sp-dot">·</span>
+      <a href="#script">The script</a><span class="sp-dot">·</span>
+      <a href="#redacted-docs">Internal docs</a>
+    </nav>
   </div>
 </header>
 
-<section style="padding-top:0">
+<section style="padding-top:0" id="essays">
   <div class="wrap">
     <h2 class="mini reveal">Essays · weekly</h2>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
-    <p class="essays-rubric reveal">New long-form writing on AI-native production, executive communications, and what newsrooms teach about both. Each essay is linked here the day it publishes.</p>
+    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a></div>
+    <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Each essay is linked here the day it publishes.</p>
     <!-- WRITING:CARDS:START -->
     <div class="essay-cards reveal">
       <a class="ecard" href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">
@@ -203,20 +282,25 @@
   </div>
 </section>
 
-<section>
+<section class="wr-work" id="script">
   <div class="wrap">
+    <div class="wr-divide" aria-hidden="true">The script + the internal docs</div>
     <div class="wr-grid">
     <div class="wr-col-script">
     <figure class="oncam oncam--card reveal" style="margin:0 0 40px">
       <img src="assets/stills/oncam/barenec-130.jpg" alt="Mitchell Williams field-interviewing with a Fusion microphone on location" loading="lazy">
-      <figcaption class="oncam-cap">fusion. on location, mic in hand.</figcaption>
+      <figcaption class="oncam-cap">fusion. field reporting behind the scripts. <a href="work.html">watch &#8599;</a></figcaption>
     </figure>
     <div class="artifact">
-      <div class="art-label reveal">Public record · Al Jazeera's AJ+ · 2017 · script as broadcast</div>
-      <div class="art-title reveal">The measles script: 125 seconds, 50 million views</div>
-      <p class="art-intro reveal">This is the script of my biggest piece, word for word as it was broadcast. Policy journalism built for a two-minute social window: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch it in the archive</a> and read along.</p>
+      <div class="art-label reveal">AJ+ · 2017 · script as broadcast</div>
+      <div class="art-title reveal">The measles script: 125 seconds, <span class="ox-i">50 million views</span></div>
+      <p class="art-intro reveal">Policy journalism built for a <strong>125-second social window</strong>: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. Broadcast by AJ+ in 2017, it reached 50 million views. The script runs below word for word, production cues intact.</p>
+      <div class="proof-row reveal">
+        <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch the broadcast</a>
+        <a href="impact.html">Verify the view count</a>
+      </div>
       <div class="script reveal">
-        <div class="d-k">Script · 2 minutes 5 seconds · as broadcast, with production cues</div>
+        <div class="d-k">Script · 2:05 · as broadcast · with production cues</div>
         <div class="av-wrap">
           <table class="av-table">
             <colgroup><col class="av-c-video"><col class="av-c-audio"></colgroup>
@@ -283,7 +367,7 @@
           </table>
         </div>
         <details class="script-fold">
-          <summary>read the rest of the script</summary>
+          <summary>expand · the remaining 1:35 of the script</summary>
           <div class="av-wrap">
             <table class="av-table">
               <colgroup><col class="av-c-video"><col class="av-c-audio"></colgroup>
@@ -371,32 +455,41 @@
     <div class="wr-col-docs">
     <figure class="oncam oncam--card reveal" style="margin:0 0 40px">
       <img src="assets/stills/oncam/trumpmj-023.jpg" alt="Mitchell Williams delivering an AJ+ explainer to camera" loading="lazy">
-      <figcaption class="oncam-cap">aj+, 2017. the script, delivered to camera.</figcaption>
+      <figcaption class="oncam-cap">aj+, 2017. this script, delivered to camera. <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">watch &#8599;</a></figcaption>
     </figure>
     <h2 class="mini reveal" id="redacted-docs">Programmatic documentation · the Google roles, redacted</h2>
-    <p class="art-intro reveal">Real internal documents from both Google roles, published with redaction rather than reconstruction: names, internal tools, links, and internal figures are bracketed, and the text is otherwise verbatim. Each page states exactly what was redacted.</p>
+    <p class="art-intro reveal">Three internal documents from two Google roles, <strong class="ox">published with redaction, not reconstruction</strong>. Names, internal tools, links, and internal figures are bracketed. Everything else is <strong class="wt">verbatim</strong>. Each page states exactly what was redacted.</p>
     <div class="doc-cards">
       <a class="dcard reveal" href="docs/xge-operations-guide.html">
-        <span class="dc-k">The Office of Cross Google Engineering (xGE) · 2026 · operator runbook</span>
+        <span class="dc-k">Google xGE · 2026 · operator runbook</span>
         <strong>Comms Agent: Phase 1 Operations Guide</strong>
         <span class="dc-b">The handoff runbook for the communications-triage agent: what the system does on its own, what the human handles, escalation rules, error paths, and the metrics framework, written so the team could run it without me.</span>
+        <span class="dc-r">redacted: names · internal tools · links · ids</span>
       </a>
       <a class="dcard reveal" href="docs/orientation-pilot-script.html">
         <span class="dc-k">Google Corporate Engineering · video script</span>
         <strong>PILOT SCRIPT: Introduction to Techstop</strong>
-        <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to 75,000+ new hires at an 88% CSAT. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
+        <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to <strong>75,000+ new hires</strong> at an <strong class="ox">88% CSAT</strong>. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
+        <span class="dc-r">redacted: speaker names · app names · links · figures</span>
       </a>
       <a class="dcard reveal" href="docs/techstop-help-article.html">
-        <span class="dc-k">Google TechStop era · self-help article</span>
+        <span class="dc-k">Google TechStop · self-help article</span>
         <strong>Troubleshoot security key issues</strong>
-        <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability 9.03% (about 10,670 fewer tickets a year).</span>
+        <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability <strong>9.03%</strong> (about <strong>10,670 fewer tickets</strong> a year).</span>
+        <span class="dc-r">redacted: shortlinks · corp urls · hostnames · policy names</span>
       </a>
       <div class="dcard reveal">
         <span class="dc-k">Public repos · already sanitized</span>
         <strong>The public documentation suite</strong>
-        <span class="dc-b">The <a href="https://github.com/mitwilli-create/comms-triage-agent">comms-triage-agent</a> repo carries the architecture, triage criteria, Smart Brevity rules, audience profiles, and escalation templates for the sanitized public demo. <a href="https://github.com/mitwilli-create/voice-os">voice-os</a> and <a href="https://github.com/mitwilli-create/picture-lock">picture-lock</a> round it out: complex system in, plain language out.</span>
+        <span class="dc-b">Architecture, triage criteria, Smart Brevity rules, audience profiles, and escalation templates, sanitized and public: complex system in, plain language out.</span>
+        <span class="dc-chips">
+          <a href="https://github.com/mitwilli-create/comms-triage-agent">comms-triage-agent &#8599;</a>
+          <a href="https://github.com/mitwilli-create/voice-os">voice-os &#8599;</a>
+          <a href="https://github.com/mitwilli-create/picture-lock">picture-lock &#8599;</a>
+        </span>
       </div>
     </div>
+    <p class="wr-note reveal">Executive client work stays internal: described on the <a href="comms.html">comms page</a>, <strong>never excerpted</strong>.</p>
     </div>
     </div>
   </div>
