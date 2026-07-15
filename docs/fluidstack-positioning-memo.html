@@ -11,37 +11,88 @@
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css">
   <style>
+    /* ---------- hero ---------- */
     .doc-hero{padding:150px 0 40px;border-bottom:1px solid var(--line)}
     .doc-hero h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);color:var(--bone);line-height:1.1}
-    .doc{max-width:820px;padding:56px 0 96px}
-    .doc h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--bone);margin:44px 0 16px}
-    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--blood-soft);margin:30px 0 12px}
-    .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
+    .doc-meta{margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);line-height:1.8}
+
+    /* ---------- doc shell: centered column + gutter rail ---------- */
+    .doc{padding:56px 0 96px}
+    .doc-grid{max-width:820px;margin:0 auto}
+    @media(min-width:1121px){
+      .doc .wrap.doc-grid{max-width:1120px;display:grid;grid-template-columns:minmax(0,820px) 1fr;
+        gap:48px;align-items:start;margin:0 auto}
+    }
+    .doc-rail{display:none}
+    @media(min-width:1121px){
+      .doc-rail{display:block;position:sticky;top:120px;align-self:start}
+      .doc-rail nav{position:relative;display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      .doc-rail .rail-fill{position:absolute;left:-2px;top:0;width:2px;height:0;
+        background:var(--blood-soft);transition:height var(--dur-micro) var(--ease-micro)}
+      .doc-rail .rl{display:flex;gap:12px;align-items:baseline;padding:9px 0 9px 18px;
+        font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+      .doc-rail .rl:hover{color:var(--bone)}
+      .doc-rail .rl.active{color:var(--blood-text)}
+      .doc-rail .rl-n{color:var(--blood-soft);font-size:10px;flex:none}
+      .doc-rail .rl.active .rl-n{color:var(--blood-text)}
+    }
+
+    /* ---------- prose ---------- */
+    .doc-main p,.doc-main ul,.doc-main .backlink{max-width:680px}
+    .doc p{font-size:16px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
     .doc strong{color:var(--bone)}
-    .doc em{color:var(--mute)}
+    .doc em{color:var(--bone);font-style:italic}
     .doc p a,.doc li a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     .doc p a:hover,.doc li a:hover{color:var(--bone)}
-    .doc ul{margin:8px 0 18px;padding-left:20px}
-    .doc li{font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-bottom:8px}
+    /* external-tab cue on inline prose links (card sources carry their own glyph) */
+    .doc-main p a[target="_blank"]::after{content:"\00A0\2197";font-family:'JetBrains Mono',monospace;
+      font-size:0.72em;color:var(--blood-soft);border-bottom:none;vertical-align:baseline}
+    .doc ul{margin:12px 0 20px;padding-left:20px}
+    .doc li{font-size:16px;line-height:1.7;color:var(--bone-soft);margin-bottom:8px}
+    .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
+      letter-spacing:0.1em;color:var(--blood-soft);margin:0 0 12px}
     .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
     .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
 
+    /* ---------- section frame (site .sec-head pattern) + rest beats ---------- */
+    .memo-sec{scroll-margin-top:110px}
+    .memo-sec + .memo-sec{margin-top:56px;border-top:1px solid var(--line);padding-top:56px}
+    .msec-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .msec-num{display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
+    .msec-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(23px,2.8vw,33px);
+      text-transform:uppercase;letter-spacing:-0.01em;line-height:1.08;color:var(--bone);max-width:760px}
+
+    /* ---------- action block ("What I'd do") + spare payoff ---------- */
+    .do-block{margin:24px 0;padding:20px 24px;border:1px solid var(--line);background:var(--bg-2);
+      border-left:2px solid var(--blood-soft);border-radius:3px;max-width:680px}
+    .do-block h3{margin:0 0 12px}
+    .do-block ul{list-style:none;margin:0;padding:0;max-width:none}
+    .do-block li{position:relative;padding-left:22px;margin-bottom:9px}
+    .do-block li:last-child{margin-bottom:0}
+    .do-block li::before{content:"\2192";position:absolute;left:0;color:var(--blood-soft)}
+    .payoff{margin:24px 0 0;max-width:680px}
+    .payoff h3{margin:0 0 6px}
+    .payoff p{margin:0}
+
     /* ---------- sourced visual elements (built July 2026; no AI images, no article screenshots) ---------- */
-    /* 1 · pull-quote */
-    .pq{margin:40px 0;padding:10px 0 10px 28px;border-left:3px solid var(--blood-soft)}
-    .pq blockquote{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(21px,3.1vw,32px);
-      line-height:1.22;color:var(--bone);margin:0;letter-spacing:-0.01em}
+    /* pull-quote */
+    .pq{margin:36px 0;padding:8px 0 8px 26px;border-left:3px solid var(--blood-soft);max-width:640px}
+    .pq blockquote{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.8vw,30px);
+      line-height:1.24;color:var(--bone);margin:0;letter-spacing:-0.01em}
 
     /* shared card chrome */
-    .gcard{margin:34px 0;border:1px solid var(--line-2);background:var(--surface);border-radius:3px;overflow:hidden}
+    .gcard{margin:32px 0;border:1px solid var(--line-2);background:var(--surface);border-radius:3px;overflow:hidden}
     .gcard-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
       color:var(--blood-soft);padding:15px 22px;border-bottom:1px solid var(--line)}
     .gcap{padding:15px 22px;font-size:13px;color:var(--mute);line-height:1.6;background:var(--bg-2);
       border-top:1px solid var(--line)}
 
-    /* 2 · headline card */
-    .hl-list{list-style:none;margin:0;padding:0}
-    .hl-list li{padding:18px 22px;border-bottom:1px solid var(--line)}
+    /* headline card */
+    .hl-list{list-style:none;margin:0;padding:0;max-width:none}
+    .hl-list li{padding:18px 22px;border-bottom:1px solid var(--line);margin:0}
     .hl-list li:last-child{border-bottom:0}
     .hl-q{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;line-height:1.4;color:var(--bone)}
     .hl-q .q{color:var(--blood-soft)}
@@ -49,40 +100,93 @@
       letter-spacing:0.04em;text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     a.hl-src:hover{color:var(--bone)}
 
-    /* 3 · stat callout */
-    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);
-      border:1px solid var(--line-2);border-radius:3px;overflow:hidden;margin:34px 0}
-    .stat{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column}
-    .stat .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,38px);color:var(--bone);
-      line-height:1.02;letter-spacing:-0.02em}
+    /* stat callout */
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;margin:32px 0}
+    .stat{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column;min-width:0}
+    .stat .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--blood-soft);margin-bottom:11px}
+    .stat .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,40px);color:var(--bone);
+      line-height:1.02;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+    .stat .n.n--word{font-size:clamp(22px,3vw,30px);text-transform:uppercase;letter-spacing:0.01em}
     .stat .l{margin-top:11px;font-size:13.5px;line-height:1.5;color:var(--bone-soft);flex:1 1 auto}
     a.stat-src{display:inline-block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.05em;text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     a.stat-src:hover{color:var(--bone)}
-    @media(max-width:640px){.stat-grid{grid-template-columns:1fr}}
 
-    /* 4 · credential card */
-    .cred{margin:34px 0;display:flex;gap:22px;align-items:flex-start;border:1px solid var(--line-2);
-      background:var(--surface);border-left:3px solid var(--blood-soft);border-radius:3px;padding:24px 26px}
-    .cred .mono{flex:none;width:54px;height:54px;border:1px solid var(--line-2);border-radius:3px;display:flex;
-      align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;
-      color:var(--blood-text);letter-spacing:0.02em}
-    .cred .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.42;color:var(--bone);margin:0 0 9px}
+    /* credential card */
+    .cred{margin:32px 0;display:flex;gap:24px;align-items:flex-start;border:1px solid var(--line-2);
+      background:var(--surface);border-left:3px solid var(--blood-soft);border-radius:3px;padding:26px 28px}
+    .cred .mono{flex:none;width:72px;height:72px;border:2px solid var(--blood-soft);border-radius:3px;display:flex;
+      align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;
+      color:var(--bone);letter-spacing:0.02em}
+    .cred .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--blood-soft);margin-bottom:10px}
+    .cred .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.42;color:var(--bone);margin:0 0 12px}
     .cred .attr{font-size:13.5px;color:var(--bone-soft);line-height:1.6;margin:0}
     .cred .attr a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     .cred .attr a:hover{color:var(--bone)}
-    @media(max-width:520px){.cred{flex-direction:column;gap:16px}}
 
-    /* 90-day plan timeline (visual treatment of the locked Day 30/60/90 plan) */
-    .plan{margin:26px 0 8px;padding-left:6px}
-    .plan .ms{position:relative;padding:0 0 26px 28px;border-left:2px solid var(--line-2)}
+    /* 30/60/90 timeline: numbered nodes echoing the section numerals */
+    .plan{counter-reset:ms;margin:26px 0 8px;padding-left:6px}
+    .plan .ms{position:relative;padding:0 0 32px 34px;border-left:2px solid var(--line-2)}
     .plan .ms:last-child{border-left-color:transparent;padding-bottom:2px}
-    .plan .ms::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;
-      background:var(--blood-soft);box-shadow:0 0 0 3px var(--bg)}
+    .plan .ms::before{counter-increment:ms;content:counter(ms,decimal-leading-zero);
+      position:absolute;left:-14px;top:-2px;width:26px;height:26px;border-radius:3px;
+      border:1px solid var(--line-2);background:var(--bg);color:var(--blood-soft);
+      font-family:'JetBrains Mono',monospace;font-size:11px;display:flex;align-items:center;justify-content:center}
     .plan .day{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--blood-soft);margin:0 0 7px}
-    .plan .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;line-height:1.42;color:var(--bone);margin:0 0 8px}
+      color:var(--dim);margin:0 0 7px}
+    .plan .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:17.5px;line-height:1.4;color:var(--bone);margin:0 0 8px}
     .plan .sup{font-size:14.5px;line-height:1.72;color:var(--bone-soft);margin:0}
+
+    /* collapsed sources audit block */
+    .sources{margin:44px 0 0;border-top:1px solid var(--line);padding-top:18px;max-width:680px}
+    .sources summary{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--mute);cursor:pointer;list-style:none}
+    .sources summary::-webkit-details-marker{display:none}
+    .sources summary::before{content:"+ ";color:var(--blood-soft)}
+    .sources[open] summary::before{content:"\2013\00A0"}
+    .sources summary:hover{color:var(--bone)}
+    .sources .src-body{margin-top:18px;display:grid;gap:20px}
+    .sources h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--blood-soft);margin:0 0 9px;font-weight:500}
+    .sources ul{list-style:none;margin:0;padding:0;max-width:none}
+    .sources li{margin-bottom:8px;font-size:13px;line-height:1.5;color:var(--mute)}
+    .sources a{color:var(--bone-soft);border-bottom:1px solid var(--line-2)}
+    .sources a:hover{color:var(--bone);border-color:var(--blood-soft)}
+
+    /* focus-visible + reveal + no floating sound control on this text page */
+    .doc a:focus-visible,.doc-rail a:focus-visible,.sources a:focus-visible,.backlink a:focus-visible{
+      outline:2px solid var(--blood-soft);outline-offset:2px}
+    .sound-toggle{display:none}
+
+    /* mobile ergonomics */
+    @media(max-width:640px){
+      .doc-hero{padding:120px 0 32px}
+      .doc{padding:32px 0 72px}
+      .stat-grid{grid-template-columns:1fr}
+      .cred{flex-direction:column;gap:18px}
+    }
+
+    @media(forced-colors:active){
+      .pq,.cred{border-left-color:LinkText}
+      .doc-rail .rl.active{color:LinkText}
+    }
+
+    /* print: flip to a clean light version, drop chrome, expose source URLs */
+    @media print{
+      :root{--bg:#fff;--bg-2:#fff;--surface:#fff;--bone:#111;--bone-soft:#222;--mute:#555;--dim:#666;
+        --line:rgba(0,0,0,0.16);--line-2:rgba(0,0,0,0.26);--blood:#8a3a33;--blood-soft:#8a3a33;--blood-text:#8a3a33}
+      body{background:#fff}
+      .nav,.sound-toggle,.doc-rail,.skip-link,footer,body::before,body::after{display:none!important}
+      .reveal{opacity:1!important;transform:none!important}
+      .doc .wrap.doc-grid,.doc-grid{max-width:none!important;display:block!important;margin:0!important}
+      .doc-hero{padding:12px 0 20px!important}
+      .gcard,.stat-grid,.cred,.plan .ms,.pq{break-inside:avoid}
+      .doc-main p a[target="_blank"]::after{content:"\00A0(" attr(href) ")"!important;font-family:inherit;
+        font-size:.8em;color:#555}
+    }
   </style>
 </head>
 <body>
@@ -109,148 +213,232 @@
   <div class="wrap">
     <div class="kicker">Positioning memo · written for this screen</div>
     <h1>How I'd approach the Fluidstack narrative.</h1>
+    <div class="doc-meta">Written for Fluidstack · July 2026 · Public sources only · ~8 min read</div>
   </div>
 </header>
 
 <div class="doc">
-  <div class="wrap">
+  <div class="wrap doc-grid">
+    <div class="doc-main">
 
     <p>Fluidstack has built one of the most consequential companies in AI <strong>and barely said so.</strong> The gap between what it's built and what its spokespeople have said publicly is the <strong>opportunity</strong>.</p>
 
     <p>What follows is a map of the openings I see and what I would do with each one in the first weeks on the job. Everything here comes from the public record. I have no inside knowledge of Fluidstack, and I haven't invented any.</p>
 
-    <figure class="pq">
+    <figure class="pq reveal">
       <blockquote>At this company, in this moment, <span style="color:var(--blood-soft)">honesty</span> and <span style="color:var(--blood-soft)">getting ahead of the story</span> is the strategy.</blockquote>
     </figure>
 
-    <h2>Opportunity 1: The story will get written. The only question is who frames it.</h2>
+    <section class="memo-sec" id="opp-1">
+      <div class="msec-head">
+        <span class="msec-num">01 · Opportunity</span>
+        <h2 class="msec-title">The story will get written. The only question is who frames it.</h2>
+      </div>
 
-    <p>Anthropic committed <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion</a> to build with Fluidstack. Overnight, a company most people couldn't name became the builder behind the biggest bet of the AI era. But here's the exposure risk: almost all of Fluidstack's business runs through one customer, Anthropic. If Anthropic slows down or builds its own way, most of the revenue goes with it.</p>
+      <p>Anthropic committed <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion</a> to build with Fluidstack. Overnight, a company most people couldn't name became the builder behind the biggest bet of the AI era. But here's the exposure risk: almost all of Fluidstack's business runs through one customer, Anthropic. If Anthropic slows down or builds its own way, most of the revenue goes with it.</p>
 
-    <p>Now add Google. It invests in Anthropic, sells Anthropic its chips, and backstops $1.73 billion of Fluidstack's leases. The money keeps circling back through the same few players in a pattern the press calls <a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">"circular financing"</a>. This reporting ultimately stokes a fear that the AI boom is propped up by insiders, not real demand. Pair this with the single customer angle, and a skeptic has the whole "house of cards" story.</p>
+      <p>Now add Google. It invests in Anthropic, sells Anthropic its chips, and backstops $1.73 billion of Fluidstack's leases. The money keeps circling back through the same few players in a pattern the press calls <a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">"circular financing"</a>. This reporting ultimately stokes a fear that the AI boom is propped up by insiders, not real demand. Pair this with the single customer angle, and a skeptic has the whole "house of cards" story.</p>
 
-    <div class="gcard">
-      <div class="gcard-h">The concentration story, as critics filed it on CoreWeave</div>
-      <ul class="hl-list">
-        <li>
-          <span class="hl-q"><span class="q">&ldquo;</span>CoreWeave stock remains down 55% from mid-2025 highs.<span class="q">&rdquo;</span></span>
-          <a class="hl-src" href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune · Nov 8, 2025 &#8599;</a>
-        </li>
-        <li>
-          <span class="hl-q"><span class="q">&ldquo;</span>Famous short seller Jim Chanos just laid out his bear case.<span class="q">&rdquo;</span></span>
-          <a class="hl-src" href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool · Aug 19, 2025 &#8599;</a>
-        </li>
-        <li>
-          <span class="hl-q"><span class="q">&ldquo;</span>Two months after CoreWeave's IPO fizzled, the stock surged 250% and left doubters baffled.<span class="q">&rdquo;</span></span>
-          <a class="hl-src" href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune · Jun 6, 2025 &#8599;</a>
-        </li>
-      </ul>
-      <figcaption class="gcap">The concentration story critics told about CoreWeave, in their own headlines. The volatility cuts both ways, which is exactly why the framing matters.</figcaption>
+      <div class="gcard reveal" role="group" aria-label="The concentration story critics told about CoreWeave, in headlines">
+        <div class="gcard-h">The concentration story, as critics filed it on CoreWeave</div>
+        <ul class="hl-list">
+          <li>
+            <span class="hl-q"><span class="q">&ldquo;</span>CoreWeave stock remains down 55% from mid-2025 highs.<span class="q">&rdquo;</span></span>
+            <a class="hl-src" href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune · Nov 8, 2025 &#8599;</a>
+          </li>
+          <li>
+            <span class="hl-q"><span class="q">&ldquo;</span>Famous short seller Jim Chanos just laid out his bear case.<span class="q">&rdquo;</span></span>
+            <a class="hl-src" href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool · Aug 19, 2025 &#8599;</a>
+          </li>
+          <li>
+            <span class="hl-q"><span class="q">&ldquo;</span>Two months after CoreWeave's IPO fizzled, the stock surged 250% and left doubters baffled.<span class="q">&rdquo;</span></span>
+            <a class="hl-src" href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune · Jun 6, 2025 &#8599;</a>
+          </li>
+        </ul>
+        <figcaption class="gcap">The concentration story critics told about CoreWeave, in their own headlines. The volatility cuts both ways, which is exactly why the framing matters.</figcaption>
+      </div>
+
+      <p>CoreWeave learned this the hard way. Similar to Fluidstack, it rents AI compute to a few giant customers. When CoreWeave went public in 2025, Microsoft alone made up <a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">62 percent of its revenue</a>. Critics and investors (looking to make a profit on CoreWeave's stock failing publicly) claimed the company was too dependent on its one big tech customer, propped up by debt, and held together through circular deals. Their take became the version of the story everyone repeated. The narrative eventually dragged CoreWeave's stock down about 55% from its peak.</p>
+
+      <p>The lesson? Tell your own story first or become the cautionary tale the whole industry points to.</p>
+
+      <div class="do-block">
+        <h3>What I'd do</h3>
+        <ul>
+          <li>Beat reporters to the punch. I would bring Fluidstack's own sourced version of the story to the 10-15 journalists who crown the winners and losers of the AI hardware race, headline after headline.</li>
+          <li>Keep one line sacred in every message: "the $50 billion is Anthropic's bet, not Fluidstack's bank balance."</li>
+        </ul>
+      </div>
+
+      <p>Most people applying for this job bring a plan. I bring the reporters. I spent ten years inside national newsrooms, and I already know them, and what makes them run a story.</p>
+
+      <div class="payoff">
+        <h3>The payoff</h3>
+        <p>When the skeptical story runs, and it will, Fluidstack isn't scrambling to answer it. Its version is already the one the reporters trust.</p>
+      </div>
+    </section>
+
+    <section class="memo-sec" id="opp-2">
+      <div class="msec-head">
+        <span class="msec-num">02 · Opportunity</span>
+        <h2 class="msec-title">The whole trick is not owning the building</h2>
+      </div>
+
+      <p>A new data center grid connection in Texas or New York can take three to seven years. The wait is the <a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">single hardest problem</a> in the entire AI buildout. It's harder than raising the money and harder than getting the chips. A company can line up billions in funding and a warehouse of Nvidia chips in a few months, but then be forced to wait years for a grid connection big enough to run them. Electricity, in one place and ready to use, is now the scarcest thing in the industry.</p>
+
+      <p>Fluidstack solves for this scarcity, because it does not own most of what it runs. It never planned to. Fluidstack walks into already-built Bitcoin-mining sites and drops GPU clusters into shells wired for heavy power and switches them on. And, reusing instead of building quietly solves another problem the whole industry is about to slam into: the growing revolt against data centers. It's bigger than the industry wants to admit.</p>
+
+      <div class="stat-grid reveal" role="group" aria-label="The data-center backlash, in three figures">
+        <div class="stat">
+          <div class="k">Public opinion</div>
+          <div class="n" data-count>71%</div>
+          <div class="l">of Americans do not want a data center near them, more than say so about a nuclear plant.</div>
+          <a class="stat-src" href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup · May 2026 &#8599;</a>
+        </div>
+        <div class="stat">
+          <div class="k">Projects stalled</div>
+          <div class="n" data-count>$130B</div>
+          <div class="l">in projects blocked or delayed by community opposition in a single quarter this year.</div>
+          <a class="stat-src" href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News · 2026 &#8599;</a>
+        </div>
+        <div class="stat">
+          <div class="k">Local backlash</div>
+          <div class="n n--word">Recalls</div>
+          <div class="l">Towns are moving to recall the councils and mayors that approved the builds.</div>
+          <a class="stat-src" href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek · 2026 &#8599;</a>
+        </div>
+      </div>
+
+      <p>A new data center takes an enormous amount from a town and gives almost nothing back. The biggest ones <a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">employ fewer than 150 people</a>, sometimes 25. Across the country, data centers pull <a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">more than 4 percent of the electricity</a> and hand back about 0.01 percent of the jobs. The town carries the water and the grid, and the payoff never comes.</p>
+
+      <p>Fluidstack does not pour new campuses onto farmland or force fresh load onto a stressed grid. It moves into buildings that already stand and power that was already flowing, old Bitcoin mines that were pulling that electricity long before AI showed up. Same power, new purpose, and the rare version of this buildout a town has no reason to fight.</p>
+
+      <div class="do-block">
+        <h3>What I'd do</h3>
+        <ul>
+          <li>Get the reuse story on the record now, while no one is asking.</li>
+          <li>Get to know the reporters covering the data-center backlash.</li>
+          <li>Keep a response ready. The day a "wrecking our town" piece runs, Fluidstack is already the contrast inside it.</li>
+        </ul>
+      </div>
+
+      <div class="payoff">
+        <h3>The payoff</h3>
+        <p>When the backlash reaches AI infrastructure, and it will, Fluidstack does not land on the list of targets. It becomes the standard the targets get measured against.</p>
+      </div>
+    </section>
+
+    <section class="memo-sec" id="opp-3">
+      <div class="msec-head">
+        <span class="msec-num">03 · Opportunity</span>
+        <h2 class="msec-title">Nobody is speaking&#8230;yet.</h2>
+      </div>
+
+      <p>The leadership team barely writes in public. I haven't seen any signature op-eds, podcast circuits, leadership voices to decipher. For most companies that would be a gap. For Fluidstack, that's an opening for impact.</p>
+
+      <p>The sector has a stack of real questions and almost no credible operator answering them: what frontier labs actually need from their infrastructure, how these enormous deals get financed, where the power really comes from.</p>
+
+      <div class="cred reveal">
+        <div class="mono" aria-hidden="true">RP</div>
+        <div class="body">
+          <div class="k">Public-market discipline</div>
+          <p class="lead">A president who helped take The Trade Desk public knows what a trustworthy executive voice sounds like. Specific. Plain. Allergic to hype.</p>
+          <p class="attr">Rob Perdue, now Fluidstack's COO, was <a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">COO and director at The Trade Desk (2013-2019)</a>, and led it through its 2016 IPO. That is public-market discipline you can build a voice on.</p>
+        </div>
+      </div>
+
+      <div class="do-block">
+        <h3>What I'd do</h3>
+        <ul>
+          <li>Build the executive voice on a rhythm of proof. Fluidstack has landed roughly one real milestone a quarter since early 2025; I'd turn that into a habit, one sourced proof point every quarter tied to a filing or a partner.</li>
+          <li>Put the executives into the industry debates they're sitting out, so the story compounds on evidence instead of adjectives.</li>
+        </ul>
+      </div>
+
+      <div class="payoff">
+        <h3>The payoff</h3>
+        <p>Fluidstack's leaders stop showing up only in deal announcements and become the voices the industry turns to on power, financing, and what frontier AI actually needs.</p>
+      </div>
+    </section>
+
+    <section class="memo-sec" id="why-me">
+      <div class="msec-head">
+        <span class="msec-num">04 · The close</span>
+        <h2 class="msec-title">Why me</h2>
+      </div>
+
+      <p>A first comms hire at Fluidstack doesn't just turn up the volume. The job is judgment: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
+
+      <p>Here's how I plan to leverage the role in my first ninety days:</p>
+
+      <div class="plan reveal">
+        <div class="ms">
+          <p class="day">Day 30</p>
+          <p class="lead">By Day 30, I have locked the sourcing rules and mapped the press.</p>
+          <p class="sup">A short, written playbook every public statement has to follow: committed spend is never called revenue, anything unconfirmed stays labeled "reported," every number ties back to a filing or a named partner. Alongside it, a map of the ten or fifteen reporters who shape how this industry gets covered, what each one cares about, and who is most likely to write the hard story first.</p>
+        </div>
+        <div class="ms">
+          <p class="day">Day 60</p>
+          <p class="lead">By Day 60, I put Fluidstack's milestones on a calendar.</p>
+          <p class="sup">The company already lands about one real proof point a quarter, the exec team, the European supercomputing deal, Anthropic, the funding round. I'd make that a deliberate rhythm: one sourced announcement every quarter, each tied to a filing, a signed deal, or a named partner, so the story compounds on receipts instead of hype.</p>
+        </div>
+        <div class="ms">
+          <p class="day">Day 90</p>
+          <p class="lead">By Day 90, Fluidstack has a real voice in the conversation it has been sitting out: how the compute behind frontier AI actually gets built, the power, the grid, the money.</p>
+          <p class="sup">In practice, an executive published in a tier-one outlet in their own voice, and Fluidstack quoted as a trusted operator on the industry's biggest questions, not just in its own press releases.</p>
+        </div>
+      </div>
+
+      <p>Fluidstack already built the hardest thing in this industry, and gigawatts of it. The company just hasn't really told anyone yet. That's the job I want, and this memo is the audition.</p>
+    </section>
+
+    <details class="sources">
+      <summary>Sources · 13</summary>
+      <div class="src-body">
+        <div class="src-group">
+          <h4>Opportunity 1</h4>
+          <ul>
+            <li><a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">Constellation Research</a> — Anthropic's $50B build with Fluidstack</li>
+            <li><a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">Fortune / BIS</a> — "circular financing" and the AI-infrastructure boom</li>
+            <li><a href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune</a> — CoreWeave down 55% from mid-2025 highs</li>
+            <li><a href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool</a> — Jim Chanos's bear case</li>
+            <li><a href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune</a> — CoreWeave's post-IPO surge</li>
+            <li><a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">Fortune</a> — CoreWeave S-1: Microsoft 62% of revenue</li>
+          </ul>
+        </div>
+        <div class="src-group">
+          <h4>Opportunity 2</h4>
+          <ul>
+            <li><a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">World Economic Forum</a> — grid connection as the AI bottleneck</li>
+            <li><a href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup</a> — 71% oppose a nearby data center</li>
+            <li><a href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News</a> — $130B of projects blocked or delayed</li>
+            <li><a href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek</a> — recall petitions over data-center votes</li>
+            <li><a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">Food &amp; Water Watch</a> — data-center job-count claims</li>
+            <li><a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">Brookings</a> — power draw vs. jobs returned</li>
+          </ul>
+        </div>
+        <div class="src-group">
+          <h4>Opportunity 3</h4>
+          <ul>
+            <li><a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">Nasdaq</a> — Rob Perdue, ex-Trade Desk COO, joins Fluidstack</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <p class="backlink" style="margin-top:40px"><a href="../for-fluidstack.html">Back to the review path</a></p>
+
     </div>
 
-    <p>CoreWeave learned this the hard way. Similar to Fluidstack, it rents AI compute to a few giant customers. When CoreWeave went public in 2025, Microsoft alone made up <a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">62 percent of its revenue</a>. Critics and investors (looking to make a profit on CoreWeave's stock failing publicly) claimed the company was too dependent on its one big tech customer, propped up by debt, and held together through circular deals. Their take became the version of the story everyone repeated. The narrative eventually dragged CoreWeave's stock down about 55% from its peak.</p>
-
-    <p>The lesson? Tell your own story first or become the cautionary tale the whole industry points to.</p>
-
-    <p>What I'd do:</p>
-
-    <ul>
-      <li>Beat reporters to the punch. I would bring Fluidstack's own sourced version of the story to the 10-15 journalists who crown the winners and losers of the AI hardware race, headline after headline.</li>
-      <li>Keep one line sacred in every message: "the $50 billion is Anthropic's bet, not Fluidstack's bank balance."</li>
-    </ul>
-
-    <p>Most people applying for this job bring a plan. I bring the reporters. I spent ten years inside national newsrooms, and I already know them, and what makes them run a story.</p>
-
-    <p>The payoff: when the skeptical story runs, and it will, Fluidstack isn't scrambling to answer it. Its version is already the one the reporters trust.</p>
-
-    <h2>Opportunity 2: The whole trick is not owning the building</h2>
-
-    <p>A new data center grid connection in Texas or New York can take three to seven years. The wait is the <a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">single hardest problem</a> in the entire AI buildout. It's harder than raising the money and harder than getting the chips. A company can line up billions in funding and a warehouse of Nvidia chips in a few months, but then be forced to wait years for a grid connection big enough to run them. Electricity, in one place and ready to use, is now the scarcest thing in the industry.</p>
-
-    <p>Fluidstack solves for this scarcity, because it does not own most of what it runs. It never planned to. Fluidstack walks into already-built Bitcoin-mining sites and drops GPU clusters into shells wired for heavy power and switches them on. And, reusing instead of building quietly solves another problem the whole industry is about to slam into: the growing revolt against data centers. It's bigger than the industry wants to admit.</p>
-
-    <div class="stat-grid">
-      <div class="stat">
-        <div class="n">71%</div>
-        <div class="l">of Americans do not want a data center near them, more than say so about a nuclear plant.</div>
-        <a class="stat-src" href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup · May 2026 &#8599;</a>
-      </div>
-      <div class="stat">
-        <div class="n">$130B</div>
-        <div class="l">in projects blocked or delayed by community opposition in a single quarter this year.</div>
-        <a class="stat-src" href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News · 2026 &#8599;</a>
-      </div>
-      <div class="stat">
-        <div class="n">Recalls</div>
-        <div class="l">Towns are moving to recall the councils and mayors that approved the builds.</div>
-        <a class="stat-src" href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek · 2026 &#8599;</a>
-      </div>
-    </div>
-
-    <p>A new data center takes an enormous amount from a town and gives almost nothing back. The biggest ones <a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">employ fewer than 150 people</a>, sometimes 25. Across the country, data centers pull <a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">more than 4 percent of the electricity</a> and hand back about 0.01 percent of the jobs. The town carries the water and the grid, and the payoff never comes.</p>
-
-    <p>Fluidstack does not pour new campuses onto farmland or force fresh load onto a stressed grid. It moves into buildings that already stand and power that was already flowing, old Bitcoin mines that were pulling that electricity long before AI showed up. Same power, new purpose, and the rare version of this buildout a town has no reason to fight.</p>
-
-    <p>What I'd do:</p>
-
-    <ul>
-      <li>Get the reuse story on the record now, while no one is asking.</li>
-      <li>Get to know the reporters covering the data-center backlash.</li>
-      <li>Keep a response ready. The day a "wrecking our town" piece runs, Fluidstack is already the contrast inside it.</li>
-    </ul>
-
-    <p>The payoff: when the backlash reaches AI infrastructure, and it will, Fluidstack does not land on the list of targets. It becomes the standard the targets get measured against.</p>
-
-    <h2>Opportunity 3: Nobody is speaking...yet.</h2>
-
-    <p>The leadership team barely writes in public. I haven't seen any signature op-eds, podcast circuits, leadership voices to decipher. For most companies that would be a gap. For Fluidstack, that's an opening for impact.</p>
-
-    <p>The sector has a stack of real questions and almost no credible operator answering them: what frontier labs actually need from their infrastructure, how these enormous deals get financed, where the power really comes from.</p>
-
-    <div class="cred">
-      <div class="mono">RP</div>
-      <div class="body">
-        <p class="lead">A president who helped take The Trade Desk public knows what a trustworthy executive voice sounds like. Specific. Plain. Allergic to hype.</p>
-        <p class="attr">Rob Perdue, now Fluidstack's COO, was <a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">COO and director at The Trade Desk (2013-2019)</a>, and led it through its 2016 IPO. That is public-market discipline you can build a voice on.</p>
-      </div>
-    </div>
-
-    <p>What I'd do:</p>
-
-    <ul>
-      <li>Build the executive voice on a rhythm of proof. Fluidstack has landed roughly one real milestone a quarter since early 2025; I'd turn that into a habit, one sourced proof point every quarter tied to a filing or a partner.</li>
-      <li>Put the executives into the industry debates they're sitting out, so the story compounds on evidence instead of adjectives.</li>
-    </ul>
-
-    <p>The payoff: Fluidstack's leaders stop showing up only in deal announcements and become the voices the industry turns to on power, financing, and what frontier AI actually needs.</p>
-
-    <h2>Why me</h2>
-
-    <p>A first comms hire at Fluidstack doesn't just turn up the volume. The job is judgment: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
-
-    <p>Here's how I plan to leverage the role in my first ninety days:</p>
-
-    <div class="plan">
-      <div class="ms">
-        <p class="day">Day 30</p>
-        <p class="lead">By Day 30, I have locked the sourcing rules and mapped the press.</p>
-        <p class="sup">A short, written playbook every public statement has to follow: committed spend is never called revenue, anything unconfirmed stays labeled "reported," every number ties back to a filing or a named partner. Alongside it, a map of the ten or fifteen reporters who shape how this industry gets covered, what each one cares about, and who is most likely to write the hard story first.</p>
-      </div>
-      <div class="ms">
-        <p class="day">Day 60</p>
-        <p class="lead">By Day 60, I put Fluidstack's milestones on a calendar.</p>
-        <p class="sup">The company already lands about one real proof point a quarter, the exec team, the European supercomputing deal, Anthropic, the funding round. I'd make that a deliberate rhythm: one sourced announcement every quarter, each tied to a filing, a signed deal, or a named partner, so the story compounds on receipts instead of hype.</p>
-      </div>
-      <div class="ms">
-        <p class="day">Day 90</p>
-        <p class="lead">By Day 90, Fluidstack has a real voice in the conversation it has been sitting out: how the compute behind frontier AI actually gets built, the power, the grid, the money.</p>
-        <p class="sup">In practice, an executive published in a tier-one outlet in their own voice, and Fluidstack quoted as a trusted operator on the industry's biggest questions, not just in its own press releases.</p>
-      </div>
-    </div>
-
-    <p>Fluidstack already built the hardest thing in this industry, and gigawatts of it. The company just hasn't really told anyone yet. That's the job I want, and this memo is the audition.</p>
-
-    <p class="backlink" style="margin-top:44px"><a href="../for-fluidstack.html">Back to the review path</a></p>
+    <aside class="doc-rail" aria-label="Section navigation">
+      <nav>
+        <span class="rail-fill" aria-hidden="true"></span>
+        <a class="rl" href="#opp-1"><span class="rl-n">01</span> The story</a>
+        <a class="rl" href="#opp-2"><span class="rl-n">02</span> The building</a>
+        <a class="rl" href="#opp-3"><span class="rl-n">03</span> The voice</a>
+        <a class="rl" href="#why-me"><span class="rl-n">04</span> Why me</a>
+      </nav>
+    </aside>
   </div>
 </div>
 
@@ -271,5 +459,31 @@
 
 <script src="../shared/reveal.js?v=20260713b"></script>
 <script src="../shared/audio.js?v=20260711c"></script>
+<script>
+/* sticky section rail: active-section highlight + scroll-progress fill */
+(() => {
+  const rail = document.querySelector('.doc-rail');
+  const doc = document.querySelector('.doc');
+  if (!rail || !doc) return;
+  const links = [...rail.querySelectorAll('.rl')];
+  const fill = rail.querySelector('.rail-fill');
+  const nav = rail.querySelector('nav');
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  const setActive = (i) => links.forEach((a, j) => a.classList.toggle('active', j === i));
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) { const i = secs.indexOf(e.target); if (i >= 0) setActive(i); } });
+  }, { rootMargin: '-42% 0px -52% 0px', threshold: 0 });
+  secs.forEach((s) => s && io.observe(s));
+  const onScroll = () => {
+    const r = doc.getBoundingClientRect();
+    const total = doc.offsetHeight - window.innerHeight;
+    const done = Math.min(1, Math.max(0, (-r.top) / (total > 0 ? total : 1)));
+    if (fill && nav) fill.style.height = (done * nav.offsetHeight) + 'px';
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+})();
+</script>
 </body>
 </html>
