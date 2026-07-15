@@ -9,7 +9,3 @@ node_modules
 __pycache__/
 tools/.kb-corpus.json
 tools/.kb-eval-report.json
-
-# cloud-sync conflict twins (iCloud "name 2.ext" duplicates): never track, never ship
-* 2.*
-* 2

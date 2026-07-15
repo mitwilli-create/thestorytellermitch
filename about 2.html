@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Mitchell Williams</title>
+  <meta name="description" content="A decade at the properties that rewired live TV, then production AI at Google. Now building AI-native storytelling systems.">
+  <meta property="og:title" content="About · Mitchell Williams">
+  <meta property="og:description" content="AI Builder · Communications Lead · Former Live Television Producer.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mitchell Williams",
+    "jobTitle": "AI Builder · Communications Lead",
+    "alumniOf": [
+      { "@type": "Organization", "name": "Google" },
+      { "@type": "Organization", "name": "Al Jazeera English" },
+      { "@type": "Organization", "name": "AJ+" },
+      { "@type": "Organization", "name": "HuffPost Live" },
+      { "@type": "Organization", "name": "Fusion (ABC News / Univision)" },
+      { "@type": "Organization", "name": "Indiana University Bloomington" }
+    ],
+    "url": "https://thestorytellermitch.com",
+    "sameAs": [
+      "https://linkedin.com/in/mitwilli",
+      "https://github.com/mitwilli-create"
+    ],
+    "email": "mitwilli@gmail.com"
+  }
+  </script>
+  <style>
+    .about-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
+    .about-hero .display{font-size:clamp(42px,6.2vw,96px)}
+    /* round-2: the hero carries Mitchell's portrait, not an illustration;
+       text left, photo right, both feet on the same baseline */
+    .about-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:0 64px;align-items:end}
+    .portrait{margin:0;min-width:0}
+    .portrait img{display:block;width:100%;height:auto;border:1px solid var(--line-2);
+      filter:grayscale(1) brightness(0.92)}
+    .portrait figcaption{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);padding-top:10px}
+    /* one rail, one card grammar: every quote is the same component, and
+       the rail's column matches the hero portrait's for a shared left edge */
+    .about-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:36px 64px;align-items:start}
+    .about-rail{display:flex;flex-direction:column;min-width:0;gap:18px}
+    .rail-head{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .rail-quote{background:var(--surface);border:1px solid var(--line);padding:22px 20px;margin:0;
+      transition:border-color var(--dur-micro) var(--ease-micro)}
+    .rail-quote:hover{border-color:var(--blood-soft)}
+    .rail-quote:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .rail-quote p{font-size:14px;line-height:1.65;color:var(--bone-soft);margin:0 0 14px}
+    .rail-quote cite{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-style:normal;
+      letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);line-height:1.6;display:block}
+    .rail-quote cite b{color:var(--bone);display:block}
+    /* spread 3: targeting left, the site-meta modules right (walkthrough
+       + narration console live together, out of the evidence rail) */
+    .target-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 64px;align-items:start}
+    .site-meta{display:flex;flex-direction:column;gap:18px;min-width:0}
+    .site-meta .walkthrough{margin:0;max-width:none}
+    /* systems-and-checks pointer: the site's public build record */
+    .site-checks{border:1px solid var(--line-2);background:var(--surface);padding:16px 18px}
+    .site-checks .sc-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;
+      color:var(--dim);text-transform:lowercase;display:block;margin-bottom:8px}
+    .site-checks p{font-size:13.5px;color:var(--bone-soft);line-height:1.6;margin:0 0 10px}
+    .site-checks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .site-checks a:hover{color:var(--bone)}
+    @media(max-width:860px){
+      .target-grid{grid-template-columns:1fr;gap:36px}
+    }
+    .prose{max-width:760px;font-size:17px;line-height:1.7;color:var(--bone-soft)}
+    .prose .lede{font-size:20px;line-height:1.6;color:var(--bone);font-weight:500}
+    .prose h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
+      letter-spacing:0.14em;color:var(--blood-soft);margin:52px 0 18px;font-weight:500}
+    .prose p{margin-bottom:18px}
+    .prose strong{color:var(--bone)}
+    .prose em{color:var(--bone);font-style:italic}
+        .prose ul{list-style:none;margin:0 0 18px;padding:0}
+    .prose li{padding:10px 0;border-bottom:1px solid var(--line)}
+    .prose li strong{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px}
+    .prose blockquote{border-left:2px solid var(--blood-soft);padding:6px 0 6px 22px;margin:26px 0;
+      color:var(--bone);font-style:italic}
+    section{padding:72px 0}
+    @media(max-width:860px){
+      .about-hero{padding:130px 0 40px}
+      /* photo under the headline, full story next, the rail closes the section */
+      .about-hero-grid{grid-template-columns:1fr;gap:28px;align-items:start}
+      .about-hero-grid .portrait{max-width:300px}
+      .about-grid{grid-template-columns:1fr;gap:36px}
+      .about-rail{gap:14px}
+    }
+    /* on-camera walkthrough slot: styled player frame, poster placeholder;
+       Mitchell's 45-90s clip drops in as a <video> with this frame's poster */
+    .walkthrough{margin:34px 0 38px;max-width:640px}
+    .wt-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line-2);background:var(--bg-2)}
+    .wt-frame img{width:100%;height:100%;object-fit:cover}
+    .wt-card{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:8px;text-align:center;padding:20px}
+    .wt-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;
+      text-transform:uppercase;color:var(--blood-text)}
+    .wt-t{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);
+      text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone)}
+    .wt-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone-soft);max-width:360px;line-height:1.6}
+    .walkthrough figcaption{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);
+      margin-top:8px;letter-spacing:0.1em;text-transform:lowercase}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="about-hero">
+  <div class="wrap about-hero-grid">
+    <div class="ah-text">
+      <div class="kicker">AI Builder · Communications Lead · Former Live Television Producer</div>
+      <h1 class="display">
+        <span class="ln"><span>About</span></span>
+        <span class="ln"><span class="accent">Mitchell.</span></span>
+      </h1>
+    </div>
+    <figure class="portrait reveal">
+      <img src="assets/stills/mitchell-portrait-bw.jpg" alt="Mitchell Williams, black-and-white portrait" width="800" height="800">
+      <figcaption>Mitchell Williams · Seattle</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="sec-about">
+  <div class="wrap">
+    <div class="about-grid">
+    <article class="prose">
+      <h2 class="reveal">The bridge</h2>
+      <p class="lede reveal">I bridge two things that rarely share a resume: production AI systems and live-broadcast journalism. A decade at the properties that rewired live television. Then Google, where I ran communications for 1,000+ Principal, Distinguished, and Fellow engineers, and stopped writing about the systems and started building them.</p>
+      <p class="reveal">Now I build AI-native storytelling and enablement systems full time. Whether the system is a live control room or an LLM orchestration layer, the discipline is the same: identify what matters, build the structure that gets it out, measure what happened.</p>
+      <p class="reveal">The full trajectory is on the <a href="timeline.html">Timeline</a>, and the stories behind the biggest nights are on <a href="stories.html">Stories</a>.</p>
+
+      <h2 class="reveal">Eighteen years, two control rooms</h2>
+      <p class="reveal">As a founding-team Associate Producer on Al Jazeera English's <em>The Stream</em>, I helped <a href="stories.html#stream-launch-night">launch to 250 million households on the night Osama bin Laden was killed</a>: the planned rundown abandoned overnight, Sohaib Athar (@ReallyVirtual) booked live on Skype while his follower count graphed from a few hundred to tens of thousands on air.</p>
+      <p class="reveal">At HuffPost Live, I produced the PrEP/Truvada panel six months after FDA approval, with the IPREX clinical trial chair live from Lima; the host thanked me by name on air for originating the story. At Fusion, as Senior Producer on <em>America With Jorge Ramos</em>, I produced the 44-minute live primetime special on Mandela's death, a three-way ABC/Univision/Fusion integration on a rebuilt rundown.</p>
+      <figure class="oncam oncam--card reveal">
+        <img src="assets/stills/oncam/barenec-130.jpg" alt="Mitchell Williams field-interviewing a festival attendee with a Fusion microphone" width="1400" height="612" loading="lazy">
+        <figcaption class="oncam-cap">in the field for fusion, mic in hand.</figcaption>
+      </figure>
+      <p class="reveal">At AJ+, I field-produced San Juan Mayor Carmen Yulin Cruz during active Hurricane Maria conditions, and I ran a team during the era AJ+ reached 500 million weekly viewers, with <a href="stories.html#aj-plus-50m-views">one piece of my own hitting 50 million</a>. I led 10+ producers there and coached three of them into on-camera principals; two carry Emmy and Webby wins of their own.</p>
+      <figure class="oncam oncam--card reveal">
+        <img src="assets/stills/oncam/momtrump-009.jpg" alt="Broadcast frame with lower-third reading Mitchell Williams, Senior Producer, AJ+" width="960" height="350" loading="lazy">
+        <figcaption class="oncam-cap">on camera at aj+, lower third and all.</figcaption>
+      </figure>
+
+      <blockquote class="reveal">"Thank you to our wonderful producer, Mitchell Williams, who brought this to our attention." · host, HuffPost Live PrEP/Truvada panel, [29:00]</blockquote>
+
+      <p class="reveal">Then Google: six years as Senior Communications &amp; Content Strategist in Corporate Engineering, where video-first internal comms reached 75,000+ employees, and earlier I wrote executive communications for Google's then-CIO.</p>
+      <p class="reveal">From there, the Office of Cross Google Engineering (xGE), as Internal Communications Lead for the community of 1,000+ senior engineers at the Principal, Distinguished, and Fellow levels: I owned communications for the annual Sr. Tech IC Summit (600+ attendees) and quarterly forums (300+ each), authored the org's three-tier communications operating model, ran the recurring approval-intake prioritization meetings, and wrote directly for a VP.</p>
+      <p class="reveal">I built and deployed two production AI agents solo: a communications-triage agent, documented end to end and handed off with a full operator runbook, and an executive <a href="stories.html#digital-twin">"digital twin" writing system</a> that cut review back-and-forth with the VP by about 70%, an internal figure I measured myself.</p>
+      <p class="reveal">The communications-first view of this career lives on the <a href="comms.html">comms page</a>, with the craft demonstrations in the <a href="writing.html">writing room</a>.</p>
+    </article>
+    <aside class="about-rail" aria-label="On the record: colleague quotes and recommendation letters">
+      <div class="rail-head reveal">on the record</div>
+      <blockquote class="rail-quote reveal">
+        <p>"Dedication to quality production and editorial discretion is some of the best I've seen in my 10+ year career in media." On the control room: he can mobilize a team for "12hrs of live, breaking news coverage" and "thrives in the moments when time is critical, and accuracy is essential."</p>
+        <cite><b>Katrina Norvell</b>Managing Executive Producer, iHeartRadio · HuffPost Live colleague</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal">
+        <p>Berg was a new Associate Producer when Mitchell spotted her potential, then advocated, produced, and coached her on-air; she went on to host morning shows, podcasts, and talk radio. In breaking news he "managed producers and guided newsrooms with aplomb, allowing leadership to consistently rely on him."</p>
+        <cite><b>Alex Berg</b>Creative Director, Blink Media · coached at HuffPost Live</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal">
+        <p>"Mitchell produces work at the pinnacle of performance. He's a master at his craft, influencing and leading both high-level executives and technical specialists. Recognized for significant cross-functional negotiation and leadership."</p>
+        <cite><b>Mark Farrell</b>Manager, Senior Internal/Executive Communications Strategist · Google</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal">
+        <p>"Mitchell delivers unparalleled expertise in communications, especially video content. His contributions during the WFH period were indispensable for ensuring cohesive organizational communications."</p>
+        <cite><b>Mike Suh</b>Content Strategist · Google</cite>
+      </blockquote>
+      <blockquote class="rail-quote reveal">
+        <p>"Mitchell excels at taking information and crafting a compelling story. A trusted strategic thought partner, invaluable for communicating complex messages to diverse audiences."</p>
+        <cite><b>Emily O'Neal</b>Executive Business Partner · Google</cite>
+      </blockquote>
+    </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="target-grid">
+    <article class="prose">
+      <h2 class="reveal">What I build now</h2>
+      <p class="reveal">Production AI agents and AI-native creative pipelines. The <a href="picture-lock.html">PictureLock</a> studio turns one script into a produced, captioned short on the ElevenLabs stack, every API call costed. <a href="projects.html">The rest of the build</a> covers voice scoring, citation-gated verification, and agentic job-search infrastructure, plus the orchestration that ties it together. Same discipline I learned in control rooms: know what matters before it matters, and ship systems that survive contact with production.</p>
+
+      <h2 class="reveal">What I'm targeting</h2>
+      <ul class="reveal">
+        <li><strong>The target role</strong> Forward Deployed Creative · <a href="for-elevenlabs.html">the 12-minute review path</a> · <a href="fit.html#forward-deployed">the fit case</a></li>
+        <li><strong>Engineering &amp; AI</strong> AI Solutions Architect · Applied AI Engineer · AI Enablement Lead · AI / Technical Program Manager</li>
+        <li><strong>Editorial &amp; comms</strong> Executive &amp; Internal Communications · Communications Manager (AI-native) · Developer Education Lead · Engineering Editorial Lead · Communications Manager, Research</li>
+        <li><strong>Adjacent</strong> Residencies and fellowships at AI-native or AI-policy organizations</li>
+      </ul>
+      <p class="reveal" style="margin-top:28px;">Hiring for any of these? Email <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>, or grab the <a href="assets/mitchell-williams-resume.pdf">resume PDF</a>.</p>
+    </article>
+    <aside class="site-meta" aria-label="The site itself: walkthrough, narration, and build record">
+      <figure class="walkthrough reveal" aria-label="Reserved player for the on-camera walkthrough video">
+        <!-- when the on-camera clip ships, replace the placeholder card below with a
+             video element (controls playsinline data-endcard, plus this frame's poster)
+             inside this frame; shared/endcard.js (already loaded on this page) then
+             presents the review-path CTA when playback ends. -->
+        <div class="wt-frame oncam">
+          <img src="assets/stills/hero-machine-plate.jpg" alt="" width="1200" height="896" loading="lazy">
+          <div class="wt-card">
+            <span class="wt-k">on camera &middot; in production</span>
+            <span class="wt-t">How this site works</span>
+            <span class="wt-s">a 60 second walkthrough of the pipeline behind this portfolio</span>
+          </div>
+        </div>
+        <figcaption>reserved for the on-camera walkthrough</figcaption>
+      </figure>
+      <div class="voice-console reveal" role="region" aria-labelledby="voice-console-label">
+        <div class="vc-head">
+          <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
+          <span class="vc-label">recorded narration available on request</span>
+        </div>
+        <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and I bridge two things that rarely share a resume: production AI systems and live broadcast journalism. I spent eight years at the properties that rewired live television, then went to Google, where I ran communications for a community of over a thousand Principal, Distinguished, and Fellow engineers. That's where I stopped writing about systems and started building them. I built two production AI agents solo there: a communications triage agent, handed off with a full operator runbook, and an executive digital twin writing system that cut review back-and-forth with the VP by about seventy percent. Now I build AI-native storytelling and enablement systems full time: PictureLock, which turns one script into a produced, costed short, voice scoring, citation-gated verification, and the orchestration layers that hold it all together. The through line is the same discipline I learned in control rooms: know what matters before it matters, and build systems that hold under pressure.</p></details>
+      </div>
+      <div class="site-checks reveal">
+        <span class="sc-k">systems &middot; the build record</span>
+        <p>Every deploy here passes a fixed set of gates: a definition audit, loop-seam measurement, loudness targets, accessibility sweeps, code review. The measurements are public.</p>
+        <a href="systems.html">Systems and checks</a>
+      </div>
+    </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/endcard.js?v=20260713a"></script>
+</body>
+</html>
