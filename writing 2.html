@@ -15,7 +15,7 @@
   <style>
     /* shared paragraph measure for this page's prose blocks (council R8) */
     main{--measure:720px}
-    .wr-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
+    .wr-hero{padding:170px 0 84px;border-bottom:1px solid var(--line)}
     .wr-hero .display{font-size:clamp(38px,6.2vw,88px)}
     /* ease the plate so the headline wins first fixation at desktop (council R8) */
     .wr-hero .fill-hero{opacity:.85}
@@ -39,15 +39,14 @@
     /* one bordered nav: section index (left cluster, tier-2) + role-neutral
        screening path (right cluster, tier-1 proof links). Council R3 folded
        the old spine into the skim strip. */
-    .wr-skim{margin-top:22px;border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);
-      background:var(--bg-2);border-radius:3px;padding:18px 22px;max-width:960px;
+    .wr-skim{margin-top:16px;border:1px solid var(--line);padding:14px 18px;max-width:960px;
       display:flex;flex-wrap:wrap;gap:10px 0;align-items:center;
-      font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase}
+      font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
     .wr-skim .sp-dot{color:var(--blood-soft)}
     .wr-skim-nav,.wr-skim-go{display:inline-flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
     .wr-skim-nav{padding-right:20px}
     .wr-skim-go{border-left:1px solid var(--line-2);padding-left:20px}
-    .wr-skim-q{color:var(--blood-soft);font-size:13px;font-weight:700}
+    .wr-skim-q{color:var(--blood-soft)}
     .wr-skim-nav a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
     .wr-skim-nav a:hover{color:var(--blood-soft)}
     .wr-skim-go a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
@@ -58,11 +57,6 @@
     section{padding:52px 0}
     .wr-work{border-top:1px solid var(--line);padding-bottom:96px}
     #essays,#script,#redacted-docs{scroll-margin-top:96px}
-    .cs-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-    .cs-k{display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
-    .cs-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
-      text-transform:uppercase;letter-spacing:-0.01em;line-height:1.12;color:var(--bone);max-width:760px}
     /* essays: 5/7 macro grid rhyming with the work grid below (council R1);
        left rail = head + pull-quote + rubric, right column = plate + cards */
     .es-grid{display:grid;grid-template-columns:1fr}
@@ -107,16 +101,24 @@
     .essay-more summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .essay-more .essay-cards{margin-top:14px}
     /* writing-01: script left, redacted docs right, tops flush */
-    /* owner ruling 2026-07-15: the sticky script/docs juxtaposition scrolled
-       clunkily (columns pinned and jumped at different rates); the sections
-       now stack and scroll as one flow */
-    .wr-col-script{max-width:860px}
-    .wr-col-docs{margin-top:72px;border-top:1px solid var(--line-2);padding-top:56px}
+    .wr-grid{display:grid;grid-template-columns:1fr}
+    @media(min-width:1024px){
+      .wr-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 72px;align-items:start}
+      /* docs column pins while the longer script column scrolls, so the
+         juxtaposition holds and the column never trails dead space; faint
+         top-rule frames it as a curated rail (council R8) */
+      .wr-col-docs{position:sticky;top:90px;border-top:1px solid var(--line-2);padding-top:18px}
+      .wr-grid .doc-cards{grid-template-columns:1fr}
+    }
+    @media(max-width:1023px){
+      .wr-hero{padding-bottom:56px}
+      .wr-col-docs{margin-top:76px}
+    }
     /* writing-03: pull-quote band (pattern from stories.html .pull) */
     .pull{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);
       line-height:1.25;letter-spacing:-0.01em;color:var(--bone);border-left:2px solid var(--blood-soft);
       padding:8px 0 8px 24px;margin:0 0 10px}
-    .pull-src{margin:0 0 22px;padding-left:26px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    .pull-src{margin:0 0 30px;padding-left:26px;font-family:'JetBrains Mono',monospace;font-size:11px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
     /* tier-1 proof link (council R5) */
     .pull-src a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:1px}
@@ -201,7 +203,7 @@
     .src-t{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--dim);white-space:nowrap}
     .src-line{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);line-height:1.6}
     .src-line a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
-    .doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1024px}
+    .doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px}
     .dcard{background:var(--surface);border:1px solid var(--line);padding:24px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .dcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
@@ -232,6 +234,15 @@
        these cards carry the shape, the outcome, and the provenance line */
     .wr-note{max-width:var(--measure);margin-top:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
     .wr-note a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
+    /* mobile-only genre divider: the spine's job, restated where the stack
+       changes subject */
+    .wr-divide{display:none}
+    @media(max-width:1023px){
+      .wr-divide{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
+        letter-spacing:0.14em;text-transform:uppercase;color:var(--blood-soft);margin-bottom:34px}
+      .wr-divide::before{content:'';display:inline-block;width:52px;height:1px;
+        background:var(--blood-soft);vertical-align:middle;margin-right:14px}
+    }
     /* below 1120 the theme hides the hero art entirely; bring it back as a
        low-opacity plate behind the text instead of a black slab */
     @media(max-width:1120px){
@@ -300,11 +311,9 @@
     <div class="es-grid">
     <div class="es-rail">
     <h2 class="mini reveal">Essays · weekly <span class="mini-note">· new series, launched July 2026</span></h2>
-    <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
     <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
     <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a> · the second card below</div>
-    <blockquote class="pull reveal">The hard part wasn't the writing, it was learning how she decides.</blockquote>
-    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">Essay #02 · I Engineered a VP's Voice</a> · the first card below</div>
+    <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
     </div>
     <div class="es-col">
     <figure class="es-plate reveal" aria-hidden="true">
@@ -333,6 +342,8 @@
 
 <section class="wr-work" id="script">
   <div class="wrap">
+    <div class="wr-divide" aria-hidden="true">The script + the internal docs</div>
+    <div class="wr-grid">
     <div class="wr-col-script">
     <figure class="oncam oncam--card reveal" style="margin:0 0 40px;aspect-ratio:4/3">
       <img src="assets/stills/mara-vanells-oncamera.jpg" alt="Mara Van Ells delivering the measles script on camera at AJ+" style="object-position:50% 22%" loading="lazy">
@@ -500,10 +511,7 @@
     </div>
     </div>
     <div class="wr-col-docs">
-    <div class="cs-head reveal" id="redacted-docs">
-      <span class="cs-k">Programmatic documentation</span>
-      <h2 class="cs-title">The Google record, as case studies</h2>
-    </div>
+    <h2 class="mini reveal" id="redacted-docs">Programmatic documentation · the Google record, as case studies</h2>
     <p class="art-intro reveal">Three internal documents from two Google roles. The documents themselves <strong class="ox">stay inside Google</strong>: what's published here is the shape of each, what it had to do, how it was written, and what it measured. Provenance is stated per card, <strong class="wt">a reference can confirm the work</strong>, and the record can be walked through in a live conversation.</p>
     <div class="doc-cards">
       <article class="dcard reveal">
@@ -536,6 +544,7 @@
       </div>
     </div>
     <p class="wr-note reveal">Executive client work stays internal: described on the <a href="comms.html">comms page</a>, <strong>never excerpted</strong>.</p>
+    </div>
     </div>
   </div>
 </section>
