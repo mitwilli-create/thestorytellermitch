@@ -82,7 +82,13 @@
     .payoff p{margin:0}
 
     /* closing sign-off: type-based page wrap */
+    .plan-head{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2vw,22px);
+      color:var(--bone);letter-spacing:-0.01em;text-transform:none;margin:30px 0 16px}
+    .plan-head::before{content:'';display:block;width:52px;height:2px;background:var(--blood-soft);margin-bottom:12px}
     .memo-close{margin:52px 0 0;padding-top:34px;border-top:1px solid var(--line-2);max-width:720px}
+    .memo-close p+p{margin-top:16px}
+    .memo-close a{color:inherit;border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .memo-close a:hover{color:var(--blood-text)}
     .memo-close p{font-family:'Archivo',sans-serif;font-weight:500;font-size:clamp(19px,2.3vw,26px);
       line-height:1.36;letter-spacing:-0.01em;color:var(--bone-soft);margin:0;max-width:none}
     .memo-close strong{font-weight:700;color:var(--bone)}
@@ -390,9 +396,9 @@
         <h2 class="msec-title">Why me</h2>
       </div>
 
-      <p>A first comms hire at Fluidstack doesn't just turn up the volume. <strong class="ox">The job is judgment</strong>: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
+      <p><strong class="ox">A first comms hire at Fluidstack doesn't just turn up the volume.</strong> The job is judgment: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
 
-      <p>Here's how I plan to leverage the role in my first ninety days:</p>
+      <h3 class="plan-head">Here's how I plan to leverage the role in my first ninety days</h3>
 
       <div class="plan reveal">
         <div class="ms">
@@ -413,7 +419,8 @@
       </div>
 
       <div class="memo-close">
-        <p>Fluidstack already <strong>built the hardest thing in this industry</strong>, and gigawatts of it. The company just hasn't really told anyone yet. That's the job I want, and <strong class="ox">this memo is the audition</strong>.</p>
+        <p><strong class="ox">Fluidstack already built the hardest thing in this industry</strong>, and gigawatts of it. The company just hasn't really told anyone yet.</p>
+        <p>That's the job I want, and <a href="fluidstack-positioning-memo.html">this memo is the audition</a>.</p>
       </div>
     </section>
 
