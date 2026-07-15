@@ -75,6 +75,17 @@
     .cred .attr a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     .cred .attr a:hover{color:var(--bone)}
     @media(max-width:520px){.cred{flex-direction:column;gap:16px}}
+
+    /* 90-day plan timeline (visual treatment of the locked Day 30/60/90 plan) */
+    .plan{margin:26px 0 8px;padding-left:6px}
+    .plan .ms{position:relative;padding:0 0 26px 28px;border-left:2px solid var(--line-2)}
+    .plan .ms:last-child{border-left-color:transparent;padding-bottom:2px}
+    .plan .ms::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;
+      background:var(--blood-soft);box-shadow:0 0 0 3px var(--bg)}
+    .plan .day{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--blood-soft);margin:0 0 7px}
+    .plan .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;line-height:1.42;color:var(--bone);margin:0 0 8px}
+    .plan .sup{font-size:14.5px;line-height:1.72;color:var(--bone-soft);margin:0}
   </style>
 </head>
 <body>
@@ -225,11 +236,23 @@
 
     <p>Here's how I plan to leverage the role in my first ninety days:</p>
 
-    <ul>
-      <li>By Day 30, I have locked the sourcing rules and mapped the press. A short, written playbook every public statement has to follow: committed spend is never called revenue, anything unconfirmed stays labeled "reported," every number ties back to a filing or a named partner. Alongside it, a map of the ten or fifteen reporters who shape how this industry gets covered, what each one cares about, and who is most likely to write the hard story first.</li>
-      <li>By Day 60, I put Fluidstack's milestones on a calendar. The company already lands about one real proof point a quarter, the exec team, the European supercomputing deal, Anthropic, the funding round. I'd make that a deliberate rhythm: one sourced announcement every quarter, each tied to a filing, a signed deal, or a named partner, so the story compounds on receipts instead of hype.</li>
-      <li>By Day 90, Fluidstack has a real voice in the conversation it has been sitting out: how the compute behind frontier AI actually gets built, the power, the grid, the money. In practice, an executive published in a tier-one outlet in their own voice, and Fluidstack quoted as a trusted operator on the industry's biggest questions, not just in its own press releases.</li>
-    </ul>
+    <div class="plan">
+      <div class="ms">
+        <p class="day">Day 30</p>
+        <p class="lead">By Day 30, I have locked the sourcing rules and mapped the press.</p>
+        <p class="sup">A short, written playbook every public statement has to follow: committed spend is never called revenue, anything unconfirmed stays labeled "reported," every number ties back to a filing or a named partner. Alongside it, a map of the ten or fifteen reporters who shape how this industry gets covered, what each one cares about, and who is most likely to write the hard story first.</p>
+      </div>
+      <div class="ms">
+        <p class="day">Day 60</p>
+        <p class="lead">By Day 60, I put Fluidstack's milestones on a calendar.</p>
+        <p class="sup">The company already lands about one real proof point a quarter, the exec team, the European supercomputing deal, Anthropic, the funding round. I'd make that a deliberate rhythm: one sourced announcement every quarter, each tied to a filing, a signed deal, or a named partner, so the story compounds on receipts instead of hype.</p>
+      </div>
+      <div class="ms">
+        <p class="day">Day 90</p>
+        <p class="lead">By Day 90, Fluidstack has a real voice in the conversation it has been sitting out: how the compute behind frontier AI actually gets built, the power, the grid, the money.</p>
+        <p class="sup">In practice, an executive published in a tier-one outlet in their own voice, and Fluidstack quoted as a trusted operator on the industry's biggest questions, not just in its own press releases.</p>
+      </div>
+    </div>
 
     <p>Fluidstack already built the hardest thing in this industry, and gigawatts of it. The company just hasn't really told anyone yet. That's the job I want, and this memo is the audition.</p>
 
