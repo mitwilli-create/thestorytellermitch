@@ -13,7 +13,7 @@ const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER = process.argv.includes('--server')
   ? process.argv[process.argv.indexOf('--server') + 1]
   : (process.env.KB_DEV_SERVER ?? 'http://127.0.0.1:8787');
-// MUST match DEFAULT_TOP_K in worker/index.js — the gate is only meaningful if
+// MUST match DEFAULT_TOP_K in worker/index.js: the gate is only meaningful if
 // the eval measures what production actually serves. This defaulted to 8 while
 // production served 15, so a plain run reported 84.5% FAIL against a corpus
 // that passes at 95.1%. Sweep both if either moves; use --topK only for

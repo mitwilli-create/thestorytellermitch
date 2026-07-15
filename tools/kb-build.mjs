@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Build the retrieval corpus for the site chat agent (Phase B).
 // Reads kb/*.md + an explicit allowlist of site pages + resumes-src/*.md +
-// assets/site-data/*.json, chunks each, and writes tools/.kb-corpus.json —
+// assets/site-data/*.json, chunks each, and writes tools/.kb-corpus.json -
 // the input to kb-index.mjs, which embeds and upserts into Vectorize.
 //
 // Deliberately an ALLOWLIST, not "everything in the repo": relocation-os.html
@@ -10,7 +10,7 @@
 // (fit.html, resume.html) and kit/bundle docs aren't in the coverage matrix's
 // source list, so they're left out until a future pass adds them deliberately.
 //
-// Re-run after any content change (kb/, site pages, resumes-src) — the
+// Re-run after any content change (kb/, site pages, resumes-src): the
 // corpus is rebuilt from the live files each time, never hand-edited.
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname, basename } from 'node:path';
@@ -263,7 +263,7 @@ function processSiteData() {
 
 // G1 (approved 2026-07-15, refined after eval iteration 2): title-enriched
 // embeddings for site pages / resumes / site-data ONLY. kb-authored files are
-// already question-phrased and deliberately NOT enriched — the first iteration
+// already question-phrased and deliberately NOT enriched: the first iteration
 // showed short question-phrased kb chunks out-compete long site-page chunks on
 // any question-shaped query, so kb files get the opposite treatment: their
 // assistant-policy meta-language ("For the assistant:", "Must NOT:", hard
@@ -285,8 +285,8 @@ function stripPolicyText(text) {
   return kept.join('\n\n').trim();
 }
 
-// Frontmatter `topics:` are the query-side vocabulary — the words a visitor
-// actually types — while the prose uses the formal word. bge-base does not
+// Frontmatter `topics:` are the query-side vocabulary: the words a visitor
+// actually types: while the prose uses the formal word. bge-base does not
 // bridge abbreviations: measured 2026-07-15, "compensation expectations"
 // ranked deflect-comp #1 at 0.670 while "comp expectations" left it out of the
 // top 15 entirely. Frontmatter is stripped before chunking, so those curated
@@ -311,7 +311,7 @@ function finalizeChunk(chunk) {
     // chunkMarkdownByHeading should make this unreachable; if it ever fires, the
     // chunk is mostly policy and embedding the fallback would put assistant
     // meta-language (and whatever it forbids) into the vector space. Surface it
-    // rather than leak it silently — that failure was live from the title fix
+    // rather than leak it silently: that failure was live from the title fix
     // until 2026-07-15 and put "Never name Spain" into a retrievable vector.
     const enoughToEmbed = stripped.split(/\s+/).filter(Boolean).length >= 10;
     if (!enoughToEmbed) policyFallbacks.push(chunk.id);
@@ -335,15 +335,15 @@ const corpus = [
 ].map(finalizeChunk);
 
 const blob = corpus.map((c) => c.text).join('\n');
-if (blob.includes('—')) {
-  console.error('EM DASH found in indexed content — fix the source file before building the corpus.');
+if (blob.includes('-')) {
+  console.error('EM DASH found in indexed content: fix the source file before building the corpus.');
   process.exit(1);
 }
 
 // Hard exclusion gate, embeddings only. These terms appear in kb/ legitimately,
 // but only inside assistant-policy lines that FORBID them ("Never name Spain").
 // Those lines must reach Phase C via `text` and must never reach the vector
-// space via `embedText` — an embedded prohibition is retrievable by the very
+// space via `embedText`: an embedded prohibition is retrievable by the very
 // query it exists to refuse. `text` is deliberately not checked here.
 const EXCLUDED_FROM_EMBEDDINGS = [
   [/\bSpain\b|\bBarcelona\b|\bMadrid\b/i, 'relocation destination'],
@@ -356,14 +356,14 @@ for (const c of corpus) {
   }
 }
 if (leaks.length) {
-  console.error('HARD EXCLUSION LEAK into embedText — these would be semantically retrievable:');
+  console.error('HARD EXCLUSION LEAK into embedText: these would be semantically retrievable:');
   for (const l of leaks) console.error(`  ${l}`);
   console.error('Fix: keep the term inside a paragraph matched by POLICY_LINE so it is stripped from the embedding.');
   process.exit(1);
 }
 
 if (policyFallbacks.length) {
-  console.warn(`WARNING: policy-strip fallback fired for ${policyFallbacks.join(', ')} — chunk is mostly policy; its full text (including assistant meta-language) was embedded.`);
+  console.warn(`WARNING: policy-strip fallback fired for ${policyFallbacks.join(', ')}: chunk is mostly policy; its full text (including assistant meta-language) was embedded.`);
 }
 
 writeFileSync(OUT, JSON.stringify({ built: new Date().toISOString(), count: corpus.length, chunks: corpus }, null, 2));

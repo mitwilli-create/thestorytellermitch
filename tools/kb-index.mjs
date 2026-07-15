@@ -2,7 +2,7 @@
 // Push tools/.kb-corpus.json (built by kb-build.mjs) into Vectorize via the
 // local wrangler dev server's secret-gated /api/kb-index route. Embeddings
 // happen inside the Worker (env.AI.run), authenticated by the same OAuth
-// session wrangler dev already uses — this script never touches Cloudflare
+// session wrangler dev already uses; this script never touches Cloudflare
 // credentials directly.
 //
 // Usage: run `wrangler dev` in one terminal, then `node tools/kb-index.mjs`
@@ -18,7 +18,7 @@ const POST_BATCH = 40; // chunks per HTTP request to /api/kb-index
 const devVars = readFileSync(resolve(SITE, '.dev.vars'), 'utf8');
 const secret = devVars.match(/^KB_INDEX_SECRET=(.+)$/m)?.[1]?.trim();
 if (!secret) {
-  console.error('KB_INDEX_SECRET not found in .dev.vars — run kb-build.mjs setup first.');
+  console.error('KB_INDEX_SECRET not found in .dev.vars; run kb-build.mjs setup first.');
   process.exit(1);
 }
 
