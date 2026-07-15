@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>For Fluidstack · Communications Lead · Mitchell Williams</title>
-  <meta name="description" content="A sequenced review path for Fluidstack's Communications Lead and Head of Editorial screens: the writing first, then the judgment record, the executive ghostwriting, the narrative approach, and the resume.">
+  <meta name="description" content="A sequenced review path for Fluidstack's Communications Lead screen: the writing first, then the judgment record, the executive ghostwriting, the narrative approach, and the resume.">
   <meta property="og:title" content="For Fluidstack · Communications Lead · Mitchell Williams">
   <meta property="og:description" content="The communications case for Fluidstack, in the order a screen actually checks it. The writing first.">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
@@ -17,21 +17,34 @@
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
     /* signature underline: a single oxblood rule draws L->R beneath the
        accent line once the headline has settled, then holds. transform-only
-       (compositor-friendly), one continuous draw, no loop point. */
+       (compositor-friendly), one continuous draw, no loop point. Duration
+       rides the dur-set token; only the handoff delays are page-local,
+       matching how reveal.js hardcodes its own hero line delays. */
     .hero-rule{display:block;height:3px;width:min(360px,60%);margin-top:22px;
       background:var(--blood-soft);transform:scaleX(0);transform-origin:left center;
-      transition:transform 720ms var(--ease-reveal)}
+      transition:transform var(--dur-set) var(--ease-reveal)}
     .revealed .hero-rule{transform:scaleX(1);transition-delay:.62s}
     /* sub-paragraph rises in after the rule, matching the house hero cadence */
     .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65;
       opacity:0;transform:translateY(18px);
       transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
     .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
+    /* proof strip: last beat of the hero orchestration; numbers already
+       verified in the page body (press network, step 03, map item 3) */
+    .hero-stats{display:flex;flex-wrap:wrap;margin-top:34px;max-width:680px;
+      border-top:1px solid var(--line);opacity:0;transform:translateY(14px);
+      transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
+    .revealed .hero-stats{opacity:1;transform:none;transition-delay:.95s}
+    .hero-stats .hs{flex:1 1 25%;min-width:150px;padding:14px 18px 0 0}
+    .hero-stats .n{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .hero-stats .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:4px;line-height:1.5}
     .no-js .hero-rule{transform:scaleX(1)}
-    .no-js .sys-sub{opacity:1;transform:none}
+    .no-js .sys-sub,.no-js .hero-stats{opacity:1;transform:none}
     @media (prefers-reduced-motion: reduce){
       .hero-rule{transition:none;transform:scaleX(1)}
-      .sys-sub{transition:none;opacity:1;transform:none}
+      .sys-sub,.hero-stats{transition:none;opacity:1;transform:none}
     }
     section{padding:76px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
@@ -49,14 +62,14 @@
     .map-list{list-style:none;margin:0;padding:0;max-width:760px}
     .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
       line-height:1.65;color:var(--bone-soft)}
-    .map-list li strong{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+    .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px;font-weight:500}
     .map-list li a{color:inherit;border-bottom:1px solid var(--blood-soft)}
     .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
     .narrative-prose a{color:inherit;border-bottom:1px solid var(--blood-soft)}
     .narrative-prose a:hover{color:var(--bone)}
     #narrative{scroll-margin-top:86px}
-    .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line);border-left:2px solid var(--blood-soft);
+    .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line);border-left:1px solid var(--blood-soft);
       background:var(--surface);padding:20px 24px;border-radius:3px}
     .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
@@ -113,16 +126,22 @@
       <span class="ln"><span class="accent">then the record.</span></span>
     </h1>
     <span class="hero-rule" aria-hidden="true"></span>
-    <p class="sys-sub">You're screening for Fluidstack's Communications Lead: someone whose writing can carry the company's story and whose judgment holds when the stakes are real. The Head of Editorial screen runs on the same evidence, and this page serves both. It sequences the case in the order a writing-first screen actually checks it: samples before biography. The rest of the site is context; this is the case.</p>
+    <p class="sys-sub">You're screening for Fluidstack's Communications Lead: someone whose writing can carry the company's story and whose judgment holds when the stakes are real. This page sequences the case the way a writing-first screen checks it: samples before biography. The rest of the site is context; this is the case.</p>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">112</div><div class="k">journalists mapped</div></div>
+      <div class="hs"><div class="n">30</div><div class="k">outlets</div></div>
+      <div class="hs"><div class="n">~70%</div><div class="k">fewer review rounds, self-measured</div></div>
+      <div class="hs"><div class="n">8</div><div class="k">newsroom years</div></div>
+    </div>
   </div>
 </header>
 
 <section id="narrative">
   <div class="wrap">
     <h2 class="mini">How I'd approach the Fluidstack narrative</h2>
-    <div class="narrative-prose">
+    <div class="narrative-prose reveal">
       <p>Fluidstack has built one of the most consequential companies in AI and barely said so. Anthropic committed roughly <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion &#8599;</a> to build with it, and overnight a company most people couldn't name became the builder behind the biggest bet of the AI era. The exposure is the flip side: almost all of that business runs through one customer. The skeptical story will get written either way. The only question is who frames it first.</p>
-      <p style="margin-top:16px">The approach is honesty as the strategy: bring the sourced version to the reporters before a critic does, keep every number labeled (committed spend is never revenue, and anything unconfirmed stays <a href="https://techcrunch.com/2026/04/14/ai-datacenter-startup-fluidstack-in-talks-for-1b-round-at-18b-valuation-months-after-hitting-7-5b-says-report/" target="_blank" rel="noopener">"reported" &#8599;</a> until a round closes), and turn Fluidstack's roughly one-milestone-a-quarter cadence into a deliberate rhythm. CoreWeave is the cautionary tale of what happens when critics frame the concentration story first. The <a href="docs/fluidstack-positioning-memo.html">positioning memo</a> shows the full approach applied to Fluidstack.</p>
+      <p style="margin-top:16px">The approach is honesty as the strategy: bring the sourced version to the reporters before a critic does, keep every number labeled (committed spend is never revenue, and anything unconfirmed stays <a href="https://techcrunch.com/2026/04/14/ai-datacenter-startup-fluidstack-in-talks-for-1b-round-at-18b-valuation-months-after-hitting-7-5b-says-report/" target="_blank" rel="noopener">"reported" &#8599;</a> until a round closes), and turn Fluidstack's relentless milestone cadence into a deliberate rhythm. CoreWeave is the cautionary tale of what happens when critics frame the concentration story first. The <a href="docs/fluidstack-positioning-memo.html">positioning memo</a> shows the full approach applied to Fluidstack.</p>
     </div>
   </div>
 </section>
@@ -131,9 +150,9 @@
   <div class="wrap">
     <h2 class="mini">The path</h2>
     <div class="path">
-      <div class="step reveal"><span class="d">01 · 8 min</span><span class="t"><b><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></b> A positioning memo written for Fluidstack specifically: how I'd frame the company's story, argued in full. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>, where real positioning copy and operating docs from the Google roles are readable word for word, redacted rather than reconstructed. And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
-      <div class="step reveal"><span class="d">02 · 3 min</span><span class="t"><b><a href="comms.html#judgment">Check the judgment record.</a></b> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. We protected the reporter, not the headline.</span></div>
-      <div class="step reveal"><span class="d">03 · 2 min</span><span class="t"><b><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></b> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review back-and-forth by about 70%: self-measured; a reference can confirm it. The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
+      <div class="step reveal"><span class="d">01 · 8 min</span><span class="t"><b><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></b> A positioning memo written for Fluidstack specifically: how I'd frame the company's story. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>, where real positioning copy and operating docs from the Google roles are readable word for word. They're redacted rather than reconstructed. And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
+      <div class="step reveal"><span class="d">02 · 3 min</span><span class="t"><b><a href="comms.html#judgment">Check the judgment record.</a></b> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. I protected the reporter, not the headline.</span></div>
+      <div class="step reveal"><span class="d">03 · 2 min</span><span class="t"><b><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></b> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review rounds per doc by about 70% (my own count; a reference can confirm it). The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
       <div class="step reveal"><span class="d">04 · 1 min</span><span class="t"><b><a href="resume/comms-manager.html">Open the resume.</a></b> Two pages, tuned to communications leadership. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
       <!-- Reviewer note: the email and phone here are Mitchell's own public
      professional contact details, published by design so recruiters can reach
@@ -149,19 +168,19 @@
   <div class="wrap">
     <h2 class="mini">What the path maps to</h2>
     <ul class="map-list">
-      <li><strong>Positioning and website copy</strong> The <a href="docs/fluidstack-positioning-memo.html">memo</a> is positioning copy written for Fluidstack itself, and the <a href="writing.html#redacted-docs">writing room</a> carries real positioning copy and operating docs from the Google roles word for word.</li>
-      <li><strong>Executive byline and ghostwriting</strong> VP-level executive communications at the Office of Cross Google Engineering (xGE) and C-suite writing for Google's then-CIO, with <a href="writing.html">the writing readable word for word</a>, and a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> walking through how it was done. References who can vouch for the ghostwriting are available on request.</li>
-      <li><strong>Media instinct and the pitch</strong> Eight newsroom years (Huffington Post Live, Fusion (an ABC and Univision joint venture), and Al Jazeera's AJ+) before Google. I know what makes an editor take a story because taking stories was the job; the <a href="stories.html">case files</a> carry the receipts.</li>
-      <li><strong>The press network</strong> A live, scored relationship map: 112 named journalists, editors, and producers across 30 recognized outlets, from the broadcast desks to the AI beat. <a href="press-network.html">See the network, redacted</a>; the names stay held until engaged.</li>
-      <li><strong>Narrative under pressure</strong> Scientology under counsel's rules, a newsroom run under a half-billion-dollar lawsuit, then Google executive comms under regulatory and litigation scrutiny. The first draft anticipates the review instead of fighting it.</li>
+      <li class="reveal"><h3>Positioning and website copy</h3> The <a href="docs/fluidstack-positioning-memo.html">memo</a> is positioning copy written for Fluidstack itself, and the <a href="writing.html#redacted-docs">writing room</a> carries real positioning copy and operating docs from the Google roles word for word.</li>
+      <li class="reveal"><h3>Executive byline and ghostwriting</h3> VP-level executive communications at the Office of Cross Google Engineering (xGE) and C-suite writing for Google's then-CIO, with <a href="writing.html">the writing readable word for word</a>. A <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> walks through how it was done. References who can vouch for the ghostwriting are available on request.</li>
+      <li class="reveal"><h3>Media instinct and the pitch</h3> Eight newsroom years (Huffington Post Live, Fusion (an ABC and Univision joint venture), and Al Jazeera's AJ+) before Google. I know what makes an editor take a story; the <a href="stories.html">case files</a> carry the receipts.</li>
+      <li class="reveal"><h3>The press network</h3> A live, scored relationship map: 112 named journalists, editors, and producers across 30 recognized outlets, from the broadcast desks to the AI beat. <a href="press-network.html">See the network, redacted</a>; the names stay held until engaged.</li>
+      <li class="reveal"><h3>Narrative under pressure</h3> Scientology under counsel's rules, a newsroom run under a half-billion-dollar lawsuit, then Google executive comms under regulatory and litigation scrutiny. The first draft anticipates the review instead of fighting it.</li>
     </ul>
 
     <div class="ed-lane reveal">
-      <div class="el-k">The editorial lane · for the Head of Editorial screen</div>
-      <p class="el-b">Ten-plus producers led at Al Jazeera's AJ+: formats developed, coverage run on a daily cadence, and a real talent pipeline. <a href="stories.html#talent-pipeline">Three producers moved from behind the camera to on-air principals</a>, two of whom carry Emmy and Webby wins of their own. The editorial judgment record is the same one on <a href="comms.html#judgment">the comms page</a>; the lane shares one spine: evidence first, voice second, volume last.</p>
+      <div class="el-k">The editorial lane · depth behind the comms role</div>
+      <p class="el-b">Ten-plus producers led at Al Jazeera's AJ+ in the era it passed <a href="https://network.aljazeera.net/en/pressroom/aj-celebrates-second-anniversary-unprecedented-success" target="_blank" rel="noopener">five billion lifetime Facebook views &#8599;</a>: formats developed, coverage run on a daily cadence, and a real talent pipeline. <a href="stories.html#talent-pipeline">Three producers moved from behind the camera to on-air principals</a>, two of whom carry Emmy and Webby wins of their own. The editorial judgment record is the same one on <a href="comms.html#judgment">the comms page</a>; the lane shares one spine: evidence first, voice second, volume last.</p>
     </div>
-    <p class="el-note">Honesty note: I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p>
-    <div class="el-cta">
+    <p class="el-note reveal">Honesty note: I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p>
+    <div class="el-cta reveal">
       <a class="btn solid" href="docs/fluidstack-positioning-memo.html"><span>Read the positioning memo</span></a>
       <a class="btn" href="resume/comms-manager.html"><span>The comms resume</span></a>
     </div>
