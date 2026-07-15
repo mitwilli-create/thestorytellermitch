@@ -55,16 +55,21 @@ if (!dashHits) ok(`em-dash census clean across ${censusFiles.length} files`);
 // ---- 3. asset references ----------------------------------------------
 let refCount = 0, refBad = 0;
 const MEDIA = resolve(SITE, 'media');
+const under = (p, root) => p === root || p.startsWith(root + sep);
 for (const f of censusFiles.filter((f) => f.endsWith('.html'))) {
   const fileDir = dirname(resolve(SITE, f)); // resolve refs relative to the page, so ../ paths in docs/ + resume/ work
   const html = readFileSync(resolve(SITE, f), 'utf8');
   for (const m of html.matchAll(/(?:src|href|poster)="([^"#][^"]*)"/g)) {
     const url = m[1];
-    if (/^(https?:|mailto:|tel:|data:|back$|forward$)/.test(url)) continue;
-    const abs = resolve(fileDir, url.split('#')[0].split('?')[0]);
-    if (abs === MEDIA || abs.startsWith(MEDIA + sep)) continue; // gitignored self-host payloads
+    // skip external / non-file schemes; // is protocol-relative (also external)
+    if (/^(https?:|mailto:|tel:|data:|\/\/|back$|forward$)/.test(url)) continue;
+    const path = url.split('#')[0].split('?')[0];
+    // root-relative (/x) resolves under SITE; page-relative (x, ../x) resolves against the page dir
+    const abs = path.startsWith('/') ? resolve(SITE, path.replace(/^\/+/, '')) : resolve(fileDir, path);
+    if (under(abs, MEDIA)) continue; // gitignored self-host payloads
     refCount++;
-    if (!existsSync(abs)) { refBad++; fail.push(`asset-ref: ${f} references missing ${url.split('#')[0].split('?')[0]}`); }
+    // anything resolving outside SITE is not a deployable asset -> treat as missing
+    if (!under(abs, SITE) || !existsSync(abs)) { refBad++; fail.push(`asset-ref: ${f} references missing ${path}`); }
   }
 }
 if (!refBad) ok(`asset references resolve (${refCount} local refs)`);
