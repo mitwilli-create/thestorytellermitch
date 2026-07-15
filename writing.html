@@ -64,21 +64,24 @@
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
     .cs-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
       text-transform:uppercase;letter-spacing:-0.01em;line-height:1.12;color:var(--bone);max-width:760px}
-    /* essays: 5/7 macro grid rhyming with the work grid below (council R1);
-       left rail = head + pull-quote + rubric, right column = plate + cards */
+    /* essays: content left, tall galley plate right (owner restack 2026-07-15);
+       plate fills the column height at desktop, hidden below 1024 */
     .es-grid{display:grid;grid-template-columns:1fr}
     @media(min-width:1024px){
-      .es-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 72px;align-items:start}
+      .es-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 56px;align-items:stretch}
     }
-    .es-plate{margin:0 0 16px;position:relative}
-    .es-plate img{width:100%;height:170px;object-fit:cover;object-position:50% 40%;display:block;opacity:.55}
-    .es-plate::after{content:'';position:absolute;inset:0;
-      background:linear-gradient(to bottom,rgba(10,10,11,0.3),rgba(10,10,11,0) 45%,rgba(10,10,11,0.7) 100%)}
+    .es-plate{display:none}
+    @media(min-width:1024px){
+      .es-plate{display:block;position:relative;margin:0;height:100%;min-height:340px;
+        border:1px solid var(--line-2);border-radius:3px;overflow:hidden}
+      .es-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+        object-position:50% 38%;opacity:.38;filter:brightness(.85) contrast(.92)}
+      .es-plate::after{content:'';position:absolute;inset:0;
+        background:linear-gradient(to bottom,rgba(10,10,11,0.45),rgba(10,10,11,0.15) 40%,rgba(10,10,11,0.78) 100%)}
+    }
     .es-col .essay-cards,.es-col .essay-more{max-width:none}
-    /* cards are narrower in the 7fr column: give titles and sentence-boundary
-       excerpts a 4th clamp line so locked content never clips mid-word */
     .es-col .ec-t,.es-col .ec-d{-webkit-line-clamp:4}
-    .essays-rubric{max-width:var(--measure);font-size:15.5px;color:var(--bone-soft);line-height:1.65;margin:0 0 30px}
+    .essays-rubric{max-width:var(--measure);font-size:16.5px;color:var(--bone);line-height:1.65;margin:0 0 26px}
     /* two-up on desktop: fills cleanly at the current essay count and grows
        as rows of two (a 3-up grid would leave an empty trailing cell until
        the weekly series catches up) */
@@ -113,15 +116,6 @@
        now stack and scroll as one flow */
     .wr-col-script{max-width:860px}
     .wr-col-docs{margin-top:72px;border-top:1px solid var(--line-2);padding-top:56px}
-    /* writing-03: pull-quote band (pattern from stories.html .pull) */
-    .pull{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);
-      line-height:1.25;letter-spacing:-0.01em;color:var(--bone);border-left:2px solid var(--blood-soft);
-      padding:8px 0 8px 24px;margin:0 0 10px}
-    .pull-src{margin:0 0 22px;padding-left:26px;font-family:'JetBrains Mono',monospace;font-size:11px;
-      letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
-    /* tier-1 proof link (council R5) */
-    .pull-src a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:1px}
-    .pull-src a:hover{color:var(--bone)}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
     h2.mini::before{content:'';width:52px;height:1px;background:var(--blood-soft);
@@ -137,7 +131,7 @@
     /* tier-3 inline body links: hairline low-alpha underline, full oxblood on hover (council R5) */
     .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
     .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--blood-text)}
-    .pull-src a:focus-visible,.art-intro a:focus-visible,.src-line a:focus-visible,
+    .art-intro a:focus-visible,.src-line a:focus-visible,
     .dc-b a:focus-visible,.wr-note a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .ox-i{color:var(--blood-soft)}
     /* proof links that survive a skim */
@@ -300,19 +294,10 @@
 
 <section style="padding-top:0" id="essays">
   <div class="wrap">
-    <div class="es-grid">
-    <div class="es-rail">
     <h2 class="mini reveal">Essays · weekly <span class="mini-note">· new series, launched July 2026</span></h2>
-    <p class="essays-rubric reveal">New long-form writing on <strong>AI-native production</strong>, <strong class="ox">executive communications</strong>, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
-    <blockquote class="pull reveal">Their edge isn't IQ. It's a workflow you can steal.</blockquote>
-    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/what-do-ai-employees-know-about-using" target="_blank" rel="noopener">Essay #01 · What Do AI Employees Know About Using LLMs That I Don't?</a> · the second card below</div>
-    <blockquote class="pull reveal">The hard part wasn't the writing, it was learning how she decides.</blockquote>
-    <div class="pull-src reveal">from <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">Essay #02 · I Engineered a VP's Voice</a> · the first card below</div>
-    </div>
+    <div class="es-grid">
     <div class="es-col">
-    <figure class="es-plate reveal" aria-hidden="true">
-      <img src="assets/stills/illo-writing-galley.jpg" alt="" width="1376" height="768" loading="lazy">
-    </figure>
+    <p class="essays-rubric reveal">New long-form writing on AI-native production, executive communications, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
     <!-- WRITING:CARDS:START -->
     <div class="essay-cards reveal">
       <a class="ecard" href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">
@@ -330,6 +315,9 @@
     </div>
     <!-- WRITING:CARDS:END -->
     </div>
+    <figure class="es-plate reveal" aria-hidden="true">
+      <img src="assets/stills/illo-writing-galley.jpg" alt="" width="1376" height="768" loading="lazy">
+    </figure>
     </div>
   </div>
 </section>
