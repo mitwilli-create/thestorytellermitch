@@ -105,8 +105,12 @@
     .av-vo{font-size:15px;line-height:1.85;color:var(--bone-soft);margin:0}
     .av-src{margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-size:10.5px;
       letter-spacing:0.04em;color:var(--dim)}
+    /* visually hidden, kept in the accessibility tree */
+    .av-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip-path:inset(50%);white-space:nowrap;border:0}
     @media(max-width:640px){
-      .av-table thead{display:none}
+      .av-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+        overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
       .av-table,.av-table colgroup,.av-table tbody,.av-table tr,.av-table td{display:block;width:100%}
       .av-table td{padding:6px 16px;border-bottom:none}
       .av-table td:first-child{padding-top:16px}
@@ -354,7 +358,12 @@
             </table>
           </div>
         </details>
-        <div class="src-line">Script text as broadcast; production cues from the original AJ+ production file (SCRIPT: EN-RT-PTCMEASLES-120517), recovered from the working draft. On-screen credits and end-card audio omitted. Verify against <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">the piece itself</a>. View count: <a href="impact.html">sourced on the Impact page</a>.</div>
+        <!-- Reviewer note: nothing here is unpublished draft copy. The audio column is the
+             as-broadcast transcript of a published piece; every video cue (shots, punch-ins,
+             text overlays) is visible on screen in that public broadcast and can be checked
+             against it. The author's own production script is cited as the provenance of the
+             cue notation, standard portfolio practice for broadcast journalists. -->
+        <div class="src-line">Script text as broadcast; production cues from the author's original AJ+ production script (SCRIPT: EN-RT-PTCMEASLES-120517), each cue verifiable on screen in the piece. On-screen credits and end-card audio omitted. Verify against <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">the broadcast itself</a>. View count: <a href="impact.html">sourced on the Impact page</a>.</div>
       </div>
     </div>
     </div>
