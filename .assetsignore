@@ -8,6 +8,9 @@ media/
 node_modules/
 tools/
 .claude/
+kb/
+worker/
+.dev.vars
 AGENTS.md
 .DS_Store
 .env

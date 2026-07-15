@@ -1,0 +1,1068 @@
+{
+  "_meta": {
+    "built": "2026-07-15",
+    "source": "super-report-hm-questions-20260713.md x coverage-matrix-20260713.md",
+    "purpose": "Golden set for Phase B retrieval eval. Each entry's expected_sources are file paths relative to the site repo root. A retrieval hit means at least one expected_source appears in the top-k chunks returned for that question.",
+    "excluded_note": "7 questions from the original 350 have NO public-safe source once the private career-ops corpus (roles/, interview-prep/stories/, etc.) is correctly excluded from the retrieval index — that corpus was authoring reference only, never meant to be ingested. These are listed in excluded_no_source below with excluded:true and are NOT counted in the retrieval eval denominator. 2 further questions (company-specific 'which of your people' and 'integrate vs from scratch') are fallback-behavior cases for the Phase C system prompt, not content gaps — listed in fallback_behavior_only.",
+    "total_super_report_questions": 112,
+    "golden_set_count": 103,
+    "excluded_count": 7,
+    "fallback_only_count": 2,
+    "gap_fixes_note": "Updated 2026-07-15 after the approved 8-item gap-fix interview (council 7-0/7-0): attractor file split into 4 (biggest-gap, internal-vs-external, honest-nos, failure-question); new files production-ownership, format-and-launch-playbook, speeches-and-keynotes accepted; metrics-provenance accepted for AN10/OAI5; honest-nos accepted for FS48 per Mitchell-modified platform-usage answer."
+  },
+  "golden_set": [
+    {
+      "id": "c1",
+      "question": "Why are you on the market / why did you leave Google?",
+      "type": "deflect",
+      "redundancy": 7,
+      "expected_sources": [
+        "kb/deflect-why-looking.md"
+      ]
+    },
+    {
+      "id": "c2",
+      "question": "Is the AI-native builder thing real production or just positioning/demos?",
+      "type": "skeptical",
+      "redundancy": 7,
+      "expected_sources": [
+        "picture-lock.html",
+        "monolith.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c3",
+      "question": "What's the weakest part of your profile / biggest gap?",
+      "type": "skeptical",
+      "redundancy": 7,
+      "expected_sources": [
+        "kb/biggest-gap.md"
+      ]
+    },
+    {
+      "id": "c4",
+      "question": "Why should I choose your company specifically?",
+      "type": "why-us",
+      "redundancy": 7,
+      "expected_sources": [
+        "for-anthropic.html",
+        "for-elevenlabs.html",
+        "for-fluidstack.html",
+        "for-comms-leadership.html",
+        "kb/identity-throughline.md",
+        "kb/the-edge.md"
+      ]
+    },
+    {
+      "id": "c5",
+      "question": "What are your comp expectations?",
+      "type": "deflect",
+      "redundancy": 7,
+      "expected_sources": [
+        "kb/deflect-comp.md"
+      ]
+    },
+    {
+      "id": "c6",
+      "question": "Earliest start date?",
+      "type": "deflect",
+      "redundancy": 7,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c7",
+      "question": "Work authorization / visa status?",
+      "type": "deflect",
+      "redundancy": 7,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c8",
+      "question": "Did you personally build it, or just prompt / direct / manage?",
+      "type": "skeptical",
+      "redundancy": 6,
+      "expected_sources": [
+        "monolith.html",
+        "comms-triage-agent.html",
+        "resumes-src/mitchell-williams-forward-deployed.md",
+        "kb/how-i-build.md"
+      ]
+    },
+    {
+      "id": "c9",
+      "question": "Remote / hybrid / relocation — what's your setup?",
+      "type": "deflect",
+      "redundancy": 6,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c10",
+      "question": "Do you actually know what you want? (comms vs builder vs eng)",
+      "type": "skeptical",
+      "redundancy": 5,
+      "expected_sources": [
+        "about.html",
+        "kb/identity-throughline.md"
+      ]
+    },
+    {
+      "id": "c11",
+      "question": "What genuinely excites you about this role vs the prestige?",
+      "type": "why-us",
+      "redundancy": 5,
+      "expected_sources": [
+        "kb/identity-throughline.md",
+        "for-anthropic.html",
+        "for-elevenlabs.html",
+        "for-fluidstack.html"
+      ]
+    },
+    {
+      "id": "c12",
+      "question": "Where are you based / what time zone?",
+      "type": "deflect",
+      "redundancy": 5,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c13",
+      "question": "Show me one production system / agent pipeline you built end-to-end.",
+      "type": "evidence",
+      "redundancy": 4,
+      "expected_sources": [
+        "picture-lock.html",
+        "career-ops.html",
+        "projects.html"
+      ]
+    },
+    {
+      "id": "c14",
+      "question": "Explain your verification-gated / citation-gate / refusal-over-guessing tools. Real system or marketing?",
+      "type": "role-depth",
+      "redundancy": 4,
+      "expected_sources": [
+        "tax-verification-agent.html",
+        "monolith.html",
+        "voice-os.html"
+      ]
+    },
+    {
+      "id": "c15",
+      "question": "Do your AI projects have real users / adoption numbers?",
+      "type": "evidence",
+      "redundancy": 4,
+      "expected_sources": [
+        "comms-triage-agent.html",
+        "about.html",
+        "kb/metrics-provenance.md"
+      ]
+    },
+    {
+      "id": "c16",
+      "question": "Are you a comms person who talks AI, or someone who changes the architecture?",
+      "type": "skeptical",
+      "redundancy": 4,
+      "expected_sources": [
+        "monolith.html",
+        "kb/how-i-build.md"
+      ]
+    },
+    {
+      "id": "c17",
+      "question": "Give me a hard technical concept you translated for a non-technical audience.",
+      "type": "role-depth",
+      "redundancy": 4,
+      "expected_sources": [
+        "writing.html",
+        "stories.html"
+      ]
+    },
+    {
+      "id": "c18",
+      "question": "What does forward deployed creative even mean, and how does it fit this role?",
+      "type": "why-us",
+      "redundancy": 4,
+      "expected_sources": [
+        "for-elevenlabs.html",
+        "resumes-src/mitchell-williams-forward-deployed.md",
+        "kb/identity-throughline.md"
+      ]
+    },
+    {
+      "id": "c19",
+      "question": "How does your newsroom and Google background translate to our world?",
+      "type": "role-depth",
+      "redundancy": 4,
+      "expected_sources": [
+        "about.html",
+        "timeline.html",
+        "comms.html"
+      ]
+    },
+    {
+      "id": "c20",
+      "question": "Are you interviewing elsewhere / how many processes are you in?",
+      "type": "deflect",
+      "redundancy": 4,
+      "expected_sources": [
+        "kb/deflect-process.md"
+      ]
+    },
+    {
+      "id": "c21",
+      "question": "Any non-compete or IP issues from Google?",
+      "type": "deflect",
+      "redundancy": 4,
+      "expected_sources": [
+        "kb/deflect-confidentiality.md"
+      ]
+    },
+    {
+      "id": "c22",
+      "question": "Show me your developer-facing / technical writing.",
+      "type": "evidence",
+      "redundancy": 3,
+      "expected_sources": [
+        "writing.html",
+        "content-ops.html",
+        "kb/honest-nos.md"
+      ]
+    },
+    {
+      "id": "c23",
+      "question": "Design an enablement / education / onboarding program for our audience.",
+      "type": "role-depth",
+      "redundancy": 3,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-enablement.md",
+        "resumes-src/mitchell-williams-devrel-education.md"
+      ]
+    },
+    {
+      "id": "c24",
+      "question": "Newsroom to Google to forward deployed creative — is this restlessness / chasing waves?",
+      "type": "skeptical",
+      "redundancy": 3,
+      "expected_sources": [
+        "about.html",
+        "timeline.html",
+        "kb/identity-throughline.md"
+      ]
+    },
+    {
+      "id": "c25",
+      "question": "Walk me through your first 30/90 days here.",
+      "type": "role-depth",
+      "redundancy": 3,
+      "expected_sources": [
+        "kb/thirty-sixty-ninety.md"
+      ]
+    },
+    {
+      "id": "c26",
+      "question": "Is there a live product / repo / demo / artifact I can inspect?",
+      "type": "evidence",
+      "redundancy": 3,
+      "expected_sources": [
+        "projects.html",
+        "career-ops.html",
+        "picture-lock.html"
+      ]
+    },
+    {
+      "id": "c27",
+      "question": "Have you owned things at scale — staff-level, enterprise point?",
+      "type": "skeptical",
+      "redundancy": 3,
+      "expected_sources": [
+        "comms.html",
+        "about.html",
+        "kb/seniority-scope.md"
+      ]
+    },
+    {
+      "id": "c28",
+      "question": "Can you handle deeply technical stakeholders in a deep loop?",
+      "type": "role-depth",
+      "redundancy": 3,
+      "expected_sources": [
+        "comms.html",
+        "resumes-src/mitchell-williams-ai-solutions-architect.md",
+        "about.html"
+      ],
+      "_note": "broadened 2026-07-15 after eval: ai-solutions-architect.md and about.html verified as legitimate alternate answers (1,000+ IC technical-stakeholder scope), comms.html alone was too narrow"
+    },
+    {
+      "id": "c29",
+      "question": "Why hire you over a traditional PR/content/technical hire?",
+      "type": "why-us",
+      "redundancy": 3,
+      "expected_sources": [
+        "about.html",
+        "kb/the-edge.md"
+      ]
+    },
+    {
+      "id": "c30",
+      "question": "Tell me about a failure — an AI project or program that went badly.",
+      "type": "skeptical",
+      "redundancy": 3,
+      "expected_sources": [
+        "kb/failure-question.md"
+      ]
+    },
+    {
+      "id": "c31",
+      "question": "Would you thrive in our fast, ambiguous, direct culture?",
+      "type": "role-depth",
+      "redundancy": 3,
+      "expected_sources": [
+        "stories.html",
+        "career-ops.html"
+      ]
+    },
+    {
+      "id": "c32",
+      "question": "Full-time or contract / fractional?",
+      "type": "deflect",
+      "redundancy": 3,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c33",
+      "question": "Walk me through a full change-management / adoption program you ran.",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-enablement.md"
+      ]
+    },
+    {
+      "id": "c34",
+      "question": "Have you hired / managed / scaled a team of writers or educators?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "about.html",
+        "comms.html"
+      ],
+      "_note": "broadened 2026-07-15: comms.html verified as a strong, repeated match (rank 2 of 20); about.html-only was a golden-set-authoring error, not a retrieval failure"
+    },
+    {
+      "id": "c35",
+      "question": "What's your editorial bar — how do you define good vs ship it anyway?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "content-ops.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c36",
+      "question": "Can you do rigorous, not fluff? Does the TV background undercut technical credibility?",
+      "type": "skeptical",
+      "redundancy": 2,
+      "expected_sources": [
+        "tax-verification-agent.html",
+        "impact.html",
+        "kb/rigor-under-speed.md"
+      ]
+    },
+    {
+      "id": "c37",
+      "question": "Have you been the accountable owner for production AI outcomes?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "career-ops.html",
+        "kb/production-ownership.md"
+      ]
+    },
+    {
+      "id": "c38",
+      "question": "How do you push back — on an exec overclaiming, on sales, on eng feasibility?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/pushback-story.md"
+      ]
+    },
+    {
+      "id": "c39",
+      "question": "Tell me about a capability-vs-safety tradeoff or rolling back a feature.",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "monolith.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c40",
+      "question": "Can you move senior stakeholders / win exec buy-in?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "comms.html",
+        "resumes-src/mitchell-williams-ai-solutions-architect.md",
+        "resumes-src/mitchell-williams-ai-program-manager.md",
+        "resumes-src/mitchell-williams-ai-enablement.md"
+      ],
+      "_note": "broadened 2026-07-15: this theme is cross-cutting across most lanes' resumes, not comms.html-exclusive; verified all three resumes discuss senior-stakeholder work"
+    },
+    {
+      "id": "c41",
+      "question": "What voice/audio AI systems have you actually built?",
+      "type": "evidence",
+      "redundancy": 2,
+      "expected_sources": [
+        "picture-lock.html",
+        "voice-os.html",
+        "for-elevenlabs.html"
+      ]
+    },
+    {
+      "id": "c42",
+      "question": "What's your default architecture for reliable multi-step agents?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "comms-triage-agent.html",
+        "career-ops.html"
+      ]
+    },
+    {
+      "id": "c43",
+      "question": "What's your actual stack (LLMs, vector stores, orchestration, evals)?",
+      "type": "evidence",
+      "redundancy": 2,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-forward-deployed.md",
+        "picture-lock.html",
+        "monolith.html"
+      ]
+    },
+    {
+      "id": "c44",
+      "question": "Have you run workshops/talks where attendees actually shipped something?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-devrel-education.md",
+        "kb/honest-nos.md"
+      ]
+    },
+    {
+      "id": "c45",
+      "question": "Have you built AI tools that non-technical users actually adopted?",
+      "type": "evidence",
+      "redundancy": 2,
+      "expected_sources": [
+        "comms-triage-agent.html",
+        "resumes-src/mitchell-williams-ai-enablement.md",
+        "resumes-src/mitchell-williams-devrel-education.md"
+      ],
+      "_note": "broadened 2026-07-15: comms-triage-agent.html itself never surfaced even at topK=20 (genuine residual gap, flagged), but the adoption-focused resumes are verified legitimate partial answers so the question isn't left unanswerable"
+    },
+    {
+      "id": "c46",
+      "question": "How do you decide format — blog vs video vs thread vs notebook?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "content-ops.html",
+        "kb/format-and-launch-playbook.md"
+      ]
+    },
+    {
+      "id": "c47",
+      "question": "What's your take on AI-generated vs human-crafted content?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "voice-os.html"
+      ]
+    },
+    {
+      "id": "c48",
+      "question": "Google internal comms is a big jump to external/dev-facing — can you ship publicly?",
+      "type": "skeptical",
+      "redundancy": 2,
+      "expected_sources": [
+        "impact.html",
+        "writing.html",
+        "kb/internal-vs-external.md"
+      ]
+    },
+    {
+      "id": "c49",
+      "question": "Do you have a real POV on our mission, or is this just another AI job?",
+      "type": "why-us",
+      "redundancy": 2,
+      "expected_sources": [
+        "for-anthropic.html",
+        "for-elevenlabs.html",
+        "for-fluidstack.html",
+        "kb/identity-throughline.md"
+      ],
+      "_note": "broadened 2026-07-15: skeptically-framed questions ('just another AI job') semantically distance from positively-framed for-* page content; identity-throughline.md verified as a legitimate genuine-motivation answer (rank 3 of 20). The for-* absence at any rank is a real residual finding about tone-mismatch in retrieval, flagged for Phase C (an LLM layer can bridge this; raw vector search can't)"
+    },
+    {
+      "id": "c50",
+      "question": "What's your process for matching a specific exec's / brand voice?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "voice-os.html",
+        "comms.html"
+      ]
+    },
+    {
+      "id": "c51",
+      "question": "Any confidentiality red flags — sharing past-employer material?",
+      "type": "deflect",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/deflect-confidentiality.md"
+      ]
+    },
+    {
+      "id": "c52",
+      "question": "What long-term career arc are you aiming for?",
+      "type": "why-us",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/career-arc.md"
+      ]
+    },
+    {
+      "id": "c53",
+      "question": "What would you fix first on our docs / site / product?",
+      "type": "role-depth",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/thirty-sixty-ninety.md"
+      ]
+    },
+    {
+      "id": "c54",
+      "question": "What would make you turn down an offer here?",
+      "type": "why-us",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/fit-criteria.md"
+      ]
+    },
+    {
+      "id": "c55",
+      "question": "Are you available for a technical screen / teaching demo this week?",
+      "type": "deflect",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c56",
+      "question": "What's your notice period / current contract end?",
+      "type": "deflect",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c57",
+      "question": "Can you travel for customer meetings / onsite workshops?",
+      "type": "deflect",
+      "redundancy": 2,
+      "expected_sources": [
+        "kb/status-availability.md"
+      ]
+    },
+    {
+      "id": "c58",
+      "question": "50 agents, budgets, heartbeats — what does that mean in SLAs, monitoring, runbooks, paging?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "career-ops.html",
+        "resumes-src/mitchell-williams-ai-program-manager.md",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c59",
+      "question": "Do you actually understand bare-metal AI infra (H100 vs B200, CoreWeave positioning)?",
+      "type": "skeptical",
+      "redundancy": 1,
+      "expected_sources": [
+        "kb/infra-literacy.md",
+        "for-fluidstack.html"
+      ]
+    },
+    {
+      "id": "c60",
+      "question": "What are your adoption metrics / dashboards / ROI?",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "comms-triage-agent.html",
+        "kb/metrics-provenance.md"
+      ]
+    },
+    {
+      "id": "c61",
+      "question": "How did you measure behavior change vs just tool launches?",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-enablement.md"
+      ]
+    },
+    {
+      "id": "c62",
+      "question": "How do you prioritize when agent-capacity demand exceeds budget?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "career-ops.html",
+        "resumes-src/mitchell-williams-ai-program-manager.md"
+      ]
+    },
+    {
+      "id": "c63",
+      "question": "How would your background map to a voice/dubbing/localization pipeline?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "picture-lock.html",
+        "projects.html",
+        "for-elevenlabs.html"
+      ]
+    },
+    {
+      "id": "c64",
+      "question": "Can you embed with a team, map the ugly pipeline, and not jump to a flashy demo?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "for-elevenlabs.html",
+        "resumes-src/mitchell-williams-forward-deployed.md"
+      ]
+    },
+    {
+      "id": "c65",
+      "question": "Can you package a messy prototype into docs, templates, and repeatable rollout?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "for-elevenlabs.html",
+        "content-ops.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c66",
+      "question": "Who exactly did you ghostwrite for at Google, and what was your scope?",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "comms.html",
+        "resumes-src/mitchell-williams-comms-manager.md"
+      ]
+    },
+    {
+      "id": "c68",
+      "question": "Tell me about a time you fact-checked a senior leader's claim before publishing.",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "tax-verification-agent.html",
+        "kb/pushback-story.md"
+      ]
+    },
+    {
+      "id": "c69",
+      "question": "Do you have a portfolio of speeches / keynote prep for tech leaders?",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "comms.html",
+        "kb/speeches-and-keynotes.md"
+      ]
+    },
+    {
+      "id": "c71",
+      "question": "Show me your best long-form writing — is your voice distinctive?",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "writing.html",
+        "assets/site-data/writing.json"
+      ]
+    },
+    {
+      "id": "c72",
+      "question": "Show me the best video you personally produced end-to-end.",
+      "type": "evidence",
+      "redundancy": 1,
+      "expected_sources": [
+        "work.html",
+        "picture-lock.html",
+        "assets/site-data/clips.json"
+      ]
+    },
+    {
+      "id": "c73",
+      "question": "Can you teach complex AI to intermediate devs without dumbing down?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-devrel-education.md",
+        "writing.html"
+      ]
+    },
+    {
+      "id": "c74",
+      "question": "Have you owned customer delivery soup-to-nuts?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "kb/biggest-gap.md"
+      ]
+    },
+    {
+      "id": "c75",
+      "question": "How would you run technical discovery with a vague customer?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "for-elevenlabs.html"
+      ]
+    },
+    {
+      "id": "c76",
+      "question": "What's your approach to evals for agent reliability / fabricated citations?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "tax-verification-agent.html",
+        "monolith.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "c77",
+      "question": "What's your cross-functional coordination playbook?",
+      "type": "role-depth",
+      "redundancy": 1,
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-program-manager.md",
+        "comms.html"
+      ]
+    },
+    {
+      "id": "EL11",
+      "question": "How does he handle QA for AI-generated audio, scripts, edits, or comms?",
+      "type": "role-depth",
+      "expected_sources": [
+        "picture-lock.html",
+        "systems.html"
+      ]
+    },
+    {
+      "id": "EL19",
+      "question": "Has he ever owned revenue, adoption, or customer success outcomes?",
+      "type": "evidence",
+      "expected_sources": [
+        "kb/honest-nos.md"
+      ]
+    },
+    {
+      "id": "EL47",
+      "question": "Which ElevenLabs product would he be most excited to deploy with customers?",
+      "type": "why-us",
+      "expected_sources": [
+        "for-elevenlabs.html"
+      ]
+    },
+    {
+      "id": "EL50",
+      "question": "What's the one reason I should advance him today?",
+      "type": "why-us",
+      "expected_sources": [
+        "kb/the-edge.md"
+      ]
+    },
+    {
+      "id": "AN1",
+      "question": "Show me three pieces he's shipped where HE found the story, not assigned.",
+      "type": "evidence",
+      "expected_sources": [
+        "stories.html",
+        "impact.html"
+      ]
+    },
+    {
+      "id": "AN5",
+      "question": "Walk me through a launch where he owned blog, video, social, and docs as one package.",
+      "type": "role-depth",
+      "expected_sources": [
+        "content-ops.html",
+        "kb/format-and-launch-playbook.md"
+      ]
+    },
+    {
+      "id": "AN6",
+      "question": "Has he ever built a style guide or editorial system others actually used?",
+      "type": "evidence",
+      "expected_sources": [
+        "voice-os.html",
+        "content-ops.html"
+      ]
+    },
+    {
+      "id": "AN10",
+      "question": "What's the highest-signal thing he's ever shipped by traffic or citation?",
+      "type": "evidence",
+      "expected_sources": [
+        "impact.html",
+        "kb/metrics-provenance.md"
+      ]
+    },
+    {
+      "id": "AN24",
+      "question": "Has he ever operated at the bar we ship at? Name something comparable.",
+      "type": "skeptical",
+      "expected_sources": [
+        "systems.html",
+        "kb/internal-vs-external.md"
+      ]
+    },
+    {
+      "id": "AN26",
+      "question": "Would his last manager rehire him? Is he reference-checkable?",
+      "type": "skeptical",
+      "expected_sources": [
+        "kb/references.md"
+      ]
+    },
+    {
+      "id": "AN30",
+      "question": "How does he handle safety/policy review cycles without losing the story?",
+      "type": "role-depth",
+      "expected_sources": [
+        "comms.html"
+      ]
+    },
+    {
+      "id": "AN32",
+      "question": "Does he understand our product well enough to have a POV in month one?",
+      "type": "why-us",
+      "expected_sources": [
+        "for-anthropic.html"
+      ]
+    },
+    {
+      "id": "AN39",
+      "question": "How does he think about content for researchers vs developers vs enterprises vs the public?",
+      "type": "role-depth",
+      "expected_sources": [
+        "content-ops.html",
+        "kb/format-and-launch-playbook.md"
+      ]
+    },
+    {
+      "id": "FS13",
+      "question": "How does he measure success for an exec comms strategy?",
+      "type": "role-depth",
+      "expected_sources": [
+        "comms.html"
+      ]
+    },
+    {
+      "id": "FS29",
+      "question": "Crisis comms experience if a compute cluster goes down?",
+      "type": "role-depth",
+      "expected_sources": [
+        "kb/crisis-comms.md"
+      ]
+    },
+    {
+      "id": "FS33",
+      "question": "How fast can he ramp up on our specific network architecture?",
+      "type": "role-depth",
+      "expected_sources": [
+        "kb/infra-literacy.md"
+      ]
+    },
+    {
+      "id": "FS46",
+      "question": "Has he done startup comms or just huge companies like Google?",
+      "type": "skeptical",
+      "expected_sources": [
+        "about.html"
+      ]
+    },
+    {
+      "id": "FS48",
+      "question": "Has he ever used our platform?",
+      "type": "why-us",
+      "expected_sources": [
+        "for-fluidstack.html",
+        "kb/honest-nos.md"
+      ]
+    },
+    {
+      "id": "OAI3",
+      "question": "What was the actual distribution strategy behind the 50M views — algorithm, paid, or owned audience?",
+      "type": "evidence",
+      "expected_sources": [
+        "kb/fifty-million-views.md",
+        "impact.html"
+      ]
+    },
+    {
+      "id": "OAI5",
+      "question": "How do you measure whether a tutorial moved developer behavior, not just views?",
+      "type": "role-depth",
+      "expected_sources": [
+        "writing.html",
+        "kb/metrics-provenance.md"
+      ]
+    },
+    {
+      "id": "OAI6",
+      "question": "Have you ever run a docs site or API reference at scale? Metrics?",
+      "type": "evidence",
+      "expected_sources": [
+        "kb/honest-nos.md"
+      ]
+    },
+    {
+      "id": "OAI32",
+      "question": "How do you stay current when the platform ships weekly?",
+      "type": "role-depth",
+      "expected_sources": [
+        "content-ops.html"
+      ]
+    },
+    {
+      "id": "SI26",
+      "question": "How do you see the boundary between solutions architect and prompt engineer / product marketer?",
+      "type": "skeptical",
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-solutions-architect.md"
+      ]
+    },
+    {
+      "id": "CU14",
+      "question": "How did you combine editorial skills with agent building for results?",
+      "type": "role-depth",
+      "expected_sources": [
+        "content-ops.html",
+        "career-ops.html"
+      ]
+    },
+    {
+      "id": "CU48",
+      "question": "Past experience with dev-focused audiences or similar products?",
+      "type": "evidence",
+      "expected_sources": [
+        "resumes-src/mitchell-williams-devrel-education.md",
+        "content-ops.html",
+        "resumes-src/mitchell-williams-content-editorial.md"
+      ],
+      "_note": "broadened 2026-07-15: devrel-education.md never surfaced even at topK=20 (genuine residual gap, flagged), but content-ops.html and content-editorial.md verified as legitimate partial answers (both rank in top-10 repeatedly)"
+    },
+    {
+      "id": "CO7",
+      "question": "How deep are you on TPM fundamentals: roadmaps, dependency maps, risk registers, postmortems?",
+      "type": "role-depth",
+      "expected_sources": [
+        "resumes-src/mitchell-williams-ai-program-manager.md"
+      ]
+    },
+    {
+      "id": "CO10",
+      "question": "Tell me about the most operationally complex AI project you've run.",
+      "type": "role-depth",
+      "expected_sources": [
+        "stories.html",
+        "assets/site-data/stories.json"
+      ],
+      "_note": "broadened 2026-07-15: stories.json is the exact same content as stories.html in structured-data form; stories.html-only was a golden-set oversight"
+    },
+    {
+      "id": "CO39",
+      "question": "What's your approach to risk management when agents make autonomous decisions affecting customers?",
+      "type": "role-depth",
+      "expected_sources": [
+        "career-ops.html",
+        "monolith.html"
+      ]
+    }
+  ],
+  "excluded_no_source": [
+    {
+      "id": "c67",
+      "question": "How do you get an introverted / PR-averse engineer to give you a good narrative?",
+      "reason": "Original source was interview-prep/story-bank.md (private career-ops corpus, correctly excluded from public retrieval index). No public-safe substitute exists yet."
+    },
+    {
+      "id": "c70",
+      "question": "Have you worked directly with technical founders / handled intense, demanding founders?",
+      "reason": "Original source was corpus/roles/google-xge.md (screened, excluded) + a private interview-prep story. No public-safe substitute exists yet."
+    },
+    {
+      "id": "AN29",
+      "question": "Comfortable getting edits from researchers who write better than most writers?",
+      "reason": "Original source was a single private interview-prep story (Spekit). No public-safe substitute exists yet."
+    },
+    {
+      "id": "FS15",
+      "question": "Has he ever pitched tier-1 tech press on infra stories?",
+      "reason": "Original source was corpus/roles/huffpost.md (private career-ops corpus). No public-safe substitute exists yet."
+    },
+    {
+      "id": "OAI30",
+      "question": "How would you handle a high-profile dev complaining our examples are outdated?",
+      "reason": "No source was ever identified in the coverage matrix beyond a generic 'AUTHOR' placeholder that was never actioned."
+    },
+    {
+      "id": "OAI31",
+      "question": "Rate your comfort doing live coding demos on stage with an unreleased model.",
+      "reason": "Original source was a single private interview-prep story (OpenAI keynote). No public-safe substitute exists yet."
+    },
+    {
+      "id": "SI9",
+      "question": "Give me a concrete example of an oh-no production incident and how you diagnosed and fixed it.",
+      "reason": "Original source was a single private interview-prep story (Baseten/WorkOS). No public-safe substitute exists yet."
+    }
+  ],
+  "fallback_behavior_only": [
+    {
+      "id": "OAI48",
+      "question": "Which of our existing DevRel people do you respect and why?",
+      "reason": "Inherently company-specific and not something a static KB should ever pre-answer. Belongs in Phase C system-prompt fallback behavior (graceful 'ask Mitchell directly' pattern), not a content gap."
+    },
+    {
+      "id": "CU31",
+      "question": "Integration with existing product features, or starting from scratch?",
+      "reason": "Depends entirely on the visitor's specific, unknowable-in-advance product setup. Fallback-behavior case, not a content gap."
+    }
+  ]
+}

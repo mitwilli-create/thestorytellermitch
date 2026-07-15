@@ -1,12 +1,27 @@
 {
-  // Cloudflare Workers Static Assets config for the git-connected build.
-  // The site is pre-baked static files at the repo root; this serves them as
-  // Workers Assets. Exclusions live in .assetsignore (same format as .gitignore).
-  // There is no Worker script, so no `main` entry and no compat flags are needed.
+  // Cloudflare Workers config for thestorytellermitch.com.
+  // Site is pre-baked static files at the repo root, served as Workers
+  // Assets (exclusions in .assetsignore, same format as .gitignore).
+  // As of Phase B (2026-07-15) there's also a Worker script (worker/index.js)
+  // for the chat agent's retrieval API: /api/ask (public, read-only) and
+  // /api/kb-index (secret-gated, local/CI build-time only). No static file
+  // exists at either path, so both naturally fall through to the Worker;
+  // everything else serves as a static asset with no Worker invocation.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "thestorytellermitch",
   "compatibility_date": "2026-07-10",
+  "main": "worker/index.js",
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "thestorytellermitch-kb"
+    }
+  ]
 }

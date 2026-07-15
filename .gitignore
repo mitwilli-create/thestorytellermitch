@@ -4,5 +4,8 @@ tools/poster-candidates/
 tools/still-candidates/
 
 .env
+.dev.vars
 node_modules
 __pycache__/
+tools/.kb-corpus.json
+tools/.kb-eval-report.json
