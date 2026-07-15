@@ -349,8 +349,8 @@ a.ox-link{border-bottom:1px solid rgba(255,255,255,0.55);
 strong.ox a:hover,a.ox-link:hover{color:#fff;border-bottom-color:#fff}
 strong.ox a:focus-visible,a.ox-link:focus-visible{outline:1px solid #fff;outline-offset:2px}
 @media print{
-  strong.ox,a.ox-link{background:none !important;color:#8a3a33 !important;padding:0 !important}
-  strong.ox a{color:#8a3a33 !important;border-bottom-color:#8a3a33 !important}
+  strong.ox,a.ox-link{background:none !important;color:var(--blood) !important;padding:0 !important}
+  strong.ox a,a.ox-link{color:var(--blood) !important;border-bottom-color:var(--blood) !important}
 }
 /* default focus ring for any anchor a page hasn't styled itself */
 a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
