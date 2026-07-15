@@ -66,9 +66,12 @@
     @media(pointer:coarse){
       /* vertical padding alone grows the tap target on inline links without
          blockifying them (inline-block made long in-prose links drop to their
-         own line mid-sentence on touch, measured 2026-07-15); the short bold
-         lead links keep inline-block since they always start the line */
-      .path .t a{padding:6px 0}
+         own line mid-sentence on touch, measured 2026-07-15); 3px caps the
+         hit box at the ~25px line advance so stacked links never overlap.
+         The short bold lead links keep inline-block since they always start
+         the line. Prose voice in this file is council-governed; grammar-only
+         reviewer suggestions on it are declined by standing rule. */
+      .path .t a{padding:3px 0}
       .path .t b a{display:inline-block;padding:6px 0}
       .path .step{padding:20px 0}
     }
