@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715d">
   <style>
     /* shared paragraph measure for this page's prose blocks (council R8) */
     main{--measure:720px}
@@ -27,8 +27,10 @@
        section, white for the page's single hinge */
     .wr-sub strong,.art-intro strong,.essays-rubric strong,.wr-note strong{color:var(--bone);font-weight:700}
     .dcard .dc-b strong{display:inline;font-family:inherit;font-size:inherit;line-height:inherit;margin:0;color:var(--bone);font-weight:700}
-    strong.ox{color:var(--blood-soft)}
-    .dcard .dc-b strong.ox{color:var(--blood-soft)}
+    /* ox anchors are theme emphasis bands (owner ruling 2026-07-15); these
+       mirrors only re-assert white where the local strong rules above win */
+    strong.ox{color:#fff}
+    .dcard .dc-b strong.ox{color:#fff}
     strong.wt{color:#fff}
     /* slim return link to the review path (pre-approved); tier-2 nav link:
        muted mono, oxblood on hover, no persistent underline (council R5) */
@@ -62,7 +64,7 @@
     .cs-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
     .doc-wt{color:#fff}
     .art-intro-sub{max-width:720px;font-size:14.5px;color:var(--bone-soft);line-height:1.65;margin:-14px 0 28px}
-    .art-intro-sub strong.ox{color:var(--blood-soft)}
+    .art-intro-sub strong.ox{color:#fff}
     @media(min-width:1024px){.dcard .dc-r{white-space:nowrap;letter-spacing:0.04em}}
     .cs-k{display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}

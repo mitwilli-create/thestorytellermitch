@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715d">
   <style>
     .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
@@ -31,14 +31,17 @@
     .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
     .sys-sub p{margin:0 0 13px}
     .sys-sub p:last-child{margin:0}
-    .sys-sub strong.ox{color:var(--blood-soft);font-weight:700}
-    .sys-sub a.ox-link{color:var(--blood-soft);font-weight:700;border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
-    .sys-sub a.ox-link:hover{color:var(--bone)}
+    /* hero ox anchors ride the theme emphasis bands (owner ruling 2026-07-15) */
     /* proof strip: last beat of the hero orchestration; numbers already
        verified in the page body (press network, step 03, map item 3) */
     .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
       border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:34px;max-width:860px;
       opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    /* the reveal end-state was dropped in the #82 redesign, leaving the strip
+       at opacity:0 for every JS+motion visitor: the "black void" under the
+       hero hairline. Restored 2026-07-15; the .95s delay is the strip's slot
+       in the hero orchestration (rule .62s, sub .78s, stats last). */
+    .revealed .hero-stats{opacity:1;transform:none;transition-delay:.95s}
     .hero-stats .hs{background:var(--surface);padding:20px 18px;min-width:0}
     .hero-stats .n{font-family:'Archivo',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-0.02em;
       color:var(--bone);font-variant-numeric:tabular-nums}
@@ -58,19 +61,28 @@
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
     .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
     .path .step{display:flex;gap:18px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
-    .path .d{flex:none;min-width:158px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--blood-text);letter-spacing:0.08em;
-      text-transform:uppercase;color:var(--blood-soft);min-width:96px}
+    /* one min-width, sized to the longest label ("Step 1 · 8-min read"), so
+       every row's text column starts at the same x (owner punch item 5) */
+    .path .d{flex:none;min-width:158px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft)}
     .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
-    .path .t b{color:var(--bone);font-weight:600}
     .path .t a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .path .t a:hover{color:var(--blood-text)}
+    /* step leads are banded ox anchors that stay links: white text + visible
+       underline inside the band (mirrors theme strong.ox a; local specificity
+       of .path .t a would otherwise repaint them bone) */
+    .path .t strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55)}
+    .path .t strong.ox a:hover{color:#fff;border-bottom-color:#fff}
     .path-total{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--dim);margin-top:18px}
     .map-list{list-style:none;margin:0;padding:0;max-width:760px}
     .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
       line-height:1.65;color:var(--bone-soft)}
-    .map-list li h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:17.5px;
-      letter-spacing:0;text-transform:none;color:var(--bone);margin:0 0 6px}
+    /* owner restore 2026-07-15: the #86 Archivo card-title sub-headers lost the
+       sections' cool, polished look; back to the mono kicker treatment both
+       archived proof states carry */
+    .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin:0 0 4px;font-weight:500}
     .map-list li a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .map-list li a:hover{color:var(--blood-text)}
     .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
@@ -92,7 +104,7 @@
     }
     .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);background:var(--bg-2);
       background:var(--surface);padding:20px 24px;border-radius:3px}
-    .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:0.12em;
+    .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
     .ed-lane .el-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2vw,23px);color:var(--bone);margin:6px 0 0;line-height:1.2}
     .ed-lane .el-list{list-style:none;margin:14px 0 0;padding:0}
@@ -110,10 +122,18 @@
          the line. Prose voice in this file is council-governed; grammar-only
          reviewer suggestions on it are declined by standing rule. */
       .path .t a{padding:3px 0}
-      .path .t b a{display:inline-block;padding:6px 0}
+      .path .t strong.ox a{display:inline-block;padding:6px 0}
       .path .step{padding:20px 0}
     }
-    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px}
+    /* designed note cards (owner punch item 8): mono kicker + quiet border,
+       one visual step below the ed-lane so the lane keeps the accent */
+    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px;
+      padding:16px 20px;border:1px solid var(--line);border-left:2px solid var(--line-2);
+      background:var(--bg-2);border-radius:3px}
+    .el-note+.el-note{margin-top:14px}
+    .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+    .el-note p{margin:0}
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:640px){
       .sys-hero{padding:130px 0 56px}
@@ -178,7 +198,8 @@
   <div class="wrap">
     <h2 class="fs-title">How I'd approach the Fluidstack narrative</h2>
     <div class="narrative-prose reveal">
-      <p>Anthropic has committed roughly <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion &#8599;</a> to build with Fluidstack as its deployment partner, and the public story is now so Anthropic-centered that reporters will inevitably test the concentration. But Fluidstack still has time to frame the narrative. The memo shows exactly what I would do first.</p>
+      <p><strong class="ox">Anthropic has committed roughly <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion &#8599;</a> to build with Fluidstack</strong> as its deployment partner, and the public story is now so Anthropic-centered that reporters will inevitably test the concentration.</p>
+      <p><strong class="ox">But Fluidstack still has time</strong> to frame the narrative. The memo shows exactly what I would do first.</p>
     </div>
     <div class="el-cta reveal" style="margin-top:24px">
       <a class="btn solid" href="docs/fluidstack-positioning-memo.html"><span>Read the memo: the full approach, sourced</span></a>
@@ -190,15 +211,15 @@
   <div class="wrap">
     <h2 class="fs-title">The path</h2>
     <div class="path">
-      <div class="step reveal"><span class="d">Step 1 · 8-min read</span><span class="t"><b><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></b> A positioning memo written for Fluidstack specifically: how I'd frame the company's story. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>: broadcast scripts word for word, and the Google documentation record as case studies with provenance stated (the originals stay inside Google, where they belong). And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
-      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><b><a href="comms.html#judgment">Check the judgment record.</a></b> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. I protected the reporter, not the headline.</span></div>
-      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><b><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></b> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review rounds per doc by about 70% (my own count; a reference can confirm it). The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
-      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><b><a href="resume/comms-manager.html">Open the resume.</a></b> Two pages, tuned to communications leadership. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
+      <div class="step reveal"><span class="d">Step 1 · 8-min read</span><span class="t"><strong class="ox"><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></strong> A positioning memo written for Fluidstack specifically: how I'd frame the company's story. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>: broadcast scripts word for word, and the Google documentation record as case studies with provenance stated (the originals stay inside Google, where they belong). And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
+      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="ox"><a href="comms.html#judgment">Check the judgment record.</a></strong> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. I protected the reporter, not the headline.</span></div>
+      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="ox"><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></strong> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review rounds per doc by about 70% (my own count; a reference can confirm it). The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
+      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="ox"><a href="resume/comms-manager.html">Open the resume.</a></strong> Two pages, tuned to communications leadership. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
       <!-- Reviewer note: the email and phone here are Mitchell's own public
      professional contact details, published by design so recruiters can reach
      him (same tel: link comms.html has carried on main). Not third-party
      personal data. -->
-      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t">When you're ready to talk, I'm at <a href="mailto:mitwilli@gmail.com?subject=Fluidstack%20Communications%20Lead%20%C2%B7%20Mitchell%20Williams"><b>mitwilli@gmail.com</b></a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
+      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="ox">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Fluidstack%20Communications%20Lead%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
     </div>
     <p class="path-total">total: about 15 minutes</p>
   </div>
@@ -232,14 +253,14 @@
       <div class="el-k">The editorial lane</div>
       <h3 class="el-h">Depth behind the comms role</h3>
       <ul class="el-list">
-        <li>Ten-plus producers led at Al Jazeera's AJ+ in the era it passed <a href="https://network.aljazeera.net/en/pressroom/aj-celebrates-second-anniversary-unprecedented-success" target="_blank" rel="noopener">five billion lifetime Facebook views &#8599;</a> (AJ+'s own milestone).</li>
-        <li>Formats developed, coverage run on a daily cadence, and a real talent pipeline built behind the camera.</li>
-        <li><a href="stories.html#talent-pipeline">Three producers moved from behind the camera to on-air principals</a>, two carrying Emmy and Webby wins of their own.</li>
+        <li>I led ten-plus producers at Al Jazeera's AJ+ while it passed <a href="https://network.aljazeera.net/en/pressroom/aj-celebrates-second-anniversary-unprecedented-success" target="_blank" rel="noopener">five billion lifetime Facebook views &#8599;</a> (AJ+'s own milestone).</li>
+        <li>I developed the formats, ran coverage on a daily cadence, and built a real talent pipeline behind the camera.</li>
+        <li><a href="stories.html#talent-pipeline">Three of my producers went from behind the camera to on-air principals</a>, two of them now carrying Emmy and Webby wins of their own.</li>
         <li>The same editorial judgment record as <a href="comms.html#judgment">the comms page</a>. One spine: evidence first, voice second, volume last.</li>
       </ul>
     </div>
-    <p class="el-note reveal">Fluidstack is also hiring a Head of Editorial and a Head of Brand and Content in parallel. This role builds the comms spine; I'd partner cleanly with both.</p>
-    <p class="el-note reveal">Honesty note: I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p>
+    <div class="el-note reveal"><span class="en-k">Parallel hires</span><p>Fluidstack is also hiring a Head of Editorial and a Head of Brand and Content in parallel. This role builds the comms spine; I'd partner cleanly with both.</p></div>
+    <div class="el-note reveal"><span class="en-k">Honesty note</span><p>I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p></div>
     <div class="el-cta reveal">
       <a class="btn solid" href="docs/fluidstack-positioning-memo.html"><span>Read the positioning memo</span></a>
       <a class="btn" href="resume/comms-manager.html"><span>The comms resume</span></a>

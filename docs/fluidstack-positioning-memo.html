@@ -42,14 +42,21 @@
     .doc-main p,.doc-main ul,.doc-main .backlink{max-width:680px}
     .doc p{font-size:16px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
     .doc strong{color:var(--bone);font-weight:700}
-    .doc strong.ox{color:var(--blood-soft)}
+    /* ox anchors are theme emphasis bands (owner ruling 2026-07-15); local
+       mirrors re-assert white where .doc strong / .doc p a specificity wins */
+    .doc strong.ox{color:#fff}
     .doc strong.wt{color:#fff}
     .doc em{color:var(--bone);font-style:italic}
     .doc p a,.doc li a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     .doc p a:hover,.doc li a:hover{color:var(--bone)}
+    /* links living inside a band (the CoreWeave anchor) go white with a
+       visible underline, per the band grammar */
+    .doc p strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55)}
+    .doc p strong.ox a:hover{color:#fff;border-bottom-color:#fff}
     /* external-tab cue on inline prose links (card sources carry their own glyph) */
     .doc-main p a[target="_blank"]::after{content:"\00A0\2197";font-family:'JetBrains Mono',monospace;
       font-size:0.72em;color:var(--blood-soft);border-bottom:none;vertical-align:baseline}
+    .doc-main p strong.ox a[target="_blank"]::after{color:#fff}
     .doc ul{margin:12px 0 20px;padding-left:20px}
     .doc li{font-size:16px;line-height:1.7;color:var(--bone-soft);margin-bottom:8px}
     .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
@@ -92,7 +99,7 @@
     .memo-close p{font-family:'Archivo',sans-serif;font-weight:500;font-size:clamp(19px,2.3vw,26px);
       line-height:1.36;letter-spacing:-0.01em;color:var(--bone-soft);margin:0;max-width:none}
     .memo-close strong{font-weight:700;color:var(--bone)}
-    .memo-close strong.ox{color:var(--blood-soft)}
+    .memo-close strong.ox{color:#fff}
 
     /* ---------- sourced visual elements (built July 2026; no AI images, no article screenshots) ---------- */
     /* pull-quote */
