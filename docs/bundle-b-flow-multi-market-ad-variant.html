@@ -24,9 +24,11 @@
     .doc ul,.doc ol{margin:0 0 16px 22px;color:var(--bone-soft);font-size:15px;line-height:1.7}
     .doc li{margin-bottom:6px}
     .doc code{font-family:'JetBrains Mono',monospace;font-size:0.9em;color:var(--bone);background:var(--surface);padding:1px 5px;border:1px solid var(--line)}
-    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .doc a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .doc a:hover{color:var(--blood-text)}
     .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
-    .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .backlink a{color:var(--mute);border-bottom:0;transition:color var(--dur-micro) var(--ease-micro)}
+    .backlink a:hover{color:var(--blood-soft)}
   </style>
 </head>
 <body>

@@ -11,14 +11,15 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
     .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
     .comms-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
     .comms-sub p{margin:0 0 16px}
     .comms-sub p:last-child{margin-bottom:0}
-    .comms-sub a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .comms-sub a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .comms-sub a:hover{color:var(--blood-text)}
     section{padding:76px 0}
     /* comms-01: the credentials block rises into the hero's lower third.
        The hero reserves the room (so its own text reads first and nothing
@@ -122,12 +123,13 @@
     .talk-card .t-facts p{font-size:16px;line-height:1.6;color:var(--bone-soft);margin:0;
       padding:11px 0;border-bottom:1px solid var(--line)}
     @media(max-width:860px){.talk-card{padding:30px 24px}.talk-card .t-facts{grid-template-columns:1fr}}
-    .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .talk-card a:hover{color:var(--blood-text)}
     .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
     .talk-card .t-mail:hover{color:var(--bone)}
     .fs-return{margin:-22px 0 30px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
-    .fs-return a{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
-    .fs-return a:hover{color:var(--bone)}
+    .fs-return a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+    .fs-return a:hover{color:var(--blood-soft)}
     @media(hover:none){
       .sys-thumb{position:relative}
       .sys-thumb::after{content:'\25B8 open';position:absolute;right:10px;bottom:10px;
@@ -147,8 +149,7 @@
     .prose{max-width:740px;font-size:16.5px;line-height:1.75;color:var(--bone-soft)}
     .prose p{margin-bottom:18px}
     .prose strong{color:var(--bone)}
-    .prose a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    /* comms-04: the four systems compose as a 2x2 card grid: thumb up
+        /* comms-04: the four systems compose as a 2x2 card grid: thumb up
        top, name, body; hover-cinemagraph behavior unchanged */
     .sys-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:1040px}
     .sys{background:var(--surface);border:1px solid var(--line);padding:24px 22px;
@@ -158,8 +159,7 @@
       display:flex;flex-direction:column-reverse;gap:14px}
     .sys-name .sys-thumb{margin-top:0}
     .sys-body{font-size:14.5px;color:var(--bone-soft);line-height:1.65}
-    .sys-body a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .slot{border:1px dashed var(--line);padding:28px;max-width:740px;background:transparent}
+        .slot{border:1px dashed var(--line);padding:28px;max-width:740px;background:transparent}
     .slot .sl-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
       text-transform:uppercase;color:var(--mute);margin-bottom:12px}
     .slot p{font-size:15.5px;color:var(--bone-soft);line-height:1.65}

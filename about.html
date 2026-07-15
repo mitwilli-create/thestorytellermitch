@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,8 +70,9 @@
       color:var(--dim);text-transform:lowercase;display:block;margin-bottom:8px}
     .site-checks p{font-size:13.5px;color:var(--bone-soft);line-height:1.6;margin:0 0 10px}
     .site-checks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--blood-soft);padding-bottom:2px}
-    .site-checks a:hover{color:var(--blood-soft)}
+      text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft);padding-bottom:2px;
+      transition:color var(--dur-micro) var(--ease-micro)}
+    .site-checks a:hover{color:var(--bone)}
     @media(max-width:860px){
       .target-grid{grid-template-columns:1fr;gap:36px}
     }
@@ -82,8 +83,7 @@
     .prose p{margin-bottom:18px}
     .prose strong{color:var(--bone)}
     .prose em{color:var(--bone);font-style:italic}
-    .prose a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
-    .prose ul{list-style:none;margin:0 0 18px;padding:0}
+        .prose ul{list-style:none;margin:0 0 18px;padding:0}
     .prose li{padding:10px 0;border-bottom:1px solid var(--line)}
     .prose li strong{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px}

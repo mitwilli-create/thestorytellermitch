@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     /* shared paragraph measure for this page's prose blocks (council R8) */
     main{--measure:720px}
@@ -136,7 +136,7 @@
       color:var(--bone);line-height:1.15;margin-bottom:14px}
     .art-intro{max-width:var(--measure);font-size:16px;color:var(--bone-soft);line-height:1.7;margin-bottom:28px}
     /* tier-3 inline body links: hairline low-alpha underline, full oxblood on hover (council R5) */
-    .art-intro a{color:var(--bone);border-bottom:1px solid rgba(196,104,93,0.35)}
+    .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
     .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--blood-text)}
     .pull-src a:focus-visible,.art-intro a:focus-visible,.src-line a:focus-visible,
     .dc-b a:focus-visible,.wr-note a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
@@ -221,7 +221,7 @@
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:10px}
     .dcard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--bone);display:block;margin-bottom:8px;line-height:1.25}
     .dcard .dc-b{font-size:13.5px;color:var(--mute);line-height:1.6;display:block}
-    .dcard .dc-b a{color:var(--bone);border-bottom:1px solid rgba(196,104,93,0.35)}
+    .dcard .dc-b a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
     .dcard .dc-r{display:block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
     .dc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -257,7 +257,7 @@
     .dcard-fold .fold-cue{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:8px}
     .wr-note{max-width:var(--measure);margin-top:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
-    .wr-note a{color:var(--bone);border-bottom:1px solid rgba(196,104,93,0.35)}
+    .wr-note a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
     /* mobile-only genre divider: the spine's job, restated where the stack
        changes subject */
     .wr-divide{display:none}

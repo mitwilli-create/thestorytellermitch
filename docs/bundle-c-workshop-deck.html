@@ -18,8 +18,8 @@
       font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
     .deck-top .mark{color:var(--bone);font-weight:600;letter-spacing:0.12em}
     .deck-top .mark b{color:var(--blood-soft)}
-    .deck-top a.back{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
-    .deck-top a.back:hover{color:var(--bone)}
+    .deck-top a.back{color:var(--mute);border-bottom:0;transition:color var(--dur-micro) var(--ease-micro)}
+    .deck-top a.back:hover{color:var(--blood-soft)}
     .stage{position:fixed;inset:0;top:0;bottom:0}
     .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
       padding:96px 6vw 110px;opacity:0;transform:translateY(18px);pointer-events:none;visibility:hidden;
@@ -43,7 +43,8 @@
     .qa dt{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;
       color:var(--blood-soft);margin:0 0 4px}
     .qa dd{margin:0 0 14px;font-size:clamp(14px,1.4vw,16.5px);line-height:1.6;color:var(--bone-soft);max-width:760px}
-    .slide a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+    .slide a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .slide a:hover{color:var(--blood-text)}
     .tbl-wrap{overflow-x:auto;margin:0 0 14px;border:1px solid var(--line);max-width:760px}
     .slide table{width:100%;border-collapse:collapse;font-size:clamp(13px,1.3vw,15px)}
     .slide th{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;

@@ -13,7 +13,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/stills/hero-machine-plate-hd.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="shared/theme.css?v=20260713b">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715c">
   <style>
     /* homepage hero: literal header block + featured film + system diagram card
        (2026-07-10 restructure; 2026-07-14 added the featured-film column per
@@ -141,7 +141,8 @@
       line-height:1.65;margin-top:16px;padding-top:13px;border-top:1px solid var(--line);
       transition:color .3s var(--ease)}
     .hero-sys:hover .sys-cap{color:var(--bone)}
-    .arc .c-b a{color:inherit;border-bottom:1px solid var(--blood-soft)}
+    .arc .c-b a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .arc .c-b a:hover{color:var(--blood-text)}
     .stmt a{color:inherit}
     .stmt a:hover{color:var(--bone)}
     /* arc cells route to their timeline tier: linked kickers + a visible
