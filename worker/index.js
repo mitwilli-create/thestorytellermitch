@@ -168,7 +168,16 @@ function originAllowed(request) {
 //
 // NOTE the deliberately loose word boundaries: "layoff" must also catch
 // "layoffs" (the plural leaked past \blayoff\b on the first attempt).
-const ABOUT_THE_ASSISTANT = /\bassistant\b/i;
+// Enumerated from the corpus rather than guessed (grep '^\*\*.*\*\*' kb/).
+// Every policy marker in kb/ contains the word "assistant" -- "For the
+// assistant:", "Assistant response pattern:", "Approved framing (assistant,
+// third person):", "What the assistant must NOT do:", "Suggested assistant
+// response:", "One-liner the assistant can use:", "Note to Mitchell (not for
+// the assistant to surface)" -- with exactly ONE exception: a bare
+// "**Must NOT:**" (4 uses). That exception leaked to the live page.
+// Content-bearing bold leads ("The honest scope limit:", "Third-party
+// verified:", "Next 30 days:") deliberately survive.
+const POLICY_MARKER = /\bassistant\b|\bmust not\b/i;
 const NEVER_PUBLIC = /Spain|Barcelona|Madrid|laid off|layoff|garden leave/i;
 
 function publicExcerpt(text) {
@@ -178,7 +187,7 @@ function publicExcerpt(text) {
     .filter((p) => {
       const t = p.trim();
       if (!t) return false;
-      return !ABOUT_THE_ASSISTANT.test(t) && !NEVER_PUBLIC.test(t);
+      return !POLICY_MARKER.test(t) && !NEVER_PUBLIC.test(t);
     })
     .join('\n\n')
     .trim();
