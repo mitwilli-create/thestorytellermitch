@@ -142,6 +142,48 @@ function originAllowed(request) {
   }
 }
 
+// Chunk `text` is authored FOR the assistant: it carries policy meta-language
+// ("For the assistant:", "Must NOT:", hard limits) that instructs generation
+// and, by necessity, names the things it forbids -- including the relocation
+// destination the assistant must never state. That text is safe to hold in
+// Vectorize metadata (Phase C reads it server-side, inside the Worker) but is
+// NOT safe to return over a public API. Shipped 2026-07-15 unstripped: the
+// preview page rendered "Never name Spain or any specific country/city" to
+// anyone who asked about availability, and any caller could curl the same.
+// Strip at the response boundary so no re-index is needed and so the leak
+// cannot come back via a page that innocently renders what the API returns.
+//
+// Matching policy by line-prefix does not work: the kb files phrase it a dozen
+// ways ("**For the assistant:**", "**What the assistant must NOT do:**",
+// "**Note to Mitchell (not for the assistant to surface)**", "**All facts here
+// are safe for the assistant to state**"). A prefix denylist leaked all three
+// of the last ones on the first attempt. Use the property that actually holds:
+// policy paragraphs are the ones that TALK ABOUT THE ASSISTANT. Drop any
+// paragraph mentioning it, plus any naming an excluded term.
+//
+// Measured against the 375-chunk corpus 2026-07-15: drops 48 of 2176
+// paragraphs (2.2%), leaves 0 chunks without an excerpt, and 0 leaks. Erring
+// toward over-stripping is correct here -- a dropped sentence costs an excerpt,
+// a leaked one costs the exclusion policy.
+//
+// NOTE the deliberately loose word boundaries: "layoff" must also catch
+// "layoffs" (the plural leaked past \blayoff\b on the first attempt).
+const ABOUT_THE_ASSISTANT = /\bassistant\b/i;
+const NEVER_PUBLIC = /Spain|Barcelona|Madrid|laid off|layoff|garden leave/i;
+
+function publicExcerpt(text) {
+  if (typeof text !== 'string') return '';
+  return text
+    .split(/\n{2,}/)
+    .filter((p) => {
+      const t = p.trim();
+      if (!t) return false;
+      return !ABOUT_THE_ASSISTANT.test(t) && !NEVER_PUBLIC.test(t);
+    })
+    .join('\n\n')
+    .trim();
+}
+
 async function handleAsk(request, env) {
   if (!originAllowed(request)) {
     return new Response('Forbidden', { status: 403 });
@@ -163,12 +205,18 @@ async function handleAsk(request, env) {
 
   return Response.json({
     query,
-    matches: results.matches.map((m) => ({
-      score: m.score,
-      source: m.metadata?.source,
-      docTitle: m.metadata?.docTitle,
-      typeTag: m.metadata?.typeTag,
-      text: m.metadata?.text,
-    })),
+    matches: results.matches
+      .map((m) => ({
+        score: m.score,
+        source: m.metadata?.source,
+        docTitle: m.metadata?.docTitle,
+        typeTag: m.metadata?.typeTag,
+        // public-safe: assistant-policy paragraphs removed. Phase C must read
+        // the FULL text from Vectorize metadata server-side, never from here.
+        text: publicExcerpt(m.metadata?.text),
+      }))
+      // a chunk that is nothing but policy has no public excerpt to show; drop
+      // it from the response rather than emit an empty card
+      .filter((m) => m.text.length > 0),
   });
 }
