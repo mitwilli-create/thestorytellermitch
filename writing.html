@@ -67,13 +67,13 @@
     .essay-more summary:hover{color:var(--bone)}
     .essay-more summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .essay-more .essay-cards{margin-top:14px}
-    /* writing-01: script left, redacted docs right with an 8vh offset */
+    /* writing-01: script left, redacted docs right, tops flush */
     .wr-grid{display:grid;grid-template-columns:1fr}
     @media(min-width:1024px){
       .wr-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 72px;align-items:start}
       /* docs column pins while the longer script column scrolls, so the
          juxtaposition holds and the column never trails dead space */
-      .wr-col-docs{margin-top:8vh;position:sticky;top:90px}
+      .wr-col-docs{position:sticky;top:90px}
       .wr-grid .doc-cards{grid-template-columns:1fr}
     }
     @media(max-width:1023px){
@@ -453,10 +453,6 @@
     </div>
     </div>
     <div class="wr-col-docs">
-    <figure class="oncam oncam--card reveal" style="margin:0 0 40px">
-      <img src="assets/stills/oncam/trumpmj-023.jpg" alt="Mitchell Williams delivering an AJ+ explainer to camera" loading="lazy">
-      <figcaption class="oncam-cap">aj+, 2017. delivering explainers to camera. <a href="work.html#play-ajp-2017-trumps-war-on-marijuana">watch &#8599;</a></figcaption>
-    </figure>
     <h2 class="mini reveal" id="redacted-docs">Programmatic documentation · the Google roles, redacted</h2>
     <p class="art-intro reveal">Three internal documents from two Google roles, <strong class="ox">published with redaction, not reconstruction</strong>. Names, internal tools, links, and internal figures are bracketed. Everything else is <strong class="wt">verbatim</strong>. Each page states exactly what was redacted.</p>
     <div class="doc-cards">
