@@ -15,6 +15,13 @@
   <style>
     .pn-hero{padding:170px 0 72px;border-bottom:1px solid var(--line)}
     .pn-hero .display{font-size:clamp(40px,6.4vw,92px)}
+    /* the accent line ("without the list.") crosses the cinemagraph to
+       ~47% of the plate's width; the theme scrim clears too early there,
+       so deepen its left half for headline legibility and let the right
+       half of the illustration keep its detail (owner, 2026-07-15) */
+    .pn-hero .fill-hero::after{background:
+      linear-gradient(to right,var(--bg) 12%,rgba(10,10,11,0.88) 34%,rgba(10,10,11,0.45) 56%,rgba(10,10,11,0) 82%),
+      linear-gradient(to bottom,rgba(10,10,11,0.45),rgba(10,10,11,0) 35%,rgba(10,10,11,0) 60%,var(--bg) 100%)}
     .pn-sub{margin-top:26px;max-width:660px;font-size:18px;color:var(--bone-soft);line-height:1.65}
     .pn-sub a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .pn-sub a:hover{color:var(--blood-text)}
