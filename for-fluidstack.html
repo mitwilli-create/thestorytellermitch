@@ -15,7 +15,24 @@
   <style>
     .sys-hero{padding:170px 0 96px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
-    .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
+    /* signature underline: a single oxblood rule draws L->R beneath the
+       accent line once the headline has settled, then holds. transform-only
+       (compositor-friendly), one continuous draw, no loop point. */
+    .hero-rule{display:block;height:3px;width:min(360px,60%);margin-top:22px;
+      background:var(--blood-soft);transform:scaleX(0);transform-origin:left center;
+      transition:transform 720ms var(--ease-reveal)}
+    .revealed .hero-rule{transform:scaleX(1);transition-delay:.62s}
+    /* sub-paragraph rises in after the rule, matching the house hero cadence */
+    .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65;
+      opacity:0;transform:translateY(18px);
+      transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
+    .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
+    .no-js .hero-rule{transform:scaleX(1)}
+    .no-js .sys-sub{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .hero-rule{transition:none;transform:scaleX(1)}
+      .sys-sub{transition:none;opacity:1;transform:none}
+    }
     section{padding:76px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
@@ -87,6 +104,7 @@
       <span class="ln"><span>The writing first,</span></span>
       <span class="ln"><span class="accent">then the record.</span></span>
     </h1>
+    <span class="hero-rule" aria-hidden="true"></span>
     <p class="sys-sub">You're screening for Fluidstack's Communications Lead: someone whose writing can carry the company's story and whose judgment holds when the stakes are real. The Head of Editorial screen runs on the same evidence, and this page serves both. It sequences the case in the order a writing-first screen actually checks it: samples before biography. The rest of the site is context; this is the case.</p>
   </div>
 </header>
