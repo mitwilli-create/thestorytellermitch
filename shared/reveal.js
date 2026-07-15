@@ -1,4 +1,4 @@
-// shared/reveal.js — hero load-in + staggered hero lines + reveal-on-scroll.
+// shared/reveal.js · hero load-in + staggered hero lines + reveal-on-scroll.
 // Include as the FIRST script at the end of <body>. Page scripts that need
 // the same observer for other elements use window.__revealObserve(el).
 // Per-page stagger override: <body data-reveal-stagger="3">.
@@ -42,8 +42,13 @@
   // on leave (hover-capable pointers only).
   // [data-cine-m] names a lighter 960px encode served to narrow viewports
   // so heavy HD loops never dominate a phone's transfer budget.
-  const saveData = navigator.connection && navigator.connection.saveData;
-  if (window.__motionOK && !saveData) {
+  const conn = navigator.connection || {};
+  const saveData = conn.saveData;
+  // poster-only on touch and slow connections: auto cinemagraph loops load
+  // only for hover-capable pointers on a non-constrained connection
+  const cineOK = matchMedia('(hover:hover) and (pointer:fine)').matches
+    && !/(^|-)2g$|^3g$/.test(conn.effectiveType || '');
+  if (window.__motionOK && !saveData && cineOK) {
     const buildCine = (el, base) => {
       const v = document.createElement('video');
       v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';

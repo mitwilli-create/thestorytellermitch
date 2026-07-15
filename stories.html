@@ -24,6 +24,16 @@
        (titles are written to fit; the bake keeps rail label == story h2) */
     .st-wrap{max-width:none}
     .st-layout{display:grid;grid-template-columns:310px minmax(0,720px);gap:56px;align-items:start;justify-content:start}
+    .fs-return{margin:-20px 0 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .fs-return a{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
+    .fs-return a:hover{color:var(--bone)}
+    .stidx-toggle{display:none;align-items:center;gap:8px;width:100%;text-align:left;cursor:pointer;
+      background:none;border:0;border-bottom:1px solid var(--line);padding:12px 2px;
+      font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--blood-soft)}
+    .stidx-toggle::before{content:'+ '}
+    .stidx-toggle[aria-expanded="true"]::before{content:'\2013 '}
+    .stidx-toggle:focus-visible{outline:2px solid var(--blood-soft);outline-offset:2px}
     .st-index{position:sticky;top:96px;display:flex;flex-direction:column;gap:0;
       max-height:calc(100vh - 130px);overflow-y:auto;overscroll-behavior:contain;
       scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;padding-right:6px}
@@ -140,7 +150,10 @@
       /* below 1024 the 310px rail would starve the body: collapse to the
          horizontal wrap strip (same pattern the page always used on mobile) */
       .st-layout{grid-template-columns:1fr;gap:30px}
-      .st-index{position:static;flex-direction:row;flex-wrap:wrap;gap:10px;max-height:none;overflow:visible}
+      .js-bands .case-band{position:static}
+      .stidx-toggle{display:flex}
+      .st-index{display:none;position:static;flex-direction:row;flex-wrap:wrap;gap:10px;max-height:none;overflow:visible}
+      .st-index.idx-open{display:flex}
       .st-index a{border-left:none;border-bottom:1px solid var(--line);padding:6px 2px;white-space:normal}
     }
     @media(max-width:860px){
@@ -179,7 +192,7 @@
     a.mplay video.preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       opacity:0;transition:opacity var(--dur-move) var(--ease);pointer-events:none}
     a.mplay.prev-on:hover video.preview,a.mplay.prev-on:focus-visible video.preview{opacity:1}
-    a.mplay:focus-visible{outline:2px solid var(--blood-soft);outline-offset:-2px}
+    a.mplay:focus-visible{outline:2px solid var(--blood-soft);outline-offset:2px}
     a.mplay .play-o{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
       width:54px;height:54px;border:1px solid var(--line-2);border-radius:50%;
       display:flex;align-items:center;justify-content:center;transition:border-color .3s var(--ease),background .3s var(--ease);
@@ -223,6 +236,7 @@
   </figure>
   <div class="wrap">
     <div class="kicker">The story bank · for people who weren't in the room</div>
+    <p class="fs-return"><a href="for-fluidstack.html">&larr; the Fluidstack review path</a></p>
     <h1 class="display">
       <span class="ln"><span>The</span></span>
       <span class="ln"><span class="accent">case files.</span></span>
@@ -236,6 +250,7 @@
 <section>
   <div class="wrap st-wrap">
     <div class="st-layout">
+      <button type="button" class="stidx-toggle" aria-expanded="false" aria-controls="st-index">Jump to a case file</button>
       <nav class="st-index" id="st-index" aria-label="Story index">
         <!-- STINDEX:START -->
         <a href="#bhutto-origin">The Bhutto overnight shift</a>
@@ -670,18 +685,20 @@ $ launchctl list | grep career-ops | head -8
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
         <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
         <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
-        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
       </div>
     </div>
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260713b"></script>
+<script src="shared/reveal.js?v=20260715a"></script>
 <script src="shared/audio.js?v=20260711c"></script>
-<script src="shared/clipplay.js?v=20260712b"></script>
+<script src="shared/clipplay.js?v=20260715a"></script>
 <script>
   // sticky index highlight: click wins immediately, spy resumes after the scroll settles
+  const idxTgl=document.querySelector('.stidx-toggle');
+  if(idxTgl){idxTgl.addEventListener('click',()=>{const open=document.getElementById('st-index').classList.toggle('idx-open');idxTgl.setAttribute('aria-expanded',String(open));});}
   const idxEl=document.getElementById('st-index');
   const links=[...idxEl.querySelectorAll('a')];
   const stories=[...document.querySelectorAll('.story')];

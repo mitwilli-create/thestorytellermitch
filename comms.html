@@ -23,7 +23,7 @@
     /* comms-01: the credentials block rises into the hero's lower third.
        The hero reserves the room (so its own text reads first and nothing
        shifts); the section pulls up over the reserved band. */
-    @media(min-width:861px){
+    @media(min-width:861px) and (min-height:800px){
       .comms-hero{padding-bottom:calc(56px + 15vh);border-bottom:none}
       .sec-cred{margin-top:-15vh;position:relative;z-index:2;padding-top:0}
     }
@@ -113,7 +113,7 @@
        into the page background: blood-tinted panel, full oxblood frame,
        larger head, facts in two columns instead of a tall single stack */
     .talk-card{max-width:1180px;
-      background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 90%,var(--blood) 10%),var(--surface) 62%);
+      background:var(--surface);
       border:1px solid var(--blood-soft);border-left:3px solid var(--blood);padding:38px 42px}
     .talk-card .t-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.9vw,46px);
       text-transform:uppercase;letter-spacing:-0.01em;color:var(--bone);margin-bottom:14px}
@@ -125,6 +125,21 @@
     .talk-card a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .talk-card .t-mail{font-family:'JetBrains Mono',monospace;color:var(--blood-soft);border-bottom-color:var(--blood-soft)}
     .talk-card .t-mail:hover{color:var(--bone)}
+    .fs-return{margin:-22px 0 30px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+    .fs-return a{color:var(--mute);border-bottom:1px solid var(--blood-soft)}
+    .fs-return a:hover{color:var(--bone)}
+    @media(hover:none){
+      .sys-thumb{position:relative}
+      .sys-thumb::after{content:'\25B8 open';position:absolute;right:10px;bottom:10px;
+        font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--bone);background:rgba(10,10,11,0.72);border:1px solid var(--line-2);padding:4px 9px}
+    }
+    .t-actions{display:none}
+    @media(pointer:coarse){
+      .t-actions{display:flex;flex-direction:column;gap:10px;margin:0 0 20px}
+      .t-actions .btn{text-align:center}
+      .talk-card .t-lead{margin-bottom:12px}
+    }
     .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px}
     .fact{background:var(--surface);border:1px solid var(--line);padding:24px 22px}
     .fact .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;color:var(--bone);line-height:1.1}
@@ -193,6 +208,7 @@
   </figure>
   <div class="wrap">
     <div class="kicker">Executive &amp; internal communications · the comms-first view</div>
+    <p class="fs-return"><a href="for-fluidstack.html">&larr; the Fluidstack review path</a></p>
     <h1 class="display">
       <span class="ln"><span>The message</span></span>
       <span class="ln"><span class="accent">lands.</span></span>
@@ -225,13 +241,13 @@
       <a class="fact reveal" href="writing.html"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual Sr. Tech IC Summit (600+ attendees) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div><span class="go-mark">the writing, word for word &rarr;</span></a>
       <a class="fact reveal" href="writing.html#redacted-docs"><div class="n">Three tiers</div><div class="l">Authored the org's three-tier communications operating model and its multi-channel strategy: routine requests move fast, high-stakes work gets full partnership.</div><span class="go-mark">the internal docs, redacted &rarr;</span></a>
       <a class="fact reveal" href="comms-triage-agent.html"><div class="n">Cadence</div><div class="l">Ran the recurring approval-intake prioritization meetings and drove cross-org security and memory-safety mandates through to approval, working alongside engineering leads and program owners.</div><span class="go-mark">the intake, rebuilt as an agent &rarr;</span></a>
-      <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at Al Jazeera's AJ+ during its 500M-weekly-view era. Three I coached moved from behind the camera to on-air principals; two carry Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>
+      <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at Al Jazeera's AJ+ during its 500M-weekly-view era (public source). Three I coached moved from behind the camera to on-air principals; two carry Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>
     </div>
     <div class="enable-grid" id="enablement">
       <a class="etile reveal" href="timeline.html#era-corpeng">
         <div class="e-n">75,000+</div>
         <div class="e-k">Day-One, rebuilt</div>
-        <div class="e-b">Rebuilt Google's Day-One technical orientation into self-service onboarding for 75,000+ new hires, at 88% CSAT.</div>
+        <div class="e-b">Rebuilt Google's Day-One technical orientation into self-service onboarding for 75,000+ new hires, at 88% CSAT (internal metric).</div>
         <span class="go-mark">the corp eng era &rarr;</span>
       </a>
       <a class="etile reveal" href="timeline.html#era-xge">
@@ -288,13 +304,13 @@
       <span class="eyebrow">03 &middot; Systems</span>
       <h2>Infrastructure so the function scales</h2>
     </div>
-    <p class="prose reveal" style="margin-bottom:26px">While leading communications, I built the systems a modern comms function needs. Not a career change. The same job, given leverage. The same fluency also carries the <a href="fit.html#forward-deployed">Forward Deployed Creative case</a>, one page over.</p>
+    <p class="prose reveal" style="margin-bottom:26px">While leading communications, I built the systems a modern comms function needs. Not a career change. The same job, given leverage: faster approvals, a consistent executive voice, claims that hold, and a response ready before the hard story runs. The same fluency also carries the <a href="fit.html#forward-deployed">Forward Deployed Creative case</a>, one page over.</p>
     <div class="sys-list">
       <div class="sys reveal">
         <div class="sys-name"><a href="stories.html#digital-twin">Executive digital twin</a>
           <a class="sys-thumb cine" data-cine-hover="assets/cinemagraphs/illo-digital-twin-loop" href="stories.html#digital-twin" tabindex="-1" aria-hidden="true"><img src="assets/stills/illo-digital-twin-hd.jpg" width="1920" height="1072" alt="" loading="lazy"></a>
         </div>
-        <div class="sys-body">A writing system encoding one VP's voice: a constitution of voice rules plus a banned-phrase checklist, built in partnership with the principal it serves and used to draft high-stakes executive communications. It cut review back-and-forth with the VP by about 70%, a figure I measured myself and a reference can confirm. The voice encoding is consensual, documented, and auditable; the principal always holds final sign-off.</div>
+        <div class="sys-body">A writing system encoding one VP's voice: a constitution of voice rules plus a banned-phrase checklist, built in partnership with the principal it serves and used to draft high-stakes executive communications. It cut review back-and-forth with the VP by about 70%, a self-measured figure a reference can confirm. The voice encoding is consensual, documented, and auditable; the principal always holds final sign-off.</div>
       </div>
       <div class="sys reveal">
         <div class="sys-name"><a href="comms-triage-agent.html">Comms triage agent</a>
@@ -350,6 +366,10 @@
     <div class="talk-card reveal">
       <div class="t-h">Hiring for comms that can build?</div>
       <p class="t-lead">Executive comms, internal comms, or a comms leader who can build: email <a class="t-mail" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or call <a class="t-mail" href="tel:+18122196077">(812) 219-6077</a>.</p>
+      <div class="t-actions">
+        <a class="btn solid" href="mailto:mitwilli@gmail.com?subject=Comms%20role%20%C2%B7%20Mitchell%20Williams"><span>Email mitwilli@gmail.com</span></a>
+        <a class="btn" href="tel:+18122196077"><span>Call (812) 219-6077</span></a>
+      </div>
       <div class="t-facts">
         <p>The <a href="assets/resumes/mitchell-williams-comms-manager.pdf" target="_blank" rel="noopener">comms resume PDF</a> is one click, no form.</p>
         <p>Seattle-based, open to relocation, US citizen.</p>
@@ -369,16 +389,16 @@
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
         <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
         <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
-        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
       </div>
     </div>
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
   </div>
 </footer>
 
-<script src="shared/reveal.js?v=20260713b"></script>
+<script src="shared/reveal.js?v=20260715a"></script>
 <script src="shared/audio.js?v=20260711c"></script>
-<script src="shared/clipplay.js?v=20260712b"></script>
+<script src="shared/clipplay.js?v=20260715a"></script>
 <script>
   // comms-02: the jump row pins as a slim scrollspy bar once the hero
   // scrolls out (>=641px; the static row is untouched without JS)

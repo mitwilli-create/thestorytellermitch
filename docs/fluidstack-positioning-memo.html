@@ -147,8 +147,13 @@
 
     /* collapsed sources audit block */
     .sources{margin:44px 0 0;border-top:1px solid var(--line);padding-top:18px;max-width:680px}
-    .sources summary{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
-      text-transform:uppercase;color:var(--mute);cursor:pointer;list-style:none}
+    .sources summary{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--bone-soft);cursor:pointer;list-style:none;
+      padding:12px 0;min-height:44px;display:flex;align-items:center;gap:4px}
+    .sources summary .sc{color:var(--bone)}
+    .src-tier{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:2px;
+      padding:1px 6px;margin-left:6px;white-space:nowrap}
     .sources summary::-webkit-details-marker{display:none}
     .sources summary::before{content:"+ ";color:var(--blood-soft)}
     .sources[open] summary::before{content:"\2013\00A0"}
@@ -398,34 +403,34 @@
     </section>
 
     <details class="sources">
-      <summary>Sources · 13</summary>
+      <summary><span class="sc">Sources · 13</span>&nbsp;· tagged by tier</summary>
       <div class="src-body">
         <div class="src-group">
           <h4>Opportunity 1</h4>
           <ul>
-            <li><a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">Constellation Research</a> · Anthropic's $50B build with Fluidstack</li>
-            <li><a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">Fortune / BIS</a> · "circular financing" and the AI-infrastructure boom</li>
-            <li><a href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune</a> · CoreWeave down 55% from mid-2025 highs</li>
-            <li><a href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool</a> · Jim Chanos's bear case</li>
-            <li><a href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune</a> · CoreWeave's post-IPO surge</li>
-            <li><a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">Fortune</a> · CoreWeave S-1: Microsoft 62% of revenue</li>
+            <li><a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">Constellation Research</a> · Anthropic's $50B build with Fluidstack<span class="src-tier">analyst</span></li>
+            <li><a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">Fortune / BIS</a> · "circular financing" and the AI-infrastructure boom<span class="src-tier">reported, BIS-based</span></li>
+            <li><a href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune</a> · CoreWeave down 55% from mid-2025 highs<span class="src-tier">reported</span></li>
+            <li><a href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool</a> · Jim Chanos's bear case<span class="src-tier">commentary</span></li>
+            <li><a href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune</a> · CoreWeave's post-IPO surge<span class="src-tier">reported</span></li>
+            <li><a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">Fortune</a> · CoreWeave S-1: Microsoft 62% of revenue<span class="src-tier">reported, filing-based</span></li>
           </ul>
         </div>
         <div class="src-group">
           <h4>Opportunity 2</h4>
           <ul>
-            <li><a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">World Economic Forum</a> · grid connection as the AI bottleneck</li>
-            <li><a href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup</a> · 71% oppose a nearby data center</li>
-            <li><a href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News</a> · $130B of projects blocked or delayed</li>
-            <li><a href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek</a> · recall petitions over data-center votes</li>
-            <li><a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">Food &amp; Water Watch</a> · data-center job-count claims</li>
-            <li><a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">Brookings</a> · power draw vs. jobs returned</li>
+            <li><a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">World Economic Forum</a> · grid connection as the AI bottleneck<span class="src-tier">institutional</span></li>
+            <li><a href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup</a> · 71% oppose a nearby data center<span class="src-tier">reported, poll-based</span></li>
+            <li><a href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News</a> · $130B of projects blocked or delayed<span class="src-tier">reported</span></li>
+            <li><a href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek</a> · recall petitions over data-center votes<span class="src-tier">reported</span></li>
+            <li><a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">Food &amp; Water Watch</a> · data-center job-count claims<span class="src-tier">advocacy research</span></li>
+            <li><a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">Brookings</a> · power draw vs. jobs returned<span class="src-tier">think tank</span></li>
           </ul>
         </div>
         <div class="src-group">
           <h4>Opportunity 3</h4>
           <ul>
-            <li><a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">Nasdaq</a> · Rob Perdue, ex-Trade Desk COO, joins Fluidstack</li>
+            <li><a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">Nasdaq</a> · Rob Perdue, ex-Trade Desk COO, joins Fluidstack<span class="src-tier">company release</span></li>
           </ul>
         </div>
       </div>
@@ -455,14 +460,14 @@
       <div class="foot-links">
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
         <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
-        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+        <a href="../assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
       </div>
     </div>
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
   </div>
 </footer>
 
-<script src="../shared/reveal.js?v=20260713b"></script>
+<script src="../shared/reveal.js?v=20260715a"></script>
 <script src="../shared/audio.js?v=20260711c"></script>
 <script>
 /* sticky section rail: active-section highlight + scroll-progress fill */

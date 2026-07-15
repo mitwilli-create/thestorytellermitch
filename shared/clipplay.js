@@ -1,4 +1,4 @@
-// shared/clipplay.js — sitewide clip playback, extracted from work.html's reel
+// shared/clipplay.js · sitewide clip playback, extracted from work.html's reel
 // so every page plays clips the same way. Any element matching
 // .film[data-clip] or [data-clip-play] becomes a playable tile: click opens
 // the shared theater overlay in-page (youtube > stream > local, same priority
@@ -122,12 +122,16 @@
     }
   });
 
-  /* hover previews (lazy src), fine pointers + motion allowed only */
-  document.querySelectorAll(SEL).forEach((tile) => {
-    const v = tile.querySelector('video.preview'); if (!v) return;
-    tile.addEventListener('mouseenter', () => { if (!window.__motionOK) return; if (!v.src && v.dataset.src) v.src = v.dataset.src; v.play().catch(() => {}); });
-    tile.addEventListener('mouseleave', () => { v.pause(); });
-  });
+  /* hover previews (lazy src), fine pointers + motion allowed only.
+     Gated at bind time: on touch, an emulated mouseenter from a tap must
+     never start a preview download. */
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    document.querySelectorAll(SEL).forEach((tile) => {
+      const v = tile.querySelector('video.preview'); if (!v) return;
+      tile.addEventListener('mouseenter', () => { if (!window.__motionOK) return; if (!v.src && v.dataset.src) v.src = v.dataset.src; v.play().catch(() => {}); });
+      tile.addEventListener('mouseleave', () => { v.pause(); });
+    });
+  }
   /* off-screen hover players pause: any preview left playing must stop the
      moment its tile scrolls out of view */
   if ('IntersectionObserver' in window) {
