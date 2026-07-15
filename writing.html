@@ -89,6 +89,37 @@
     /* no .no-js rule needed: details/summary is native HTML disclosure,
        fully operable without JavaScript */
     .script-fold > p:last-child{margin-bottom:14px}
+    /* AV two-column script table (video left, audio right, broadcast split-page standard) */
+    .av-wrap{margin:0 0 14px;border:1px solid var(--line);overflow-x:auto}
+    .av-table{width:100%;border-collapse:collapse}
+    .av-table col.av-c-video{width:35%}
+    .av-table col.av-c-audio{width:65%}
+    .av-table th{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);text-align:left;font-weight:500;
+      padding:10px 16px;border-bottom:1px solid var(--line-2)}
+    .av-table td{padding:16px;border-bottom:1px solid var(--line);vertical-align:top}
+    .av-table tr:last-child td{border-bottom:none}
+    .av-cue{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
+      letter-spacing:0.08em;text-transform:uppercase;line-height:1.7;color:var(--blood-text)}
+    .av-cue--txt{color:var(--dim)}
+    .av-vo{font-size:15px;line-height:1.85;color:var(--bone-soft);margin:0}
+    .av-src{margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+      letter-spacing:0.04em;color:var(--dim)}
+    @media(max-width:640px){
+      .av-table thead{display:none}
+      .av-table,.av-table colgroup,.av-table tbody,.av-table tr,.av-table td{display:block;width:100%}
+      .av-table td{padding:6px 16px;border-bottom:none}
+      .av-table td:first-child{padding-top:16px}
+      .av-table td:last-child{padding-bottom:16px;border-bottom:1px solid var(--line)}
+      .av-table tr:last-child td:last-child{border-bottom:none}
+    }
+    @media print{
+      .av-wrap{border-color:#999}
+      .av-table td,.av-table th{border-color:#999}
+      .av-table tr{break-inside:avoid}
+      .av-cue{color:#7a2c24}
+      .av-vo{color:#111}
+    }
     .src-line{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);line-height:1.6}
     .src-line a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px}
@@ -181,15 +212,149 @@
       <div class="art-title reveal">The measles script: 125 seconds, 50 million views</div>
       <p class="art-intro reveal">This is the script of my biggest piece, word for word as it was broadcast. Policy journalism built for a two-minute social window: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch it in the archive</a> and read along.</p>
       <div class="script reveal">
-        <div class="d-k">Script · 2 minutes 5 seconds · as broadcast</div>
-        <p>Measles is making a comeback in the U.S. A staggering 54 cases were just confirmed in Minnesota. That's in addition to 61 cases reported in 2017 alone. The U.S. declared itself measles-free back in 2000. So how did this happen? Well, you can thank anti-vaxxers. They're the people who believe that vaccines contain unsafe toxins or cause autism, and they refuse to vaccinate their children. But here's the problem. Anti-vaxxer claims are 100% false.</p>
+        <div class="d-k">Script · 2 minutes 5 seconds · as broadcast, with production cues</div>
+        <div class="av-wrap">
+          <table class="av-table">
+            <colgroup><col class="av-c-video"><col class="av-c-audio"></colgroup>
+            <thead><tr><th scope="col">Video</th><th scope="col">Audio</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="av-cue">Full screen: measles patients footage</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "Measles is making a comeback in the U.S."</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "54 cases"</span>
+                </td>
+                <td><p class="av-vo">Measles is making a comeback in the U.S. A staggering 54 cases were just confirmed in Minnesota.</p></td>
+              </tr>
+              <tr>
+                <td><span class="av-cue">On camera</span></td>
+                <td><p class="av-vo">That's in addition to 61 cases reported in 2017 alone.</p></td>
+              </tr>
+              <tr>
+                <td><span class="av-cue">Full screen: CDC graphic</span></td>
+                <td>
+                  <p class="av-vo">The U.S. declared itself measles-free back in 2000.</p>
+                  <p class="av-src">Source: CDC; Pan American Health Organization</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="av-cue">Close-up, punch-in to camera</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "How did this happen?"</span>
+                </td>
+                <td><p class="av-vo">So how did this happen?</p></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="av-cue">On camera</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "Anti-vaxxers"</span>
+                </td>
+                <td><p class="av-vo">Well, you can thank anti-vaxxers.</p></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="av-cue">Full screen: anti-vaxxer footage</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "Unsafe toxins" · "Autism" · "Refuse to vaccinate"</span>
+                </td>
+                <td>
+                  <p class="av-vo">They're the people who believe that vaccines contain unsafe toxins or cause autism, and they refuse to vaccinate their children.</p>
+                  <p class="av-src">Source: PublicHealth.org</p>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="av-cue">On camera</span></td>
+                <td><p class="av-vo">But here's the problem.</p></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="av-cue">Close-up, punch-in to camera</span>
+                  <span class="av-cue av-cue--txt">Text on screen: "100% false"</span>
+                </td>
+                <td>
+                  <p class="av-vo">Anti-vaxxer claims are 100% false.</p>
+                  <p class="av-src">Source: PublicHealth.org</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <details class="script-fold">
           <summary>read the rest of the script</summary>
-          <p>In 1998, a British surgeon published a research paper that linked the measles, mumps, and rubella vaccine to autism. The paper was later discredited, and the doctor who published it even lost his medical license. Since then, scientists have disproved any connection between vaccines and autism. But anti-vaxxers have continued their campaign to convince parents that vaccinations will hurt their kids. They've even gone as far as targeting vulnerable communities. In 94% of recent Minnesota cases, the patient wasn't vaccinated.</p>
-          <p>And that's a big deal for two reasons. Measles is one of the most contagious and lethal diseases in the world. If one person contracts the virus, it can infect more than a dozen unvaccinated people. And infants who are too young to receive the vaccination are at the highest risk. Before the vaccine was developed in 1963, 500 Americans died each year because of the disease. Children who survive can still suffer lifelong complications, including deafness and brain damage.</p>
-          <p>And when parents opt out of vaccinating their child, they affect what's called herd immunity. If enough people in a community get vaccinated, then it makes it difficult for diseases to spread. But if more than 10% of children don't get the vaccine, it may cause a major outbreak. The spreading disease could also mutate, making the vaccinations that people already have less effective. Despite all of this, the anti-vax movement is going strong. So what will it take to convince these parents to vaccinate their children?</p>
+          <div class="av-wrap">
+            <table class="av-table">
+              <colgroup><col class="av-c-video"><col class="av-c-audio"></colgroup>
+              <tbody>
+                <tr>
+                  <td><span class="av-cue">Full screen: headlines from articles disproving the claim</span></td>
+                  <td>
+                    <p class="av-vo">In 1998, a British surgeon published a research paper that linked the measles, mumps, and rubella vaccine to autism. The paper was later discredited, and the doctor who published it even lost his medical license.</p>
+                    <p class="av-src">Source: PublicHealth.org</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="av-cue">On camera</span></td>
+                  <td><p class="av-vo">Since then, scientists have disproved any connection between vaccines and autism.</p></td>
+                </tr>
+                <tr>
+                  <td><span class="av-cue">Full screen: anti-vaxxers protesting; Somali community in Minnesota</span></td>
+                  <td>
+                    <p class="av-vo">But anti-vaxxers have continued their campaign to convince parents that vaccinations will hurt their kids. They've even gone as far as targeting vulnerable communities. In 94% of recent Minnesota cases, the patient wasn't vaccinated.</p>
+                    <p class="av-src">Source: CDC</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="av-cue">On camera</span></td>
+                  <td><p class="av-vo">And that's a big deal for two reasons.</p></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="av-cue">Full screen: measles, people infected</span>
+                    <span class="av-cue">Animated graphic: cube 1</span>
+                    <span class="av-cue av-cue--txt">Text on screen: "Highest risk"</span>
+                  </td>
+                  <td>
+                    <p class="av-vo">Measles is one of the most contagious and lethal diseases in the world. If one person contracts the virus, it can infect more than a dozen unvaccinated people. And infants who are too young to receive the vaccination are at the highest risk.</p>
+                    <p class="av-src">Source: The New York Times</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="av-cue">Full screen: vaccine footage</span>
+                    <span class="av-cue av-cue--txt">Text on screen: "500 Americans died" · "Deafness" · "Brain damage"</span>
+                  </td>
+                  <td>
+                    <p class="av-vo">Before the vaccine was developed in 1963, 500 Americans died each year because of the disease. Children who survive can still suffer lifelong complications, including deafness and brain damage.</p>
+                    <p class="av-src">Source: CDC</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="av-cue">On camera</span>
+                    <span class="av-cue">Animated graphic: cube 2</span>
+                    <span class="av-cue av-cue--txt">Text on screen: "Herd immunity"</span>
+                  </td>
+                  <td><p class="av-vo">And when parents opt out of vaccinating their child, they affect what's called herd immunity.</p></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="av-cue">Full screen: children getting vaccinated</span>
+                    <span class="av-cue av-cue--txt">Text on screen: "Major outbreak" · "Mutate"</span>
+                  </td>
+                  <td><p class="av-vo">If enough people in a community get vaccinated, then it makes it difficult for diseases to spread. But if more than 10% of children don't get the vaccine, it may cause a major outbreak. The spreading disease could also mutate, making the vaccinations that people already have less effective.</p></td>
+                </tr>
+                <tr>
+                  <td><span class="av-cue">On camera</span></td>
+                  <td><p class="av-vo">Despite all of this, the anti-vax movement is going strong.</p></td>
+                </tr>
+                <tr>
+                  <td><span class="av-cue">Close-up, punch-in to camera</span></td>
+                  <td><p class="av-vo">So what will it take to convince these parents to vaccinate their children?</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </details>
-        <div class="src-line">Transcribed from the broadcast video; on-screen credits and end-card audio omitted. Verify against <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">the piece itself</a>. View count: <a href="impact.html">sourced on the Impact page</a>.</div>
+        <div class="src-line">Script text as broadcast; production cues from the original AJ+ production file (SCRIPT: EN-RT-PTCMEASLES-120517), recovered from the working draft. On-screen credits and end-card audio omitted. Verify against <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">the piece itself</a>. View count: <a href="impact.html">sourced on the Impact page</a>.</div>
       </div>
     </div>
     </div>
