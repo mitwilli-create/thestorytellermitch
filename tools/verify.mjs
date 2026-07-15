@@ -58,7 +58,9 @@ const MEDIA = resolve(SITE, 'media');
 const under = (p, root) => p === root || p.startsWith(root + sep);
 for (const f of censusFiles.filter((f) => f.endsWith('.html'))) {
   const fileDir = dirname(resolve(SITE, f)); // resolve refs relative to the page, so ../ paths in docs/ + resume/ work
-  const html = readFileSync(resolve(SITE, f), 'utf8');
+  // strip <script> bodies first: inline JS that builds markup at runtime
+  // ('<a href="' + esc(src) + '"') is not a static asset reference
+  const html = readFileSync(resolve(SITE, f), 'utf8').replace(/<script[\s\S]*?<\/script>/gi, '');
   for (const m of html.matchAll(/(?:src|href|poster)="([^"#][^"]*)"/g)) {
     const url = m[1];
     // skip external / non-file schemes; // is protocol-relative (also external)
