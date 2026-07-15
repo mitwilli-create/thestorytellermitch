@@ -28,8 +28,7 @@
     @media(min-width:1121px){
       .doc-rail{display:block;position:sticky;top:120px;align-self:start}
       .doc-rail nav{position:relative;display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
-      .doc-rail .rail-fill{position:absolute;left:-2px;top:0;width:2px;height:0;
-        background:var(--blood-soft);transition:height var(--dur-micro) var(--ease-micro)}
+      .doc-rail .rail-fill{position:absolute;left:-2px;top:0;width:2px;height:0;background:var(--blood-soft)}
       .doc-rail .rl{display:flex;gap:12px;align-items:baseline;padding:9px 0 9px 18px;
         font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
         color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
@@ -184,7 +183,7 @@
       .doc .wrap.doc-grid,.doc-grid{max-width:none!important;display:block!important;margin:0!important}
       .doc-hero{padding:12px 0 20px!important}
       .gcard,.stat-grid,.cred,.plan .ms,.pq{break-inside:avoid}
-      .doc-main p a[target="_blank"]::after{content:"\00A0(" attr(href) ")"!important;font-family:inherit;
+      .doc-main a[target="_blank"]::after{content:"\00A0(" attr(href) ")"!important;font-family:inherit;
         font-size:.8em;color:#555}
     }
   </style>
