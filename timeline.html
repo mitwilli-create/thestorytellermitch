@@ -71,8 +71,8 @@
     /* blind-reviewer context strip: what this network/show was, and why */
     .era-context{margin-top:18px;max-width:560px;border:1px solid var(--line);background:var(--surface);
       padding:16px 18px}
-    .era-context .ec-k{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;
-      text-transform:uppercase;color:var(--blood-soft);margin-bottom:8px}
+    .era-context .ec-k{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.16em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
     .era-context p{font-size:14px;line-height:1.65;color:var(--mute);margin:0}
     .era-context p+p{margin-top:10px}
     .era-context b{color:var(--bone-soft);font-weight:600}
@@ -110,6 +110,16 @@
     .era-clips--strip a{flex:0 0 auto;width:min(340px,74vw);scroll-snap-align:start}
     .era-clips--strip::-webkit-scrollbar{height:4px}
     .era-clips--strip::-webkit-scrollbar-thumb{background:var(--line-2)}
+
+    /* compact 2-up grid: a tidy rectangular block for the media-dense eras */
+    .era-clips--grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;flex-wrap:nowrap}
+    .era-clips--grid2 a{width:100%}
+    /* one card promoted to feature scale in the body column */
+    .era-clips--feature{margin-top:14px}
+    .era-clips--feature a{width:100%;aspect-ratio:16/9;max-width:none}
+    /* standalone mono label for a clip block, matched to .ec-k */
+    .clips-k{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.16em;
+      text-transform:uppercase;color:var(--blood-soft);margin:28px 0 12px}
 
     /* interstitial moment: a beat on the rail between eras, not a role.
        Smaller lockup, no role line, one clip. */
@@ -414,9 +424,19 @@
       <div class="era-role reveal-child">Line Producer &middot; daily rundown + Saturday news hour &middot; DC bureau</div>
       <p class="era-body reveal-child">CGTN America's launch year. I owned the daily rundown at the brand-new DC bureau, line produced and boothed the Saturday weekend news hour anchored by Elaine Reyes, and segment produced for the reporters building Biz Asia. Live-broadcast discipline carried straight from The Stream into a newsroom assembled from zero. In August 2012, I took the same operating rhythm to HuffPost Live.</p>
       <aside class="era-context reveal-child"><div class="ec-k">the job, hour by hour</div><p>Building the rundown for a daily one-hour live news program. Sequencing segments. Coordinating talent, graphics, and field correspondents across time zones. Re-cutting the hour when news broke inside the broadcast window. Saturdays added the booth: calling the live weekend hour as it aired. A US bureau of an internationally funded broadcaster also meant navigating editorial standards across funder, audience, and source markets.</p></aside>
+      <div class="clips-k reveal-child">the surviving footage</div>
+      <div class="era-clips era-clips--feature reveal-child">
+        <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" data-youtube="4JZZ03xJmEo"><img src="assets/posters/cgtn-launch-night-surviving-footage.jpg" alt="CCTV America launch-night broadcast, February 2012" loading="lazy"><span class="cl">Launch night · Feb 6, 2012</span></a>
+      </div>
+      <div class="era-clips era-clips--grid2 reveal-child">
+        <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" data-youtube="kLvrrtjv5o8"><img src="assets/posters/cgtn-2012-full-broadcast-hour.jpg" alt="A full 2012 CCTV America broadcast hour" loading="lazy"><span class="cl">A full 2012 broadcast hour</span></a>
+        <a href="https://www.youtube.com/watch?v=fQQmev_vtmI" data-youtube="fQQmev_vtmI"><img src="assets/posters/cgtn-reporting-team.jpg" alt="The CCTV America DC bureau reporting team" loading="lazy"><span class="cl">The reporting team</span></a>
+        <a href="https://www.youtube.com/watch?v=nQz_OkvPsIU" data-youtube="nQz_OkvPsIU"><img src="assets/posters/cgtn-2012-hotels-chinese-tourists-package.jpg" alt="Produced package: US hotels court Chinese tourists" loading="lazy"><span class="cl">Hotels court Chinese tourists</span></a>
+        <a href="https://www.youtube.com/watch?v=6cpKaQc56GM" data-youtube="6cpKaQc56GM"><img src="assets/posters/cgtn-2013-network-expansion.jpg" alt="The 2013 CCTV America network expansion" loading="lazy"><span class="cl">The 2013 expansion</span></a>
+      </div>
       </div>
       <div class="era-side">
-      <aside class="era-context era-context--overlay reveal-child"><div class="ec-k">the backdrop</div><p>CGTN America, then named CCTV America, was China Central Television's American production hub. <b>It launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists from NBC, Bloomberg, Fox, CNN, BBC, and ABC for its new DC bureau. <a href="https://www.youtube.com/watch?v=4JZZ03xJmEo" target="_blank" rel="noopener">Launch night, surviving footage &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=kLvrrtjv5o8" target="_blank" rel="noopener">A full 2012 broadcast hour &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=fQQmev_vtmI" target="_blank" rel="noopener">The reporting team &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=nQz_OkvPsIU" target="_blank" rel="noopener">A produced package: hotels court Chinese tourists &#8599;</a> &middot; <a href="https://www.youtube.com/watch?v=6cpKaQc56GM" target="_blank" rel="noopener">The 2013 expansion &#8599;</a></p></aside>
+      <aside class="era-context era-context--overlay reveal-child"><div class="ec-k">the backdrop</div><p>CGTN America, then named CCTV America, was China Central Television's American production hub. <b>It launched from Washington on February 6, 2012</b>, anchored by Mike Walter and Elaine Reyes, hiring dozens of journalists from NBC, Bloomberg, Fox, CNN, BBC, and ABC for its new DC bureau.</p></aside>
       <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
         <img src="assets/stills/cctv-america-dc-ccbysa.jpg" alt="The CGTN America studios in Washington, DC, in the network's CCTV America era" loading="lazy">
         <figcaption class="oncam-cap">cgtn america (then cctv), washington dc &middot; cc by-sa</figcaption>
@@ -520,6 +540,10 @@
         <div class="em"><div class="n" data-count>500M</div><div class="l">weekly viewers, team era</div></div>
         <div class="em"><div class="n" data-count>50M</div><div class="l">views, one piece of my own</div></div>
       </div>
+      <div class="clips-k reveal-child">from the explainer line</div>
+      <div class="era-clips era-clips--feature reveal-child">
+        <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-trumps-neo-nazi-problem-charlottesville.mp4" data-stream-id="b6827fc3921302b5dc32a5cee96a3e70"><img src="assets/posters/ajp-2017-trumps-neo-nazi-problem-charlottesville.jpg" alt="Trump's neo-Nazi problem" loading="lazy"><span class="cl">Charlottesville · 2017</span></a>
+      </div>
       </div>
       <div class="era-side">
       <div class="era-clips era-clips--strip reveal-child">
@@ -531,19 +555,13 @@
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-truvada-prep-not-just-for-gay-men.mp4" data-stream-id="e90dfd5a6c92fdb8928e396dbb1fe1bc"><img src="assets/posters/ajp-2017-truvada-prep-not-just-for-gay-men.jpg" alt="Truvada PrEP explainer" loading="lazy"><span class="cl">Truvada PrEP · 2017</span></a>
         <a href="stories.html#aj-plus-50m-views"><img src="assets/stills/aj-plus-50m-views.jpg" alt="Frame from the measles explainer: Andrew Wakefield outside a hearing" loading="lazy"><span class="cl">Fifty million views · the story</span></a>
       </div>
-      <figure class="oncam oncam--card reveal-child" style="margin-top:22px">
-        <img src="assets/stills/oncam/trumpmj-010.jpg" alt="Mitchell Williams hosting an AJ+ explainer, composited beside Donald Trump at a campaign podium" loading="lazy">
-        <figcaption class="oncam-cap">aj+, 2017. hosting the marijuana explainer.</figcaption>
-      </figure>
-      <div class="era-clips reveal-child" style="margin-top:22px">
+      <div class="era-clips era-clips--grid2 reveal-child" style="margin-top:22px">
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-trumps-war-on-marijuana.mp4" data-stream-id="6ebb0d1e749e66793acd028e7efd473c"><img src="assets/posters/ajp-2017-trumps-war-on-marijuana.jpg" alt="Trump's war on marijuana" loading="lazy"><span class="cl">Trump's war on marijuana · hosted</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2016-trump-played-the-media.mp4" data-stream-id="e7e83690437e3f2b8220271ef4c76385"><img src="assets/posters/ajp-2016-trump-played-the-media-b.jpg" alt="How Trump played the media" loading="lazy"><span class="cl">How Trump played the media</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2016-the-electoral-college-is-crushing-your-vote.mp4" data-stream-id="fcb675630713b142e372849ec111d26e"><img src="assets/posters/ajp-2016-the-electoral-college-is-crushing-your-vote.jpg" alt="The Electoral College is crushing your vote" loading="lazy"><span class="cl">The Electoral College · your vote</span></a>
-        <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-trumps-neo-nazi-problem-charlottesville.mp4" data-stream-id="b6827fc3921302b5dc32a5cee96a3e70"><img src="assets/posters/ajp-2017-trumps-neo-nazi-problem-charlottesville.jpg" alt="Trump's neo-Nazi problem" loading="lazy"><span class="cl">Charlottesville · 2017</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-what-does-north-korea-want.mp4" data-stream-id="f417f653795814ecec2abd30079d2c15"><img src="assets/posters/ajp-2017-what-does-north-korea-want.jpg" alt="What does North Korea want?" loading="lazy"><span class="cl">What does North Korea want?</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-meet-steve-bannon-political-profile.mp4" data-stream-id="dc1807668b3d368a152da9eeae68f3f4"><img src="assets/posters/ajp-2017-meet-steve-bannon-political-profile.jpg" alt="Meet Steve Bannon" loading="lazy"><span class="cl">Meet Steve Bannon</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-is-the-national-anthem-racist-kaepernick.mp4" data-stream-id="2e370da9c7b5decb0620b6e47029cae7"><img src="assets/posters/ajp-2017-is-the-national-anthem-racist-kaepernick.jpg" alt="Is the national anthem racist?" loading="lazy"><span class="cl">Kaepernick · the anthem</span></a>
-        <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2016-its-time-to-end-the-drug-war.mp4" data-stream-id="da74124b9bf6157deb2a046f8206e010"><img src="assets/posters/ajp-2016-its-time-to-end-the-drug-war.jpg" alt="It's time to end the drug war" loading="lazy"><span class="cl">End the drug war · 2016</span></a>
       </div>
       </div>
     </div>
@@ -569,6 +587,7 @@
         <a href="work.html#google" data-youtube="ohtLXCwC-oU" data-preview="assets/previews/google-lifeatgoogle-2019-working-on-the-corpeng-team.mp4"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
         <a href="work.html#google" data-youtube="6ZZX9iIgFoo" data-preview="assets/previews/google-lifeatgoogle-2019-interview-prep-coding.mp4"><img src="assets/posters/google-lifeatgoogle-2019-interview-prep-coding.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
         <a href="work.html#google" data-youtube="rGtcmKIZi5c" data-preview="assets/previews/google-lifeatgoogle-2019-application-engineer.mp4"><img src="assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg" alt="Working as an Application Engineer at Google" loading="lazy"><span class="cl">Application engineer · Life at Google</span></a>
+        <a href="work.html#interviews-panels" data-preview="assets/previews/google-xge-2023-svp-interview-grace-hopper-conference.mp4" data-stream-id="d8a16799d75d8abe9acf2361fdd1894e"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
       </div>
       </div>
     </div>
@@ -591,7 +610,6 @@
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
-        <a href="work.html#interviews-panels" data-preview="assets/previews/google-xge-2023-svp-interview-grace-hopper-conference.mp4" data-stream-id="d8a16799d75d8abe9acf2361fdd1894e"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
         <a href="stories.html#digital-twin" data-preview="assets/cinemagraphs/illo-digital-twin-loop.mp4"><img src="assets/stills/illo-digital-twin.jpg" alt="Diagram-style illustration of a waveform passing through six measuring gates" loading="lazy"><span class="cl">The digital twin · system illustration</span></a>
         <a href="stories.html#comms-triage-build" data-preview="assets/cinemagraphs/illo-triage-agent-c-loop.mp4"><img src="assets/stills/illo-triage-agent-detail.jpg" alt="Detail of the triage-agent diagram: a red envelope on its routing lane between gate arms" loading="lazy"><span class="cl">The triage agent · system illustration</span></a>
       </div>
