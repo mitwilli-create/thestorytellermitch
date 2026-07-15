@@ -22,8 +22,59 @@
     .doc p{font-size:15.5px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
     .doc strong{color:var(--bone)}
     .doc em{color:var(--mute)}
+    .doc p a,.doc li a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
+    .doc p a:hover,.doc li a:hover{color:var(--bone)}
+    .doc ul{margin:8px 0 18px;padding-left:20px}
+    .doc li{font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-bottom:8px}
     .backlink{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
     .backlink a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
+
+    /* ---------- sourced visual elements (built July 2026; no AI images, no article screenshots) ---------- */
+    /* 1 · pull-quote */
+    .pq{margin:40px 0;padding:10px 0 10px 28px;border-left:3px solid var(--blood-soft)}
+    .pq blockquote{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(21px,3.1vw,32px);
+      line-height:1.22;color:var(--bone);margin:0;letter-spacing:-0.01em}
+
+    /* shared card chrome */
+    .gcard{margin:34px 0;border:1px solid var(--line-2);background:var(--surface);border-radius:3px;overflow:hidden}
+    .gcard-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--blood-soft);padding:15px 22px;border-bottom:1px solid var(--line)}
+    .gcap{padding:15px 22px;font-size:13px;color:var(--mute);line-height:1.6;background:var(--bg-2);
+      border-top:1px solid var(--line)}
+
+    /* 2 · headline card */
+    .hl-list{list-style:none;margin:0;padding:0}
+    .hl-list li{padding:18px 22px;border-bottom:1px solid var(--line)}
+    .hl-list li:last-child{border-bottom:0}
+    .hl-q{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;line-height:1.4;color:var(--bone)}
+    .hl-q .q{color:var(--blood-soft)}
+    a.hl-src{display:inline-block;margin-top:9px;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+      letter-spacing:0.04em;text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
+    a.hl-src:hover{color:var(--bone)}
+
+    /* 3 · stat callout */
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);
+      border:1px solid var(--line-2);border-radius:3px;overflow:hidden;margin:34px 0}
+    .stat{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column}
+    .stat .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,38px);color:var(--bone);
+      line-height:1.02;letter-spacing:-0.02em}
+    .stat .l{margin-top:11px;font-size:13.5px;line-height:1.5;color:var(--bone-soft);flex:1 1 auto}
+    a.stat-src{display:inline-block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.05em;text-transform:uppercase;color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
+    a.stat-src:hover{color:var(--bone)}
+    @media(max-width:640px){.stat-grid{grid-template-columns:1fr}}
+
+    /* 4 · credential card */
+    .cred{margin:34px 0;display:flex;gap:22px;align-items:flex-start;border:1px solid var(--line-2);
+      background:var(--surface);border-left:3px solid var(--blood-soft);border-radius:3px;padding:24px 26px}
+    .cred .mono{flex:none;width:54px;height:54px;border:1px solid var(--line-2);border-radius:3px;display:flex;
+      align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;
+      color:var(--blood-text);letter-spacing:0.02em}
+    .cred .lead{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.42;color:var(--bone);margin:0 0 9px}
+    .cred .attr{font-size:13.5px;color:var(--bone-soft);line-height:1.6;margin:0}
+    .cred .attr a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
+    .cred .attr a:hover{color:var(--bone)}
+    @media(max-width:520px){.cred{flex-direction:column;gap:16px}}
   </style>
 </head>
 <body>
@@ -59,50 +110,128 @@
 <div class="doc">
   <div class="wrap">
 
-    <p><em>A note on method: everything below is built from the public record, with sources named in place. I have no inside knowledge of Fluidstack, and I have not invented any. Where the record is unsettled, I say so, because for this company at this moment, that discipline is the narrative strategy.</em></p>
+    <p>Fluidstack has built one of the most consequential companies in AI and barely said so. The gap between what it's built and what its spokespeople have said publicly is the opportunity.</p>
 
-    <h2>Where the story stands</h2>
+    <p>What follows is a map of the openings I see and what I would do with each one in the first weeks on the job. Everything here comes from the public record. I have no inside knowledge of Fluidstack, and I haven't invented any.</p>
 
-    <p>Fluidstack has the rarest asset in communications: a story that is true, enormous, and underexplained. Anthropic announced a roughly $50 billion American AI-infrastructure commitment in November 2025. It named Fluidstack as the partner building the custom data centers in Texas and New York, with around 800 permanent jobs, about 2,400 construction jobs, and sites coming online through 2026 (Anthropic newsroom and CNBC, November 12, 2025). A company most people had never heard of became, in one announcement, the builder behind one of the largest infrastructure commitments of the AI era.</p>
+    <figure class="pq">
+      <blockquote>At this company, at this moment, that honesty is the strategy.</blockquote>
+    </figure>
 
-    <p>That is the anchor. Around it sits a fast-accumulating record. A roughly $3 billion, 168-megawatt hosting agreement with Cipher Mining in Texas, with Google backstopping about $1.4 billion of the lease obligations (Cipher investor filings, September 2025). A reported $3.7 billion TeraWulf agreement at Lake Mariner in New York, Google again behind a large share (TeraWulf investor materials, August 2025). A European exascale partnership with Borealis, Dell, and NVIDIA (announced March 2025). And Bloomberg reporting in April 2026 that the company was in talks to raise about $1 billion at a roughly $18 billion valuation.</p>
+    <h2>Opportunity 1: The story will get written. The only question is who frames it.</h2>
 
-    <p>That round, as of mid-July 2026, has no primary-source confirmation of closing. So the language stays at "reported to be in talks" and nothing stronger.</p>
+    <p>Anthropic committed <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion</a> to build with Fluidstack. Overnight, a company most people couldn't name became the builder behind the biggest bet of the AI era. But here's the exposure risk: almost all of Fluidstack's business runs through one customer, Anthropic. If Anthropic slows down or builds its own way, most of the revenue goes with it.</p>
 
-    <p>Look one layer under the speed and the differentiator is not the software, it is the capital posture. Fluidstack does not own most of what it runs. It installs and operates GPU clusters inside shells built by others, repurposed Bitcoin-mining sites from TeraWulf and Cipher Mining, where the host already holds the substation, the power contract, and the grid interconnection. In Texas and New York a new interconnection can take three to seven years. Fluidstack inherits sites where that interconnection and power infrastructure already exist. That is what "gigawatts in months" actually means. The speed is the symptom. The sourcing model is the cause, and it is a genuinely different bet than CoreWeave or Nebius, which own or long-lease their own shells and carry more of that capital directly.</p>
+    <p>Now add Google. It invests in Anthropic, sells Anthropic its chips, and backstops $1.73 billion of Fluidstack's leases. The money keeps circling back through the same few players in a pattern the press calls <a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">"circular financing"</a>. This reporting ultimately stokes a fear that the AI boom is propped up by insiders, not real demand. Pair this with the single customer angle, and a skeptic has the whole "house of cards" story.</p>
 
-    <p>The build is also wider than the two states most coverage names. Beyond Texas and New York, Fluidstack is the operator on a Louisiana project with Hut 8 that starts at 245 megawatts and is planned to scale toward roughly 2.3 gigawatts for Anthropic, again with Google backstopping the lease. The pattern is consistent, which is the point: one customer, one backstopper, one sourcing model, repeated at each site.</p>
+    <div class="gcard">
+      <div class="gcard-h">The concentration story, as critics filed it on CoreWeave</div>
+      <ul class="hl-list">
+        <li>
+          <span class="hl-q"><span class="q">&ldquo;</span>CoreWeave stock remains down 55% from mid-2025 highs.<span class="q">&rdquo;</span></span>
+          <a class="hl-src" href="https://fortune.com/2025/11/08/coreweave-earnings-debt-ai-infrastructure-bubble/" target="_blank" rel="noopener">Fortune · Nov 8, 2025 &#8599;</a>
+        </li>
+        <li>
+          <span class="hl-q"><span class="q">&ldquo;</span>Famous short seller Jim Chanos just laid out his bear case.<span class="q">&rdquo;</span></span>
+          <a class="hl-src" href="https://www.fool.com/investing/2025/08/19/famous-short-seller-jim-chanos-just-laid-out-his-b/" target="_blank" rel="noopener">The Motley Fool · Aug 19, 2025 &#8599;</a>
+        </li>
+        <li>
+          <span class="hl-q"><span class="q">&ldquo;</span>Two months after CoreWeave's IPO fizzled, the stock surged 250% and left doubters baffled.<span class="q">&rdquo;</span></span>
+          <a class="hl-src" href="https://fortune.com/2025/06/06/coreweave-stock-surge-250-percent-since-ipo-doubters-baffled-openai-microsoft-nvidia/" target="_blank" rel="noopener">Fortune · Jun 6, 2025 &#8599;</a>
+        </li>
+      </ul>
+      <figcaption class="gcap">The concentration story critics told about CoreWeave, in their own headlines. The volatility cuts both ways, which is exactly why the framing matters.</figcaption>
+    </div>
 
-    <h2>The three tensions the narrative has to manage</h2>
+    <p>CoreWeave learned this the hard way. Similar to Fluidstack, it rents AI compute to a few giant customers. When CoreWeave went public in 2025, Microsoft alone made up <a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">62 percent of its revenue</a>. Critics and investors (looking to make a profit on CoreWeave's stock failing publicly) claimed the company was too dependent on its one big tech customer, propped up by debt, and held together through circular deals. Their take became the version of the story everyone repeated. The narrative eventually dragged CoreWeave's stock down about 55% from its peak.</p>
 
-    <h3>1 · The anchor customer is both the proof and the exposure</h3>
-    <p>The Anthropic build is what makes Fluidstack legible to the world. It is also a concentration story waiting for a skeptical reporter to write it. The narrative job is not to hide the concentration, it is to build the surrounding record of execution (Cipher, TeraWulf, Borealis, the poolside deployment Fluidstack itself has described) so that the Anthropic relationship reads as the flagship of a fleet rather than the fleet itself. One phrasing rule I would enforce from day one: the $50 billion is Anthropic's committed spend, never Fluidstack's revenue. The first time a company blurs that line, it spends years buying back credibility with the reporters who caught it.</p>
+    <p>The lesson? Tell your own story first or become the cautionary tale the whole industry points to.</p>
 
-    <p>One structural fact sits under the whole build, and a comms function worth having names it before a reporter does. Google backstops Fluidstack's lease obligations to those host sites, about $1.4 billion on the Cipher leases at signing and roughly $1.73 billion once a later expansion is counted, and holds warrants in the hosts. So Google is at once an Anthropic investor, a TPU supplier, the lease backstop, and a cloud customer. That overlap is the seed of the "circular financing" critique already circulating about the AI infrastructure buildout. The move is not to dodge it. It's to describe the backstop in plain economic terms and let the reader weigh it, because the company that hopes no one asks is the company that loses the room when someone does. Sources are in TeraWulf's and Cipher's SEC filings, not in anything Fluidstack has volunteered.</p>
+    <p>What I'd do:</p>
 
-    <h3>2 · The neocloud sector is entering its skepticism cycle</h3>
-    <p>CoreWeave, Crusoe, Lambda, and Nebius are the comparison set, and the financing structures that make gigawatt buildouts possible (lease backstops, equity stakes, project debt) are already being read two ways: as validation from the most sophisticated capital in the world, or as fragility dressed up as growth. Fluidstack cannot control which frame wins for the sector. It can control whether its own numbers are always sourced, always labeled, and never louder than the record supports. In a category where a peer's stumble becomes everyone's headline, the durable differentiator is being the company whose statements never need correcting.</p>
+    <ul>
+      <li>Beat reporters to the punch. I would bring Fluidstack's own sourced version of the story to the 10-15 journalists who crown the winners and losers of the AI hardware race, headline after headline.</li>
+      <li>Keep one line sacred in every message: "the $50 billion is Anthropic's bet, not Fluidstack's bank balance."</li>
+    </ul>
 
-    <h3>3 · Speed is the brand, but permanence is the story</h3>
-    <p>"Gigawatts in months" is a compelling operational claim. It is also, standing alone, indistinguishable from the hype the market has learned to discount. The stronger narrative is what the speed is for: compute as the constraint on frontier AI, and Fluidstack as the company that turns capital commitments into running clusters while competitors are still permitting. Texas and New York give this a place-based dimension that most AI companies would pay dearly for, real towns, real construction jobs, real grid interconnects. That is a story infrastructure reporters and local press will carry farther than any product announcement.</p>
+    <p>Most people applying for this job bring a plan. I bring the reporters. I spent ten years inside national newsrooms, and I already know them, and what makes them run a story.</p>
 
-    <h2>What I would actually build</h2>
+    <p>The payoff: when the skeptical story runs, and it will, Fluidstack isn't scrambling to answer it. Its version is already the one the reporters trust.</p>
 
-    <p>Roughly one major beat per quarter since early 2025: the executive bench in February, the European exascale partnership in March, Anthropic in November, the reported round in April. That cadence is an asset. Formalize it. A narrative calendar. Every quarter lands one proof-of-execution announcement, sourced to a counterparty or a filing, so the story compounds on receipts rather than intentions.</p>
+    <h2>Opportunity 2: The whole trick is not owning the building</h2>
 
-    <p>Second, the executive voice is open ground. The leadership team's public writing footprint is thin. That's an opportunity. There is no established voice to unwind, and the sector's defining questions, power, financing structures, what frontier labs actually need from infrastructure, have few credible operator voices answering them. Build that voice, carefully, in the executives' own register. It's the sharpest editorial move on the table. A COO who helped take The Trade Desk public brings public-market discipline to how that voice should sound: specific, unsentimental, allergic to adjectives.</p>
+    <p>A new data center grid connection in Texas or New York can take three to seven years. The wait is the <a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">single hardest problem</a> in the entire AI buildout. It's harder than raising the money and harder than getting the chips. A company can line up billions in funding and a warehouse of Nvidia chips in a few months, but then be forced to wait years for a grid connection big enough to run them. Electricity, in one place and ready to use, is now the scarcest thing in the industry.</p>
 
-    <p>The scale of the opening is easy to miss. On a $50 billion build, the Fluidstack executive voice on the record comes to little more than a sentence, Gary Wu's "Fluidstack was built for this moment." The most quotable line about the partnership, "custom built for Anthropic," is Anthropic's phrasing, not a Fluidstack executive's. A company this consequential, whose own executive voice you can quote in a line, that is not a gap. That is the opening, and whoever writes the next line owns the story.</p>
+    <p>Fluidstack solves for this scarcity, because it does not own most of what it runs. It never planned to. Fluidstack walks into already-built Bitcoin-mining sites and drops GPU clusters into shells wired for heavy power and switches them on. And, reusing instead of building quietly solves another problem the whole industry is about to slam into: the growing revolt against data centers. It's bigger than the industry wants to admit.</p>
 
-    <p>Third, claim discipline as infrastructure. Every number in outward copy carries a source or a label. Every superlative earns its place or dies in review. This memo practices what it proposes. The round is "reported to be in talks" because that is what Bloomberg and TechCrunch said and no primary source has said more. The TeraWulf expansion figures circulating above the initial agreement stay out until a primary confirms them. For a company whose customers are the most technically skeptical audiences in the world, and whose general counsel will read every sensitive release, the comms function should be the place where precision lives, not the place it goes to die.</p>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="n">71%</div>
+        <div class="l">of Americans do not want a data center near them, more than say so about a nuclear plant.</div>
+        <a class="stat-src" href="https://fortune.com/2026/05/15/more-americans-nuclear-energy-data-center/" target="_blank" rel="noopener">Fortune / Gallup · May 2026 &#8599;</a>
+      </div>
+      <div class="stat">
+        <div class="n">$130B</div>
+        <div class="l">in projects blocked or delayed by community opposition in a single quarter this year.</div>
+        <a class="stat-src" href="https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728" target="_blank" rel="noopener">NBC News · 2026 &#8599;</a>
+      </div>
+      <div class="stat">
+        <div class="n">Recalls</div>
+        <div class="l">Towns are moving to recall the councils and mayors that approved the builds.</div>
+        <a class="stat-src" href="https://www.newsweek.com/data-centers-spark-dozens-of-recall-petitions-against-local-officials-12170541" target="_blank" rel="noopener">Newsweek · 2026 &#8599;</a>
+      </div>
+    </div>
 
-    <p>Take the environmental line as a test of that discipline. The honest version is narrow. These sites draw on low-carbon grids, Niagara hydro and in-zone nuclear in New York, which is a siting advantage. Site-level power supply is not the same as customer procurement, and no dedicated Fluidstack renewable power-purchase agreement exists in the public record. A comms shop under pressure rounds "sited in a clean-grid zone" up to "powered by clean energy." The first reporter who pulls the interconnection filing turns that into a correction. The sourced version is less impressive on the day, far more durable every day after.</p>
+    <p>A new data center takes an enormous amount from a town and gives almost nothing back. The biggest ones <a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">employ fewer than 150 people</a>, sometimes 25. Across the country, data centers pull <a href="https://www.brookings.edu/articles/data-center-backlash-signals-a-fight-over-ai-power/" target="_blank" rel="noopener">more than 4 percent of the electricity</a> and hand back about 0.01 percent of the jobs. The town carries the water and the grid, and the payoff never comes.</p>
 
-    <h2>Why this is the job</h2>
+    <p>Fluidstack does not pour new campuses onto farmland or force fresh load onto a stressed grid. It moves into buildings that already stand and power that was already flowing, old Bitcoin mines that were pulling that electricity long before AI showed up. Same power, new purpose, and the rare version of this buildout a town has no reason to fight.</p>
 
-    <p>A first comms hire at a company like this is not a megaphone. It is a filter with taste: deciding what the record can support, saying it with a distinctive voice, and building the relationships so that when the hard story comes (and in this sector it always comes) the reporters writing it already know the company as the one that never oversold. That is the narrative I would build at Fluidstack, and the way I would build it is visible in how this memo is written.</p>
+    <p>What I'd do:</p>
 
-    <p><em>Sources referenced: Anthropic newsroom and CNBC (Nov 12, 2025); Bloomberg and TechCrunch (Apr 14, 2026); Cipher Mining investor filings (Sept and Nov 2025); TeraWulf investor materials (Aug 2025); DataCenterDynamics and BusinessWire (Mar 2025); fluidstack.io product and blog pages. Reported items are labeled as reported.</em></p>
+    <ul>
+      <li>Get the reuse story on the record now, while no one is asking.</li>
+      <li>Get to know the reporters covering the data-center backlash.</li>
+      <li>Keep a response ready. The day a "wrecking our town" piece runs, Fluidstack is already the contrast inside it.</li>
+    </ul>
+
+    <p>The payoff: when the backlash reaches AI infrastructure, and it will, Fluidstack does not land on the list of targets. It becomes the standard the targets get measured against.</p>
+
+    <h2>Opportunity 3: Nobody is speaking...yet.</h2>
+
+    <p>The leadership team barely writes in public. I haven't seen any signature op-eds, podcast circuits, leadership voices to decipher. For most companies that would be a gap. For Fluidstack, that's an opening for impact.</p>
+
+    <p>The sector has a stack of real questions and almost no credible operator answering them: what frontier labs actually need from their infrastructure, how these enormous deals get financed, where the power really comes from.</p>
+
+    <div class="cred">
+      <div class="mono">RP</div>
+      <div class="body">
+        <p class="lead">A president who helped take The Trade Desk public knows what a trustworthy executive voice sounds like. Specific. Plain. Allergic to hype.</p>
+        <p class="attr">Rob Perdue, now Fluidstack's COO, was <a href="https://www.nasdaq.com/press-release/fluidstack-strengthens-leadership-team-key-executive-hires-drive-next-phase-growth" target="_blank" rel="noopener">COO and director at The Trade Desk (2013-2019)</a>, and led it through its 2016 IPO. That is public-market discipline you can build a voice on.</p>
+      </div>
+    </div>
+
+    <p>What I'd do:</p>
+
+    <ul>
+      <li>Build the executive voice on a rhythm of proof. Fluidstack has landed roughly one real milestone a quarter since early 2025; I'd turn that into a habit, one sourced proof point every quarter tied to a filing or a partner.</li>
+      <li>Put the executives into the industry debates they're sitting out, so the story compounds on evidence instead of adjectives.</li>
+    </ul>
+
+    <p>The payoff: Fluidstack's leaders stop showing up only in deal announcements and become the voices the industry turns to on power, financing, and what frontier AI actually needs.</p>
+
+    <h2>Why me</h2>
+
+    <p>A first comms hire at Fluidstack doesn't just turn up the volume. The job is judgment: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
+
+    <p>Here's how I plan to leverage the role in my first ninety days:</p>
+
+    <ul>
+      <li>By Day 30, I have locked the sourcing rules and mapped the press. A short, written playbook every public statement has to follow: committed spend is never called revenue, anything unconfirmed stays labeled "reported," every number ties back to a filing or a named partner. Alongside it, a map of the ten or fifteen reporters who shape how this industry gets covered, what each one cares about, and who is most likely to write the hard story first.</li>
+      <li>By Day 60, I put Fluidstack's milestones on a calendar. The company already lands about one real proof point a quarter, the exec team, the European supercomputing deal, Anthropic, the funding round. I'd make that a deliberate rhythm: one sourced announcement every quarter, each tied to a filing, a signed deal, or a named partner, so the story compounds on receipts instead of hype.</li>
+      <li>By Day 90, Fluidstack has a real voice in the conversation it has been sitting out: how the compute behind frontier AI actually gets built, the power, the grid, the money. In practice, an executive published in a tier-one outlet in their own voice, and Fluidstack quoted as a trusted operator on the industry's biggest questions, not just in its own press releases.</li>
+    </ul>
+
+    <p>Fluidstack already built the hardest thing in this industry, and gigawatts of it. The company just hasn't really told anyone yet. That's the job I want, and this memo is the audition.</p>
 
     <p class="backlink" style="margin-top:44px"><a href="../for-fluidstack.html">Back to the review path</a></p>
   </div>
