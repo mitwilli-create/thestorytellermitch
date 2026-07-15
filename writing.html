@@ -101,6 +101,8 @@
     .art-intro{max-width:720px;font-size:16px;color:var(--bone-soft);line-height:1.7;margin-bottom:28px}
     .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-soft)}
     .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--blood-text)}
+    .pull-src a:focus-visible,.art-intro a:focus-visible,.src-line a:focus-visible,
+    .dc-b a:focus-visible,.wr-note a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .ox-i{color:var(--blood-soft)}
     /* proof links that survive a skim */
     .proof-row{display:flex;flex-wrap:wrap;gap:10px 26px;margin:-8px 0 26px;
@@ -167,8 +169,11 @@
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
     .dcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
     .dcard:focus-visible{outline:2px solid var(--blood-soft);outline-offset:3px}
-    /* cards cascade in rather than popping at once; delays live on the .in
-       state and reset on hover so interaction stays instant */
+    /* cards cascade in rather than popping at once (owner-approved council
+       item C27: a simultaneous four-card pop reads as a jump cut, which the
+       motion rule bans; the 240ms cascade IS the continuous movement).
+       Delays live on the .in state and reset on hover/focus so interaction
+       stays instant. */
     .doc-cards .dcard.in:nth-child(2){transition-delay:.08s}
     .doc-cards .dcard.in:nth-child(3){transition-delay:.16s}
     .doc-cards .dcard.in:nth-child(4){transition-delay:.24s}
