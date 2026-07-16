@@ -132,10 +132,11 @@
     .era .oncam .oncam-cap{left:0;right:0;bottom:0;padding:18px 8px 6px;text-align:left;
       text-transform:uppercase;letter-spacing:0.08em;font-size:9.5px;color:var(--bone);
       background:linear-gradient(to top,rgba(10,10,11,.96) 55%,rgba(10,10,11,.65) 78%,transparent)}
-    /* the PictureLock master is a 9:16 portrait short: give it a portrait
-       frame (owner 2026-07-16) so nothing inside the player is cropped,
-       instead of cover-slicing it into the 16:9 feature box */
-    #era-now .era-clips--feature a{aspect-ratio:9/16;max-width:400px;margin:0 auto}
+    /* the PictureLock master is a 9:16 portrait short: it now lives in the
+       #era-now rail (owner 2026-07-16), so the rail tile gets a portrait
+       frame instead of cover-slicing it into 16:9. The two system
+       illustrations take the 2-up breakout below. */
+    #era-now .era-side .era-clips a{aspect-ratio:9/16;width:100%;max-width:400px;margin:0 auto}
     /* standalone mono label for a clip block, matched to .ec-k */
     .clips-k{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.16em;
       text-transform:uppercase;color:var(--blood-soft);margin:28px 0 12px}
@@ -626,13 +627,15 @@
         <div class="em"><div class="n" data-count>75,000+</div><div class="l">new hires onboarded &middot; 88% CSAT</div></div>
         <div class="em"><div class="n" data-count>1.7M+</div><div class="l">YouTube views, talent-brand portfolio</div></div>
       </div>
+      <div class="era-clips era-clips--feature reveal-child">
+        <a href="work.html#interviews-panels" data-preview="assets/previews/google-xge-2023-svp-interview-grace-hopper-conference.mp4" data-stream-id="d8a16799d75d8abe9acf2361fdd1894e"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
+      </div>
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
         <a href="work.html#google" data-youtube="ohtLXCwC-oU" data-preview="assets/previews/google-lifeatgoogle-2019-working-on-the-corpeng-team.mp4"><img src="assets/posters/google-lifeatgoogle-2019-working-on-the-corpeng-team.jpg" alt="Working on the CorpEng team" loading="lazy"><span class="cl">CorpEng team · Life at Google</span></a>
         <a href="work.html#google" data-youtube="6ZZX9iIgFoo" data-preview="assets/previews/google-lifeatgoogle-2019-interview-prep-coding.mp4"><img src="assets/posters/google-lifeatgoogle-2019-interview-prep-coding.jpg" alt="Prepare for your Google interview: coding" loading="lazy"><span class="cl">Interview prep series</span></a>
         <a href="work.html#google" data-youtube="rGtcmKIZi5c" data-preview="assets/previews/google-lifeatgoogle-2019-application-engineer.mp4"><img src="assets/posters/google-lifeatgoogle-2019-application-engineer-2x.jpg" alt="Working as an Application Engineer at Google" loading="lazy"><span class="cl">Application engineer · Life at Google</span></a>
-        <a href="work.html#interviews-panels" data-preview="assets/previews/google-xge-2023-svp-interview-grace-hopper-conference.mp4" data-stream-id="d8a16799d75d8abe9acf2361fdd1894e"><img src="assets/posters/google-xge-2023-svp-interview-grace-hopper-conference.jpg" alt="A Google SVP live at Grace Hopper" loading="lazy"><span class="cl">SVP at Grace Hopper · 34m</span></a>
       </div>
       </div>
     </div>
@@ -675,13 +678,13 @@
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
-        <a href="stories.html#builder-turn" data-preview="assets/cinemagraphs/illo-agent-fleet-c-loop.mp4"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
-        <a href="voice-os.html" data-preview="assets/cinemagraphs/illo-voice-os-c-loop.mp4"><img src="assets/stills/illo-voice-os.jpg" alt="System diagram: a written corpus streaming into a six-axis voice gauge flanked by two reviewers" loading="lazy"><span class="cl">Voice OS · system illustration</span></a>
+        <a href="picture-lock.html" data-preview="assets/picture-lock-short-n16.mp4" data-full="assets/picture-lock-short-n16.mp4"><img src="assets/picture-lock-poster.jpg" alt="PictureLock breakdown" loading="lazy"><span class="cl">PictureLock · breakdown</span></a>
       </div>
       </div>
       <div class="era-breakout">
-      <div class="era-clips era-clips--feature reveal-child">
-        <a href="picture-lock.html" data-preview="assets/picture-lock-short-n16.mp4" data-full="assets/picture-lock-short-n16.mp4"><img src="assets/picture-lock-poster.jpg" alt="PictureLock breakdown" loading="lazy"><span class="cl">PictureLock · breakdown</span></a>
+      <div class="era-clips era-clips--grid2 reveal-child">
+        <a href="stories.html#builder-turn" data-preview="assets/cinemagraphs/illo-agent-fleet-c-loop.mp4"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
+        <a href="voice-os.html" data-preview="assets/cinemagraphs/illo-voice-os-c-loop.mp4"><img src="assets/stills/illo-voice-os.jpg" alt="System diagram: a written corpus streaming into a six-axis voice gauge flanked by two reviewers" loading="lazy"><span class="cl">Voice OS · system illustration</span></a>
       </div>
       </div>
       <div class="era-metrics reveal-child" style="margin-top:26px">
