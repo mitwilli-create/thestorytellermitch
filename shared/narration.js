@@ -57,6 +57,7 @@
       el.addEventListener('error', () => {
         showPlaying(false); still();
         btn.disabled = true;
+        seek.disabled = true; // an invisible-but-focusable seek must die with the button
         status.textContent = 'audio unavailable';
       });
       return el;

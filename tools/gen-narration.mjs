@@ -28,6 +28,9 @@ const CACHE_DIR = join(OUT_DIR, '.cache');
 
 // The clone Mitchell re-recorded on 2026-07-12 ("Mitchell retake 2026-07-12 IVC").
 // The older "Mitchell Williams" clone (tsgjxmopI9Rjfakm4qOg) is superseded; do not use it.
+// The voice_id here and in the committed manifest is a self-published identifier
+// on Mitchell's own ElevenLabs account, not a credential: access control lives in
+// the API key. Owner ruling 2026-07-15 (PR review): keep it public, do not strip.
 const VOICE_ID = 'JqleYXcfWmF1IvSuSlLw';
 // multilingual_v2 is ElevenLabs' own pick for voiceover work. v3 is more
 // expressive but wants per-clip prompt engineering, which would make nine
@@ -53,7 +56,13 @@ const PAGES = [
 const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
 const DRY = args.includes('--dry-run');
-const ONLY = args.includes('--only') ? args[args.indexOf('--only') + 1] : null;
+const onlyIndex = args.indexOf('--only');
+const ONLY = onlyIndex === -1 ? null : args[onlyIndex + 1];
+if (onlyIndex !== -1 && (!ONLY || ONLY.startsWith('--') || !PAGES.includes(ONLY))) {
+  // a bare or misspelled --only would silently render (and bill) every page
+  console.error(`--only must name one of: ${PAGES.join(', ')}`);
+  process.exit(2);
+}
 
 let KEY = process.env.ELEVENLABS_API_KEY;
 if (!KEY) {
@@ -81,6 +90,14 @@ function scriptFor(slug) {
 }
 
 const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 16);
+
+// The skip identity must also cover the normalization spec: without this, an
+// existing mp3 short-circuits at the skip path and a loudness retune would
+// never reach the renorm-from-cache branch.
+const NORM_HASH = sha(JSON.stringify({
+  i: TARGET_I, tp: TARGET_TP, lra: TARGET_LRA,
+  codec: 'libmp3lame', bitrate: '128k', rate: 44100,
+}));
 
 function ffprobeDuration(file) {
   const out = execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
@@ -149,7 +166,8 @@ for (const slug of PAGES) {
 
   const raw = join(CACHE_DIR, `${slug}.raw.mp3`);
 
-  if (!FORCE && existsSync(out) && prev.clips[slug]?.hash === hash) {
+  if (!FORCE && existsSync(out) && prev.clips[slug]?.hash === hash
+      && prev.clips[slug]?.normalization_hash === NORM_HASH) {
     console.log(`skip   ${slug.padEnd(24)} (script unchanged)`);
     manifest.clips[slug] = prev.clips[slug];
     skipped++;
@@ -159,13 +177,28 @@ for (const slug of PAGES) {
   // Script unchanged but the spec moved (or the mp3 went missing): the paid
   // artifact is already on disk, so re-normalize from cache and bill nothing.
   if (!FORCE && existsSync(raw) && prev.clips[slug]?.hash === hash) {
+    if (DRY) {
+      console.log(`renorm ${slug.padEnd(24)} (dry: would re-normalize from cache)`);
+      manifest.clips[slug] = prev.clips[slug];
+      renormed++;
+      continue;
+    }
     console.log(`renorm ${slug.padEnd(24)} (from cached take, no API call)`);
     normalizeToSpec(raw, out);
     const a = integratedLufs(out);
-    manifest.clips[slug] = { ...prev.clips[slug], lufs_out: a.i, peak_out_dbfs: a.peak,
-      duration_s: ffprobeDuration(out) };
+    manifest.clips[slug] = { ...prev.clips[slug], normalization_hash: NORM_HASH,
+      lufs_out: a.i, peak_out_dbfs: a.peak, duration_s: ffprobeDuration(out) };
     console.log(`       → ${a.i} LUFS  peak ${a.peak} dBFS`);
     renormed++;
+    continue;
+  }
+
+  // Spec moved but the paid raw is gone: refuse to quietly re-bill. The shipped
+  // clip and its metadata stand; a re-render is an explicit --force --only <slug>.
+  if (!FORCE && existsSync(out) && prev.clips[slug]?.hash === hash) {
+    console.log(`hold   ${slug.padEnd(24)} (spec changed, no cached raw; re-render is --force --only ${slug})`);
+    manifest.clips[slug] = prev.clips[slug];
+    skipped++;
     continue;
   }
 
@@ -179,6 +212,9 @@ for (const slug of PAGES) {
   });
   if (!res.ok) {
     console.error(`  FAIL ${slug}: HTTP ${res.status} ${(await res.text()).slice(0, 300)}`);
+    // keep the previous entry: dropping it would orphan the shipped mp3 from
+    // its hash and re-bill a render the next run
+    if (prev.clips[slug]) manifest.clips[slug] = prev.clips[slug];
     process.exitCode = 1;
     continue;
   }
@@ -190,7 +226,7 @@ for (const slug of PAGES) {
   const after = integratedLufs(out);
   const dur = ffprobeDuration(out);
   manifest.clips[slug] = {
-    hash, chars: text.length, duration_s: dur,
+    hash, normalization_hash: NORM_HASH, chars: text.length, duration_s: dur,
     lufs_in: before.i, lufs_out: after.i, peak_out_dbfs: after.peak,
   };
   console.log(`       ${'→'} ${dur}s  ${before.i} LUFS ${'→'} ${after.i} LUFS  peak ${after.peak} dBFS`);

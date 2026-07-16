@@ -16,6 +16,7 @@
   "clips": {
     "about": {
       "hash": "823a2c26a296b742",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 1011,
       "duration_s": 64.92,
       "lufs_in": -17.7,
@@ -24,6 +25,7 @@
     },
     "picture-lock": {
       "hash": "f2f62e9b1804fb34",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 930,
       "duration_s": 65.85,
       "lufs_in": -18.1,
@@ -32,6 +34,7 @@
     },
     "voice-os": {
       "hash": "20a356426a9fb5fe",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 927,
       "duration_s": 66.78,
       "lufs_in": -18.4,
@@ -40,6 +43,7 @@
     },
     "monolith": {
       "hash": "46b7fea8d13bfd9b",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 965,
       "duration_s": 65.99,
       "lufs_in": -16.9,
@@ -48,6 +52,7 @@
     },
     "relocation-os": {
       "hash": "bf88c1c0d2961fa4",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 984,
       "duration_s": 66.55,
       "lufs_in": -18.5,
@@ -56,6 +61,7 @@
     },
     "comms-triage-agent": {
       "hash": "9b2222325e414b1e",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 960,
       "duration_s": 67.76,
       "lufs_in": -18.6,
@@ -64,6 +70,7 @@
     },
     "tax-verification-agent": {
       "hash": "1d74c8036bfb83d1",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 901,
       "duration_s": 62.65,
       "lufs_in": -18.1,
@@ -72,6 +79,7 @@
     },
     "content-ops": {
       "hash": "b09da0e7dd7cc0e6",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 870,
       "duration_s": 64.69,
       "lufs_in": -19,
@@ -80,6 +88,7 @@
     },
     "career-ops": {
       "hash": "25c0de52d1ef6096",
+      "normalization_hash": "309c332db92d0a63",
       "chars": 932,
       "duration_s": 66.22,
       "lufs_in": -18.7,
