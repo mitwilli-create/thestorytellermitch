@@ -4,8 +4,9 @@
 // Gates, in order:
 //   1. bake-drift: stories.html and work.html must be byte-identical to a
 //      fresh bake from their JSON (catches hand-edits of baked regions)
-//   2. em-dash census: 0 em dashes across html/css/site-data/tools/srt
-//      (the one detector line in build-stories.mjs is the sole exemption)
+//   2. em-dash census: 0 em dashes across html/css/site-data/tools/srt plus
+//      kb/*.md and resumes-src/*.md (the one detector line in
+//      build-stories.mjs is the sole exemption)
 //   3. asset references: every local src/href/poster in *.html resolves to
 //      a file on disk (media/ is exempt: gitignored self-host payloads)
 //   4. site-data parse: clips.json + stories.json parse and carry the
@@ -40,6 +41,8 @@ const walk = (dir, re) => { for (const ent of readdirSync(resolve(SITE, dir), { 
   else if (re.test(ent.name)) censusFiles.push(rel);
 } };
 walk('', /\.html$/); push('shared', /\.(css|js)$/); push('assets/site-data', /\.json$/); push('tools', /\.mjs$/); push('assets', /\.srt$/);
+// Outward material: kb/ reaches visitors via site-agent answers, resumes-src/ builds the resume PDFs.
+push('kb', /\.md$/); push('resumes-src', /\.md$/);
 const EM = String.fromCharCode(0x2014); // constructed so this file stays census-clean
 let dashHits = 0;
 for (const f of censusFiles) {

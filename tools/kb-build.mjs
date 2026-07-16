@@ -335,7 +335,8 @@ const corpus = [
 ].map(finalizeChunk);
 
 const blob = corpus.map((c) => c.text).join('\n');
-if (blob.includes('-')) {
+const EM_DASH = String.fromCharCode(0x2014); // constructed so a sweep of this file cannot rewrite the needle
+if (blob.includes(EM_DASH)) {
   console.error('EM DASH found in indexed content: fix the source file before building the corpus.');
   process.exit(1);
 }
