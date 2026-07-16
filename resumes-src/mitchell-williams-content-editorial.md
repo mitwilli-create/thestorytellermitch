@@ -79,7 +79,7 @@ Owned the communications and content (documentation, self-help, onboarding, vide
 
 **Portfolio** · [The writing room](../writing.html): the verbatim published AJ+ measles explainer script, 17 authored longform story pages, and redacted-verbatim Google work samples.
 
-**PictureLock** · Seven-stage script-to-short video pipeline (Node + ffmpeg, ElevenLabs stack): narration, score, sound design, generated shots, multilingual dub. The 53-second live demo carries $8.26 of logged cost in the run manifest committed at github.com/mitwilli-create/picture-lock.
+**PictureLock** · Seven-stage script-to-short video pipeline (Node + ffmpeg, ElevenLabs stack): narration, score, sound design, generated shots, multilingual dub. The 53-second live demo carries $8.26 of logged cost in the run manifest committed at github.com/mitwilli-create/picture-lock; the Spanish dub carries a separately logged $0.42.
 
 **content-ops** · A multi-agent engine that adapts one story to each of nine platforms' native formats through deterministic voice gates, with a person pressing send ([case study](../content-ops.html)).
 

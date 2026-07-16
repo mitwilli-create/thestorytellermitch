@@ -74,6 +74,12 @@ function chunkText(text, { targetWords = CHUNK_TARGET_WORDS, overlapWords = CHUN
 
 function stripHtml(html) {
   let s = html
+    // kb:exclude … kb:endexclude regions are dropped from the retrieval corpus
+    // entirely, but stay visible on the page. Use for verbatim traces that quote
+    // superseded figures (e.g. voice-os.html's worked-run drafts quote a
+    // pre-consolidation cost by design) so the agent never echoes them as fact.
+    // Must run BEFORE the comment strip below, or the markers vanish first.
+    .replace(/<!--\s*kb:exclude[\s\S]*?kb:endexclude\s*-->/gi, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<!--[\s\S]*?-->/g, ' ');
@@ -234,10 +240,19 @@ function processSiteData() {
   });
 
   const plRun = JSON.parse(readFileSync(resolve(dir, 'picture-lock-run.json'), 'utf8'));
-  const stageLines = plRun.stages.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // inThisRun:false rows (the Spanish dub) carry their own receipt; folding
+  // them into the stage-by-stage list invites a reader (or the agent) to sum
+  // to $8.68, a number the committed manifest does not contain.
+  const inRun = plRun.stages.filter((s) => s.inThisRun !== false);
+  const stageLines = inRun.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // Deliberately no call count on these lines: "1 call" adds nothing a
+  // retriever can use, and any embedText change here costs a full
+  // wipe+reindex+eval cycle under the corpus guard.
+  const ownRun = plRun.stages.filter((s) => s.inThisRun === false)
+    .map((s) => `${s.label} (${s.detail}): $${s.costUsd}${s.api ? ` via ${s.api}` : ''}, its own separate receipt, not part of this run's total`).join('. ');
   chunks.push({
     id: 'data-picture-lock-run__c0',
-    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.`,
+    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.${ownRun ? ` Separate receipts: ${ownRun}.` : ''}`,
     source: 'assets/site-data/picture-lock-run.json', docTitle: 'Picture-lock run manifest', docType: 'site-data', typeTag: 'metrics-provenance',
   });
 
