@@ -19,6 +19,17 @@
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:18px;font-weight:500}
     section{padding:56px 0}
+    /* The footer's .big plate lifts -64px to ride the last section's bottom
+       edge (theme.css "footer card-over-bar", sitewide since 2026-07-12). That
+       pattern assumes the sitewide 120px section padding; this page's tighter
+       56px rhythm starves it, so the card landed ON the closing paragraph
+       instead of its edge. Restore the sitewide bottom room on the last
+       section only: the page keeps its density, the footer keeps the card
+       treatment every other page has. Scoped to the same breakpoint the lift
+       is (>=861px); below that theme.css drops the negative margin already. */
+    @media(min-width:861px){
+      main > section:last-of-type{padding-bottom:120px}
+    }
     .ask-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
     .ask-input{flex:1 1 420px;min-height:52px;padding:12px 16px;font:inherit;font-size:16px;
       color:var(--bone);background:transparent;border:1px solid var(--line);border-radius:4px}
