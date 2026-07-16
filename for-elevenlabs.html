@@ -37,8 +37,10 @@
     .map-list{list-style:none;margin:0;padding:0;max-width:760px}
     .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
       line-height:1.65;color:var(--bone-soft)}
-    .map-list li strong{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
-      text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:4px;font-weight:500}
+    /* sub-heads at card-title weight (owner 2026-07-15: the mono kickers
+       read undersized on this lane) */
+    .map-list li strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:17.5px;
+      letter-spacing:0;text-transform:none;color:var(--bone);display:block;margin:0 0 6px}
     .map-list li a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .map-list li a:hover{color:var(--blood-text)}
     .el-note{max-width:760px;font-size:14px;color:var(--dim);line-height:1.7;margin-top:34px}
@@ -167,7 +169,6 @@
       <li><strong>Train customer teams</strong>Google's Day One technical onboarding, rebuilt for 75,000+ new hires at 88% satisfaction; three producers I coached from behind the camera into on-camera principals, who went on to win their own Webby and Emmy; every system I ship comes with the runbook that survives me leaving the room.</li>
       <li><strong>Communicate with non-technical stakeholders</strong>The teardown pages on this site are the sample: production systems explained plainly, every number sourced, no hand-waving.</li>
     </ul>
-    <p class="el-note">Honesty note: I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p>
     <div class="el-cta">
       <a class="btn solid" href="picture-lock.html"><span>Start with the short</span></a>
       <a class="btn" href="resume/forward-deployed.html"><span>The FDC resume</span></a>
