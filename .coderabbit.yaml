@@ -1,0 +1,76 @@
+# .coderabbit.yaml, thestorytellermitch (PUBLIC portfolio site).
+# Added 2026-07-16 (review-stack audit, plan ~/.claude/plans/ok-partitioned-sutton.md).
+#
+# This repo had NO config, so it ran CodeRabbit's default `assertive` (nitpicky)
+# profile on ~132 mostly-cosmetic PRs in one week (2026-07-09→16), ~70% of which
+# surfaced zero findings. This config moves it to `chill`, excludes generated
+# artifacts, and scopes review to code LOGIC, cosmetic CSS/copy and rendered-
+# output regressions are caught deterministically by the Phase-B gap-fillers
+# (Playwright visual regression + Vale prose lint), not by an LLM reviewer.
+
+language: en
+
+reviews:
+  # assertive → chill: keep real-defect review (bugs, security, logic errors),
+  # drop the style/nitpick tail that dominated this repo's cosmetic PRs.
+  profile: chill
+
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+
+  # decorative features off, per-round variance, never a code defect.
+  sequence_diagrams: false
+  suggested_labels: false
+  suggested_reviewers: false
+  related_issues: false
+  related_prs: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+
+  path_filters:
+    # Generated resume HTML, baked by tools/build-resumes.mjs from resumes-src/.
+    # Reviewing generated output is noise and feeds bake-drift (memory:
+    # storytellermitch-resume-bake-drift).
+    - "!resume/**"
+    # Build output + Cloudflare Wrangler cache, not source.
+    - "!output/**"
+    - "!.wrangler/**"
+    # Lock files, machine-generated.
+    - "!package-lock.json"
+    - "!*.lock"
+
+  path_instructions:
+    - path: "**"
+      instructions: >-
+        This is a static portfolio site. Raise findings only for defects in
+        code BEHAVIOR, JavaScript/TypeScript and .mjs build/agent scripts:
+        correctness bugs (wrong output, unhandled edge cases, broken control
+        flow), security vulnerabilities (command injection, path traversal,
+        SSRF, XSS, secret exposure), data-integrity risks, and regressions
+        introduced by this diff. Do NOT raise pure presentation nitpicks,         CSS styling, spacing, color, copy/prose wording, or HTML formatting;
+        those are caught deterministically by the site's visual-regression and
+        prose-lint gates, not by code review. Do NOT raise process/workflow
+        reminders (slash-command discipline, commit-message conventions,
+        "remember to" notes), those are enforced by the agent harness.
+    - path: "tools/**"
+      instructions: "Build/deploy scripts. Check for command injection, path traversal, unsafe shell interpolation, and missing error handling. deploy.sh is the only sanctioned deploy path, flag changes that bypass it."
+    - path: "scripts/**"
+      instructions: "Site agent + build code. Check correctness, error handling, and secret exposure; no hardcoded tokens."
+
+# CodeRabbit auto-ingests CLAUDE.md/AGENTS.md as 'code guidelines' and enforces
+# them as findings; here those are agent-process instructions, not code
+# standards, that's the process-boilerplate churn source. Curated guidance
+# lives in path_instructions above instead.
+knowledge_base:
+  code_guidelines:
+    enabled: false
+  learnings:
+    scope: local
+
+chat:
+  auto_reply: true
