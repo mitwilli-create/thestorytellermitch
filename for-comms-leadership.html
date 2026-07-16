@@ -16,12 +16,14 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="shared/theme.css?v=20260715g">
   <style>
-    .sys-hero{padding:170px 0 96px;border-bottom:1px solid var(--line)}
+    .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
     .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65}
-    section{padding:76px 0}
-    h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
-      letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
+    /* joints cut to the lane rhythm; headers keep the mono-kicker face and
+       oxblood ink at the lifted title size, the lane-page grammar */
+    section{padding:56px 0}
+    h2.mini{font-family:'JetBrains Mono',monospace;font-size:clamp(22px,2.6vw,31px);text-transform:uppercase;
+      letter-spacing:0.14em;line-height:1.2;color:var(--blood-soft);margin-bottom:24px;font-weight:500;max-width:860px}
     .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
     .path .step{display:flex;gap:18px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
     .path .d{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
@@ -97,7 +99,7 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="mini">What the path maps to</h2>
+    <h2 class="mini">Why this works for the role</h2>
     <ul class="map-list">
       <li><strong>Executive voice</strong>VP-level executive communications at the Office of Cross Google Engineering (xGE) and C-suite writing for Google's then-CIO, with <a href="writing.html">the writing readable word for word</a>. References who can vouch for the ghostwriting are available on request.</li>
       <li><strong>Narrative and stakeholder trust</strong>The standing audience was 1,000+ of Google's most senior engineers: analytical, truth-seeking, and quick to notice spin. The narrative held because every claim was sourced.</li>
