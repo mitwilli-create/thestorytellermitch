@@ -31,7 +31,6 @@
       --line-2:rgba(236,232,225,0.18);
       --blood:#8a3a33;      /* restrained oxblood accent, used sparingly */
       --blood-soft:#b6584e; /* lifted a tad 2026-07-15 (was #b1554c): kickers/labels read warm, not muddy */
-      --blood-band:#b6584e; /* emphasis-band ground; white-on-band 4.67:1 AA; never darker than this */
       --blood-text:#c4685d; /* blood-soft lifted for small text: 5.2:1 on --bg */
       --blood-hairline:rgba(196,104,93,0.35); /* tier-3 inline-link underline */
       --ease:var(--ease-reveal); /* legacy alias; every var(--ease) now rides the reveal curve */
@@ -331,26 +330,13 @@ a.chip{text-decoration:none;display:inline-block}
 .lnk-inline:hover{color:var(--blood-text)}
 .lnk-proof:focus-visible,.lnk-nav:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
 .lnk-inline:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
-/* ---------- emphasis system (owner rulings 2026-07-15, round 2) ----------
-   Two tiers. TIER 1, the cell (`strong.ox` / `a.ox-link`): a solid rectangular
-   oxblood cell with a white border and white bold text inside; reserved for the
-   FIRST sentence/opening anchor of a section, one per section. TIER 2, every
-   other emphasis (`strong.wt`): plain bold white on the page's black ground,
-   no cell. The cell ground is --blood-band (white-on-band 4.67:1, AA);
-   box-decoration-break keeps the cell across line wraps. Links inside a cell
-   go white with a visible underline; links inside .wt keep the page's normal
-   link ink. Do-block bold leads are plain <strong> and stay untreated. */
-strong.ox,a.ox-link{color:#fff;font-weight:700;background:var(--blood-band);
-  padding:1px 8px;border:1px solid #fff;
-  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* ---------- emphasis (owner ruling 2026-07-15, final round) ----------
+   One tier only: `strong.wt`, plain bold white on the page's black ground.
+   Used sparingly: the central idea or punchiest phrase, once or twice per
+   screenful. The oxblood band and the bordered cell are both retired; do
+   not reintroduce either. Do-block bold leads stay plain <strong>. */
 strong.wt{color:#fff;font-weight:700}
-strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55);
-  transition:border-color var(--dur-micro) var(--ease-micro)}
-strong.ox a:hover,a.ox-link:hover{color:#fff;border-bottom-color:#fff}
-strong.ox a:focus-visible,a.ox-link:focus-visible{outline:1px solid #fff;outline-offset:2px}
 @media print{
-  strong.ox,a.ox-link{background:none !important;color:var(--blood) !important;padding:0 !important;border:0 !important}
-  strong.ox a,a.ox-link{color:var(--blood) !important;border-bottom-color:var(--blood) !important}
   strong.wt{color:#111 !important}
 }
 /* default focus ring for any anchor a page hasn't styled itself */
