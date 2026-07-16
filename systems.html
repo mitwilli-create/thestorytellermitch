@@ -104,7 +104,7 @@
       <li><strong>Definition audit</strong>A headless browser walks every page at two viewports and compares each rendered image, poster, and loop against its intrinsic pixels. Anything under 1.6x its rendered size gets re-sourced from a better master or logged as a known ceiling.</li>
       <li><strong>Bake drift</strong>Generated regions (the reel, the case files, the writing index) must match their generators exactly. Hand edits inside baked markup fail the build.</li>
       <li><strong>Loop seams</strong>Every ambient loop is a measured self-crossfade: seam scored at the cycle boundary, palette checked against the approved still, motion compared to the accepted predecessor, and a frame montage reviewed by eye before anything ships.</li>
-      <li><strong>Loudness</strong>Audio-bearing clips are measured to EBU R128 and normalized to -16 LUFS with true peaks held at -1.5 dBTP.</li>
+      <li><strong>Loudness</strong>Audio-bearing clips are measured to EBU R128 and normalized to targets of -16 LUFS with true peaks held at -1.5 dBTP.</li>
       <li><strong>Performance</strong>Largest contentful paint under 2.5 seconds and zero layout shift, held at 1440 and 390 wide, measured under a throttled harness and again on the live site after deploy.</li>
       <li><strong>Accessibility</strong>Keyboard, touch, reduced-motion, and focus behavior are exercised on every playable surface, not assumed from markup.</li>
       <li><strong>Code review</strong>Every commit set goes through automated review and doesn't ship until majors and regressions read zero.</li>
