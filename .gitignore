@@ -13,3 +13,6 @@ tools/.kb-eval-report.json
 # cloud-sync conflict twins (iCloud "name 2.ext" duplicates): never track, never ship
 * 2.*
 * 2
+
+# raw TTS takes: the paid artifact, cached so a loudness retune is free
+assets/audio/narration/.cache/
