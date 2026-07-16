@@ -758,7 +758,7 @@
     }
     // receipt.allInUsd never existed; money(undefined) printed "$NaN" here.
     const atBuild=run.receipt.atBuildApproxUsd;
-    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(cost)+'</span> logged in this snapshot'+(typeof atBuild==='number'?(' &middot; about $'+atBuild+' at build with every retake'):'')+'; the receipt below carries the full accounting');
+    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(cost)+'</span> logged in this snapshot'+(typeof atBuild==='number'?(' &middot; about $'+Math.round(atBuild)+' at build with every retake'):'')+'; the receipt below carries the full accounting');
     window.dispatchEvent(new CustomEvent('mw:run-end'));
     replay.hidden=false; running=false;
   }

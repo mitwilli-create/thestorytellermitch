@@ -245,6 +245,9 @@ function processSiteData() {
   // to $8.68, a number the committed manifest does not contain.
   const inRun = plRun.stages.filter((s) => s.inThisRun !== false);
   const stageLines = inRun.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // Deliberately no call count on these lines: "1 call" adds nothing a
+  // retriever can use, and any embedText change here costs a full
+  // wipe+reindex+eval cycle under the corpus guard.
   const ownRun = plRun.stages.filter((s) => s.inThisRun === false)
     .map((s) => `${s.label} (${s.detail}): $${s.costUsd}${s.api ? ` via ${s.api}` : ''}, its own separate receipt, not part of this run's total`).join('. ');
   chunks.push({
