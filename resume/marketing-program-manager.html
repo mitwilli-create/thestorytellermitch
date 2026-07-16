@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume · Marketing Program Manager (Developer Tools) · Mitchell Williams</title>
+  <meta name="description" content="Mitchell Williams resume for Marketing Program Manager (Developer Tools) roles. Rendered from the same source as the downloadable PDF.">
+  <meta name="robots" content="noindex">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css?v=20260715g">
+  <style>
+    /* ---- shared structure ---- */
+    .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
+    .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);
+      letter-spacing:-0.03em;text-transform:uppercase;line-height:1;color:var(--bone)}
+    /* pillars sized to land as two full lines in the 820px column, not one
+       line plus an orphaned word (owner 2026-07-15); balance evens the pair.
+       Screen only: the print block re-sizes pillars, keeping the locked PDFs
+       byte-identical in layout. */
+    .rpillars{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);margin-top:14px;line-height:1.7}
+    @media screen{
+      .rpillars{font-size:clamp(13px,2.44vw,20px);letter-spacing:0.08em;line-height:1.55;text-wrap:balance}
+    }
+    .rcontact{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
+      margin-top:12px;line-height:1.8}
+    section.rsec{padding:0;margin-top:34px} /* theme.css sets global section padding; kill it here */
+    .rsec-h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
+      padding-bottom:8px;margin-bottom:14px}
+    .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    .rp strong,.rl strong{color:var(--bone);font-weight:700}
+    .rl{list-style:none;margin:0 0 10px}
+    .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
+    .rl li::before{content:"·";position:absolute;left:2px;color:var(--blood-soft)}
+    .rnum{font-family:'JetBrains Mono',monospace;font-size:0.92em;font-variant-numeric:tabular-nums}
+    .rrole{margin:16px 0 6px}
+    .rrole-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--bone);letter-spacing:-0.01em}
+    .rrole-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);margin:3px 0 10px}
+    .rrole-s strong{color:var(--bone-soft)}
+    .rinit{margin:10px 0}
+    .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
+    .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+    /* compact buttons so the full row (four on the comms lane) holds one
+       line inside the 820px column at desktop (owner 2026-07-15) */
+    .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
+       overriding the dealbreaker's band/underline/mono-line compromises):
+       Archivo carries every heading (name, section heads, role heads), Inter
+       carries every text run (pillars, contact, subtitles, body). No band, no
+       mono, no underlines; links signal by brand red alone. ---- */
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
+    @media print{
+      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
+        --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
+        --blood:#8a3a33;--blood-soft:#8a3a33}
+      html,body{background:#fff !important;color:#2e2a26}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
+      .kicker{font-weight:600}
+      .rpillars{font-weight:600;letter-spacing:0.06em}
+      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-size:20pt;word-spacing:0.14em}
+      .rrole-h{word-spacing:0.08em}
+      .rpillars{font-size:7.82pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:7.82pt;margin-top:5pt;line-height:1.5}
+      section.rsec{margin-top:6pt;padding:0}
+      .rsec-h{font-size:7.82pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:9.2pt;line-height:1.26;margin-bottom:3pt}
+      .rl{margin-bottom:4pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:9.2pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
+      .rrole{margin:5pt 0 2pt}
+      .rrole-h{font-size:11.0pt;break-after:avoid}
+      .rrole-s{font-size:7.82pt;margin:1.5pt 0 4pt}
+      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rinit{margin:4pt 0;break-inside:avoid}
+      .rinit-h{font-size:9.2pt;margin-bottom:2pt}
+      .rp{break-inside:avoid}
+      a{color:inherit;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="../fit.html">Role Fit</a>
+    <a href="../projects.html">AI Projects</a>
+    <a href="../resume.html">Resume</a>
+    <a href="../comms.html">Comms &amp; Editorial</a>
+    <a href="../work.html">Reel</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../stories.html">Case Files</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<div class="rwrap">
+  <header>
+    <div class="kicker">resume · marketing program manager (developer tools)</div>
+    <h1 class="rname">Mitchell Williams</h1>
+    <div class="rpillars">MARKETING PROGRAM MANAGEMENT · DEVELOPER-TOOLS GTM · AI-NATIVE PROGRAM BUILDING</div>
+    <div class="rcontact">Seattle, WA (open to relocation) | <span class="pdf-phone"></span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a> | <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a> | <a href="https://thestorytellermitch.com">thestorytellermitch.com</a></div>
+    <div class="rtop">
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
+      <a class="btn" href="../for-cursor.html"><span>The Cursor review path</span></a>
+      <a class="btn solid" href="../assets/resumes/mitchell-williams-marketing-program-manager.pdf"><span>Download PDF</span></a>
+      <a class="btn" href="../fit.html#roles"><span>The fit case</span></a>
+    </div>
+  </header>
+  <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>I build and run the program engines behind developer-facing marketing: workshop and event series, campaign playbooks, and the intake, cadence, and measurement that turn practitioner trust into pipeline.</strong> Journalist, then eight years of communications and program work at Google, then applied-AI builder; a live rundown is a program plan with zero slack.</p>
+<p class="rp"><strong>Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:</strong> built the communications-and-program function from zero for 1,000+ Principal, Distinguished, and Fellow engineers: the annual summit, quarterly forums, the peer-led xGE Connects workshop series, and a three-tier operating model with real intake, governance, and cadence.</p>
+<p class="rp"><strong>I am the audience developer marketing has to convince: I build multi-agent systems daily, in public.</strong> <a href="../career-ops.html">career-ops</a> runs 52 scheduled agents with budget caps and dead-man heartbeats under a unified spend cap; the same practitioner credibility carries a workshop stage.</p></section>
+<section class="rsec"><h2 class="rsec-h">Fit for Marketing Program Management (Developer Tools)</h2><ul class="rl"><li><strong>Own the program spine end to end:</strong> the annual senior-IC summit (600+ attendees), quarterly engineering forums (300+ each), and the peer-led xGE Connects workshop series, survey to stage.</li><li><strong>Run live rooms under a hard clock:</strong> a decade of live national news; a workshop calendar is a broadcast rundown, and rehearsal, timing, and recovery are muscle memory.</li><li><strong>Hold credibility with practitioners:</strong> two years building programs for 1,000+ Principal, Distinguished, and Fellow engineers, and I ship with the agentic tooling these programs teach.</li><li><strong>Measure behavior, not traffic:</strong> a content-effectiveness audit lifted self-service solvability 9.03%, roughly 10,670 fewer support tickets a year; define the behavior a program should change, then measure that.</li><li><strong>Produce content at reach:</strong> engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views).</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">First dedicated communications hire for xGE; built the function from zero for a community of 1,000+ Principal, Distinguished, and Fellow engineers, and authored the three-tier operating model (intake protocols, editorial calendar, governance, campaign-execution playbook) the portfolio below runs on.</p>
+<div class="rinit"><div class="rinit-h">Senior-IC event and program portfolio</div><ul class="rl"><li><strong>Problem:</strong> The community needed a program engine, not ad hoc events and sends.</li><li><strong>Action:</strong> Owned the annual summit (600+ attendees), quarterly engineering forums (300+ each), and xGE Connects, the peer-led workshop series, end to end: intake, speaker prep, rehearsal, staging, follow-up, plus the annual survey that shapes the community's roadmap.</li><li><strong>Impact:</strong> One repeatable operating rhythm; Q1-2026 Connects sessions, hosted by Google DeepMind engineers, drew record attendance.</li></ul></div>
+<div class="rinit"><div class="rinit-h">Executive-communications <a href="../stories.html#digital-twin">digital twin</a> (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent around a codified voice "Constitution" plus a banned-phrase verification checklist.</li><li><strong>Impact:</strong> Cut review back-and-forth with the VP by about 70% (internal, self-measured).</li></ul></div>
+<div class="rinit"><div class="rinit-h"><a href="../comms-triage-agent.html">Communications-triage agent</a> (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 60% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full <a href="../writing.html">operator runbook</a>.</li></ul></div></div>
+<div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Communications and content for Google's internal IT org and its global help desk (TechStop); also ran the engineering talent-branding portfolio.</p>
+<div class="rinit"><div class="rinit-h">Engineering <a href="../work.html#google">talent-branding video</a> portfolio</div><ul class="rl"><li><strong>Problem:</strong> Engineering hiring needed stories, not job listings.</li><li><strong>Action:</strong> Produced recruitment campaigns and talent-branding content end to end, running field shoots with vendor crews.</li><li><strong>Impact:</strong> 1.7M+ YouTube views across the portfolio.</li></ul></div>
+<div class="rinit"><div class="rinit-h">2023 content-effectiveness audit</div><ul class="rl"><li><strong>Problem:</strong> Self-service content was leaving solvable tickets on the table.</li><li><strong>Action:</strong> Designed the measurement framework and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Lifted self-service solvability 9.03%, roughly 10,670 fewer tickets a year.</li></ul></div>
+<div class="rinit"><div class="rinit-h">Day-One technical onboarding overhaul</div><ul class="rl"><li><strong>Problem:</strong> Live orientation could not keep pace with Google's hiring.</li><li><strong>Action:</strong> Rebuilt it into a self-service curriculum a new hire could complete without a facilitator.</li><li><strong>Impact:</strong> Delivered to 75,000+ new hires at an 88% CSAT score.</li></ul></div></div></section>
+<section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Code public at <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>.</p>
+<p class="rp"><strong>career-ops</strong> · Extended an open-source pipeline into a cost-governed multi-agent system: multi-LLM council with adjudication, 52 scheduled agents, MCP servers, live operations dashboard. CI-green; public on GitHub.</p>
+<p class="rp"><strong><a href="../content-ops.html">content-ops</a></strong> · A multi-agent content engine: one idea becomes platform-native pieces through nine dated platform playbooks and four audience profiles, gated by a deterministic voice check with a hard human-in-the-loop publish step.</p>
+<p class="rp"><strong><a href="../picture-lock.html">picture-lock</a></strong> · Seven-stage AI video pipeline: script in, produced and captioned short out; $8.26 of logged cost, every API call in a committed run manifest.</p></section>
+<section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2007 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of field and event marketing: a live room, a hard clock, and a skeptical audience, every day at air time.</strong></p>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer line (proof-of-concept: 50M+ views) that doubled as a <a href="../stories.html#talent-pipeline">talent pipeline</a>: three producers coached into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day" (2016):</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
+<section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
+<section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Marketing Program Management:</strong> campaign planning and execution, GTM program management, developer and field marketing, workshop and event program management, launch cadence and calendar ownership, intake and prioritization frameworks, program-ROI and metrics design, stakeholder management.</p>
+<p class="rp"><strong>Developer &amp; Technical Marketing:</strong> technical-audience communications, AI-native developer-tool positioning, community engagement, workshop curriculum design, enterprise enablement content.</p>
+<p class="rp"><strong>AI / Agents:</strong> production LLM agents (Apps Script + Gemini, Node.js), multi-agent orchestration, Model Context Protocol (MCP), Claude Code skills, eval and regression infrastructure, prompt engineering.</p></section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="../shared/reveal.js?v=20260715a"></script>
+<script src="../shared/audio.js?v=20260711c"></script>
+</body>
+</html>

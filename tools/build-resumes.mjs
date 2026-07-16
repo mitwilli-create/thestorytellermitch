@@ -19,6 +19,11 @@ export const LANES = {
   'mitchell-williams-ai-solutions-architect': { slug: 'ai-solutions-architect', title: 'AI Solutions Architect' },
   'mitchell-williams-ai-enablement':          { slug: 'ai-enablement',          title: 'AI Enablement / Transformation Lead' },
   'mitchell-williams-ai-program-manager':     { slug: 'ai-program-manager',     title: 'AI / Technical Program Manager' },
+  // fitAnchor: fit.html has no marketing-lane section yet; land the fit button
+  // on the role list instead of a dead #marketing-program-manager anchor.
+  // pathBtn: the marketing lane is Step 4 of the Cursor review path.
+  'mitchell-williams-marketing-program-manager': { slug: 'marketing-program-manager', title: 'Marketing Program Manager (Developer Tools)', fitAnchor: 'roles',
+                                                pathBtn: { href: '../for-cursor.html', label: 'The Cursor review path' } },
   // keepPhone: the comms resume shows the phone in the HTML page by owner
   // ruling (2026-07-15); without this flag every re-bake strips it back out
   // and only the PDF re-injection restores it. Do not remove.
@@ -38,7 +43,7 @@ export const LANES = {
 export const PRINT_PT = {
   'forward-deployed': 9.8, 'ai-solutions-architect': 9.8, 'ai-enablement': 9.2,
   'ai-program-manager': 9.2, 'comms-manager': 9.6, 'devrel-education': 9.8,
-  'content-editorial': 9.2,
+  'content-editorial': 9.2, 'marketing-program-manager': 9.2,
 };
 
 // Deep links: first mention per resume of a video / story / project routes to its page.
@@ -335,7 +340,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       ${lane.pathBtn ? `<a class="btn" href="${esc(lane.pathBtn.href)}"><span>${esc(lane.pathBtn.label)}</span></a>
       ` : ''}<a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
-      <a class="btn" href="../fit.html#${esc(lane.slug === 'forward-deployed' ? 'forward-deployed' : lane.slug)}"><span>The fit case</span></a>
+      <a class="btn" href="../fit.html#${esc(lane.fitAnchor ?? lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
   ${secHtmlLinked}
