@@ -28,10 +28,18 @@
 
     const paint = () => {
       if (scrub) return; // the visitor's drag owns the handle
-      const d = total(), t = el ? el.currentTime : 0;
+      // a seek parked before metadata (pending) is the truth until it applies,
+      // else releasing an early drag snaps the handle back to 0:00
+      const d = total(), t = pending >= 0 ? pending : (el ? el.currentTime : 0);
       const pct = d ? Math.min(100, (t / d) * 100) : 0;
       fill.style.width = pct + '%';
-      seek.value = pct;
+      const rounded = Math.round(pct);
+      if (+seek.value !== rounded) {
+        // whole steps only: a per-frame fractional write is announcement
+        // chatter for a screen reader focused on the slider
+        seek.value = rounded;
+        seek.setAttribute('aria-valuetext', fmt(t) + ' of ' + fmt(d));
+      }
       status.textContent = t > 0 ? fmt(t) + ' / ' + fmt(d) : fmt(d);
     };
     const loop = () => { paint(); raf = requestAnimationFrame(loop); };
@@ -58,7 +66,9 @@
         showPlaying(false); still();
         btn.disabled = true;
         seek.disabled = true; // an invisible-but-focusable seek must die with the button
-        status.textContent = 'audio unavailable';
+        pending = -1;
+        status.setAttribute('role', 'alert'); // announce the failure once; safe
+        status.textContent = 'audio unavailable'; // because nothing repaints after this
       });
       return el;
     };
@@ -69,8 +79,13 @@
     });
 
     // the invisible range over the bar field: native keyboard + pointer seek
+    const endScrub = () => { scrub = false; paint(); };
     seek.addEventListener('pointerdown', () => { scrub = true; });
-    seek.addEventListener('pointerup', () => { scrub = false; paint(); });
+    seek.addEventListener('pointerup', endScrub);
+    // a touch drag the browser claims for page scroll ends in pointercancel,
+    // not pointerup; without these the progress UI freezes for the session
+    seek.addEventListener('pointercancel', endScrub);
+    seek.addEventListener('lostpointercapture', endScrub);
     seek.addEventListener('input', () => {
       const a = ensure(), d = total();
       if (!d) return;

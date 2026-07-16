@@ -35,10 +35,17 @@
     scoreEl: null, humEl: null, sfxCache: {},
   };
 
+  // per-element generation counter: starting a new fade must kill the old
+  // loop, or a slow un-duck outlives a fast duck and lands the bed at full
+  // volume underneath a playing voice
+  const fadeGen = new WeakMap();
   const fade = (el, to, ms) => {
     if (!el) return;
+    const gen = (fadeGen.get(el) || 0) + 1;
+    fadeGen.set(el, gen);
     const from = el.volume, t0 = performance.now();
     const step = (t) => {
+      if (fadeGen.get(el) !== gen) return; // a newer fade owns this element
       const k = Math.min(1, (t - t0) / ms);
       el.volume = from + (to - from) * k;
       if (k < 1 && !el.paused) requestAnimationFrame(step);
@@ -97,13 +104,15 @@
       });
       const done = () => {
         // a swap fires the loser's pause event after the winner is already
-        // playing; only the last voice standing may lift the duck
-        if (state.voices.some((v) => !v.paused)) return;
+        // playing; only the last voice standing may lift the duck. An element
+        // that died mid-play keeps paused=false forever, so it must not count.
+        if (state.voices.some((v) => !v.paused && !v.error)) return;
         state.voiceBusy = false;
         if (state.on && state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, SCORE_VOL, 900);
       };
       el.addEventListener('pause', done);
       el.addEventListener('ended', done);
+      el.addEventListener('error', done); // a fetch/decode death never fires pause
       el.setAttribute('data-voice', '');
     },
   };

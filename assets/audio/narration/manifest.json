@@ -18,10 +18,10 @@
       "hash": "823a2c26a296b742",
       "normalization_hash": "309c332db92d0a63",
       "chars": 1011,
-      "duration_s": 64.92,
-      "lufs_in": -17.7,
+      "duration_s": 61.53,
+      "lufs_in": -18,
       "lufs_out": -16.8,
-      "peak_out_dbfs": -1.8
+      "peak_out_dbfs": -1.9
     },
     "picture-lock": {
       "hash": "f2f62e9b1804fb34",
@@ -96,5 +96,5 @@
       "peak_out_dbfs": -1.7
     }
   },
-  "chars_this_run": 927
+  "chars_this_run": 1011
 }

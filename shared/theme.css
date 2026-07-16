@@ -478,7 +478,12 @@ a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
       background:repeating-linear-gradient(90deg,var(--blood-soft) 0 2px,transparent 2px 5px)}
     .voice-console.is-playing .vc-wave-fill{box-shadow:inset -2px 0 0 var(--blood-soft)}
     .vc-seek{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+    .vc-wave:focus-within{outline:1px solid var(--blood-soft);outline-offset:2px}
     .vc-wave:has(.vc-seek:focus-visible){outline:1px solid var(--blood-soft);outline-offset:2px}
+    @supports selector(:has(a)){
+      /* engines with :has() get the finer focus-visible-only ring */
+      .vc-wave:focus-within:not(:has(.vc-seek:focus-visible)){outline:none}
+    }
     .vc-status{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.06em;color:var(--mute);text-transform:lowercase;max-width:220px;line-height:1.5}
     .vc-transcript{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}

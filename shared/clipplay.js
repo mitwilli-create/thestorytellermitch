@@ -92,7 +92,12 @@
     stage.replaceChildren();
     theater.hidden = true;
     document.documentElement.classList.remove('theater-open');
-    if (window.__sound) { __sound.duck(false); __sound.score(null); }
+    if (window.__sound) {
+      __sound.duck(false);
+      // only stop a bed the theater itself started (mirrors the open side);
+      // killing an independent page bed here silenced index.html for the visit
+      if (document.body.dataset.theaterBed !== undefined) __sound.score(null);
+    }
     if (lastTile) lastTile.focus();
   }
 
