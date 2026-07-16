@@ -16,8 +16,15 @@
     .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
     .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);
       letter-spacing:-0.03em;text-transform:uppercase;line-height:1;color:var(--bone)}
+    /* pillars sized to land as two full lines in the 820px column, not one
+       line plus an orphaned word (owner 2026-07-15); balance evens the pair.
+       Screen only: the print block re-sizes pillars, keeping the locked PDFs
+       byte-identical in layout. */
     .rpillars{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--blood-soft);margin-top:14px;line-height:1.7}
+    @media screen{
+      .rpillars{font-size:clamp(13px,2.44vw,20px);letter-spacing:0.08em;line-height:1.55;text-wrap:balance}
+    }
     .rcontact{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
       margin-top:12px;line-height:1.8}
     section.rsec{padding:0;margin-top:34px} /* theme.css sets global section padding; kill it here */
@@ -37,6 +44,9 @@
     .rinit{margin:10px 0}
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+    /* compact buttons so the full row (four on the comms lane) holds one
+       line inside the 820px column at desktop (owner 2026-07-15) */
+    .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
     /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
        overriding the dealbreaker's band/underline/mono-line compromises):
        Archivo carries every heading (name, section heads, role heads), Inter
