@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715f">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
   <style>
     /* shared paragraph measure for this page's prose blocks (council R8) */
     main{--measure:720px}
@@ -51,9 +51,9 @@
     .wr-skim-q{color:var(--blood-soft);font-size:13px;font-weight:700}
     .wr-skim-nav a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
     .wr-skim-nav a:hover{color:var(--blood-soft)}
-    .wr-skim-go a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);padding-bottom:2px;
+    .wr-skim-go a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);padding-bottom:2px;
       transition:color var(--dur-micro) var(--ease-micro)}
-    .wr-skim-go a:hover{color:var(--blood-text)}
+    .wr-skim-go a:hover{color:var(--bone)}
     .wr-skim a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
     @media(max-width:640px){.wr-skim-go{border-left:0;padding-left:0}}
     section{padding:52px 0}
@@ -139,9 +139,9 @@
     .art-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3vw,34px);
       color:var(--bone);line-height:1.15;margin-bottom:14px}
     .art-intro{max-width:var(--measure);font-size:16px;color:var(--bone-soft);line-height:1.7;margin-bottom:28px}
-    /* tier-3 inline body links: hairline low-alpha underline, full oxblood on hover (council R5) */
-    .art-intro a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
-    .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--blood-text)}
+    /* tier-3 inline body links: oxblood ink, hairline underline (owner 2026-07-15) */
+    .art-intro a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline)}
+    .art-intro a:hover,.src-line a:hover,.dc-b a:hover,.wr-note a:hover{color:var(--bone)}
     .art-intro a:focus-visible,.src-line a:focus-visible,
     .dc-b a:focus-visible,.wr-note a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .ox-i{color:var(--blood-soft)}
@@ -225,7 +225,7 @@
       text-transform:uppercase;color:var(--blood-soft);display:block;margin-bottom:10px}
     .dcard strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--bone);display:block;margin-bottom:8px;line-height:1.25}
     .dcard .dc-b{font-size:13.5px;color:var(--mute);line-height:1.6;display:block}
-    .dcard .dc-b a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
+    .dcard .dc-b a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline)}
     .dcard .dc-r{display:block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
     .dc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -237,7 +237,7 @@
     /* Google case-study cards: the internal documents stay inside Google;
        these cards carry the shape, the outcome, and the provenance line */
     .wr-note{max-width:var(--measure);margin-top:18px;font-size:13.5px;color:var(--mute);line-height:1.6}
-    .wr-note a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
+    .wr-note a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline)}
     /* below 1120 the theme hides the hero art entirely; bring it back as a
        low-opacity plate behind the text instead of a black slab */
     @media(max-width:1120px){
@@ -513,24 +513,24 @@
     <p class="art-intro reveal"><strong class="wt">Three artifacts from two Google roles.</strong> The documents themselves <span class="doc-wt">stay inside Google</span>: what's published here is the shape of each, what it had to do, how it was written, and what it measured.</p>
     <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation.</p>
     <div class="doc-cards">
-      <article class="dcard reveal">
+      <a class="dcard reveal" href="docs/xge-operations-guide.html">
         <span class="dc-k">Google xGE · 2026 · operator runbook</span>
         <strong>The agent handoff runbook</strong>
         <span class="dc-b">The communications-triage agent had to run for a month without its builder. The runbook made that true: what the system does on its own, what the human handles, escalation rules, error paths, and the metrics framework, written so the team could run it without me, and used for exactly that.</span>
-        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
-      </article>
-      <article class="dcard reveal">
+        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
+      </a>
+      <a class="dcard reveal" href="docs/orientation-pilot-script.html">
         <span class="dc-k">Google Corporate Engineering · video script</span>
         <strong>The Day-One orientation script</strong>
         <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to 75,000+ new hires at an 88% CSAT <span class="src-t">(internal, self-measured)</span>. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
-        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
-      </article>
-      <article class="dcard reveal">
+        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
+      </a>
+      <a class="dcard reveal" href="docs/techstop-help-article.html">
         <span class="dc-k">Google TechStop · self-help article</span>
         <strong>The self-help rewrite that paid for itself</strong>
         <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability 9.03% (about 10,670 fewer tickets a year) <span class="src-t">(internal, self-measured)</span>.</span>
-        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
-      </article>
+        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
+      </a>
       <div class="dcard reveal">
         <span class="dc-k">Public repos · already sanitized</span>
         <strong>The public documentation suite</strong>
