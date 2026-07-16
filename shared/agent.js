@@ -55,9 +55,9 @@
   .sma-m.u{align-self:flex-end;max-width:88%;background:var(--surface,#141416);
     border:1px solid var(--line,rgba(236,232,225,0.10));padding:8px 12px;color:var(--bone,#ece8e1)}
   .sma-m.a{color:var(--bone-soft,#c7c2b9)}
-  .sma-m.a.sma-thinking{color:var(--mute,#8b867d);animation:smaPulse 1.4s ease-in-out infinite}
-  @keyframes smaPulse{50%{opacity:0.35}}
-  @media (prefers-reduced-motion:reduce){.sma-m.a.sma-thinking{animation:none}}
+  .sma-m.a.sma-thinking{color:var(--mute,#8b867d);opacity:0;animation:smaIn 700ms ease-out forwards}
+  @keyframes smaIn{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.sma-m.a.sma-thinking{animation:none;opacity:1}}
   .sma-nav{display:block;text-decoration:none;border:1px solid var(--blood-hairline,rgba(196,104,93,0.35));
     padding:10px 12px;transition:border-color 160ms ease}
   .sma-nav:hover,.sma-nav:focus-visible{border-color:var(--blood-text,#c4685d)}
@@ -244,7 +244,7 @@
     history.push({ role: 'user', content: text });
     addMsg('u', text);
     persist();
-    const bubble = addMsg('a', 'Thinking');
+    const bubble = addMsg('a', 'Thinking...');
     bubble.classList.add('sma-thinking');
     run(text, bubble);
   });
@@ -272,10 +272,14 @@
 
     try {
       armStall();
+      // The truncation window must not open on an assistant turn (the API
+      // needs a user turn first); drop the orphaned reply if it does.
+      const window_ = history.slice(-HISTORY_SENT);
+      while (window_.length && window_[0].role !== 'user') window_.shift();
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history.slice(-HISTORY_SENT) }),
+        body: JSON.stringify({ messages: window_ }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) throw new Error('http ' + res.status);
@@ -324,8 +328,9 @@
       const retry = el('button', 'sma-retry', 'Retry');
       retry.type = 'button';
       retry.addEventListener('click', () => {
+        if (busy) return; // a newer request owns the stream; stale retries wait
         retry.remove();
-        bubble.textContent = 'Thinking';
+        bubble.textContent = 'Thinking...';
         bubble.classList.add('sma-thinking');
         run(text, bubble);
       });

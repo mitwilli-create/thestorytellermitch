@@ -317,6 +317,16 @@ function topicsLine(topics) {
 // attempt; the property that actually holds is that policy paragraphs TALK
 // ABOUT THE ASSISTANT (sole exception: a bare "**Must NOT:**"), and any
 // paragraph naming an excluded term is policy by definition.
+//
+// On "remove private policy literals from the public repository"
+// (CodeRabbit 2026-07-16, REJECTED): these regexes ARE the public filter.
+// The same patterns have shipped in this repo since Phase B (worker
+// publicExcerpt/NEVER_PUBLIC and EXCLUDED_FROM_EMBEDDINGS below, PRs
+// #120/#124), and the kb/ files whose policy they classify are themselves
+// tracked here. A filter cannot exclude terms it is not allowed to name;
+// moving the needle list to a private binding would leave this build
+// unrunnable from a clean checkout while concealing nothing the kb/
+// sources do not already state.
 const POLICY_MARKER = /\bassistant\b|\bmust not\b/i;
 const NEVER_PUBLIC = /Spain|Barcelona|Madrid|laid off|layoff|garden leave/i;
 

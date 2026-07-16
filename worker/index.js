@@ -341,6 +341,16 @@ const CHAT_MODEL = 'claude-opus-4-8';
 // Hard output cap per response. Doubles as the abuse ceiling: with the origin
 // gate spoofable until Phase E hardening, the worst a scripted caller can burn
 // per request is bounded here.
+//
+// On "add rate/concurrency/budget limits before exposing /api/chat"
+// (CodeRabbit 2026-07-16, DEFERRED to Phase E by the approved roadmap, not
+// silently dropped): real rate limiting needs state this Worker does not
+// have (KV/Durable Objects) or an edge WAF rule; both are Phase E's scoped
+// work alongside Turnstile and daily caps. Until then the bounded surface
+// is: origin gate, 16-message/4000-char body caps, effort low, 1024-token
+// output cap, the 0.50 retrieval floor, and a kill switch (deleting the
+// ANTHROPIC_API_KEY secret degrades the widget to a contact card, no
+// deploy needed). Owner sign-off tracked in the Phase C/D ship report.
 const CHAT_MAX_TOKENS = 1024;
 // Generation wants context DEPTH (multiple chunks of the best document),
 // which is the opposite of /api/ask's PER_SOURCE_CAP=1 display diversity.
@@ -422,6 +432,16 @@ const NAVIGATE_TOOL = {
 // returns nothing relevant. Wording rules: assistant speaks ABOUT Mitchell,
 // never as him; hard exclusions per kb/status-availability.md and
 // kb/metrics-provenance.md; no em dashes in outward copy (site-wide ban).
+//
+// On "keep assistant policy out of public source" (CodeRabbit 2026-07-16,
+// REJECTED): every rule stated here paraphrases policy already tracked in
+// this public repo (kb/status-availability.md, kb/deflect-comp.md,
+// kb/metrics-provenance.md ship verbatim scripts and hard-limit sections),
+// and the $14.20/$9.51 figures are published on voice-os.html as labeled
+// honest-history lines. There is no secret to protect: the prompt's value
+// is behavioral, not concealment, and a private binding would only make
+// the assistant's rules un-reviewable while an attacker probes the same
+// behavior black-box. Secrets (API keys) stay in Worker secrets.
 const CHAT_SYSTEM_PROMPT = `You are the site assistant on thestorytellermitch.com, the portfolio site of Mitchell Williams, a communications-native applied-AI builder. You answer questions ABOUT Mitchell in the third person. You are not Mitchell and you never speak as him or in his voice.
 
 GROUNDING
@@ -491,13 +511,27 @@ async function handleChat(request, env) {
   if (messages[messages.length - 1].role !== 'user') {
     return new Response('Last message must be from the user', { status: 400 });
   }
+  // The Messages API requires the first message to be a user turn. A client
+  // that truncates history can legally send a window that opens on an
+  // assistant turn; drop leading assistant messages rather than 400 the
+  // whole conversation.
+  while (messages.length && messages[0].role !== 'user') messages.shift();
 
   // Retrieval, inside the Worker, from FULL metadata. Never from /api/ask:
   // that response is deliberately policy-stripped (the leak class shipped
-  // live twice; see publicExcerpt above).
-  const query = messages[messages.length - 1].content.slice(0, 1000);
-  const embedded = await env.AI.run(EMBED_MODEL, { text: [query], pooling: 'cls' });
-  const results = await env.VECTORIZE.query(embedded.data[0], { topK: POOL_K, returnMetadata: 'all' });
+  // live twice; see publicExcerpt above). Everything from here to the
+  // upstream fetch runs BEFORE the SSE stream exists, so failures are
+  // returned as the same canned SSE the widget already speaks instead of
+  // an opaque 500.
+  let results;
+  try {
+    const query = messages[messages.length - 1].content.slice(0, 1000);
+    const embedded = await env.AI.run(EMBED_MODEL, { text: [query], pooling: 'cls' });
+    results = await env.VECTORIZE.query(embedded.data[0], { topK: POOL_K, returnMetadata: 'all' });
+  } catch (e) {
+    console.error(`chat retrieval failed: ${e}`);
+    return cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
+  }
 
   const top1 = results.matches[0]?.score ?? 0;
   if (top1 < CHAT_ABSTAIN_FLOOR) {
@@ -529,8 +563,13 @@ async function handleChat(request, env) {
     })
     .join('\n\n')}`;
 
-  const upstream = await fetch('https://api.anthropic.com/v1/messages', {
+  let upstream;
+  try {
+    upstream = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
+    // Bound the whole upstream call so a wedged connection cannot hold the
+    // Worker (and the visitor's spinner) open indefinitely.
+    signal: AbortSignal.timeout(60_000),
     headers: {
       'content-type': 'application/json',
       'x-api-key': env.ANTHROPIC_API_KEY,
@@ -554,7 +593,11 @@ async function handleChat(request, env) {
       tools: [NAVIGATE_TOOL],
       messages: messages.map((m) => ({ role: m.role, content: m.content })),
     }),
-  });
+    });
+  } catch (e) {
+    console.error(`anthropic fetch failed: ${e}`);
+    return cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
+  }
 
   if (!upstream.ok) {
     // Upstream detail stays in the log, not the visitor-facing stream.
@@ -615,6 +658,10 @@ async function handleChat(request, env) {
             toolBuf.delete(payload.index);
           } else if (payload.type === 'message_delta' && payload.delta?.stop_reason === 'refusal') {
             refused = true;
+          } else if (payload.type === 'message_delta' && payload.delta?.stop_reason === 'max_tokens') {
+            // The cap cut the answer mid-thought; say so instead of letting
+            // a truncated reply read as a finished one.
+            await write({ text: '\n(That answer hit my length limit. Ask a follow-up and I will pick it up from there.)' });
           } else if (payload.type === 'error') {
             console.error(`anthropic stream error: ${JSON.stringify(payload.error).slice(0, 300)}`);
             await write({ err: 'The assistant hit an error. Please try again.' });
