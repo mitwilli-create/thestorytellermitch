@@ -317,7 +317,10 @@
       clearTimeout(stallT);
       if (!acc && navCount) { acc = 'Here is the page for that.'; bubble.textContent = acc; bubble.classList.remove('sma-thinking'); }
       if (!acc && !navCount) throw new Error('empty');
-      if (!gotDone) { acc += '\n(response interrupted)'; bubble.textContent = acc; }
+      // No done sentinel means the stream died mid-answer: that is a failed
+      // request, not a short answer. The catch path keeps the partial text
+      // visible and offers Retry without persisting it as a real reply.
+      if (!gotDone) throw new Error('interrupted');
       history.push({ role: 'assistant', content: acc });
       persist();
       announce('Assistant: ' + acc);
