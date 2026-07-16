@@ -15,7 +15,8 @@
 //   __sound.sfx(name)              -> one-shot from assets/sfx/<name>.mp3
 //   __sound.hum(true|false)        -> start/stop the pipeline hum loop
 //   __sound.score(src|null)        -> start/stop a music bed (~15% vol)
-//   __sound.voice(audioEl)         -> register a narration <audio> for ducking
+//   __sound.voice(el)              -> register a voice element, <audio> or
+//                                     <video>, for one-at-a-time + ducking
 (() => {
   const KEY = 'mw-sound';
   const SCORE_VOL = 0.15;      // the bed's ceiling
@@ -30,14 +31,21 @@
   };
   const state = {
     on: store.get(KEY) === 'on',
-    subs: [], voiceBusy: false,
-    scoreEl: null, humEl: null, sfxCache: {},
+    subs: [], voiceBusy: false, voices: [],
+    scoreEl: null, humEl: null, humWanted: false, sfxCache: {},
   };
 
+  // per-element generation counter: starting a new fade must kill the old
+  // loop, or a slow un-duck outlives a fast duck and lands the bed at full
+  // volume underneath a playing voice
+  const fadeGen = new WeakMap();
   const fade = (el, to, ms) => {
     if (!el) return;
+    const gen = (fadeGen.get(el) || 0) + 1;
+    fadeGen.set(el, gen);
     const from = el.volume, t0 = performance.now();
     const step = (t) => {
+      if (fadeGen.get(el) !== gen) return; // a newer fade owns this element
       const k = Math.min(1, (t - t0) / ms);
       el.volume = from + (to - from) * k;
       if (k < 1 && !el.paused) requestAnimationFrame(step);
@@ -57,8 +65,11 @@
       a.play().catch(() => {});
     },
     hum(run) {
+      // humWanted survives a voice interruption: a voice fades the hum out,
+      // and done() brings it back only while the page still wants it running
+      state.humWanted = !!run;
       if (run) {
-        if (!state.on || state.voiceBusy) return;
+        if (!state.on || state.voiceBusy) return; // done() restarts it if still wanted
         if (!state.humEl) { state.humEl = new Audio('assets/sfx/pipeline-hum.mp3'); state.humEl.loop = true; }
         state.humEl.volume = 0;
         state.humEl.play().then(() => fade(state.humEl, HUM_VOL, 400)).catch(() => {});
@@ -82,19 +93,30 @@
       if (state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, on ? DUCK_VOL : SCORE_VOL, on ? 300 : 900);
     },
     voice(el) {
+      // the registry is what makes "one voice at a time" real: narration
+      // players, variety-chip takes, and theater cuts are detached Audio()
+      // elements or <video>, so no DOM query can round them all up
+      if (state.voices.includes(el)) return;
+      state.voices.push(el);
       el.addEventListener('play', () => {
         // one voice at a time; duck the bed; hold one-shots and hum
-        document.querySelectorAll('audio[data-voice]').forEach((o) => { if (o !== el) o.pause(); });
+        state.voices.forEach((o) => { if (o !== el && !o.paused) o.pause(); });
         state.voiceBusy = true;
         if (state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, DUCK_VOL, 300);
         if (state.humEl && !state.humEl.paused) fade(state.humEl, 0, 300);
       });
       const done = () => {
+        // a swap fires the loser's pause event after the winner is already
+        // playing; only the last voice standing may lift the duck. An element
+        // that died mid-play keeps paused=false forever, so it must not count.
+        if (state.voices.some((v) => !v.paused && !v.error)) return;
         state.voiceBusy = false;
         if (state.on && state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, SCORE_VOL, 900);
+        if (state.on && state.humWanted) api.hum(true); // the run is still going; bring its ambience back
       };
       el.addEventListener('pause', done);
       el.addEventListener('ended', done);
+      el.addEventListener('error', done); // a fetch/decode death never fires pause
       el.setAttribute('data-voice', '');
     },
   };

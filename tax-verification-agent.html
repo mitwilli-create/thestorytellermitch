@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -90,15 +90,18 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label" data-narration="tax-verification-agent" data-narration-secs="63">
       <div class="vc-head">
         <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
         <span class="vc-label">synthetic voice, cloned with consent</span>
       </div>
       <div class="vc-body">
-        <button class="vc-play" type="button" disabled aria-label="Narration coming soon">&#9654;</button>
-        <div class="vc-wave vc-wave--placeholder" aria-hidden="true"></div>
-        <span class="vc-status">narration coming &middot; voice retake in progress</span>
+        <button class="vc-play" type="button" disabled aria-label="Play narration">&#9654;</button>
+        <div class="vc-wave">
+          <div class="vc-wave-fill" aria-hidden="true"></div>
+          <input class="vc-seek" type="range" min="0" max="100" step="1" value="0" aria-label="Seek within the narration">
+        </div>
+        <span class="vc-status">1:03</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams. tax-verification-agent cites its sources, or it says nothing. Filing software optimizes for getting you to the finish line, not for being right. So I built a second system, pointed at the output of the first. It has to show its work. It checks a filing against a four-layer knowledge base: federal code, state statutes, IRS publications, prior-year precedents. It refuses to return a verdict without a citation chain. On a live filing, it flagged a nineteen thousand dollar multi-state allocation error. A confident piece of commercial software had pre-filled it and defended it as correct. The software's own statute showed the exclusion only applied under a condition that wasn't met. No citation, no answer. That's the whole rule. It's an old newsroom principle written as code: no source, no story. I enforced that as a journalist and a comms lead. My agents enforce it too.</p></details>
     </div>
@@ -262,6 +265,7 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260715a"></script>
-<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/audio.js?v=20260716a"></script>
+<script src="shared/narration.js?v=20260716a"></script>
 </body>
 </html>

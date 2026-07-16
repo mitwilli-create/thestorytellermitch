@@ -456,9 +456,9 @@ a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     @keyframes sig-sweep{from{opacity:1;background-position-x:-60%}to{opacity:1;background-position-x:160%}}
 
     /* ---------- narration console: one per narrated page ----------
-       Ships in a labeled "narration coming" state until the re-cloned
-       voice generates; the drop-in step enables the player, bakes the
-       real waveform, and wires the diagram tour. */
+       shared/narration.js wires each console to its rendered take in
+       assets/audio/narration/; the bar field is the seek surface and
+       fills oxblood as the take plays. */
     .voice-console{max-width:760px;border:1px solid var(--line-2);background:var(--surface);
       padding:16px 18px;margin:26px 0 6px}
     .vc-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -472,10 +472,18 @@ a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
       transition:all var(--dur-micro) var(--ease-micro)}
     .vc-play:not(:disabled):hover{border-color:var(--blood-soft)}
     .vc-play:disabled{color:var(--dim);cursor:default;opacity:0.6}
-    .vc-wave{flex:1;height:34px;min-width:0;
-      background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 5px);
-      -webkit-mask-image:linear-gradient(90deg,#000 0 100%);position:relative;overflow:hidden}
-    .vc-wave--placeholder{opacity:0.5}
+    .vc-wave{flex:1;height:34px;min-width:0;position:relative;overflow:hidden;
+      background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 5px)}
+    .vc-wave-fill{position:absolute;top:0;bottom:0;left:0;width:0;
+      background:repeating-linear-gradient(90deg,var(--blood-soft) 0 2px,transparent 2px 5px)}
+    .voice-console.is-playing .vc-wave-fill{box-shadow:inset -2px 0 0 var(--blood-soft)}
+    .vc-seek{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+    .vc-wave:focus-within{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .vc-wave:has(.vc-seek:focus-visible){outline:1px solid var(--blood-soft);outline-offset:2px}
+    @supports selector(:has(a)){
+      /* engines with :has() get the finer focus-visible-only ring */
+      .vc-wave:focus-within:not(:has(.vc-seek:focus-visible)){outline:none}
+    }
     .vc-status{flex:none;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.06em;color:var(--mute);text-transform:lowercase;max-width:220px;line-height:1.5}
     .vc-transcript{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}

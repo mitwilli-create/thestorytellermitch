@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -330,10 +330,18 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label" data-narration="picture-lock" data-narration-secs="66">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
-        <span class="vc-label">recorded narration available on request</span>
+        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
+        <span class="vc-label">synthetic voice, cloned with consent</span>
+      </div>
+      <div class="vc-body">
+        <button class="vc-play" type="button" disabled aria-label="Play narration">&#9654;</button>
+        <div class="vc-wave">
+          <div class="vc-wave-fill" aria-hidden="true"></div>
+          <input class="vc-seek" type="range" min="0" max="100" step="1" value="0" aria-label="Seek within the narration">
+        </div>
+        <span class="vc-status">1:06</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>Hi, I'm Mitchell Williams. PictureLock is the AI production studio I built for newsroom and brand teams shipping short-form video on the ElevenLabs stack. Two crafts merged: a decade producing live news, then years building content systems at Google. Feed it one plain-text script, and it orchestrates narration, score, sound, visuals, even an optional dub, into a finished, captioned cut. Every generation step logs to a costed, reproducible run manifest. The demo film is fifty-three seconds: six beats are motion graphics rendered from the pipeline's own artifacts, and ten are AI-generated shots directed by a creative council and checked by a review board. The artifacts in that cut carry eight dollars and twenty-six cents of logged API cost. But the point isn't the fifty-three seconds. It's the loop: understand a production pipeline, prototype an AI-native replacement, and package it so a customer can run it themselves.</p></details>
     </div>
@@ -629,7 +637,8 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260715a"></script>
-<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/audio.js?v=20260716a"></script>
+<script src="shared/narration.js?v=20260716a"></script>
 <script src="shared/endcard.js?v=20260713a"></script>
 <script>
 (()=>{
@@ -751,6 +760,10 @@
   // until a language ships with its own file).
   const reel=document.querySelector('[data-reel]');
   if(reel){
+    // the film is a voice: registering it means the score bed ducks under
+    // the reel, and the reel and a narration take or variety chip can
+    // never sound at the same time
+    if(window.__sound) __sound.voice(reel);
     const CUTS={
       en:{src:'assets/picture-lock-short-n16.mp4',vtt:'assets/picture-lock-short.vtt',cap:'English',note:'original English cut &middot; captions: English'},
       es:{src:'assets/picture-lock-short.es-n16.mp4',vtt:'assets/picture-lock-short.es.vtt',cap:'Spanish',note:'Spanish dub, Dubbing API, same cut &middot; captions: Spanish, from the dub transcript'},
@@ -777,17 +790,20 @@
   // with the master toggle off, like narration); one voice at a time,
   // registered with the engine so the bed ducks.
   (()=>{
-    let cur=null,curBtn=null;
     document.querySelectorAll('[data-variety]').forEach(btn=>{
+      let a=null; // one element per chip, registered once; the engine's
+                  // registry pauses whichever other voice is speaking
       btn.addEventListener('click',()=>{
-        if(curBtn===btn&&cur&&!cur.paused){ cur.pause(); return; }
-        if(cur){ cur.pause(); }
-        if(curBtn) curBtn.classList.remove('is-playing');
-        cur=new Audio(btn.dataset.variety); curBtn=btn;
-        if(window.__sound) __sound.voice(cur);
-        cur.addEventListener('ended',()=>btn.classList.remove('is-playing'));
-        cur.addEventListener('pause',()=>btn.classList.remove('is-playing'));
-        cur.play().then(()=>btn.classList.add('is-playing')).catch(()=>{});
+        if(a&&!a.paused){ a.pause(); return; }
+        if(!a){
+          a=new Audio(btn.dataset.variety);
+          if(window.__sound) __sound.voice(a);
+          const off=()=>btn.classList.remove('is-playing');
+          a.addEventListener('ended',off);
+          a.addEventListener('pause',off);
+        }
+        a.currentTime=0;
+        a.play().then(()=>btn.classList.add('is-playing')).catch(()=>{});
       });
     });
   })();
