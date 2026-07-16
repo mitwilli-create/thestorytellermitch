@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For Cursor · Marketing Program Manager · Mitchell Williams</title>
+  <meta name="description" content="A sequenced review path for Cursor's Marketing Program Manager screen: the workshop plan first, then the program record, the builder evidence, and the resume.">
+  <meta property="og:title" content="For Cursor · Marketing Program Manager · Mitchell Williams">
+  <meta property="og:description" content="The program case for Cursor, in the order a screen actually checks it. The plan first.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <style>
+    .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
+    .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
+    /* signature underline: a single oxblood rule draws L->R beneath the
+       accent line once the headline has settled, then holds. transform-only
+       (compositor-friendly), one continuous draw, no loop point. Duration
+       rides the dur-set token; only the handoff delays are page-local,
+       matching how reveal.js hardcodes its own hero line delays. */
+    .hero-rule{display:block;height:3px;width:min(360px,60%);margin-top:22px;
+      background:var(--blood-soft);transform:scaleX(0);transform-origin:left center;
+      transition:transform var(--dur-set) var(--ease-reveal)}
+    .revealed .hero-rule{transform:scaleX(1);transition-delay:.62s}
+    /* sub-paragraph rises in after the rule, matching the house hero cadence */
+    .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65;
+      opacity:0;transform:translateY(18px);
+      transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
+    .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
+    .sys-sub p{margin:0 0 13px}
+    .sys-sub p:last-child{margin:0}
+    /* proof strip: last beat of the hero orchestration; numbers verified
+       against comms.html and the resume record before use */
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:34px;max-width:860px;
+      opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    /* .revealed end-state is load-bearing: without it the strip stays at
+       opacity:0 for every JS+motion visitor (the regression class this site
+       has already shipped once). The .95s delay is the strip's slot in the
+       hero orchestration (rule .62s, sub .78s, stats last). */
+    .revealed .hero-stats{opacity:1;transform:none;transition-delay:.95s}
+    .hero-stats .hs{background:var(--surface);padding:20px 18px;min-width:0}
+    .hero-stats .n{font-family:'Archivo',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .hero-stats .k{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:4px;line-height:1.5}
+    .no-js .hero-rule{transform:scaleX(1)}
+    .no-js .sys-sub,.no-js .hero-stats{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .hero-rule{transition:none;transform:scaleX(1)}
+      .sys-sub,.hero-stats{transition:none;opacity:1;transform:none}
+    }
+    section{padding:56px 0}
+    h2.fs-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
+      text-transform:uppercase;letter-spacing:-0.01em;line-height:1.12;color:var(--bone);margin-bottom:22px;max-width:760px}
+    h2.fs-title::before{content:'';display:block;width:52px;height:2px;background:var(--blood-soft);margin-bottom:14px}
+    h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
+      letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
+    .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
+    .path .step{display:flex;gap:18px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
+    /* one min-width, sized to the longest label ("Step 1 · 7-min read"), so
+       every row's text column starts at the same x */
+    .path .d{flex:none;min-width:158px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
+    .path .t a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .path .t a:hover{color:var(--bone)}
+    /* step leads are bold-white anchors that stay links (house grammar: no
+       cells outside section openers); local specificity of .path .t a would
+       otherwise repaint them bone */
+    .path .t strong.wt a{color:#fff;border-bottom:1px solid var(--blood-hairline)}
+    .path .t strong.wt a:hover{color:var(--blood-text)}
+    .path-total{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:18px}
+    .map-list{list-style:none;margin:0;padding:0;max-width:760px}
+    .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
+      line-height:1.65;color:var(--bone-soft)}
+    /* mono kicker sub-headers: the treatment both archived proof states carry */
+    .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin:0 0 4px;font-weight:500}
+    .map-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .map-list li a:hover{color:var(--bone)}
+    .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
+    .narrative-prose a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .narrative-prose a:hover{color:var(--bone)}
+    .narrative-prose p{margin:0 0 13px}
+    .narrative-prose p:last-child{margin:0}
+    #narrative,#path,#ninety-days,#fit-map{scroll-margin-top:86px}
+    /* right-side jump rail (memo doc-rail pattern, page-fixed variant) */
+    .jump-rail{display:none}
+    @media(min-width:1360px){
+      .jump-rail{display:block;position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40}
+      .jump-rail nav{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      .jump-rail a{display:flex;gap:10px;align-items:baseline;padding:8px 0 8px 14px;
+        font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+      .jump-rail a:hover{color:var(--bone)}
+      .jump-rail a.active{color:var(--blood-text);box-shadow:inset 2px 0 0 var(--blood-soft)}
+      .jump-rail .n{color:var(--blood-soft);font-size:9.5px;flex:none}
+      .jump-rail a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    }
+    .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:20px 24px;border-radius:3px}
+    .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
+    .ed-lane .el-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2vw,23px);color:var(--bone);margin:6px 0 0;line-height:1.2}
+    .ed-lane .el-list{list-style:none;margin:14px 0 0;padding:0}
+    .ed-lane .el-list li{position:relative;padding:6px 0 6px 22px;font-size:15px;line-height:1.6;color:var(--bone-soft)}
+    .ed-lane .el-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .ed-lane .el-list li a:hover{color:var(--bone)}
+    .ed-lane .el-list li::before{content:"\2192";position:absolute;left:0;color:var(--blood-soft)}
+    @media(pointer:coarse){
+      /* vertical padding alone grows the tap target on inline links without
+         blockifying them; 3px caps the hit box at the ~25px line advance so
+         stacked links never overlap. The short bold lead links keep
+         inline-block since they always start the line. */
+      .path .t a{padding:3px 0}
+      .path .t strong.wt a{display:inline-block;padding:6px 0}
+      .path .step{padding:20px 0}
+    }
+    /* designed note cards: mono kicker + quiet border, one visual step below
+       the ed-lane so the lane keeps the accent */
+    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px;
+      padding:16px 20px;border:1px solid var(--line);border-left:2px solid var(--line-2);
+      background:var(--bg-2);border-radius:3px}
+    .el-note+.el-note{margin-top:14px}
+    .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+    .el-note p{margin:0}
+    .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+    @media(max-width:640px){
+      .sys-hero{padding:130px 0 56px}
+      .path .step{flex-direction:column;gap:4px}
+    }
+    @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
+  </style>
+</head>
+<body data-reveal-stagger="6">
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<aside class="jump-rail" aria-label="Jump to section">
+  <nav>
+    <a href="#narrative"><span class="n">01</span>The narrative</a>
+    <a href="#path"><span class="n">02</span>The path</a>
+    <a href="#ninety-days"><span class="n">03</span>First 90 days</a>
+    <a href="#fit-map"><span class="n">04</span>Why it works</a>
+  </nav>
+</aside>
+
+<header class="sys-hero">
+  <div class="wrap">
+    <div class="kicker">Cursor marketing programs · the review path</div>
+    <h1 class="display">
+      <span class="ln"><span>The program first,</span></span>
+      <span class="ln"><span class="accent">then the pipeline.</span></span>
+    </h1>
+    <span class="hero-rule" aria-hidden="true"></span>
+    <div class="sys-sub">
+      <p>You're screening for <a class="lnk-inline" href="https://cursor.com/careers/marketing-program-manager" target="_blank" rel="noopener">Cursor's Marketing Program Manager</a> on the integrated campaigns team: the owner of the virtual workshop motion, from topic to live room to pipeline.</p>
+      <p><strong class="wt">I'm not a traditional field marketer.</strong> I'm a newsroom-trained live producer who spent eight years at Google, the last two running programs for 1,000+ of its most senior engineers, and I build with Cursor daily.</p>
+      <p>This page sequences the case the way a program screen checks it: the plan first, then the record.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">600+</div><div class="k">attendees, annual senior-IC summit</div></div>
+      <div class="hs"><div class="n">300+</div><div class="k">per quarterly engineering forum</div></div>
+      <div class="hs"><div class="n">75,000+</div><div class="k">new hires onboarded, 88% CSAT (internal)</div></div>
+      <div class="hs"><div class="n">1.7M+</div><div class="k">YouTube views, recruitment campaign</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="narrative">
+  <div class="wrap">
+    <h2 class="fs-title">How I'd approach Cursor's workshop problem</h2>
+    <div class="narrative-prose reveal">
+      <p>Cursor reached <a href="https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding" target="_blank" rel="noopener">$2 billion in annualized revenue &#8599;</a> faster than any B2B software company on record, and its own enterprise page counts <a href="https://cursor.com/enterprise" target="_blank" rel="noopener">64 percent of the Fortune 500 &#8599;</a> among the companies building with it. Almost none of that came from campaigns. It came from engineers trusting other engineers.</p>
+      <p>Now SpaceX is acquiring Anysphere for <a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">$60 billion &#8599;</a>, and every enterprise buyer weighing a Cursor contract is watching what the company does next.</p>
+      <p><strong class="wt">The workshop program is where that trust scales on purpose.</strong> The memo shows exactly how I would run it.</p>
+    </div>
+    <div class="el-cta reveal" style="margin-top:24px">
+      <a class="btn solid" href="docs/cursor-positioning-memo.html"><span>Read the memo: the full program design, sourced</span></a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="path">
+  <div class="wrap">
+    <h2 class="fs-title">The path</h2>
+    <div class="path">
+      <div class="step reveal"><span class="d">Step 1 · 7-min read</span><span class="t"><strong class="wt"><a href="docs/cursor-positioning-memo.html">Read the plan first.</a></strong> A working memo on Cursor's virtual workshop motion: the program design, the instrumentation, and how the first quarter runs. Written for this screen, from public sources only, every claim cited in place.</span></div>
+      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="wt"><a href="comms.html">Check the program record.</a></strong> Communications and program ownership for the annual senior-IC summit (600+ attendees) and quarterly engineering forums (300+ each), plus <a href="comms.html#enablement">an onboarding curriculum delivered to 75,000+ new hires at 88% CSAT</a> (internal metric). Built for the most skeptical technical audience there is.</span></div>
+      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="wt"><a href="career-ops.html">See the builder evidence.</a></strong> I'm the audience this program converts: I build multi-agent systems daily, in public. career-ops runs a fleet of 52 scheduled agents with spend caps and dead-man heartbeats, and <a href="projects.html">the AI projects page</a> holds the rest. I would use Cursor to build the workshop program's own infrastructure.</span></div>
+      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="wt"><a href="resume/ai-program-manager.html">Open the resume.</a></strong> Two pages, tuned to technical program management. Also as a <a href="assets/resumes/mitchell-williams-ai-program-manager.pdf">PDF</a>.</span></div>
+      <!-- Reviewer note: the email and phone here are Mitchell's own public
+     professional contact details, published by design so recruiters can reach
+     him (same tel: link comms.html has carried on main). Not third-party
+     personal data. -->
+      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="wt">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Cursor%20Marketing%20Program%20Manager%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
+    </div>
+    <p class="path-total">total: about 13 minutes</p>
+  </div>
+</section>
+
+<section style="padding-top:0" id="ninety-days">
+  <div class="wrap">
+    <h2 class="fs-title">The first 90 days, concretely</h2>
+    <p class="narrative-prose reveal" style="margin-bottom:18px">Plainly: these are the first two workshops I would put on Cursor's enterprise calendar, who they serve, and how we would know they worked.</p>
+    <ul class="map-list">
+      <li class="reveal"><h3>Workshop pitch #1 · the enterprise rollout clinic</h3> A session for the admins and engineering leaders running a Cursor deployment: policy, enablement, and what the first 30 days of a rollout actually look like, built from the questions Sales and Customer Success field every week. I ran change communications for cross-org engineering mandates at Google; this is that muscle, pointed outward.</li>
+      <li class="reveal"><h3>Workshop pitch #2 · the practitioner live-build</h3> A live-build hour for senior engineers: from tab-complete to agent workflows, on a real repo, no slideware. Hosted by someone who ships with these tools daily, because this audience converts on demonstrated craft, not claims.</li>
+      <li class="reveal"><h3>The machine behind the calendar</h3> A repeatable playbook: standing topic intake from Sales, Customer Success, and Product; a quarterly theme arc; speaker prep and a rehearsal for every session, which is a broadcast rundown, a discipline from a decade in live newsrooms; follow-up assets shipped within 48 hours while the room is still warm.</li>
+      <li class="reveal"><h3>How we know it worked</h3> Pipeline first, the way the role is scored: registration to attendance, attendance to qualified follow-up, influenced pipeline visible to Sales. Then program quality, engagement, and community health. Reported monthly, against a baseline built in the first 30 days.</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0" id="fit-map">
+  <div class="wrap">
+    <h2 class="fs-title">Why this works for the role</h2>
+    <ul class="map-list">
+      <li class="reveal"><h3>End-to-end program ownership</h3> The annual senior-IC summit (600+ attendees), quarterly engineering forums (300+ each), and a three-tier communications operating model with real intake, governance, and cadence, owned end to end at <a href="comms.html">Google's cross-engineering org</a>.</li>
+      <li class="reveal"><h3>Live rooms are home turf</h3> A decade in newsrooms, 2007-2018 (CNN, Al Jazeera English, AJ+, Fusion, HuffPost Live): rundowns, guest prep, timing, and troubleshooting while the show is on the air. Hosting a live workshop and keeping it on the rails is the same muscle. <a href="stories.html">The case files</a> carry the receipts.</li>
+      <li class="reveal"><h3>The audience is my audience</h3> Enterprise developer marketing lives or dies on credibility with practitioners. I spent the last two years building programs for 1,000+ Principal, Distinguished, and Fellow engineers, and I build with the same agentic tooling Cursor's workshops teach.</li>
+      <li class="reveal"><h3>Measurement that changes behavior</h3> A content-effectiveness audit I designed at Google lifted self-service solvability 9.03%, roughly 10,670 fewer support tickets a year: define the behavior the program should change, then measure that behavior, not the traffic. Applied here, that is pipeline discipline.</li>
+      <li class="reveal"><h3>Process that scales without quality loss</h3> Playbooks are how I work: the <a href="content-ops.html">content-ops engine</a> turns one idea into platform-native pieces through nine encoded playbooks, and the same discipline builds a workshop calendar that survives its owner.</li>
+    </ul>
+
+    <div class="ed-lane reveal">
+      <div class="el-k">The builder lane</div>
+      <h3 class="el-h">I'd use Cursor to build the program itself</h3>
+      <ul class="el-list">
+        <li>The workshop playbook, the registration-to-routing pipeline, and the program metrics dashboard: I would build them in Cursor, and the build itself becomes workshop content.</li>
+        <li><a href="career-ops.html">career-ops</a> is the operating proof: a fleet of 52 scheduled agents with spend caps, kill switches, and dead-man heartbeats, public on <a href="https://github.com/mitwilli-create" target="_blank" rel="noopener">GitHub</a>.</li>
+        <li><a href="picture-lock.html">picture-lock</a> shipped a seven-stage AI film pipeline with every API call logged to a run manifest: $8.26 in the cut. Instrumentation is the habit, not the promise.</li>
+        <li>Same spine as <a href="comms.html">the comms record</a>: evidence first, voice second, volume last.</li>
+      </ul>
+    </div>
+    <div class="el-note reveal"><span class="en-k">Parallel hires</span><p>Cursor's marketing team is also hiring a Product Marketing Manager and Field Marketing roles on both coasts, live on the careers page as of July 15, 2026. This role owns the workshop spine; I'd partner cleanly with all of them.</p></div>
+    <div class="el-note reveal"><span class="en-k">Honesty note</span><p>I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p></div>
+    <div class="el-cta reveal">
+      <a class="btn solid" href="docs/cursor-positioning-memo.html"><span>Read the positioning memo</span></a>
+      <a class="btn" href="resume/ai-program-manager.html"><span>The program resume</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/resumes/mitchell-williams-ai-program-manager.pdf">program resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.jump-rail a');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id]; if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id); if (el) obs.observe(el);
+  });
+})();
+</script>
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260711c"></script>
+</body>
+</html>
