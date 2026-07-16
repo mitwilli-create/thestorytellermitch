@@ -4,7 +4,8 @@ Intake log for storytellermitch.com portfolio-site ideas. One entry per idea, ne
 
 ## Intake contract
 
-- **Channel.** Email to mitwilli@gmail.com with subject starting `PORTFOLIO IDEA:`, scanned daily. Processed emails get the Gmail label `Portfolio Logged`; that label is the dedupe mechanism.
+- **Channel.** Email to mitwilli@gmail.com with subject starting `PORTFOLIO IDEA:`, scanned daily. Processed emails get the Gmail label `Portfolio Logged`; that label is the dedupe mechanism. Processed emails are also filed under the Gmail folder label `Ideas/Portfolio` and archived out of the inbox.
+- **Reply draft.** Each genuine idea gets a reply draft left on its Gmail thread, never sent: a short analysis, next steps, and a strategy kickoff prompt that opens a low-cog-interview elicitation to converge on the idea's ideal end state before implementation planning. The draft follows the same privacy triage as this file.
 - **Where commits land.** Entries are committed on the standing `ideas/intake` branch via the linked worktree, never on `main` or a feature branch. Nothing is pushed automatically; the branch reaches public `main` only through a manual PR the owner controls.
 - **Privacy triage (this repo is PUBLIC).** Log the shareable shape only: what to build, why it matters, rough shape, open questions. Keep out sensitive specifics, treating anything uncertain as sensitive: relocation or Spain references, job-search framing toward named target companies, comp or salary figures, named private clients or partners, unreleased pricing or competitive strategy, personal context. An idea that cannot be stated without sensitive detail is not logged; it is reported back to the owner instead.
 - **Substance floor.** No entry is invented. An email with no actual idea logs nothing. Genuinely different ideas get separate entries. Related existing entries are cross-referenced by name.
