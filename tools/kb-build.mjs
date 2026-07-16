@@ -302,9 +302,54 @@ function topicsLine(topics) {
   return list.length ? `Topics: ${list.join(', ')}.` : '';
 }
 
+// ---- structural policy separation (Phase C) --------------------------------
+// Split each chunk's full text into `text` (public-safe: what /api/ask may
+// serve and what any page may render) and `policy` (assistant-only guidance:
+// "For the assistant:", "Must NOT:", hard limits -- the prose that necessarily
+// NAMES what it forbids). Phase B stripped policy at the response boundary
+// with a regex (worker publicExcerpt); that regex stays as defense in depth,
+// but after this split the public field never CONTAINS policy, so the leak
+// class ("Never name Spain" rendered to a visitor) is dead structurally, not
+// just filtered. Phase C generation reads text + policy server-side.
+//
+// The classifier is the same one publicExcerpt uses, for the same reason it
+// was chosen there: prefix denylists leaked three phrasings on the first
+// attempt; the property that actually holds is that policy paragraphs TALK
+// ABOUT THE ASSISTANT (sole exception: a bare "**Must NOT:**"), and any
+// paragraph naming an excluded term is policy by definition.
+//
+// On "remove private policy literals from the public repository"
+// (CodeRabbit 2026-07-16, REJECTED): these regexes ARE the public filter.
+// The same patterns have shipped in this repo since Phase B (worker
+// publicExcerpt/NEVER_PUBLIC and EXCLUDED_FROM_EMBEDDINGS below, PRs
+// #120/#124), and the kb/ files whose policy they classify are themselves
+// tracked here. A filter cannot exclude terms it is not allowed to name;
+// moving the needle list to a private binding would leave this build
+// unrunnable from a clean checkout while concealing nothing the kb/
+// sources do not already state.
+const POLICY_MARKER = /\bassistant\b|\bmust not\b/i;
+const NEVER_PUBLIC = /Spain|Barcelona|Madrid|laid off|layoff|garden leave/i;
+
+function splitPolicy(text) {
+  const pub = [];
+  const pol = [];
+  for (const para of text.split(/\n{2,}/)) {
+    const t = para.trim();
+    if (!t) continue;
+    (POLICY_MARKER.test(t) || NEVER_PUBLIC.test(t) ? pol : pub).push(t);
+  }
+  return { publicText: pub.join('\n\n'), policyText: pol.join('\n\n') };
+}
+
 const policyFallbacks = [];
 
 function finalizeChunk(chunk) {
+  // `split` is what ships (text = public-safe, policy = assistant-only);
+  // embedText below is still computed from the ORIGINAL full text via the
+  // existing stripPolicyText path, so the embedding-side corpus fingerprint
+  // (kb-corpus-guard hashes embedText) is byte-identical across this change.
+  const { publicText, policyText } = splitPolicy(chunk.text);
+  const split = { ...chunk, text: publicText, policy: policyText };
   if (chunk.docType === 'kb-authored') {
     const stripped = stripPolicyText(chunk.text);
     // Last-resort guard against an empty embedding. The policy-aware merge in
@@ -317,14 +362,14 @@ function finalizeChunk(chunk) {
     if (!enoughToEmbed) policyFallbacks.push(chunk.id);
     const base = enoughToEmbed ? stripped : chunk.text;
     const topics = topicsLine(chunk.topics);
-    return { ...chunk, embedText: topics ? `${topics}\n\n${base}` : base };
+    return { ...split, embedText: topics ? `${topics}\n\n${base}` : base };
   }
   const title = (chunk.docTitle ?? '').trim();
   if (!title || chunk.text.slice(0, 120).toLowerCase().includes(title.toLowerCase())) {
-    return { ...chunk, embedText: chunk.text };
+    return { ...split, embedText: chunk.text };
   }
   const label = DOC_TYPE_LABELS[chunk.docType] ?? chunk.docType;
-  return { ...chunk, embedText: `${title} (${label})\n\n${chunk.text}` };
+  return { ...split, embedText: `${title} (${label})\n\n${chunk.text}` };
 }
 
 const corpus = [
@@ -334,7 +379,9 @@ const corpus = [
   ...processSiteData(),
 ].map(finalizeChunk);
 
-const blob = corpus.map((c) => c.text).join('\n');
+// text + policy together cover the full authored content (text alone is only
+// the public half after the split above), so the gate still sees everything.
+const blob = corpus.map((c) => `${c.text}\n${c.policy ?? ''}`).join('\n');
 const EM_DASH = String.fromCharCode(0x2014); // constructed so a sweep of this file cannot rewrite the needle
 if (blob.includes(EM_DASH)) {
   console.error('EM DASH found in indexed content: fix the source file before building the corpus.');
