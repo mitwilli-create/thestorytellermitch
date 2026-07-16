@@ -7,13 +7,13 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 ## Summary
 
-**The receipt first: PictureLock, in Node and ffmpeg on the ElevenLabs stack, produced a `53-second` creative-directed short with a Spanish dub. The artifacts in the cut carry `$8.26` of logged API cost, every call receipted in the committed public run manifest.** Forward Deployed Creative is the hands-on job I already do: embed with a team, map its production pipeline, ship the AI-native replacement for the slow part, and teach the team to run it. Twelve years of that loop, in live national newsrooms, then for Google's most senior engineers, now on the ElevenLabs creative stack.
+**The receipt first: PictureLock, in Node and ffmpeg on the ElevenLabs stack, produced a `53-second` creative-directed short. The artifacts in the cut carry `$8.26` of logged API cost, the Spanish dub a separately logged `$0.42`, every call receipted in the committed public run manifest.** Forward Deployed Creative is the hands-on job I already do: embed with a team, map its production pipeline, ship the AI-native replacement for the slow part, and teach the team to run it. Twelve years of that loop, in live national newsrooms, then for Google's most senior engineers, now on the ElevenLabs creative stack.
 
 **Eight years at Google, the last two building production LLM agents for its most senior engineers**, after a decade in live national newsrooms where the workflow was the product. The Google role runs through August 2026. The public projects in this resume are a concurrent independent practice, and I'm available on customary notice.
 
 ## Projects
 
-**PictureLock** · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing (Spanish and Japanese shipped). The `53-second` live demo carries `$8.26` of logged cost in its committed run manifest. Ships with a four-file customer handoff kit (example script, config template, cost model, operator runbook) and a node-by-node mapping onto ElevenCreative Flows across its voice, music, image, and video nodes. Public and reproducible.
+**PictureLock** · Seven-stage AI video pipeline in Node and ffmpeg on the ElevenLabs stack: narration, score, sound design, generated shots, assembly, captions, dubbing (Spanish and Japanese shipped). The `53-second` live demo carries `$8.26` of logged cost in its committed run manifest, the Spanish dub a separately logged `$0.42`. Ships with a four-file customer handoff kit (example script, config template, cost model, operator runbook) and a node-by-node mapping onto ElevenCreative Flows across its voice, music, image, and video nodes. Public and reproducible.
 
 **career-ops** · Multi-agent, cost-governed autonomous system extended from an open-source fork: multi-provider council-of-models with adjudication, regression-guard and bug-resolver pipeline, custom Claude Code skills and MCP servers, `52` scheduled agents, `1,150+` scored role reports, live operations dashboard. CI-green, test-covered, and public on GitHub.
 

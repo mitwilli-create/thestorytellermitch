@@ -74,6 +74,12 @@ function chunkText(text, { targetWords = CHUNK_TARGET_WORDS, overlapWords = CHUN
 
 function stripHtml(html) {
   let s = html
+    // kb:exclude … kb:endexclude regions are dropped from the retrieval corpus
+    // entirely, but stay visible on the page. Use for verbatim traces that quote
+    // superseded figures (e.g. voice-os.html's worked-run drafts quote a
+    // pre-consolidation cost by design) so the agent never echoes them as fact.
+    // Must run BEFORE the comment strip below, or the markers vanish first.
+    .replace(/<!--\s*kb:exclude[\s\S]*?kb:endexclude\s*-->/gi, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<!--[\s\S]*?-->/g, ' ');

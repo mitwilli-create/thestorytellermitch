@@ -41,6 +41,7 @@
     .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
     .cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
       letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+    .cs-title .accent{color:var(--blood-soft)}
     .cs-slug{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:15px;
       color:var(--blood-soft);letter-spacing:0.04em;margin:0 0 10px}
     .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
@@ -282,8 +283,11 @@
         <div class="kicker">AI Project · an AI-native short-form video workflow on the ElevenLabs stack</div>
         <!-- cs-slug intentionally shows the GitHub repo slug (picture-lock), not the PictureLock display name -->
         <div class="cs-slug">picture-lock</div>
-        <h1 class="cs-title">One script in, a produced short out.</h1>
-        <p class="cs-standfirst">An AI production studio for newsroom and brand teams shipping short-form video on the ElevenLabs stack: one plain-text script in, a finished, captioned cut out. It was conceived as a b-roll generator; building it proved generation is the cheap part and direction plus quality control is the product. Behind it: <strong>a decade producing live news, then years building content systems at Google</strong>. A seven-expert creative council directs the shots, a review board checks every take against standing craft rules, and the audio mix balances narration, score, and effects, with an optional dub. It <strong>logs every generation step</strong> to a costed, reproducible run manifest.</p>
+        <h1 class="cs-title">One script in, <span class="accent">produced short out.</span></h1>
+        <p class="cs-standfirst">Feed it one plain-text script. It hands back a finished, captioned short, produced end to end on the ElevenLabs stack. That is the whole loop, built for newsroom and brand teams shipping short-form video on a daily cadence.</p>
+        <p class="cs-standfirst">It started life as a b-roll generator. Building it settled a question I keep coming back to: generation is the cheap part. Direction and quality control are the product.</p>
+        <p class="cs-standfirst">That instinct comes from <strong>a decade producing live news, then years building content systems at Google</strong>. So the pipeline runs like a newsroom, not a single button. A seven-expert creative council directs the shots. A review board checks every take against standing craft rules. The audio mix balances narration, score, and effects, with an optional dub.</p>
+        <p class="cs-standfirst">And it <strong>logs every generation step</strong> to a costed, reproducible run manifest. Ask what a finished minute costs and there is a receipt, not a guess.</p>
         <div class="cs-tagrow">
           <span class="cs-tag">ElevenLabs Text-to-Speech</span>
           <span class="cs-tag">Eleven Music v2</span>
@@ -299,7 +303,7 @@
           <div class="cs-stat"><div class="n">53s</div><div class="l">finished, captioned cut + Spanish dub</div></div>
           <div class="cs-stat"><div class="n">7 of 7</div><div class="l">stages run live for this cut; every call logged + costed</div></div>
         </div>
-        <p class="mh-tldr">TL;DR: one script file in, a captioned and dubbed short out, for $8.26 of logged cost. Every stage gated and receipted. A customer team runs the next one from the <a href="#starter-kit">handoff kit</a>.</p>
+        <p class="mh-tldr">TL;DR: one script file in, a captioned short out, for $8.26 of logged cost, plus $0.42 for the Spanish dub on its own logged run. Every stage gated and receipted. A customer team runs the next one from the <a href="#starter-kit">handoff kit</a>.</p>
       </div>
       <div class="mh-reel">
         <div class="cs-video">
@@ -370,7 +374,7 @@
       </div>
       <div class="col after">
         <div class="c-k">This run</div>
-        <div class="c-b">One command from one operator: this cut, its narration and score, ten creatively directed and reviewed generated shots, a measured sound mix, and a Spanish dub, all for the $8.26 logged in the manifest. The "what does a finished minute cost" question has a receipt instead of a guess. Change one line and one beat re-renders: iterations in minutes, not meetings.</div>
+        <div class="c-b">One command from one operator: this cut, its narration and score, ten creatively directed and reviewed generated shots, and a measured sound mix, all for the $8.26 logged in the manifest, with the Spanish dub carrying its own $0.42 receipt from an earlier run. The "what does a finished minute cost" question has a receipt instead of a guess. Change one line and one beat re-renders: iterations in minutes, not meetings.</div>
       </div>
     </div>
     <div class="cs-callout" style="margin-top:22px;">
@@ -401,7 +405,9 @@
 
       <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. Cached artifacts carry their original cost forward, so the receipt reflects the whole cut, not just the last re-run.</p>
 
-      <p>The committed manifest carries <strong>$8.26</strong> for the artifacts in this cut: $0.28 for the complete audio stack, $4.40 for the ten generated shots, $3.50 for creative direction, $0.08 for clip review. Summing the <a href="https://github.com/mitwilli-create/picture-lock/blob/main/output/run-manifest.json" rel="noopener">committed manifest</a> reproduces it line for line.</p>
+      <p>The committed manifest carries <strong>$8.26</strong> for the artifacts in this cut: $0.28 for the complete audio stack, $4.40 for the ten generated shots, $3.50 for creative direction, $0.08 for clip review. Summing the <a href="https://github.com/mitwilli-create/picture-lock/blob/main/output/run-manifest.json" rel="noopener">committed manifest</a> reproduces it: $0.78 of live spend on the day, plus $7.49 carried forward as the original cost of artifacts the cache served instead of re-billing.</p>
+
+      <p>The Spanish dub is not in that number. It rendered live on 8 July from the same script for <strong>$0.42</strong>, logged in the manifest committed at <a href="https://github.com/mitwilli-create/picture-lock/commit/2e51d27" rel="noopener">2e51d27</a>, and the final cut reused it rather than paying for it twice. The cut is $8.26. The dub is $0.42. They are two receipts, not one.</p>
 
       <p>Getting to the shipped version cost more as it ran. The review board's extra re-rolls of one stubborn shot, a full score re-render, the foley experiments, and the Spanish dub renders brought the at-build ledger to about $14, spend that a post-cut re-render no longer carries. (One honesty note on the video itself: beat twelve renders the manifest as a thermal receipt, and it baked in the manifest state at cut time, $9.51 carried, before that final consolidation.)</p>
 
