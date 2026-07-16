@@ -4,6 +4,9 @@
   <script>document.documentElement.classList.remove('no-js')</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>For Cursor · Marketing Program Manager · Mitchell Williams</title>
   <meta name="description" content="A sequenced review path for Cursor's Marketing Program Manager screen: the workshop plan first, then the program record, the builder evidence, and the resume.">
   <meta property="og:title" content="For Cursor · Marketing Program Manager · Mitchell Williams">
@@ -53,9 +56,8 @@
       .sys-sub,.hero-stats{transition:none;opacity:1;transform:none}
     }
     section{padding:56px 0}
-    h2.fs-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
-      text-transform:uppercase;letter-spacing:-0.01em;line-height:1.12;color:var(--bone);margin-bottom:22px;max-width:760px}
-    h2.fs-title::before{content:'';display:block;width:52px;height:2px;background:var(--blood-soft);margin-bottom:14px}
+    h2.fs-title{font-family:'JetBrains Mono',monospace;font-size:clamp(22px,2.6vw,31px);text-transform:uppercase;
+      letter-spacing:0.14em;line-height:1.2;color:var(--blood-soft);margin-bottom:22px;font-weight:500;max-width:860px}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
     .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
@@ -88,14 +90,24 @@
     .narrative-prose p{margin:0 0 13px}
     .narrative-prose p:last-child{margin:0}
     #narrative,#path,#ninety-days,#fit-map{scroll-margin-top:86px}
+    /* silent page: no floating audio control (matches the memo) */
+    .sound-toggle{display:none}
+    /* mobile/tablet wayfinding: a slim top scroll-progress bar for these tall
+       pages, shown only below the rail breakpoint. Width tracks scroll with no
+       transition, so it stays exact and reduced-motion safe. */
+    .scrollprog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--blood-soft);z-index:70;pointer-events:none}
+    @media(min-width:1180px){.scrollprog{display:none}}
     /* right-side jump rail (memo doc-rail pattern, page-fixed variant) */
     .jump-rail{display:none}
-    @media(min-width:1360px){
+    @media(min-width:1180px){
       .jump-rail{display:block;position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40}
-      .jump-rail nav{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      .jump-rail nav{position:relative;display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      /* oxblood scroll-progress fill over the rail's own hairline (ported from
+         the memo doc-rail); imagery-free life for the empty hero-right column */
+      .jump-rail .rail-fill{position:absolute;left:-2px;top:0;width:2px;height:0;background:var(--blood-soft)}
       .jump-rail a{display:flex;gap:10px;align-items:baseline;padding:8px 0 8px 14px;
         font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
-        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro),box-shadow var(--dur-micro) var(--ease-micro)}
       .jump-rail a:hover{color:var(--bone)}
       .jump-rail a.active{color:var(--blood-text);box-shadow:inset 2px 0 0 var(--blood-soft)}
       .jump-rail .n{color:var(--blood-soft);font-size:9.5px;flex:none}
@@ -120,18 +132,13 @@
       .path .t strong.wt a{display:inline-block;padding:6px 0}
       .path .step{padding:20px 0}
     }
-    /* designed note cards: mono kicker + quiet border, one visual step below
-       the ed-lane so the lane keeps the accent */
-    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px;
-      padding:16px 20px;border:1px solid var(--line);border-left:2px solid var(--line-2);
-      background:var(--bg-2);border-radius:3px}
-    .el-note+.el-note{margin-top:14px}
-    .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
-      letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
-    .el-note p{margin:0}
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:640px){
       .sys-hero{padding:130px 0 56px}
+      /* collapse the 4-up proof strip to 2x2 so no number is clipped on the
+         phone-first surface a recruiter screens from (mirrors the memo's own
+         .stat-grid collapse); do not go single-column */
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
       .path .step{flex-direction:column;gap:4px}
     }
     @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
@@ -139,6 +146,7 @@
 </head>
 <body data-reveal-stagger="6">
 <a class="skip-link" href="#main">skip to content</a>
+<div class="scrollprog" aria-hidden="true"></div>
 
 <nav class="nav">
   <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -160,9 +168,10 @@
 
 <aside class="jump-rail" aria-label="Jump to section">
   <nav>
+    <span class="rail-fill" aria-hidden="true"></span>
     <a href="#narrative"><span class="n">01</span>The narrative</a>
-    <a href="#path"><span class="n">02</span>The path</a>
-    <a href="#ninety-days"><span class="n">03</span>First 90 days</a>
+    <a href="#ninety-days"><span class="n">02</span>First workshops</a>
+    <a href="#path"><span class="n">03</span>The path</a>
     <a href="#fit-map"><span class="n">04</span>Why it works</a>
   </nav>
 </aside>
@@ -176,30 +185,44 @@
     </h1>
     <span class="hero-rule" aria-hidden="true"></span>
     <div class="sys-sub">
-      <p>You're screening for <a class="lnk-inline" href="https://cursor.com/careers/marketing-program-manager" target="_blank" rel="noopener">Cursor's Marketing Program Manager</a> on the integrated campaigns team: the owner of the virtual workshop motion, from topic to live room to pipeline.</p>
-      <p><strong class="wt">I'm not a traditional field marketer.</strong> I'm a newsroom-trained live producer who spent eight years at Google, the last two running programs for 1,000+ of its most senior engineers, and I build with Cursor daily.</p>
-      <p>This page sequences the case the way a program screen checks it: the plan first, then the record.</p>
+      <p>This role owns Cursor's virtual workshop motion, from topic to live room to qualified follow-up. Its job is turning engineer-to-engineer trust into enterprise pipeline. I have built and run that kind of program before. You're screening for <a class="lnk-inline" href="https://cursor.com/careers/marketing-program-manager" target="_blank" rel="noopener">Cursor's Marketing Program Manager</a>, integrated campaigns.</p>
+      <p><strong class="wt">I'm a newsroom-trained live producer</strong> who spent eight years at Google, the last two building the program engine from zero for 1,000+ of its most senior engineers, including xGE Connects, a peer-led workshop series. I build agentic systems daily, in public.</p>
+      <p>I have run that muscle for the most skeptical internal audience there is, not yet as external demand generation. This page shows how I would close that gap. It sequences the case the way a program screen checks it. The plan first, then the record.</p>
     </div>
     <div class="hero-stats">
-      <div class="hs"><div class="n">600+</div><div class="k">attendees, annual senior-IC summit</div></div>
-      <div class="hs"><div class="n">300+</div><div class="k">per quarterly engineering forum</div></div>
-      <div class="hs"><div class="n">75,000+</div><div class="k">new hires onboarded, 88% CSAT (internal)</div></div>
-      <div class="hs"><div class="n">1.7M+</div><div class="k">YouTube views, recruitment campaign</div></div>
+      <div class="hs"><div class="n" data-count>600+</div><div class="k">Principal, Distinguished, and Fellow engineers, annual Sr. Tech IC Summit</div></div>
+      <div class="hs"><div class="n" data-count>10,670</div><div class="k">fewer support tickets a year, 9.03% solvability lift (internal)</div></div>
+      <div class="hs"><div class="n" data-count>75,000+</div><div class="k">new hires onboarded, 88% CSAT (internal)</div></div>
+      <div class="hs"><div class="n" data-count>1.7M+</div><div class="k">YouTube views, talent-branding video</div></div>
     </div>
   </div>
 </header>
 
 <section id="narrative">
   <div class="wrap">
-    <h2 class="fs-title">How I'd approach Cursor's workshop problem</h2>
+    <h2 class="fs-title">Cursor's workshop problem</h2>
     <div class="narrative-prose reveal">
-      <p>Cursor reached <a href="https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding" target="_blank" rel="noopener">$2 billion in annualized revenue &#8599;</a> faster than any B2B software company on record, and its own enterprise page counts <a href="https://cursor.com/enterprise" target="_blank" rel="noopener">64 percent of the Fortune 500 &#8599;</a> among the companies building with it. Almost none of that came from campaigns. It came from engineers trusting other engineers.</p>
-      <p>Now SpaceX is acquiring Anysphere for <a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">$60 billion &#8599;</a>, and every enterprise buyer weighing a Cursor contract is watching what the company does next.</p>
-      <p><strong class="wt">The workshop program is where that trust scales on purpose.</strong> The memo shows exactly how I would run it.</p>
+      <p>Cursor reached <a href="https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding" target="_blank" rel="noopener">$2 billion in annualized revenue &#8599;</a> faster than any B2B software company on record. Its own enterprise page counts <a href="https://cursor.com/enterprise" target="_blank" rel="noopener">64 percent of the Fortune 500 &#8599;</a> among the companies building with it. Now, SpaceX is acquiring Cursor's parent company, Anysphere, for <a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">$60 billion &#8599;</a>. Every enterprise buyer weighing a Cursor contract is watching what the company does next.</p>
+      <p>Almost none of that came from campaigns. It came from engineers trusting other engineers.</p>
+      <p><strong class="wt">The workshop program is where that trust scales on purpose.</strong> The program memo shows exactly how I would run it.</p>
     </div>
     <div class="el-cta reveal" style="margin-top:24px">
-      <a class="btn solid" href="docs/cursor-positioning-memo.html"><span>Read the memo: the full program design, sourced</span></a>
+      <a class="btn" href="docs/cursor-positioning-memo.html"><span>Read the program memo: the full design, sourced</span></a>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="ninety-days">
+  <div class="wrap">
+    <h2 class="fs-title">The first workshops I'd put on Cursor's calendar</h2>
+    <p class="narrative-prose reveal" style="margin-bottom:18px">Here are the first three workshops I would put on Cursor's enterprise calendar, including who they serve and how we would know they worked.</p>
+    <ul class="map-list">
+      <li class="reveal"><h3>Workshop pitch #1 · the economic-buyer briefing</h3> A session for the VP-Engineering and platform decision-makers who standardize an org on Cursor and defend that spend to a CFO. The productivity case, the security and admin answers, and what a rollout returns in the first quarter. This is the segment whose movement becomes pipeline, so it leads the calendar.</li>
+      <li class="reveal"><h3>Workshop pitch #2 · the admin rollout clinic</h3> A session for the admins and engineering leaders running a Cursor deployment. Policy, enablement, and what the first 30 days of a rollout actually look like, built from the questions Sales and Customer Success field every week. I ran change communications for cross-org engineering mandates at Google. This is that muscle, pointed outward.</li>
+      <li class="reveal"><h3>Workshop pitch #3 · the practitioner live-build</h3> A live-build hour for senior engineers. From tab-complete to agent workflows, on a real repo, no slideware. Hosted by someone who ships agentic systems in public, because this audience converts on demonstrated craft, not claims.</li>
+      <li class="reveal"><h3>The machine behind the calendar</h3> A repeatable playbook. Topic intake from Sales, Customer Success, and Product. A quarterly theme arc. Speaker prep and a rehearsal for every session, run like a broadcast rundown. Follow-up out within 48 hours, while the room is still warm. Registration, reminders, and no-show recovery underneath. It is the same intake-and-governance model I built at Google, pointed at a shared pipeline view Sales plans around.</li>
+      <li class="reveal"><h3>How we know it worked</h3> Pipeline first, the way the role is scored. A shared MQL definition with Sales, so qualified follow-up is what counts. An influenced-pipeline attribution model Sales trusts. Net-new accounts route to Sales, existing accounts route to Customer Success for expansion. Enterprise deals close on their own clock, so Day 90 is measured on leading indicators, not closed revenue. Then program quality, engagement, and community health. Reported monthly against a baseline built in the first 30 days.</li>
+    </ul>
   </div>
 </section>
 
@@ -207,30 +230,19 @@
   <div class="wrap">
     <h2 class="fs-title">The path</h2>
     <div class="path">
-      <div class="step reveal"><span class="d">Step 1 · 7-min read</span><span class="t"><strong class="wt"><a href="docs/cursor-positioning-memo.html">Read the plan first.</a></strong> A working memo on Cursor's virtual workshop motion: the program design, the instrumentation, and how the first quarter runs. Written for this screen, from public sources only, every claim cited in place.</span></div>
-      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="wt"><a href="comms.html">Check the program record.</a></strong> Communications and program ownership for the annual senior-IC summit (600+ attendees) and quarterly engineering forums (300+ each), plus <a href="comms.html#enablement">an onboarding curriculum delivered to 75,000+ new hires at 88% CSAT</a> (internal metric). Built for the most skeptical technical audience there is.</span></div>
-      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="wt"><a href="career-ops.html">See the builder evidence.</a></strong> I'm the audience this program converts: I build multi-agent systems daily, in public. career-ops runs a fleet of 52 scheduled agents with spend caps and dead-man heartbeats, and <a href="projects.html">the AI projects page</a> holds the rest. I would use Cursor to build the workshop program's own infrastructure.</span></div>
+      <div class="step reveal"><span class="d">Step 1 · 7-min read</span><span class="t"><strong class="wt"><a href="docs/cursor-positioning-memo.html">Read the plan first.</a></strong> The program memo on Cursor's virtual workshop motion. The program design, the instrumentation, and how the first quarter runs. Written for this screen, from public sources only, every claim cited in place.</span></div>
+      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="wt"><a href="comms.html">Check the program record.</a></strong> Communications, program ownership, and workshop development for the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers) and quarterly engineering forums (300+ each). <a href="comms.html#enablement">New onboarding curriculum delivered to 75,000+ new hires and growing, with 88% CSAT</a> (internal metric). Built for the most skeptical technical audiences.</span></div>
+      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="wt"><a href="career-ops.html">See the builder evidence.</a></strong> I'm the audience this program converts. I build multi-agent systems daily and in public. I designed a career ops system that runs a fleet of 52 scheduled agents with spend caps and dead-man heartbeats. <a href="projects.html">My AI projects page</a> holds the rest. I would use Cursor to build the workshop program's own infrastructure and a content production pipeline.</span></div>
       <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="wt"><a href="resume/marketing-program-manager.html">Open the resume.</a></strong> Two pages, tuned to marketing program management for developer tools. Also as a <a href="assets/resumes/mitchell-williams-marketing-program-manager.pdf">PDF</a>.</span></div>
-      <!-- Reviewer note: the email and phone here are Mitchell's own public
-     professional contact details, published by design so recruiters can reach
-     him (same tel: link comms.html has carried on main). Not third-party
-     personal data. -->
-      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="wt">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Cursor%20Marketing%20Program%20Manager%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
+      <!-- Reviewer note (owner-ruled 4x, standing): the email and phone here are
+     Mitchell's OWN published professional contact details, on this page by his
+     explicit design so recruiters can reach him. The public-repo rule targets
+     secrets and third-party personal data, not the owner's published contact
+     info; the same mailto/tel pattern ships on main (comms.html, resume lanes,
+     every footer). Do not remove. -->
+      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="wt">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Cursor%20Marketing%20Program%20Manager%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours. I'm open to relocating for the right role.</span></div>
     </div>
     <p class="path-total">total: about 13 minutes</p>
-  </div>
-</section>
-
-<section style="padding-top:0" id="ninety-days">
-  <div class="wrap">
-    <h2 class="fs-title">The first 90 days, concretely</h2>
-    <p class="narrative-prose reveal" style="margin-bottom:18px">Plainly: these are the first two workshops I would put on Cursor's enterprise calendar, who they serve, and how we would know they worked.</p>
-    <ul class="map-list">
-      <li class="reveal"><h3>Workshop pitch #1 · the enterprise rollout clinic</h3> A session for the admins and engineering leaders running a Cursor deployment: policy, enablement, and what the first 30 days of a rollout actually look like, built from the questions Sales and Customer Success field every week. I ran change communications for cross-org engineering mandates at Google; this is that muscle, pointed outward.</li>
-      <li class="reveal"><h3>Workshop pitch #2 · the practitioner live-build</h3> A live-build hour for senior engineers: from tab-complete to agent workflows, on a real repo, no slideware. Hosted by someone who ships with these tools daily, because this audience converts on demonstrated craft, not claims.</li>
-      <li class="reveal"><h3>The machine behind the calendar</h3> A repeatable playbook: standing topic intake from Sales, Customer Success, and Product; a quarterly theme arc; speaker prep and a rehearsal for every session, which is a broadcast rundown, a discipline from a decade in live newsrooms; follow-up assets shipped within 48 hours while the room is still warm.</li>
-      <li class="reveal"><h3>How we know it worked</h3> Pipeline first, the way the role is scored: registration to attendance, attendance to qualified follow-up, influenced pipeline visible to Sales. Then program quality, engagement, and community health. Reported monthly, against a baseline built in the first 30 days.</li>
-    </ul>
   </div>
 </section>
 
@@ -238,27 +250,26 @@
   <div class="wrap">
     <h2 class="fs-title">Why this works for the role</h2>
     <ul class="map-list">
-      <li class="reveal"><h3>End-to-end program ownership</h3> The annual senior-IC summit (600+ attendees), quarterly engineering forums (300+ each), and a three-tier communications operating model with real intake, governance, and cadence, owned end to end at <a href="comms.html">Google's cross-engineering org</a>.</li>
-      <li class="reveal"><h3>Live rooms are home turf</h3> A decade in newsrooms, 2007-2018 (CNN, Al Jazeera English, AJ+, Fusion, HuffPost Live): rundowns, guest prep, timing, and troubleshooting while the show is on the air. Hosting a live workshop and keeping it on the rails is the same muscle. <a href="stories.html">The case files</a> carry the receipts.</li>
+      <li class="reveal"><h3>End-to-end program ownership</h3> The annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers), quarterly engineering forums (300+ each), and a three-tier communications operating model with real intake, governance, and cadence, owned end to end at <a href="comms.html">Google's cross-engineering org</a>.</li>
+      <li class="reveal"><h3>Live rooms are home turf</h3> A decade in newsrooms, 2007-2018 (CNN, Al Jazeera English, AJ+, Fusion, HuffPost Live). Rundowns, guest prep, timing, and troubleshooting while the show is on the air. Hosting a live workshop and keeping it on the rails is the same muscle. <a href="stories.html">The case files</a> carry the receipts.</li>
       <li class="reveal"><h3>The audience is my audience</h3> Enterprise developer marketing lives or dies on credibility with practitioners. I spent the last two years building programs for 1,000+ Principal, Distinguished, and Fellow engineers, and I build with the same agentic tooling Cursor's workshops teach.</li>
-      <li class="reveal"><h3>Measurement that changes behavior</h3> A content-effectiveness audit I designed at Google lifted self-service solvability 9.03%, roughly 10,670 fewer support tickets a year: define the behavior the program should change, then measure that behavior, not the traffic. Applied here, that is pipeline discipline.</li>
-      <li class="reveal"><h3>Process that scales without quality loss</h3> Playbooks are how I work: the <a href="content-ops.html">content-ops engine</a> turns one idea into platform-native pieces through nine encoded playbooks, and the same discipline builds a workshop calendar that survives its owner.</li>
+      <li class="reveal"><h3>One beat inside an integrated campaign</h3> A workshop is one beat in a sequence. Pre-promotion, the live room, nurture, and a specific Sales play per account. I have owned that full arc as a program at Google, from intake to follow-up. The honest part is that my record is program and live-room ownership at enterprise scale, run inside a company rather than as external demand generation. This role is where I point that muscle outward.</li>
+      <li class="reveal"><h3>Measurement that changes behavior</h3> A content-effectiveness audit I designed at Google lifted self-service solvability 9.03%, roughly 10,670 fewer support tickets a year. Define the behavior the program should change, then measure that behavior, not the traffic. Applied here, that is pipeline discipline.</li>
+      <li class="reveal"><h3>Process that scales without quality loss</h3> Playbooks are how I work. The <a href="content-ops.html">content-ops engine</a> turns one idea into platform-native pieces through nine encoded playbooks, and the same discipline builds a workshop calendar that survives its owner.</li>
     </ul>
 
     <div class="ed-lane reveal">
       <div class="el-k">The builder lane</div>
       <h3 class="el-h">I'd use Cursor to build the program itself</h3>
       <ul class="el-list">
-        <li>The workshop playbook, the registration-to-routing pipeline, and the program metrics dashboard: I would build them in Cursor, and the build itself becomes workshop content.</li>
-        <li><a href="career-ops.html">career-ops</a> is the operating proof: a fleet of 52 scheduled agents with spend caps, kill switches, and dead-man heartbeats, public on <a href="https://github.com/mitwilli-create" target="_blank" rel="noopener">GitHub</a>.</li>
-        <li><a href="picture-lock.html">picture-lock</a> shipped a seven-stage AI film pipeline with every API call logged to a run manifest: $8.26 in the cut. Instrumentation is the habit, not the promise.</li>
-        <li>Same spine as <a href="comms.html">the comms record</a>: evidence first, voice second, volume last.</li>
+        <li>The workshop playbook, the metrics layer, and the connective tissue between registration, the CRM, and Sales. I would build those in Cursor, wired into the marketing stack the team already runs, and the build itself becomes workshop content.</li>
+        <li><a href="career-ops.html">career-ops</a> is the operating proof. A fleet of 52 scheduled agents with spend caps, kill switches, and dead-man heartbeats, public on <a href="https://github.com/mitwilli-create/career-ops" target="_blank" rel="noopener">GitHub</a>.</li>
+        <li><a href="picture-lock.html">picture-lock</a> shipped a seven-stage AI film pipeline with every API call logged to a <a href="https://github.com/mitwilli-create/picture-lock" target="_blank" rel="noopener">run manifest</a>, $8.26 in the cut. Instrumentation is the habit, not the promise.</li>
+        <li>Same spine as <a href="comms.html">the comms record</a>. Evidence first, voice second, volume last.</li>
       </ul>
     </div>
-    <div class="el-note reveal"><span class="en-k">Parallel hires</span><p>Cursor's marketing team is also hiring a Product Marketing Manager and Field Marketing roles on both coasts, live on the careers page as of July 15, 2026. This role owns the workshop spine; I'd partner cleanly with all of them.</p></div>
-    <div class="el-note reveal"><span class="en-k">Honesty note</span><p>I'm running a real, multi-company search, and this site says so. This page exists because when a role is the right one, the reviewer shouldn't have to assemble the case themselves.</p></div>
     <div class="el-cta reveal">
-      <a class="btn solid" href="docs/cursor-positioning-memo.html"><span>Read the positioning memo</span></a>
+      <a class="btn solid" href="docs/cursor-positioning-memo.html"><span>Read the program memo</span></a>
       <a class="btn" href="resume/marketing-program-manager.html"><span>The marketing resume</span></a>
     </div>
   </div>
@@ -283,20 +294,36 @@
 <script>
 (function(){
   var links = document.querySelectorAll('.jump-rail a');
-  if (!links.length || !('IntersectionObserver' in window)) return;
-  var map = {};
-  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
-  var obs = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if (e.isIntersecting){
-        links.forEach(function(a){ a.classList.remove('active'); });
-        var a = map[e.target.id]; if (a) a.classList.add('active');
-      }
+  var fill = document.querySelector('.jump-rail .rail-fill');
+  var railNav = document.querySelector('.jump-rail nav');
+  var prog = document.querySelector('.scrollprog');
+  if (links.length && ('IntersectionObserver' in window)){
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var obs = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          var a = map[e.target.id]; if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) obs.observe(el);
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  Object.keys(map).forEach(function(id){
-    var el = document.getElementById(id); if (el) obs.observe(el);
-  });
+  }
+  // scroll-progress: drives the mobile top bar and the desktop rail fill;
+  // width/height track scroll directly, so both stay reduced-motion safe
+  var onScroll = function(){
+    var se = document.documentElement;
+    var total = (se.scrollHeight - window.innerHeight) || 1;
+    var done = Math.min(1, Math.max(0, window.scrollY / total));
+    if (prog) prog.style.width = (done * 100) + '%';
+    if (fill && railNav) fill.style.height = (done * railNav.offsetHeight) + 'px';
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
 })();
 </script>
 <script src="shared/reveal.js?v=20260715a"></script>

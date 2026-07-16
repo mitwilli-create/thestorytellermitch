@@ -50,6 +50,13 @@
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
     /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
        overriding the dealbreaker's band/underline/mono-line compromises):
        Archivo carries every heading (name, section heads, role heads), Inter
@@ -117,6 +124,7 @@
   <div class="nav-links" id="nav-links">
     <a href="../fit.html">Role Fit</a>
     <a href="../projects.html">AI Projects</a>
+    <a href="../writing.html">Writing</a>
     <a href="../resume.html">Resume</a>
     <a href="../comms.html">Comms &amp; Editorial</a>
     <a href="../work.html">Reel</a>
@@ -135,8 +143,8 @@
     <div class="rpillars">FORWARD DEPLOYED CREATIVE · AI CREATIVE DIRECTOR · EMBEDDED PRODUCTION DISCIPLINE</div>
     <div class="rcontact">Seattle, WA (open to relocation) | <span class="pdf-phone"></span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a> | <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a> | <a href="https://thestorytellermitch.com">thestorytellermitch.com</a></div>
     <div class="rtop">
-      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn solid" href="../assets/resumes/mitchell-williams-forward-deployed.pdf"><span>Download PDF</span></a>
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn" href="../fit.html#forward-deployed"><span>The fit case</span></a>
     </div>
   </header>
