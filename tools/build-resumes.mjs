@@ -380,7 +380,7 @@ export function page({ name, pillars, contact, sections }, lane) {
 </footer>
 
 <script src="../shared/reveal.js?v=20260715a"></script>
-<script src="../shared/audio.js?v=20260716a"></script>
+<script src="../shared/audio.js?v=20260716b"></script>
 </body>
 </html>
 `;
