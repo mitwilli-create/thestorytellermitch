@@ -50,6 +50,13 @@
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
     /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
        overriding the dealbreaker's band/underline/mono-line compromises):
        Archivo carries every heading (name, section heads, role heads), Inter
@@ -117,6 +124,7 @@
   <div class="nav-links" id="nav-links">
     <a href="../fit.html">Role Fit</a>
     <a href="../projects.html">AI Projects</a>
+    <a href="../writing.html">Writing</a>
     <a href="../resume.html">Resume</a>
     <a href="../comms.html">Comms &amp; Editorial</a>
     <a href="../work.html">Reel</a>
@@ -135,9 +143,9 @@
     <div class="rpillars">MARKETING PROGRAM MANAGEMENT · DEVELOPER-TOOLS GTM · AI-NATIVE PROGRAM BUILDING</div>
     <div class="rcontact">Seattle, WA (open to relocation) | <span class="pdf-phone"></span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a> | <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a> | <a href="https://thestorytellermitch.com">thestorytellermitch.com</a></div>
     <div class="rtop">
+      <a class="btn solid" href="../assets/resumes/mitchell-williams-marketing-program-manager.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       <a class="btn" href="../for-cursor.html"><span>The Cursor review path</span></a>
-      <a class="btn solid" href="../assets/resumes/mitchell-williams-marketing-program-manager.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../fit.html#roles"><span>The fit case</span></a>
     </div>
   </header>
@@ -154,9 +162,9 @@
 <div class="rinit"><div class="rinit-h">2023 content-effectiveness audit</div><ul class="rl"><li><strong>Problem:</strong> Self-service content was leaving solvable tickets on the table.</li><li><strong>Action:</strong> Designed the measurement framework and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Lifted self-service solvability 9.03%, roughly 10,670 fewer tickets a year.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Day-One technical onboarding overhaul</div><ul class="rl"><li><strong>Problem:</strong> Live orientation could not keep pace with Google's hiring.</li><li><strong>Action:</strong> Rebuilt it into a self-service curriculum a new hire could complete without a facilitator.</li><li><strong>Impact:</strong> Delivered to 75,000+ new hires at an 88% CSAT score.</li></ul></div></div></section>
 <section class="rsec"><h2 class="rsec-h">Projects</h2><p class="rp">Code public at <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>.</p>
-<p class="rp"><strong>career-ops</strong> · Extended an open-source pipeline into a cost-governed multi-agent system: multi-LLM council with adjudication, 52 scheduled agents, MCP servers, live operations dashboard. CI-green; public on GitHub.</p>
+<p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Extended an open-source pipeline into a cost-governed multi-agent system: multi-LLM council with adjudication, 52 scheduled agents, MCP servers, live operations dashboard. CI-green; public on GitHub.</p>
 <p class="rp"><strong><a href="../content-ops.html">content-ops</a></strong> · A multi-agent content engine: one idea becomes platform-native pieces through nine dated platform playbooks and four audience profiles, gated by a deterministic voice check with a hard human-in-the-loop publish step.</p>
-<p class="rp"><strong><a href="../picture-lock.html">picture-lock</a></strong> · Seven-stage AI video pipeline: script in, produced and captioned short out; $8.26 of logged cost, every API call in a committed run manifest.</p></section>
+<p class="rp"><strong><a href="../picture-lock.html">picture-lock</a></strong> · Seven-stage AI film pipeline: script in, produced and captioned short out; $8.26 of logged cost, every API call in a committed run manifest.</p></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2007 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of field and event marketing: a live room, a hard clock, and a skeptical audience, every day at air time.</strong></p>
 <ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer line (proof-of-concept: 50M+ views) that doubled as a <a href="../stories.html#talent-pipeline">talent pipeline</a>: three producers coached into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day" (2016):</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013).</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>

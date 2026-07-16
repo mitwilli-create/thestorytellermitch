@@ -31,7 +31,17 @@
   document.querySelectorAll('.display .ln > span').forEach((el, i) => { if (window.__motionOK) el.style.transitionDelay = (0.15 + i * 0.11) + 's'; });
   const mod = Number(document.body.dataset.revealStagger || 4);
   const io = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px 12% 0px' });
-  document.querySelectorAll('.reveal').forEach((el, i) => { if (window.__motionOK) el.style.transitionDelay = ((i % mod) * 0.07) + 's'; io.observe(el); });
+  // Stagger resets per reveal-group (siblings within a container) rather than a
+  // global document index, so a group's last item never leads the cascade
+  // (e.g. the final path step). Same mod + 0.07s step, indexed within the parent.
+  document.querySelectorAll('.reveal').forEach((el) => {
+    if (window.__motionOK) {
+      const sibs = el.parentElement ? [...el.parentElement.children].filter((c) => c.classList.contains('reveal')) : [el];
+      const gi = sibs.indexOf(el);
+      el.style.transitionDelay = (((gi < 0 ? 0 : gi) % mod) * 0.07) + 's';
+    }
+    io.observe(el);
+  });
   window.__revealObserve = (el) => io.observe(el);
 
   // Cinemagraphs: [data-cine="assets/cinemagraphs/<plate>"] wraps a poster
@@ -119,7 +129,12 @@
       };
       requestAnimationFrame(step);
     };
-    const nio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { nio.unobserve(e.target); tick(e.target); } }); }, { threshold: 0.6 });
+    const nio = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { nio.unobserve(e.target);
+      // hero-stat integers count up as the terminal beat of the hero
+      // orchestration (rule .62s, sub .78s, stats reveal .95s), so delay their
+      // tick until the strip has settled; every other counter ticks on sight.
+      if (e.target.closest('.hero-stats')) setTimeout(() => tick(e.target), 1050); else tick(e.target);
+    } }); }, { threshold: 0.6 });
     document.querySelectorAll('.cs-stat .n, .fact .n, [data-count]').forEach((el) => { if (/\d/.test(el.textContent)) nio.observe(el); });
   }
 })();

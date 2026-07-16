@@ -4,8 +4,13 @@
   <script>document.documentElement.classList.remove('no-js')</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
   <title>How I'd run Cursor's enterprise workshop program · Mitchell Williams</title>
   <meta name="description" content="A working program memo built from public information only, every claim sourced in place. Written July 2026 as a work sample: program design, live-operations judgment, and the measurement discipline the job requires.">
+  <meta property="og:title" content="How I'd run Cursor's enterprise workshop program · Mitchell Williams">
+  <meta property="og:description" content="A working program memo, built from public sources only, every claim cited in place. The workshop motion, the instrumentation, and the first ninety days.">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
@@ -92,6 +97,9 @@
       line-height:1.36;letter-spacing:-0.01em;color:var(--bone-soft);margin:0;max-width:none}
     .memo-close strong{font-weight:700;color:var(--bone)}
     .memo-close strong.wt{color:#fff}
+    /* quiet forward CTA under the close (replaces the old self-link) */
+    .memo-close .memo-cta{font-family:'Inter',sans-serif;font-weight:400;font-size:15px;line-height:1.6;
+      color:var(--bone-soft);margin-top:22px}
 
     /* ---------- sourced visual elements ---------- */
     /* pull-quote */
@@ -168,6 +176,10 @@
     .doc a:focus-visible,.doc-rail a:focus-visible,.sources a:focus-visible,.backlink a:focus-visible{
       outline:2px solid var(--blood-soft);outline-offset:2px}
     .sound-toggle{display:none}
+    /* mobile/tablet wayfinding: slim top scroll-progress bar, shown only below
+       the doc-rail breakpoint; width tracks scroll directly (reduced-motion safe) */
+    .scrollprog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--blood-soft);z-index:70;pointer-events:none}
+    @media(min-width:1121px){.scrollprog{display:none}}
 
     /* mobile ergonomics */
     @media(max-width:640px){
@@ -186,7 +198,7 @@
       :root{--bg:#fff;--bg-2:#fff;--surface:#fff;--bone:#111;--bone-soft:#222;--mute:#555;--dim:#666;
         --line:rgba(0,0,0,0.16);--line-2:rgba(0,0,0,0.26);--blood:#8a3a33;--blood-soft:#8a3a33;--blood-text:#8a3a33}
       body{background:#fff}
-      .nav,.sound-toggle,.doc-rail,.skip-link,footer,body::before,body::after{display:none!important}
+      .nav,.sound-toggle,.doc-rail,.skip-link,.scrollprog,footer,body::before,body::after{display:none!important}
       .reveal{opacity:1!important;transform:none!important}
       .doc .wrap.doc-grid,.doc-grid{max-width:none!important;display:block!important;margin:0!important}
       .doc-hero{padding:12px 0 20px!important}
@@ -198,6 +210,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">skip to content</a>
+<div class="scrollprog" aria-hidden="true"></div>
 
 <nav class="nav">
   <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
@@ -237,8 +250,14 @@
       <blockquote>The workshop is the one marketing format that works <span style="color:var(--blood-soft)">the way Cursor already grows</span>: an engineer learning something real, in a room with peers.</blockquote>
     </figure>
 
+    <div class="stat-grid reveal">
+      <div class="stat"><div class="k">Enterprise reach</div><div class="n">64%</div><div class="l">of the Fortune 500 already building with Cursor.</div><a class="stat-src" href="https://cursor.com/enterprise" target="_blank" rel="noopener">cursor.com/enterprise</a></div>
+      <div class="stat"><div class="k">Revenue ramp</div><div class="n">$2B</div><div class="l">annualized, up from $100M in about thirteen months, the fastest on record.</div><a class="stat-src" href="https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding" target="_blank" rel="noopener">TheNextWeb</a></div>
+      <div class="stat"><div class="k">The spotlight</div><div class="n">$60B</div><div class="l">SpaceX acquisition of Anysphere, signed, expected to close Q3 2026.</div><a class="stat-src" href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">Forbes</a></div>
+    </div>
+
     <section class="memo-sec" id="opp-1">
-      <div class="msec-head">
+      <div class="msec-head reveal">
         <span class="msec-num">01 · Opportunity</span>
         <h2 class="msec-title">Bottom-up got Cursor into the building. Top-down signs the contract.</h2>
       </div>
@@ -246,50 +265,54 @@
       <p>Cursor's own enterprise page counts <a href="https://cursor.com/enterprise" target="_blank" rel="noopener">64 percent of the Fortune 500 and 50,000+ enterprises</a> building with it. That happened from the bottom up: one engineer adopting, then a team, then a floor.</p>
       <p>The enterprise contract is a different transaction. The person who standardizes an org on Cursor was usually never in the room where the tool won. They need rollout evidence, admin and security answers, and a productivity story they can defend to a CFO, and no amount of developer enthusiasm substitutes for it.</p>
 
-      <p><strong class="wt">Workshops close that gap</strong> because they earn trust the same way the product spread: peers demonstrating real work, live. Cursor already runs <a href="https://cursor.com/workshops" target="_blank" rel="noopener">public practitioner workshops</a>; the opening this role owns is pointing that motion at the enterprise, deliberately. The <a href="https://cursor.com/careers/marketing-program-manager" target="_blank" rel="noopener">posting for this role</a> says it plainly: follow-up has to turn engagement into pipeline.</p>
+      <p><strong class="wt">Workshops close that gap</strong> because they earn trust the same way the product spread: peers demonstrating real work, live. Cursor already runs <a href="https://cursor.com/workshops" target="_blank" rel="noopener">public practitioner workshops</a>, developer education that builds the top of the funnel. The motion this role owns is different, and today unowned: pointing that same format at the enterprise buyer, deliberately, and wiring it to pipeline. The two coexist, and one feeds the other. The <a href="https://cursor.com/careers/marketing-program-manager" target="_blank" rel="noopener">posting for this role</a> says it plainly: follow-up has to turn engagement into pipeline.</p>
+      <p>The category is crowding at the top, with GitHub Copilot and Windsurf standing up their own enterprise motions, so Cursor's real moat, the engineers who already chose it, is exactly what a live workshop program compounds.</p>
 
-      <div class="do-block">
+      <div class="do-block reveal">
         <h3>What I'd do</h3>
         <ul>
           <li><strong>Build the topic engine from the field.</strong> A standing intake from Sales, Customer Success, and Product for what enterprise buyers, admins, and practitioners are actually asking, so the calendar answers real questions instead of guessing at themes.</li>
-          <li><strong>Run three tracks, not one stream.</strong> The buyer, the admin, and the practitioner come to a workshop for different reasons; each gets its own arc instead of one generic webinar series.</li>
-          <li><strong>Make follow-up part of the format.</strong> Clean capture, fast segmentation and routing, and Sales handed a specific next step per account within 48 hours, while the session is still warm.</li>
+          <li><strong>Run three tracks, and anchor the buyer track to named accounts.</strong> The economic buyer, the admin, and the practitioner come for different reasons; each gets its own arc, and the buyer track maps to an ABM named-account list built with Sales rather than a generic webinar audience.</li>
+          <li><strong>Define the lead-quality gate up front.</strong> A shared MQL definition agreed with Sales, so the program is scored on qualified follow-up, not raw registrations, and Sales is protected from vanity leads.</li>
+          <li><strong>Make follow-up part of the format.</strong> Clean capture, an influenced-pipeline attribution model agreed with Sales, and a routing SLA: net-new accounts to Sales, existing accounts to Customer Success for expansion, each handed a specific next step within 48 hours while the session is still warm. Routing and follow-up are co-owned with the SDR and Customer Success teams, not authored alone.</li>
+          <li><strong>Own the event-ops layer.</strong> Registration mechanics, no-show mitigation, and timezone coverage, so the room is full and the capture is clean before any of the above can work.</li>
         </ul>
       </div>
 
-      <div class="payoff">
+      <div class="payoff reveal">
         <h3>The payoff</h3>
         <p>The workshop calendar stops being a content side-channel and becomes <strong class="wt">a pipeline instrument the Sales team plans around.</strong></p>
       </div>
     </section>
 
     <section class="memo-sec" id="opp-2">
-      <div class="msec-head">
+      <div class="msec-head reveal">
         <span class="msec-num">02 · Opportunity</span>
         <h2 class="msec-title">A $60 billion spotlight is pointed at the room</h2>
       </div>
 
-      <p>SpaceX announced on June 16 that it is acquiring Anysphere, Cursor's parent, for <a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">$60 billion in stock</a>, the largest startup acquisition on record. The deal is <a href="https://www.stocktitan.net/sec-filings/SPCX/8-k-space-exploration-technologies-corp-reports-material-event-0718df143ca9.html" target="_blank" rel="noopener">signed but not yet closed</a>, expected in the third quarter, and joint model work is <a href="https://finance.yahoo.com/technology/ai/articles/spacexai-plans-launch-model-cursor-210200389.html" target="_blank" rel="noopener">already being reported</a>.</p>
-      <p>Enterprise procurement reads an acquisition as a risk question: roadmap, support continuity, governance. Those questions will walk into every live Q&amp;A this program hosts, whether they are on the agenda or not.</p>
+      <p>SpaceX announced on June 16 that it is acquiring Anysphere, Cursor's parent, for <a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">$60 billion in stock</a>, the largest startup acquisition on record. The deal is <a href="https://www.stocktitan.net/sec-filings/SPCX/8-k-space-exploration-technologies-corp-reports-material-event-0718df143ca9.html" target="_blank" rel="noopener">signed but not yet closed</a>, expected in the third quarter.</p>
+      <p>Enterprise procurement reads an acquisition as a risk question: roadmap, support continuity, governance. Those questions are likely to come up in every live Q&amp;A this program hosts, on the agenda or not.</p>
       <p><strong class="wt">A live program is where that risk becomes an asset.</strong> A press release gets read with suspicion. A host answering the hard question calmly, in public, on the record, is inspectable. I spent a decade in live newsrooms, where the answer has to hold while the camera is on.</p>
+      <p>The same spotlight is a tailwind. A $60 billion headline puts Cursor in front of buyers who were not shopping yet, and a live program is how that attention becomes a conversation instead of a press cycle.</p>
 
-      <div class="do-block">
+      <div class="do-block reveal">
         <h3>What I'd do</h3>
         <ul>
           <li><strong>Write the holding language once.</strong> Short, honest answers to the acquisition questions, agreed with comms and legal, so every host can deliver them live without flinching or improvising.</li>
           <li><strong>Rehearse every session like a broadcast.</strong> A run-through, speaker prep, a timing plan, and a fallback for every demo. The posting asks for exactly this discipline; it is the one a decade of live news drills into you.</li>
-          <li><strong>Treat live questions as intelligence.</strong> Log what enterprise attendees actually ask, and route the pattern to Product Marketing and Sales monthly.</li>
+          <li><strong>Treat live questions as intelligence.</strong> Log what enterprise attendees actually ask, and route the pattern to Product Marketing and Sales monthly. The exchange runs both ways: the program inherits positioning and the launch calendar from Product Marketing, so workshop themes ride the same beats.</li>
         </ul>
       </div>
 
-      <div class="payoff">
+      <div class="payoff reveal">
         <h3>The payoff</h3>
         <p>When the deal closes, or wobbles, the program already has <strong class="wt">a calm, consistent voice on it</strong>, and the field stops improvising.</p>
       </div>
     </section>
 
     <section class="memo-sec" id="opp-3">
-      <div class="msec-head">
+      <div class="msec-head reveal">
         <span class="msec-num">03 · Opportunity</span>
         <h2 class="msec-title">This audience can smell a vendor pitch</h2>
       </div>
@@ -304,25 +327,25 @@
         </div>
       </div>
 
-      <p>The tools themselves are the proof available to this role. I would build the workshop program's own infrastructure in Cursor: the playbook repo, the registration-to-routing pipeline, the metrics dashboard. The program dogfoods the product it markets, and the build itself becomes workshop content.</p>
+      <p>The tools themselves are the proof available to this role. I would build the program's connective tissue and metrics layer in Cursor, wired into the marketing and CRM stack the team already runs: the playbook repo, the capture-to-routing instrumentation, the metrics dashboard. The program dogfoods the product it markets, and the build itself becomes workshop content.</p>
 
-      <div class="do-block">
+      <div class="do-block reveal">
         <h3>What I'd do</h3>
         <ul>
           <li><strong>Practitioner-led formats only.</strong> Live builds on real repos; slideware only where compliance demands it.</li>
-          <li><strong>Coach the co-hosts.</strong> Recruit internal engineers and customer champions as speakers and prep them like on-air talent. <a href="../stories.html#talent-pipeline">I coached three producers from behind the camera to on-air principals</a>; speaker development is a craft I've practiced.</li>
-          <li><strong>Build the program in Cursor, visibly.</strong> The tooling doubles as content, and the audience can inspect it.</li>
+          <li><strong>Coach the co-hosts.</strong> Recruit internal engineers and customer champions, sourced through Customer Success and advocacy rather than cold, as speakers and prep them like on-air talent. <a href="../stories.html#talent-pipeline">I coached three producers from behind the camera to on-air principals</a>; speaker development is a craft I've practiced.</li>
+          <li><strong>Ship the tooling in public.</strong> The program's own instrumentation doubles as content, and the audience can inspect it.</li>
         </ul>
       </div>
 
-      <div class="payoff">
+      <div class="payoff reveal">
         <h3>The payoff</h3>
-        <p>Sessions that practitioners recommend to their managers. <strong class="wt">The room does the selling.</strong></p>
+        <p>Sessions that practitioners recommend up to the leaders who sign. <strong class="wt">The room sources the pipeline; Sales closes it.</strong></p>
       </div>
     </section>
 
     <section class="memo-sec" id="why-me">
-      <div class="msec-head">
+      <div class="msec-head reveal">
         <span class="msec-num">04 · The close</span>
         <h2 class="msec-title">Why me</h2>
       </div>
@@ -344,19 +367,20 @@
         </div>
         <div class="ms">
           <p class="day">Day 90</p>
-          <p class="lead">By Day 90, workshops are <strong>provably converting champions into buyers</strong>.</p>
-          <p class="sup">Influenced pipeline visible to Sales in the numbers they already trust, and the playbook documented: templates, calendar, reporting, so the program scales without quality loss and without me as the bottleneck.</p>
+          <p class="lead">By Day 90, workshops are <strong>throwing off the leading indicators of pipeline</strong>.</p>
+          <p class="sup">Enterprise deals close on a longer clock than a quarter, so Day 90 proves the leading indicators, not closed revenue: qualified follow-ups, influenced opportunities, and champion engagement, visible to Sales in the numbers they already trust. The playbook is documented too, templates, calendar, reporting, so the program scales without quality loss and without me as the bottleneck.</p>
         </div>
       </div>
 
       <div class="memo-close">
         <p><strong class="wt">Cursor already owns the hardest asset in marketing:</strong> an audience that believes it. The workshop program is how that belief walks into the enterprise, on purpose, on a calendar.</p>
-        <p>That's the job I want, and <a href="cursor-positioning-memo.html">this memo is the audition</a>.</p>
+        <p>That's the job I want, and <strong class="wt">this memo is the audition</strong>.</p>
+        <p class="memo-cta">Reach me at <a href="mailto:mitwilli@gmail.com?subject=Cursor%20Marketing%20Program%20Manager%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a>, or open <a href="../resume/marketing-program-manager.html">the marketing resume</a>.</p>
       </div>
     </section>
 
     <details class="sources">
-      <summary><span class="sc">Sources · 8</span>&nbsp;· tagged by tier</summary>
+      <summary><span class="sc">Sources · 7</span>&nbsp;· tagged by tier</summary>
       <div class="src-body">
         <div class="src-group">
           <h4>The company</h4>
@@ -373,7 +397,6 @@
             <li><a href="https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/" target="_blank" rel="noopener">Forbes</a> · SpaceX acquires Anysphere for $60B, largest startup acquisition on record<span class="src-tier">reported</span></li>
             <li><a href="https://www.stocktitan.net/sec-filings/SPCX/8-k-space-exploration-technologies-corp-reports-material-event-0718df143ca9.html" target="_blank" rel="noopener">SEC Form 8-K</a> · signed merger agreement; expected close Q3 2026<span class="src-tier">filing</span></li>
             <li><a href="https://qz.com/spacex-buying-cursor-anysphere-60-billion-deal-061626" target="_blank" rel="noopener">Quartz</a> · deal structure and IPO context<span class="src-tier">reported</span></li>
-            <li><a href="https://finance.yahoo.com/technology/ai/articles/spacexai-plans-launch-model-cursor-210200389.html" target="_blank" rel="noopener">Yahoo Finance / The Information</a> · joint SpaceXAI-Cursor model reported<span class="src-tier">reported, single source</span></li>
           </ul>
         </div>
       </div>
@@ -388,7 +411,7 @@
         <span class="rail-fill" aria-hidden="true"></span>
         <a class="rl" href="#opp-1"><span class="rl-n">01</span> The gap</a>
         <a class="rl" href="#opp-2"><span class="rl-n">02</span> The spotlight</a>
-        <a class="rl" href="#opp-3"><span class="rl-n">03</span> The podium</a>
+        <a class="rl" href="#opp-3"><span class="rl-n">03</span> The proof</a>
         <a class="rl" href="#why-me"><span class="rl-n">04</span> Why me</a>
       </nav>
     </aside>
@@ -402,8 +425,9 @@
       <div class="big">Let's<br>talk.</div>
       <div class="foot-links">
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
         <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
-        <a href="../assets/resumes/mitchell-williams-ai-program-manager.pdf">program resume (PDF)</a>
+        <a href="../assets/resumes/mitchell-williams-marketing-program-manager.pdf">marketing resume (PDF)</a>
       </div>
     </div>
     <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
@@ -427,11 +451,13 @@
     es.forEach((e) => { if (e.isIntersecting) { const i = secs.indexOf(e.target); if (i >= 0) setActive(i); } });
   }, { rootMargin: '-42% 0px -52% 0px', threshold: 0 });
   secs.forEach((s) => s && io.observe(s));
+  const prog = document.querySelector('.scrollprog');
   const onScroll = () => {
     const r = doc.getBoundingClientRect();
     const total = doc.offsetHeight - window.innerHeight;
     const done = Math.min(1, Math.max(0, (-r.top) / (total > 0 ? total : 1)));
     if (fill && nav) fill.style.height = (done * nav.offsetHeight) + 'px';
+    if (prog) prog.style.width = (done * 100) + '%';
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });

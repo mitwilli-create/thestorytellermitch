@@ -139,6 +139,9 @@
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:640px){
       .sys-hero{padding:130px 0 56px}
+      /* collapse the 4-up proof strip to 2x2 so no number is clipped on the
+         phone-first surface a recruiter screens from; do not go single-column */
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
       .path .step{flex-direction:column;gap:4px}
     }
     @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
@@ -188,10 +191,10 @@
       <p>This page sequences the case the way a writing-first screen checks it: samples before biography.</p>
     </div>
     <div class="hero-stats">
-      <div class="hs"><div class="n">112</div><div class="k">journalists mapped</div></div>
-      <div class="hs"><div class="n">30</div><div class="k">outlets</div></div>
+      <div class="hs"><div class="n" data-count>112</div><div class="k">journalists mapped</div></div>
+      <div class="hs"><div class="n" data-count>30</div><div class="k">outlets</div></div>
       <div class="hs"><div class="n">~70%</div><div class="k">fewer review rounds (internal, self-measured)</div></div>
-      <div class="hs"><div class="n">10</div><div class="k">newsroom years, 2007-2018</div></div>
+      <div class="hs"><div class="n" data-count>10</div><div class="k">newsroom years, 2007-2018</div></div>
     </div>
   </div>
 </header>

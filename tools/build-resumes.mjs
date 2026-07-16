@@ -267,6 +267,13 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
     /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
        overriding the dealbreaker's band/underline/mono-line compromises):
        Archivo carries every heading (name, section heads, role heads), Inter
@@ -334,6 +341,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   <div class="nav-links" id="nav-links">
     <a href="../fit.html">Role Fit</a>
     <a href="../projects.html">AI Projects</a>
+    <a href="../writing.html">Writing</a>
     <a href="../resume.html">Resume</a>
     <a href="../comms.html">Comms &amp; Editorial</a>
     <a href="../work.html">Reel</a>
@@ -355,10 +363,10 @@ export function page({ name, pillars, contact, sections }, lane) {
      already exposes publicly. -->
     ` : ''}<div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, (m) => lane.keepPhone ? `<span class="pdf-phone">${m}</span>` : '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
+      <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       ${lane.pathBtn ? `<a class="btn" href="${esc(lane.pathBtn.href)}"><span>${esc(lane.pathBtn.label)}</span></a>
-      ` : ''}<a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
-      <a class="btn" href="../fit.html#${esc(lane.fitAnchor ?? lane.slug)}"><span>The fit case</span></a>
+      ` : ''}<a class="btn" href="../fit.html#${esc(lane.fitAnchor ?? lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
   ${secHtmlLinked}
