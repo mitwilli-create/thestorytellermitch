@@ -1,7 +1,7 @@
 /* case-study scoped styles on the shared theme tokens */
 .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
-.cs-title{font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(36px,5.6vw,72px);
-  letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase}
+.cs-title{font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(30px,5.6vw,72px);
+  letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase;overflow-wrap:break-word}
 .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
   color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
 .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}

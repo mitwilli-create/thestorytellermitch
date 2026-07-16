@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .tl-hero{padding:170px 0 56px}
     .tl-hero .display{font-size:clamp(42px,7.4vw,110px)}
@@ -197,6 +197,10 @@
       color:var(--bone);background:rgba(10,10,11,.92);border:1px solid var(--line-2);
       padding:13px 16px;min-height:44px;cursor:pointer}
     @media(min-width:1200px){.tl-pill{display:none}}
+    /* phones: a wide fixed pill can't sit over the single text column without covering body copy
+       (e.g. it was landing on "...the overnight shift"). Hide it here; it stays on tablets where
+       the corner has margin. The timeline still scrolls normally and the sound toggle is unaffected. */
+    @media(max-width:720px){.tl-pill{display:none}}
 
     /* lightbox + jump dialogs */
     dialog{border:1px solid var(--line-2);background:var(--bg);color:var(--bone);padding:0;margin:auto}

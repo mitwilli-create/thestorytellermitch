@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
     .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
@@ -85,8 +85,11 @@
     .judg-sec .wrap{position:relative;z-index:1}
     .judg-sec{padding-top:200px}
     @media(max-width:860px){
-      .judg-backdrop{height:200px}
-      .judg-sec{padding-top:130px}
+      /* mobile: backdrop drops into flow as a banner so the eyebrow+h2 stack cleanly below it
+         with breathing room, instead of the title (and CC caption) colliding over the image */
+      .judg-backdrop{position:relative;height:170px}
+      .judg-sec{padding-top:0}
+      .judg-sec .wrap{margin-top:30px}
     }
     /* judgment: prose left, the broadcast frame fills screen right */
     .judg-grid{display:grid;grid-template-columns:minmax(0,620px) minmax(340px,1fr);gap:48px;align-items:start;max-width:1180px}
@@ -217,7 +220,7 @@
     <div class="comms-sub">
       <p>A decade producing live news in network control rooms. Eight years at Google, where I led communications for the horizontal org that drives technical change across the company, wrote for a VP and Google's then-CIO, and built AI infrastructure so the comms function scales instead of drowning.</p>
       <p>This page is the communications-first view of that career: executive voice, internal narrative, approvals discipline, and the judgment that keeps high-stakes coverage defensible. It stands on its own.</p>
-      <p>The <a href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
+      <p>The <a class="lnk-inline" href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
     </div>
     <nav class="jump-row" aria-label="Jump to a section of this page">
       <a class="chip" href="#the-seat-i-held">Seat</a>
