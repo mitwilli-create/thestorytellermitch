@@ -123,6 +123,9 @@
     /* rail mini-grid captions hold one line; full titles stay in the alt
        text and on the linked reel targets */
     .era-side .era-clips--grid2 .cl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    /* --credit exemption: third-party tiles must keep author + license
+       fully visible in the caption (licensing rule), so they wrap */
+    .era-side .era-clips--credit .cl{white-space:normal;overflow:visible;text-overflow:clip}
     /* archival on-camera figures join the evidence-tile grammar: same
        near-full-color treatment and caption scrim as .era-clips tiles */
     .era .oncam img{filter:grayscale(.15) contrast(1.03) brightness(.96);opacity:1}
@@ -403,7 +406,7 @@
       <div class="era-clips reveal-child">
         <a href="stories.html#bhutto-origin"><img src="assets/stills/louisville-2005-ccby-pugfather.jpg" alt="Louisville skyline at night, 2005" loading="lazy"><span class="cl">Louisville · The Pug Father · CC BY</span></a>
       </div>
-      <div class="era-clips era-clips--grid2 reveal-child" style="margin-top:10px">
+      <div class="era-clips era-clips--grid2 era-clips--credit reveal-child" style="margin-top:10px">
         <a href="stories.html#bhutto-origin"><img src="assets/stills/mc-bhutto-2007-voa.jpg" alt="Benazir Bhutto speaking to supporters, November 2007" loading="lazy"><span class="cl">Bhutto, Nov 2007 · VOA · public domain</span></a>
         <a href="stories.html#bhutto-origin"><img src="assets/stills/bhutto-1989-pd.jpg" alt="Benazir Bhutto speaking to press, 1989" loading="lazy"><span class="cl">Bhutto, 1989 · US DoD · public domain</span></a>
       </div>
