@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715e">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715f">
   <style>
     /* shared paragraph measure for this page's prose blocks (council R8) */
     main{--measure:720px}
@@ -27,10 +27,8 @@
        section, white for the page's single hinge */
     .wr-sub strong,.art-intro strong,.essays-rubric strong,.wr-note strong{color:var(--bone);font-weight:700}
     .dcard .dc-b strong{display:inline;font-family:inherit;font-size:inherit;line-height:inherit;margin:0;color:var(--bone);font-weight:700}
-    /* ox anchors are theme emphasis bands (owner ruling 2026-07-15); these
-       mirrors only re-assert white where the local strong rules above win */
-    strong.ox{color:#fff}
-    .dcard .dc-b strong.ox{color:#fff}
+    /* sparse emphasis (owner final round): bold white only; mirror re-asserts
+       white where the local strong rules above win */
     strong.wt{color:#fff}
     /* slim return link to the review path (pre-approved); tier-2 nav link:
        muted mono, oxblood on hover, no persistent underline (council R5) */
@@ -64,7 +62,6 @@
     .cs-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
     .doc-wt{color:#fff}
     .art-intro-sub{max-width:720px;font-size:14.5px;color:var(--bone-soft);line-height:1.65;margin:-14px 0 28px}
-    .art-intro-sub strong.wt{color:#fff}
     @media(min-width:1024px){.dcard .dc-r{white-space:nowrap;letter-spacing:0.04em}}
     .cs-k{display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
@@ -287,7 +284,7 @@
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Nothing in this room is invented for display. <strong class="ox">Everything here shipped.</strong> Scripts appear exactly as broadcast. Internal Google documents are published with redaction. Public documentation links to the repos. Essays land the day they publish.</p>
+    <p class="wr-sub">Nothing in this room is invented for display. <strong class="wt">Everything here shipped.</strong> Scripts appear exactly as broadcast. Internal Google documents are published with redaction. Public documentation links to the repos. Essays land the day they publish.</p>
     <nav class="wr-skim" aria-label="Sections and screening skim path">
       <span class="wr-skim-nav">
         <a href="#essays">Essays</a><span class="sp-dot">·</span>
@@ -311,7 +308,7 @@
     <h2 class="mini reveal">Essays · weekly <span class="mini-note">· new series, launched July 2026</span></h2>
     <div class="es-grid">
     <div class="es-col">
-    <p class="essays-rubric reveal"><strong class="ox">New long-form writing on AI-native production</strong>, executive communications, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
+    <p class="essays-rubric reveal">New long-form writing on AI-native production, executive communications, and what newsrooms teach about both. Linked here the day it publishes on Substack.</p>
     <!-- WRITING:CARDS:START -->
     <div class="essay-cards reveal">
       <a class="ecard" href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">
@@ -349,7 +346,7 @@
     <div class="artifact">
       <div class="art-label reveal">AJ+ · 2017 · script as broadcast</div>
       <div class="art-title reveal">The measles script: 125 seconds, <span class="ox-i">50 million views</span></div>
-      <p class="art-intro reveal"><strong class="ox">Policy journalism built for a 125-second social window</strong>: a hook in the first sentence, <strong class="wt">the counter-claim named and dismantled with sourced facts</strong>, the mechanism explained in plain language, and a closing question instead of a lecture. Broadcast by AJ+ in 2017, it reached 50 million views <span class="src-t">(public source)</span>. The script runs below word for word, production cues intact.</p>
+      <p class="art-intro reveal">Policy journalism built for a 125-second social window: a hook in the first sentence, the counter-claim named and dismantled with sourced facts, the mechanism explained in plain language, and a closing question instead of a lecture. Broadcast by AJ+ in 2017, it reached 50 million views <span class="src-t">(public source)</span>. The script runs below word for word, production cues intact.</p>
       <div class="proof-row reveal">
         <a href="work.html#play-ajp-2017-measles-outbreaks-usa-viral-50m-views">Watch the broadcast</a>
         <a href="impact.html">Verify the view count</a>
@@ -513,8 +510,8 @@
       <span class="cs-k">Programmatic documentation</span>
       <h2 class="cs-title">The Google record, as case studies</h2>
     </div>
-    <p class="art-intro reveal"><strong class="ox">Three artifacts from two Google roles.</strong> The documents themselves <span class="doc-wt">stay inside Google</span>: what's published here is the shape of each, what it had to do, how it was written, and what it measured.</p>
-    <p class="art-intro-sub reveal"><strong class="wt">Provenance is stated per card</strong>, a reference can confirm the work, and the record can be walked through in a live conversation.</p>
+    <p class="art-intro reveal"><strong class="wt">Three artifacts from two Google roles.</strong> The documents themselves <span class="doc-wt">stay inside Google</span>: what's published here is the shape of each, what it had to do, how it was written, and what it measured.</p>
+    <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation.</p>
     <div class="doc-cards">
       <article class="dcard reveal">
         <span class="dc-k">Google xGE · 2026 · operator runbook</span>
