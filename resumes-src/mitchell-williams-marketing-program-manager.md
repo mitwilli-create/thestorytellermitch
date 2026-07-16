@@ -9,13 +9,13 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 **I build and run the program engines behind developer-facing marketing: workshop and event series, campaign playbooks, and the intake, cadence, and measurement that turn practitioner trust into pipeline.** Journalist, then eight years of communications and program work at Google, then applied-AI builder; a live rundown is a program plan with zero slack.
 
-**Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:** built the communications-and-program function from zero for 1,000+ Principal, Distinguished, and Fellow engineers: the annual summit, quarterly forums, the peer-led xGE Connects workshop series, and a three-tier operating model with real intake, governance, and cadence.
+**Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:** built the communications-and-program function from zero for 1,000+ Principal, Distinguished, and Fellow engineers: the annual Sr. Tech IC Summit, quarterly forums, the peer-led xGE Connects workshop series, and a three-tier operating model with real intake, governance, and cadence.
 
 **I am the audience developer marketing has to convince: I build multi-agent systems daily, in public.** career-ops runs 52 scheduled agents with budget caps and dead-man heartbeats under a unified spend cap; the same practitioner credibility carries a workshop stage.
 
 ## Fit for Marketing Program Management (Developer Tools)
 
-- **Own the program spine end to end:** the annual senior-IC summit (600+ attendees), quarterly engineering forums (300+ each), and the peer-led xGE Connects workshop series, survey to stage.
+- **Own the program spine end to end:** the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers), quarterly engineering forums (300+ each), and the peer-led xGE Connects workshop series, survey to stage.
 - **Run live rooms under a hard clock:** a decade of live national news; a workshop calendar is a broadcast rundown, and rehearsal, timing, and recovery are muscle memory.
 - **Hold credibility with practitioners:** two years building programs for 1,000+ Principal, Distinguished, and Fellow engineers, and I ship with the agentic tooling these programs teach.
 - **Measure behavior, not traffic:** a content-effectiveness audit lifted self-service solvability 9.03%, roughly 10,670 fewer support tickets a year; define the behavior a program should change, then measure that.
@@ -30,7 +30,7 @@ First dedicated communications hire for xGE; built the function from zero for a 
 
 #### Senior-IC event and program portfolio
 - **Problem:** The community needed a program engine, not ad hoc events and sends.
-- **Action:** Owned the annual summit (600+ attendees), quarterly engineering forums (300+ each), and xGE Connects, the peer-led workshop series, end to end: intake, speaker prep, rehearsal, staging, follow-up, plus the annual survey that shapes the community's roadmap.
+- **Action:** Owned the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers), quarterly engineering forums (300+ each), and xGE Connects, the peer-led workshop series, end to end: intake, speaker prep, rehearsal, staging, follow-up, plus the annual survey that shapes the community's roadmap.
 - **Impact:** One repeatable operating rhythm; Q1-2026 Connects sessions, hosted by Google DeepMind engineers, drew record attendance.
 
 #### Executive-communications digital twin (Gemini)
