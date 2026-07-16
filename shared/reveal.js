@@ -133,6 +133,11 @@
       // hero-stat integers count up as the terminal beat of the hero
       // orchestration (rule .62s, sub .78s, stats reveal .95s), so delay their
       // tick until the strip has settled; every other counter ticks on sight.
+      // Deliberate trade (owner-approved beat): if the viewer scrolls away
+      // inside the 1.05s window the tick completes off-screen and the strip
+      // simply shows its final values, the same correct end state reduced
+      // motion and no-JS get. Do not swap for an immediate tick; that breaks
+      // the hero choreography this delay exists to finish.
       if (e.target.closest('.hero-stats')) setTimeout(() => tick(e.target), 1050); else tick(e.target);
     } }); }, { threshold: 0.6 });
     document.querySelectorAll('.cs-stat .n, .fact .n, [data-count]').forEach((el) => { if (/\d/.test(el.textContent)) nio.observe(el); });
