@@ -42,21 +42,15 @@
     .doc-main p,.doc-main ul,.doc-main .backlink{max-width:680px}
     .doc p{font-size:16px;line-height:1.75;color:var(--bone-soft);margin-bottom:14px}
     .doc strong{color:var(--bone);font-weight:700}
-    /* ox anchors are theme emphasis bands (owner ruling 2026-07-15); local
-       mirrors re-assert white where .doc strong / .doc p a specificity wins */
-    .doc strong.ox{color:#fff}
+    /* sparse emphasis (owner final round): bold white only, theme strong.wt;
+       the mirror below re-asserts white where .doc strong specificity wins */
     .doc strong.wt{color:#fff}
     .doc em{color:var(--bone);font-style:italic}
     .doc p a,.doc li a{color:var(--blood-text);border-bottom:1px solid var(--blood-soft)}
     .doc p a:hover,.doc li a:hover{color:var(--bone)}
-    /* links living inside a band (the CoreWeave anchor) go white with a
-       visible underline, per the band grammar */
-    .doc p strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55)}
-    .doc p strong.ox a:hover{color:#fff;border-bottom-color:#fff}
     /* external-tab cue on inline prose links (card sources carry their own glyph) */
     .doc-main p a[target="_blank"]::after{content:"\00A0\2197";font-family:'JetBrains Mono',monospace;
       font-size:0.72em;color:var(--blood-soft);border-bottom:none;vertical-align:baseline}
-    .doc-main p strong.ox a[target="_blank"]::after{color:#fff}
     .doc ul{margin:12px 0 20px;padding-left:20px}
     .doc li{font-size:16px;line-height:1.7;color:var(--bone-soft);margin-bottom:8px}
     .doc h3{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
@@ -246,9 +240,9 @@
   <div class="wrap doc-grid">
     <div class="doc-main">
 
-    <p><strong class="ox">Fluidstack has built one of the most consequential companies in AI</strong> and barely said so. The gap between what it's built and what its spokespeople have said publicly is the opportunity.</p>
+    <p><strong class="wt">Fluidstack has built one of the most consequential companies in AI</strong> and barely said so. The gap between what it's built and what its spokespeople have said publicly is the opportunity.</p>
 
-    <p><strong class="wt">What follows is a map of the openings I see</strong> and what I would do with each one in the first weeks on the job. Everything here comes from the public record. I have no inside knowledge of Fluidstack, and I haven't invented any.</p>
+    <p>What follows is a map of the openings I see and what I would do with each one in the first weeks on the job. Everything here comes from the public record. I have no inside knowledge of Fluidstack, and I haven't invented any.</p>
 
     <figure class="pq reveal">
       <blockquote>At this company, in this moment, <span style="color:var(--blood-soft)">honesty</span> and <span style="color:var(--blood-soft)">getting ahead of the story</span> is the strategy.</blockquote>
@@ -260,13 +254,13 @@
         <h2 class="msec-title">The story will get written. The only question is who frames it.</h2>
       </div>
 
-      <p><strong class="ox">Anthropic committed <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion</a> to build with Fluidstack.</strong> Overnight, a company most people couldn't name became the builder behind the biggest bet of the AI era.</p>
-      <p><strong class="wt">But here's the exposure risk:</strong> Fluidstack's public story runs almost entirely through one customer, Anthropic. Reporters will test the concentration whether Fluidstack invites the question or not; if Anthropic slows down or builds its own way, the skeptic's version writes itself.</p>
+      <p>Anthropic committed <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion</a> to build with Fluidstack. Overnight, a company most people couldn't name became the builder behind the biggest bet of the AI era.</p>
+      <p>But here's the exposure risk: Fluidstack's public story runs almost entirely through one customer, Anthropic. Reporters will test the concentration whether Fluidstack invites the question or not; if Anthropic slows down or builds its own way, the skeptic's version writes itself.</p>
 
       <p>Now add Google. It <a href="https://www.cnbc.com/2025/10/23/anthropic-google-cloud-deal-tpu.html" target="_blank" rel="noopener">invests in Anthropic and sells Anthropic its chips</a>. It also backstops <a href="https://www.datacenterdynamics.com/en/news/fluidstack-signs-additional-39mw-lease-with-cipher-mining-in-texas-backed-by-google/" target="_blank" rel="noopener">$1.73 billion</a> of Fluidstack's lease obligations, an initial $1.4 billion plus another $333 million added in November 2025, when Cipher Mining, a Bitcoin miner turned AI data-center host in Texas, expanded its lease.</p>
-      <p><strong class="wt">The money keeps circling back through the same few players</strong> in a pattern the press calls <a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">"circular financing"</a>. This reporting ultimately stokes a fear that the AI boom is propped up by insiders, not real demand. Pair this with the single customer angle, and a skeptic has the whole "house of cards" story.</p>
+      <p>The money keeps circling back through the same few players in a pattern the press calls <a href="https://fortune.com/2026/06/29/bis-central-bank-warning-hyperscaler-data-center-1-trillion-gamble-recession/" target="_blank" rel="noopener">"circular financing"</a>. This reporting ultimately stokes a fear that the AI boom is propped up by insiders, not real demand. Pair this with the single customer angle, and a skeptic has the whole "house of cards" story.</p>
 
-      <p><strong class="wt"><a href="https://www.coreweave.com/" target="_blank" rel="noopener">CoreWeave</a> learned this the hard way.</strong> Similar to Fluidstack, it rents AI compute to a few giant customers. In the year before its 2025 IPO, Microsoft alone made up <a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">62 percent of its revenue</a>.</p>
+      <p><a href="https://www.coreweave.com/" target="_blank" rel="noopener">CoreWeave</a> learned this the hard way. Similar to Fluidstack, it rents AI compute to a few giant customers. In the year before its 2025 IPO, Microsoft alone made up <a href="https://fortune.com/2025/03/03/coreweave-ipo-s1-filing-nasdaq-ai-cloud-nvidia-microsoft/" target="_blank" rel="noopener">62 percent of its revenue</a>.</p>
       <p>Critics and investors (looking to make a profit on CoreWeave's stock failing publicly) claimed the company was too dependent on its one big tech customer, propped up by debt, and held together through circular deals. <strong class="wt">Their take became the version of the story everyone repeated.</strong> The stock fell about 55% from its peak while that narrative hardened.</p>
 
       <figure class="gcard reveal" aria-label="The concentration story critics told about CoreWeave, in headlines">
@@ -288,7 +282,7 @@
         <figcaption class="gcap">The concentration story critics told about CoreWeave, in their own headlines. The volatility cuts both ways, which is exactly why the framing matters.</figcaption>
       </figure>
 
-      <p>The lesson? <strong class="wt">Tell your own story first</strong> or become the cautionary tale the whole industry points to.</p>
+      <p>The lesson? Tell your own story first or become the cautionary tale the whole industry points to.</p>
 
       <div class="do-block">
         <h3>What I'd do</h3>
@@ -310,11 +304,11 @@
         <h2 class="msec-title">The whole trick is not owning the building</h2>
       </div>
 
-      <p><strong class="ox">A new data center grid connection in Texas or New York can take three to seven years</strong>, and that wait is the <a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">single hardest problem</a> in the entire AI buildout. A company can line up billions in funding and a warehouse of Nvidia chips in a few months, then sit for years waiting for a grid connection big enough to run them. Electricity, in one place and ready to use, is now the scarcest thing in the industry.</p>
+      <p>A new data center grid connection in Texas or New York can take three to seven years, and that wait is the <a href="https://www.weforum.org/stories/2026/05/electricity-data-grid-connectivity-strategic-bottleneck-ai-transformation/" target="_blank" rel="noopener">single hardest problem</a> in the entire AI buildout. A company can line up billions in funding and a warehouse of Nvidia chips in a few months, then sit for years waiting for a grid connection big enough to run them. Electricity, in one place and ready to use, is now the scarcest thing in the industry.</p>
 
-      <p><strong class="wt">Fluidstack solves for this by walking into already-built Bitcoin-mining sites</strong> and re-engineering them for AI. The sites' shells are already wired for heavy power. Fluidstack brings them online as clusters built for frontier training.</p>
+      <p>Fluidstack solves for this by walking into already-built Bitcoin-mining sites and re-engineering them for AI. The sites' shells are already wired for heavy power. Fluidstack brings them online as clusters built for frontier training.</p>
       <p>The conversions are already public record. <a href="https://www.datacenterdynamics.com/en/news/fluidstack-signs-additional-39mw-lease-with-cipher-mining-in-texas-backed-by-google/" target="_blank" rel="noopener">Cipher Mining in Texas</a> and <a href="https://www.datacenterdynamics.com/en/news/cryptominer-terawulf-secures-200mw-lease-with-fluidstack-google-to-take-stake-in-company/" target="_blank" rel="noopener">TeraWulf in upstate New York</a>, both Bitcoin miners with power-rich sites, have signed long-term deals that hand their facilities to Fluidstack for AI. And the company increasingly pairs that reuse with selective new builds, including the custom data centers it is delivering for Anthropic.</p>
-      <p><strong class="wt">Reuse quietly solves another problem</strong> the whole industry is about to slam into: the growing revolt against data centers. It's bigger than the industry wants to admit.</p>
+      <p>Reuse quietly solves another problem the whole industry is about to slam into: the growing revolt against data centers. It's bigger than the industry wants to admit.</p>
 
       <div class="stat-grid reveal" role="group" aria-label="The data-center backlash, in three figures">
         <div class="stat">
@@ -337,7 +331,7 @@
         </div>
       </div>
 
-      <p><strong class="wt">A new data center takes an enormous amount from a town</strong> and gives almost nothing back. The biggest ones <a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">employ fewer than 150 people</a>, sometimes 25. Across the country, data centers pull <a href="https://eta.lbl.gov/publications/2024-united-states-data-center-energy" target="_blank" rel="noopener">more than 4 percent of the electricity</a> and hand back about <strong>0.01 percent of the jobs</strong>. The town carries the water and the grid, and the payoff never comes.</p>
+      <p>A new data center takes an enormous amount from a town and gives almost nothing back. The biggest ones <a href="https://www.foodandwaterwatch.org/2026/01/07/new-research-debunks-data-center-industry-job-claims/" target="_blank" rel="noopener">employ fewer than 150 people</a>, sometimes 25. Across the country, data centers pull <a href="https://eta.lbl.gov/publications/2024-united-states-data-center-energy" target="_blank" rel="noopener">more than 4 percent of the electricity</a> and hand back about <strong>0.01 percent of the jobs</strong>. The town carries the water and the grid, and the payoff never comes.</p>
 
       <p><strong class="wt">Fluidstack doesn't break new ground;</strong> it flips the switch on ground already broken. No new campus on farmland, no fresh load forced onto a stressed grid: it moves into buildings that already stand and power that was already flowing, old Bitcoin mines that were pulling that electricity long before AI showed up.</p>
 
@@ -352,7 +346,7 @@
 
       <div class="payoff">
         <h3>The payoff</h3>
-        <p><strong class="wt">When the backlash reaches AI infrastructure,</strong> and it will, Fluidstack does not land on the list of targets. It becomes the standard the targets get measured against.</p>
+        <p>When the backlash reaches AI infrastructure, and it will, Fluidstack does not land on the list of targets. It becomes the standard the targets get measured against.</p>
       </div>
     </section>
 
@@ -362,13 +356,13 @@
         <h2 class="msec-title">Nobody is speaking&#8230;yet.</h2>
       </div>
 
-      <p><strong class="ox">The leadership team has hardly needed to write in public yet</strong>; the work has done the talking. The voice is already there in fragments, a press-release quote here, a hiring post there. What's missing is the owned version: the signature op-ed, the podcast seat, the voice the industry quotes first.</p>
+      <p>The leadership team has hardly needed to write in public yet; the work has done the talking. The voice is already there in fragments, a press-release quote here, a hiring post there. What's missing is the owned version: the signature op-ed, the podcast seat, the voice the industry quotes first.</p>
 
       <figure class="pq reveal">
         <blockquote>For most companies that would be a gap. For Fluidstack, it's headroom, the fastest-compounding asset a first comms hire can build.</blockquote>
       </figure>
 
-      <p><strong class="wt">The sector has a stack of real questions</strong> and an open seat for the credible operator who answers them: what frontier labs actually need from their infrastructure, how these enormous deals get financed, where the power really comes from.</p>
+      <p>The sector has a stack of real questions and an open seat for the credible operator who answers them: what frontier labs actually need from their infrastructure, how these enormous deals get financed, where the power really comes from.</p>
 
       <div class="cred reveal">
         <div class="body">
@@ -378,9 +372,9 @@
         </div>
       </div>
 
-      <p><strong class="wt">The live test is already on the record.</strong></p>
+      <p>The live test is already on the record.</p>
       <p><a href="https://www.bloomberg.com/news/articles/2026-03-18/fluidstack-drops-out-of-marquee-10-billion-ai-project-in-france" target="_blank" rel="noopener">Bloomberg reported in March</a> that Fluidstack pulled out of a marquee 10-billion-euro data-center project in France as it pivots to larger US contracts. Credit where due: Fluidstack's rationale made it into the story, and the framing held. The miss is that it arrived reactively, inside someone else's news cycle, so the headline still led with the exit. The December headquarters announcement had already planted the US-pivot narrative; the move was to seed the France decision with two or three trusted reporters before it broke, and let consolidation, not abandonment, lead the coverage.</p>
-      <p>A comms lead who cannot narrate a reversal calmly should not be trusted with the wins either.</p>
+      <p><strong class="wt">A comms lead who cannot narrate a reversal calmly should not be trusted with the wins either.</strong></p>
 
       <div class="do-block">
         <h3>What I'd do</h3>
@@ -403,7 +397,7 @@
         <h2 class="msec-title">Why me</h2>
       </div>
 
-      <p><strong class="ox">A first comms hire at Fluidstack doesn't just turn up the volume.</strong> The job is judgment: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
+      <p>A first comms hire at Fluidstack doesn't just turn up the volume. <strong class="wt">The job is judgment</strong>: deciding what the record can hold, saying it in a voice people trust, and knowing the reporters and questions they will likely ask.</p>
 
       <h3 class="plan-head">Here's how I plan to leverage the role in my first ninety days</h3>
 
