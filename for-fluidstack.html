@@ -11,7 +11,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715d">
+  <link rel="stylesheet" href="shared/theme.css?v=20260715e">
   <style>
     .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
@@ -68,11 +68,11 @@
     .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
     .path .t a{color:var(--bone);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .path .t a:hover{color:var(--blood-text)}
-    /* step leads are banded ox anchors that stay links: white text + visible
-       underline inside the band (mirrors theme strong.ox a; local specificity
-       of .path .t a would otherwise repaint them bone) */
-    .path .t strong.ox a{color:#fff;border-bottom:1px solid rgba(255,255,255,0.55)}
-    .path .t strong.ox a:hover{color:#fff;border-bottom-color:#fff}
+    /* step leads are bold-white anchors that stay links (owner round 2: no
+       cells outside section openers); local specificity of .path .t a would
+       otherwise repaint them bone */
+    .path .t strong.wt a{color:#fff;border-bottom:1px solid var(--blood-hairline)}
+    .path .t strong.wt a:hover{color:var(--blood-text)}
     .path-total{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
       text-transform:uppercase;color:var(--dim);margin-top:18px}
     .map-list{list-style:none;margin:0;padding:0;max-width:760px}
@@ -122,7 +122,7 @@
          the line. Prose voice in this file is council-governed; grammar-only
          reviewer suggestions on it are declined by standing rule. */
       .path .t a{padding:3px 0}
-      .path .t strong.ox a{display:inline-block;padding:6px 0}
+      .path .t strong.wt a{display:inline-block;padding:6px 0}
       .path .step{padding:20px 0}
     }
     /* designed note cards (owner punch item 8): mono kicker + quiet border,
@@ -182,8 +182,8 @@
     <span class="hero-rule" aria-hidden="true"></span>
     <div class="sys-sub">
       <p>You're screening for <a class="ox-link" href="https://fluidstack.io/jobs/98083287-0655-446f-9893-4f79947b95ef" target="_blank" rel="noopener">Fluidstack's Communications Lead</a>: someone whose writing can carry the company's story and whose judgment holds when the stakes are real.</p>
-      <p><strong class="ox">I'm not a traditional PR person.</strong> I'm a newsroom-trained writer who builds communications systems, which is what a first hire who owns all of it has to be.</p>
-      <p>This page sequences the case the way a writing-first screen checks it: <strong class="ox">samples before biography.</strong></p>
+      <p><strong class="wt">I'm not a traditional PR person.</strong> I'm a newsroom-trained writer who builds communications systems, which is what a first hire who owns all of it has to be.</p>
+      <p>This page sequences the case the way a writing-first screen checks it: <strong class="wt">samples before biography.</strong></p>
     </div>
     <div class="hero-stats">
       <div class="hs"><div class="n">112</div><div class="k">journalists mapped</div></div>
@@ -199,7 +199,7 @@
     <h2 class="fs-title">How I'd approach the Fluidstack narrative</h2>
     <div class="narrative-prose reveal">
       <p><strong class="ox">Anthropic has committed roughly <a href="https://www.constellationr.com/blog-news/insights/anthropic-spend-50-billion-ai-infrastructure-fluidstack-partnership" target="_blank" rel="noopener">$50 billion &#8599;</a> to build with Fluidstack</strong> as its deployment partner, and the public story is now so Anthropic-centered that reporters will inevitably test the concentration.</p>
-      <p><strong class="ox">But Fluidstack still has time</strong> to frame the narrative. The memo shows exactly what I would do first.</p>
+      <p><strong class="wt">But Fluidstack still has time</strong> to frame the narrative. The memo shows exactly what I would do first.</p>
     </div>
     <div class="el-cta reveal" style="margin-top:24px">
       <a class="btn solid" href="docs/fluidstack-positioning-memo.html"><span>Read the memo: the full approach, sourced</span></a>
@@ -211,15 +211,15 @@
   <div class="wrap">
     <h2 class="fs-title">The path</h2>
     <div class="path">
-      <div class="step reveal"><span class="d">Step 1 · 8-min read</span><span class="t"><strong class="ox"><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></strong> A positioning memo written for Fluidstack specifically: how I'd frame the company's story. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>: broadcast scripts word for word, and the Google documentation record as case studies with provenance stated (the originals stay inside Google, where they belong). And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
-      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="ox"><a href="comms.html#judgment">Check the judgment record.</a></strong> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. I protected the reporter, not the headline.</span></div>
-      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="ox"><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></strong> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review rounds per doc by about 70% (my own count; a reference can confirm it). The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
-      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="ox"><a href="resume/comms-manager.html">Open the resume.</a></strong> Two pages, tuned to communications leadership. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
+      <div class="step reveal"><span class="d">Step 1 · 8-min read</span><span class="t"><strong class="wt"><a href="docs/fluidstack-positioning-memo.html">Read the writing first.</a></strong> A positioning memo written for Fluidstack specifically: how I'd frame the company's story. Then the <a href="writing.html#redacted-docs">writing room's section for comms reviewers</a>: broadcast scripts word for word, and the Google documentation record as case studies with provenance stated (the originals stay inside Google, where they belong). And a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a> puts that narrative approach in public, aimed squarely at this industry.</span></div>
+      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="wt"><a href="comms.html#judgment">Check the judgment record.</a></strong> Live <a href="stories.html#scientology-live-coverage">Scientology coverage produced while the network was under active legal scrutiny</a>, and <a href="stories.html#fusion-ramos-lawsuit">Jorge Ramos's flagship weekly produced under a $500 million lawsuit</a>. Counsel drew hard lines. The coverage ran. I protected the reporter, not the headline.</span></div>
+      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="wt"><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></strong> Eight years at Google writing directly for a VP and Google's then-CIO, in front of an audience of 1,000+ Principal, Distinguished, and Fellow engineers. A writing system encoding one VP's voice cut review rounds per doc by about 70% (my own count; a reference can confirm it). The <a href="comms.html#infrastructure">systems on the comms page</a> exist so the function scales.</span></div>
+      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="wt"><a href="resume/comms-manager.html">Open the resume.</a></strong> Two pages, tuned to communications leadership. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
       <!-- Reviewer note: the email and phone here are Mitchell's own public
      professional contact details, published by design so recruiters can reach
      him (same tel: link comms.html has carried on main). Not third-party
      personal data. -->
-      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="ox">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Fluidstack%20Communications%20Lead%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
+      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="wt">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=Fluidstack%20Communications%20Lead%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
     </div>
     <p class="path-total">total: about 15 minutes</p>
   </div>
@@ -228,7 +228,7 @@
 <section style="padding-top:0" id="ninety-days">
   <div class="wrap">
     <h2 class="fs-title">The first 90 days, concretely</h2>
-    <p class="narrative-prose reveal" style="margin-bottom:18px">Plainly: these are the first two stories I would pitch to specific reporters on Fluidstack's behalf, who I would pitch them to, and how we would know the coverage worked.</p>
+    <p class="narrative-prose reveal" style="margin-bottom:18px"><strong class="ox">Plainly: these are the first two stories I would pitch</strong> to specific reporters on Fluidstack's behalf, who I would pitch them to, and how we would know the coverage worked.</p>
     <ul class="map-list">
       <li class="reveal"><h3>Story pitch #1 · the build-out feature</h3> A reported feature on what it actually takes to deliver Anthropic's $50 billion commitment, told from the gigawatt floor. I would pitch it to one major national business outlet and one data-center trade publication, with every number sourced before a reporter has to ask, and the committed-spend-is-never-revenue line built in.</li>
       <li class="reveal"><h3>Story pitch #2 · the financing explainer</h3> How Google's <a href="https://www.datacenterdynamics.com/en/news/fluidstack-signs-additional-39mw-lease-with-cipher-mining-in-texas-backed-by-google/" target="_blank" rel="noopener">$1.73 billion backstop of Fluidstack's lease obligations &#8599;</a> actually works, walked through the filings, and why the circular-financing read misses the mechanics. Pitched to the reporters who cover AI financing and capital markets, before a short-seller frames it first.</li>
