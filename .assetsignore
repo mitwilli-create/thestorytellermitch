@@ -5,6 +5,7 @@
 # linked from writing.html and must be served.
 media/
 .git/
+.git
 node_modules/
 tools/
 .claude/
