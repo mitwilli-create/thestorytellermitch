@@ -70,7 +70,30 @@ for (;;) {
   const { vectorCount } = await res.json();
   process.stdout.write(`\r  ingested ${vectorCount}/${expected}`);
   if (vectorCount >= expected) {
-    console.log(`\nDone: ${expected} chunks indexed and queryable.`);
+    // EXACT, not >=. A count ABOVE the corpus size means orphans: this script
+    // upserts and never deletes, and chunk ids are positional (__c0, __c1...),
+    // so any re-chunking renumbers them and strands vectors from the old scheme
+    // that no rebuild will ever overwrite. Those orphans are still retrievable,
+    // so they quietly inflate the eval.
+    //
+    // This is not hypothetical. The 95.1% hit rate reported as Phase B's
+    // headline (and copied into PHASE-B-REPORT.md and two memory files) was
+    // measured against an index in exactly this state; a clean rebuild of the
+    // same content reads 92.2%, and no committed corpus reproduces 95.1%. A
+    // `>=` check called that index healthy. Fail instead: a wrong number that
+    // looks healthy costs more than a red line here.
+    if (vectorCount > expected) {
+      console.error(`\nORPHANS: index holds ${vectorCount} vectors for a ${expected}-chunk corpus.`);
+      console.error(`${vectorCount - expected} vector(s) belong to no current chunk and are still retrievable,`);
+      console.error('so any eval run against this index is inflated and not reproducible.');
+      console.error('Fix: wipe and re-index from a clean index (see the kb-ops runbook):');
+      console.error('  pkill -f "wrangler.*dev"');
+      console.error('  wrangler vectorize delete thestorytellermitch-kb --force');
+      console.error('  wrangler vectorize create thestorytellermitch-kb --dimensions=768 --metric=cosine');
+      console.error('  # restart wrangler dev FRESH before re-indexing, or upserts are silently dropped');
+      process.exit(1);
+    }
+    console.log(`\nDone: ${expected} chunks indexed and queryable (exact count, no orphans).`);
     break;
   }
   if (vectorCount !== last) {

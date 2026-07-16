@@ -34,12 +34,33 @@ const INDEX_BATCH_SIZE = 50;
 // with this. See tools/PHASE-B-REPORT.md + tools/.kb-eval-report.json.
 const DEFAULT_TOP_K = 15;
 const MAX_TOP_K = 20;
-// Candidate pool over-fetched before diversification. 20 is a hard Vectorize
-// ceiling for a single-pass query, not a tuning choice: topK is capped at 20
-// when returnMetadata is 'all'. Going deeper needs a two-pass query (ids only,
-// pool up to 100 -> cap -> getByIds); nothing measured so far justifies that
-// round trip, but it is untested rather than ruled out (see PER_SOURCE_CAP).
-const POOL_K = 20;
+// Candidate pool over-fetched before diversification. MUST stay comfortably
+// deeper than MAX_TOP_K: the cap DROPS over-cap chunks rather than demoting
+// them, so the served set can only be as large as the pool has distinct
+// sources. Too shallow a pool silently serves fewer cards than asked for.
+//
+// The "20 is a hard Vectorize ceiling with returnMetadata:'all'" note that was
+// here was WRONG, and it was load-bearing twice: it pinned POOL_K at 20 and it
+// ruled out a deeper pool as needing a two-pass query. Measured 2026-07-16
+// against the live index -- the real single-pass ceiling is 50, not 20:
+//   topK=60 + returnMetadata:'all'   -> VECTOR_QUERY_ERROR 40025
+//                                       "max top K is 50, but got 60"
+//   topK=50 + returnMetadata:'all'   -> OK
+//   topK=100 + returnMetadata:'none' -> OK (the two-pass route; still unneeded)
+// A 50-deep pool costs ONE query, exactly like a 20-deep one. No second round
+// trip, no getByIds.
+//
+// What POOL_K=20 actually cost, measured over the 103-question golden set at
+// topK=15 on the 382-chunk index:
+//   POOL_K=20 -> 51 of 103 queries served FEWER than 15 cards (avg 13.80/15,
+//                worst 7). The old note reported this as "avg distinct sources
+//                11.6 -> 13.8" and read it as a diversity win; it is really
+//                1.2 cards per query going missing.
+//   POOL_K=50 -> 0 of 103 short. Every query serves a full 15.
+// Golden-set hit rate is identical either way (100/103) because hit rate only
+// asks whether the expected source appears at all -- it cannot see a starved
+// context window. Phase C can: on c26, POOL_K=20 hands it 7 cards instead of 15.
+const POOL_K = 50;
 // Max chunks any ONE source document may occupy in the served set.
 //
 // Why this exists: the corpus holds 8 near-duplicate resume lanes plus long
@@ -57,18 +78,26 @@ const POOL_K = 20;
 // entries (c47, c75) plus one genuine miss (CO7).
 //
 // Read the win honestly: cap=1 at 15 returns the same recall as a raw topK=20
-// (100/103) while serving 15 cards instead of 20, all from distinct documents
-// (avg distinct sources 11.6 -> 13.8). It buys topK=20's reach without showing
-// duplicate cards.
+// (100/103) while serving 15 cards instead of 20, all from distinct documents.
+// It buys topK=20's reach without showing duplicate cards. (The "avg distinct
+// sources 11.6 -> 13.8" that used to be quoted here was not a diversity gain:
+// 13.8 was the average number of cards actually SERVED out of 15, i.e. the
+// shortfall from too shallow a POOL_K. Fixed there, not here.)
 //
-// 100/103 is the measured ceiling for THIS query configuration (one query, pool
-// <= 20) -- NOT a corpus ceiling. c47 and c75 are unreachable on the merits
-// (documented-wrong golden entries), but CO7 was only ever observed absent from
-// the top 20; its expected source could rank deeper and be reachable via a
-// two-pass query (ids only, pool up to 100 -> cap -> getByIds). That was never
-// tested, so it is not claimed either way. POOL_K stays at 20 because nothing
-// measured so far justifies the second round trip, not because 100/103 is a
-// proven ceiling.
+// CO7's open question is now CLOSED, and the answer is no. It was recorded as
+// "only ever observed absent from the top 20; could rank deeper and be
+// reachable via a two-pass query... never tested." Tested 2026-07-16 with a
+// 50-deep single-pass pool: `…-ai-program-manager.md` is absent from the top 20
+// DISTINCT sources entirely, while FIVE other resume lanes surface ahead of it
+// (marketing @1, forward-deployed @4, devrel @6, ai-solutions-architect @8,
+// ai-enablement @13). Since MAX_TOP_K is 20, no pool depth can reach it: a
+// two-pass query to 100 would change nothing. CO7 is a content/golden-set
+// question (do the TPM-fundamentals words exist in that lane at all?), not a
+// retrieval-tuning one. Broadening the golden set for it was considered and
+// declined (owner, 2026-07-16).
+//
+// So 100/103 IS the ceiling for single-query dense retrieval here: c47 and c75
+// are documented-wrong golden entries and CO7 is unreachable by any pool depth.
 //
 // Phase C caveat: generation wants context DEPTH (several chunks of the best
 // doc), which is the opposite of this. Phase C should read its own context
