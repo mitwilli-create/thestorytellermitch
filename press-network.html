@@ -41,7 +41,7 @@
 
     /* headline figures */
     .pn-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
-      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:860px}
+      border:1px solid var(--line);border-radius:3px;overflow:hidden}
     .pn-stat{background:var(--surface);padding:28px 24px;min-width:0}
     .pn-stat .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,52px);
       color:var(--bone);line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
@@ -66,7 +66,7 @@
 
     /* seniority ledger */
     .pn-ledger{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+      border:1px solid var(--line);border-radius:3px;overflow:hidden}
     .pn-led{background:var(--surface);padding:22px 20px;min-width:0}
     .pn-led .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,40px);
       color:var(--bone);line-height:1;font-variant-numeric:tabular-nums}
@@ -75,7 +75,7 @@
 
     /* reach clusters */
     .pn-reach{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
-      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+      border:1px solid var(--line);border-radius:3px;overflow:hidden}
     .pn-r{background:var(--surface);padding:24px 26px 26px;min-width:0}
     .pn-r .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
@@ -87,7 +87,7 @@
 
     /* beat groups */
     .pn-beats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
-      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+      border:1px solid var(--line);border-radius:3px;overflow:hidden}
     .pn-beat{background:var(--surface);padding:26px 26px 28px}
     .pn-beat .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:16px}
@@ -98,7 +98,8 @@
     .pn-beat .o b{color:var(--blood-text);font-weight:400;font-size:10px}
     @media(max-width:720px){.pn-beats{grid-template-columns:1fr}}
 
-    .pn-note{max-width:720px;font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-top:8px}
+    /* notes run the full wrap rails, flush with the grids (owner 2026-07-16) */
+    .pn-note{font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-top:8px}
     .pn-note a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .pn-note a:hover{color:var(--bone)}
     .pn-note strong{color:var(--bone);font-weight:600}
@@ -146,7 +147,7 @@
     .pn-band-n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(84px,11vw,168px);line-height:.95;
       color:var(--bone);letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
     .pn-band-n i{font-style:normal;color:var(--blood-soft);font-size:.42em;font-weight:800}
-    .pn-band-l{margin-top:16px;max-width:520px;font-size:16.5px;line-height:1.6;color:var(--bone-soft)}
+    .pn-band-l{margin-top:18px;max-width:510px;font-size:22px;line-height:1.5;color:var(--bone-soft)}
     @media (prefers-reduced-motion: reduce){.pn-band-plate img{transform:none !important}}
 
     @media(max-width:640px){.pn-hero{padding:130px 0 52px}}
@@ -212,7 +213,7 @@
 <section style="padding-top:0">
   <div class="wrap">
     <h2 class="mini">On the record: the rows I can name</h2>
-    <p class="pn-note" style="margin-bottom:30px;max-width:none">A held list you cannot check is just a claim. These rows are named because the public record already names them: shared newsrooms and published work anyone can look up. Role and outlet only, current as of July 2026. <strong>No contact information lives on this page.</strong> Naming documents overlap on the public record; it does not imply the people named endorse me or any employer.</p>
+    <p class="pn-note" style="margin-bottom:30px">A held list you cannot check is just a claim. These rows are named because the public record already names them: shared newsrooms and published work anyone can look up. Role and outlet only, current as of July 2026. <strong>No contact information lives on this page.</strong> Naming documents overlap on the public record; it does not imply the people named endorse me or any employer.</p>
     <div class="pn-named reveal" role="group" aria-label="Named rows of the relationship map, public record only">
       <!-- TIER2:BEGIN. All six live-verified 2026-07-16 (current seat, public
            receipt, adversarial pass). These rows are professional public-record
@@ -260,7 +261,7 @@
       </div>
       <!-- TIER2:END -->
     </div>
-    <p class="pn-note" style="margin-top:22px;max-width:none">Four of the six receipts point at the same newsroom: real maps run dense where you worked, thinner where you pitched.</p>
+    <p class="pn-note" style="margin-top:22px">Four of the six receipts point at the same newsroom: real maps run dense where you worked, thinner where you pitched.</p>
   </div>
 </section>
 
@@ -293,7 +294,7 @@
         <div class="l">anchors, hosts, and columnists with their own audiences.</div>
       </div>
     </div>
-    <p class="pn-note" style="margin-top:22px;max-width:none">The rest of the rows are the correspondents, senior producers, and editors who actually get segments made.</p>
+    <p class="pn-note" style="margin-top:22px">The rest of the rows are the correspondents, senior producers, and editors who actually get segments made.</p>
   </div>
 </section>
 
@@ -440,7 +441,7 @@
         </div>
       </div>
     </div>
-    <p class="pn-note" style="margin-top:30px;max-width:none">Every count is the named relationships at that outlet: all 30 outlets and 112 rows accounted for, nothing rounded, nothing padded.</p>
+    <p class="pn-note" style="margin-top:30px">Every count is the named relationships at that outlet: all 30 outlets and 112 rows accounted for, nothing rounded, nothing padded.</p>
   </div>
 </section>
 
