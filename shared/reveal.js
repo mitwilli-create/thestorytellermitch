@@ -31,7 +31,32 @@
   document.querySelectorAll('.display .ln > span').forEach((el, i) => { if (window.__motionOK) el.style.transitionDelay = (0.15 + i * 0.11) + 's'; });
   const mod = Number(document.body.dataset.revealStagger || 4);
   const io = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px 12% 0px' });
-  document.querySelectorAll('.reveal').forEach((el, i) => { if (window.__motionOK) el.style.transitionDelay = ((i % mod) * 0.07) + 's'; io.observe(el); });
+  // Tiles inside a horizontal strip (overflow-x scroller) can start clipped
+  // past the strip's edge, where their viewport intersection is empty, so the
+  // per-element observer never fires on vertical scroll and they'd stay at
+  // opacity:0 for real visitors. Those reveal as one group the moment the
+  // strip itself scrolls into view (the timeline's reveal-child semantics).
+  const scrollerOf = (el) => {
+    for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+      if (/(auto|scroll)/.test(getComputedStyle(p).overflowX)) return p;
+    }
+    return null;
+  };
+  const groups = new Map();
+  const gio = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      gio.unobserve(e.target);
+      (groups.get(e.target) || []).forEach((el) => el.classList.add('in'));
+      groups.delete(e.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px 12% 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    if (window.__motionOK) el.style.transitionDelay = ((i % mod) * 0.07) + 's';
+    const sc = scrollerOf(el);
+    if (sc) { if (!groups.has(sc)) { groups.set(sc, []); gio.observe(sc); } groups.get(sc).push(el); }
+    else io.observe(el);
+  });
   window.__revealObserve = (el) => io.observe(el);
 
   // Cinemagraphs: [data-cine="assets/cinemagraphs/<plate>"] wraps a poster
