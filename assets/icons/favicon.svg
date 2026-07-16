@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- hand-authored mark: site wordmark "MW." reduced to "M." -->
+  <!-- bone M + square oxblood period on the near-black ground, 2px-inset square -->
+  <rect x="2" y="2" width="60" height="60" fill="#0a0a0b"/>
+  <path fill="#ece8e1" d="M10 48 V16 H20 L26 34 32 16 H42 V48 H34 V28 L26 44 18 28 V48 Z"/>
+  <rect x="46" y="40" width="8" height="8" fill="#b6584e"/>
+</svg>
