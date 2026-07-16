@@ -325,9 +325,11 @@ a.chip{text-decoration:none;display:inline-block}
 .lnk-proof:hover{color:var(--bone)}
 .lnk-nav{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
 .lnk-nav:hover{color:var(--blood-soft)}
-.lnk-inline{color:var(--bone);border-bottom:1px solid var(--blood-hairline);
+/* owner 2026-07-15: all body hyperlinks read in oxblood ink (blood-text,
+   5.2:1 AA), hover lifts to bone; hairline underlines stay (never solid) */
+.lnk-inline{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);
   transition:color var(--dur-micro) var(--ease-micro)}
-.lnk-inline:hover{color:var(--blood-text)}
+.lnk-inline:hover{color:var(--bone)}
 .lnk-proof:focus-visible,.lnk-nav:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
 .lnk-inline:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
 /* ---------- emphasis (owner ruling 2026-07-15, final round) ----------
@@ -341,9 +343,9 @@ strong.wt{color:#fff;font-weight:700}
 }
 /* default focus ring for any anchor a page hasn't styled itself */
 a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
-/* in-content links: house style = tier 3 (matches per-page .prose a rules on comms/about) */
-.prose a,.sys-body a,.sys-name a,.r-fit a,.story p a{color:var(--bone);border-bottom:1px solid var(--blood-hairline)}
-.prose a:hover,.sys-body a:hover,.sys-name a:hover,.r-fit a:hover,.story p a:hover{color:var(--blood-text)}
+/* in-content links: house style = tier 3, oxblood ink (owner 2026-07-15) */
+.prose a,.sys-body a,.sys-name a,.r-fit a,.story p a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline)}
+.prose a:hover,.sys-body a:hover,.sys-name a:hover,.r-fit a:hover,.story p a:hover{color:var(--bone)}
 /* header contact CTA: bordered on desktop, plain list item in the mobile menu */
 @media(min-width:861px){
   .nav-links .nav-cta{border:1px solid var(--blood-soft);padding:8px 14px;opacity:1}
