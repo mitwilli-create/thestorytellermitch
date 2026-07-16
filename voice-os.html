@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,10 +92,18 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label" data-narration="voice-os" data-narration-secs="67">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
-        <span class="vc-label">recorded narration available on request</span>
+        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
+        <span class="vc-label">synthetic voice, cloned with consent</span>
+      </div>
+      <div class="vc-body">
+        <button class="vc-play" type="button" disabled aria-label="Play narration">&#9654;</button>
+        <div class="vc-wave">
+          <div class="vc-wave-fill" aria-hidden="true"></div>
+          <input class="vc-seek" type="range" min="0" max="100" step="1" value="0" aria-label="Seek within the narration">
+        </div>
+        <span class="vc-status">1:07</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and voice-os is my measured voice operating system. Most tools that claim to sound like you are just a prompt and a few examples, with no way to tell a near miss from a real match. Mine is different. It ingests a writing corpus with full provenance, mines how my voice actually behaves across contexts, then drafts through a generative persona and an adversarial persona that stress-tests the result. It scores every draft on six axes, rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register, against a threshold calibrated to what my own writing actually scores. Below that bar, it revises, or it refuses to ship. The engine began as an executive voice system I built at Google, a digital twin calibrated on almost seven million words of a VP's communications. This is its personal successor. "Sounds like me" stops being a vibe and becomes a spec.</p></details>
     </div>
@@ -291,6 +299,7 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260715a"></script>
-<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/audio.js?v=20260716a"></script>
+<script src="shared/narration.js?v=20260716a"></script>
 </body>
 </html>

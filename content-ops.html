@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,10 +92,18 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label" data-narration="content-ops" data-narration-secs="65">
       <div class="vc-head">
-        <span id="voice-console-label" class="vc-k">this page, as a narration script</span>
-        <span class="vc-label">recorded narration available on request</span>
+        <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
+        <span class="vc-label">synthetic voice, cloned with consent</span>
+      </div>
+      <div class="vc-body">
+        <button class="vc-play" type="button" disabled aria-label="Play narration">&#9654;</button>
+        <div class="vc-wave">
+          <div class="vc-wave-fill" aria-hidden="true"></div>
+          <input class="vc-seek" type="range" min="0" max="100" step="1" value="0" aria-label="Seek within the narration">
+        </div>
+        <span class="vc-status">1:05</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and content-ops is a production system I built to turn one idea into the right post for every place it lands. Cross-posting the same block of text everywhere is why so much content reads as noise, so this system treats each surface, Substack, LinkedIn, X, Hacker News, Reddit, Discord, GitHub, TikTok, YouTube, as its own medium with its own mechanics. It scouts live angles into a ledger, drafts a master version, then adapts that master for four distinct audiences. Every draft runs through one deterministic voice and format gate, so what counts as on-voice has one answer, not several. And nothing publishes on its own. The system drafts, stages, and proposes, then stops. I press send, every time. It's the same loop I ran for years in newsrooms and in Google's internal comms, automated wherever the work was mechanical instead of editorial.</p></details>
     </div>
@@ -292,6 +300,7 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260715a"></script>
-<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/audio.js?v=20260716a"></script>
+<script src="shared/narration.js?v=20260716a"></script>
 </body>
 </html>

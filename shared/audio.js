@@ -15,7 +15,8 @@
 //   __sound.sfx(name)              -> one-shot from assets/sfx/<name>.mp3
 //   __sound.hum(true|false)        -> start/stop the pipeline hum loop
 //   __sound.score(src|null)        -> start/stop a music bed (~15% vol)
-//   __sound.voice(audioEl)         -> register a narration <audio> for ducking
+//   __sound.voice(el)              -> register a voice element, <audio> or
+//                                     <video>, for one-at-a-time + ducking
 (() => {
   const KEY = 'mw-sound';
   const SCORE_VOL = 0.15;      // the bed's ceiling
@@ -30,7 +31,7 @@
   };
   const state = {
     on: store.get(KEY) === 'on',
-    subs: [], voiceBusy: false,
+    subs: [], voiceBusy: false, voices: [],
     scoreEl: null, humEl: null, sfxCache: {},
   };
 
@@ -82,14 +83,22 @@
       if (state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, on ? DUCK_VOL : SCORE_VOL, on ? 300 : 900);
     },
     voice(el) {
+      // the registry is what makes "one voice at a time" real: narration
+      // players, variety-chip takes, and theater cuts are detached Audio()
+      // elements or <video>, so no DOM query can round them all up
+      if (state.voices.includes(el)) return;
+      state.voices.push(el);
       el.addEventListener('play', () => {
         // one voice at a time; duck the bed; hold one-shots and hum
-        document.querySelectorAll('audio[data-voice]').forEach((o) => { if (o !== el) o.pause(); });
+        state.voices.forEach((o) => { if (o !== el && !o.paused) o.pause(); });
         state.voiceBusy = true;
         if (state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, DUCK_VOL, 300);
         if (state.humEl && !state.humEl.paused) fade(state.humEl, 0, 300);
       });
       const done = () => {
+        // a swap fires the loser's pause event after the winner is already
+        // playing; only the last voice standing may lift the duck
+        if (state.voices.some((v) => !v.paused)) return;
         state.voiceBusy = false;
         if (state.on && state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, SCORE_VOL, 900);
       };

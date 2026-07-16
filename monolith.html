@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260715g">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -105,15 +105,18 @@
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
-    <div class="voice-console" role="region" aria-labelledby="voice-console-label">
+    <div class="voice-console" role="region" aria-labelledby="voice-console-label" data-narration="monolith" data-narration-secs="66">
       <div class="vc-head">
         <span id="voice-console-label" class="vc-k">listen &middot; this page, narrated</span>
         <span class="vc-label">synthetic voice, cloned with consent</span>
       </div>
       <div class="vc-body">
-        <button class="vc-play" type="button" disabled aria-label="Narration coming soon">&#9654;</button>
-        <div class="vc-wave vc-wave--placeholder" aria-hidden="true"></div>
-        <span class="vc-status">narration coming &middot; voice retake in progress</span>
+        <button class="vc-play" type="button" disabled aria-label="Play narration">&#9654;</button>
+        <div class="vc-wave">
+          <div class="vc-wave-fill" aria-hidden="true"></div>
+          <input class="vc-seek" type="range" min="0" max="100" step="1" value="0" aria-label="Seek within the narration">
+        </div>
+        <span class="vc-status">1:06</span>
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams. monolith fixes four LLM failure modes in code: sycophancy, hallucination, context degradation, and agentic drift. My bet, those are architecture problems, not prompt problems. So the model only does perception, turning a product page into structured fields. Three deterministic code gates, a state audit, a climate filter, an aesthetic gate, issue every verdict, and none can be argued with the way a prompt can. When the data isn't good enough, the system returns insufficient data instead of a guess. Every decision appends to an audit log, so the whole path stays inspectable. It's a mobile-first PWA, TypeScript end to end, built around a wardrobe architect and budget controller. Paste a product URL, you get a verdict: approve, reject, or insufficient data, with the budget position, climate rules, and doctrine that produced it. The instinct is straight from the newsroom: when the data isn't good enough, you don't publish the answer.</p></details>
     </div>
@@ -297,6 +300,7 @@
 </footer>
 
 <script src="shared/reveal.js?v=20260715a"></script>
-<script src="shared/audio.js?v=20260711c"></script>
+<script src="shared/audio.js?v=20260716a"></script>
+<script src="shared/narration.js?v=20260716a"></script>
 </body>
 </html>
