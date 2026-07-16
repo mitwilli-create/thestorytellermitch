@@ -480,6 +480,11 @@ const CHAT_ABSTAIN_TEXT =
   'I do not have grounded material on that, so I would rather not guess. For anything I cannot cover, email Mitchell directly at mitwilli@gmail.com. You can also ask me about his work, his systems, or his availability.';
 
 async function handleChat(request, env) {
+  // Abuse posture: see the note at CHAT_MAX_TOKENS. Aggregate rate limiting
+  // is Phase E's scoped work (needs KV/DO or an edge WAF rule); until then
+  // the bounded surface is the origin gate + body caps + output cap + the
+  // retrieval floor, and the no-deploy kill switch is deleting the
+  // ANTHROPIC_API_KEY secret. Owner ruling queued in the ship report.
   if (!originAllowed(request)) {
     return new Response('Forbidden', { status: 403 });
   }
@@ -647,6 +652,15 @@ async function handleChat(request, env) {
               toolBuf.set(payload.index, toolBuf.get(payload.index) + (payload.delta.partial_json ?? ''));
             }
           } else if (payload.type === 'content_block_stop' && toolBuf.has(payload.index)) {
+            // navigate_to is fire-and-forget BY DESIGN (CodeRabbit's
+            // "complete the tool round trip" was REJECTED 2026-07-16): the
+            // tool's entire effect is the link card the widget renders; it
+            // returns no information for the model to continue with, and the
+            // system prompt requires a text answer alongside it (verified
+            // live: text streams before the card). A tool_result round trip
+            // would double latency and per-turn cost to append nothing. The
+            // model-emits-only-a-card edge case is handled in the widget
+            // with a fallback line.
             try {
               const input = JSON.parse(toolBuf.get(payload.index) || '{}');
               if (typeof input.path === 'string' && NAV_PAGES[input.path]) {
