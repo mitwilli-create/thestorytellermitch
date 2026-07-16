@@ -132,9 +132,10 @@
     .era .oncam .oncam-cap{left:0;right:0;bottom:0;padding:18px 8px 6px;text-align:left;
       text-transform:uppercase;letter-spacing:0.08em;font-size:9.5px;color:var(--bone);
       background:linear-gradient(to top,rgba(10,10,11,.96) 55%,rgba(10,10,11,.65) 78%,transparent)}
-    /* the PictureLock master is a 9:16 portrait: pin poster + hover video
-       to the frame's top band instead of its empty middle */
-    #era-now .era-clips--feature img,#era-now .era-clips--feature a video{object-position:top}
+    /* the PictureLock master is a 9:16 portrait short: give it a portrait
+       frame (owner 2026-07-16) so nothing inside the player is cropped,
+       instead of cover-slicing it into the 16:9 feature box */
+    #era-now .era-clips--feature a{aspect-ratio:9/16;max-width:400px;margin:0 auto}
     /* standalone mono label for a clip block, matched to .ec-k */
     .clips-k{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.16em;
       text-transform:uppercase;color:var(--blood-soft);margin:28px 0 12px}
@@ -860,11 +861,15 @@
         cbMedia.appendChild(f);
       } else if(full){
         // full cut with sound: the click on the thumb is the explicit
-        // gesture, same contract as the reel theater. No loop.
+        // gesture, same contract as the reel theater. No loop. play() is
+        // called directly inside the gesture because the autoplay
+        // attribute on a fresh unmuted element is exactly what Chrome's
+        // autoplay policy drops; controls stay as the fallback.
         var fv=document.createElement('video');
-        fv.src=full; fv.autoplay=!reduce; fv.playsInline=true; fv.controls=true;
+        fv.src=full; fv.playsInline=true; fv.controls=true;
         fv.setAttribute('aria-label', img?img.alt:'');
         cbMedia.appendChild(fv);
+        if(!reduce){ var fp=fv.play(); if(fp&&fp.catch) fp.catch(function(){}); }
       } else if(prev && !reduce){
         var v=document.createElement('video');
         v.src=prev; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true; v.controls=true;
