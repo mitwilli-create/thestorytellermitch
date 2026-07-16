@@ -18,6 +18,7 @@ const LANES = {
   'mitchell-williams-ai-solutions-architect': 'ai-solutions-architect',
   'mitchell-williams-ai-enablement': 'ai-enablement',
   'mitchell-williams-ai-program-manager': 'ai-program-manager',
+  'mitchell-williams-marketing-program-manager': 'marketing-program-manager',
   'mitchell-williams-comms-manager': 'comms-manager',
   'mitchell-williams-devrel-education': 'devrel-education',
   'mitchell-williams-content-editorial': 'content-editorial',
