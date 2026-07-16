@@ -70,6 +70,15 @@ if (process.argv.includes('--update')) {
     console.error('Fix retrieval before recording this corpus as good.');
     process.exit(1);
   }
+  // On `bySource` keys being source paths: CodeRabbit flagged these as
+  // "publishing a full personal name in a public JSON file" (2026-07-16).
+  // REJECTED, and recorded here so it is not re-litigated: every one of these
+  // paths is ALREADY a tracked file in this same public repo (`git ls-files
+  // resumes-src/` lists all 8 `mitchell-williams-*.md` by name), on a personal
+  // site published under Mitchell's own name. The manifest discloses nothing
+  // that `git ls-files` does not, so there is no marginal disclosure to
+  // prevent. Opaque ids would only make the drift diff unreadable -- naming the
+  // source that moved is the entire diagnostic value of this field.
   const manifest = {
     _comment:
       'Fingerprint of the retrieval corpus that the live Vectorize index was last built from. ' +

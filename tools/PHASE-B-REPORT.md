@@ -18,7 +18,7 @@
 > - **The pre-#108 corpus measures 94.2% on a clean index**, not 95.1%. The gate had **never passed** before the cap.
 > - The inflation was exactly **one question (AN1)**, which fails on every clean corpus. It passed only via an **orphan vector** — `kb-index.mjs` upserted without deleting, and ids are positional (`__c0`, `__c1`, …), so re-chunking renumbers them and strands retrievable vectors that no rebuild overwrites. The old ingest poll accepted `vectorCount >= expected`, which called an orphaned index healthy.
 > - **`for-anthropic.html` edits (#114) were innocent** — the earlier note blamed them. Swapping #114's pre-rename text back into the live index for `for-anthropic__c2` left AN1's ranks byte-identical (for-anthropic at 2/4/5/11, stories.html at 16). A 4-word heading rename moved nothing.
-> - Of the six merges that landed 2026-07-15, **only #108** (the 8th resume lane) changed the corpus at all — +5 chunks — and it broke exactly **c42 and c61**. #112, #114, #107, #115 and #104 changed **zero** chunks between them.
+> - Of the six merges that landed 2026-07-15, **only #108** (the 8th resume lane) changed the corpus *size* — +5 chunks, 376 → 381 — and it broke exactly **c42 and c61**. **#114 changed one chunk's text** (`for-anthropic__c2`, the heading rename) without changing any count, which does re-embed that vector — `tools/kb-corpus-guard.mjs` correctly fails a #114 replay for exactly this reason — but it moved nothing in AN1's ranking, as the swap test above proves. #112, #107, #115 and #104 changed **nothing** in the corpus.
 >
 > **What is true and still worth keeping:** nothing reindexes on merge, so the index does silently drift from the site. That gap is now closed by `tools/kb-corpus-guard.mjs` + a CI step, and the orphan class by an exact-count assert in `kb-index.mjs`.
 >
@@ -192,7 +192,7 @@ Simulated offline against live `topK=20` responses, then **confirmed end-to-end*
 
 Everything in Phase C onward: system prompt, tools, streaming, the chat widget, guardrails, staged launch.
 
-Also deferred: **the standing process gap** — no CI step reindexes or re-evals when `kb/`, `resumes-src/`, an allowlisted site page, or `assets/site-data/` changes, so any content PR silently drifts the index from main. This cap raises the floor; it does not close that gap.
+~~Also deferred: **the standing process gap** — no CI step reindexes or re-evals when `kb/`, `resumes-src/`, an allowlisted site page, or `assets/site-data/` changes, so any content PR silently drifts the index from main. This cap raises the floor; it does not close that gap.~~ **SUPERSEDED 2026-07-16 — this gap is now closed.** `tools/kb-corpus-guard.mjs` plus a `verify` workflow step fail any PR whose built corpus drifts from the tracked `tools/kb-corpus-manifest.json`. See the addendum at the end of this file.
 
 ## Addendum — 2026-07-16: the baseline was fake, the pool was starving, and both classes are now gated
 
