@@ -2,15 +2,29 @@
 
 **Built:** 2026-07-15 · **Status:** functional, tuned, **gate met** · **Deployed** (retrieval only; Phase F still handles the staged launch of the chat layer)
 
-**Three different hit rates appear in this report. They are not interchangeable** — each was measured against a different corpus *and* a different retrieval config, so always read the state, never just the number:
+**Several hit rates appear in this report. They are not interchangeable** — each was measured against a different corpus *and* a different retrieval config, so always read the state, never just the number:
 
 | figure | state it describes | corpus | config |
 |---|---|---|---|
-| **97.1% (100/103)** | **the per-source diversity cap** — the number this code serves once deployed | 381 chunks | cap=1, topK=15 |
+| **97.1% (100/103)** | **current, and what this code serves.** Verified on a clean index (`vectorCount` asserted exactly) | 382 chunks | cap=1, topK=15, pool=50 |
 | 92.2% (95/103) | **what production served before the cap** — the regression it fixes | 381 chunks | no cap, topK=15 |
-| 95.1% (98/103) | **historical.** The original Phase B headline, measured before that day's content merges (an 8th resume lane, `for-anthropic.html` edits) landed without a reindex | 377 chunks | no cap, topK=15 |
+| 94.2% (97/103) | the pre-#108 corpus on a **clean** index — i.e. what 95.1% claimed to be | 376 chunks | no cap, topK=15 |
+| ~~95.1% (98/103)~~ | **NEVER REAL — do not quote it.** Orphan-inflated; see below | — | — |
 
-The 95.1% → 92.2% drop was **not** a code change: nothing reindexes on merge, so that headline had been measured against a corpus that no longer matched the site. Everything below the addendum was written against the 95.1% (377-chunk) state; where an older section calls 95.1% "current," read it as that historical baseline.
+> ### The 95.1% baseline was never real, and the attribution built on it was wrong. Corrected 2026-07-16.
+>
+> An earlier version of this table called 95.1% "historical" — measured against a 377-chunk corpus before that day's merges. **That is not what happened.** 95.1% is not reproducible from *any* committed corpus state:
+>
+> - **The pre-#108 corpus measures 94.2% on a clean index**, not 95.1%. The gate had **never passed** before the cap.
+> - The inflation was exactly **one question (AN1)**, which fails on every clean corpus. It passed only via an **orphan vector** — `kb-index.mjs` upserted without deleting, and ids are positional (`__c0`, `__c1`, …), so re-chunking renumbers them and strands retrievable vectors that no rebuild overwrites. The old ingest poll accepted `vectorCount >= expected`, which called an orphaned index healthy.
+> - **`for-anthropic.html` edits (#114) were innocent** — the earlier note blamed them. Swapping #114's pre-rename text back into the live index for `for-anthropic__c2` left AN1's ranks byte-identical (for-anthropic at 2/4/5/11, stories.html at 16). A 4-word heading rename moved nothing.
+> - Of the six merges that landed 2026-07-15, **only #108** (the 8th resume lane) changed the corpus *size* — +5 chunks, 376 → 381 — and it broke exactly **c42 and c61**. **#114 changed one chunk's text** (`for-anthropic__c2`, the heading rename) without changing any count, which does re-embed that vector — `tools/kb-corpus-guard.mjs` correctly fails a #114 replay for exactly this reason — but it moved nothing in AN1's ranking, as the swap test above proves. #112, #107, #115 and #104 changed **nothing** in the corpus.
+>
+> **What is true and still worth keeping:** nothing reindexes on merge, so the index does silently drift from the site. That gap is now closed by `tools/kb-corpus-guard.mjs` + a CI step, and the orphan class by an exact-count assert in `kb-index.mjs`.
+>
+> *Standing lesson:* **a hit rate is a property of an index, not of a corpus.** Never quote one without the `vectorCount` it was measured at, and never compare two numbers measured against indexes you did not wipe.
+
+Everything below the addendum was written against the 95.1% (377-chunk) state; where an older section calls 95.1% "current," read it as the artifact described above, not a baseline.
 
 **Re-verified:** 2026-07-15, every figure below re-measured against the live corpus and `worker/index.js`. The report had drifted from the code on several points (pooling mode, gate status, chunk counts, the residual-gap list); see the **Correction log** at the bottom for what changed and why. Figures here are current as of that pass.
 
@@ -178,4 +192,37 @@ Simulated offline against live `topK=20` responses, then **confirmed end-to-end*
 
 Everything in Phase C onward: system prompt, tools, streaming, the chat widget, guardrails, staged launch.
 
-Also deferred: **the standing process gap** — no CI step reindexes or re-evals when `kb/`, `resumes-src/`, an allowlisted site page, or `assets/site-data/` changes, so any content PR silently drifts the index from main. This cap raises the floor; it does not close that gap.
+~~Also deferred: **the standing process gap** — no CI step reindexes or re-evals when `kb/`, `resumes-src/`, an allowlisted site page, or `assets/site-data/` changes, so any content PR silently drifts the index from main. This cap raises the floor; it does not close that gap.~~ **SUPERSEDED 2026-07-16 — this gap is now closed.** `tools/kb-corpus-guard.mjs` plus a `verify` workflow step fail any PR whose built corpus drifts from the tracked `tools/kb-corpus-manifest.json`. See the addendum at the end of this file.
+
+## Addendum — 2026-07-16: the baseline was fake, the pool was starving, and both classes are now gated
+
+Triggered by a post-merge rebuild reading 92.2% against a 95.1% baseline. The regression was mostly not in the merges; it was in the baseline.
+
+### What changed in the code
+
+- **`POOL_K` 20 → 50.** The note pinning it at 20 said *"20 is a hard Vectorize ceiling for a single-pass query… going deeper needs a two-pass query (ids only, pool up to 100 → cap → getByIds)."* **That is wrong.** Measured against the live index: `topK=60` with `returnMetadata:'all'` fails with `VECTOR_QUERY_ERROR 40025 — "max top K is 50, but got 60"`; **`topK=50` with full metadata succeeds in one pass.** No second round trip exists to avoid.
+
+  This mattered more than a comment fix, because the cap **drops** over-cap chunks rather than demoting them, so the served set can be no larger than the pool has distinct sources. Measured over the golden set at topK=15:
+
+  | POOL_K | queries served < 15 cards | avg cards | worst |
+  |---|---|---|---|
+  | 20 (as shipped) | **51 / 103** | 13.80 / 15 | c26 got **7** |
+  | 50 | **0 / 103** | 15.00 / 15 | — |
+
+  Golden-set hit rate is **identical** (100/103) either way — hit rate only asks whether the expected source appears *at all*, so it cannot see a starved context window. Phase C would have: on c26, POOL_K=20 hands it 7 cards instead of 15. The old comment's *"avg distinct sources 11.6 → 13.8"* was reporting this shortfall and reading it as a diversity win.
+
+- **`kb-index.mjs` asserts `vectorCount == corpus length`** (was `>=`). A `>=` check calls an orphaned index healthy, which is exactly how 95.1% was measured and believed. Verified by injecting a synthetic orphan: the indexer refused; the old check would have printed "Done".
+
+- **`tools/kb-corpus-guard.mjs` + a CI step** fail any PR that changes the corpus without a re-index and re-eval. `tools/kb-corpus-manifest.json` is the tracked fingerprint of what the live index was actually built from. `--update` refuses to write unless a *passing* eval report exists, so the gate cannot be cleared without really re-indexing. Regression-tested against replays of #108 (new resume lane → FAIL, names the source), #114 (text-only rename → FAIL, "no chunk COUNT moved"), and a CSS-only PR (→ PASS).
+
+### CO7: open question closed, and the answer is no
+
+The cap comment recorded CO7 as *"only ever observed absent from the top 20; its expected source could rank deeper and be reachable via a two-pass query… never tested."* **Tested 2026-07-16 with a 50-deep single-pass pool:** `resumes-src/…-ai-program-manager.md` is absent from the top 20 **distinct** sources entirely, while five other resume lanes surface ahead of it (marketing @1, forward-deployed @4, devrel @6, ai-solutions-architect @8, ai-enablement @13). Since `MAX_TOP_K` is 20, **no pool depth can reach it** — a two-pass query to 100 would change nothing.
+
+So **100/103 is the real ceiling for single-query dense retrieval here**: c47 and c75 are documented-wrong golden entries, and CO7 is a content question (does that lane contain the TPM-fundamentals vocabulary at all?), not a retrieval-tuning one. Broadening the golden set for CO7 was considered and **declined** (owner, 2026-07-16): the cap fixes c42/c61 on their *original* expected sources, and editing the answer key to match a failure is what makes a gate unfalsifiable.
+
+### Verification performed
+
+Full runbook reindex from current `main` (`316ef19`): dev down → wipe + recreate → dev up **fresh** → build (382 chunks) → index (exact count asserted) → eval. `tools/kb-eval.mjs` **unmodified, default topK**: **100/103 = 97.1%, gate PASS**. Card fill: 15.00/15 on all 103. `node tools/verify.mjs`: all invariants hold.
+
+**Note for whoever deploys next:** the live index was rebuilt from `316ef19`, so it now matches `main` — but #121/#102/#117/#118/#119 had already invalidated it before this pass (24 chunks' text had changed across `about.html`, `picture-lock.html`, `for-fluidstack.html`). That is precisely the drift the CI guard now catches at PR time.

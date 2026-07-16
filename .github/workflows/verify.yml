@@ -17,3 +17,10 @@ jobs:
       # Reads tracked files, writes only gitignored tools/.kb-corpus.json: no secrets, no network.
       - name: KB corpus gates
         run: node tools/kb-build.mjs
+      # Fails when a PR changes the retrieval corpus without a re-index + re-eval.
+      # Merging corpus content does not touch the live Vectorize index, so drift is
+      # otherwise invisible until someone rebuilds and inherits the misses (2026-07-15:
+      # PR #108 added 5 chunks, broke 2 golden-set questions, and went unnoticed until a
+      # rebuild blamed three unrelated PRs). Comparison only: no secrets, no network.
+      - name: KB index freshness
+        run: node tools/kb-corpus-guard.mjs
