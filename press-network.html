@@ -77,7 +77,10 @@
     .pn-r{background:var(--surface);padding:24px 26px 26px;min-width:0}
     .pn-r .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
       text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
-    .pn-r p{font-size:14.5px;line-height:1.65;color:var(--bone-soft);margin:0}
+    .pn-r ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+    .pn-r li{position:relative;padding-left:17px;font-size:14px;line-height:1.5;color:var(--bone-soft)}
+    .pn-r li::before{content:"";position:absolute;left:0;top:0.65em;width:9px;height:1px;background:var(--blood-soft)}
+    .pn-r .tail{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--mute)}
     @media(max-width:720px){.pn-reach{grid-template-columns:1fr}}
 
     /* beat groups */
@@ -180,7 +183,7 @@
       <span class="ln"><span>The list,</span></span>
       <span class="ln"><span class="accent">without the list.</span></span>
     </h1>
-    <p class="pn-sub">The biggest asset a first comms hire brings is a live relationship with the reporters who decide how a story gets told. Here is the shape of mine, built over a career in national news. The rows the public record already names are named below. The rest stay held: <strong class="wt">proof of the network, not a contact dump.</strong> Back to <a href="for-fluidstack.html">the Fluidstack review path</a>.</p>
+    <p class="pn-sub">The biggest asset a first comms hire brings is a live relationship with the reporters who decide how a story gets told. Here is the shape of mine, built over a career in national news. The rows the public record already names are named below. The rest stay held: <strong class="wt">proof of the network, not a contact dump.</strong></p>
   </div>
 </header>
 
@@ -238,7 +241,7 @@
       </div>
       <!-- TIER2:END -->
     </div>
-    <p class="pn-note" style="margin-top:22px">Three of the four receipts point at the same newsroom. That is how relationship maps actually look: dense where you worked, thinner where you pitched.</p>
+    <p class="pn-note" style="margin-top:22px;max-width:none">Three of the four receipts point at the same newsroom: real maps run dense where you worked, thinner where you pitched.</p>
   </div>
 </section>
 
@@ -246,7 +249,7 @@
   <div class="pn-band-plate"><img src="assets/stills/fill-pressnet-hd.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="pn-band-n"><span data-count>65</span><i>/112</i></div>
-    <div class="pn-band-l">rows a decade deep. Built shift by shift in newsrooms, 2011 to 2019, not exported from a media database.</div>
+    <div class="pn-band-l">65 of the 112 relationships go back more than a decade, built in person on newsroom shifts between 2011 and 2019. None of them came from a purchased media list.</div>
   </div>
 </section>
 
@@ -271,7 +274,7 @@
         <div class="l">anchors, hosts, and columnists with their own audiences.</div>
       </div>
     </div>
-    <p class="pn-note" style="margin-top:22px">The rest of the rows are the correspondents, senior producers, and editors who actually get segments made.</p>
+    <p class="pn-note" style="margin-top:22px;max-width:none">The rest of the rows are the correspondents, senior producers, and editors who actually get segments made.</p>
   </div>
 </section>
 
@@ -281,35 +284,83 @@
     <div class="pn-reach reveal" role="group" aria-label="What the network can reach, by capability">
       <div class="pn-r">
         <div class="k">AI, tech &amp; business desks</div>
-        <p>A lead AI columnist and a global economic correspondent at the New York Times. An anchor and a senior booking producer at Bloomberg. A vice president of news at CNBC. Banking and capital-markets coverage at the Associated Press, plus Reuters, Forbes, Quartz, and Semafor.</p>
+        <ul>
+          <li>Lead AI columnist · New York Times</li>
+          <li>Global economics correspondent · New York Times</li>
+          <li>Anchor and senior booking producer · Bloomberg</li>
+          <li>Vice president of news · CNBC</li>
+          <li>Banking and capital markets · Associated Press</li>
+          <li>Plus Reuters, Forbes, Quartz, and Semafor</li>
+        </ul>
+        <p class="tail">The desks that set the AI and business narrative.</p>
       </div>
       <div class="pn-r">
         <div class="k">Investigations &amp; accountability</div>
-        <p>Executive-producer and managing-editor relationships on the investigations desks at CNN and NBC. A ProPublica reporter. Visual forensics at the Washington Post. Special-projects producers behind the long-lead pieces.</p>
+        <ul>
+          <li>Investigations executive producers and editors · CNN, NBC</li>
+          <li>Investigative reporter · ProPublica</li>
+          <li>Visual forensics · Washington Post</li>
+          <li>Special-projects producers · CNN</li>
+        </ul>
+        <p class="tail">The desks behind the long-lead pieces.</p>
       </div>
       <div class="pn-r">
         <div class="k">National desks &amp; bureaus</div>
-        <p>Vice presidents and bureau chiefs at CBS, CNN, NBC, ABC, and CNBC. A news director at the Associated Press. The people who decide what the national desk chases today.</p>
+        <ul>
+          <li>Vice presidents and bureau chiefs · CBS, CNN, NBC, ABC, CNBC</li>
+          <li>News director · Associated Press</li>
+        </ul>
+        <p class="tail">The people who decide what the national desk chases today.</p>
       </div>
       <div class="pn-r">
         <div class="k">Morning &amp; flagship broadcast</div>
-        <p>Executive producers on the network morning shows at ABC and CBS, a senior producer on daytime's biggest panel show, and executive producers on the Sunday politics flagships at NBC and Fox. Where executives get booked.</p>
+        <ul>
+          <li>Executive producers, network morning shows · ABC, CBS</li>
+          <li>Senior producer, daytime's biggest panel show</li>
+          <li>Executive producers, Sunday politics flagships · NBC, Fox</li>
+        </ul>
+        <p class="tail">Where executives get booked.</p>
       </div>
       <div class="pn-r">
         <div class="k">Podcasts &amp; audio</div>
-        <p>Executive producers for podcasts at CBS and podcast video at the New York Times. The audio desk at the Wall Street Journal. A showrunner and a managing editor at NPR. A host and a senior producer at Slate.</p>
+        <ul>
+          <li>Executive producer, podcasts · CBS</li>
+          <li>Executive producer, podcast video · New York Times</li>
+          <li>The audio desk · Wall Street Journal</li>
+          <li>Showrunner and managing editor · NPR</li>
+          <li>Host and senior producer · Slate</li>
+        </ul>
+        <p class="tail">Where long-form conversations get made.</p>
       </div>
       <div class="pn-r">
         <div class="k">Opinion pages &amp; essays</div>
-        <p>Columnists at the Washington Post and Forbes. Op-ed writers at the New York Times. An op-ed contributor at Semafor. An editorial director at HuffPost. The pages where executive bylines land.</p>
+        <ul>
+          <li>Columnists · Washington Post, Forbes</li>
+          <li>Op-ed writers · New York Times</li>
+          <li>Op-ed contributor · Semafor</li>
+          <li>Editorial director · HuffPost</li>
+        </ul>
+        <p class="tail">The pages where executive bylines land.</p>
       </div>
       <div class="pn-r">
         <div class="k">Global &amp; Spanish-language desks</div>
-        <p>Twelve relationships across Al Jazeera's desks, from flagship interview shows to podcasts. The BBC, the Guardian, Reuters, and CGTN. An executive producer at Univision and a producer at Telemundo.</p>
+        <ul>
+          <li>Twelve relationships across Al Jazeera's desks</li>
+          <li>BBC, Guardian, Reuters, CGTN</li>
+          <li>Executive producer · Univision</li>
+          <li>Producer · Telemundo</li>
+        </ul>
+        <p class="tail">The desks that carry a story worldwide.</p>
       </div>
       <div class="pn-r">
         <div class="k">Bookers &amp; talent desks</div>
-        <p>A senior booking producer at Bloomberg. A booking and events producer at Semafor. Interview producers on Al Jazeera's flagship shows. A senior director of contributors at CNN. The desks that put a spokesperson on air.</p>
+        <ul>
+          <li>Senior booking producer · Bloomberg</li>
+          <li>Booking and events producer · Semafor</li>
+          <li>Interview producers, flagship shows · Al Jazeera</li>
+          <li>Senior director of contributors · CNN</li>
+        </ul>
+        <p class="tail">The desks that put a spokesperson on air.</p>
       </div>
     </div>
   </div>
@@ -370,7 +421,7 @@
         </div>
       </div>
     </div>
-    <p class="pn-note" style="margin-top:30px">Every count is the named relationships in the map at that outlet. All 30 outlets and all 112 rows are accounted for above; nothing is rounded and nothing is padded.</p>
+    <p class="pn-note" style="margin-top:30px;max-width:none">Every count is the named relationships at that outlet: all 30 outlets and 112 rows accounted for, nothing rounded, nothing padded.</p>
   </div>
 </section>
 
@@ -387,12 +438,12 @@
   <div class="wrap">
     <h2 class="mini">The honest version</h2>
     <p class="pn-note"><strong class="wt">This network is broadcast-heavy</strong>, built across national TV and radio, with a real tier-one AI and business cluster on top, named relationships at the New York Times, Bloomberg, CNBC, ProPublica, and the Wall Street Journal.</p>
-    <p class="pn-note pn-flag"><em>It is lighter on the pure data-center trade press that covers Fluidstack most directly.</em> That layer is the fastest to build; the tier-one relationships above it are the ones that cannot be bought quickly.</p>
+    <p class="pn-note pn-flag"><em>It is lighter on the pure data-center trade press that covers AI infrastructure most directly.</em> That layer is the fastest to build; the tier-one relationships above it are the ones that cannot be bought quickly.</p>
     <p class="pn-note">I hold live relationships with the reporters who set the national and AI narrative, and trade desks answer warm tier-one referrals. Every relationship is scored by warmth and beat, so outreach starts where it is warmest, not cold. The full judgment record lives on <a href="comms.html#judgment">the comms page</a>.</p>
     <div class="pn-held">The rows named above are named because the public record already names them. The other names, and every piece of contact information for all 112, stay held. A rolodex is worth something precisely because it is not public; I open specific relationships once there is a signed reason to, not before. That discipline is part of the job.</div>
     <div class="pn-cta">
-      <a class="btn solid" href="for-fluidstack.html"><span>Back to the review path</span></a>
-      <a class="btn" href="docs/fluidstack-positioning-memo.html"><span>Read the positioning memo</span></a>
+      <a class="btn solid" href="comms.html"><span>See the comms record</span></a>
+      <a class="btn" href="stories.html"><span>Read the case files</span></a>
     </div>
   </div>
 </section>
