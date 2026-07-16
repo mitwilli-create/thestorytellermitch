@@ -261,7 +261,18 @@
       .era-side .oncam--card{max-width:100%}
       .era-side .era-context--overlay{margin-bottom:-72px;max-width:none}
       .era:not(.era--moment) > .era-metrics{grid-column:2}
-      .em .n{font-size:clamp(36px,4.6vw,64px)}
+      /* metric pairs hold one line (owner 2026-07-15): the middle column is
+         ~500px at desktop, so the numerals cap a step lower and the row
+         never wraps; mobile keeps the stacking flex-wrap */
+      .era-metrics{flex-wrap:nowrap;gap:28px}
+      .em{min-width:0}
+      .em .n{font-size:clamp(34px,3.6vw,52px)}
+      /* tail cut under the eras that end on a metrics row (owner): less
+         dead space between the inline pair and the next era's border */
+      #era-corpeng,#era-xge{padding-bottom:52px}
+      /* full-spread feature row: spans the main + evidence columns below
+         both (owner: the AJ+ explainer fills the dead right column) */
+      .era-breakout{grid-column:2/-1}
       .era{--plate-clear:calc(clamp(52px,7vw,96px) - 2px)}
       .era::before{font-size:clamp(52px,7vw,96px);top:-56px}
     }
@@ -543,10 +554,6 @@
         <div class="em"><div class="n" data-count>500M</div><div class="l">weekly viewers, team era</div></div>
         <div class="em"><div class="n" data-count>50M</div><div class="l">views, one piece of my own</div></div>
       </div>
-      <div class="clips-k reveal-child">from the explainer line</div>
-      <div class="era-clips era-clips--feature reveal-child">
-        <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-trumps-neo-nazi-problem-charlottesville.mp4" data-stream-id="b6827fc3921302b5dc32a5cee96a3e70"><img src="assets/posters/ajp-2017-trumps-neo-nazi-problem-charlottesville.jpg" alt="Trump's neo-Nazi problem" loading="lazy"><span class="cl">Charlottesville · 2017</span></a>
-      </div>
       </div>
       <div class="era-side">
       <div class="era-clips era-clips--strip reveal-child">
@@ -565,6 +572,12 @@
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-what-does-north-korea-want.mp4" data-stream-id="f417f653795814ecec2abd30079d2c15"><img src="assets/posters/ajp-2017-what-does-north-korea-want.jpg" alt="What does North Korea want?" loading="lazy"><span class="cl">What does North Korea want?</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-meet-steve-bannon-political-profile.mp4" data-stream-id="dc1807668b3d368a152da9eeae68f3f4"><img src="assets/posters/ajp-2017-meet-steve-bannon-political-profile.jpg" alt="Meet Steve Bannon" loading="lazy"><span class="cl">Meet Steve Bannon</span></a>
         <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-is-the-national-anthem-racist-kaepernick.mp4" data-stream-id="2e370da9c7b5decb0620b6e47029cae7"><img src="assets/posters/ajp-2017-is-the-national-anthem-racist-kaepernick.jpg" alt="Is the national anthem racist?" loading="lazy"><span class="cl">Kaepernick · the anthem</span></a>
+      </div>
+      </div>
+      <div class="era-breakout">
+      <div class="clips-k reveal-child">from the explainer line</div>
+      <div class="era-clips era-clips--feature reveal-child">
+        <a href="work.html#social-explainers" data-preview="assets/previews/ajp-2017-trumps-neo-nazi-problem-charlottesville.mp4" data-stream-id="b6827fc3921302b5dc32a5cee96a3e70"><img src="assets/posters/ajp-2017-trumps-neo-nazi-problem-charlottesville.jpg" alt="Trump's neo-Nazi problem" loading="lazy"><span class="cl">Charlottesville · 2017</span></a>
       </div>
       </div>
     </div>
@@ -629,11 +642,12 @@
       <div class="era-role reveal-child">Forward Deployed Creative</div>
       <p class="era-body reveal-child">Building full time: an ElevenLabs production pipeline with per-run cost receipts, measurable voice scoring, and citation-gated verification. Alongside it, a fifty-agent job-search fleet. The newsroom instinct, shipped as software.</p>
       <aside class="era-context reveal-child"><div class="ec-k">the backdrop</div><p>2026. The Google chapter closes in August; the build practice already runs full time. AI-native production systems on the ElevenLabs stack, built in public with costed run manifests. The flagship is PictureLock, a production studio that turns one script into a produced, captioned short. This portfolio site is itself one of the artifacts.</p></aside>
-
+      <div class="era-clips era-clips--feature reveal-child" style="margin-top:24px">
+        <a href="picture-lock.html" data-preview="assets/picture-lock-short-n16.mp4" data-full="assets/picture-lock-short-n16.mp4"><img src="assets/picture-lock-poster.jpg" alt="PictureLock breakdown" loading="lazy"><span class="cl">PictureLock · breakdown</span></a>
+      </div>
       </div>
       <div class="era-side">
       <div class="era-clips reveal-child">
-        <a href="picture-lock.html" data-preview="assets/picture-lock-short-n16.mp4" data-full="assets/picture-lock-short-n16.mp4"><img src="assets/picture-lock-poster.jpg" alt="PictureLock breakdown" loading="lazy"><span class="cl">PictureLock · breakdown</span></a>
         <a href="stories.html#builder-turn" data-preview="assets/cinemagraphs/illo-agent-fleet-c-loop.mp4"><img src="assets/stills/illo-agent-fleet.jpg" alt="Constellation-style diagram of fifty agent nodes around one orchestrator" loading="lazy"><span class="cl">The fleet · system illustration</span></a>
         <a href="voice-os.html" data-preview="assets/cinemagraphs/illo-voice-os-c-loop.mp4"><img src="assets/stills/illo-voice-os.jpg" alt="System diagram: a written corpus streaming into a six-axis voice gauge flanked by two reviewers" loading="lazy"><span class="cl">Voice OS · system illustration</span></a>
       </div>
