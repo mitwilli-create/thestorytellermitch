@@ -210,8 +210,9 @@
     .doc-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1024px}
     .dcard{background:var(--surface);border:1px solid var(--line);padding:24px;display:block;
       transition:border-color .3s var(--ease),transform .4s var(--ease)}
-    .dcard:hover{border-color:var(--blood-soft);transform:translateY(-2px)}
-    .dcard:focus-visible{outline:2px solid var(--blood-soft);outline-offset:3px}
+    /* owner 2026-07-15: these cards are static records, not destinations;
+       no hover treatment at all (overrides the theme .dcard:hover) */
+    .dcard:hover{border-color:var(--line);transform:none}
     /* cards cascade in rather than popping at once (owner-approved council
        item C27: a simultaneous four-card pop reads as a jump cut, which the
        motion rule bans; the 240ms cascade IS the continuous movement).
@@ -511,26 +512,26 @@
       <h2 class="cs-title">The Google record, as case studies</h2>
     </div>
     <p class="art-intro reveal"><strong class="wt">Three artifacts from two Google roles.</strong> The documents themselves <span class="doc-wt">stay inside Google</span>: what's published here is the shape of each, what it had to do, how it was written, and what it measured.</p>
-    <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation.</p>
+    <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation. The content behind each card can be templatized and provided upon request.</p>
     <div class="doc-cards">
-      <a class="dcard reveal" href="docs/xge-operations-guide.html">
+      <article class="dcard reveal">
         <span class="dc-k">Google xGE · 2026 · operator runbook</span>
         <strong>The agent handoff runbook</strong>
         <span class="dc-b">The communications-triage agent had to run for a month without its builder. The runbook made that true: what the system does on its own, what the human handles, escalation rules, error paths, and the metrics framework, written so the team could run it without me, and used for exactly that.</span>
-        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
-      </a>
-      <a class="dcard reveal" href="docs/orientation-pilot-script.html">
+        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
+      </article>
+      <article class="dcard reveal">
         <span class="dc-k">Google Corporate Engineering · video script</span>
         <strong>The Day-One orientation script</strong>
         <span class="dc-b">The two-column production script (voice against visuals) from the Day-One orientation rebuild delivered to 75,000+ new hires at an 88% CSAT <span class="src-t">(internal, self-measured)</span>. Newsroom scriptcraft, aimed at enterprise onboarding.</span>
-        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
-      </a>
-      <a class="dcard reveal" href="docs/techstop-help-article.html">
+        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
+      </article>
+      <article class="dcard reveal">
         <span class="dc-k">Google TechStop · self-help article</span>
         <strong>The self-help rewrite that paid for itself</strong>
         <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability 9.03% (about 10,670 fewer tickets a year) <span class="src-t">(internal, self-measured)</span>.</span>
-        <span class="dc-r">authored by me · original stays internal · open the redacted shape &#8594;</span>
-      </a>
+        <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
+      </article>
       <div class="dcard reveal">
         <span class="dc-k">Public repos · already sanitized</span>
         <strong>The public documentation suite</strong>
