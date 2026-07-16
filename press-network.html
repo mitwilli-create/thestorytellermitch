@@ -118,10 +118,14 @@
       font-size:10px;letter-spacing:.22em;color:var(--blood-soft);transition:opacity 300ms linear}
     .pn-named.in .rx::after{transform:scaleX(0)}
     .pn-named.in .rx::before{opacity:0}
-    .pn-name:nth-child(1) .rx::after{transition-delay:500ms}.pn-name:nth-child(1) .rx::before{transition-delay:450ms}
-    .pn-name:nth-child(2) .rx::after{transition-delay:780ms}.pn-name:nth-child(2) .rx::before{transition-delay:730ms}
-    .pn-name:nth-child(3) .rx::after{transition-delay:1060ms}.pn-name:nth-child(3) .rx::before{transition-delay:1010ms}
-    .pn-name:nth-child(4) .rx::after{transition-delay:1340ms}.pn-name:nth-child(4) .rx::before{transition-delay:1290ms}
+    /* the cascade is one continuous left-to-right unsealing sweep, not four
+       separate movements: the grid's own reveal transition runs through the
+       200ms lead-in, so motion never stops from the moment the section
+       enters (council round-2 spec; stagger kept over a simultaneous wipe) */
+    .pn-name:nth-child(1) .rx::after{transition-delay:200ms}.pn-name:nth-child(1) .rx::before{transition-delay:150ms}
+    .pn-name:nth-child(2) .rx::after{transition-delay:480ms}.pn-name:nth-child(2) .rx::before{transition-delay:430ms}
+    .pn-name:nth-child(3) .rx::after{transition-delay:760ms}.pn-name:nth-child(3) .rx::before{transition-delay:710ms}
+    .pn-name:nth-child(4) .rx::after{transition-delay:1040ms}.pn-name:nth-child(4) .rx::before{transition-delay:990ms}
     @media (prefers-reduced-motion: reduce){.pn-name .rx::before,.pn-name .rx::after{display:none}}
     .no-js .pn-name .rx::before,.no-js .pn-name .rx::after{display:none}
 
@@ -205,7 +209,9 @@
     <h2 class="mini">On the record: the rows I can name</h2>
     <p class="pn-note" style="margin-bottom:30px">A held list you cannot check is just a claim. These rows are named because the public record already names them: shared newsrooms and published work anyone can look up. Role and outlet only, current as of July 2026. <strong>No contact information lives on this page.</strong> Naming documents overlap on the public record; it does not imply the people named endorse me or any employer.</p>
     <div class="pn-named reveal" role="group" aria-label="Named rows of the relationship map, public record only">
-      <!-- TIER2:BEGIN — all four live-verified 2026-07-15 (current seat + public receipt + adversarial pass); pending owner approval -->
+      <!-- TIER2:BEGIN. All four live-verified 2026-07-15 (current seat, public
+           receipt, adversarial pass). Keep receipts era-anchored; the Roose card
+           needs a title update when his announced NYT departure lands (Aug 2026). -->
       <div class="pn-name">
         <div class="k">Tier-one daily · AI beat</div>
         <div class="who"><span class="rx">Kevin Roose</span></div>
