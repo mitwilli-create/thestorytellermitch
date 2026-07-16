@@ -36,9 +36,8 @@
     /* owner 2026-07-15: the small mono section headers read undersized; lift
        them to the house section-title grammar (for-fluidstack's fs-title:
        Archivo 800 + oxblood bar) so the lane's pages match */
-    h2.mini{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
-      text-transform:uppercase;letter-spacing:-0.01em;line-height:1.12;color:var(--bone);margin-bottom:24px;max-width:760px}
-    h2.mini::before{content:'';display:block;width:52px;height:2px;background:var(--blood-soft);margin-bottom:14px}
+    h2.mini{font-family:'JetBrains Mono',monospace;font-size:clamp(22px,2.6vw,31px);text-transform:uppercase;
+      letter-spacing:0.14em;line-height:1.2;color:var(--blood-soft);margin-bottom:24px;font-weight:500;max-width:860px}
 
     /* headline figures */
     .pn-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
