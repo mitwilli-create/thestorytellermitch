@@ -50,7 +50,6 @@ const TERM_LINKS = [
   ['Communications-triage agent', '../comms-triage-agent.html'],
   ['comms-triage agent', '../comms-triage-agent.html'],
   ['comms-triage', '../comms-triage-agent.html'],
-  ['PictureLock', '../picture-lock.html'],
   ['picture-lock', '../picture-lock.html'],
   ['MERIDIEM', '../for-elevenlabs.html'],
   ['Article to Audience', '../for-elevenlabs.html#specwork'],

@@ -124,7 +124,7 @@
       "era": "2019-2026",
       "type": "AI Pipeline Demo",
       "title": "One script in, a produced short out",
-      "subtitle": "PictureLock: seven stages, ElevenLabs stack, every call logged",
+      "subtitle": "picture-lock: seven stages, ElevenLabs stack, every call logged",
       "duration": "53s",
       "durationSec": 53,
       "poster": "assets/picture-lock-poster.jpg",

@@ -1,5 +1,5 @@
 // Frontpage hero council: fan a real brief (current hero markup/CSS, the two
-// PictureLock videos, the .hero-sys cinemagraph that must survive) out to five
+// picture-lock videos, the .hero-sys cinemagraph that must survive) out to five
 // expert lenses, then an Opus adjudicator synthesizes ONE buildable spec.
 // Usage: node scripts/_frontpage-council.mjs
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, renameSync } from 'fs';
@@ -27,14 +27,14 @@ CURRENT HERO (index.html, header#top > .wrap > .hero-grid, two columns: minmax(0
 LEFT (.hero-main): kicker "Mitchell Williams · Production AI since 2024", h1.display "Forward / deployed (accent) / creative.", three .hero-sub paragraphs, .hero-facts (three label/value rows: Current search, Core proof, Logistics), .hero-cta (three buttons: "See the work", "Resume by role", "Role fit"), .hero-routes nav ("Reviewing for a specific role? The role-fit page routes you").
 
 RIGHT (.hero-sys, a single <a href="picture-lock.html"> card, 400px wide, opacity-staged in on a ~1s delay after the left column, "the machine wakes" per an existing code comment):
-- .sys-cine: a looping cinemagraph video (desktop: assets/cinemagraphs/hero-machine-plate-loop.mp4/.webm, mobile: hero-machine-plate-loop-m.mp4/.webm) of an exploded technical illustration of PictureLock as a machine (seven chambers process voice/film/score/sound, a finished short comes out), grayscale(0.12) contrast(1.03) filter that clears to full color/contrast on hover, height 190px, object-fit cover.
+- .sys-cine: a looping cinemagraph video (desktop: assets/cinemagraphs/hero-machine-plate-loop.mp4/.webm, mobile: hero-machine-plate-loop-m.mp4/.webm) of an exploded technical illustration of picture-lock as a machine (seven chambers process voice/film/score/sound, a finished short comes out), grayscale(0.12) contrast(1.03) filter that clears to full color/contrast on hover, height 190px, object-fit cover.
 - .sys-body: .sys-k header row ("PICTURELOCK" / "RUN RECEIPT $8.26"), a .sys-diagram (monospace ASCII pipeline diagram: input/script.md -> voiceover/visuals/score/sfx -> assemble -> short.mp4 -> dub -> short.es.mp4), .sys-cap caption ("One script in, a produced short out. Every API call logged and costed. See the teardown ->").
 
 MOBILE (<=1120px): .hero-grid collapses to one column, .hero-sys gets max-width 520px and margin-top:-8vh so it peeks up into the first viewport under the CTA row (which gets z-index 2 and its own background so it never loses legibility to the overlap). DOM order is unchanged: H1 always first.
 
 MITCHELL'S HARD CONSTRAINT: he loves .hero-sys (the machine cinemagraph card) and it must not be degraded, hidden by default, or removed. Whatever you propose must keep that machine illustration/animation meaningfully present and readable in the initial hero view, not demoted to a footnote.
 
-THE ASSET BEING ADDED: assets/picture-lock-short-n16.mp4, a 53-second VERTICAL (1080x1920) product-demo film -- PictureLock demoing itself, script to produced short, already used elsewhere on the site as a horizontal-cropped tile with poster assets/posters/home-picture-lock.jpg. Mitchell has confirmed: THIS 53s vertical film is the one that headlines the front-page hero (not the separate 92-second landscape explainer, which needs a different home elsewhere on the site -- you may suggest where, e.g. an about page or a dedicated "how this site works" section, but that placement is secondary to your hero answer).
+THE ASSET BEING ADDED: assets/picture-lock-short-n16.mp4, a 53-second VERTICAL (1080x1920) product-demo film -- picture-lock demoing itself, script to produced short, already used elsewhere on the site as a horizontal-cropped tile with poster assets/posters/home-picture-lock.jpg. Mitchell has confirmed: THIS 53s vertical film is the one that headlines the front-page hero (not the separate 92-second landscape explainer, which needs a different home elsewhere on the site -- you may suggest where, e.g. an about page or a dedicated "how this site works" section, but that placement is secondary to your hero answer).
 
 THE PROBLEM: today this 53s film only appears as a small tile below the fold, in section#ai-native's film grid. Mitchell wants it elevated into a featured, premium position in the hero itself, sharing space with (not replacing/hiding) the .hero-sys machine card. The film is VERTICAL 1080x1920 -- a real constraint against a 400px-wide right column and a wide left column; a naive drop-in will either crop badly or blow out the layout.
 
@@ -89,7 +89,7 @@ console.log(`\n${ok.length}/${panel.length} lenses responded`);
 
 if (ok.length) {
   const combined = ok.map(o=>`### ${o.n}\n${o.t}`).join('\n\n---\n\n');
-  const ADJ = `You are the adjudicator for a five-lens design council on Mitchell Williams' portfolio site frontpage hero. Below are ${ok.length} lens proposals (web designer, visual designer, motion/animator, videographer, graphics/brand) for the same brief: feature a 53-second VERTICAL PictureLock demo film in a premium position in the hero, alongside (never hiding or degrading) the existing .hero-sys machine-cinemagraph card that Mitchell explicitly loves.
+  const ADJ = `You are the adjudicator for a five-lens design council on Mitchell Williams' portfolio site frontpage hero. Below are ${ok.length} lens proposals (web designer, visual designer, motion/animator, videographer, graphics/brand) for the same brief: feature a 53-second VERTICAL picture-lock demo film in a premium position in the hero, alongside (never hiding or degrading) the existing .hero-sys machine-cinemagraph card that Mitchell explicitly loves.
 
 ${CONTEXT}
 

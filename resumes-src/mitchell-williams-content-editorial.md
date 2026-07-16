@@ -21,7 +21,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 - **Producing across mediums, owned end to end:** Live broadcast, social video, explainer series, newsletters, in-person events (600+ attendee summit, quarterly forums), and an AI video pipeline: script in, produced short out with audio end to end (narration, score, sound design).
 - **Editorial standards as systems, not vibes:** A codified voice "Constitution," a banned-phrase checklist, a six-axis voice-quality rubric (voice-os), and a triage / revise / escalate review workflow; quality holds without the editor in every loop.
 - **Moving extremely quickly and fluidly:** When Nelson Mandela died, rebuilt the rundown overnight and line-produced Fusion's 44-minute live primetime breaking-news special: ABC News packages, White House audio, four consecutive live phone experts.
-- **AI-assisted production:** I built two production LLM agents at Google, plus PictureLock and content-ops on my own time ([case studies](../projects.html)). The rule I build by: AI does the mechanical work, the editorial cut stays human.
+- **AI-assisted production:** I built two production LLM agents at Google, plus picture-lock and content-ops on my own time ([case studies](../projects.html)). The rule I build by: AI does the mechanical work, the editorial cut stays human.
 
 ## Experience
 
@@ -79,7 +79,7 @@ Owned the communications and content (documentation, self-help, onboarding, vide
 
 **Portfolio** · [The writing room](../writing.html): the verbatim published AJ+ measles explainer script, 17 authored longform story pages, and redacted-verbatim Google work samples.
 
-**PictureLock** · Seven-stage script-to-short video pipeline (Node + ffmpeg, ElevenLabs stack): narration, score, sound design, generated shots, multilingual dub. The 53-second live demo carries $8.26 of logged cost in the run manifest committed at github.com/mitwilli-create/picture-lock.
+**picture-lock** · Seven-stage script-to-short video pipeline (Node + ffmpeg, ElevenLabs stack): narration, score, sound design, generated shots, multilingual dub. The 53-second live demo carries $8.26 of logged cost in the run manifest committed at github.com/mitwilli-create/picture-lock.
 
 **content-ops** · A multi-agent engine that adapts one story to each of nine platforms' native formats through deterministic voice gates, with a person pressing send ([case study](../content-ops.html)).
 

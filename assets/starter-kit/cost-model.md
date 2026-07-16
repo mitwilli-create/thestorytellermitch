@@ -1,4 +1,4 @@
-# PictureLock cost model
+# picture-lock cost model
 July 2026. Two kinds of numbers below, labeled: published rates (estimates until your run logs them) and manifest-derived figures from the logged demo run. The manifest prices every call from the published rate at call time and is built to reconcile line for line against the provider dashboards; treat provider billing as the final word.
 
 ## Published rates

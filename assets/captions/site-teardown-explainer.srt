@@ -44,7 +44,7 @@ are public. Take the flagship,
 
 12
 00:00:33,079 --> 00:00:36,589
-PictureLock. Step one, you hand it a plaintext
+picture-lock. Step one, you hand it a plaintext
 
 13
 00:00:36,579 --> 00:00:39,849
