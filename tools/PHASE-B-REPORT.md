@@ -126,6 +126,46 @@ What this report asserted, versus what the code and corpus actually do. Recorded
 
 **Why this drifted, in one line:** the report was written while the corpus, the pooling mode, and the kb file set were all still moving, and none of its numbers carried the state they were measured against. The dated stamps and corpus caveats added in this pass are the cheap fix; re-running the eval before trusting any figure here is the real one.
 
+## 2026-07-15 addendum: per-source diversity cap (92.2% -> 97.1%)
+
+**State this fixed.** After the day's content merges (an 8th resume lane, `for-anthropic.html` edits), a full reindex measured **92.2% (95/103), gate FAIL** — see the memory note on the index going stale on content merges. Nothing reindexes on merge, so the 95.1% headline had been measured against a corpus that no longer matched the site. Production was serving the 92.2% corpus.
+
+**Root cause: near-duplicate document crowding, not ranking quality.** Measured on the live 381-chunk index at topK=15:
+
+| q | symptom |
+|---|---|
+| c42 | **9 of 15 slots** were resumes; neither expected source appeared |
+| CO7 | **8 of 15** resumes; the wrong resume lane outranked the right one |
+| c61 | `systems.html` took **4 of 15**; only 8 distinct sources |
+| AN1 | `for-anthropic.html` took **4 of 15** |
+
+Five of the eight misses had their expected source at **raw rank 16-19** — one slot outside the window. The corpus holds 8 near-identical resume lanes, so one document routinely starved the rest.
+
+**Fix:** over-fetch a pool of 20 (`POOL_K`; a hard Vectorize ceiling when `returnMetadata:'all'`, not a tuning choice) and let any one source document occupy at most `PER_SOURCE_CAP` slots of the served set. The policy-only filter now runs *before* the cap, so a policy-only chunk can no longer burn its document's slot and suppress that source entirely.
+
+**Head-to-head, full 103-question golden set, topK=15, same index:**
+
+| cap | hit rate | gate |
+|---|---|---|
+| none (baseline) | 92.2% (95/103) | FAIL |
+| 3 | 94.2% (97/103) | FAIL |
+| 2 | 94.2% (97/103) | FAIL |
+| **1 (shipped)** | **97.1% (100/103)** | **PASS** |
+
+Simulated offline against live `topK=20` responses, then **confirmed end-to-end** by running the modified Worker locally (`wrangler dev --remote`) against the same production index: 100/103, identical miss set.
+
+**Read the win honestly.** cap=1 at 15 returns the *same* recall as a raw `topK=20` (100/103) while serving 15 cards instead of 20, all from distinct documents (avg distinct sources 11.6 -> 13.8). It buys topK=20's reach without duplicate cards, and it does not raise the served card count. The golden-set metric is source-level recall@15, which rewards diversity by construction — so the score movement overstates the retrieval-quality gain. The user-facing gain is real but narrower: no more 9-of-15 resume walls.
+
+**No regressions.** cap=1's miss set (c47, c75, CO7) is a strict **subset** of the baseline's eight; every question that passed still passes. The three that remain are unreachable by ranking: c47 and c75 are the documented-wrong golden entries, CO7 a genuine miss whose expected source never appears even at topK=20.
+
+**100/103 is the corpus ceiling**, which is why a bigger pool (two-pass `query` ids -> cap -> `getByIds`) is not worth the second round trip today. Revisit if the golden set is corrected.
+
+**Cost:** cap=1 can serve slightly fewer cards than requested when the pool holds fewer distinct sources than topK (c42 returns 13, not 15). Acceptable: 13 distinct beats 15 with 4 duplicates.
+
+**Phase C caveat:** generation wants context *depth* (several chunks of the best document), which is the opposite of this cap. Phase C should read its own context server-side from Vectorize metadata rather than raise `PER_SOURCE_CAP`.
+
 ## Not done (deferred)
 
 Everything in Phase C onward: system prompt, tools, streaming, the chat widget, guardrails, staged launch.
+
+Also deferred: **the standing process gap** — no CI step reindexes or re-evals when `kb/`, `resumes-src/`, an allowlisted site page, or `assets/site-data/` changes, so any content PR silently drifts the index from main. This cap raises the floor; it does not close that gap.

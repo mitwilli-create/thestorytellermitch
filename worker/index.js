@@ -34,6 +34,37 @@ const INDEX_BATCH_SIZE = 50;
 // with this. See tools/PHASE-B-REPORT.md + tools/.kb-eval-report.json.
 const DEFAULT_TOP_K = 15;
 const MAX_TOP_K = 20;
+// Candidate pool over-fetched before diversification. 20 is a hard Vectorize
+// ceiling, not a tuning choice: topK is capped at 20 when returnMetadata is
+// 'all'. Raising it needs a two-pass query (ids only -> cap -> getByIds), which
+// measurement says buys nothing today (see below).
+const POOL_K = 20;
+// Max chunks any ONE source document may occupy in the served set.
+//
+// Why this exists: the corpus holds 8 near-duplicate resume lanes plus long
+// site pages, so a single document routinely hogged the window and starved the
+// expected source. Measured 2026-07-15 on the live 381-chunk index: q c42
+// spent 9 of 15 slots on resumes, CO7 8 of 15; systems.html took 4 of 15 on
+// c61 and for-anthropic.html 4 of 15 on AN1. Five golden questions had their
+// expected source sitting at raw rank 16-19, one slot outside the window.
+//
+// Measured head-to-head, full 103-question golden set at topK=15:
+//   no cap  92.2% (95/103) FAIL   cap=3  94.2% FAIL
+//   cap=2   94.2% (97/103) FAIL   cap=1  97.1% (100/103) PASS
+// cap=1's miss set (c47, c75, CO7) is a strict SUBSET of the baseline's, so it
+// regresses nothing; the 3 that remain are the two documented-wrong golden
+// entries (c47, c75) plus one genuine miss (CO7), none reachable by ranking.
+//
+// Read the win honestly: cap=1 at 15 returns the same recall as a raw topK=20
+// (100/103) while serving 15 cards instead of 20, all from distinct documents
+// (avg distinct sources 11.6 -> 13.8). It buys topK=20's reach without showing
+// duplicate cards. 100/103 is the corpus ceiling, which is why a bigger pool is
+// not worth the second round trip.
+//
+// Phase C caveat: generation wants context DEPTH (several chunks of the best
+// doc), which is the opposite of this. Phase C should read its own context
+// server-side rather than raise this constant.
+const PER_SOURCE_CAP = 1;
 
 export default {
   async fetch(request, env) {
@@ -210,22 +241,40 @@ async function handleAsk(request, env) {
   const topK = Math.min(Math.max(Number(body?.topK) || DEFAULT_TOP_K, 1), MAX_TOP_K);
 
   const embedded = await env.AI.run(EMBED_MODEL, { text: [query], pooling: 'cls' });
-  const results = await env.VECTORIZE.query(embedded.data[0], { topK, returnMetadata: 'all' });
+  // Over-fetch the pool, then diversify down to topK below.
+  const results = await env.VECTORIZE.query(embedded.data[0], { topK: POOL_K, returnMetadata: 'all' });
 
-  return Response.json({
-    query,
-    matches: results.matches
-      .map((m) => ({
-        score: m.score,
-        source: m.metadata?.source,
-        docTitle: m.metadata?.docTitle,
-        typeTag: m.metadata?.typeTag,
-        // public-safe: assistant-policy paragraphs removed. Phase C must read
-        // the FULL text from Vectorize metadata server-side, never from here.
-        text: publicExcerpt(m.metadata?.text),
-      }))
-      // a chunk that is nothing but policy has no public excerpt to show; drop
-      // it from the response rather than emit an empty card
-      .filter((m) => m.text.length > 0),
-  });
+  const candidates = results.matches
+    .map((m) => ({
+      score: m.score,
+      source: m.metadata?.source,
+      docTitle: m.metadata?.docTitle,
+      typeTag: m.metadata?.typeTag,
+      // public-safe: assistant-policy paragraphs removed. Phase C must read
+      // the FULL text from Vectorize metadata server-side, never from here.
+      text: publicExcerpt(m.metadata?.text),
+    }))
+    // a chunk that is nothing but policy has no public excerpt to show; drop
+    // it from the response rather than emit an empty card. Runs BEFORE the cap
+    // so a policy-only chunk cannot burn its document's slot and silently
+    // suppress that source entirely.
+    .filter((m) => m.text.length > 0);
+
+  // Diversify: walk score-desc, skipping any document already at PER_SOURCE_CAP.
+  // Vectorize returns matches sorted by score, and both .map and .filter above
+  // preserve that order, so first-seen is always the document's best chunk.
+  const perSource = new Map();
+  const matches = [];
+  for (const m of candidates) {
+    // Guard: a chunk with no source metadata would otherwise share one bucket
+    // with every other such chunk and cap them collectively. Give each its own.
+    const key = m.source ?? Symbol('unkeyed');
+    const used = perSource.get(key) ?? 0;
+    if (used >= PER_SOURCE_CAP) continue;
+    perSource.set(key, used + 1);
+    matches.push(m);
+    if (matches.length >= topK) break;
+  }
+
+  return Response.json({ query, matches });
 }
