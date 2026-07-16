@@ -240,10 +240,16 @@ function processSiteData() {
   });
 
   const plRun = JSON.parse(readFileSync(resolve(dir, 'picture-lock-run.json'), 'utf8'));
-  const stageLines = plRun.stages.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // inThisRun:false rows (the Spanish dub) carry their own receipt; folding
+  // them into the stage-by-stage list invites a reader (or the agent) to sum
+  // to $8.68, a number the committed manifest does not contain.
+  const inRun = plRun.stages.filter((s) => s.inThisRun !== false);
+  const stageLines = inRun.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  const ownRun = plRun.stages.filter((s) => s.inThisRun === false)
+    .map((s) => `${s.label} (${s.detail}): $${s.costUsd}${s.api ? ` via ${s.api}` : ''}, its own separate receipt, not part of this run's total`).join('. ');
   chunks.push({
     id: 'data-picture-lock-run__c0',
-    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.`,
+    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.${ownRun ? ` Separate receipts: ${ownRun}.` : ''}`,
     source: 'assets/site-data/picture-lock-run.json', docTitle: 'Picture-lock run manifest', docType: 'site-data', typeTag: 'metrics-provenance',
   });
 

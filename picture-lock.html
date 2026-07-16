@@ -405,7 +405,7 @@
 
       <p><strong>The manifest is the evidence.</strong> Every API call appends to <code>output/run-manifest.json</code> with model, params, cost, and latency. Cached artifacts carry their original cost forward, so the receipt reflects the whole cut, not just the last re-run.</p>
 
-      <p>The committed manifest carries <strong>$8.26</strong> for the artifacts in this cut: $0.28 for the complete audio stack, $4.40 for the ten generated shots, $3.50 for creative direction, $0.08 for clip review. Summing the <a href="https://github.com/mitwilli-create/picture-lock/blob/main/output/run-manifest.json" rel="noopener">committed manifest</a> reproduces it: $0.78 of live spend on the day, plus $7.49 carried forward as the original cost of artifacts the cache served instead of re-billing.</p>
+      <p>The committed manifest carries <strong>$8.26</strong> for the artifacts in this cut: $0.28 for the complete audio stack, $4.40 for the ten generated shots, $3.50 for creative direction, $0.08 for clip review. Summing the <a href="https://github.com/mitwilli-create/picture-lock/blob/main/output/run-manifest.json" rel="noopener">committed manifest</a> reproduces it: $0.7786 of live spend on the day, plus $7.4861 carried forward as the original cost of artifacts the cache served instead of re-billing, $8.2647 at the manifest's own precision.</p>
 
       <p>The Spanish dub is not in that number. It rendered live on 8 July from the same script for <strong>$0.42</strong>, logged in the manifest committed at <a href="https://github.com/mitwilli-create/picture-lock/commit/2e51d27" rel="noopener">2e51d27</a>, and the final cut reused it rather than paying for it twice. The cut is $8.26. The dub is $0.42. They are two receipts, not one.</p>
 
@@ -746,11 +746,19 @@
       const nodes=diagram.querySelectorAll('.node[data-stage="'+(st.node||st.id)+'"]');
       nodes.forEach(n=>n.classList.add('run-on'));
       const cached=st.cached?(' &middot; '+st.cached+' cached'):'';
-      setStatus('&#9656; <b>'+esc(st.label)+'</b> &middot; '+esc(st.detail)+' &middot; '+st.calls+(st.calls===1?' call':' calls')+cached+' &middot; <span class="r-cost">'+money(cost+=st.costUsd)+'</span>');
+      // Rows flagged inThisRun:false (the Spanish dub) carry their own
+      // receipt and must never fold into this run's total: 8.26 + 0.42
+      // would print 8.68, a number the committed manifest does not contain.
+      const inRun=st.inThisRun!==false;
+      const callTxt=st.calls?st.calls+(st.calls===1?' call':' calls'):'local step, no API call';
+      if(inRun) cost+=st.costUsd;
+      setStatus('&#9656; <b>'+esc(st.label)+'</b> &middot; '+esc(st.detail)+' &middot; '+callTxt+cached+' &middot; <span class="r-cost">'+(inRun?money(cost):money(st.costUsd)+' on its own run, kept out of this total')+'</span>');
       await new Promise(r=>setTimeout(r, st.id==='parse'?500:(450+Math.min(650,st.calls*38))));
       nodes.forEach(n=>{ n.classList.remove('run-on'); n.classList.add('run-lit'); });
     }
-    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(cost)+'</span> logged in this snapshot &middot; '+money(run.receipt.allInUsd)+' all-in with every retake; the receipt below carries the full accounting');
+    // receipt.allInUsd never existed; money(undefined) printed "$NaN" here.
+    const atBuild=run.receipt.atBuildApproxUsd;
+    setStatus('run complete &middot; <b>'+run.totalCalls+' calls</b> &middot; <span class="r-cost">'+money(cost)+'</span> logged in this snapshot'+(typeof atBuild==='number'?(' &middot; about $'+atBuild+' at build with every retake'):'')+'; the receipt below carries the full accounting');
     window.dispatchEvent(new CustomEvent('mw:run-end'));
     replay.hidden=false; running=false;
   }
