@@ -21,9 +21,10 @@ export const LANES = {
   'mitchell-williams-ai-program-manager':     { slug: 'ai-program-manager',     title: 'AI / Technical Program Manager' },
   // fitAnchor: fit.html has no marketing-lane section yet; land the fit button
   // on the role list instead of a dead #marketing-program-manager anchor.
-  // pathBtn: the marketing lane is Step 4 of the Cursor review path.
-  'mitchell-williams-marketing-program-manager': { slug: 'marketing-program-manager', title: 'Marketing Program Manager (Developer Tools)', fitAnchor: 'roles',
-                                                pathBtn: { href: '../for-cursor.html', label: 'The Cursor review path' } },
+  // The Cursor pathBtn lands with the for-cursor.html link swap, not here:
+  // verify.mjs resolves every href on disk, so pointing at for-cursor.html
+  // before that page is on main fails CI.
+  'mitchell-williams-marketing-program-manager': { slug: 'marketing-program-manager', title: 'Marketing Program Manager (Developer Tools)', fitAnchor: 'roles' },
   // keepPhone: the comms resume shows the phone in the HTML page by owner
   // ruling (2026-07-15); without this flag every re-bake strips it back out
   // and only the PDF re-injection restores it. Do not remove.
