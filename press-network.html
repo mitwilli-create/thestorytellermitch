@@ -8,9 +8,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>The press network · Mitchell Williams</title>
-  <meta name="description" content="Proof of a live press network from a career in national news: 112 named journalists, editors, and producers across 30 recognized outlets, redacted. The shape of the list without the names.">
+  <meta name="description" content="Proof of a live press network from a career in national news: 112 named journalists, editors, and producers across 30 recognized outlets. The rows the public record already names are named. The rest stay held.">
   <meta property="og:title" content="The press network · Mitchell Williams">
-  <meta property="og:description" content="The single biggest asset a first comms hire brings: live relationships with the reporters who decide how the story gets told. The shape of mine, without the names.">
+  <meta property="og:description" content="The single biggest asset a first comms hire brings: live relationships with the reporters who decide how the story gets told. The rows already on the public record, named. The rest held.">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
@@ -48,6 +48,38 @@
     .pn-stat .l{margin-top:12px;font-size:14px;line-height:1.5;color:var(--bone-soft)}
     @media(max-width:640px){.pn-stats{grid-template-columns:1fr}}
 
+    /* named rows (tier 2: public record only) */
+    .pn-named{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+    .pn-name{background:var(--surface);padding:26px 26px 24px;min-width:0}
+    .pn-name .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:14px}
+    .pn-name .who{font-family:'Archivo',sans-serif;font-weight:800;font-size:21px;color:var(--bone);
+      line-height:1.25;letter-spacing:-0.01em}
+    .pn-name .role{margin-top:6px;font-size:14.5px;line-height:1.5;color:var(--bone-soft)}
+    .pn-name .meta{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;
+      letter-spacing:0.04em;line-height:1.7;color:var(--mute)}
+    .pn-name .meta b{color:var(--blood-text);font-weight:400}
+    @media(max-width:720px){.pn-named{grid-template-columns:1fr}}
+
+    /* seniority ledger */
+    .pn-ledger{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+    .pn-led{background:var(--surface);padding:22px 20px;min-width:0}
+    .pn-led .n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,40px);
+      color:var(--bone);line-height:1;font-variant-numeric:tabular-nums}
+    .pn-led .l{margin-top:10px;font-size:13px;line-height:1.5;color:var(--bone-soft)}
+    @media(max-width:720px){.pn-ledger{grid-template-columns:repeat(2,1fr)}}
+
+    /* reach clusters */
+    .pn-reach{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
+    .pn-r{background:var(--surface);padding:24px 26px 26px;min-width:0}
+    .pn-r .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:12px}
+    .pn-r p{font-size:14.5px;line-height:1.65;color:var(--bone-soft);margin:0}
+    @media(max-width:720px){.pn-reach{grid-template-columns:1fr}}
+
     /* beat groups */
     .pn-beats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
       border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:960px}
@@ -61,17 +93,6 @@
     .pn-beat .o b{color:var(--blood-text);font-weight:400;font-size:10px}
     @media(max-width:720px){.pn-beats{grid-template-columns:1fr}}
 
-    /* redacted example rows */
-    .pn-rows{max-width:860px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
-    .pn-row{display:grid;grid-template-columns:2fr 2fr 3fr;gap:18px;padding:16px 22px;
-      border-bottom:1px solid var(--line);background:var(--surface);align-items:baseline}
-    .pn-row:last-child{border-bottom:none}
-    .pr-f{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;
-      text-transform:uppercase;color:var(--blood-text)}
-    .pr-r{font-size:14.5px;color:var(--bone);line-height:1.5}
-    .pr-m{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--mute)}
-    .pr-m b{color:var(--blood-text);font-weight:400}
-    @media(max-width:720px){.pn-row{grid-template-columns:1fr;gap:6px;padding:14px 18px}}
     .pn-note{max-width:720px;font-size:15.5px;line-height:1.7;color:var(--bone-soft);margin-top:8px}
     .pn-note a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
     .pn-note a:hover{color:var(--bone)}
@@ -84,6 +105,46 @@
       border-left:2px solid var(--blood-soft);background:var(--surface);border-radius:3px;
       font-size:15px;line-height:1.6;color:var(--bone-soft)}
     .pn-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+
+    /* the unsealing (council round 2, option A): the four named rows enter
+       under a "NAME HELD" censor bar that wipes off once the grid reveals;
+       one-time motion, the page performing its own unredaction */
+    .pn-name .rx{position:relative;display:inline-block}
+    .pn-name .rx::after{content:"";position:absolute;inset:-3px -8px;background:#161114;
+      border:1px solid var(--line-2);border-radius:2px;z-index:1;transform-origin:right center;
+      transition:transform 900ms cubic-bezier(.7,0,.2,1)}
+    .pn-name .rx::before{content:"NAME HELD";position:absolute;inset:-3px -8px;z-index:2;
+      display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;
+      font-size:10px;letter-spacing:.22em;color:var(--blood-soft);transition:opacity 300ms linear}
+    .pn-named.in .rx::after{transform:scaleX(0)}
+    .pn-named.in .rx::before{opacity:0}
+    /* the cascade is one continuous left-to-right unsealing sweep, not four
+       separate movements: the grid's own reveal transition runs through the
+       200ms lead-in, so motion never stops from the moment the section
+       enters (council round-2 spec; stagger kept over a simultaneous wipe) */
+    .pn-name:nth-child(1) .rx::after{transition-delay:200ms}.pn-name:nth-child(1) .rx::before{transition-delay:150ms}
+    .pn-name:nth-child(2) .rx::after{transition-delay:480ms}.pn-name:nth-child(2) .rx::before{transition-delay:430ms}
+    .pn-name:nth-child(3) .rx::after{transition-delay:760ms}.pn-name:nth-child(3) .rx::before{transition-delay:710ms}
+    .pn-name:nth-child(4) .rx::after{transition-delay:1040ms}.pn-name:nth-child(4) .rx::before{transition-delay:990ms}
+    @media (prefers-reduced-motion: reduce){.pn-name .rx::before,.pn-name .rx::after{display:none}}
+    .no-js .pn-name .rx::before,.no-js .pn-name .rx::after{display:none}
+
+    /* durability interstitial (council round 2, option E): the switchboard
+       plate returns for one full-bleed beat under the named rows; the plate
+       drifts with scroll, continuous and scroll-linked, never looping */
+    .pn-band{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:110px 0 !important;margin-bottom:72px}
+    .pn-band-plate{position:absolute;inset:-18% 0}
+    .pn-band-plate img{width:100%;height:100%;object-fit:cover;object-position:100% 40%;opacity:.34;will-change:transform}
+    .pn-band::after{content:"";position:absolute;inset:0;background:
+      linear-gradient(to right,var(--bg) 8%,rgba(10,10,11,.82) 40%,rgba(10,10,11,.55) 100%)}
+    .pn-band .wrap{position:relative;z-index:1}
+    .pn-band-n{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(84px,11vw,168px);line-height:.95;
+      color:var(--bone);letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+    .pn-band-n i{font-style:normal;color:var(--blood-soft);font-size:.42em;font-weight:800}
+    .pn-band-l{margin-top:16px;max-width:520px;font-size:16.5px;line-height:1.6;color:var(--bone-soft)}
+    @media (prefers-reduced-motion: reduce){.pn-band-plate img{transform:none !important}}
+
     @media(max-width:640px){.pn-hero{padding:130px 0 52px}}
     @media(min-width:861px){section:last-of-type{padding-bottom:140px}}
   </style>
@@ -114,12 +175,12 @@
     <img src="assets/stills/fill-pressnet-hd.jpg" alt="" width="1920" height="1072" fetchpriority="high">
   </figure>
   <div class="wrap">
-    <div class="kicker">The press network · redacted</div>
+    <div class="kicker">The press network · on the record</div>
     <h1 class="display">
       <span class="ln"><span>The list,</span></span>
       <span class="ln"><span class="accent">without the list.</span></span>
     </h1>
-    <p class="pn-sub">The biggest asset a first comms hire brings is a live relationship with the reporters who decide how a story gets told. Here is the shape of mine, built over a career in national news: <strong class="wt">proof of the network, not a contact dump.</strong> Back to <a href="for-fluidstack.html">the Fluidstack review path</a>.</p>
+    <p class="pn-sub">The biggest asset a first comms hire brings is a live relationship with the reporters who decide how a story gets told. Here is the shape of mine, built over a career in national news. The rows the public record already names are named below. The rest stay held: <strong class="wt">proof of the network, not a contact dump.</strong> Back to <a href="for-fluidstack.html">the Fluidstack review path</a>.</p>
   </div>
 </header>
 
@@ -128,10 +189,6 @@
     <h2 class="mini">The network, in three numbers</h2>
     <div class="pn-stats reveal" role="group" aria-label="Press network in three figures">
       <div class="pn-stat">
-        <div class="n" data-count>17</div>
-        <div class="l">in the tier-1 tech, science, and AI-beat subset, the cut that maps most directly to frontier-AI comms: the New York Times, Bloomberg, CNBC, ProPublica, and the Wall Street Journal among them.</div>
-      </div>
-      <div class="pn-stat">
         <div class="n" data-count>112</div>
         <div class="l">named journalists, editors, anchors, and producers: a journalism role at a recognized outlet, personally known, reachable without a cold pitch.</div>
       </div>
@@ -139,26 +196,141 @@
         <div class="n" data-count>30</div>
         <div class="l">recognized national and global outlets represented, from broadcast desks to the AI beat.</div>
       </div>
+      <div class="pn-stat">
+        <div class="n" data-count>17</div>
+        <div class="l">in the tier-1 tech, science, and AI-beat subset, the cut that maps most directly to frontier-AI comms: the New York Times, Bloomberg, CNBC, ProPublica, and the Wall Street Journal among them.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="mini">By beat, outlets only</h2>
+    <h2 class="mini">On the record: the rows I can name</h2>
+    <p class="pn-note" style="margin-bottom:30px">A held list you cannot check is just a claim. These rows are named because the public record already names them: shared newsrooms and published work anyone can look up. Role and outlet only, current as of July 2026. <strong>No contact information lives on this page.</strong> Naming documents overlap on the public record; it does not imply the people named endorse me or any employer.</p>
+    <div class="pn-named reveal" role="group" aria-label="Named rows of the relationship map, public record only">
+      <!-- TIER2:BEGIN. All four live-verified 2026-07-15 (current seat, public
+           receipt, adversarial pass). Keep receipts era-anchored; the Roose card
+           needs a title update when his announced NYT departure lands (Aug 2026). -->
+      <div class="pn-name">
+        <div class="k">Tier-one daily · AI beat</div>
+        <div class="who"><span class="rx">Kevin Roose</span></div>
+        <div class="role">Technology columnist, the New York Times; co-host of Hard Fork. Leaving in August to co-found an AI media venture with Casey Newton.</div>
+        <div class="meta">connected 2015 · <b>shared newsroom: Fusion, 2015 to 2016</b></div>
+      </div>
+      <div class="pn-name">
+        <div class="k">Tier-one daily · global economics</div>
+        <div class="who"><span class="rx">Peter S. Goodman</span></div>
+        <div class="role">Global economics correspondent, the New York Times; author of Davos Man.</div>
+        <div class="meta">connected 2014 · <b>shared newsroom: HuffPost, 2012 to 2014</b></div>
+      </div>
+      <div class="pn-name">
+        <div class="k">Network news · Washington bureau</div>
+        <div class="who"><span class="rx">Mark Lima</span></div>
+        <div class="role">Vice president and Washington bureau chief, CBS News. Ran Fusion's news operation as executive producer of Real America with Jorge Ramos.</div>
+        <div class="meta">connected 2014 · <b>shared newsroom: Fusion, 2015 to 2016</b></div>
+      </div>
+      <div class="pn-name">
+        <div class="k">Global desk · documentary</div>
+        <div class="who"><span class="rx">Natasha Del Toro</span></div>
+        <div class="role">Correspondent on Al Jazeera English's Fault Lines, including this year's Emmy-winning Crackdown; anchored Fusion's The Naked Truth.</div>
+        <div class="meta">connected 2015 · <b>shared newsroom: Fusion, 2015 to 2016</b></div>
+      </div>
+      <!-- TIER2:END -->
+    </div>
+    <p class="pn-note" style="margin-top:22px">Three of the four receipts point at the same newsroom. That is how relationship maps actually look: dense where you worked, thinner where you pitched.</p>
+  </div>
+</section>
+
+<section class="pn-band" aria-label="65 of the 112 relationships are a decade old">
+  <div class="pn-band-plate"><img src="assets/stills/fill-pressnet-hd.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="pn-band-n"><span data-count>65</span><i>/112</i></div>
+    <div class="pn-band-l">rows a decade deep. Built shift by shift in newsrooms, 2011 to 2019, not exported from a media database.</div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="mini">The seniority of the map</h2>
+    <div class="pn-ledger reveal" role="group" aria-label="Seniority of the 112 relationships">
+      <div class="pn-led">
+        <div class="n" data-count>6</div>
+        <div class="l">vice presidents and bureau chiefs, at CBS, CNN, NBC, ABC, CNBC, and VICE.</div>
+      </div>
+      <div class="pn-led">
+        <div class="n" data-count>13</div>
+        <div class="l">executive producers, from network morning shows to investigations to podcasts.</div>
+      </div>
+      <div class="pn-led">
+        <div class="n" data-count>13</div>
+        <div class="l">editorial directors, managing editors, and senior editors who decide what gets covered.</div>
+      </div>
+      <div class="pn-led">
+        <div class="n" data-count>9</div>
+        <div class="l">anchors, hosts, and columnists with their own audiences.</div>
+      </div>
+    </div>
+    <p class="pn-note" style="margin-top:22px">The rest of the rows are the correspondents, senior producers, and editors who actually get segments made.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="mini">What the map can reach</h2>
+    <div class="pn-reach reveal" role="group" aria-label="What the network can reach, by capability">
+      <div class="pn-r">
+        <div class="k">AI, tech &amp; business desks</div>
+        <p>A lead AI columnist and a global economic correspondent at the New York Times. An anchor and a senior booking producer at Bloomberg. A vice president of news at CNBC. Banking and capital-markets coverage at the Associated Press, plus Reuters, Forbes, Quartz, and Semafor.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Investigations &amp; accountability</div>
+        <p>Executive-producer and managing-editor relationships on the investigations desks at CNN and NBC. A ProPublica reporter. Visual forensics at the Washington Post. Special-projects producers behind the long-lead pieces.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">National desks &amp; bureaus</div>
+        <p>Vice presidents and bureau chiefs at CBS, CNN, NBC, ABC, and CNBC. A news director at the Associated Press. The people who decide what the national desk chases today.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Morning &amp; flagship broadcast</div>
+        <p>Executive producers on the network morning shows at ABC and CBS, a senior producer on daytime's biggest panel show, and executive producers on the Sunday politics flagships at NBC and Fox. Where executives get booked.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Podcasts &amp; audio</div>
+        <p>Executive producers for podcasts at CBS and podcast video at the New York Times. The audio desk at the Wall Street Journal. A showrunner and a managing editor at NPR. A host and a senior producer at Slate.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Opinion pages &amp; essays</div>
+        <p>Columnists at the Washington Post and Forbes. Op-ed writers at the New York Times. An op-ed contributor at Semafor. An editorial director at HuffPost. The pages where executive bylines land.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Global &amp; Spanish-language desks</div>
+        <p>Twelve relationships across Al Jazeera's desks, from flagship interview shows to podcasts. The BBC, the Guardian, Reuters, and CGTN. An executive producer at Univision and a producer at Telemundo.</p>
+      </div>
+      <div class="pn-r">
+        <div class="k">Bookers &amp; talent desks</div>
+        <p>A senior booking producer at Bloomberg. A booking and events producer at Semafor. Interview producers on Al Jazeera's flagship shows. A senior director of contributors at CNN. The desks that put a spokesperson on air.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="mini">By beat, every outlet counted</h2>
     <div class="pn-beats">
       <div class="pn-beat">
         <div class="k">AI, business &amp; tech</div>
         <div class="outlets">
-          <span class="o">New York Times</span>
-          <span class="o">Bloomberg</span>
-          <span class="o">CNBC</span>
-          <span class="o">Wall Street Journal</span>
-          <span class="o">ProPublica</span>
-          <span class="o">Quartz</span>
-          <span class="o">Forbes</span>
-          <span class="o">Semafor</span>
-          <span class="o">Politico</span>
+          <span class="o">New York Times <b>7</b></span>
+          <span class="o">Wall Street Journal <b>3</b></span>
+          <span class="o">Bloomberg <b>2</b></span>
+          <span class="o">Politico <b>2</b></span>
+          <span class="o">Semafor <b>2</b></span>
+          <span class="o">CNBC <b>1</b></span>
+          <span class="o">ProPublica <b>1</b></span>
+          <span class="o">Quartz <b>1</b></span>
+          <span class="o">Forbes <b>1</b></span>
         </div>
       </div>
       <div class="pn-beat">
@@ -170,6 +342,8 @@
           <span class="o">CBS <b>7</b></span>
           <span class="o">Fox <b>3</b></span>
           <span class="o">PBS <b>3</b></span>
+          <span class="o">Telemundo <b>2</b></span>
+          <span class="o">Univision <b>1</b></span>
         </div>
       </div>
       <div class="pn-beat">
@@ -177,50 +351,26 @@
         <div class="outlets">
           <span class="o">Al Jazeera <b>12</b></span>
           <span class="o">Associated Press <b>4</b></span>
-          <span class="o">Reuters</span>
-          <span class="o">BBC</span>
-          <span class="o">Guardian</span>
-          <span class="o">CCTV</span>
+          <span class="o">CCTV <b>2</b></span>
+          <span class="o">Reuters <b>1</b></span>
+          <span class="o">BBC <b>1</b></span>
+          <span class="o">Guardian <b>1</b></span>
         </div>
       </div>
       <div class="pn-beat">
         <div class="k">Public radio &amp; digital</div>
         <div class="outlets">
           <span class="o">NPR <b>6</b></span>
-          <span class="o">Washington Post</span>
-          <span class="o">The Atlantic</span>
-          <span class="o">Slate</span>
-          <span class="o">Vox</span>
-          <span class="o">HuffPost</span>
-          <span class="o">VICE</span>
+          <span class="o">Washington Post <b>2</b></span>
+          <span class="o">Slate <b>2</b></span>
+          <span class="o">HuffPost <b>2</b></span>
+          <span class="o">The Atlantic <b>1</b></span>
+          <span class="o">Vox <b>1</b></span>
+          <span class="o">VICE <b>1</b></span>
         </div>
       </div>
     </div>
-    <p class="pn-note" style="margin-top:30px">The counts shown are the named journalists, editors, and producers in the network at that outlet. Outlets without a count still carry a named relationship; the number is omitted where it is a single contact.</p>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <h2 class="mini">Three rows of the map, redacted</h2>
-    <div class="pn-rows reveal" role="group" aria-label="Three redacted example rows from the relationship map">
-      <div class="pn-row">
-        <span class="pr-f">Tier-one daily · AI beat</span>
-        <span class="pr-r">Columnist and podcast host</span>
-        <span class="pr-m">connected 2015 · warm · <b>name held</b></span>
-      </div>
-      <div class="pn-row">
-        <span class="pr-f">Global newsroom · opinion desk</span>
-        <span class="pr-r">Op-ed contributor and newsroom founder</span>
-        <span class="pr-m">connected 2014 · warmth 6 of 6, the warmest path in the map · <b>name held</b></span>
-      </div>
-      <div class="pn-row">
-        <span class="pr-f">Network news · national desk</span>
-        <span class="pr-r">Vice president and deputy bureau chief</span>
-        <span class="pr-m">connected 2012 · warmth 3 · <b>name held</b></span>
-      </div>
-    </div>
-    <p class="pn-note" style="margin-top:22px">Every row in the map carries these fields: outlet, beat, role, when the relationship started, and a warmth score that decides where outreach begins.</p>
+    <p class="pn-note" style="margin-top:30px">Every count is the named relationships in the map at that outlet. All 30 outlets and all 112 rows are accounted for above; nothing is rounded and nothing is padded.</p>
   </div>
 </section>
 
@@ -228,18 +378,18 @@
   <div class="wrap">
     <h2 class="mini">What activating a row looks like</h2>
     <p class="pn-note"><strong class="wt">The map shows relationships.</strong> The record shows what activating one looks like, and pitching works the same muscle in reverse.</p>
-    <p class="pn-note">Two from the case files, already public: the night of <a href="stories.html">the bin Laden raid</a>, I found the man who had unknowingly live-tweeted it and had him on air by air time. And when a live panel needed a heavyweight, one warm line booked one of <a href="stories.html">Foreign Policy's Top 100 Global Thinkers</a>.</p>
+    <p class="pn-note">Two from the case files, already public: the night of <a href="stories.html">the bin Laden raid</a>, I found the man who had unknowingly live-tweeted it and had him on air by air time. And when The Stream needed a heavyweight on a live panel, one warm line booked one of <a href="stories.html">Foreign Policy's Top 100 Global Thinkers</a>.</p>
+    <p class="pn-note">The sensitive-story muscle is on the record too: two years producing inside <a href="stories.html#fusion-ramos-lawsuit">the Ramos newsroom while it fought a $500M lawsuit</a>, and <a href="stories.html#scientology-live-coverage">Scientology coverage</a> that had to survive legal review before air.</p>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap">
     <h2 class="mini">The honest version</h2>
-    <p class="pn-note"><strong class="wt">This network is broadcast-heavy</strong>, built across national TV and radio, with a real tier-one AI and business cluster on top, named relationships at the New York Times (including a lead AI columnist), Bloomberg, CNBC, ProPublica, and the Wall Street Journal.</p>
-    <p class="pn-note pn-flag"><em>It is lighter on the pure data-center trade press that covers Fluidstack most directly.</em></p>
-    <p class="pn-note">I hold live relationships with the reporters who set the national and AI narrative, and I know exactly how to build the trade-press layer fast. Every relationship is scored by warmth and beat, so outreach starts where it is warmest, not cold.</p>
-    <p class="pn-note">The newsroom record behind the network is on the record too: <a href="stories.html#scientology-live-coverage">the Scientology coverage</a>, <a href="stories.html#fusion-ramos-lawsuit">the Ramos newsroom under a $500M lawsuit</a>, and <a href="comms.html#judgment">the judgment record on the comms page</a>.</p>
-    <div class="pn-held">Names and contacts are deliberately withheld here. A rolodex is worth something precisely because it is not public; I open specific relationships once there is a signed reason to, not before. That discipline is part of the job.</div>
+    <p class="pn-note"><strong class="wt">This network is broadcast-heavy</strong>, built across national TV and radio, with a real tier-one AI and business cluster on top, named relationships at the New York Times, Bloomberg, CNBC, ProPublica, and the Wall Street Journal.</p>
+    <p class="pn-note pn-flag"><em>It is lighter on the pure data-center trade press that covers Fluidstack most directly.</em> That layer is the fastest to build; the tier-one relationships above it are the ones that cannot be bought quickly.</p>
+    <p class="pn-note">I hold live relationships with the reporters who set the national and AI narrative, and trade desks answer warm tier-one referrals. Every relationship is scored by warmth and beat, so outreach starts where it is warmest, not cold. The full judgment record lives on <a href="comms.html#judgment">the comms page</a>.</p>
+    <div class="pn-held">The rows named above are named because the public record already names them. The other names, and every piece of contact information for all 112, stay held. A rolodex is worth something precisely because it is not public; I open specific relationships once there is a signed reason to, not before. That discipline is part of the job.</div>
     <div class="pn-cta">
       <a class="btn solid" href="for-fluidstack.html"><span>Back to the review path</span></a>
       <a class="btn" href="docs/fluidstack-positioning-memo.html"><span>Read the positioning memo</span></a>
@@ -264,5 +414,15 @@
 
 <script src="shared/reveal.js?v=20260715a"></script>
 <script src="shared/audio.js?v=20260716b"></script>
+<script>
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var img = document.querySelector('.pn-band-plate img'); if (!img) return;
+  function tick(){ var r = img.closest('.pn-band').getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, 1 - (r.top + r.height) / (innerHeight + r.height)));
+    img.style.transform = 'translateY(' + ((p - .5) * 56).toFixed(1) + 'px)'; }
+  addEventListener('scroll', function(){ requestAnimationFrame(tick); }, { passive: true }); tick();
+})();
+</script>
 </body>
 </html>
