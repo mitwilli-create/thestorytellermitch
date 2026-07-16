@@ -7,7 +7,8 @@
 //   voice > diegetic > score
 // Voice playback ducks the score and suppresses diegetic one-shots for
 // its duration. The score bed never exceeds SCORE_VOL. Only one voice
-// element plays at a time.
+// element plays at a time. Where the platform ignores volume writes
+// (iOS Safari), the score and hum beds never start at all -- see canVol.
 //
 // Page code talks to window.__sound:
 //   __sound.on                     -> current toggle state (boolean)
@@ -35,6 +36,22 @@
     scoreEl: null, humEl: null, humWanted: false, sfxCache: {},
   };
 
+  // iOS Safari ignores HTMLMediaElement.volume writes (hardware volume
+  // only), so SCORE_VOL, HUM_VOL, and every duck fade silently no-op:
+  // the "15% bed" would run at FULL volume and never duck under a voice.
+  // Probe the real capability -- write a volume, read it back -- rather
+  // than UA-sniff, and refuse to start the continuous beds where the
+  // mixer can't hold them down. Voice playback (full volume by design),
+  // one-voice-at-a-time, and one-shot sfx are pause()/logic-based and
+  // keep working.
+  const canVol = (() => {
+    try {
+      const a = document.createElement('audio');
+      a.volume = 0.4;
+      return a.volume === 0.4;
+    } catch { return false; }
+  })();
+
   // per-element generation counter: starting a new fade must kill the old
   // loop, or a slow un-duck outlives a fast duck and lands the bed at full
   // volume underneath a playing voice
@@ -56,6 +73,7 @@
 
   const api = {
     get on() { return state.on; },
+    get canVol() { return canVol; }, // debug/verification surface: false = beds gated (iOS)
     sub(fn) { state.subs.push(fn); },
     sfx(name) {
       if (!state.on || state.voiceBusy) return;
@@ -69,7 +87,7 @@
       // and done() brings it back only while the page still wants it running
       state.humWanted = !!run;
       if (run) {
-        if (!state.on || state.voiceBusy) return; // done() restarts it if still wanted
+        if (!state.on || !canVol || state.voiceBusy) return; // done() restarts it if still wanted
         if (!state.humEl) { state.humEl = new Audio('assets/sfx/pipeline-hum.mp3'); state.humEl.loop = true; }
         state.humEl.volume = 0;
         state.humEl.play().then(() => fade(state.humEl, HUM_VOL, 400)).catch(() => {});
@@ -79,7 +97,7 @@
     },
     score(src) {
       if (!src) { if (state.scoreEl) fade(state.scoreEl, 0, 900); return; }
-      if (!state.on) return;
+      if (!state.on || !canVol) return;
       if (!state.scoreEl || !state.scoreEl.src.endsWith(src)) {
         if (state.scoreEl) state.scoreEl.pause();
         state.scoreEl = new Audio(src); state.scoreEl.loop = true;
