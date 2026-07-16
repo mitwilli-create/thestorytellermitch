@@ -32,7 +32,7 @@
   const state = {
     on: store.get(KEY) === 'on',
     subs: [], voiceBusy: false, voices: [],
-    scoreEl: null, humEl: null, sfxCache: {},
+    scoreEl: null, humEl: null, humWanted: false, sfxCache: {},
   };
 
   // per-element generation counter: starting a new fade must kill the old
@@ -65,8 +65,11 @@
       a.play().catch(() => {});
     },
     hum(run) {
+      // humWanted survives a voice interruption: a voice fades the hum out,
+      // and done() brings it back only while the page still wants it running
+      state.humWanted = !!run;
       if (run) {
-        if (!state.on || state.voiceBusy) return;
+        if (!state.on || state.voiceBusy) return; // done() restarts it if still wanted
         if (!state.humEl) { state.humEl = new Audio('assets/sfx/pipeline-hum.mp3'); state.humEl.loop = true; }
         state.humEl.volume = 0;
         state.humEl.play().then(() => fade(state.humEl, HUM_VOL, 400)).catch(() => {});
@@ -109,6 +112,7 @@
         if (state.voices.some((v) => !v.paused && !v.error)) return;
         state.voiceBusy = false;
         if (state.on && state.scoreEl && !state.scoreEl.paused) fade(state.scoreEl, SCORE_VOL, 900);
+        if (state.on && state.humWanted) api.hum(true); // the run is still going; bring its ambience back
       };
       el.addEventListener('pause', done);
       el.addEventListener('ended', done);
