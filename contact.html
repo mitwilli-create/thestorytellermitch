@@ -72,6 +72,12 @@
     section{padding:72px 0}
     h2.mini{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;
       letter-spacing:0.14em;color:var(--blood-soft);margin-bottom:24px;font-weight:500}
+    /* Below-fold section titles carry the house section-title grammar; the three
+       hero-spread headers stay mono labels so they don't fight the display
+       headline or the short-viewport compression. */
+    section h2.mini{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,31px);
+      letter-spacing:-0.01em;line-height:1.12;color:var(--bone);max-width:760px}
+    section h2.mini::before{content:'';display:block;width:52px;height:2px;background:var(--blood-soft);margin-bottom:14px}
     @media(max-width:1023px){
       .contact-spread{padding:130px 0 40px}
       .c-logi{flex-direction:column;gap:10px}
