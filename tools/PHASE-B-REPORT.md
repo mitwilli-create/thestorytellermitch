@@ -1,6 +1,16 @@
 # Phase B — Retrieval backbone: build report
 
-**Built:** 2026-07-15 · **Status:** functional, tuned, **gate met (95.1% vs 95% target, 98/103 PASS at production topK=15)** · **Not deployed** (dev-only; Phase F handles staged launch)
+**Built:** 2026-07-15 · **Status:** functional, tuned, **gate met** · **Deployed** (retrieval only; Phase F still handles the staged launch of the chat layer)
+
+**Three different hit rates appear in this report. They are not interchangeable** — each was measured against a different corpus *and* a different retrieval config, so always read the state, never just the number:
+
+| figure | state it describes | corpus | config |
+|---|---|---|---|
+| **97.1% (100/103)** | **the per-source diversity cap** — the number this code serves once deployed | 381 chunks | cap=1, topK=15 |
+| 92.2% (95/103) | **what production served before the cap** — the regression it fixes | 381 chunks | no cap, topK=15 |
+| 95.1% (98/103) | **historical.** The original Phase B headline, measured before that day's content merges (an 8th resume lane, `for-anthropic.html` edits) landed without a reindex | 377 chunks | no cap, topK=15 |
+
+The 95.1% → 92.2% drop was **not** a code change: nothing reindexes on merge, so that headline had been measured against a corpus that no longer matched the site. Everything below the addendum was written against the 95.1% (377-chunk) state; where an older section calls 95.1% "current," read it as that historical baseline.
 
 **Re-verified:** 2026-07-15, every figure below re-measured against the live corpus and `worker/index.js`. The report had drifted from the code on several points (pooling mode, gate status, chunk counts, the residual-gap list); see the **Correction log** at the bottom for what changed and why. Figures here are current as of that pass.
 
@@ -128,7 +138,7 @@ What this report asserted, versus what the code and corpus actually do. Recorded
 
 ## 2026-07-15 addendum: per-source diversity cap (92.2% -> 97.1%)
 
-**State this fixed.** After the day's content merges (an 8th resume lane, `for-anthropic.html` edits), a full reindex measured **92.2% (95/103), gate FAIL** — see the memory note on the index going stale on content merges. Nothing reindexes on merge, so the 95.1% headline had been measured against a corpus that no longer matched the site. Production was serving the 92.2% corpus.
+**The state this fixed (historical — superseded by the 97.1% at the top of this report).** After the day's content merges (an 8th resume lane, `for-anthropic.html` edits), a full reindex measured **92.2% (95/103), gate FAIL** — see the memory note on the index going stale on content merges. Nothing reindexes on merge, so the 95.1% headline had been measured against a corpus that no longer matched the site. Production served that 92.2% corpus until this change shipped.
 
 **Root cause: near-duplicate document crowding, not ranking quality.** Measured on the live 381-chunk index at topK=15:
 
@@ -158,7 +168,7 @@ Simulated offline against live `topK=20` responses, then **confirmed end-to-end*
 
 **No regressions.** cap=1's miss set (c47, c75, CO7) is a strict **subset** of the baseline's eight; every question that passed still passes. The three that remain are unreachable by ranking: c47 and c75 are the documented-wrong golden entries, CO7 a genuine miss whose expected source never appears even at topK=20.
 
-**100/103 is the corpus ceiling**, which is why a bigger pool (two-pass `query` ids -> cap -> `getByIds`) is not worth the second round trip today. Revisit if the golden set is corrected.
+**100/103 is the measured ceiling for this query configuration** (one query, pool ≤ 20) — **not a corpus ceiling.** c47 and c75 are unreachable on the merits (documented-wrong golden entries), but CO7 was only ever observed *absent from the top 20*; its expected source could rank deeper and be reachable via a two-pass query (ids only, pool up to 100 → cap → `getByIds`). That was never tested, so it is claimed neither way. `POOL_K` stays at 20 because nothing measured so far justifies the second round trip, not because the ceiling is proven. Revisit if the golden set is corrected, or if CO7 is worth a deep-pool probe.
 
 **Cost:** cap=1 can serve slightly fewer cards than requested when the pool holds fewer distinct sources than topK (c42 returns 13, not 15). Acceptable: 13 distinct beats 15 with 4 duplicates.
 

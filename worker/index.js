@@ -35,9 +35,10 @@ const INDEX_BATCH_SIZE = 50;
 const DEFAULT_TOP_K = 15;
 const MAX_TOP_K = 20;
 // Candidate pool over-fetched before diversification. 20 is a hard Vectorize
-// ceiling, not a tuning choice: topK is capped at 20 when returnMetadata is
-// 'all'. Raising it needs a two-pass query (ids only -> cap -> getByIds), which
-// measurement says buys nothing today (see below).
+// ceiling for a single-pass query, not a tuning choice: topK is capped at 20
+// when returnMetadata is 'all'. Going deeper needs a two-pass query (ids only,
+// pool up to 100 -> cap -> getByIds); nothing measured so far justifies that
+// round trip, but it is untested rather than ruled out (see PER_SOURCE_CAP).
 const POOL_K = 20;
 // Max chunks any ONE source document may occupy in the served set.
 //
@@ -53,13 +54,21 @@ const POOL_K = 20;
 //   cap=2   94.2% (97/103) FAIL   cap=1  97.1% (100/103) PASS
 // cap=1's miss set (c47, c75, CO7) is a strict SUBSET of the baseline's, so it
 // regresses nothing; the 3 that remain are the two documented-wrong golden
-// entries (c47, c75) plus one genuine miss (CO7), none reachable by ranking.
+// entries (c47, c75) plus one genuine miss (CO7).
 //
 // Read the win honestly: cap=1 at 15 returns the same recall as a raw topK=20
 // (100/103) while serving 15 cards instead of 20, all from distinct documents
 // (avg distinct sources 11.6 -> 13.8). It buys topK=20's reach without showing
-// duplicate cards. 100/103 is the corpus ceiling, which is why a bigger pool is
-// not worth the second round trip.
+// duplicate cards.
+//
+// 100/103 is the measured ceiling for THIS query configuration (one query, pool
+// <= 20) -- NOT a corpus ceiling. c47 and c75 are unreachable on the merits
+// (documented-wrong golden entries), but CO7 was only ever observed absent from
+// the top 20; its expected source could rank deeper and be reachable via a
+// two-pass query (ids only, pool up to 100 -> cap -> getByIds). That was never
+// tested, so it is not claimed either way. POOL_K stays at 20 because nothing
+// measured so far justifies the second round trip, not because 100/103 is a
+// proven ceiling.
 //
 // Phase C caveat: generation wants context DEPTH (several chunks of the best
 // doc), which is the opposite of this. Phase C should read its own context
