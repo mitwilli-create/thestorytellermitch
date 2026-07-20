@@ -10,6 +10,9 @@ __pycache__/
 tools/.kb-corpus.json
 tools/.kb-eval-report.json
 
+# wrangler local state / OAuth account cache (machine-local, not for a public repo)
+.wrangler/
+
 # cloud-sync conflict twins (iCloud "name 2.ext" duplicates): never track, never ship
 * 2.*
 * 2
