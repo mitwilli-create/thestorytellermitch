@@ -1,7 +1,7 @@
 {
   "_comment": "Fingerprint of the retrieval corpus that the live Vectorize index was last built from. CI fails if the built corpus drifts from this. Regenerate ONLY after a real wipe+re-index+eval: node tools/kb-corpus-guard.mjs --update",
   "chunkCount": 382,
-  "corpusHash": "daa920ae5b07cc774457ccb3170ae58f92b3b88207a5b2cd903ff7fe41274dc7",
+  "corpusHash": "b7c2579961668007c5df846b0f938e0f2337b7df1a5528a6829ec6cfdef31fa2",
   "bySource": {
     "kb/biggest-gap.md": 1,
     "kb/career-arc.md": 1,
@@ -62,7 +62,7 @@
     "assets/site-data/stories.json": 17,
     "assets/site-data/writing.json": 1
   },
-  "lastVerified": "2026-07-16",
+  "lastVerified": "2026-07-20",
   "lastEval": {
     "topK": 15,
     "hits": 99,
