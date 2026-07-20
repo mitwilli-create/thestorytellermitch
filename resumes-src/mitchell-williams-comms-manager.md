@@ -19,7 +19,7 @@ Writing portfolio: thestorytellermitch.com/writing
 - **Understand the technology from the inside:** Built and deployed two production LLM agents solo at xGE, plus public multi-agent systems on my own time.
 - **Work the journalist's side of the desk:** Booked one of Foreign Policy's 2012 Top 100 Global Thinkers onto a live panel, produced an exclusive Netanyahu interview, and surfaced on-record admissions from sitting U.S. Senators.
 - **Source every claim:** Built a citation-gated verification agent where no claim surfaces without its source; it caught a ~$19K error commercial software defended as correct.
-- **Write for technical audiences that punish spin:** the annual 600-person summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.
+- **Write for technical audiences that punish spin:** the 600-person Sr. Tech IC Summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.
 - **Produce external content at reach:** Google engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of explainer line (proof-of-concept: 50M+ views).
 
 ## Experience

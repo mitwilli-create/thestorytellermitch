@@ -18,7 +18,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 ## Fit for Content Producer & Editorial Lead roles
 
 - **Finding and building narratives:** Designed the AJ+ day-of explainer line to find the story inside the day's news and ship it same day; the proof-of-concept hit 50M+ views and the format became permanent.
-- **Producing across mediums, owned end to end:** Live broadcast, social video, explainer series, newsletters, in-person events (600+ attendee summit, quarterly forums), and an AI video pipeline: script in, produced short out with audio end to end (narration, score, sound design).
+- **Producing across mediums, owned end to end:** Live broadcast, social video, explainer series, newsletters, in-person events (the 600-person Sr. Tech IC Summit, quarterly forums), and an AI video pipeline: script in, produced short out with audio end to end (narration, score, sound design).
 - **Editorial standards as systems, not vibes:** A codified voice "Constitution," a banned-phrase checklist, a six-axis voice-quality rubric (voice-os), and a triage / revise / escalate review workflow; quality holds without the editor in every loop.
 - **Moving extremely quickly and fluidly:** When Nelson Mandela died, rebuilt the rundown overnight and line-produced Fusion's 44-minute live primetime breaking-news special: ABC News packages, White House audio, four consecutive live phone experts.
 - **AI-assisted production:** I built two production LLM agents at Google, plus PictureLock and content-ops on my own time ([case studies](../projects.html)). The rule I build by: AI does the mechanical work, the editorial cut stays human.
@@ -28,7 +28,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 ### Internal Communications Lead
 **Google · Cross-Google Engineering (xGE)** | June 2024 – Present
 
-Communications lead for the horizontal org that drives technical change across Google, serving 1,000+ Principal, Distinguished, and Fellow engineers; designed the three-tier communications operating model behind the annual summit (600+ attendees), quarterly forums, and the senior-engineering newsletters.
+Communications lead for the horizontal org that drives technical change across Google, serving 1,000+ Principal, Distinguished, and Fellow engineers; designed the three-tier communications operating model behind the annual Sr. Tech IC Summit (600+ attendees), quarterly forums, and the senior-engineering newsletters.
 
 #### Executive-communications "digital twin" (Gemini agent)
 - **Problem:** High-stakes VP communications required long review cycles to hold a consistent voice.
