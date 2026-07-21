@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .tl-hero{padding:170px 0 56px}
     .tl-hero .display{font-size:clamp(42px,7.4vw,110px)}
@@ -195,9 +195,13 @@
        which sits in the same corner at a higher z and was eating taps */
     .tl-pill{position:fixed;right:14px;bottom:74px;z-index:40;display:block;
       font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--bone);background:rgba(10,10,11,.92);border:1px solid var(--line-2);
+      color:var(--bone);background:var(--bg);border:1px solid var(--line-2);
+      box-shadow:0 6px 20px rgba(0,0,0,.55);
       padding:13px 16px;min-height:44px;cursor:pointer}
     @media(min-width:1200px){.tl-pill{display:none}}
+    /* kept visible on phones: it is the ONLY chapter-jump trigger, so hiding it removed that on mobile.
+       Solid bg + shadow make it read as a deliberate floating control (like the sound toggle in the
+       same corner) instead of text bleeding through a translucent pill. */
 
     /* lightbox + jump dialogs */
     dialog{border:1px solid var(--line-2);background:var(--bg);color:var(--bone);padding:0;margin:auto}

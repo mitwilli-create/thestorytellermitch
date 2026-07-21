@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .comms-hero{padding:170px 0 64px;border-bottom:1px solid var(--line)}
     .comms-hero .display{font-size:clamp(38px,6.2vw,88px)}
@@ -85,8 +85,11 @@
     .judg-sec .wrap{position:relative;z-index:1}
     .judg-sec{padding-top:200px}
     @media(max-width:860px){
-      .judg-backdrop{height:200px}
-      .judg-sec{padding-top:130px}
+      /* mobile: backdrop drops into flow as a banner so the eyebrow+h2 stack cleanly below it
+         with breathing room, instead of the title (and CC caption) colliding over the image */
+      .judg-backdrop{position:relative;height:170px}
+      .judg-sec{padding-top:0}
+      .judg-sec .wrap{margin-top:30px}
     }
     /* judgment: prose left, the broadcast frame fills screen right */
     .judg-grid{display:grid;grid-template-columns:minmax(0,620px) minmax(340px,1fr);gap:48px;align-items:start;max-width:1180px}
@@ -217,7 +220,7 @@
     <div class="comms-sub">
       <p>A decade producing live news in network control rooms. Eight years at Google, where I led communications for the horizontal org that drives technical change across the company, wrote for a VP and Google's then-CIO, and built AI infrastructure so the comms function scales instead of drowning.</p>
       <p>This page is the communications-first view of that career: executive voice, internal narrative, approvals discipline, and the judgment that keeps high-stakes coverage defensible. It stands on its own.</p>
-      <p>The <a href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
+      <p>The <a class="lnk-inline" href="index.html">full builder site</a> is one click away, because the systems work is part of the comms story, not a departure from it.</p>
     </div>
     <nav class="jump-row" aria-label="Jump to a section of this page">
       <a class="chip" href="#the-seat-i-held">Seat</a>
@@ -239,7 +242,7 @@
     <div class="fact-grid">
       <a class="fact reveal" href="timeline.html"><div class="n">1,000+</div><div class="l">Principal, Distinguished, and Fellow engineers served as the org's communications lead. An analytical, truth-seeking audience that notices spin instantly.</div><span class="go-mark">the era, on the timeline &rarr;</span></a>
       <a class="fact reveal" href="stories.html#digital-twin"><div class="n">VP + CIO</div><div class="l">VP-level executive communications at the Office of Cross Google Engineering (xGE), where I wrote directly for principals, and C-suite writing for Google's then-CIO in Corporate Engineering.</div><span class="go-mark">how the VP's voice became a system &rarr;</span></a>
-      <a class="fact reveal" href="writing.html"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual Sr. Tech IC Summit (600+ attendees) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div><span class="go-mark">the writing, word for word &rarr;</span></a>
+      <a class="fact reveal" href="writing.html"><div class="n">600+ / 300+</div><div class="l">Owned communications for the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers) and quarterly forums (300+ each), plus the quarterly Distinguished and Principal Engineering newsletters.</div><span class="go-mark">the writing, word for word &rarr;</span></a>
       <a class="fact reveal" href="writing.html#redacted-docs"><div class="n">Three tiers</div><div class="l">Authored the org's three-tier communications operating model and its multi-channel strategy: routine requests move fast, high-stakes work gets full partnership.</div><span class="go-mark">the internal docs, redacted &rarr;</span></a>
       <a class="fact reveal" href="comms-triage-agent.html"><div class="n">Cadence</div><div class="l">Ran the recurring approval-intake prioritization meetings and drove cross-org security and memory-safety mandates through to approval, working alongside engineering leads and program owners.</div><span class="go-mark">the intake, rebuilt as an agent &rarr;</span></a>
       <a class="fact reveal" href="stories.html#talent-pipeline"><div class="n">10+</div><div class="l">Producers led at Al Jazeera's AJ+ during its 500M-weekly-view era (public source). Three I coached moved from behind the camera to on-air principals; two carry Emmy and Webby wins of their own.</div><span class="go-mark">the talent pipeline story &rarr;</span></a>

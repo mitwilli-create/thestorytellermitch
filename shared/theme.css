@@ -51,7 +51,7 @@
       --stag-grid:90ms;                           /* card grids, reading order */
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;overflow-x:clip} /* clip (not hidden) mirrors body: kills sideways scroll leaks without breaking anchor/fragment scrolling */
     body{
       background:var(--bg);color:var(--bone);
       font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -382,7 +382,8 @@ a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
 .theater-open{overflow:hidden}
 @media(max-width:860px){
   .theater-panel{width:100vw;max-height:100vh}
-  .chip{padding:8px 12px}
+  .chip{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;line-height:1.1} /* >=44px tap target on touch */
+  a.chip{display:inline-flex}
 }
 
     /* ---------- on-camera stills: archival broadcast frames fading into the page ----------
