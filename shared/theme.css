@@ -113,7 +113,7 @@
     .nav .mark{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
       letter-spacing:0.14em;text-transform:uppercase;color:#fff}
     .nav .mark b{color:var(--blood-soft)}
-    .nav-links{display:flex;gap:28px;font-family:'JetBrains Mono',monospace;
+    .nav-links{display:flex;align-items:center;gap:28px;font-family:'JetBrains Mono',monospace;
       font-size:12px;letter-spacing:0.1em;text-transform:uppercase}
     .nav-links a{color:#fff;opacity:0.7;transition:opacity var(--dur-micro) var(--ease-micro)}
     .nav-links a:hover{opacity:1}
