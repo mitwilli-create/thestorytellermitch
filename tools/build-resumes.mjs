@@ -9,6 +9,10 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+// One print type system for every rendered artifact (resumes here, apply-pack
+// prose docs in career-ops/scripts/render-brand-doc-pdf.mjs). Sizes and colors
+// are NOT redeclared below; they come from the shared scale.
+import { PRINT_COLORS, resumePt } from '../shared/brand-print.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.RESUME_SRC || join(ROOT, 'resumes-src');
@@ -55,10 +59,16 @@ export const LANES = {
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };
 
-export const PRINT_PT = {
-  'forward-deployed': 9.8, 'ai-solutions-architect': 9.8, 'ai-enablement': 9.2,
-  'ai-program-manager': 9.2, 'comms-manager': 9.6, 'devrel-education': 9.8,
-  'content-editorial': 9.2, 'marketing-program-manager': 9.2,
+// Per-lane FIT multiplier on the shared print scale (1 = brand-exact).
+// Superseded the old per-lane body-pt table on 2026-07-21: sizes now come from
+// shared/brand-print.mjs so the resumes and the apply-pack prose docs render in
+// one type system. This dial exists only for the hard 2-page gate: if a dense
+// lane tips to three pages, nudge it down a notch here rather than resizing one
+// element, so the hierarchy stays identical across lanes.
+export const PRINT_FIT = {
+  'forward-deployed': 1, 'ai-solutions-architect': 1, 'ai-enablement': 1,
+  'ai-program-manager': 1, 'comms-manager': 1, 'devrel-education': 1,
+  'content-editorial': 1, 'marketing-program-manager': 1,
 };
 
 // Deep links: first mention per resume of a video / story / project routes to its page.
@@ -212,9 +222,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2;
-  const sm = (pt * 0.85).toFixed(2);
-  const rh = (pt + 1.8).toFixed(1);
+  const T = resumePt(lane.fit ?? PRINT_FIT[lane.slug] ?? 1);
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -285,15 +293,20 @@ export function page({ name, pillars, contact, sections }, lane) {
        page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
     @page{size:letter}
     @media print{
-      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
-        --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
-        --blood:#8a3a33;--blood-soft:#8a3a33}
-      html,body{background:#fff !important;color:#2e2a26}
+      /* colors come from shared/brand-print.mjs, the same tokens the apply-pack
+         prose renderer uses; the site's dark-variable names are re-pointed at
+         them so the rest of this stylesheet keeps working unchanged. */
+      :root{--bg:${PRINT_COLORS.bg};--surface:${PRINT_COLORS.bg};
+        --bone:${PRINT_COLORS.ink};--bone-soft:${PRINT_COLORS.inkSoft};
+        --mute:${PRINT_COLORS.mute};--dim:${PRINT_COLORS.mute};
+        --line:${PRINT_COLORS.line};--line-2:${PRINT_COLORS.line2};
+        --blood:${PRINT_COLORS.blood};--blood-soft:${PRINT_COLORS.blood}}
+      html,body{background:${PRINT_COLORS.bg} !important;color:${PRINT_COLORS.inkSoft}}
       .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
       .kicker{font-weight:600}
       .rpillars{font-weight:600;letter-spacing:0.06em}
       .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
-      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
+      .rwrap section a,.rwrap .rcontact a{color:${PRINT_COLORS.blood} !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
@@ -306,27 +319,33 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      .rname{font-size:20pt;word-spacing:0.14em}
+      /* every size below is a step off the shared scale (shared/brand-print.mjs);
+         do not hand-tune one element here, move it to a different step or
+         adjust the lane's PRINT_FIT. Hierarchy: name > pillars = role head >
+         section head = org/date > body > contact. */
+      .rname{font-size:${T.name}pt;word-spacing:0.14em}
       .rrole-h{word-spacing:0.08em}
-      .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
+      /* balance keeps the deck from breaking to a one-word second line at the
+         larger section size (the "TO-AI" orphan, owner ruling 2026-07-15) */
+      .rpillars{font-size:${T.pillars}pt;margin-top:6pt;line-height:1.35;text-wrap:balance}
+      .rcontact{font-size:${T.contact}pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
+      .rsec-h{font-size:${T.secHead}pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:${T.body}pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:${T.body}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:${rh}pt;break-after:avoid}
-      .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
+      .rrole-h{font-size:${T.roleHead}pt;break-after:avoid}
+      .rrole-s{font-size:${T.roleSub}pt;margin:1.5pt 0 4pt}
       .rnum{font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
+      .rinit-h{font-size:${T.body}pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
