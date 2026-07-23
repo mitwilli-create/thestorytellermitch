@@ -113,6 +113,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // Private shortcut, deliberately not linked from anywhere on the site.
+    // The ideas queue is internal working material, so the apex gets a typed
+    // entry point rather than a nav item. The destination sits behind
+    // Cloudflare Access, which does the actual gating; this is convenience,
+    // not a secret.
+    if (url.pathname === '/ideas' || url.pathname === '/ideas/') {
+      return Response.redirect('https://ideas.thestorytellermitch.com/', 302);
+    }
+
     if (url.pathname === '/api/kb-index' && request.method === 'POST') {
       return handleIndex(request, env);
     }
