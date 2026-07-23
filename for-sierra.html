@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>For Sierra · EMEA Communications · Mitchell Williams</title>
-  <meta name="description" content="The case for Sierra's EMEA Communications role: eight years in international newsrooms, a 112-journalist press network, four proof points of scrappiness, and production AI agents already shipped.">
+  <meta name="description" content="The case for Sierra's EMEA Communications role: eight years in international newsrooms, a 112-journalist press network, nine proof points of scrappiness, and production AI agents already shipped.">
   <meta property="og:title" content="For Sierra · EMEA Communications · Mitchell Williams">
   <meta property="og:description" content="International newsrooms first, then the agents. The case for Sierra's first dedicated EMEA communications hire.">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
@@ -107,6 +107,24 @@
     .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
       letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
     .el-note p{margin:0}
+    /* scrappy grid: 3x3 of proof cards. House system only, no new palette
+       values and no generated art. The number is the only ornament; the
+       oxblood hairline on the left is the same accent rule the ed-lane uses,
+       one step quieter so nine of them do not shout. */
+    .scrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:1100px;margin-top:8px}
+    .scrap{background:var(--surface);padding:22px 22px 24px;min-width:0;
+      border-left:2px solid transparent;transition:border-color var(--dur-micro) var(--ease-micro),background var(--dur-micro) var(--ease-micro)}
+    .scrap:hover{border-left-color:var(--blood-soft);background:var(--bg-2)}
+    .scrap .sn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);display:block;margin-bottom:9px}
+    .scrap h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);margin:0 0 9px;font-weight:500;line-height:1.4}
+    .scrap p{margin:0;font-size:14.5px;line-height:1.65;color:var(--bone-soft)}
+    .scrap-kicker{max-width:760px;margin-top:26px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
+    .scrap-kicker strong{color:var(--bone)}
+    @media(max-width:1000px){.scrap-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.scrap-grid{grid-template-columns:1fr}}
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:640px){
       .sys-hero{padding:130px 0 56px}
@@ -213,31 +231,41 @@
 
 <section style="padding-top:0" id="scrappy">
   <div class="wrap">
-    <h2 class="fs-title">Four times it was scrappy</h2>
-    <div class="narrative-prose">
-      <p>Your job description asks for entrepreneurial, scrappy, leaning into risk, solving what gets thrown at you. Four times, with the situation, what I did, and what came of it.</p>
+    <h2 class="fs-title">Nine times it was scrappy</h2>
+    <div class="narrative-prose" style="margin-bottom:26px">
+      <p>Your job description asks for entrepreneurial, scrappy, leaning into risk, solving what gets thrown at you. Most of these were launches. We were figuring it out as we went.</p>
     </div>
-    <ul class="map-list">
-      <li class="reveal"><h3>01 · Launching things that did not exist yet</h3>
-        <strong class="wt">Situation:</strong> a social-first live news show with no format precedent, launching into 250 million households on May 2, 2011, the night the bin Laden raid broke.
-        <strong class="wt">Action:</strong> rebuilt the rundown live, on air, and then spent the following months inventing the social-data segment as a repeatable on-air form.
-        <strong class="wt">Result:</strong> "The Stream" became the network's proof that social could carry a live hour. Years later I did the same thing at AJ+, standing up a day-of explainer line that proved out at 50 million views.</li>
+    <div class="scrap-grid">
+      <div class="scrap reveal"><span class="sn">01</span><h3>The Stream, launch night</h3>
+        <p>Al Jazeera English's social-first show launched May 2, 2011 into 250 million households. The bin Laden raid broke that night. We rebuilt the rundown live, on air, with no format precedent to fall back on.</p></div>
 
-      <li class="reveal"><h3>02 · Google's global remote-work shift, Q1 2020</h3>
-        <strong class="wt">Situation:</strong> Google had to move its entire global workforce off-site in weeks, with no playbook, while I was writing executive communications for then-CIO Ben Fried.
-        <strong class="wt">Action:</strong> directed the communications, content, and logistics-support strategy under continuous deadline, for a global audience of wildly mixed technical ability.
-        <strong class="wt">Result:</strong> an 80% increase in global self-provisioning efficiency over the following quarter. People solved their own problems because the writing was good enough that they could.</li>
+      <div class="scrap reveal"><span class="sn">02</span><h3>The AJ+ explainer line</h3>
+        <p>No day-of explainer format existed, so I built one: a production line that could turn a story inside a single news cycle. It proved out at 50 million views and doubled as a talent pipeline.</p></div>
 
-      <li class="reveal"><h3>03 · Sourcing my own problems</h3>
-        <strong class="wt">Situation:</strong> nobody at Google handed me an AI roadmap. My org was not AI-friendly, and there was real pushback.
-        <strong class="wt">Action:</strong> found the problems myself and built on nights and weekends. A communications-triage agent with a three-prompt pipeline and touch-based routing. Then an executive-communications agent for a VP, loaded with a voice constitution and a banned-phrase verification checklist.
-        <strong class="wt">Result:</strong> both went to production. The VP agent cut review rounds with him by about 70%. The triage agent shipped with a full operator runbook so it would outlive me. <a href="comms-triage-agent.html">The triage agent</a>, <a href="voice-os.html">the voice system</a>.</li>
+      <div class="scrap reveal"><span class="sn">03</span><h3>CGTN America, new bureau</h3>
+        <p>A brand-new Washington bureau and an hour-long daily live program with no established rundown. I owned it every day while the bureau was still working out what it was.</p></div>
 
-      <li class="reveal"><h3>04 · Building the comms function inside xGE from zero</h3>
-        <strong class="wt">Situation:</strong> xGE, the org that drives technical change across Google through its 1,000+ Principal, Distinguished, and Fellow engineers, had no communications operating model. Just ad hoc email.
-        <strong class="wt">Action:</strong> designed a three-tier communications model and authored the multi-channel strategy, then owned the annual senior-IC summit at 600+ attendees, quarterly forums at 300+ each, and the Distinguished and Principal Engineering newsletters. Designed xGE Connects, a peer-led series where senior engineers teach the tier below.
-        <strong class="wt">Result:</strong> a repeatable channel architecture where there had been none. Q1 2026 sessions hosted by Google DeepMind engineers drew record attendance.</li>
-    </ul>
+      <div class="scrap reveal"><span class="sn">04</span><h3>HuffPost Live, launch era</h3>
+        <p>Streaming news before the format settled. Mashable called it the biggest innovation in media in 2012 and a Webby followed in 2013. I produced sustained Scientology-defector coverage under an active attack-the-attacker litigation posture. No retractions.</p></div>
+
+      <div class="scrap reveal"><span class="sn">05</span><h3>Fusion, primetime flagship</h3>
+        <p>Daily line production on "America With Jorge Ramos" for a network still defining its audience. A 179% viewership-growth window, distributed to 40 million households.</p></div>
+
+      <div class="scrap reveal"><span class="sn">06</span><h3>Hong Kong, Umbrella Revolution</h3>
+        <p>Field production live from the street during the occupation, filing into a primetime show from thirteen time zones away. Forward deployed before anyone called it that.</p></div>
+
+      <div class="scrap reveal"><span class="sn">07</span><h3>My own accounts as the newsroom</h3>
+        <p>The show needed communities the network had no line into. I used my personal social accounts to find them, learn their stories, and earn enough trust that people would come on air. The engagement came back to the network, not to me.</p></div>
+
+      <div class="scrap reveal"><span class="sn">08</span><h3>Google's remote-work shift, Q1 2020</h3>
+        <p>An entire global workforce off-site in weeks, no playbook, while I was writing for then-CIO Ben Fried. I directed the communications, content, and logistics-support strategy. An 80% lift in global self-provisioning the quarter after.</p></div>
+
+      <div class="scrap reveal"><span class="sn">09</span><h3>Agents nobody asked for</h3>
+        <p>No AI roadmap, and an org that pushed back. I found the problems myself and built two agents on nights and weekends. Both reached production. The executive one cut review rounds with a VP by about 70%.</p></div>
+    </div>
+    <div class="scrap-kicker reveal">
+      <p><strong>Looking scrappy and being scrappy produce two different outputs.</strong> One is a vibe. The other is a rundown that survives contact with a live hour.</p>
+    </div>
   </div>
 </section>
 
