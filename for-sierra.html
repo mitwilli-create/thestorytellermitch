@@ -314,6 +314,16 @@
         var a = map[e.target.id]; if (a) a.classList.add('active');
       }
     });
+  // rootMargin percentages here are intentional and correct. Per the
+  // IntersectionObserver spec, top/bottom percentages resolve against the
+  // root's HEIGHT (only left/right resolve against width), so -40%/-55%
+  // leaves a thin band across the vertical middle: exactly the "which section
+  // am I in" behaviour this rail wants. Measured in-browser at 1280x606:
+  // rootBounds.height came back 31px, matching the height-based prediction
+  // (30px), not the width-based one (-610px, which would never intersect).
+  // Same values as for-fluidstack.html and for-nvidia.html; do not "fix" to
+  // pixel margins. (CodeRabbit flagged this as a major on 2026-07-22 claiming
+  // width resolution; rejected on the measurement above.)
   }, { rootMargin: '-40% 0px -55% 0px' });
   Object.keys(map).forEach(function(id){
     var el = document.getElementById(id); if (el) obs.observe(el);
