@@ -13,7 +13,15 @@
   "main": "worker/index.js",
   "assets": {
     "directory": ".",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // /ideas is a Worker-owned redirect with no file behind it. The asset
+    // router resolves before the Worker, and for an extensionless path it
+    // looks for /ideas.html or /ideas/index.html, finds neither, and returns
+    // its own 404 -- so the Worker never saw the request. (Measured on the
+    // live apex: /ideas/ reached the Worker and 302'd correctly while bare
+    // /ideas 404'd.) Naming the path here runs the Worker first for it only;
+    // every other route keeps the asset-first path and is untouched.
+    "run_worker_first": ["/ideas", "/ideas/"]
   },
   "ai": {
     "binding": "AI"
