@@ -57,7 +57,14 @@ export function gatePortfolioWriting({
   } catch {
     throw new Error(`writing craft failed: ${result.stderr?.trim() || 'invalid response'}`);
   }
-  if (result.status !== 0 || payload.decision === 'failed') {
+  if (!payload || typeof payload !== 'object') {
+    throw new Error(`writing craft failed: ${result.stderr?.trim() || 'invalid response'}`);
+  }
+  if (
+    result.status !== 0
+    || !['pass', 'no-safe-improvement'].includes(payload.decision)
+    || typeof payload.revisedText !== 'string'
+  ) {
     throw new Error(`writing craft blocked ${artifactId}: ${payload.failure?.message || result.stderr?.trim() || 'gate failure'}`);
   }
   return payload;
@@ -102,6 +109,7 @@ function changedFiles(commit) {
 async function main() {
   const commit = process.argv[2] === '--commit' ? process.argv[3] : 'HEAD';
   const eligible = changedFiles(commit).filter(isPortfolioNarrative);
+  let lessonCount = 0;
   for (const path of eligible) {
     const text = extractNarrative(path, readFileSync(join(SITE, path), 'utf8'));
     if (!text) continue;
@@ -109,10 +117,13 @@ async function main() {
       text,
       artifactId: path.replace(/[^a-z0-9]+/gi, '-'),
     });
-    process.stdout.write('Writing Coach: 1 new lesson in .writing-coach/inbox/\n');
+    if (result.lessonPath) lessonCount += 1;
     if (result.decision === 'pass') {
       throw new Error(`${path} has a safe craft revision; apply it, review it, and commit before deploy`);
     }
+  }
+  if (lessonCount > 0) {
+    process.stdout.write(`Writing Coach: ${lessonCount} new lesson(s) in .writing-coach/inbox/\n`);
   }
   process.stdout.write(`writing-craft: checked ${eligible.length} changed narrative artifact(s)\n`);
 }
