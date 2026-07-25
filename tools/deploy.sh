@@ -38,6 +38,10 @@ if ! git diff-index --quiet HEAD --; then
   echo "warning: uncommitted changes detected; this deploys HEAD, so they will NOT ship." >&2
 fi
 
+# Fail closed when the committed deploy contains changed outward narrative that
+# has not passed the shared craft, meaning, anti-slop, and Voice OS checks.
+node tools/writing-craft-gate.mjs --commit HEAD
+
 # Let the wrangler login OAuth session win over the broken env token.
 unset CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCESS_TOKEN CLOUDFLARE_ACCOUNT_ID CF_ACCOUNT_ID CF_API_TOKEN 2>/dev/null || true
 
