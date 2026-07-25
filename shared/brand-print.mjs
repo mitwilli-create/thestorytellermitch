@@ -91,6 +91,24 @@ export function resumePt(fit = 1) {
   };
 }
 
+/**
+ * Resume sizes for the owner-approved CV hierarchy. The body size is selected
+ * per lane; every other content size derives from it so section > role >
+ * org/date = body remains monotonic.
+ */
+export function resumePtFromBody(bodyPt, fit = 1) {
+  const body = +(bodyPt * fit).toFixed(3);
+  return {
+    name: +(20 * fit).toFixed(3),
+    pillars: body,
+    roleHead: +(body + (1.8 * fit)).toFixed(3),
+    secHead: +(body + (2.5 * fit)).toFixed(3),
+    roleSub: body,
+    body,
+    contact: body,
+  };
+}
+
 /** `:root` declarations for the prose-doc renderer (colors + px scale). */
 export function printRootCSS() {
   const c = PRINT_COLORS;
