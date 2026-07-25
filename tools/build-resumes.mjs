@@ -157,21 +157,10 @@ const inline = (s) => esc(s)
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 export function parse(md, file) {
-  const lines = [];
-  let inComment = false;
-  for (const rawLine of md.split('\n')) {
-    const trimmed = rawLine.trim();
-    if (inComment) {
-      if (trimmed.includes('-->')) inComment = false;
-      continue;
-    }
-    if (trimmed.startsWith('<!--')) {
-      if (!trimmed.includes('-->')) inComment = true;
-      continue;
-    }
-    if (/^-{3,}$/.test(trimmed)) continue;
-    lines.push(rawLine);
-  }
+  const lines = md
+    .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    .split('\n')
+    .filter((rawLine) => !/^-{3,}$/.test(rawLine.trim()));
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];

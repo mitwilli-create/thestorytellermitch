@@ -51,7 +51,7 @@ mitwilli@example.com
 
 ## Summary
 
-Built production systems.
+Built <!-- internal --> production systems.
 
 <!--
 AUTO-ASSEMBLED. DO NOT EDIT BY HAND.
@@ -62,4 +62,5 @@ AUTO-ASSEMBLED. DO NOT EDIT BY HAND.
   assert.doesNotMatch(html, />---</);
   assert.doesNotMatch(html, /AUTO-ASSEMBLED/);
   assert.doesNotMatch(html, /DO NOT EDIT BY HAND/);
+  assert.match(html, /Built\s+production systems/);
 });
