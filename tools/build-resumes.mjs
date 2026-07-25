@@ -12,7 +12,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 // One print type system for every rendered artifact (resumes here, apply-pack
 // prose docs in career-ops/scripts/render-brand-doc-pdf.mjs). Sizes and colors
 // are NOT redeclared below; they come from the shared scale.
-import { PRINT_COLORS, resumePt } from '../shared/brand-print.mjs';
+import { PRINT_COLORS, resumePtFromBody } from '../shared/brand-print.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.RESUME_SRC || join(ROOT, 'resumes-src');
@@ -69,6 +69,13 @@ export const PRINT_FIT = {
   'forward-deployed': 1, 'ai-solutions-architect': 1, 'ai-enablement': 1,
   'ai-program-manager': 1, 'comms-manager': 1, 'devrel-education': 1,
   'content-editorial': 1, 'marketing-program-manager': 1,
+};
+
+export const PRINT_PT = {
+  'forward-deployed': 9.8, 'ai-solutions-architect': 9.8,
+  'ai-enablement': 9.8, 'devrel-education': 9.8,
+  'comms-manager': 9.6, 'ai-program-manager': 9.2,
+  'content-editorial': 9.2, 'marketing-program-manager': 9.2,
 };
 
 // Deep links: first mention per resume of a video / story / project routes to its page.
@@ -150,7 +157,21 @@ const inline = (s) => esc(s)
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 export function parse(md, file) {
-  const lines = md.split('\n');
+  const lines = [];
+  let inComment = false;
+  for (const rawLine of md.split('\n')) {
+    const trimmed = rawLine.trim();
+    if (inComment) {
+      if (trimmed.includes('-->')) inComment = false;
+      continue;
+    }
+    if (trimmed.startsWith('<!--')) {
+      if (!trimmed.includes('-->')) inComment = true;
+      continue;
+    }
+    if (/^-{3,}$/.test(trimmed)) continue;
+    lines.push(rawLine);
+  }
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];
@@ -222,7 +243,10 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const T = resumePt(lane.fit ?? PRINT_FIT[lane.slug] ?? 1);
+  const T = resumePtFromBody(
+    lane.pt ?? PRINT_PT[lane.slug] ?? 9.2,
+    lane.fit ?? PRINT_FIT[lane.slug] ?? 1,
+  );
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -319,10 +343,9 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      /* every size below is a step off the shared scale (shared/brand-print.mjs);
-         do not hand-tune one element here, move it to a different step or
-         adjust the lane's PRINT_FIT. Hierarchy: name > pillars = role head >
-         section head = org/date > body > contact. */
+      /* Resume sizes derive from the lane body size in shared/brand-print.mjs.
+         Hierarchy: name > section head > role head > deck = contact =
+         org/date = body. No visible text drops below body size. */
       .rname{font-size:${T.name}pt;word-spacing:0.14em}
       .rrole-h{word-spacing:0.08em}
       /* balance keeps the deck from breaking to a one-word second line at the
@@ -343,7 +366,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:${T.roleHead}pt;break-after:avoid}
       .rrole-s{font-size:${T.roleSub}pt;margin:1.5pt 0 4pt}
-      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rnum{font-family:inherit;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:${T.body}pt;margin-bottom:2pt}
       .rp{break-inside:avoid}
