@@ -74,6 +74,12 @@ function chunkText(text, { targetWords = CHUNK_TARGET_WORDS, overlapWords = CHUN
 
 function stripHtml(html) {
   let s = html
+    // kb:exclude … kb:endexclude regions are dropped from the retrieval corpus
+    // entirely, but stay visible on the page. Use for verbatim traces that quote
+    // superseded figures (e.g. voice-os.html's worked-run drafts quote a
+    // pre-consolidation cost by design) so the agent never echoes them as fact.
+    // Must run BEFORE the comment strip below, or the markers vanish first.
+    .replace(/<!--\s*kb:exclude[\s\S]*?kb:endexclude\s*-->/gi, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<!--[\s\S]*?-->/g, ' ');
@@ -234,10 +240,19 @@ function processSiteData() {
   });
 
   const plRun = JSON.parse(readFileSync(resolve(dir, 'picture-lock-run.json'), 'utf8'));
-  const stageLines = plRun.stages.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // inThisRun:false rows (the Spanish dub) carry their own receipt; folding
+  // them into the stage-by-stage list invites a reader (or the agent) to sum
+  // to $8.68, a number the committed manifest does not contain.
+  const inRun = plRun.stages.filter((s) => s.inThisRun !== false);
+  const stageLines = inRun.map((s) => `${s.label} (${s.detail}): ${s.calls} calls, $${s.costUsd}${s.api ? ` via ${s.api}` : ''}`).join('. ');
+  // Deliberately no call count on these lines: "1 call" adds nothing a
+  // retriever can use, and any embedText change here costs a full
+  // wipe+reindex+eval cycle under the corpus guard.
+  const ownRun = plRun.stages.filter((s) => s.inThisRun === false)
+    .map((s) => `${s.label} (${s.detail}): $${s.costUsd}${s.api ? ` via ${s.api}` : ''}, its own separate receipt, not part of this run's total`).join('. ');
   chunks.push({
     id: 'data-picture-lock-run__c0',
-    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.`,
+    text: `Picture-lock production run cost breakdown. ${plRun._provenance} Total calls: ${plRun.totalCalls}. Stage-by-stage: ${stageLines}.${ownRun ? ` Separate receipts: ${ownRun}.` : ''}`,
     source: 'assets/site-data/picture-lock-run.json', docTitle: 'Picture-lock run manifest', docType: 'site-data', typeTag: 'metrics-provenance',
   });
 
@@ -302,9 +317,54 @@ function topicsLine(topics) {
   return list.length ? `Topics: ${list.join(', ')}.` : '';
 }
 
+// ---- structural policy separation (Phase C) --------------------------------
+// Split each chunk's full text into `text` (public-safe: what /api/ask may
+// serve and what any page may render) and `policy` (assistant-only guidance:
+// "For the assistant:", "Must NOT:", hard limits -- the prose that necessarily
+// NAMES what it forbids). Phase B stripped policy at the response boundary
+// with a regex (worker publicExcerpt); that regex stays as defense in depth,
+// but after this split the public field never CONTAINS policy, so the leak
+// class ("Never name Spain" rendered to a visitor) is dead structurally, not
+// just filtered. Phase C generation reads text + policy server-side.
+//
+// The classifier is the same one publicExcerpt uses, for the same reason it
+// was chosen there: prefix denylists leaked three phrasings on the first
+// attempt; the property that actually holds is that policy paragraphs TALK
+// ABOUT THE ASSISTANT (sole exception: a bare "**Must NOT:**"), and any
+// paragraph naming an excluded term is policy by definition.
+//
+// On "remove private policy literals from the public repository"
+// (CodeRabbit 2026-07-16, REJECTED): these regexes ARE the public filter.
+// The same patterns have shipped in this repo since Phase B (worker
+// publicExcerpt/NEVER_PUBLIC and EXCLUDED_FROM_EMBEDDINGS below, PRs
+// #120/#124), and the kb/ files whose policy they classify are themselves
+// tracked here. A filter cannot exclude terms it is not allowed to name;
+// moving the needle list to a private binding would leave this build
+// unrunnable from a clean checkout while concealing nothing the kb/
+// sources do not already state.
+const POLICY_MARKER = /\bassistant\b|\bmust not\b/i;
+const NEVER_PUBLIC = /Spain|Barcelona|Madrid|laid off|layoff|garden leave/i;
+
+function splitPolicy(text) {
+  const pub = [];
+  const pol = [];
+  for (const para of text.split(/\n{2,}/)) {
+    const t = para.trim();
+    if (!t) continue;
+    (POLICY_MARKER.test(t) || NEVER_PUBLIC.test(t) ? pol : pub).push(t);
+  }
+  return { publicText: pub.join('\n\n'), policyText: pol.join('\n\n') };
+}
+
 const policyFallbacks = [];
 
 function finalizeChunk(chunk) {
+  // `split` is what ships (text = public-safe, policy = assistant-only);
+  // embedText below is still computed from the ORIGINAL full text via the
+  // existing stripPolicyText path, so the embedding-side corpus fingerprint
+  // (kb-corpus-guard hashes embedText) is byte-identical across this change.
+  const { publicText, policyText } = splitPolicy(chunk.text);
+  const split = { ...chunk, text: publicText, policy: policyText };
   if (chunk.docType === 'kb-authored') {
     const stripped = stripPolicyText(chunk.text);
     // Last-resort guard against an empty embedding. The policy-aware merge in
@@ -317,14 +377,14 @@ function finalizeChunk(chunk) {
     if (!enoughToEmbed) policyFallbacks.push(chunk.id);
     const base = enoughToEmbed ? stripped : chunk.text;
     const topics = topicsLine(chunk.topics);
-    return { ...chunk, embedText: topics ? `${topics}\n\n${base}` : base };
+    return { ...split, embedText: topics ? `${topics}\n\n${base}` : base };
   }
   const title = (chunk.docTitle ?? '').trim();
   if (!title || chunk.text.slice(0, 120).toLowerCase().includes(title.toLowerCase())) {
-    return { ...chunk, embedText: chunk.text };
+    return { ...split, embedText: chunk.text };
   }
   const label = DOC_TYPE_LABELS[chunk.docType] ?? chunk.docType;
-  return { ...chunk, embedText: `${title} (${label})\n\n${chunk.text}` };
+  return { ...split, embedText: `${title} (${label})\n\n${chunk.text}` };
 }
 
 const corpus = [
@@ -334,7 +394,9 @@ const corpus = [
   ...processSiteData(),
 ].map(finalizeChunk);
 
-const blob = corpus.map((c) => c.text).join('\n');
+// text + policy together cover the full authored content (text alone is only
+// the public half after the split above), so the gate still sees everything.
+const blob = corpus.map((c) => `${c.text}\n${c.policy ?? ''}`).join('\n');
 const EM_DASH = String.fromCharCode(0x2014); // constructed so a sweep of this file cannot rewrite the needle
 if (blob.includes(EM_DASH)) {
   console.error('EM DASH found in indexed content: fix the source file before building the corpus.');

@@ -17,7 +17,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 
 - **Run a governance gate:** Owned xGE's governance and gating framework for cross-org technical mandates: intake prioritization across concurrent mandates, named mandates driven to approval; structurally the work of source-of-truth tracking, report pipelines, and cross-functional coordination.
 - **Write quickly and clearly at senior altitude:** Executive communications for then-CIO Ben Fried; xGE's three-tier operating model for a 1,000+ senior-engineer community.
-- **Manage a concurrent portfolio in ambiguity:** Approvals intake portfolio plus a standing delivery calendar: annual summit, quarterly forums, newsletters, xGE Connects, and the roadmap-shaping annual survey.
+- **Manage a concurrent portfolio in ambiguity:** Approvals intake portfolio plus a standing delivery calendar: the annual Sr. Tech IC Summit, quarterly forums, newsletters, xGE Connects, and the roadmap-shaping annual survey.
 
 ## Experience
 
@@ -39,7 +39,7 @@ Communications lead and program manager for xGE.
 #### Communications operating model and senior-IC program cadence
 - **Problem:** The community needed a communications system, not ad hoc sends.
 - **Action:** Designed the three-tier operating model; ran xGE Connects, the peer-led speaker series, and the annual survey that shapes the community's roadmap.
-- **Impact:** One operating rhythm: annual summit (600+ attendees), quarterly forums (300+ each), quarterly newsletters; Q1-2026 Connects sessions drew record attendance.
+- **Impact:** One operating rhythm: the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers), quarterly forums (300+ each), quarterly newsletters; Q1-2026 Connects sessions drew record attendance.
 
 #### MEJ (My Engineering Journey), AI mentorship-matching agent
 - **Problem:** Manual mentorship matching ran ~3 hours per match and capped capacity.

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>For NVIDIA · Executive Communications Manager · Mitchell Williams</title>
+  <meta name="description" content="A sequenced review path for NVIDIA's Executive Communications Manager screen: the voice work first, then the AI-tools record, the executive-ghostwriting track, and the resume.">
+  <meta property="og:title" content="For NVIDIA · Executive Communications Manager · Mitchell Williams">
+  <meta property="og:description" content="The executive-communications case for NVIDIA, in the order a screen actually checks it. The voice first.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <style>
+    .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
+    .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
+    /* signature underline: a single oxblood rule draws L->R beneath the
+       accent line once the headline has settled, then holds. transform-only
+       (compositor-friendly), one continuous draw, no loop point. */
+    .hero-rule{display:block;height:3px;width:min(360px,60%);margin-top:22px;
+      background:var(--blood-soft);transform:scaleX(0);transform-origin:left center;
+      transition:transform var(--dur-set) var(--ease-reveal)}
+    .revealed .hero-rule{transform:scaleX(1);transition-delay:.62s}
+    /* sub-paragraph rises in after the rule, matching the house hero cadence */
+    .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65;
+      opacity:0;transform:translateY(18px);
+      transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
+    .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
+    .sys-sub p{margin:0 0 13px}
+    .sys-sub p:last-child{margin:0}
+    /* proof strip: last beat of the hero orchestration; numbers verified
+       against comms.html, voice-os.html, comms-triage-agent.html and the
+       resume record before use */
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:34px;max-width:860px;
+      opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    /* .revealed end-state is load-bearing: without it the strip stays at
+       opacity:0 for every JS+motion visitor. The .95s delay is the strip's
+       slot in the hero orchestration (rule .62s, sub .78s, stats last). */
+    .revealed .hero-stats{opacity:1;transform:none;transition-delay:.95s}
+    .hero-stats .hs{background:var(--surface);padding:20px 18px;min-width:0}
+    .hero-stats .n{font-family:'Archivo',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .hero-stats .k{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:4px;line-height:1.5}
+    .no-js .hero-rule{transform:scaleX(1)}
+    .no-js .sys-sub,.no-js .hero-stats{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .hero-rule{transition:none;transform:scaleX(1)}
+      .sys-sub,.hero-stats{transition:none;opacity:1;transform:none}
+    }
+    section{padding:56px 0}
+    h2.fs-title{font-family:'JetBrains Mono',monospace;font-size:clamp(22px,2.6vw,31px);text-transform:uppercase;
+      letter-spacing:0.14em;line-height:1.2;color:var(--blood-soft);margin-bottom:22px;font-weight:500;max-width:860px}
+    .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
+    .path .step{display:flex;gap:18px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
+    /* one min-width, sized to the longest label ("Step 1 · 7-min read"), so
+       every row's text column starts at the same x */
+    .path .d{flex:none;min-width:158px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
+    .path .t a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .path .t a:hover{color:var(--bone)}
+    /* step leads are bold-white anchors that stay links (house grammar: no
+       cells outside section openers); local specificity of .path .t a would
+       otherwise repaint them bone */
+    .path .t strong.wt a{color:#fff;border-bottom:1px solid var(--blood-hairline)}
+    .path .t strong.wt a:hover{color:var(--blood-text)}
+    .path-total{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:18px}
+    .map-list{list-style:none;margin:0;padding:0;max-width:760px}
+    .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
+      line-height:1.65;color:var(--bone-soft)}
+    /* mono kicker sub-headers: the treatment both archived proof states carry */
+    .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin:0 0 4px;font-weight:500}
+    .map-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .map-list li a:hover{color:var(--bone)}
+    .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
+    .narrative-prose a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .narrative-prose a:hover{color:var(--bone)}
+    .narrative-prose p{margin:0 0 13px}
+    .narrative-prose p:last-child{margin:0}
+    #narrative,#path,#ninety-days,#fit-map{scroll-margin-top:86px}
+    /* right-side jump rail (memo doc-rail pattern, page-fixed variant) */
+    .jump-rail{display:none}
+    @media(min-width:1360px){
+      .jump-rail{display:block;position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40}
+      .jump-rail nav{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      .jump-rail a{display:flex;gap:10px;align-items:baseline;padding:8px 0 8px 14px;
+        font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+      .jump-rail a:hover{color:var(--bone)}
+      .jump-rail a.active{color:var(--blood-text);box-shadow:inset 2px 0 0 var(--blood-soft)}
+      .jump-rail .n{color:var(--blood-soft);font-size:9.5px;flex:none}
+      .jump-rail a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    }
+    .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:20px 24px;border-radius:3px}
+    .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
+    .ed-lane .el-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2vw,23px);color:var(--bone);margin:6px 0 0;line-height:1.2}
+    .ed-lane .el-list{list-style:none;margin:14px 0 0;padding:0}
+    .ed-lane .el-list li{position:relative;padding:6px 0 6px 22px;font-size:15px;line-height:1.6;color:var(--bone-soft)}
+    .ed-lane .el-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .ed-lane .el-list li a:hover{color:var(--bone)}
+    .ed-lane .el-list li::before{content:"\2192";position:absolute;left:0;color:var(--blood-soft)}
+    @media(pointer:coarse){
+      /* vertical padding alone grows the tap target on inline links without
+         blockifying them; 3px caps the hit box at the ~25px line advance so
+         stacked links never overlap. The short bold lead links keep
+         inline-block since they always start the line. */
+      .path .t a{padding:3px 0}
+      .path .t strong.wt a{display:inline-block;padding:6px 0}
+      .path .step{padding:20px 0}
+    }
+    /* designed note cards: mono kicker + quiet border, one visual step below
+       the ed-lane so the lane keeps the accent */
+    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px;
+      padding:16px 20px;border:1px solid var(--line);border-left:2px solid var(--line-2);
+      background:var(--bg-2);border-radius:3px}
+    .el-note+.el-note{margin-top:14px}
+    .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+    .el-note p{margin:0}
+    .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+    @media(max-width:640px){
+      .sys-hero{padding:130px 0 56px}
+      .path .step{flex-direction:column;gap:4px}
+    }
+    @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
+  </style>
+</head>
+<body data-reveal-stagger="6">
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<aside class="jump-rail" aria-label="Jump to section">
+  <nav>
+    <a href="#narrative"><span class="n">01</span>The narrative</a>
+    <a href="#path"><span class="n">02</span>The path</a>
+    <a href="#ninety-days"><span class="n">03</span>First 90 days</a>
+    <a href="#fit-map"><span class="n">04</span>Why it works</a>
+  </nav>
+</aside>
+
+<header class="sys-hero">
+  <div class="wrap">
+    <div class="kicker">NVIDIA executive communications · the review path</div>
+    <h1 class="display">
+      <span class="ln"><span>The voice first,</span></span>
+      <span class="ln"><span class="accent">then the system.</span></span>
+    </h1>
+    <div class="sys-sub">
+      <p>You're screening for <a class="lnk-inline" href="https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Executive-Communications-Manager_JR2017475" target="_blank" rel="noopener">NVIDIA's Executive Communications Manager</a>: someone who can write in a senior leader's voice and keep it steady while the company ships faster than any comms calendar can track.</p>
+      <p><strong class="wt">The job is not writing a leader a script.</strong> It is building the spine and the refrains a leader improvises around, then the system that keeps them consistent. I'm a newsroom-trained writer who builds exactly that, and I run two of those systems in production today.</p>
+      <p>This page sequences the case the way an executive communications screen checks it: the voice first, then the system behind it.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">1,000+</div><div class="k">principal, distinguished &amp; fellow engineers I wrote for</div></div>
+      <div class="hs"><div class="n">~70%</div><div class="k">fewer review rounds per exec doc (internal, self-measured)</div></div>
+      <div class="hs"><div class="n">~160 hrs</div><div class="k">recaptured per year by one comms agent</div></div>
+      <div class="hs"><div class="n">10</div><div class="k">newsroom years, 2007-2018</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="narrative">
+  <div class="wrap">
+    <h2 class="fs-title">How I'd scale executive voice at NVIDIA</h2>
+    <div class="narrative-prose reveal">
+      <p>In a single year, Jensen Huang delivered keynotes at <a href="https://blogs.nvidia.com/blog/2026-ces-special-presentation/" target="_blank" rel="noopener">CES in Las Vegas &#8599;</a>, <a href="https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html" target="_blank" rel="noopener">GTC in San Jose &#8599;</a>, <a href="https://thenextweb.com/news/jensen-huang-computex-2026-keynote" target="_blank" rel="noopener">Computex in Taipei &#8599;</a>, and <a href="https://www.techtimes.com/articles/318178/20260610/nvidia-gtc-paris-keynote-headlines-vivatech-june-17-20ai-factories-sovereign-ai-robotics-europe.htm" target="_blank" rel="noopener">GTC Paris &#8599;</a>, to audiences that ran from sovereign governments to everyday investors to engineers who can spot a hype sentence from the back of a crowded conference venue.</p>
+      <p><strong class="wt">That volume is the communications problem.</strong> Keeping one voice consistent across every stage while the products move faster than any calendar.</p>
+      <p>The memo shows exactly how I would run it.</p>
+    </div>
+    <div class="el-cta reveal" style="margin-top:24px">
+      <a class="btn solid" href="docs/nvidia-positioning-memo.html"><span>Read the memo</span></a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="path">
+  <div class="wrap">
+    <h2 class="fs-title">The path</h2>
+    <div class="path">
+      <div class="step reveal"><span class="d">Step 1 · 7-min read</span><span class="t"><strong class="wt"><a href="docs/nvidia-positioning-memo.html">Read the voice work first.</a></strong> A positioning memo written for this role: how I'd absorb and scale an executive voice at NVIDIA's speaking volume, every claim sourced. Then the <a href="writing.html#redacted-docs">writing room for comms reviewers</a>, and a <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">recent essay on engineering a VP's voice &#8599;</a>.</span></div>
+      <div class="step reveal"><span class="d">Step 2 · 3-min read</span><span class="t"><strong class="wt"><a href="voice-os.html">Check the AI-tools record.</a></strong> The JD names thoughtful use of AI tools a stand-out criterion. I run it in production: <a href="voice-os.html">Voice OS</a> holds a draft in one verified voice; the <a href="comms-triage-agent.html">comms-triage agent</a> recaptures roughly 160 hours a year. Two live systems, not prototypes. I verify; they carry the throughput.</span></div>
+      <div class="step reveal"><span class="d">Step 3 · 2-min read</span><span class="t"><strong class="wt"><a href="stories.html#digital-twin">Read the executive-ghostwriting record.</a></strong> Eight years at Google writing for a VP and the then-CIO, in front of 1,000+ Principal, Distinguished, and Fellow engineers. A system that encoded one VP's voice cut review rounds by about 70% (my own count; a reference can confirm it).</span></div>
+      <div class="step reveal"><span class="d">Step 4 · 1-min read</span><span class="t"><strong class="wt"><a href="resume/comms-manager.html">Open the resume.</a></strong> Two pages, tuned to executive communications. Also as a <a href="assets/resumes/mitchell-williams-comms-manager.pdf">PDF</a>.</span></div>
+      <!-- Reviewer note: the email and phone here are Mitchell's own public
+     professional contact details, published by design so recruiters can reach
+     him (same tel: link comms.html has carried on main). Not third-party
+     personal data. -->
+      <div class="step reveal"><span class="d">Step 5 · Talk</span><span class="t"><strong class="wt">You can reach me at</strong> <a href="mailto:mitwilli@gmail.com?subject=NVIDIA%20Executive%20Communications%20Manager%20%C2%B7%20Mitchell%20Williams">mitwilli@gmail.com</a> or <a href="tel:+18122196077">812-219-6077</a>. Email lands with me directly, and I answer within 24 hours.</span></div>
+    </div>
+    <p class="path-total">total: about 13 minutes</p>
+  </div>
+</section>
+
+<section style="padding-top:0" id="ninety-days">
+  <div class="wrap">
+    <h2 class="fs-title">The first 90 days</h2>
+    <ul class="map-list">
+      <li class="reveal"><h3>Month 1 · Absorb</h3> <strong>A living voice-reference doc for each principal.</strong> Built by shadowing one high-stakes deliverable each: diction, argument logic, what they cut in rehearsal. The same way I built voice tooling and a banned-phrase checklist at Google.</li>
+      <li class="reveal"><h3>Month 2 · Prove</h3> <strong>One keynote, brief to final approved script, on deadline.</strong> The proof it works: fewer structural edits than the last comparable speech, and the exec says it sounds like them before rehearsal, not after three rounds.</li>
+      <li class="reveal"><h3>Month 2 · Make it legible</h3> <strong>A one-pager on the AI-drafting workflow.</strong> Which tools accelerate which stages, and where human judgment is non-negotiable because a leader's name is on the output. Shared infrastructure, not a black box.</li>
+      <li class="reveal"><h3>Month 3 · Systematize</h3> <strong>A repeatable onboarding kit any future writer can use day one.</strong> The voice-reference docs, the pipeline map, and the workflow, so the system outlasts any single contributor, including me.</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0" id="fit-map">
+  <div class="wrap">
+    <h2 class="fs-title">Why this works for the role</h2>
+    <ul class="map-list">
+      <li class="reveal"><h3>Executive voice, absorbed and documented</h3> VP-level executive communications at Google's Office of Cross-Google Engineering (xGE) and C-suite writing for Google's then-CIO, documented as <a href="writing.html#redacted-docs">case studies</a> with references who can vouch for the work. Absorbing how a leader thinks and speaks before putting words in their mouth is the newsroom instinct, pointed at the C-suite.</li>
+      <li class="reveal"><h3>Thoughtful use of AI tools, already in production</h3> The JD's stand-out criterion, running today. <a href="voice-os.html">Voice OS</a> holds a draft in one verified voice; the <a href="comms-triage-agent.html">comms-triage agent</a> recaptures about 160 hours a year. Executive content that once took most of a working day to draft, review, and calibrate now arrives before the morning brief, with a human on the output.</li>
+      <li class="reveal"><h3>Keynote instinct is home turf</h3> A decade in live newsrooms, 2007-2018: founding team of Al Jazeera's The Stream (launch reached 250 million households), a Webby at HuffPost Live (2013), and an AJ+ explainer format that reached 50 million-plus views. Rundowns, timing, and holding a live show on the rails is the same muscle a keynote needs. <a href="stories.html">The case files</a> carry the receipts.</li>
+      <li class="reveal"><h3>Voice consistency at scale</h3> A voice system that cut review rounds by about 70% solves the exact problem a company speaking across CES, GTC, Computex, and Paris in one year has to solve: a keynote, an earnings remark, and a product explainer that all read like they came from the same mind.</li>
+      <li class="reveal"><h3>Process that outlasts its owner</h3> Playbooks are how I work: the <a href="content-ops.html">content-ops engine</a> turns one idea into platform-native pieces through nine encoded playbooks, and the same discipline builds an executive-voice system that survives its owner.</li>
+    </ul>
+
+    <div class="ed-lane reveal">
+      <div class="el-k">The builder lane</div>
+      <h3 class="el-h">What I'd build for the team</h3>
+      <ul class="el-list">
+        <li><a href="voice-os.html">Voice OS</a>: a corpus-backed voice engine, the Voice DNA and banned-phrase discipline that keeps a keynote, an op-ed, and a briefing sheet sounding like one person.</li>
+        <li><a href="comms-triage-agent.html">The comms-triage agent</a>: the inbound-handling layer that hands a small team back the hours for the writing that actually needs a human.</li>
+        <li><a href="content-ops.html">content-ops</a>: nine encoded playbooks that turn one keynote moment into platform-native pieces, so a single talk compounds across channels.</li>
+        <li><a href="picture-lock.html">picture-lock</a>: a seven-stage AI film pipeline with every API call logged. Proof I build the production system behind a story, not just the story.</li>
+      </ul>
+    </div>
+    <div class="el-cta reveal">
+      <a class="btn solid" href="docs/nvidia-positioning-memo.html"><span>Read the positioning memo</span></a>
+      <a class="btn" href="resume/comms-manager.html"><span>The comms resume</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.jump-rail a');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id]; if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id); if (el) obs.observe(el);
+  });
+})();
+</script>
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260716b"></script>
+</body>
+</html>
