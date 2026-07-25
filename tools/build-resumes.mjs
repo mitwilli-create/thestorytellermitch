@@ -212,9 +212,16 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2;
-  const sm = (pt * 0.85).toFixed(2);
-  const rh = (pt + 1.8).toFixed(1);
+  // Print type hierarchy (Mitchell's constraint 2026-07-24): sizes decrease
+  // MONOTONICALLY down the content hierarchy (name > section header > role title
+  // >= org/date >= body), and nothing in that hierarchy is ever smaller than body.
+  // The old scale sized both section headers AND the org/date line at 0.85*body,
+  // so they rendered smaller than the bullets beneath them (the reported bug).
+  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2; // body: bullets + paragraphs
+  const sec = (pt + 2.5).toFixed(1);   // section headers (SUMMARY, EXPERIENCE)
+  const rh = (pt + 1.8).toFixed(1);    // role titles (sub-header)
+  const meta = pt.toFixed(1);          // role org/date line: metadata AT body size, never below
+  const cap = (pt * 0.85).toFixed(2);  // top-matter caption ONLY (pillars, contact); not in the content hierarchy
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -301,10 +308,10 @@ export function page({ name, pillars, contact, sections }, lane) {
          word gaps back so ATS parsing keeps the spaces. */
       .rname{font-size:20pt;word-spacing:0.14em}
       .rrole-h{word-spacing:0.08em}
-      .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
+      .rpillars{font-size:${cap}pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:${cap}pt;margin-top:5pt;line-height:1.5}
       section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rsec-h{font-size:${sec}pt;padding-bottom:2pt;margin-bottom:4pt}
       .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
@@ -316,7 +323,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
       .rrole-h{font-size:${rh}pt;break-after:avoid}
-      .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
+      .rrole-s{font-size:${meta}pt;margin:1.5pt 0 4pt}
       .rnum{font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
