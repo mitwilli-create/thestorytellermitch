@@ -48,8 +48,8 @@ export const SCALE_PT = Object.fromEntries(
 
 // ── fonts (role-assigned; no new families, ever) ────────────────────────────
 export const FONTS = {
-  display: "'Archivo',sans-serif",       // headings: h1 800, h2/h3 700-800
-  body:    "'Inter',-apple-system,BlinkMacSystemFont,sans-serif",
+  display: "'Archivo',sans-serif",       // the NAME only (typography lock 2026-07-25)
+  body:    "'Martian Grotesk',-apple-system,BlinkMacSystemFont,sans-serif", // every other reading function
   mono:    "'JetBrains Mono',monospace", // utility labels only
 };
 
