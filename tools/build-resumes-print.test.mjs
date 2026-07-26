@@ -45,9 +45,9 @@ test('project headings use the same print hierarchy and color as role headings',
 
   assert.match(
     html,
-    /\.rinit-h\{font-family:'Archivo',sans-serif;font-size:11pt;[\s\S]*?color:#1b1a1d;/,
+    /\.rproject-h\{font-family:'Archivo',sans-serif;font-size:11pt;[\s\S]*?color:#1b1a1d;/,
   );
-  assert.match(html, /\.rinit\{margin:5pt 0 2pt;/);
+  assert.match(html, /\.rproject\{margin:8pt 0 3pt;/);
 });
 
 test('projects parse and render as one semantic evidence block', () => {
