@@ -133,11 +133,19 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
 // `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
 // numbers read as logged evidence, not prose claims.
-const inline = (s) => esc(s)
-  .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
-  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-  .replace(/\[([^\]]+)\]\(((?:\.\.\/|#)[\w./#-]+)\)/g, '<a href="$2">$1</a>')
-  .replace(LINK_RE, '<a href="https://$1">$1</a>');
+const inline = (s) => {
+  const links = [];
+  const protectedText = esc(s)
+    .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|\.\.\/|#)[^\s)]+)\)/g, (_m, label, href) => {
+      const token = `\u0000${links.length}\u0000`;
+      links.push(`<a href="${href}">${label}</a>`);
+      return token;
+    })
+    .replace(LINK_RE, '<a href="https://$1">$1</a>');
+  return protectedText.replace(/\u0000(\d+)\u0000/g, (_m, index) => links[Number(index)]);
+};
 
 export function parse(md, file) {
   const lines = md.split('\n');
