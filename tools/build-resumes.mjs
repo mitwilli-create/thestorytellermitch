@@ -212,16 +212,22 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  // Print type hierarchy (Mitchell's constraint 2026-07-24): sizes decrease
-  // MONOTONICALLY down the content hierarchy (name > section header > role title
-  // >= org/date >= body), and nothing in that hierarchy is ever smaller than body.
-  // The old scale sized both section headers AND the org/date line at 0.85*body,
-  // so they rendered smaller than the bullets beneath them (the reported bug).
-  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2; // body: bullets + paragraphs
-  const sec = (pt + 2.5).toFixed(1);   // section headers (SUMMARY, EXPERIENCE)
-  const rh = (pt + 1.8).toFixed(1);    // role titles (sub-header)
-  const meta = pt.toFixed(1);          // role org/date line: metadata AT body size, never below
-  const cap = (pt * 0.85).toFixed(2);  // top-matter caption ONLY (pillars, contact); not in the content hierarchy
+  // APPROVED TYPOGRAPHY LOCK (blind-tested and ruled by Mitchell 2026-07-25;
+  // do not reopen without new evidence): Archivo Black carries the NAME ONLY;
+  // Martian Grotesk carries every other reading and hierarchy function.
+  //   name 34pt Archivo Black · positioning deck 13.25pt (>= section labels)
+  //   section labels 12.75pt · role title 11.75pt · employer/date bold 10.9pt
+  //   contact/links 10pt · body 10.35pt standard. Evidence-rich mode steps the
+  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor — never
+  //   isolated sections, never hidden scaling, hierarchy intact.
+  // Sizes below are the exact lock ratios off the body size.
+  const pt = Math.max(9.75, Math.min(10.35, lane.pt ?? PRINT_PT[lane.slug] ?? 10.35));
+  const deck = (pt * (13.25 / 10.35)).toFixed(2); // positioning deck: outranks section labels
+  const sec = (pt * (12.75 / 10.35)).toFixed(2);  // section labels
+  const rh = (pt * (11.75 / 10.35)).toFixed(2);   // role titles
+  const meta = (pt * (10.9 / 10.35)).toFixed(2);  // employer + date: bold, near-black, between role and body
+  const cap = (pt * (10 / 10.35)).toFixed(2);     // contact + links
+  const namePt = 34;                               // Archivo Black, fixed starting size
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -235,7 +241,12 @@ export function page({ name, pillars, contact, sections }, lane) {
   <meta name="description" content="Mitchell Williams resume for ${esc(lane.title)} roles. Rendered from the same source as the downloadable PDF.">
   <meta name="robots" content="noindex">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-bold.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
+    @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+  </style>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
   <style>
@@ -274,11 +285,13 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
-    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
-       overriding the dealbreaker's band/underline/mono-line compromises):
-       Archivo carries every heading (name, section heads, role heads), Inter
-       carries every text run (pillars, contact, subtitles, body). No band, no
-       mono, no underlines; links signal by brand red alone. ---- */
+    /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
+       Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
+       Black carries the NAME only; Martian Grotesk carries every other reading
+       and hierarchy function (deck, section labels, role titles, org/date,
+       contact, body, metrics). Nothing above the name; deck outranks section
+       labels; hierarchy steps down only as one unit toward the 9.75pt floor.
+       No band, no mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     /* page size only; per-page top/bottom margins are passed to Playwright's
@@ -289,10 +302,10 @@ export function page({ name, pillars, contact, sections }, lane) {
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#fff !important;color:#2e2a26}
-      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
-      .kicker{font-weight:600}
-      .rpillars{font-weight:600;letter-spacing:0.06em}
-      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Martian Grotesk',sans-serif}
+      .kicker{display:none !important} /* nothing appears above the name: the
+        first visible print element is MITCHELL WILLIAMS (typography lock 2026-07-25) */
+      .rsec-h{border-bottom-color:var(--line-2)}
       .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
@@ -306,27 +319,27 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      .rname{font-size:20pt;word-spacing:0.14em}
+      .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:${namePt}pt;word-spacing:0.14em;letter-spacing:-0.02em}
       .rrole-h{word-spacing:0.08em}
-      .rpillars{font-size:${cap}pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:${cap}pt;margin-top:5pt;line-height:1.5}
+      .rpillars{font-size:${deck}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
+      .rcontact{font-size:${cap}pt;font-weight:400;margin-top:5pt;line-height:1.4}
       section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:${sec}pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
+      .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:${sec}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
+      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static;font-family:'Martian Grotesk',sans-serif}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:${rh}pt;break-after:avoid}
-      .rrole-s{font-size:${meta}pt;margin:1.5pt 0 4pt}
-      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:${rh}pt;font-weight:800;break-after:avoid}
+      .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:${meta}pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
+      .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
+      .rinit-h{font-size:${pt}pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
