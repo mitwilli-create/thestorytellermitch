@@ -190,16 +190,22 @@ export function parse(md, file) {
       pushSection('');
       cur.intro = true;
     }
-    if (/^### /.test(t)) { cur.blocks.push({ type: 'role', head: t.slice(4).trim(), sub: '', body: [] }); continue; }
+    if (/^### /.test(t)) {
+      const type = /^(projects|selected work)$/i.test(cur.title) ? 'project' : 'role';
+      cur.blocks.push(type === 'project'
+        ? { type, head: t.slice(4).trim(), body: [] }
+        : { type, head: t.slice(4).trim(), sub: '', body: [] });
+      continue;
+    }
     if (/^#### /.test(t)) {
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
       const target = role ? role.body : cur.blocks;
       target.push({ type: 'initiative', head: t.slice(5).trim(), items: [] });
       continue;
     }
     if (/^- /.test(t)) {
       const item = t.slice(2).trim();
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
       const init = role ? [...role.body].reverse().find(b => b.type === 'initiative') : [...cur.blocks].reverse().find(b => b.type === 'initiative');
       if (init) { init.items.push(item); continue; }
       const last = (role ? role.body : cur.blocks)[(role ? role.body : cur.blocks).length - 1];
@@ -210,7 +216,7 @@ export function parse(md, file) {
     // paragraph line; org/date line right under a role becomes its sub
     const role = cur.blocks[cur.blocks.length - 1];
     if (role && role.type === 'role' && role.sub === '' && role.body.length === 0) { role.sub = t.trim(); continue; }
-    if (role && role.type === 'role') { role.body.push({ type: 'p', text: t.trim() }); continue; }
+    if (role && (role.type === 'role' || role.type === 'project')) { role.body.push({ type: 'p', text: t.trim() }); continue; }
     cur.blocks.push({ type: 'p', text: t.trim() });
   }
   return { name, pillars, contact, sections };
@@ -221,6 +227,12 @@ function renderBlocks(blocks) {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
     if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
     if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
+    if (b.type === 'project') {
+      const [first, ...rest] = b.body;
+      const proof = first?.type === 'p' ? `<p class="rproject-proof">${inline(first.text)}</p>` : '';
+      const remaining = first?.type === 'p' ? rest : b.body;
+      return `<div class="rproject"><div class="rproject-h">${inline(b.head)}</div>${proof}${renderBlocks(remaining)}</div>`;
+    }
     if (b.type === 'role') return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="rrole-s">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
     throw new Error(`unknown block type ${b.type}`);
   }).join('\n');
@@ -232,10 +244,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const T = resumePtFromBody(
-    lane.pt ?? PRINT_PT[lane.slug] ?? 9.2,
-    lane.fit ?? PRINT_FIT[lane.slug] ?? 1,
-  );
+  const T = resumePtFromBody(10, 1);
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -318,8 +327,9 @@ export function page({ name, pillars, contact, sections }, lane) {
       .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
       .kicker{font-weight:600}
       .rpillars{font-weight:600;letter-spacing:0.06em}
-      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
-      .rwrap section a,.rwrap .rcontact a{color:${PRINT_COLORS.blood} !important;text-decoration:none}
+      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:${PRINT_COLORS.blood};border:0}
+      .rwrap section a,.rwrap .rcontact a{color:inherit;text-decoration:none}
+      .rwrap section a[href^="http"],.rwrap .rcontact a[href^="http"]{color:${PRINT_COLORS.blood}}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
@@ -328,7 +338,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       body::before,body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
-      .rwrap{padding:0 0.42in 0.05in;max-width:none}
+      .rwrap{padding:0 0.58in 0.05in;max-width:none}
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
@@ -341,23 +351,33 @@ export function page({ name, pillars, contact, sections }, lane) {
          larger section size (the "TO-AI" orphan, owner ruling 2026-07-15) */
       .rpillars{font-size:${T.pillars}pt;margin-top:6pt;line-height:1.35;text-wrap:balance}
       .rcontact{font-size:${T.contact}pt;margin-top:5pt;line-height:1.5}
-      section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:${T.secHead}pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:${T.body}pt;line-height:1.26;margin-bottom:3pt}
+      section.rsec{margin-top:11pt;padding:0}
+      .rsec-h{font-size:${T.secHead}pt;padding:0;margin-bottom:5pt}
+      .rp{font-size:${T.body}pt;line-height:1.375;margin-bottom:4pt}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:${T.body}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:${T.body}pt;line-height:1.35;margin-bottom:3pt;padding-left:12pt;break-inside:avoid;position:static}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
-      .rrole{margin:5pt 0 2pt}
+      .rrole{margin:8pt 0 2.5pt}
       .rrole-h{font-size:${T.roleHead}pt;break-after:avoid}
       .rrole-s{font-size:${T.roleSub}pt;margin:1.5pt 0 4pt}
       .rnum{font-family:inherit;font-size:0.88em;letter-spacing:-0.02em}
-      .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:${T.body}pt;margin-bottom:2pt}
+      /* Project and initiative blocks are peer content, not muted metadata.
+         Give them the same heading face, color, and vertical rhythm as roles. */
+      .rinit{margin:5pt 0 2pt;break-inside:avoid}
+      .rinit-h{font-family:'Archivo',sans-serif;font-size:${T.roleHead}pt;
+        font-weight:800;color:${PRINT_COLORS.ink};line-height:1.18;
+        margin-bottom:4pt;break-after:avoid;word-spacing:0.08em}
+      .rproject{margin:8pt 0 3pt;break-inside:avoid}
+      .rproject-h{font-family:'Archivo',sans-serif;font-size:${T.roleHead}pt;
+        font-weight:800;color:${PRINT_COLORS.ink};line-height:1.18;
+        margin-bottom:2pt;break-after:avoid;word-spacing:0.08em}
+      .rproject-proof{font-size:${T.body}pt;line-height:1.375;color:${PRINT_COLORS.inkSoft};
+        margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
