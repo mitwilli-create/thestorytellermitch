@@ -218,7 +218,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   //   name 34pt Archivo Black · positioning deck 13.25pt (>= section labels)
   //   section labels 12.75pt · role title 11.75pt · employer/date bold 10.9pt
   //   contact/links 10pt · body 10.35pt standard. Evidence-rich mode steps the
-  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor — never
+  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor - never
   //   isolated sections, never hidden scaling, hierarchy intact.
   // Sizes below are the exact lock ratios off the body size.
   const pt = Math.max(9.75, Math.min(10.35, lane.pt ?? PRINT_PT[lane.slug] ?? 10.35));
@@ -285,6 +285,13 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
     /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
        Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
        Black carries the NAME only; Martian Grotesk carries every other reading
