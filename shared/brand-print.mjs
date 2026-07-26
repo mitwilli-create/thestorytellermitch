@@ -99,13 +99,13 @@ export function resumePt(fit = 1) {
 export function resumePtFromBody(bodyPt, fit = 1) {
   const body = +(bodyPt * fit).toFixed(3);
   return {
-    name: +(20 * fit).toFixed(3),
+    name: +(22 * fit).toFixed(3),
     pillars: body,
-    roleHead: +(body + (1.8 * fit)).toFixed(3),
+    roleHead: +(body + (1 * fit)).toFixed(3),
     secHead: +(body + (2.5 * fit)).toFixed(3),
-    roleSub: body,
+    roleSub: +(9.5 * fit).toFixed(3),
     body,
-    contact: body,
+    contact: +(9.5 * fit).toFixed(3),
   };
 }
 
