@@ -9,10 +9,6 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-// One print type system for every rendered artifact (resumes here, apply-pack
-// prose docs in career-ops/scripts/render-brand-doc-pdf.mjs). Sizes and colors
-// are NOT redeclared below; they come from the shared scale.
-import { PRINT_COLORS, resumePtFromBody } from '../shared/brand-print.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.RESUME_SRC || join(ROOT, 'resumes-src');
@@ -59,22 +55,9 @@ export const LANES = {
   'mitchell-williams-content-editorial':      { slug: 'content-editorial',      title: 'Content Producer / Editorial Lead' },
 };
 
-// Per-lane FIT multiplier on the shared print scale (1 = brand-exact).
-// Superseded the old per-lane body-pt table on 2026-07-21: sizes now come from
-// shared/brand-print.mjs so the resumes and the apply-pack prose docs render in
-// one type system. This dial exists only for the hard 2-page gate: if a dense
-// lane tips to three pages, nudge it down a notch here rather than resizing one
-// element, so the hierarchy stays identical across lanes.
-export const PRINT_FIT = {
-  'forward-deployed': 1, 'ai-solutions-architect': 1, 'ai-enablement': 1,
-  'ai-program-manager': 1, 'comms-manager': 1, 'devrel-education': 1,
-  'content-editorial': 1, 'marketing-program-manager': 1,
-};
-
 export const PRINT_PT = {
-  'forward-deployed': 9.8, 'ai-solutions-architect': 9.8,
-  'ai-enablement': 9.8, 'devrel-education': 9.8,
-  'comms-manager': 9.6, 'ai-program-manager': 9.2,
+  'forward-deployed': 9.8, 'ai-solutions-architect': 9.8, 'ai-enablement': 9.2,
+  'ai-program-manager': 9.2, 'comms-manager': 9.6, 'devrel-education': 9.8,
   'content-editorial': 9.2, 'marketing-program-manager': 9.2,
 };
 
@@ -157,10 +140,7 @@ const inline = (s) => esc(s)
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 export function parse(md, file) {
-  const lines = md
-    .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
-    .split('\n')
-    .filter((rawLine) => !/^-{3,}$/.test(rawLine.trim()));
+  const lines = md.split('\n');
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];
@@ -190,22 +170,16 @@ export function parse(md, file) {
       pushSection('');
       cur.intro = true;
     }
-    if (/^### /.test(t)) {
-      const type = /^(projects|selected work)$/i.test(cur.title) ? 'project' : 'role';
-      cur.blocks.push(type === 'project'
-        ? { type, head: t.slice(4).trim(), body: [] }
-        : { type, head: t.slice(4).trim(), sub: '', body: [] });
-      continue;
-    }
+    if (/^### /.test(t)) { cur.blocks.push({ type: 'role', head: t.slice(4).trim(), sub: '', body: [] }); continue; }
     if (/^#### /.test(t)) {
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
       const target = role ? role.body : cur.blocks;
       target.push({ type: 'initiative', head: t.slice(5).trim(), items: [] });
       continue;
     }
     if (/^- /.test(t)) {
       const item = t.slice(2).trim();
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
       const init = role ? [...role.body].reverse().find(b => b.type === 'initiative') : [...cur.blocks].reverse().find(b => b.type === 'initiative');
       if (init) { init.items.push(item); continue; }
       const last = (role ? role.body : cur.blocks)[(role ? role.body : cur.blocks).length - 1];
@@ -216,7 +190,7 @@ export function parse(md, file) {
     // paragraph line; org/date line right under a role becomes its sub
     const role = cur.blocks[cur.blocks.length - 1];
     if (role && role.type === 'role' && role.sub === '' && role.body.length === 0) { role.sub = t.trim(); continue; }
-    if (role && (role.type === 'role' || role.type === 'project')) { role.body.push({ type: 'p', text: t.trim() }); continue; }
+    if (role && role.type === 'role') { role.body.push({ type: 'p', text: t.trim() }); continue; }
     cur.blocks.push({ type: 'p', text: t.trim() });
   }
   return { name, pillars, contact, sections };
@@ -227,12 +201,6 @@ function renderBlocks(blocks) {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
     if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
     if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
-    if (b.type === 'project') {
-      const [first, ...rest] = b.body;
-      const proof = first?.type === 'p' ? `<p class="rproject-proof">${inline(first.text)}</p>` : '';
-      const remaining = first?.type === 'p' ? rest : b.body;
-      return `<div class="rproject"><div class="rproject-h">${inline(b.head)}</div>${proof}${renderBlocks(remaining)}</div>`;
-    }
     if (b.type === 'role') return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="rrole-s">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
     throw new Error(`unknown block type ${b.type}`);
   }).join('\n');
@@ -244,7 +212,22 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const T = resumePtFromBody(10, 1);
+  // APPROVED TYPOGRAPHY LOCK (blind-tested and ruled by Mitchell 2026-07-25;
+  // do not reopen without new evidence): Archivo Black carries the NAME ONLY;
+  // Martian Grotesk carries every other reading and hierarchy function.
+  //   name 34pt Archivo Black · positioning deck 13.25pt (>= section labels)
+  //   section labels 12.75pt · role title 11.75pt · employer/date bold 10.9pt
+  //   contact/links 10pt · body 10.35pt standard. Evidence-rich mode steps the
+  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor — never
+  //   isolated sections, never hidden scaling, hierarchy intact.
+  // Sizes below are the exact lock ratios off the body size.
+  const pt = Math.max(9.75, Math.min(10.35, lane.pt ?? PRINT_PT[lane.slug] ?? 10.35));
+  const deck = (pt * (13.25 / 10.35)).toFixed(2); // positioning deck: outranks section labels
+  const sec = (pt * (12.75 / 10.35)).toFixed(2);  // section labels
+  const rh = (pt * (11.75 / 10.35)).toFixed(2);   // role titles
+  const meta = (pt * (10.9 / 10.35)).toFixed(2);  // employer + date: bold, near-black, between role and body
+  const cap = (pt * (10 / 10.35)).toFixed(2);     // contact + links
+  const namePt = 34;                               // Archivo Black, fixed starting size
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -258,7 +241,12 @@ export function page({ name, pillars, contact, sections }, lane) {
   <meta name="description" content="Mitchell Williams resume for ${esc(lane.title)} roles. Rendered from the same source as the downloadable PDF.">
   <meta name="robots" content="noindex">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-bold.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
+    @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+  </style>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
   <style>
@@ -297,39 +285,28 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
-    /* silent page: no floating audio control (matches the memo + lane pages) */
-    .sound-toggle{display:none}
-    /* mobile: stack the action row full-width so the buttons never wrap ragged */
-    @media(max-width:640px){
-      .rtop{flex-direction:column}
-      .rtop .btn{width:100%;text-align:center}
-    }
-    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
-       overriding the dealbreaker's band/underline/mono-line compromises):
-       Archivo carries every heading (name, section heads, role heads), Inter
-       carries every text run (pillars, contact, subtitles, body). No band, no
-       mono, no underlines; links signal by brand red alone. ---- */
+    /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
+       Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
+       Black carries the NAME only; Martian Grotesk carries every other reading
+       and hierarchy function (deck, section labels, role titles, org/date,
+       contact, body, metrics). Nothing above the name; deck outranks section
+       labels; hierarchy steps down only as one unit toward the 9.75pt floor.
+       No band, no mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     /* page size only; per-page top/bottom margins are passed to Playwright's
        page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
     @page{size:letter}
     @media print{
-      /* colors come from shared/brand-print.mjs, the same tokens the apply-pack
-         prose renderer uses; the site's dark-variable names are re-pointed at
-         them so the rest of this stylesheet keeps working unchanged. */
-      :root{--bg:${PRINT_COLORS.bg};--surface:${PRINT_COLORS.bg};
-        --bone:${PRINT_COLORS.ink};--bone-soft:${PRINT_COLORS.inkSoft};
-        --mute:${PRINT_COLORS.mute};--dim:${PRINT_COLORS.mute};
-        --line:${PRINT_COLORS.line};--line-2:${PRINT_COLORS.line2};
-        --blood:${PRINT_COLORS.blood};--blood-soft:${PRINT_COLORS.blood}}
-      html,body{background:${PRINT_COLORS.bg} !important;color:${PRINT_COLORS.inkSoft}}
-      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
-      .kicker{font-weight:600}
-      .rpillars{font-weight:600;letter-spacing:0.06em}
-      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:${PRINT_COLORS.blood};border:0}
-      .rwrap section a,.rwrap .rcontact a{color:inherit;text-decoration:none}
-      .rwrap section a[href^="http"],.rwrap .rcontact a[href^="http"]{color:${PRINT_COLORS.blood}}
+      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
+        --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
+        --blood:#8a3a33;--blood-soft:#8a3a33}
+      html,body{background:#fff !important;color:#2e2a26}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Martian Grotesk',sans-serif}
+      .kicker{display:none !important} /* nothing appears above the name: the
+        first visible print element is MITCHELL WILLIAMS (typography lock 2026-07-25) */
+      .rsec-h{border-bottom-color:var(--line-2)}
+      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
          blend/filter contexts so print stays vector + ATS-parseable. */
@@ -338,46 +315,31 @@ export function page({ name, pillars, contact, sections }, lane) {
       body::before,body::after{display:none !important;content:none !important}
       *{mix-blend-mode:normal !important;filter:none !important}
       .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
-      .rwrap{padding:0 0.58in 0.05in;max-width:none}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      /* Resume sizes derive from the lane body size in shared/brand-print.mjs.
-         Hierarchy: name > section head > role head > deck = contact =
-         org/date = body. No visible text drops below body size. */
-      .rname{font-size:${T.name}pt;word-spacing:0.14em}
+      .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:${namePt}pt;word-spacing:0.14em;letter-spacing:-0.02em}
       .rrole-h{word-spacing:0.08em}
-      /* balance keeps the deck from breaking to a one-word second line at the
-         larger section size (the "TO-AI" orphan, owner ruling 2026-07-15) */
-      .rpillars{font-size:${T.pillars}pt;margin-top:6pt;line-height:1.35;text-wrap:balance}
-      .rcontact{font-size:${T.contact}pt;margin-top:5pt;line-height:1.5}
-      section.rsec{margin-top:11pt;padding:0}
-      .rsec-h{font-size:${T.secHead}pt;padding:0;margin-bottom:5pt}
-      .rp{font-size:${T.body}pt;line-height:1.375;margin-bottom:4pt}
+      .rpillars{font-size:${deck}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
+      .rcontact{font-size:${cap}pt;font-weight:400;margin-top:5pt;line-height:1.4}
+      section.rsec{margin-top:6pt;padding:0}
+      .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:${sec}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
+      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:${T.body}pt;line-height:1.35;margin-bottom:3pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static;font-family:'Martian Grotesk',sans-serif}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
-      .rrole{margin:8pt 0 2.5pt}
-      .rrole-h{font-size:${T.roleHead}pt;break-after:avoid}
-      .rrole-s{font-size:${T.roleSub}pt;margin:1.5pt 0 4pt}
-      .rnum{font-family:inherit;font-size:0.88em;letter-spacing:-0.02em}
-      /* Project and initiative blocks are peer content, not muted metadata.
-         Give them the same heading face, color, and vertical rhythm as roles. */
-      .rinit{margin:5pt 0 2pt;break-inside:avoid}
-      .rinit-h{font-family:'Archivo',sans-serif;font-size:${T.roleHead}pt;
-        font-weight:800;color:${PRINT_COLORS.ink};line-height:1.18;
-        margin-bottom:4pt;break-after:avoid;word-spacing:0.08em}
-      .rproject{margin:8pt 0 3pt;break-inside:avoid}
-      .rproject-h{font-family:'Archivo',sans-serif;font-size:${T.roleHead}pt;
-        font-weight:800;color:${PRINT_COLORS.ink};line-height:1.18;
-        margin-bottom:2pt;break-after:avoid;word-spacing:0.08em}
-      .rproject-proof{font-size:${T.body}pt;line-height:1.375;color:${PRINT_COLORS.inkSoft};
-        margin:0 0 3pt;break-after:avoid}
+      .rrole{margin:5pt 0 2pt}
+      .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:${rh}pt;font-weight:800;break-after:avoid}
+      .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:${meta}pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
+      .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
+      .rinit{margin:4pt 0;break-inside:avoid}
+      .rinit-h{font-size:${pt}pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -392,7 +354,6 @@ export function page({ name, pillars, contact, sections }, lane) {
   <div class="nav-links" id="nav-links">
     <a href="../fit.html">Role Fit</a>
     <a href="../projects.html">AI Projects</a>
-    <a href="../writing.html">Writing</a>
     <a href="../resume.html">Resume</a>
     <a href="../comms.html">Comms &amp; Editorial</a>
     <a href="../work.html">Reel</a>
@@ -414,10 +375,10 @@ export function page({ name, pillars, contact, sections }, lane) {
      already exposes publicly. -->
     ` : ''}<div class="rcontact">${contact.map(c => inline(c).replace(/\b\d{3}-\d{3}-\d{4}\b\s*\|\s*/, (m) => lane.keepPhone ? `<span class="pdf-phone">${m}</span>` : '<span class="pdf-phone"></span>')).join('<br>')}</div>
     <div class="rtop">
-      <a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
       <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
       ${lane.pathBtn ? `<a class="btn" href="${esc(lane.pathBtn.href)}"><span>${esc(lane.pathBtn.label)}</span></a>
-      ` : ''}<a class="btn" href="../fit.html#${esc(lane.fitAnchor ?? lane.slug)}"><span>The fit case</span></a>
+      ` : ''}<a class="btn solid" href="../assets/resumes/${esc(Object.keys(LANES).find(k => LANES[k] === lane) ?? `mitchell-williams-${lane.slug}`)}.pdf"><span>Download PDF</span></a>
+      <a class="btn" href="../fit.html#${esc(lane.fitAnchor ?? lane.slug)}"><span>The fit case</span></a>
     </div>
   </header>
   ${secHtmlLinked}
