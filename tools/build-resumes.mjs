@@ -140,7 +140,10 @@ const inline = (s) => esc(s)
   .replace(LINK_RE, '<a href="https://$1">$1</a>');
 
 export function parse(md, file) {
-  const lines = md.split('\n');
+  const lines = md
+    .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    .split('\n')
+    .filter((rawLine) => !/^-{3,}$/.test(rawLine.trim()));
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];
