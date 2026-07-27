@@ -143,9 +143,9 @@ const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\
 // "Selected Writing & Essays" and "Projects" printed its raw markdown source
 // into the PDF.
 //
-// The re-matching hazard is now handled properly — each finished anchor is
-// parked behind a NUL-delimited placeholder that LINK_RE cannot match, and
-// restored afterwards — so the destination pattern no longer has to be
+// The re-matching hazard is now handled properly. Each finished anchor is
+// parked behind a NUL-delimited placeholder that LINK_RE cannot match, then
+// restored afterwards, so the destination pattern no longer has to be
 // crippled to protect the autolinker.
 const MD_LINK_RE = /\[([^\]]+)\]\((\.\.\/[\w./#-]+|#[\w-]+|https?:\/\/[^\s)"']+)\)/g;
 // `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
