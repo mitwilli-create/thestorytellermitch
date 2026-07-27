@@ -127,17 +127,44 @@ function deepLink(html) {
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// inline markdown: **bold**, [text](../site-relative.html or #anchor) phrase links;
-// bare portfolio/profile URLs still auto-link. Site-relative-only md links keep
-// LINK_RE from re-matching inside generated hrefs.
+// inline markdown: **bold**, [text](url) phrase links; bare portfolio/profile
+// URLs still auto-link.
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
+// Markdown link destinations we accept: site-relative (../x.html), in-page
+// anchor (#x), or an ABSOLUTE http(s) URL.
+//
+// Absolute URLs used to be excluded here, with the rationale that
+// "site-relative-only md links keep LINK_RE from re-matching inside generated
+// hrefs". The hazard was real but the cure silently broke every external link:
+// an unmatched `[Title](https://…)` fell through to LINK_RE, which auto-linked
+// only the bare `thestorytellermitch.com` substring INSIDE it and left the
+// brackets, parens and full URL as visible body text. Measured 2026-07-27 on
+// apply-pack/3337-deepgram-head-of-editorial-content: every entry under
+// "Selected Writing & Essays" and "Projects" printed its raw markdown source
+// into the PDF.
+//
+// The re-matching hazard is now handled properly. Each finished anchor is
+// parked behind a NUL-delimited placeholder that LINK_RE cannot match, then
+// restored afterwards, so the destination pattern no longer has to be
+// crippled to protect the autolinker.
+const MD_LINK_RE = /\[([^\]]+)\]\((\.\.\/[\w./#-]+|#[\w-]+|https?:\/\/[^\s)"']+)\)/g;
 // `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
 // numbers read as logged evidence, not prose claims.
-const inline = (s) => esc(s)
-  .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
-  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-  .replace(/\[([^\]]+)\]\(((?:\.\.\/|#)[\w./#-]+)\)/g, '<a href="$2">$1</a>')
-  .replace(LINK_RE, '<a href="https://$1">$1</a>');
+const inline = (s) => {
+  const parked = [];
+  const withPlaceholders = esc(s)
+    .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(MD_LINK_RE, (_m, text, url) => {
+      // esc() already turned & into &amp;, which is what an href wants. Quotes
+      // are excluded by the destination pattern, so the attribute cannot be
+      // broken out of.
+      parked.push(`<a href="${url}">${text}</a>`);
+      return `\u0000L${parked.length - 1}\u0000`;
+    })
+    .replace(LINK_RE, '<a href="https://$1">$1</a>');
+  return withPlaceholders.replace(/\u0000L(\d+)\u0000/g, (_m, i) => parked[Number(i)]);
+};
 
 export function parse(md, file) {
   const lines = md
