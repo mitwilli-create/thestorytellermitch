@@ -78,11 +78,13 @@
         <p class="microsite-eyebrow">{{EYEBROW}}</p>
         <h1>{{HEADLINE}}</h1>
         <p class="microsite-lede">{{LEDE}}</p>
+        <!-- PRIMARY_CTA fragment hrefs must match an id on a section rendered by SECTIONS. -->
         {{PRIMARY_CTA}}
       </div>
     </header>
 
     <div class="wrap">
+      <!-- Every generated section must define a stable id for navigation and CTA validation. -->
       {{SECTIONS}}
     </div>
   </main>

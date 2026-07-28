@@ -78,12 +78,14 @@
         <p class="microsite-eyebrow">FOR VERCEL · PRODUCT COMMUNICATIONS, OSS</p>
         <h1>The launch brief should survive the README.</h1>
         <p class="microsite-lede">Open-source developers need the exact technical change, the workflow it unlocks, and enough truth to decide whether it belongs in their stack. This is an independent, illustrative launch brief built from Vercel&#39;s documented AI SDK 7 surface, not an official Vercel communication.</p>
+        <!-- PRIMARY_CTA fragment hrefs must match an id on a section rendered by SECTIONS. -->
         <a class="microsite-cta" href="#launch">Read the launch brief</a>
       </div>
     </header>
 
     <div class="wrap">
-      <section class="microsite-section">
+      <!-- Every generated section must define a stable id for navigation and CTA validation. -->
+      <section class="microsite-section" id="launch">
   <p class="microsite-kicker">01 · THE LAUNCH</p>
   <h2>AI agents can now survive the pause</h2>
   <p class="microsite-section-lede">The product story is not that AI SDK added another abstraction. It is that agent work can persist across process restarts, function timeouts, retries, and delayed human approval without a team inventing its own state machine.</p>
@@ -101,7 +103,7 @@
   <p class="microsite-item-link"><a href="https://vercel.com/blog/ai-sdk-7">Read Vercel&#39;s AI SDK 7 announcement</a></p>
 </article></div>
 </section>
-<section class="microsite-section">
+<section class="microsite-section" id="message-map">
   <p class="microsite-kicker">02 · THE MESSAGE MAP</p>
   <h2>One technical truth, four audiences</h2>
   <p class="microsite-section-lede">The same release needs a different entry point for the maintainer, application developer, engineering leader, and reporter. The claim stays fixed while the consequence changes.</p>
@@ -119,7 +121,7 @@
 </article></div>
   <a class="microsite-cta" href="https://vercel.com/kb/guide/ai-gateway-and-ai-sdk">Open the durable-agent guide</a>
 </section>
-<section class="microsite-section">
+<section class="microsite-section" id="operating-model">
   <p class="microsite-kicker">03 · THE OPERATING MODEL</p>
   <h2>Product communications that start in the issue, not the launch calendar</h2>
   <p class="microsite-section-lede">OSS communications earns trust by staying close to how the software is made and how developers discover that it changed.</p>
@@ -136,7 +138,7 @@
   <p>The argument about a release happens in issue threads, on Hacker News, Reddit, and in maintainer feedback. Treat those conversations as editorial inputs. Route misunderstanding back into docs and product, not only into a response deck.</p>
 </article></div>
 </section>
-<section class="microsite-section">
+<section class="microsite-section" id="first-90-days">
   <p class="microsite-kicker">04 · THE FIRST 90 DAYS</p>
   <h2>Build one narrative system across the Agent Stack, Core Platform, and OSS portfolio</h2>
   <p class="microsite-section-lede">The first quarter should make product truth easier to extract and launch. The system only works if it belongs to everyone who touches that truth: engineering and the maintainer community as much as communications and Content Engineering.</p>
@@ -153,7 +155,7 @@
   <p>Partner with Content Engineering and DX on one multi-channel launch that travels from README and runnable proof to blog, community programming, conference material, and executive context. Route issue and community response back into docs and product.</p>
 </article></div>
 </section>
-<section class="microsite-section">
+<section class="microsite-section" id="live-proof">
   <p class="microsite-kicker">05 · LIVE PROOF</p>
   <h2>This page&#39;s argument, executed</h2>
   <p class="microsite-section-lede">The launch brief has its own inspectable artifact: a source-linked audience signal lab, designed as a zero-dependency public project and ready for a Vercel production deployment.</p>
@@ -171,7 +173,7 @@
   <p class="microsite-item-link"><a href="labs/durable-agent-launch-brief/">Open the durable-agent signal lab</a></p>
 </article></div>
 </section>
-<section class="microsite-section">
+<section class="microsite-section" id="why-me">
   <p class="microsite-kicker">06 · WHY ME</p>
   <h2>I communicate agent infrastructure because I build it</h2>
   <p class="microsite-section-lede">My work sits on both sides of the brief: newsroom judgment about what an audience will trust and hands-on systems work that makes technical claims inspectable.</p>
