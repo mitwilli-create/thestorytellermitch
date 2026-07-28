@@ -212,7 +212,10 @@ function renderBlocks(blocks) {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
     if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
     if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
-    if (b.type === 'role') return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="rrole-s">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
+    if (b.type === 'role') {
+      const subClass = /^Earlier Career:/i.test(b.head) ? 'rrole-note' : 'rrole-s';
+      return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="${subClass}">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
+    }
     throw new Error(`unknown block type ${b.type}`);
   }).join('\n');
 }
