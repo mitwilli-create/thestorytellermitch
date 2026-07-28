@@ -83,12 +83,12 @@
       <div class="label">Change the reader, keep the truth</div>
       <h2 id="audience-title">One release, four entry points</h2>
       <div class="tabs" role="tablist" aria-label="Audience">
-        <button role="tab" aria-selected="true" data-audience="maintainer">Maintainer</button>
-        <button role="tab" aria-selected="false" data-audience="developer">Application developer</button>
-        <button role="tab" aria-selected="false" data-audience="leader">Engineering leader</button>
-        <button role="tab" aria-selected="false" data-audience="reporter">Reporter</button>
+        <button type="button" id="tab-maintainer" role="tab" aria-controls="audience-panel" aria-selected="true" data-audience="maintainer">Maintainer</button>
+        <button type="button" id="tab-developer" role="tab" aria-controls="audience-panel" aria-selected="false" data-audience="developer">Application developer</button>
+        <button type="button" id="tab-leader" role="tab" aria-controls="audience-panel" aria-selected="false" data-audience="leader">Engineering leader</button>
+        <button type="button" id="tab-reporter" role="tab" aria-controls="audience-panel" aria-selected="false" data-audience="reporter">Reporter</button>
       </div>
-      <div class="message" role="tabpanel" aria-live="polite">
+      <div class="message" id="audience-panel" role="tabpanel" aria-labelledby="tab-maintainer" aria-live="polite">
         <h2 id="message-title">Show me the execution contract.</h2>
         <p id="message-body">Lead with persisted steps, retry boundaries, approval semantics, observability, migration constraints, and failure modes. The abstraction earns trust when it composes cleanly with existing tools.</p>
       </div>
@@ -137,9 +137,11 @@
     };
     const title = document.querySelector("#message-title");
     const body = document.querySelector("#message-body");
+    const panel = document.querySelector("#audience-panel");
     for (const button of document.querySelectorAll("[data-audience]")) {
       button.addEventListener("click", () => {
         for (const tab of document.querySelectorAll("[data-audience]")) tab.setAttribute("aria-selected", String(tab === button));
+        panel.setAttribute("aria-labelledby", button.id);
         [title.textContent, body.textContent] = messages[button.dataset.audience];
       });
     }
