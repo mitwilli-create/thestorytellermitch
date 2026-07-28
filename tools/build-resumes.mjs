@@ -172,6 +172,9 @@ export function parse(md, file) {
     if (line === undefined) break;
     const t = line.trimEnd();
     if (t === '') continue;
+    // Horizontal rules are Markdown layout markers, not resume prose. Never
+    // let them fall through to the paragraph renderer as literal `---` text.
+    if (/^-{3,}$/.test(t.trim())) continue;
     if (/^## /.test(t)) { pushSection(t.slice(3).trim()); continue; }
     if (!cur) {
       // pre-section content (e.g. **Selected work:** block) -> intro pseudo-section
