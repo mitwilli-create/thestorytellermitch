@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <style>
+    :root{--dossier-pad:clamp(24px,5vw,72px)}
+    body{background:
+      radial-gradient(circle at 82% 8%,rgba(138,58,51,.16),transparent 31rem),
+      var(--bg);color:var(--bone)}
+    .microsite-shell{min-height:100vh;overflow:hidden}
+    .microsite-nav{position:relative;z-index:5;border-bottom:1px solid var(--line)}
+    .microsite-nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:20px}
+    .microsite-nav a{color:var(--bone);text-decoration:none}
+    .microsite-wordmark{font-family:'Archivo',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em}
+    .microsite-back{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-soft)}
+    .microsite-hero{position:relative;padding:clamp(96px,13vw,180px) 0 clamp(72px,9vw,128px);border-bottom:1px solid var(--line)}
+    .microsite-hero::after{content:"";position:absolute;right:-8vw;bottom:-15vw;width:44vw;height:44vw;border:1px solid rgba(236,232,225,.08);border-radius:50%;box-shadow:0 0 0 7vw rgba(236,232,225,.018),0 0 0 14vw rgba(236,232,225,.012);pointer-events:none}
+    .microsite-hero-inner{position:relative;z-index:1;max-width:1040px}
+    .microsite-eyebrow,.microsite-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:var(--blood-text)}
+    .microsite-hero h1{max-width:980px;margin:24px 0 28px;font-family:'Archivo',sans-serif;font-size:clamp(48px,8.5vw,124px);font-weight:800;line-height:.88;letter-spacing:-.055em;text-wrap:balance}
+    .microsite-lede{max-width:720px;margin:0 0 34px;font-size:clamp(17px,2vw,23px);line-height:1.55;color:var(--bone-soft)}
+    .microsite-cta{display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;border:1px solid var(--blood-text);background:var(--blood);color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:transform .2s ease,background .2s ease}
+    .microsite-cta:hover{transform:translateY(-2px);background:#9a453d}
+    .microsite-section{padding:clamp(72px,10vw,132px) 0;border-bottom:1px solid var(--line)}
+    .microsite-section h2{max-width:900px;margin:18px 0 24px;font-family:'Archivo',sans-serif;font-size:clamp(34px,5vw,72px);font-weight:800;line-height:.98;letter-spacing:-.04em;text-wrap:balance}
+    .microsite-section-lede{max-width:720px;margin-bottom:44px;font-size:18px;line-height:1.6;color:var(--bone-soft)}
+    .microsite-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+    .microsite-item{grid-column:span 6;min-height:230px;padding:clamp(24px,3.5vw,42px);border:1px solid var(--line);background:rgba(236,232,225,.025)}
+    .microsite-item:nth-child(3n){grid-column:span 12}
+    .microsite-item h3{margin:0 0 18px;font-family:'Archivo',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:760;line-height:1.05;letter-spacing:-.025em}
+    .microsite-item p{max-width:670px;margin:0;color:var(--bone-soft);font-size:15px;line-height:1.65}
+    .microsite-item-link{margin-top:24px!important}
+    .microsite-item-link a{color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration-color:var(--blood-text);text-underline-offset:5px}
+    .microsite-section>.microsite-cta{margin-top:30px}
+    .microsite-footer{padding:64px 0 34px}
+    .microsite-footer-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+    .microsite-footer-title{font-family:'Archivo',sans-serif;font-size:clamp(44px,7vw,90px);font-weight:800;line-height:.86;letter-spacing:-.05em}
+    .microsite-footer-links{display:grid;gap:9px;text-align:right}
+    .microsite-footer-links a{color:var(--bone-soft);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-decoration:none}
+    .microsite-legal{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:9px;line-height:1.5;letter-spacing:.05em}
+    @media(max-width:760px){
+      .microsite-nav .wrap{min-height:64px}
+      .microsite-back{max-width:150px;text-align:right}
+      .microsite-hero{padding-top:92px}
+      .microsite-hero h1{font-size:clamp(46px,15vw,76px)}
+      .microsite-item,.microsite-item:nth-child(3n){grid-column:1/-1;min-height:0}
+      .microsite-footer-grid{display:grid;align-items:start}
+      .microsite-footer-links{text-align:left}
+      .microsite-legal{display:grid}
+    }
+    @media(prefers-reduced-motion:reduce){.microsite-cta{transition:none}}
+  </style>
+</head>
+<body>
+<div class="microsite-shell">
+  <nav class="microsite-nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="microsite-wordmark" href="index.html">Mitchell Williams</a>
+      <a class="microsite-back" href="work.html">Selected work</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="microsite-hero">
+      <div class="wrap microsite-hero-inner">
+        <p class="microsite-eyebrow">{{EYEBROW}}</p>
+        <h1>{{HEADLINE}}</h1>
+        <p class="microsite-lede">{{LEDE}}</p>
+        {{PRIMARY_CTA}}
+      </div>
+    </header>
+
+    <div class="wrap">
+      {{SECTIONS}}
+    </div>
+  </main>
+
+  <footer class="microsite-footer">
+    <div class="wrap">
+      <div class="microsite-footer-grid">
+        <div class="microsite-footer-title">Let's<br>build.</div>
+        <div class="microsite-footer-links">
+          <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+          <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+          <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        </div>
+      </div>
+      <div class="microsite-legal">
+        <span>{{AFFILIATION_DISCLAIMER}}</span>
+        <span>Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="shared/reveal.js?v=20260715a"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Durable Agent Launch Brief Lab | Mitchell Williams</title>
+  <meta name="description" content="An interactive, source-linked product communications work sample for AI SDK 7 WorkflowAgent.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #080808;
+      --panel: #101010;
+      --line: #2a2a2a;
+      --paper: #f4f1eb;
+      --muted: #aaa59d;
+      --signal: #ff5f56;
+      --green: #8ed39b;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ink); color: var(--paper); }
+    a { color: inherit; }
+    .shell { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    header .shell { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .mark, .status, .eyebrow, .label {
+      font: 700 11px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .status { color: var(--green); }
+    main { padding: 88px 0 100px; }
+    .eyebrow, .label { color: var(--signal); }
+    h1 { max-width: 900px; margin: 18px 0 24px; font-size: clamp(48px, 8vw, 100px); line-height: .9; letter-spacing: -.06em; }
+    .lede { max-width: 720px; color: var(--muted); font-size: clamp(18px, 2.2vw, 23px); line-height: 1.55; }
+    .truth { margin: 64px 0; padding: 30px; border: 1px solid var(--line); background: var(--panel); }
+    .truth strong { display: block; margin: 10px 0; font-size: clamp(25px, 4vw, 42px); line-height: 1.05; }
+    .truth p { max-width: 760px; color: var(--muted); line-height: 1.65; }
+    .audience-picker { margin: 72px 0; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0; }
+    button {
+      border: 1px solid var(--line); background: transparent; color: var(--paper);
+      padding: 12px 16px; cursor: pointer; font: inherit;
+    }
+    button[aria-selected="true"] { border-color: var(--signal); background: var(--signal); color: var(--ink); }
+    .message { min-height: 195px; padding: 30px; border: 1px solid var(--line); background: var(--panel); }
+    .message h2 { margin: 0 0 12px; font-size: clamp(27px, 4vw, 42px); }
+    .message p { max-width: 760px; margin: 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .card { padding: 24px; border: 1px solid var(--line); background: var(--panel); }
+    .card h3 { margin: 11px 0; font-size: 21px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .sources { margin-top: 72px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .sources li { margin: 11px 0; color: var(--muted); }
+    footer { padding: 30px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.6; }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 28px, 1100px); }
+      main { padding-top: 56px; }
+      .grid { grid-template-columns: 1fr; }
+      header .shell { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <div class="mark">Mitchell Williams / Product communications work sample</div>
+      <div class="status">Source-linked / reproducible</div>
+    </div>
+  </header>
+  <main class="shell">
+    <div class="eyebrow">AI SDK 7 / WorkflowAgent</div>
+    <h1>Agents can survive the pause.</h1>
+    <p class="lede">A product launch signal lab for one technical truth: durable execution changes an agent from a live process into work that can pause, recover, and resume under human control.</p>
+
+    <section class="truth">
+      <div class="label">The release claim</div>
+      <strong>Durability is an operating contract, not an autonomy slogan.</strong>
+      <p>WorkflowAgent can persist tool calls as workflow steps, retry from a failed step, and suspend for approval. The value is not that an agent does more without people. The value is that state, recovery, and intervention become explicit.</p>
+    </section>
+
+    <section class="audience-picker" aria-labelledby="audience-title">
+      <div class="label">Change the reader, keep the truth</div>
+      <h2 id="audience-title">One release, four entry points</h2>
+      <div class="tabs" role="tablist" aria-label="Audience">
+        <button role="tab" aria-selected="true" data-audience="maintainer">Maintainer</button>
+        <button role="tab" aria-selected="false" data-audience="developer">Application developer</button>
+        <button role="tab" aria-selected="false" data-audience="leader">Engineering leader</button>
+        <button role="tab" aria-selected="false" data-audience="reporter">Reporter</button>
+      </div>
+      <div class="message" role="tabpanel" aria-live="polite">
+        <h2 id="message-title">Show me the execution contract.</h2>
+        <p id="message-body">Lead with persisted steps, retry boundaries, approval semantics, observability, migration constraints, and failure modes. The abstraction earns trust when it composes cleanly with existing tools.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="proof-title">
+      <div class="label">The proof path</div>
+      <h2 id="proof-title">What ships beside the announcement</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="label">01 / Reproduce</div>
+          <h3>A runnable approval pause</h3>
+          <p>Show one agent suspending for a human decision, surviving a refresh, and resuming without replaying completed work.</p>
+        </article>
+        <article class="card">
+          <div class="label">02 / Inspect</div>
+          <h3>State and failure boundaries</h3>
+          <p>Name what is persisted, what retries, what does not, and which recovery behavior belongs to the application.</p>
+        </article>
+        <article class="card">
+          <div class="label">03 / Decide</div>
+          <h3>Does it belong in the stack?</h3>
+          <p>Give the developer enough product truth to compare the durability model with the operational risk of a custom state machine.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sources">
+      <div class="label">Primary sources</div>
+      <ul>
+        <li><a href="https://vercel.com/blog/ai-sdk-7">Vercel: AI SDK 7 announcement</a></li>
+        <li><a href="https://vercel.com/kb/guide/what-is-workflowagent">Vercel: What is WorkflowAgent?</a></li>
+        <li><a href="https://vercel.com/kb/guide/how-to-build-ai-agents-with-vercel-and-the-ai-sdk">Vercel: Building agents with AI SDK</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <div class="shell">Independent application work sample by Mitchell Williams. Not affiliated with or endorsed by Vercel. This is illustrative product communications, not an official Vercel announcement.</div>
+  </footer>
+  <script>
+    const messages = {
+      maintainer: ["Show me the execution contract.", "Lead with persisted steps, retry boundaries, approval semantics, observability, migration constraints, and failure modes. The abstraction earns trust when it composes cleanly with existing tools."],
+      developer: ["Show me the workflow I can ship.", "Lead with an agent that pauses for approval, survives a timeout or refresh, and resumes without replaying completed work. Put the runnable path before the architecture diagram."],
+      leader: ["Show me the operational change.", "Lead with the move from custom recovery infrastructure to explicit, observable workflow state. Ground the category claim in product mechanics and ownership boundaries."],
+      reporter: ["Show me why this release matters now.", "Lead with the shift from impressive agent demos to work that can survive real operating conditions. Pair the frame with precise mechanics, a reproducible example, and a stated limitation."]
+    };
+    const title = document.querySelector("#message-title");
+    const body = document.querySelector("#message-body");
+    for (const button of document.querySelectorAll("[data-audience]")) {
+      button.addEventListener("click", () => {
+        for (const tab of document.querySelectorAll("[data-audience]")) tab.setAttribute("aria-selected", String(tab === button));
+        [title.textContent, body.textContent] = messages[button.dataset.audience];
+      });
+    }
+  </script>
+</body>
+</html>
