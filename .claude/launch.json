@@ -13,6 +13,12 @@
       "runtimeArgs": [".claude/serve.mjs"],
       "port": 8990,
       "autoPort": true
+    },
+    {
+      "name": "explainer-826-worktree-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/worktrees/loving-cohen-a3985b/.claude/serve-826.mjs"],
+      "port": 8792
     }
   ]
 }

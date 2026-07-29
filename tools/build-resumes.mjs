@@ -74,7 +74,7 @@ const TERM_LINKS = [
   ['picture-lock', '../picture-lock.html'],
   ['MERIDIEM', '../for-elevenlabs.html'],
   ['Article to Audience', '../for-elevenlabs.html#specwork'],
-  ['content-ops', '../content-ops.html'],
+  ['throughline', '../throughline.html'],
   ['voice-os', '../voice-os.html'],
   ['career-ops', '../career-ops.html'],
   ['monolith', '../monolith.html'],
