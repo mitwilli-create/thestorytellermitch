@@ -11,7 +11,24 @@
   <meta name="description" content="Mitchell Williams resume for Communications Lead / Director (AI-native) roles. Rendered from the same source as the downloadable PDF.">
   <meta name="robots" content="noindex">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-bold.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
+    @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+    /* Print-only static instance of Archivo at the one weight print uses (900,
+       the name). theme.css serves Archivo as a VARIABLE font, and Chromium's
+       PDF backend cannot embed a variable instance as TrueType: it falls back
+       to Type 3 glyph procedures, which most viewers draw as generic paths
+       with no hinting, so the name renders visibly soft next to the Martian
+       body copy. Measured 2026-07-27 via pdffonts on an apply-pack CV:
+       ArchivoRoman-Black came out Type 3, the Martian faces CID TrueType.
+       A static instance embeds properly and is also 61% smaller (13KB vs 35KB)
+       because it carries one weight instead of the whole 400-900 axis.
+       Deliberately a separate family name: the WEB view keeps the variable
+       font, and only the print block below opts into this. */
+    @font-face{font-family:'Archivo Print';font-weight:900;font-display:block;src:url('../assets/fonts/archivo-900-latin.woff2') format('woff2')}
+  </style>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
   <style>
@@ -50,11 +67,20 @@
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
-    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
-       overriding the dealbreaker's band/underline/mono-line compromises):
-       Archivo carries every heading (name, section heads, role heads), Inter
-       carries every text run (pillars, contact, subtitles, body). No band, no
-       mono, no underlines; links signal by brand red alone. ---- */
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
+    /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
+       Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
+       Black carries the NAME only; Martian Grotesk carries every other reading
+       and hierarchy function (deck, section labels, role titles, org/date,
+       contact, body, metrics). Nothing above the name; deck outranks section
+       labels; hierarchy steps down only as one unit toward the 9.75pt floor.
+       No band, no mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     /* page size only; per-page top/bottom margins are passed to Playwright's
@@ -65,10 +91,10 @@
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#fff !important;color:#2e2a26}
-      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
-      .kicker{font-weight:600}
-      .rpillars{font-weight:600;letter-spacing:0.06em}
-      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Martian Grotesk',sans-serif}
+      .kicker{display:none !important} /* nothing appears above the name: the
+        first visible print element is MITCHELL WILLIAMS (typography lock 2026-07-25) */
+      .rsec-h{border-bottom-color:var(--line-2)}
       .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
@@ -82,27 +108,27 @@
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      .rname{font-size:20pt;word-spacing:0.14em}
+      .rname{font-family:'Archivo Print','Archivo',sans-serif;font-weight:900;font-size:34pt;word-spacing:0.14em;letter-spacing:-0.02em}
       .rrole-h{word-spacing:0.08em}
-      .rpillars{font-size:8.16pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:8.16pt;margin-top:5pt;line-height:1.5}
+      .rpillars{font-size:12.48pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
+      .rcontact{font-size:9.42pt;font-weight:400;margin-top:5pt;line-height:1.4}
       section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:8.16pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:9.6pt;line-height:1.26;margin-bottom:3pt}
+      .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.01pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
+      .rp{font-size:9.75pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:9.6pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:9.75pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static;font-family:'Martian Grotesk',sans-serif}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:11.4pt;break-after:avoid}
-      .rrole-s{font-size:8.16pt;margin:1.5pt 0 4pt}
-      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:10.27pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
+      .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:9.6pt;margin-bottom:2pt}
+      .rinit-h{font-size:9.75pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -147,7 +173,7 @@
   <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>Communications leader who understands what the models actually do, because the audience can tell when you do not.</strong> Journalist, then communications and content strategist, then applied-AI builder; the habit that carries through: every claim gets a source.</p>
 <p class="rp"><strong>Eight years at Google in executive and engineering communications.</strong> Wrote for then-CIO Ben Fried at Corporate Engineering, then ran communications for Google's 1,000+ most senior engineers at Cross-Google Engineering (xGE), building two production LLM agents for the communications function itself.</p>
 <p class="rp"><strong>Before Google, a decade of live national news at AJ+, CNN, Fusion, HuffPost Live, and Al Jazeera English.</strong> Ten years deciding what ran teaches you what a working journalist needs from a technical story.</p></section>
-<section class="rsec"><h2 class="rsec-h">Fit for Product, Technical, and Research Communications (AI-Native)</h2><ul class="rl"><li><strong>Understand the technology from the inside:</strong> Built and deployed two production LLM agents solo at xGE, plus public multi-agent systems on my own time.</li><li><strong>Work the journalist's side of the desk:</strong> Booked one of Foreign Policy's 2012 Top 100 Global Thinkers onto a live panel, produced an exclusive Netanyahu interview, and surfaced on-record admissions from sitting U.S. Senators.</li><li><strong>Source every claim:</strong> Built a citation-gated verification agent where no claim surfaces without its source; it caught a ~$19K error commercial software defended as correct.</li><li><strong>Write for technical audiences that punish spin:</strong> the annual 600-person summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.</li><li><strong>Produce external content at reach:</strong> Google engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views).</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Fit for Product, Technical, and Research Communications (AI-Native)</h2><ul class="rl"><li><strong>Understand the technology from the inside:</strong> Built and deployed two production LLM agents solo at xGE, plus public multi-agent systems on my own time.</li><li><strong>Work the journalist's side of the desk:</strong> Booked one of Foreign Policy's 2012 Top 100 Global Thinkers onto a live panel, produced an exclusive Netanyahu interview, and surfaced on-record admissions from sitting U.S. Senators.</li><li><strong>Source every claim:</strong> Built a citation-gated verification agent where no claim surfaces without its source; it caught a ~$19K error commercial software defended as correct.</li><li><strong>Write for technical audiences that punish spin:</strong> the 600-person Sr. Tech IC Summit, quarterly forums, and the Distinguished / Principal Engineering newsletters.</li><li><strong>Produce external content at reach:</strong> Google engineering talent-branding campaigns (1.7M+ YouTube views); AJ+'s day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views).</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
 <div class="rinit"><div class="rinit-h">Executive-communications <a href="../stories.html#digital-twin">digital twin</a> (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent around a codified "Constitution" of voice rules and a banned-phrase verification checklist.</li><li><strong>Impact:</strong> Cut review back-and-forth with the VP by about 70%: self-measured; a reference can confirm it.</li></ul></div>
 <div class="rinit"><div class="rinit-h"><a href="../comms-triage-agent.html">Communications-triage agent</a> (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed an autonomous three-prompt pipeline (triage, revise in Smart Brevity, escalate) with knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly 60% of inbound (est.) and projected to recapture ~160 operational hours/year (est.); documented end-to-end and handed off with a full <a href="../writing.html">operator runbook</a>.</li></ul></div>

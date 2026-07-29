@@ -1,7 +1,7 @@
 {
   "_comment": "Fingerprint of the retrieval corpus that the live Vectorize index was last built from. CI fails if the built corpus drifts from this. Regenerate ONLY after a real wipe+re-index+eval: node tools/kb-corpus-guard.mjs --update",
-  "chunkCount": 382,
-  "corpusHash": "b3cad4263515965e6509e157fc066a8b5b065a872b0327b935e627afc48807ac",
+  "chunkCount": 384,
+  "corpusHash": "e9bbbcca13515ee01a684f56b900af7925c3841d2da10d758d341a3412873a02",
   "bySource": {
     "kb/biggest-gap.md": 1,
     "kb/career-arc.md": 1,
@@ -43,10 +43,10 @@
     "monolith.html": 9,
     "voice-os.html": 12,
     "picture-lock.html": 25,
-    "projects.html": 7,
+    "projects.html": 8,
     "systems.html": 11,
     "for-anthropic.html": 4,
-    "for-elevenlabs.html": 7,
+    "for-elevenlabs.html": 8,
     "for-fluidstack.html": 7,
     "for-comms-leadership.html": 4,
     "resumes-src/mitchell-williams-ai-enablement.md": 4,
@@ -62,12 +62,12 @@
     "assets/site-data/stories.json": 17,
     "assets/site-data/writing.json": 1
   },
-  "lastVerified": "2026-07-16",
+  "lastVerified": "2026-07-29",
   "lastEval": {
     "topK": 15,
-    "hits": 99,
+    "hits": 101,
     "total": 103,
-    "hitRate": 0.9612,
+    "hitRate": 0.9806,
     "gatePass": true
   }
 }

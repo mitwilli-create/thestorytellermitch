@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .proj-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .proj-hero .display{font-size:clamp(42px,7.4vw,110px)}
@@ -275,14 +275,26 @@
 
       <div class="pcard reveal">
         <figure class="illo cine" data-cine-hover="assets/cinemagraphs/illo-content-ops-b-loop"><img src="assets/stills/illo-content-ops-hd.jpg" alt="System illustration: one source document passes through a splitting prism and fans out into several platform-shaped output cards beneath four audience markers" loading="lazy"><figcaption>system illustration, generated · Gemini image + Veo motion, 2026</figcaption></figure>
-        <div class="top"><span class="name">content-ops</span><span class="chip-status">SHIPPED</span></div>
+        <div class="top"><span class="name">Throughline</span><span class="chip-status">SHIPPED</span></div>
         <h3>One story, shaped for every platform</h3>
         <p class="body">A multi-agent content engine on Claude: sources live angles, drafts a master, and adapts it to the mechanics of nine platforms for four audiences. Every draft passes one deterministic voice and format gate, and nothing posts without a person pressing send.</p>
         <div class="proof">9 platform playbooks (dated, 30-day staleness gate) · 4 audience profiles · deterministic voice gate · human-in-the-loop publish</div>
         <div class="row">
-          <a class="go" href="content-ops.html">Full breakdown</a>
-          <a class="go" href="https://github.com/mitwilli-create/content-ops" rel="noopener">View repo</a>
+          <a class="go" href="throughline.html">Full breakdown</a>
+          <a class="go" href="https://github.com/mitwilli-create/throughline" rel="noopener">View repo</a>
           <span class="tags">Node · multi-agent · Claude</span>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="top"><span class="name">Second Source</span><span class="chip-status">RELEASE CANDIDATE</span></div>
+        <h3>From recorded conversation to a defensible brief</h3>
+        <p class="body">An editorial evidence desk built on Deepgram. Records or ingests audio and video, transcribes and diarizes it, then separates publishable quotes from checkable claims and the reporting still owed. Every conclusion stays linked to the second of tape it came from, and a server-side gate rejects any quote whose wording does not match the transcript exactly.</p>
+        <div class="proof">Evidence Spine: quote to media moment to claim to verification task to angle · 9 claim types · 96 passing tests · not yet release-approved</div>
+        <div class="row">
+          <a class="go" href="second-source.html">Full breakdown</a>
+          <a class="go" href="https://second-source-viewer.lovable.app" rel="noopener">Live app</a>
+          <span class="tags">Deepgram · Lovable Cloud · Supabase</span>
         </div>
       </div>
 

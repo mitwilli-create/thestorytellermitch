@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>For Sierra · EMEA Communications · Mitchell Williams</title>
+  <meta name="description" content="The case for Sierra's EMEA Communications role: eight years in international newsrooms, a 112-journalist press network, nine proof points of scrappiness, and production AI agents already shipped.">
+  <meta property="og:title" content="For Sierra · EMEA Communications · Mitchell Williams">
+  <meta property="og:description" content="International newsrooms first, then the agents. The case for Sierra's first dedicated EMEA communications hire.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <style>
+    .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
+    .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
+    .hero-rule{display:block;height:3px;width:min(360px,60%);margin-top:22px;
+      background:var(--blood-soft);transform:scaleX(0);transform-origin:left center;
+      transition:transform var(--dur-set) var(--ease-reveal)}
+    .revealed .hero-rule{transform:scaleX(1);transition-delay:.62s}
+    .sys-sub{margin-top:26px;max-width:680px;font-size:18px;color:var(--bone-soft);line-height:1.65;
+      opacity:0;transform:translateY(18px);
+      transition:opacity var(--dur-set) var(--ease-reveal),transform var(--dur-set) var(--ease-reveal)}
+    .revealed .sys-sub{opacity:1;transform:none;transition-delay:.78s}
+    .sys-sub p{margin:0 0 13px}
+    .sys-sub p:last-child{margin:0}
+    /* the one clause that has to land: the international claim, in the house
+       accent. blood-text (not blood-soft) is the token cleared for small text
+       at 5.2:1 on --bg. Inherits the strong.wt weight around it. */
+    .sys-sub .ox{color:var(--blood-text)}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:34px;max-width:860px;
+      opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .revealed .hero-stats{opacity:1;transform:none;transition-delay:.95s}
+    .hero-stats .hs{background:var(--surface);padding:20px 18px;min-width:0}
+    .hero-stats .n{font-family:'Archivo',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-0.02em;
+      color:var(--bone);font-variant-numeric:tabular-nums}
+    .hero-stats .k{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--dim);margin-top:4px;line-height:1.5}
+    .no-js .hero-rule{transform:scaleX(1)}
+    .no-js .sys-sub,.no-js .hero-stats{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .hero-rule{transition:none;transform:scaleX(1)}
+      .sys-sub,.hero-stats{transition:none;opacity:1;transform:none}
+    }
+    section{padding:56px 0}
+    h2.fs-title{font-family:'JetBrains Mono',monospace;font-size:clamp(22px,2.6vw,31px);text-transform:uppercase;
+      letter-spacing:0.14em;line-height:1.2;color:var(--blood-soft);margin-bottom:22px;font-weight:500;max-width:860px}
+    .path{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:860px}
+    .path .step{display:flex;gap:18px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
+    .path .d{flex:none;min-width:158px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft)}
+    .path .t{font-size:15.5px;color:var(--bone-soft);line-height:1.6}
+    .path .t a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .path .t a:hover{color:var(--bone)}
+    .path .t strong.wt a{color:#fff;border-bottom:1px solid var(--blood-hairline)}
+    .path .t strong.wt a:hover{color:var(--blood-text)}
+    .map-list{list-style:none;margin:0;padding:0;max-width:760px}
+    .map-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;
+      line-height:1.65;color:var(--bone-soft)}
+    .map-list li h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);display:block;margin:0 0 4px;font-weight:500}
+    .map-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .map-list li a:hover{color:var(--bone)}
+    .narrative-prose{max-width:760px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
+    .narrative-prose a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .narrative-prose a:hover{color:var(--bone)}
+    .narrative-prose p{margin:0 0 15px}
+    .narrative-prose p:last-child{margin:0}
+    #international,#press,#scrappy,#why-now{scroll-margin-top:86px}
+    .jump-rail{display:none}
+    @media(min-width:1360px){
+      .jump-rail{display:block;position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40}
+      .jump-rail nav{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:0}
+      .jump-rail a{display:flex;gap:10px;align-items:baseline;padding:8px 0 8px 14px;
+        font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+        color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
+      .jump-rail a:hover{color:var(--bone)}
+      .jump-rail a.active{color:var(--blood-text);box-shadow:inset 2px 0 0 var(--blood-soft)}
+      .jump-rail .n{color:var(--blood-soft);font-size:9.5px;flex:none}
+      .jump-rail a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    }
+    .ed-lane{max-width:760px;margin-top:26px;border:1px solid var(--line-2);border-left:2px solid var(--blood-soft);
+      background:var(--surface);padding:20px 24px;border-radius:3px}
+    .ed-lane .el-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+      text-transform:uppercase;color:var(--blood-soft);margin-bottom:10px}
+    .ed-lane .el-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(18px,2vw,23px);color:var(--bone);margin:6px 0 0;line-height:1.2}
+    .ed-lane .el-list{list-style:none;margin:14px 0 0;padding:0}
+    .ed-lane .el-list li{position:relative;padding:6px 0 6px 22px;font-size:15px;line-height:1.6;color:var(--bone-soft)}
+    .ed-lane .el-list li a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline);transition:color var(--dur-micro) var(--ease-micro)}
+    .ed-lane .el-list li a:hover{color:var(--bone)}
+    .ed-lane .el-list li::before{content:"\2192";position:absolute;left:0;color:var(--blood-soft)}
+    .ed-lane .el-b{font-size:15px;line-height:1.7;color:var(--bone-soft);margin:0}
+    @media(pointer:coarse){
+      .path .t a{padding:3px 0}
+      .path .t strong.wt a{display:inline-block;padding:6px 0}
+      .path .step{padding:20px 0}
+    }
+    .el-note{max-width:760px;font-size:14.5px;color:var(--bone-soft);line-height:1.7;margin-top:30px;
+      padding:16px 20px;border:1px solid var(--line);border-left:2px solid var(--line-2);
+      background:var(--bg-2);border-radius:3px}
+    .el-note+.el-note{margin-top:14px}
+    .el-note .en-k{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;
+      letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+    .el-note p{margin:0}
+    /* scrappy grid: 3x3 of proof cards. House system only, no new palette
+       values and no generated art. The number is the only ornament; the
+       oxblood hairline on the left is the same accent rule the ed-lane uses,
+       one step quieter so nine of them do not shout. */
+    .scrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:3px;overflow:hidden;max-width:1100px;margin-top:8px}
+    .scrap{background:var(--surface);padding:22px 22px 24px;min-width:0;
+      border-left:2px solid transparent;transition:border-color var(--dur-micro) var(--ease-micro),background var(--dur-micro) var(--ease-micro)}
+    .scrap:hover{border-left-color:var(--blood-soft);background:var(--bg-2)}
+    .scrap .sn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--dim);display:block;margin-bottom:9px}
+    .scrap h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--blood-soft);margin:0 0 9px;font-weight:500;line-height:1.4}
+    .scrap p{margin:0;font-size:14.5px;line-height:1.65;color:var(--bone-soft)}
+    .scrap-kicker{max-width:760px;margin-top:26px;font-size:15.5px;line-height:1.75;color:var(--bone-soft)}
+    .scrap-kicker strong{color:var(--bone)}
+    @media(max-width:1000px){.scrap-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.scrap-grid{grid-template-columns:1fr}}
+    .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+    @media(max-width:640px){
+      .sys-hero{padding:130px 0 56px}
+      .path .step{flex-direction:column;gap:4px}
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
+  </style>
+</head>
+<body data-reveal-stagger="6">
+
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<aside class="jump-rail" aria-label="Jump to section">
+  <nav>
+    <a href="#international"><span class="n">01</span>International</a>
+    <a href="#press"><span class="n">02</span>Press network</a>
+    <a href="#scrappy"><span class="n">03</span>Scrappy</a>
+    <a href="#why-now"><span class="n">04</span>Why now</a>
+  </nav>
+</aside>
+
+<header class="sys-hero">
+  <div class="wrap">
+    <div class="kicker">Sierra EMEA communications · the case</div>
+    <h1 class="display">
+      <span class="ln"><span>International newsrooms first.</span></span>
+      <span class="ln"><span class="accent">Then the agents.</span></span>
+    </h1>
+    <span class="hero-rule" aria-hidden="true"></span>
+    <div class="sys-sub">
+      <p>You are hiring the person who owns press, social, and public speaking across Europe for a founder-led company moving fast.</p>
+      <p><strong class="wt">I am a journalist who became a communications builder, and <span class="ox">most of the journalism was not for an American audience.</span></strong> Al Jazeera English, AJ+, CGTN America, Univision. Newsrooms where writing to a US default gets you edited out of the story.</p>
+      <p>Then I shipped two production AI agents inside Google. Sierra sells agents. I would rather explain them as someone who has built them.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">250M</div><div class="k">households, launch night, May 2 2011</div></div>
+      <div class="hs"><div class="n">112</div><div class="k">journalists across 30 outlets</div></div>
+      <div class="hs"><div class="n">8</div><div class="k">years national news, 2010-2018</div></div>
+      <div class="hs"><div class="n">2</div><div class="k">production AI agents shipped</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="international">
+  <div class="wrap">
+    <h2 class="fs-title">The international record</h2>
+    <div class="narrative-prose">
+      <p>I was on the founding team of Al Jazeera English's "The Stream," the network's social-first live show. Launch night was May 2, 2011, into 250 million households, and we tore up the rundown that evening for the bin Laden raid. The show went on to pioneer social-data journalism as an on-air format, which in 2011 was not a thing anyone had a name for.</p>
+      <p>I came back to the network years later at AJ+ as a senior producer, leading more than ten producers and building a day-of explainer production line that proved out at 50 million views. It doubled as a talent pipeline. Three of the producers I coached moved from behind the camera to on-air principals, and two of them now carry Emmy and Webby wins of their own.</p>
+      <p>In between: the daily rundown for an hour-long live program at CGTN America's Washington bureau, daily line production on Fusion's primetime flagship with Jorge Ramos through a 179% viewership-growth window, and field production from Hong Kong during the Umbrella Revolution.</p>
+    </div>
+
+    <div class="ed-lane reveal">
+      <div class="el-k">Why this matters for an EMEA req</div>
+      <h3 class="el-h">Non-US audiences are a habit, not an adjustment</h3>
+      <ul class="el-list">
+        <li>Four of the six newsrooms I worked in were built for audiences outside the United States, or for a US audience that was not the default one.</li>
+        <li>Cross-market message discipline is the same muscle: one story, several audiences, none of them allowed to feel like an afterthought.</li>
+        <li>I still practice it. <a href="picture-lock.html">MERIDIEM</a> takes one Spanish master to six further markets in the same brand voice, with compliance-tiered cuts where alcohol law demands them, including product-only for France under Loi Evin.</li>
+        <li>The <a href="stories.html">case files</a> carry the receipts, and the <a href="work.html">reel</a> carries the work itself.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="press">
+  <div class="wrap">
+    <h2 class="fs-title">The press network</h2>
+    <div class="narrative-prose">
+      <p>A live, scored relationship map: 112 named journalists, editors, producers, and correspondents across 30 recognized outlets, derived from 2,824 professional connections.</p>
+    </div>
+    <div class="path">
+      <div class="step reveal"><div class="d">Broadcast desks</div><div class="t">CNN (18), NBC (12), ABC News (10), CBS (7), PBS and Fox. Executive producers and bureau leadership, not just line reporters.</div></div>
+      <div class="step reveal"><div class="d">Print and wire</div><div class="t">New York Times (7), NPR (6), Associated Press (4), Wall Street Journal, Washington Post, Bloomberg, POLITICO, Semafor.</div></div>
+      <div class="step reveal"><div class="d">International</div><div class="t">Al Jazeera (12), plus footholds at the BBC, Reuters, and the Guardian.</div></div>
+      <div class="step reveal"><div class="d">The AI beat</div><div class="t">The strongest single relationship in the network is a New York Times technology columnist and podcast co-host. <a href="press-network.html">See the network</a>: a few rows named on the public record, the rest held until engaged.</div></div>
+    </div>
+
+    <div class="el-note reveal">
+      <span class="en-k">Stated plainly</span>
+      <p>This is a strong global network and a thin European one. I do not have the UK, French, Spanish, and German tech press wired today, and I am not going to tell you otherwise. What I have is a real international base, a decade of knowing what makes an editor take a story, and a demonstrated cold start: in April 2026 I co-organized the producer side of an international coalition for a detained journalist, coordinating narrative across networks alongside CPJ, Amnesty, and the UN Special Rapporteur, under OPSEC discipline. He was acquitted and released after fifty days.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="scrappy">
+  <div class="wrap">
+    <h2 class="fs-title">Nine times it was scrappy</h2>
+    <div class="narrative-prose" style="margin-bottom:26px">
+      <p>Your job description asks for entrepreneurial, scrappy, leaning into risk, solving what gets thrown at you. Most of these were launches. We were figuring it out as we went.</p>
+    </div>
+    <div class="scrap-grid">
+      <div class="scrap reveal"><span class="sn">01</span><h3>The Stream, launch night</h3>
+        <p>Al Jazeera English's social-first show launched May 2, 2011 into 250 million households. The bin Laden raid broke that night. We rebuilt the rundown live, on air, with no format precedent to fall back on.</p></div>
+
+      <div class="scrap reveal"><span class="sn">02</span><h3>The AJ+ explainer line</h3>
+        <p>No day-of explainer format existed, so I built one: a production line that could turn a story inside a single news cycle. It proved out at 50 million views and doubled as a talent pipeline.</p></div>
+
+      <div class="scrap reveal"><span class="sn">03</span><h3>CGTN America, new bureau</h3>
+        <p>A brand-new Washington bureau and an hour-long daily live program with no established rundown. I owned it every day while the bureau was still working out what it was.</p></div>
+
+      <div class="scrap reveal"><span class="sn">04</span><h3>HuffPost Live, launch era</h3>
+        <p>Streaming news before the format settled. Mashable called it the biggest innovation in media in 2012 and a Webby followed in 2013. I produced sustained Scientology-defector coverage under an active attack-the-attacker litigation posture. No retractions.</p></div>
+
+      <div class="scrap reveal"><span class="sn">05</span><h3>Fusion, primetime flagship</h3>
+        <p>Daily line production on "America With Jorge Ramos" for a network still defining its audience. A 179% viewership-growth window, distributed to 40 million households.</p></div>
+
+      <div class="scrap reveal"><span class="sn">06</span><h3>Hong Kong, Umbrella Revolution</h3>
+        <p>Field production live from the street during the occupation, filing into a primetime show from thirteen time zones away. Forward deployed before anyone called it that.</p></div>
+
+      <div class="scrap reveal"><span class="sn">07</span><h3>My own accounts as the newsroom</h3>
+        <p>The show needed communities the network had no line into. I used my personal social accounts to find them, learn their stories, and earn enough trust that people would come on air. The engagement came back to the network, not to me.</p></div>
+
+      <div class="scrap reveal"><span class="sn">08</span><h3>Google's remote-work shift, Q1 2020</h3>
+        <p>An entire global workforce off-site in weeks, no playbook, while I was writing for then-CIO Ben Fried. I directed the communications, content, and logistics-support strategy. An 80% lift in global self-provisioning the quarter after.</p></div>
+
+      <div class="scrap reveal"><span class="sn">09</span><h3>Agents nobody asked for</h3>
+        <p>No AI roadmap, and an org that pushed back. I found the problems myself and built two agents on nights and weekends. Both reached production. The executive one cut review rounds with a VP by about 70%.</p></div>
+    </div>
+    <div class="scrap-kicker reveal">
+      <p><strong>Looking scrappy and being scrappy produce two different outputs.</strong> One is a vibe. The other is a rundown that survives contact with a live hour.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="why-now">
+  <div class="wrap">
+    <h2 class="fs-title">Why Sierra, why now</h2>
+    <div class="narrative-prose">
+      <p>I met a Sierra forward-deployed engineer at the AI Engineer World's Fair in June 2026, after her talk. I had applied for Agent Strategist. She read my background, came back, and told me something more useful than a referral: that I was a better fit for the communications team, because comms did not have the technical angle. She was right, and this posting is that role.</p>
+      <p>The technical angle is the part I would bring that a traditional PR hire does not. Sierra sells AI agents to enterprises. I have built them, deployed them into production inside a large company, and written the runbooks that let other people operate them. When a reporter asks a hard question about what an agent actually does when it fails, I want to be the person who can answer it without a briefing doc.</p>
+      <p>One logistical note, stated once. My Seattle lease ends November 30, 2026. I am available to work on-site in London, Madrid, or Paris from December 2026. The move to Europe was already the plan. This role makes the timing legible.</p>
+    </div>
+    <div class="el-cta reveal">
+      <a class="btn solid" href="assets/resumes/mitchell-williams-comms-manager.pdf"><span>The comms resume</span></a>
+      <a class="btn" href="comms.html"><span>Comms and editorial record</span></a>
+      <a class="btn" href="contact.html"><span>Get in touch</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle, relocating to Europe December 2026 · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.jump-rail a');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id]; if (a) a.classList.add('active');
+      }
+    });
+  // rootMargin percentages here are intentional and correct. Per the
+  // IntersectionObserver spec, top/bottom percentages resolve against the
+  // root's HEIGHT (only left/right resolve against width), so -40%/-55%
+  // leaves a thin band across the vertical middle: exactly the "which section
+  // am I in" behaviour this rail wants. Measured in-browser at 1280x606:
+  // rootBounds.height came back 31px, matching the height-based prediction
+  // (30px), not the width-based one (-610px, which would never intersect).
+  // Same values as for-fluidstack.html and for-nvidia.html; do not "fix" to
+  // pixel margins. (CodeRabbit flagged this as a major on 2026-07-22 claiming
+  // width resolution; rejected on the measurement above.)
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id); if (el) obs.observe(el);
+  });
+})();
+</script>
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260716b"></script>
+</body>
+</html>

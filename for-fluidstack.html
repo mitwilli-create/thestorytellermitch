@@ -9,12 +9,13 @@
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>For Fluidstack · Communications Lead · Mitchell Williams</title>
   <meta name="description" content="A sequenced review path for Fluidstack's Communications Lead screen: the writing first, then the judgment record, the executive ghostwriting, the narrative approach, and the resume.">
+  <meta name="robots" content="noindex">
   <meta property="og:title" content="For Fluidstack · Communications Lead · Mitchell Williams">
   <meta property="og:description" content="The communications case for Fluidstack, in the order a screen actually checks it. The writing first.">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .sys-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .sys-hero .display{font-size:clamp(36px,5.8vw,84px)}
@@ -139,6 +140,9 @@
     .el-cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:640px){
       .sys-hero{padding:130px 0 56px}
+      /* collapse the 4-up proof strip to 2x2 so no number is clipped on the
+         phone-first surface a recruiter screens from; do not go single-column */
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
       .path .step{flex-direction:column;gap:4px}
     }
     @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
@@ -181,17 +185,16 @@
       <span class="ln"><span>The writing first,</span></span>
       <span class="ln"><span class="accent">then the record.</span></span>
     </h1>
-    <span class="hero-rule" aria-hidden="true"></span>
     <div class="sys-sub">
       <p>You're screening for Fluidstack's Communications Lead: someone whose writing can carry the company's story and whose judgment holds when the stakes are real.</p>
       <p><strong class="wt">I'm not a traditional PR person.</strong> I'm a newsroom-trained writer who builds communications systems, which is what a first hire who owns all of it has to be.</p>
       <p>This page sequences the case the way a writing-first screen checks it: samples before biography.</p>
     </div>
     <div class="hero-stats">
-      <div class="hs"><div class="n">112</div><div class="k">journalists mapped</div></div>
-      <div class="hs"><div class="n">30</div><div class="k">outlets</div></div>
+      <div class="hs"><div class="n" data-count>112</div><div class="k">journalists mapped</div></div>
+      <div class="hs"><div class="n" data-count>30</div><div class="k">outlets</div></div>
       <div class="hs"><div class="n">~70%</div><div class="k">fewer review rounds (internal, self-measured)</div></div>
-      <div class="hs"><div class="n">10</div><div class="k">newsroom years, 2007-2018</div></div>
+      <div class="hs"><div class="n" data-count>10</div><div class="k">newsroom years, 2007-2018</div></div>
     </div>
   </div>
 </header>
@@ -280,7 +283,7 @@
         <a href="assets/resumes/mitchell-williams-comms-manager.pdf">comms resume (PDF)</a>
       </div>
     </div>
-    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+    <div class="foot-legal">Not affiliated with or endorsed by Fluidstack. · Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
   </div>
 </footer>
 

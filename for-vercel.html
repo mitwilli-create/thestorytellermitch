@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>Vercel | Product Communications Manager, OSS | Mitchell Williams</title>
+  <meta name="description" content="A Vercel-specific product communications work sample: the AI SDK 7 durable-agent story, mapped from maintainer truth to developer action.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <style>
+    :root{--dossier-pad:clamp(24px,5vw,72px)}
+    body{background:
+      radial-gradient(circle at 82% 8%,rgba(138,58,51,.16),transparent 31rem),
+      var(--bg);color:var(--bone)}
+    .microsite-shell{min-height:100vh;overflow:hidden}
+    .microsite-nav{position:relative;z-index:5;border-bottom:1px solid var(--line)}
+    .microsite-nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:20px}
+    .microsite-nav a{color:var(--bone);text-decoration:none}
+    .microsite-wordmark{font-family:'Archivo',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em}
+    .microsite-back{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-soft)}
+    .microsite-hero{position:relative;padding:clamp(96px,13vw,180px) 0 clamp(72px,9vw,128px);border-bottom:1px solid var(--line)}
+    .microsite-hero::after{content:"";position:absolute;right:-8vw;bottom:-15vw;width:44vw;height:44vw;border:1px solid rgba(236,232,225,.08);border-radius:50%;box-shadow:0 0 0 7vw rgba(236,232,225,.018),0 0 0 14vw rgba(236,232,225,.012);pointer-events:none}
+    .microsite-hero-inner{position:relative;z-index:1;max-width:1040px}
+    .microsite-eyebrow,.microsite-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:var(--blood-text)}
+    .microsite-hero h1{max-width:980px;margin:24px 0 28px;font-family:'Archivo',sans-serif;font-size:clamp(48px,8.5vw,124px);font-weight:800;line-height:.88;letter-spacing:-.055em;text-wrap:balance}
+    .microsite-lede{max-width:720px;margin:0 0 34px;font-size:clamp(17px,2vw,23px);line-height:1.55;color:var(--bone-soft)}
+    .microsite-cta{display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;border:1px solid var(--blood-text);background:var(--blood);color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:transform .2s ease,background .2s ease}
+    .microsite-cta:hover{transform:translateY(-2px);background:#9a453d}
+    .microsite-section{padding:clamp(72px,10vw,132px) 0;border-bottom:1px solid var(--line)}
+    .microsite-section h2{max-width:900px;margin:18px 0 24px;font-family:'Archivo',sans-serif;font-size:clamp(34px,5vw,72px);font-weight:800;line-height:.98;letter-spacing:-.04em;text-wrap:balance}
+    .microsite-section-lede{max-width:720px;margin-bottom:44px;font-size:18px;line-height:1.6;color:var(--bone-soft)}
+    .microsite-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+    .microsite-item{grid-column:span 6;min-height:230px;padding:clamp(24px,3.5vw,42px);border:1px solid var(--line);background:rgba(236,232,225,.025)}
+    .microsite-item:nth-child(3n){grid-column:span 12}
+    .microsite-item h3{margin:0 0 18px;font-family:'Archivo',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:760;line-height:1.05;letter-spacing:-.025em}
+    .microsite-item p{max-width:670px;margin:0;color:var(--bone-soft);font-size:15px;line-height:1.65}
+    .microsite-item-link{margin-top:24px!important}
+    .microsite-item-link a{color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration-color:var(--blood-text);text-underline-offset:5px}
+    .microsite-section>.microsite-cta{margin-top:30px}
+    .microsite-footer{padding:64px 0 34px}
+    .microsite-footer-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+    .microsite-footer-title{font-family:'Archivo',sans-serif;font-size:clamp(44px,7vw,90px);font-weight:800;line-height:.86;letter-spacing:-.05em}
+    .microsite-footer-links{display:grid;gap:9px;text-align:right}
+    .microsite-footer-links a{color:var(--bone-soft);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-decoration:none}
+    .microsite-legal{margin-top:54px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:9px;line-height:1.5;letter-spacing:.05em}
+    @media(max-width:760px){
+      .microsite-nav .wrap{min-height:64px}
+      .microsite-back{max-width:150px;text-align:right}
+      .microsite-hero{padding-top:92px}
+      .microsite-hero h1{font-size:clamp(46px,15vw,76px)}
+      .microsite-item,.microsite-item:nth-child(3n){grid-column:1/-1;min-height:0}
+      .microsite-footer-grid{display:grid;align-items:start}
+      .microsite-footer-links{text-align:left}
+      .microsite-legal{display:grid}
+    }
+    @media(prefers-reduced-motion:reduce){.microsite-cta{transition:none}}
+  </style>
+</head>
+<body>
+<div class="microsite-shell">
+  <nav class="microsite-nav" aria-label="Primary">
+    <div class="wrap">
+      <a class="microsite-wordmark" href="index.html">Mitchell Williams</a>
+      <a class="microsite-back" href="work.html">Selected work</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="microsite-hero">
+      <div class="wrap microsite-hero-inner">
+        <p class="microsite-eyebrow">FOR VERCEL · PRODUCT COMMUNICATIONS, OSS</p>
+        <h1>The launch brief should survive the README.</h1>
+        <p class="microsite-lede">Open-source developers need the exact technical change, the workflow it unlocks, and enough truth to decide whether it belongs in their stack. This is an independent, illustrative launch brief built from Vercel&#39;s documented AI SDK 7 surface, not an official Vercel communication.</p>
+        <!-- PRIMARY_CTA fragment hrefs must match an id on a section rendered by SECTIONS. -->
+        <a class="microsite-cta" href="#launch">Read the launch brief</a>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <!-- Every generated section must define a stable id for navigation and CTA validation. -->
+      <section class="microsite-section" id="launch">
+  <p class="microsite-kicker">01 · THE LAUNCH</p>
+  <h2>AI agents can now survive the pause</h2>
+  <p class="microsite-section-lede">The product story is not that AI SDK added another abstraction. It is that agent work can persist across process restarts, function timeouts, retries, and delayed human approval without a team inventing its own state machine.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>The developer problem</h3>
+  <p>An in-memory agent loses progress when the process dies or the work waits on a person. The failure is operational, not conversational: tool results disappear, retries start from the beginning, and approval becomes custom infrastructure.</p>
+</article>
+<article class="microsite-item">
+  <h3>What shipped</h3>
+  <p>AI SDK 7 adds WorkflowAgent for durable, resumable execution. Each tool call can become a persisted workflow step, failed steps can retry from the last checkpoint, and tools that need approval can suspend until a person responds.</p>
+</article>
+<article class="microsite-item">
+  <h3>Why it matters now</h3>
+  <p>This moves the SDK from impressive demos toward agents that can own consequential work. The value is not more autonomy at any cost. It is explicit state, recovery, observation, and human control.</p>
+  <p class="microsite-item-link"><a href="https://vercel.com/blog/ai-sdk-7">Read Vercel&#39;s AI SDK 7 announcement</a></p>
+</article></div>
+</section>
+<section class="microsite-section" id="message-map">
+  <p class="microsite-kicker">02 · THE MESSAGE MAP</p>
+  <h2>One technical truth, four audiences</h2>
+  <p class="microsite-section-lede">The same release needs a different entry point for the maintainer, application developer, engineering leader, and reporter. The claim stays fixed while the consequence changes.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>Maintainers</h3>
+  <p>Lead with the execution contract: what persists, what retries, what waits for approval, and what can be observed. Those guarantees tell a maintainer whether the abstraction composes with existing tools. Give them the migration path and failure modes.</p>
+</article>
+<article class="microsite-item">
+  <h3>Application developers</h3>
+  <p>Lead with the workflow they can now ship: an agent that pauses for approval and resumes after a timeout or refresh. Put the runnable path before the architecture diagram.</p>
+</article>
+<article class="microsite-item">
+  <h3>Engineering leaders and press</h3>
+  <p>Lead with the category shift: durable agent infrastructure is becoming a platform primitive. Support that frame with the exact product mechanics, not a forecast about replacing work.</p>
+</article></div>
+  <a class="microsite-cta" href="https://vercel.com/kb/guide/ai-gateway-and-ai-sdk">Open the durable-agent guide</a>
+</section>
+<section class="microsite-section" id="operating-model">
+  <p class="microsite-kicker">03 · THE OPERATING MODEL</p>
+  <h2>Product communications that start in the issue, not the launch calendar</h2>
+  <p class="microsite-section-lede">OSS communications earns trust by staying close to how the software is made and how developers discover that it changed.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>Start with maintainer intent</h3>
+  <p>Interview the people who made the tradeoff. Capture what changed, what did not, the likely misuse, and the sentence they would reject before drafting a headline.</p>
+</article>
+<article class="microsite-item">
+  <h3>Ship a proof path</h3>
+  <p>Pair the announcement with a runnable example, versioned docs, upgrade guidance, and a precise limitation. A launch is complete when a skeptical developer can reproduce the claim.</p>
+</article>
+<article class="microsite-item">
+  <h3>Listen where the argument happens</h3>
+  <p>The argument about a release happens in issue threads, on Hacker News, Reddit, and in maintainer feedback. Treat those conversations as editorial inputs. Route misunderstanding back into docs and product, not only into a response deck.</p>
+</article></div>
+</section>
+<section class="microsite-section" id="first-90-days">
+  <p class="microsite-kicker">04 · THE FIRST 90 DAYS</p>
+  <h2>Build one narrative system across the Agent Stack, Core Platform, and OSS portfolio</h2>
+  <p class="microsite-section-lede">The first quarter should make product truth easier to extract and launch. The system only works if it belongs to everyone who touches that truth: engineering and the maintainer community as much as communications and Content Engineering.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>Days 1–30: establish the narrative baseline</h3>
+  <p>Map where current launch claims outrun their proof across the Agent Stack, Core Platform, and OSS portfolio. Trace each gap to its cause, from review bottlenecks to audience confusion, without losing the maintainer&#39;s account of the tradeoff. The output is a living narrative architecture with technical owners and evidence standards.</p>
+</article>
+<article class="microsite-item">
+  <h3>Days 31–60: connect the portfolio</h3>
+  <p>Build the through-line from AI SDK and WorkflowAgent to the infrastructure that makes durable agents deployable: functions, streaming, AI Gateway, and the wider Agent Stack. Keep each product claim independently reproducible.</p>
+</article>
+<article class="microsite-item">
+  <h3>Days 61–90: ship the campaign and feedback loop</h3>
+  <p>Partner with Content Engineering and DX on one multi-channel launch that travels from README and runnable proof to blog, community programming, conference material, and executive context. Route issue and community response back into docs and product.</p>
+</article></div>
+</section>
+<section class="microsite-section" id="live-proof">
+  <p class="microsite-kicker">05 · LIVE PROOF</p>
+  <h2>This page&#39;s argument, executed</h2>
+  <p class="microsite-section-lede">The launch brief has its own inspectable artifact: a source-linked audience signal lab, designed as a zero-dependency public project and running on Vercel.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>One technical truth, four entry points</h3>
+  <p>The interactive artifact changes the entry point for maintainers, application developers, engineering leaders, and reporters while preserving one release claim.</p>
+</article>
+<article class="microsite-item">
+  <h3>A reproducible proof path</h3>
+  <p>The repository includes the page, primary sources, local run instructions, and a one-command Vercel deployment. It clearly labels the work as illustrative and independent.</p>
+</article>
+<article class="microsite-item">
+  <h3>The artifact</h3>
+  <p>Open the source-linked signal lab and inspect the exact work behind this brief. It is a zero-dependency static project with a Vercel configuration and reproducible local run instructions.</p>
+  <p class="microsite-item-link"><a href="https://durable-agent-launch-brief.vercel.app">Open the live Vercel deployment</a></p>
+</article></div>
+</section>
+<section class="microsite-section" id="why-me">
+  <p class="microsite-kicker">06 · WHY ME</p>
+  <h2>I communicate agent infrastructure because I build it</h2>
+  <p class="microsite-section-lede">My work sits on both sides of the brief: newsroom judgment about what an audience will trust and hands-on systems work that makes technical claims inspectable.</p>
+  <div class="microsite-grid"><article class="microsite-item">
+  <h3>Public, test-covered systems</h3>
+  <p>Career-ops is a public multi-agent operating system built to be checked: deterministic gates and focused integration tests make its behavior verifiable, and a live dashboard shows it running. Content-ops turns one canonical brief into governed platform-native launches.</p>
+  <p class="microsite-item-link"><a href="https://github.com/mitwilli-create/career-ops">Inspect career-ops</a></p>
+</article>
+<article class="microsite-item">
+  <h3>Developer audiences without borrowed credibility</h3>
+  <p>At Google&#39;s Office of Cross-Google Engineering, I served 1,000+ Principal, Distinguished, and Fellow engineers, built two production LLM agents, and translated dense engineering work with Google DeepMind researchers and other subject-matter experts.</p>
+</article>
+<article class="microsite-item">
+  <h3>A newsroom standard for the claim</h3>
+  <p>Before Google, I spent eight years producing live news. That training still governs the work: find the consequential change, source every number, expose the uncertainty, and give the audience a reason to act.</p>
+  <p class="microsite-item-link"><a href="resume/comms-manager.html">Read the product communications resume</a></p>
+</article></div>
+  <a class="microsite-cta" href="mailto:mitwilli@gmail.com?subject=Vercel%20OSS%20product%20communications">Talk through the launch</a>
+</section>
+    </div>
+  </main>
+
+  <footer class="microsite-footer">
+    <div class="wrap">
+      <div class="microsite-footer-grid">
+        <div class="microsite-footer-title">Let's<br>build.</div>
+        <div class="microsite-footer-links">
+          <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+          <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+          <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        </div>
+      </div>
+      <div class="microsite-legal">
+        <span>Not affiliated with or endorsed by Vercel.</span>
+        <span>Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="shared/reveal.js?v=20260715a"></script>
+</body>
+</html>

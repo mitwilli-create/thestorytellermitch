@@ -74,7 +74,7 @@ const TERM_LINKS = [
   ['picture-lock', '../picture-lock.html'],
   ['MERIDIEM', '../for-elevenlabs.html'],
   ['Article to Audience', '../for-elevenlabs.html#specwork'],
-  ['content-ops', '../content-ops.html'],
+  ['throughline', '../throughline.html'],
   ['voice-os', '../voice-os.html'],
   ['career-ops', '../career-ops.html'],
   ['monolith', '../monolith.html'],
@@ -127,20 +127,50 @@ function deepLink(html) {
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// inline markdown: **bold**, [text](../site-relative.html or #anchor) phrase links;
-// bare portfolio/profile URLs still auto-link. Site-relative-only md links keep
-// LINK_RE from re-matching inside generated hrefs.
+// inline markdown: **bold**, [text](url) phrase links; bare portfolio/profile
+// URLs still auto-link.
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
+// Markdown link destinations we accept: site-relative (../x.html), in-page
+// anchor (#x), or an ABSOLUTE http(s) URL.
+//
+// Absolute URLs used to be excluded here, with the rationale that
+// "site-relative-only md links keep LINK_RE from re-matching inside generated
+// hrefs". The hazard was real but the cure silently broke every external link:
+// an unmatched `[Title](https://…)` fell through to LINK_RE, which auto-linked
+// only the bare `thestorytellermitch.com` substring INSIDE it and left the
+// brackets, parens and full URL as visible body text. Measured 2026-07-27 on
+// apply-pack/3337-deepgram-head-of-editorial-content: every entry under
+// "Selected Writing & Essays" and "Projects" printed its raw markdown source
+// into the PDF.
+//
+// The re-matching hazard is now handled properly. Each finished anchor is
+// parked behind a NUL-delimited placeholder that LINK_RE cannot match, then
+// restored afterwards, so the destination pattern no longer has to be
+// crippled to protect the autolinker.
+const MD_LINK_RE = /\[([^\]]+)\]\((\.\.\/[\w./#-]+|#[\w-]+|https?:\/\/[^\s)"']+)\)/g;
 // `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
 // numbers read as logged evidence, not prose claims.
-const inline = (s) => esc(s)
-  .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
-  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-  .replace(/\[([^\]]+)\]\(((?:\.\.\/|#)[\w./#-]+)\)/g, '<a href="$2">$1</a>')
-  .replace(LINK_RE, '<a href="https://$1">$1</a>');
+const inline = (s) => {
+  const parked = [];
+  const withPlaceholders = esc(s)
+    .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(MD_LINK_RE, (_m, text, url) => {
+      // esc() already turned & into &amp;, which is what an href wants. Quotes
+      // are excluded by the destination pattern, so the attribute cannot be
+      // broken out of.
+      parked.push(`<a href="${url}">${text}</a>`);
+      return `\u0000L${parked.length - 1}\u0000`;
+    })
+    .replace(LINK_RE, '<a href="https://$1">$1</a>');
+  return withPlaceholders.replace(/\u0000L(\d+)\u0000/g, (_m, i) => parked[Number(i)]);
+};
 
 export function parse(md, file) {
-  const lines = md.split('\n');
+  const lines = md
+    .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    .split('\n')
+    .filter((rawLine) => !/^-{3,}$/.test(rawLine.trim()));
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];
@@ -212,9 +242,22 @@ export function page({ name, pillars, contact, sections }, lane) {
   ).join('\n');
   const secHtmlLinked = lane.noSiteLinks ? secHtml : deepLink(secHtml);
 
-  const pt = lane.pt ?? PRINT_PT[lane.slug] ?? 9.2;
-  const sm = (pt * 0.85).toFixed(2);
-  const rh = (pt + 1.8).toFixed(1);
+  // APPROVED TYPOGRAPHY LOCK (blind-tested and ruled by Mitchell 2026-07-25;
+  // do not reopen without new evidence): Archivo Black carries the NAME ONLY;
+  // Martian Grotesk carries every other reading and hierarchy function.
+  //   name 34pt Archivo Black · positioning deck 13.25pt (>= section labels)
+  //   section labels 12.75pt · role title 11.75pt · employer/date bold 10.9pt
+  //   contact/links 10pt · body 10.35pt standard. Evidence-rich mode steps the
+  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor - never
+  //   isolated sections, never hidden scaling, hierarchy intact.
+  // Sizes below are the exact lock ratios off the body size.
+  const pt = Math.max(9.75, Math.min(10.35, lane.pt ?? PRINT_PT[lane.slug] ?? 10.35));
+  const deck = (pt * (13.25 / 10.35)).toFixed(2); // positioning deck: outranks section labels
+  const sec = (pt * (12.75 / 10.35)).toFixed(2);  // section labels
+  const rh = (pt * (11.75 / 10.35)).toFixed(2);   // role titles
+  const meta = (pt * (10.9 / 10.35)).toFixed(2);  // employer + date: bold, near-black, between role and body
+  const cap = (pt * (10 / 10.35)).toFixed(2);     // contact + links
+  const namePt = 34;                               // Archivo Black, fixed starting size
   return `<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -228,7 +271,24 @@ export function page({ name, pillars, contact, sections }, lane) {
   <meta name="description" content="Mitchell Williams resume for ${esc(lane.title)} roles. Rendered from the same source as the downloadable PDF.">
   <meta name="robots" content="noindex">
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-bold.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
+    @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+    /* Print-only static instance of Archivo at the one weight print uses (900,
+       the name). theme.css serves Archivo as a VARIABLE font, and Chromium's
+       PDF backend cannot embed a variable instance as TrueType: it falls back
+       to Type 3 glyph procedures, which most viewers draw as generic paths
+       with no hinting, so the name renders visibly soft next to the Martian
+       body copy. Measured 2026-07-27 via pdffonts on an apply-pack CV:
+       ArchivoRoman-Black came out Type 3, the Martian faces CID TrueType.
+       A static instance embeds properly and is also 61% smaller (13KB vs 35KB)
+       because it carries one weight instead of the whole 400-900 axis.
+       Deliberately a separate family name: the WEB view keeps the variable
+       font, and only the print block below opts into this. */
+    @font-face{font-family:'Archivo Print';font-weight:900;font-display:block;src:url('../assets/fonts/archivo-900-latin.woff2') format('woff2')}
+  </style>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
   <style>
@@ -252,6 +312,8 @@ export function page({ name, pillars, contact, sections }, lane) {
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -267,11 +329,20 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
-    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
-       overriding the dealbreaker's band/underline/mono-line compromises):
-       Archivo carries every heading (name, section heads, role heads), Inter
-       carries every text run (pillars, contact, subtitles, body). No band, no
-       mono, no underlines; links signal by brand red alone. ---- */
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
+    /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
+       Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
+       Black carries the NAME only; Martian Grotesk carries every other reading
+       and hierarchy function (deck, section labels, role titles, org/date,
+       contact, body, metrics). Nothing above the name; deck outranks section
+       labels; hierarchy steps down only as one unit toward the 9.75pt floor.
+       No band, no mono, no underlines; links signal by brand red alone. ---- */
     .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
     .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
     /* page size only; per-page top/bottom margins are passed to Playwright's
@@ -282,10 +353,10 @@ export function page({ name, pillars, contact, sections }, lane) {
         --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
         --blood:#8a3a33;--blood-soft:#8a3a33}
       html,body{background:#fff !important;color:#2e2a26}
-      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
-      .kicker{font-weight:600}
-      .rpillars{font-weight:600;letter-spacing:0.06em}
-      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Martian Grotesk',sans-serif}
+      .kicker{display:none !important} /* nothing appears above the name: the
+        first visible print element is MITCHELL WILLIAMS (typography lock 2026-07-25) */
+      .rsec-h{border-bottom-color:var(--line-2)}
       .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
       /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
          every printed page: 3.4MB PDFs with no extractable text. Kill it and any
@@ -299,27 +370,28 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      .rname{font-size:20pt;word-spacing:0.14em}
+      .rname{font-family:'Archivo Print','Archivo',sans-serif;font-weight:900;font-size:${namePt}pt;word-spacing:0.14em;letter-spacing:-0.02em}
       .rrole-h{word-spacing:0.08em}
-      .rpillars{font-size:${sm}pt;margin-top:6pt;line-height:1.5}
-      .rcontact{font-size:${sm}pt;margin-top:5pt;line-height:1.5}
+      .rpillars{font-size:${deck}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
+      .rcontact{font-size:${cap}pt;font-weight:400;margin-top:5pt;line-height:1.4}
       section.rsec{margin-top:6pt;padding:0}
-      .rsec-h{font-size:${sm}pt;padding-bottom:2pt;margin-bottom:4pt}
-      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt}
+      .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:${sec}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
+      .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
          first and list bodies later with detached marker glyphs: garbage
          order for ATS extraction. Print flattens to normal flow with an
          inline hanging-indent marker so text extracts linearly. */
-      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li{font-size:${pt}pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static;font-family:'Martian Grotesk',sans-serif}
       .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
       .rrole{margin:5pt 0 2pt}
-      .rrole-h{font-size:${rh}pt;break-after:avoid}
-      .rrole-s{font-size:${sm}pt;margin:1.5pt 0 4pt}
-      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:${rh}pt;font-weight:800;break-after:avoid}
+      .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:${meta}pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
+      .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
-      .rinit-h{font-size:${pt}pt;margin-bottom:2pt}
+      .rinit-h{font-size:${pt}pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }

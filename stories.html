@@ -14,7 +14,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     .st-hero{padding:170px 0 56px;border-bottom:1px solid var(--line)}
     .st-hero .display{font-size:clamp(42px,7.4vw,110px)}
@@ -28,6 +28,7 @@
        (titles are written to fit; the bake keeps rail label == story h2) */
     .st-wrap{max-width:none}
     .st-layout{display:grid;grid-template-columns:310px minmax(0,720px);gap:56px;align-items:start;justify-content:start}
+    .st-col{min-width:0} /* grid item must be allowed to shrink below content min-width, else case titles overflow (clip) at 320 */
     .fs-return{margin:-20px 0 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
     .fs-return a{color:var(--mute);transition:color var(--dur-micro) var(--ease-micro)}
     .fs-return a:hover{color:var(--blood-soft)}

@@ -12,7 +12,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="shared/theme.css?v=20260716a">
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
   <style>
     :root{--nav-height:62px}
     .archive-hero{padding:170px 0 56px}
@@ -30,7 +30,9 @@
       border-bottom:1px solid var(--line)}
     .filter-bar{flex-direction:row;flex-wrap:nowrap;align-items:center;gap:20px;
       margin-bottom:0;padding:4px 0;overflow-x:auto;scrollbar-width:none;
-      min-height:52px}
+      min-height:52px;
+      -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent);
+      mask-image:linear-gradient(to right,#000 calc(100% - 26px),transparent)}
     .filter-bar::-webkit-scrollbar{display:none}
     .chip-group,.chip-jump{flex:0 0 auto;flex-wrap:nowrap}
     .chip-group .cg-label,.chip-jump .cg-label{min-width:0}
