@@ -94,6 +94,15 @@
       "lufs_in": -18.7,
       "lufs_out": -16.8,
       "peak_out_dbfs": -1.7
+    },
+    "Throughline": {
+      "hash": "b09da0e7dd7cc0e6",
+      "normalization_hash": "309c332db92d0a63",
+      "chars": 870,
+      "duration_s": 64.69,
+      "lufs_in": -19,
+      "lufs_out": -16.8,
+      "peak_out_dbfs": -1.9
     }
   },
   "chars_this_run": 1011
