@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>Second Source · an editorial evidence desk</title>
+  <meta name="description" content="An editorial evidence desk that turns a recorded conversation into a source-linked brief: publishable quotes, checkable claims, reporting gaps, and story angles, each one anchored to the second of tape it came from.">
+  <meta property="og:title" content="Second Source: an editorial evidence desk">
+  <meta property="og:description" content="Go from recorded conversation to a defensible editorial brief. Built on Deepgram, with every conclusion linked back to its evidence.">
+  <meta property="og:type" content="article">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Second Source",
+    "headline": "An editorial evidence desk: from recorded conversation to a defensible brief",
+    "about": "A managed workflow that records or ingests audio and video, transcribes it through Deepgram, and separates publishable quotes from checkable claims and reporting gaps, keeping every editorial recommendation linked to the source recording.",
+    "author": {
+      "@type": "Person",
+      "name": "Mitchell Williams",
+      "url": "https://thestorytellermitch.com",
+      "sameAs": [
+        "https://linkedin.com/in/mitwilli",
+        "https://github.com/mitwilli-create"
+      ]
+    },
+    "url": "https://thestorytellermitch.com/second-source",
+    "keywords": "editorial workflow, evidence, Deepgram, transcription, fact-checking, journalism tooling, quote verification"
+  }
+  </script>
+  <link rel="stylesheet" href="shared/case-study.css?v=20260716a">
+  <style>
+    /* cross-document view transitions: hub to case study. Firefox lacks
+       cross-document VT and falls back to a hard cut by design. */
+    @view-transition{navigation:auto}
+    .nav{view-transition-name:site-nav}
+    .cs-illo{view-transition-name:proj-illo}
+    ::view-transition-old(root){animation:vt-out 280ms var(--ease-exit) both}
+    ::view-transition-new(root){animation:vt-in 550ms var(--ease-reveal) 90ms both}
+    @keyframes vt-out{to{opacity:0}}
+    @keyframes vt-in{from{opacity:0;transform:translateY(14px)}}
+    ::view-transition-group(proj-illo){animation-duration:560ms;animation-timing-function:var(--ease-reveal)}
+    ::view-transition-group(site-nav){animation-duration:0ms}
+      /* B2: room for the footer card overlap (2026-07-12) */
+    @media(min-width:861px){section:last-of-type{padding-bottom:150px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a>
+    <a href="projects.html">AI Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="resume.html">Resume</a>
+    <a href="comms.html">Comms &amp; Editorial</a>
+    <a href="work.html">Reel</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="stories.html">Case Files</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<header class="cs-hero">
+  <div class="wrap">
+    <div class="kicker">AI Project · an editorial evidence desk</div>
+    <h1 class="cs-title">From recorded conversation to a defensible brief.<span class="mono">Second Source</span></h1>
+    <p class="cs-standfirst">Transcription products tell you what was said. Second Source is built around what happens next: deciding which lines are strong enough to publish, which statements need outside verification, and what reporting is still missing. Every conclusion stays linked to the second of tape it came from.</p>
+  </div>
+</header>
+
+<section class="cs-body">
+  <div class="wrap">
+    <p class="cs-body">The decision layer between a transcript and a draft is usually manual and hard to audit. An editor reads the transcript, marks the lines worth quoting, then scrubs back through the audio to confirm each one. Along the way they have to separate a checkable fact from an opinion, a prediction, or a person describing their own life, because those four things carry completely different editorial obligations.</p>
+    <p class="cs-body">Second Source makes that layer explicit. It records or accepts audio and video, transcribes it through Deepgram with speaker diarization, and returns a source-linked brief: pull-quote candidates, claims sorted by type, the reporting still owed, story angles tested against the transcript, and article, blog, briefing or video-script structures to carry the evidence forward.</p>
+
+    <h2>The Evidence Spine</h2>
+    <p class="cs-body">The product's signature relationship is a chain that nothing is allowed to skip. A quote resolves to an exact media moment, which carries its surrounding context, which links to a related claim, which generates a verification task, which supports a story angle, which feeds a downstream structure.</p>
+    <p class="cs-body">Generated conclusions are not allowed to float free of their evidence. Where the chain breaks, the product shows the gap rather than dressing unsupported synthesis up as finished reporting.</p>
+
+    <h2>What it does</h2>
+    <p class="cs-body"><strong>Records and ingests.</strong> Microphone, camera, screen, or existing files, with permission preflight and explicit consent. Recording stops and the media uploads privately and enters analysis on its own.</p>
+    <p class="cs-body"><strong>Transcribes and navigates.</strong> Live Deepgram transcription behind a server-side secret, speaker diarization and naming, timestamped utterances, and both readable and verbatim modes. Cleanup is inspectable and the original spoken words are preserved. Selecting a piece of evidence cues playback to a 2.5-second pre-roll, so you hear the run-up rather than landing mid-word.</p>
+    <p class="cs-body"><strong>Finds editorial evidence.</strong> A pull quote has to express a complete thought, and it can never merge two speakers. Weak candidates are rejected rather than promoted to fill a slot. Claims are separated into factual, numeric, causal, attribution, testimony, opinion, prediction, rhetorical and conversational types, so an opinion is not handed to a fact-checker as though it were a statistic.</p>
+    <p class="cs-body"><strong>Calibrates to an audience.</strong> Transcript support, audience fit, timeliness, contrary evidence and reporting needs are shown separately. X, Reddit and supplied-link adapters are configurable and independent, and social posts are treated as audience context only, never as factual proof. Sampling limits, duplication, suspected coordination and demographic skew are surfaced rather than hidden.</p>
+
+    <h2>The integrity gate</h2>
+    <p class="cs-body">A generated quote must match a contiguous span of the recorded transcript exactly. A server-side gate rejects wording that does not, which is the difference between a tool that suggests quotes and a tool you can print from. In live testing that gate caught generated wording that had drifted from the tape.</p>
+
+    <h2>Where it stands</h2>
+    <p class="cs-body">This is a working release candidate, not a finished public release. The managed pipeline has been tested end to end through a real browser workflow: private upload, live Deepgram transcription, persisted evidence, signed playback, and correct pre-roll cueing. The automated suite holds 96 passing tests, and responsive checks cover mobile through desktop without horizontal overflow.</p>
+    <p class="cs-body">A maker council reviewing product marketing, content strategy, visual design and creator-app design currently rates it <strong>not ready</strong>, mainly because the first-use experience does not yet demonstrate the value proposition and the Evidence Spine strongly enough, and the interface still risks reading as an opinionated transcript viewer. Those findings are being treated as implementation requirements rather than deferred feedback. A journalist, producer and communications council follows once the maker issues are closed. It ships when each persona independently reaches the signal <em>would recommend to five colleagues</em>, and not before.</p>
+
+    <h2>What it does not claim</h2>
+    <p class="cs-body">Recording, transcription, transcript editing, summaries and clips are established categories, and Second Source did not invent any of them. It does not automatically fact-check every claim. The narrower advantage is a publication-risk-aware workflow: see what may matter, hear the exact source, decide whether a quote can responsibly carry weight, separate checkable facts from testimony and opinion, turn missing context into reporting work, and carry the evidence into a structure.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>build.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="shared/reveal.js?v=20260715a"></script>
+<script src="shared/audio.js?v=20260716b"></script>
+<script src="shared/narration.js?v=20260716a"></script>
+<script src="shared/agent.js?v=20260716a" defer></script>
+</body>
+</html>
