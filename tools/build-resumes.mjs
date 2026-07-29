@@ -74,7 +74,7 @@ const TERM_LINKS = [
   ['picture-lock', '../picture-lock.html'],
   ['MERIDIEM', '../for-elevenlabs.html'],
   ['Article to Audience', '../for-elevenlabs.html#specwork'],
-  ['content-ops', '../content-ops.html'],
+  ['throughline', '../throughline.html'],
   ['voice-os', '../voice-os.html'],
   ['career-ops', '../career-ops.html'],
   ['monolith', '../monolith.html'],
@@ -127,28 +127,50 @@ function deepLink(html) {
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// inline markdown: **bold**, [text](../site-relative.html or #anchor) phrase links;
-// bare portfolio/profile URLs still auto-link. Site-relative-only md links keep
-// LINK_RE from re-matching inside generated hrefs.
+// inline markdown: **bold**, [text](url) phrase links; bare portfolio/profile
+// URLs still auto-link.
 const LINK_RE = /\b((?:thestorytellermitch|github|linkedin)\.com(?:\/[\w.%/-]*[\w%/-])?)/g;
+// Markdown link destinations we accept: site-relative (../x.html), in-page
+// anchor (#x), or an ABSOLUTE http(s) URL.
+//
+// Absolute URLs used to be excluded here, with the rationale that
+// "site-relative-only md links keep LINK_RE from re-matching inside generated
+// hrefs". The hazard was real but the cure silently broke every external link:
+// an unmatched `[Title](https://…)` fell through to LINK_RE, which auto-linked
+// only the bare `thestorytellermitch.com` substring INSIDE it and left the
+// brackets, parens and full URL as visible body text. Measured 2026-07-27 on
+// apply-pack/3337-deepgram-head-of-editorial-content: every entry under
+// "Selected Writing & Essays" and "Projects" printed its raw markdown source
+// into the PDF.
+//
+// The re-matching hazard is now handled properly. Each finished anchor is
+// parked behind a NUL-delimited placeholder that LINK_RE cannot match, then
+// restored afterwards, so the destination pattern no longer has to be
+// crippled to protect the autolinker.
+const MD_LINK_RE = /\[([^\]]+)\]\((\.\.\/[\w./#-]+|#[\w-]+|https?:\/\/[^\s)"']+)\)/g;
 // `metric` spans set receipts in JetBrains Mono (council upgrade 2026-07-13):
 // numbers read as logged evidence, not prose claims.
 const inline = (s) => {
-  const links = [];
-  const protectedText = esc(s)
+  const parked = [];
+  const withPlaceholders = esc(s)
     .replace(/`([^`]+)`/g, '<span class="rnum">$1</span>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|\.\.\/|#)[^\s)]+)\)/g, (_m, label, href) => {
-      const token = `\u0000${links.length}\u0000`;
-      links.push(`<a href="${href}">${label}</a>`);
-      return token;
+    .replace(MD_LINK_RE, (_m, text, url) => {
+      // esc() already turned & into &amp;, which is what an href wants. Quotes
+      // are excluded by the destination pattern, so the attribute cannot be
+      // broken out of.
+      parked.push(`<a href="${url}">${text}</a>`);
+      return `\u0000L${parked.length - 1}\u0000`;
     })
     .replace(LINK_RE, '<a href="https://$1">$1</a>');
-  return protectedText.replace(/\u0000(\d+)\u0000/g, (_m, index) => links[Number(index)]);
+  return withPlaceholders.replace(/\u0000L(\d+)\u0000/g, (_m, i) => parked[Number(i)]);
 };
 
 export function parse(md, file) {
-  const lines = md.split('\n');
+  const lines = md
+    .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+    .split('\n')
+    .filter((rawLine) => !/^-{3,}$/.test(rawLine.trim()));
   let i = 0;
   const next = () => lines[i++];
   const peek = () => lines[i];
@@ -172,9 +194,6 @@ export function parse(md, file) {
     if (line === undefined) break;
     const t = line.trimEnd();
     if (t === '') continue;
-    // Horizontal rules are Markdown layout markers, not resume prose. Never
-    // let them fall through to the paragraph renderer as literal `---` text.
-    if (/^-{3,}$/.test(t.trim())) continue;
     if (/^## /.test(t)) { pushSection(t.slice(3).trim()); continue; }
     if (!cur) {
       // pre-section content (e.g. **Selected work:** block) -> intro pseudo-section
@@ -212,10 +231,7 @@ function renderBlocks(blocks) {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
     if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
     if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
-    if (b.type === 'role') {
-      const subClass = /^Earlier Career:/i.test(b.head) ? 'rrole-note' : 'rrole-s';
-      return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="${subClass}">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
-    }
+    if (b.type === 'role') return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="rrole-s">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
     throw new Error(`unknown block type ${b.type}`);
   }).join('\n');
 }
@@ -232,7 +248,7 @@ export function page({ name, pillars, contact, sections }, lane) {
   //   name 34pt Archivo Black · positioning deck 13.25pt (>= section labels)
   //   section labels 12.75pt · role title 11.75pt · employer/date bold 10.9pt
   //   contact/links 10pt · body 10.35pt standard. Evidence-rich mode steps the
-  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor — never
+  //   ENTIRE hierarchy down proportionally toward a 9.75pt body floor - never
   //   isolated sections, never hidden scaling, hierarchy intact.
   // Sizes below are the exact lock ratios off the body size.
   const pt = Math.max(9.75, Math.min(10.35, lane.pt ?? PRINT_PT[lane.slug] ?? 10.35));
@@ -260,6 +276,18 @@ export function page({ name, pillars, contact, sections }, lane) {
   <style>
     @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
     @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+    /* Print-only static instance of Archivo at the one weight print uses (900,
+       the name). theme.css serves Archivo as a VARIABLE font, and Chromium's
+       PDF backend cannot embed a variable instance as TrueType: it falls back
+       to Type 3 glyph procedures, which most viewers draw as generic paths
+       with no hinting, so the name renders visibly soft next to the Martian
+       body copy. Measured 2026-07-27 via pdffonts on an apply-pack CV:
+       ArchivoRoman-Black came out Type 3, the Martian faces CID TrueType.
+       A static instance embeds properly and is also 61% smaller (13KB vs 35KB)
+       because it carries one weight instead of the whole 400-900 axis.
+       Deliberately a separate family name: the WEB view keeps the variable
+       font, and only the print block below opts into this. */
+    @font-face{font-family:'Archivo Print';font-weight:900;font-display:block;src:url('../assets/fonts/archivo-900-latin.woff2') format('woff2')}
   </style>
   <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
@@ -284,6 +312,8 @@ export function page({ name, pillars, contact, sections }, lane) {
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -299,6 +329,13 @@ export function page({ name, pillars, contact, sections }, lane) {
     /* compact buttons so the full row (four on the comms lane) holds one
        line inside the 820px column at desktop (owner 2026-07-15) */
     .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
     /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
        Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
        Black carries the NAME only; Martian Grotesk carries every other reading
@@ -333,13 +370,14 @@ export function page({ name, pillars, contact, sections }, lane) {
       /* negative tracking shrinks the space glyph's advance below PDF text
          extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
          word gaps back so ATS parsing keeps the spaces. */
-      .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:${namePt}pt;word-spacing:0.14em;letter-spacing:-0.02em}
+      .rname{font-family:'Archivo Print','Archivo',sans-serif;font-weight:900;font-size:${namePt}pt;word-spacing:0.14em;letter-spacing:-0.02em}
       .rrole-h{word-spacing:0.08em}
       .rpillars{font-size:${deck}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
       .rcontact{font-size:${cap}pt;font-weight:400;margin-top:5pt;line-height:1.4}
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:${sec}pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:${pt}pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings

@@ -25,7 +25,7 @@ The published 53-second cut, as its manifest ledger prints it:
 | Carried by the artifacts in the cut | $8.26 | sum of the four lines above; summing the committed manifest reproduces it |
 | At-build ledger, with the discarded re-rolls, score and foley experiments, and the Spanish dub renders | ~$14 | logged at build time; not carried by the committed manifest |
 
-Two details worth knowing before you budget: the demo's 75-second music bed logged $0.14 against a $0.19 rate-sheet estimate (the manifest logs what the call actually recorded; when the two disagree, the manifest wins), and the logged Spanish dub came to $0.44 for the 53-second cut, inside the published range. Creative direction is an Anthropic API cost, not an ElevenLabs one; it is in the ledger because the manifest logs every call, whoever bills it.
+Two details worth knowing before you budget: the demo's 75-second music bed logged $0.14 against a $0.19 rate-sheet estimate (the manifest logs what the call actually recorded; when the two disagree, the manifest wins), and the logged Spanish dub came to $0.42 for the 53-second cut, inside the published range and against a ~$0.44 estimate. The dub is not part of the $8.26 above: it rendered on its own earlier run and the final cut reused the artifact, so it carries a separate receipt. Creative direction is an Anthropic API cost, not an ElevenLabs one; it is in the ledger because the manifest logs every call, whoever bills it.
 
 ## The math that matters for a customer
 

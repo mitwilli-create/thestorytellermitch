@@ -53,3 +53,35 @@ test('portfolio gate fails closed', () => {
     /writing craft failed/,
   );
 });
+
+test('portfolio gate handles spawn failure with null output', () => {
+  assert.throws(
+    () => gatePortfolioWriting({
+      text: 'The draft.',
+      artifactId: 'about-html',
+      projectRoot: '/tmp/site',
+      run: () => ({
+        status: null,
+        stdout: null,
+        stderr: 'command unavailable',
+      }),
+    }),
+    /writing craft failed/,
+  );
+});
+
+test('portfolio gate rejects an unknown success state', () => {
+  assert.throws(
+    () => gatePortfolioWriting({
+      text: 'The draft.',
+      artifactId: 'about-html',
+      projectRoot: '/tmp/site',
+      run: () => ({
+        status: 0,
+        stdout: JSON.stringify({ decision: 'partial', revisedText: 'The draft.' }),
+        stderr: '',
+      }),
+    }),
+    /writing craft blocked/,
+  );
+});
