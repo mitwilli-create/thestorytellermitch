@@ -3,7 +3,7 @@
     "built": "2026-07-15",
     "source": "super-report-hm-questions-20260713.md x coverage-matrix-20260713.md",
     "purpose": "Golden set for Phase B retrieval eval. Each entry's expected_sources are file paths relative to the site repo root. A retrieval hit means at least one expected_source appears in the top-k chunks returned for that question.",
-    "excluded_note": "7 questions from the original 350 have NO public-safe source once the private career-ops corpus (roles/, interview-prep/stories/, etc.) is correctly excluded from the retrieval index — that corpus was authoring reference only, never meant to be ingested. These are listed in excluded_no_source below with excluded:true and are NOT counted in the retrieval eval denominator. 2 further questions (company-specific 'which of your people' and 'integrate vs from scratch') are fallback-behavior cases for the Phase C system prompt, not content gaps — listed in fallback_behavior_only.",
+    "excluded_note": "7 questions from the original 350 have NO public-safe source once the private career-ops corpus (roles/, interview-prep/stories/, etc.) is correctly excluded from the retrieval index \u2014 that corpus was authoring reference only, never meant to be ingested. These are listed in excluded_no_source below with excluded:true and are NOT counted in the retrieval eval denominator. 2 further questions (company-specific 'which of your people' and 'integrate vs from scratch') are fallback-behavior cases for the Phase C system prompt, not content gaps \u2014 listed in fallback_behavior_only.",
     "total_super_report_questions": 112,
     "golden_set_count": 103,
     "excluded_count": 7,
@@ -95,7 +95,7 @@
     },
     {
       "id": "c9",
-      "question": "Remote / hybrid / relocation — what's your setup?",
+      "question": "Remote / hybrid / relocation \u2014 what's your setup?",
       "type": "deflect",
       "redundancy": 6,
       "expected_sources": [
@@ -233,7 +233,7 @@
       "redundancy": 3,
       "expected_sources": [
         "writing.html",
-        "content-ops.html",
+        "voice-os.html",
         "kb/honest-nos.md"
       ]
     },
@@ -249,7 +249,7 @@
     },
     {
       "id": "c24",
-      "question": "Newsroom to Google to forward deployed creative — is this restlessness / chasing waves?",
+      "question": "Newsroom to Google to forward deployed creative \u2014 is this restlessness / chasing waves?",
       "type": "skeptical",
       "redundancy": 3,
       "expected_sources": [
@@ -280,7 +280,7 @@
     },
     {
       "id": "c27",
-      "question": "Have you owned things at scale — staff-level, enterprise point?",
+      "question": "Have you owned things at scale \u2014 staff-level, enterprise point?",
       "type": "skeptical",
       "redundancy": 3,
       "expected_sources": [
@@ -313,7 +313,7 @@
     },
     {
       "id": "c30",
-      "question": "Tell me about a failure — an AI project or program that went badly.",
+      "question": "Tell me about a failure \u2014 an AI project or program that went badly.",
       "type": "skeptical",
       "redundancy": 3,
       "expected_sources": [
@@ -361,11 +361,11 @@
     },
     {
       "id": "c35",
-      "question": "What's your editorial bar — how do you define good vs ship it anyway?",
+      "question": "What's your editorial bar \u2014 how do you define good vs ship it anyway?",
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "systems.html"
       ]
     },
@@ -392,7 +392,7 @@
     },
     {
       "id": "c38",
-      "question": "How do you push back — on an exec overclaiming, on sales, on eng feasibility?",
+      "question": "How do you push back \u2014 on an exec overclaiming, on sales, on eng feasibility?",
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
@@ -478,11 +478,11 @@
     },
     {
       "id": "c46",
-      "question": "How do you decide format — blog vs video vs thread vs notebook?",
+      "question": "How do you decide format \u2014 blog vs video vs thread vs notebook?",
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -497,7 +497,7 @@
     },
     {
       "id": "c48",
-      "question": "Google internal comms is a big jump to external/dev-facing — can you ship publicly?",
+      "question": "Google internal comms is a big jump to external/dev-facing \u2014 can you ship publicly?",
       "type": "skeptical",
       "redundancy": 2,
       "expected_sources": [
@@ -531,7 +531,7 @@
     },
     {
       "id": "c51",
-      "question": "Any confidentiality red flags — sharing past-employer material?",
+      "question": "Any confidentiality red flags \u2014 sharing past-employer material?",
       "type": "deflect",
       "redundancy": 2,
       "expected_sources": [
@@ -594,7 +594,7 @@
     },
     {
       "id": "c58",
-      "question": "50 agents, budgets, heartbeats — what does that mean in SLAs, monitoring, runbooks, paging?",
+      "question": "50 agents, budgets, heartbeats \u2014 what does that mean in SLAs, monitoring, runbooks, paging?",
       "type": "role-depth",
       "redundancy": 1,
       "expected_sources": [
@@ -670,7 +670,7 @@
       "redundancy": 1,
       "expected_sources": [
         "for-elevenlabs.html",
-        "content-ops.html",
+        "voice-os.html",
         "systems.html"
       ]
     },
@@ -706,7 +706,7 @@
     },
     {
       "id": "c71",
-      "question": "Show me your best long-form writing — is your voice distinctive?",
+      "question": "Show me your best long-form writing \u2014 is your voice distinctive?",
       "type": "evidence",
       "redundancy": 1,
       "expected_sources": [
@@ -821,7 +821,7 @@
       "question": "Walk me through a launch where he owned blog, video, social, and docs as one package.",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -830,8 +830,7 @@
       "question": "Has he ever built a style guide or editorial system others actually used?",
       "type": "evidence",
       "expected_sources": [
-        "voice-os.html",
-        "content-ops.html"
+        "voice-os.html"
       ]
     },
     {
@@ -881,7 +880,7 @@
       "question": "How does he think about content for researchers vs developers vs enterprises vs the public?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -928,7 +927,7 @@
     },
     {
       "id": "OAI3",
-      "question": "What was the actual distribution strategy behind the 50M views — algorithm, paid, or owned audience?",
+      "question": "What was the actual distribution strategy behind the 50M views \u2014 algorithm, paid, or owned audience?",
       "type": "evidence",
       "expected_sources": [
         "kb/fifty-million-views.md",
@@ -957,7 +956,7 @@
       "question": "How do you stay current when the platform ships weekly?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html"
+        "voice-os.html"
       ]
     },
     {
@@ -973,7 +972,7 @@
       "question": "How did you combine editorial skills with agent building for results?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "career-ops.html"
       ]
     },
@@ -983,7 +982,7 @@
       "type": "evidence",
       "expected_sources": [
         "resumes-src/mitchell-williams-devrel-education.md",
-        "content-ops.html",
+        "voice-os.html",
         "resumes-src/mitchell-williams-content-editorial.md"
       ],
       "_note": "broadened 2026-07-15: devrel-education.md never surfaced even at topK=20 (genuine residual gap, flagged), but content-ops.html and content-editorial.md verified as legitimate partial answers (both rank in top-10 repeatedly)"
