@@ -24,7 +24,11 @@ const CHUNK_OVERLAP_WORDS = 40;
 
 const SITE_PAGE_ALLOWLIST = [
   'about.html', 'impact.html', 'timeline.html', 'work.html', 'stories.html',
-  'comms.html', 'writing.html', 'content-ops.html', 'career-ops.html',
+  // content-ops.html became throughline.html in the Throughline rename. The allowlist kept the old
+  // name, so the new page was never indexed at all, while tools/.kb-corpus.json held 12 stale
+  // content-ops chunks from the last pre-rename build. Golden-set c47 expects voice-os.html and was
+  // losing to that ghost copy.
+  'comms.html', 'writing.html', 'throughline.html', 'career-ops.html',
   'comms-triage-agent.html', 'tax-verification-agent.html', 'monolith.html',
   'voice-os.html', 'picture-lock.html', 'projects.html', 'systems.html',
   'for-anthropic.html', 'for-elevenlabs.html', 'for-fluidstack.html',

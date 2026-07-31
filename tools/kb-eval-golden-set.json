@@ -8,7 +8,8 @@
     "golden_set_count": 103,
     "excluded_count": 7,
     "fallback_only_count": 2,
-    "gap_fixes_note": "Updated 2026-07-15 after the approved 8-item gap-fix interview (council 7-0/7-0): attractor file split into 4 (biggest-gap, internal-vs-external, honest-nos, failure-question); new files production-ownership, format-and-launch-playbook, speeches-and-keynotes accepted; metrics-provenance accepted for AN10/OAI5; honest-nos accepted for FS48 per Mitchell-modified platform-usage answer."
+    "gap_fixes_note": "Updated 2026-07-15 after the approved 8-item gap-fix interview (council 7-0/7-0): attractor file split into 4 (biggest-gap, internal-vs-external, honest-nos, failure-question); new files production-ownership, format-and-launch-playbook, speeches-and-keynotes accepted; metrics-provenance accepted for AN10/OAI5; honest-nos accepted for FS48 per Mitchell-modified platform-usage answer.",
+    "throughline_note": "content-ops.html was RENAMED to throughline.html. The 2026-07-29 golden-set pass repointed its questions at voice-os.html instead, which is a different page (the voice scorer, not the content pipeline), so five content-pipeline questions expected a source that retrieval never returns while throughline.html sat in their top 15. throughline.html is accepted alongside voice-os.html for those five rather than replacing it, since a couple are answerable from either."
   },
   "golden_set": [
     {
@@ -233,7 +234,7 @@
       "redundancy": 3,
       "expected_sources": [
         "writing.html",
-        "content-ops.html",
+        "voice-os.html",
         "kb/honest-nos.md"
       ]
     },
@@ -365,7 +366,8 @@
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
-        "content-ops.html",
+        "throughline.html",
+        "voice-os.html",
         "systems.html"
       ]
     },
@@ -482,7 +484,7 @@
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -492,6 +494,7 @@
       "type": "role-depth",
       "redundancy": 2,
       "expected_sources": [
+        "throughline.html",
         "voice-os.html"
       ]
     },
@@ -670,7 +673,7 @@
       "redundancy": 1,
       "expected_sources": [
         "for-elevenlabs.html",
-        "content-ops.html",
+        "voice-os.html",
         "systems.html"
       ]
     },
@@ -821,7 +824,7 @@
       "question": "Walk me through a launch where he owned blog, video, social, and docs as one package.",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -830,8 +833,8 @@
       "question": "Has he ever built a style guide or editorial system others actually used?",
       "type": "evidence",
       "expected_sources": [
-        "voice-os.html",
-        "content-ops.html"
+        "throughline.html",
+        "voice-os.html"
       ]
     },
     {
@@ -881,7 +884,7 @@
       "question": "How does he think about content for researchers vs developers vs enterprises vs the public?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "voice-os.html",
         "kb/format-and-launch-playbook.md"
       ]
     },
@@ -957,7 +960,8 @@
       "question": "How do you stay current when the platform ships weekly?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html"
+        "throughline.html",
+        "voice-os.html"
       ]
     },
     {
@@ -973,7 +977,8 @@
       "question": "How did you combine editorial skills with agent building for results?",
       "type": "role-depth",
       "expected_sources": [
-        "content-ops.html",
+        "throughline.html",
+        "voice-os.html",
         "career-ops.html"
       ]
     },
@@ -983,7 +988,7 @@
       "type": "evidence",
       "expected_sources": [
         "resumes-src/mitchell-williams-devrel-education.md",
-        "content-ops.html",
+        "voice-os.html",
         "resumes-src/mitchell-williams-content-editorial.md"
       ],
       "_note": "broadened 2026-07-15: devrel-education.md never surfaced even at topK=20 (genuine residual gap, flagged), but content-ops.html and content-editorial.md verified as legitimate partial answers (both rank in top-10 repeatedly)"
