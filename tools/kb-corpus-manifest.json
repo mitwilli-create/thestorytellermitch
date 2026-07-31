@@ -1,7 +1,7 @@
 {
   "_comment": "Fingerprint of the retrieval corpus that the live Vectorize index was last built from. CI fails if the built corpus drifts from this. Regenerate ONLY after a real wipe+re-index+eval: node tools/kb-corpus-guard.mjs --update",
-  "chunkCount": 383,
-  "corpusHash": "68702f5c8ff11bd0086ca0c82c8f80e093ae8dad1ece1b1b064bd36201bd54fc",
+  "chunkCount": 384,
+  "corpusHash": "8dcb3d9b729bbd262635fe1fca4a2c8eeead1de53dcce93645f4486b46d46e05",
   "bySource": {
     "kb/biggest-gap.md": 1,
     "kb/career-arc.md": 1,
@@ -36,14 +36,14 @@
     "stories.html": 41,
     "comms.html": 7,
     "writing.html": 9,
-    "content-ops.html": 12,
+    "throughline.html": 12,
     "career-ops.html": 9,
     "comms-triage-agent.html": 8,
     "tax-verification-agent.html": 8,
     "monolith.html": 9,
     "voice-os.html": 12,
     "picture-lock.html": 25,
-    "projects.html": 7,
+    "projects.html": 8,
     "systems.html": 11,
     "for-anthropic.html": 4,
     "for-elevenlabs.html": 8,
@@ -62,12 +62,12 @@
     "assets/site-data/stories.json": 17,
     "assets/site-data/writing.json": 1
   },
-  "lastVerified": "2026-07-28",
+  "lastVerified": "2026-07-31",
   "lastEval": {
     "topK": 15,
-    "hits": 101,
+    "hits": 102,
     "total": 103,
-    "hitRate": 0.9806,
+    "hitRate": 0.9903,
     "gatePass": true
   }
 }
