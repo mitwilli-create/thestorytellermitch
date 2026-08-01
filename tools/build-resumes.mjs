@@ -76,7 +76,14 @@ const TERM_LINKS = [
   ['Article to Audience', '../for-elevenlabs.html#specwork'],
   ['throughline', '../throughline.html'],
   ['voice-os', '../voice-os.html'],
+  // Spaced spellings. The tailoring pass in career-ops writes project names as prose
+  // ("Career Ops, open-source agentic AI pipeline"), not as the hyphenated repo slug, so the
+  // slug-only entries silently missed them and the two flagship projects rendered as plain text
+  // while every other project deep-linked. Matching is case-insensitive, and `linked` still caps
+  // each destination at one link per document, so these cannot double-link a page.
+  ['Voice OS', '../voice-os.html'],
   ['career-ops', '../career-ops.html'],
+  ['Career Ops', '../career-ops.html'],
   ['monolith', '../monolith.html'],
   ['#FreeAhmed', '../stories.html#freeahmed-coalition'],
   ['Nelson Mandela', '../stories.html#mandela-special'],
