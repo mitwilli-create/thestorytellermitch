@@ -22,3 +22,9 @@ tools/.kb-eval-report.json
 
 # raw TTS takes: the paid artifact, cached so a loudness retune is free
 assets/audio/narration/.cache/
+
+# CV render temp files
+resume/_cvtmp-*.html
+.toil-test-probe.txt
+screenshot_*.png
+.worktrees/
