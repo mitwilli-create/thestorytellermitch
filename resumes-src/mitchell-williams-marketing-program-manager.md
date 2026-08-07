@@ -69,7 +69,7 @@ Code public at github.com/mitwilli-create.
 
 **[career-ops](../career-ops.html)** · Extended an open-source pipeline into a cost-governed multi-agent system: multi-LLM council with adjudication, 52 scheduled agents, MCP servers, live operations dashboard. CI-green; public on GitHub.
 
-**content-ops** · A multi-agent content engine: one idea becomes platform-native pieces through nine dated platform playbooks and four audience profiles, gated by a deterministic voice check with a hard human-in-the-loop publish step.
+**[Throughline](../throughline.html)** · A multi-agent content engine: one idea becomes platform-native pieces through nine dated platform playbooks and four audience profiles, gated by a deterministic voice check with a hard human-in-the-loop publish step.
 
 **picture-lock** · Seven-stage AI film pipeline: script in, produced and captioned short out; $8.26 of logged cost, every API call in a committed run manifest.
 

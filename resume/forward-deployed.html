@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.07pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
