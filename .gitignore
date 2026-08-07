@@ -28,3 +28,5 @@ resume/_cvtmp-*.html
 .toil-test-probe.txt
 screenshot_*.png
 .worktrees/
+
+.shots/
