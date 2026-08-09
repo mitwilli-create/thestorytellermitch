@@ -1,6 +1,6 @@
 # AGENTS.md - storytellermitch-site
 
-Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine (machine-local doc for the owner's agent fleet; external readers can skip this paragraph). Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. CodeRabbit reviews commits and PRs automatically.
+Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine (machine-local doc for the owner's agent fleet; external readers can skip this paragraph). Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. Local gates and review skills are the default. Hosted review services are explicit opt-in only and never run automatically or through metered overage.
 
 ## What this repo is
 
@@ -29,6 +29,17 @@ Mitchell's public portfolio site, thestorytellermitch.com: plain static HTML/CSS
 - Design system is `shared/theme.css` (CSS custom properties: near-black `#0a0a0b`, bone `#ece8e1`, oxblood accent `#8a3a33`). Use the tokens; don't introduce new palette values casually.
 - Every page links `shared/theme.css` and loads `shared/reveal.js` as the first script at the end of `<body>`.
 - Content is data-driven: new case studies and clips go into `assets/site-data/*.json`, then bake.
+
+## Provider failover
+
+The local and batch tools use the frontier order of Claude subscription,
+ChatGPT/OpenAI through Codex CLI, Antigravity/Gemini, then Grok. Provider
+quota, plan-limit, credential, timeout, unavailable-provider, and malformed
+response failures advance automatically. Policy, privacy, input,
+authorization, and uncertain mid-edit failures stop. Cloudflare Worker edge
+chat cannot launch local subscription CLIs, so its configured API adapter uses
+OpenAI, Gemini, and Grok fallbacks after the Anthropic edge request; missing
+or unconfigured secrets fail closed.
 
 ---
 

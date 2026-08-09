@@ -69,17 +69,34 @@ const gemini = (prompt) => fetch(`https://generativelanguage.googleapis.com/v1be
 const gpt = (prompt) => fetch('https://api.openai.com/v1/responses', {
   method:'POST', headers:{'content-type':'application/json',authorization:`Bearer ${OPENAI}`}, signal:AbortSignal.timeout(300000),
   body:JSON.stringify({model:GPT,input:[{role:'user',content:[{type:'input_text',text:prompt}]}]})}).then(async r=>{ if(!r.ok) throw new Error('gpt '+r.status+await r.text()); const j=await r.json(); return nonEmpty('gpt', j.output_text ?? j.output.flatMap(o=>o.content??[]).filter(c=>c.type==='output_text').map(c=>c.text).join('')); });
-const opus = (prompt) => fetch('https://api.anthropic.com/v1/messages', {
+const opusDirect = (prompt) => fetch('https://api.anthropic.com/v1/messages', {
   method:'POST', headers:{'content-type':'application/json','x-api-key':ANTHROPIC,'anthropic-version':'2023-06-01'}, signal:AbortSignal.timeout(300000),
   body:JSON.stringify({model:OPUS,max_tokens:4000,messages:[{role:'user',content:prompt}]})}).then(async r=>{ if(!r.ok) throw new Error('opus '+r.status+await r.text()); const j=await r.json(); return nonEmpty('opus', j.content.filter(b=>b.type==='text').map(b=>b.text).join('')); });
 
+const grok = (prompt) => fetch('https://api.x.ai/v1/chat/completions', {
+  method:'POST', headers:{'content-type':'application/json',authorization:`Bearer ${get(LOCAL, 'XAI_API_KEY') ?? get(CAREER, 'XAI_API_KEY')}`}, signal:AbortSignal.timeout(300000),
+  body:JSON.stringify({model:'grok-4',messages:[{role:'user',content:prompt}]})}).then(async r=>{ if(!r.ok) throw new Error('grok '+r.status+await r.text()); const j=await r.json(); return nonEmpty('grok', j.choices?.[0]?.message?.content ?? ''); });
+
+const providerFns = { claude: opusDirect, openai: gpt, gemini, grok };
+const providerOrder = ['claude', 'openai', 'gemini', 'grok'];
+const withProviderFailover = async (primary, prompt) => {
+  const start = Math.max(0, providerOrder.indexOf(primary));
+  let last;
+  for (const name of providerOrder.slice(start)) {
+    try { return await providerFns[name](prompt); }
+    catch (error) { last = error; console.log(`${name} blocked, advancing: ${String(error).slice(0, 180)}`); }
+  }
+  throw last ?? new Error('all configured frontier providers exhausted');
+};
+const opus = (prompt) => withProviderFailover('claude', prompt);
+
 // five lenses distributed across three model backends (each backend covers ~2 lenses)
 const panel = [
-  ['web-designer', () => gemini(lensPrompt('web designer'))],
-  ['visual-designer', () => gpt(lensPrompt('visual designer'))],
+  ['web-designer', () => withProviderFailover('gemini', lensPrompt('web designer'))],
+  ['visual-designer', () => withProviderFailover('openai', lensPrompt('visual designer'))],
   ['motion-animator', () => opus(lensPrompt('motion designer / animator'))],
-  ['videographer', () => gemini(lensPrompt('videographer / video editor'))],
-  ['graphics-brand', () => gpt(lensPrompt('graphic designer specializing in brand systems'))],
+  ['videographer', () => withProviderFailover('gemini', lensPrompt('videographer / video editor'))],
+  ['graphics-brand', () => withProviderFailover('openai', lensPrompt('graphic designer specializing in brand systems'))],
 ];
 
 const results = await Promise.allSettled(panel.map(async ([n,f])=>{ const t=await retry(n,f); writeFileSync(join(STAGE,`${n}.md`),`# ${n}\n\n${t}\n`); console.log(`OK ${n} (${t.length}b)`); return {n,t}; }));

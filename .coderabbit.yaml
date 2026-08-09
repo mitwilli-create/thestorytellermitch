@@ -1,7 +1,7 @@
 # .coderabbit.yaml, thestorytellermitch (PUBLIC portfolio site).
 # Added 2026-07-16 (review-stack audit, plan ~/.claude/plans/ok-partitioned-sutton.md).
 #
-# This repo had NO config, so it ran CodeRabbit's default `assertive` (nitpicky)
+# Historical note: this repo once used a hosted default; automatic review is now disabled.
 # profile on ~132 mostly-cosmetic PRs in one week (2026-07-09→16), ~70% of which
 # surfaced zero findings. This config moves it to `chill`, excludes generated
 # artifacts, and scopes review to code LOGIC, cosmetic CSS/copy and rendered-
@@ -19,7 +19,7 @@ reviews:
   high_level_summary: true
   poem: false
 
-  # decorative features off, per-round variance, never a code defect.
+  # decorative features off, provider-output variance, never a code defect.
   sequence_diagrams: false
   suggested_labels: false
   suggested_reviewers: false
@@ -27,7 +27,7 @@ reviews:
   related_prs: false
 
   auto_review:
-    enabled: true
+    enabled: false
     drafts: false
     base_branches:
       - main
@@ -62,9 +62,9 @@ reviews:
     - path: "scripts/**"
       instructions: "Site agent + build code. Check correctness, error handling, and secret exposure; no hardcoded tokens."
 
-# CodeRabbit auto-ingests CLAUDE.md/AGENTS.md as 'code guidelines' and enforces
+# Hosted review is disabled; repository-local instructions are enforced by local QA.
 # them as findings; here those are agent-process instructions, not code
-# standards, that's the process-boilerplate churn source. Curated guidance
+# standards, that's the historical provider-noise source. Curated guidance
 # lives in path_instructions above instead.
 knowledge_base:
   code_guidelines:
@@ -73,4 +73,4 @@ knowledge_base:
     scope: local
 
 chat:
-  auto_reply: true
+  auto_reply: false

@@ -13,9 +13,10 @@
 //                       server-side; the /api/ask response stays policy-
 //                       stripped and is never an input to generation.
 //
-// KB_INDEX_SECRET and ANTHROPIC_API_KEY are Worker secrets (wrangler secret
-// put / .dev.vars for local dev), never committed and never exposed to
-// public callers.
+// Provider secrets are Worker secrets (wrangler secret put / .dev.vars for
+// local dev), never committed and never exposed to public callers. The edge
+// runtime cannot launch local subscription CLIs, so its provider adapter uses
+// the equivalent configured API bindings after the local subscription chain.
 
 const EMBED_MODEL = '@cf/baai/bge-base-en-v1.5';
 // Pooling pinned to 'cls', measured head-to-head 2026-07-15 on identical
@@ -488,6 +489,68 @@ function cannedSse(text) {
 const CHAT_ABSTAIN_TEXT =
   'I do not have grounded material on that, so I would rather not guess. For anything I cannot cover, email Mitchell directly at mitwilli@gmail.com. You can also ask me about his work, his systems, or his availability.';
 
+function hasChatProvider(env) {
+  return Boolean(env.ANTHROPIC_API_KEY || env.OPENAI_API_KEY || env.GEMINI_API_KEY || env.XAI_API_KEY);
+}
+
+async function fallbackChatText({ env, messages, contextBlock }) {
+  const system = `${CHAT_SYSTEM_PROMPT}\n\n${contextBlock}`;
+  const attempts = [
+    {
+      name: 'openai', key: env.OPENAI_API_KEY,
+      run: async () => {
+        const res = await fetch('https://api.openai.com/v1/responses', {
+          method: 'POST', signal: AbortSignal.timeout(60_000),
+          headers: { 'content-type': 'application/json', authorization: `Bearer ${env.OPENAI_API_KEY}` },
+          body: JSON.stringify({ model: env.CHAT_OPENAI_MODEL || 'gpt-5.5', input: [{ role: 'system', content: system }, ...messages], max_output_tokens: CHAT_MAX_TOKENS }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) throw Object.assign(new Error(`openai ${res.status}`), { status: res.status });
+        return body.output_text || body.output?.flatMap((item) => item.content || []).find((item) => item.type === 'output_text')?.text || '';
+      },
+    },
+    {
+      name: 'gemini', key: env.GEMINI_API_KEY,
+      run: async () => {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${env.CHAT_GEMINI_MODEL || 'gemini-3.1-pro'}:generateContent`, {
+          method: 'POST', signal: AbortSignal.timeout(60_000),
+          headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+          body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: messages.map((message) => ({ role: message.role === 'assistant' ? 'model' : 'user', parts: [{ text: message.content }] })), generationConfig: { maxOutputTokens: CHAT_MAX_TOKENS } }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) throw Object.assign(new Error(`gemini ${res.status}`), { status: res.status });
+        return body.candidates?.[0]?.content?.parts?.map((part) => part.text || '').join('') || '';
+      },
+    },
+    {
+      name: 'grok', key: env.XAI_API_KEY,
+      run: async () => {
+        const res = await fetch('https://api.x.ai/v1/chat/completions', {
+          method: 'POST', signal: AbortSignal.timeout(60_000),
+          headers: { 'content-type': 'application/json', authorization: `Bearer ${env.XAI_API_KEY}` },
+          body: JSON.stringify({ model: env.CHAT_GROK_MODEL || 'grok-4', messages: [{ role: 'system', content: system }, ...messages], max_tokens: CHAT_MAX_TOKENS }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) throw Object.assign(new Error(`grok ${res.status}`), { status: res.status });
+        return body.choices?.[0]?.message?.content || '';
+      },
+    },
+  ];
+  for (const attempt of attempts) {
+    if (!attempt.key) continue;
+    try {
+      const text = await attempt.run();
+      if (text.trim()) return text.trim();
+      console.error(`${attempt.name} returned empty output`);
+    } catch (error) {
+      const status = Number(error?.status || 0);
+      console.error(`${attempt.name} fallback failed: ${String(error).slice(0, 240)}`);
+      if (status >= 400 && status < 500 && status !== 401 && status !== 403 && status !== 429) break;
+    }
+  }
+  return null;
+}
+
 async function handleChat(request, env) {
   // Abuse posture: see the note at CHAT_MAX_TOKENS. Aggregate rate limiting
   // is Phase E's scoped work (needs KV/DO or an edge WAF rule); until then
@@ -497,7 +560,7 @@ async function handleChat(request, env) {
   if (!originAllowed(request)) {
     return new Response('Forbidden', { status: 403 });
   }
-  if (!env.ANTHROPIC_API_KEY) {
+  if (!hasChatProvider(env)) {
     // Deploy-order guard: the widget ships dark if the secret is missing
     // rather than throwing an opaque 500.
     return cannedSse('The assistant is not available right now. Email mitwilli@gmail.com and Mitchell will answer directly.');
@@ -610,13 +673,15 @@ async function handleChat(request, env) {
     });
   } catch (e) {
     console.error(`anthropic fetch failed: ${e}`);
-    return cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
+    const fallback = await fallbackChatText({ env, messages, contextBlock });
+    return fallback ? cannedSse(fallback) : cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
   }
 
   if (!upstream.ok) {
     // Upstream detail stays in the log, not the visitor-facing stream.
     console.error(`anthropic upstream ${upstream.status}: ${(await upstream.text()).slice(0, 500)}`);
-    return cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
+    const fallback = await fallbackChatText({ env, messages, contextBlock });
+    return fallback ? cannedSse(fallback) : cannedSse('Something went wrong on my side. Please try again in a moment, or email mitwilli@gmail.com.');
   }
 
   // Re-emit the upstream Anthropic SSE as the widget's minimal protocol:
