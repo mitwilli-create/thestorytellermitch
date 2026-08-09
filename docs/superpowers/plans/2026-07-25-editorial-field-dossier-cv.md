@@ -190,4 +190,4 @@ Expected: all green.
 
 - [ ] **Step 5: Review, commit, push, and deploy**
 
-Stage only public system files. Confirm no `apply-pack/` data is staged. Run CodeRabbit review, push the named branch, open the repository-specific PR, resolve feedback, merge after checks, deploy with the explicit Writing Craft root, and verify the live surface.
+Stage only public system files. Confirm no `apply-pack/` data is staged. Run local QA and local review skills, push the named branch, open the repository-specific PR, resolve local findings, merge after checks, deploy with the explicit Writing Craft root, and verify the live surface. Hosted review is not automatic or required.

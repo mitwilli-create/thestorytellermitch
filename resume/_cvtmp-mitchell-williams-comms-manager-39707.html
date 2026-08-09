@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+  <title>Resume · Communications Lead / Director (AI-native) · Mitchell Williams</title>
+  <meta name="description" content="Mitchell Williams resume for Communications Lead / Director (AI-native) roles. Rendered from the same source as the downloadable PDF.">
+  <meta name="robots" content="noindex">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
+  <style>
+    /* ---- shared structure ---- */
+    .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
+    .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);
+      letter-spacing:-0.03em;text-transform:uppercase;line-height:1;color:var(--bone)}
+    /* pillars sized to land as two full lines in the 820px column, not one
+       line plus an orphaned word (owner 2026-07-15); balance evens the pair.
+       Screen only: the print block re-sizes pillars, keeping the locked PDFs
+       byte-identical in layout. */
+    .rpillars{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);margin-top:14px;line-height:1.7}
+    @media screen{
+      .rpillars{font-size:clamp(13px,2.44vw,20px);letter-spacing:0.08em;line-height:1.55;text-wrap:balance}
+    }
+    .rcontact{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
+      margin-top:12px;line-height:1.8}
+    section.rsec{padding:0;margin-top:34px} /* theme.css sets global section padding; kill it here */
+    .rsec-h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
+      padding-bottom:8px;margin-bottom:14px}
+    .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    .rp strong,.rl strong{color:var(--bone);font-weight:700}
+    .rl{list-style:none;margin:0 0 10px}
+    .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
+    .rl li::before{content:"·";position:absolute;left:2px;color:var(--blood-soft)}
+    .rnum{font-family:'JetBrains Mono',monospace;font-size:0.92em;font-variant-numeric:tabular-nums}
+    .rrole{margin:16px 0 6px}
+    .rrole-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--bone);letter-spacing:-0.01em}
+    .rrole-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);margin:3px 0 10px}
+    .rrole-s strong{color:var(--bone-soft)}
+    .rinit{margin:10px 0}
+    .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
+    .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+    /* compact buttons so the full row (four on the comms lane) holds one
+       line inside the 820px column at desktop (owner 2026-07-15) */
+    .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
+    /* ---- print: pure white, two-face type system (Mitchell's call 2026-07-10,
+       overriding the dealbreaker's band/underline/mono-line compromises):
+       Archivo carries every heading (name, section heads, role heads), Inter
+       carries every text run (pillars, contact, subtitles, body). No band, no
+       mono, no underlines; links signal by brand red alone. ---- */
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
+    @media print{
+      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
+        --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
+        --blood:#8a3a33;--blood-soft:#8a3a33}
+      html,body{background:#fff !important;color:#2e2a26}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Inter',sans-serif}
+      .kicker{font-weight:600}
+      .rpillars{font-weight:600;letter-spacing:0.06em}
+      .rsec-h{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:0.1em;border-bottom-color:var(--line-2)}
+      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-size:20pt;word-spacing:0.14em}
+      .rrole-h{word-spacing:0.08em}
+      .rpillars{font-size:8.16pt;margin-top:6pt;line-height:1.5}
+      .rcontact{font-size:8.16pt;margin-top:5pt;line-height:1.5}
+      section.rsec{margin-top:6pt;padding:0}
+      .rsec-h{font-size:8.16pt;padding-bottom:2pt;margin-bottom:4pt}
+      .rp{font-size:9.6pt;line-height:1.26;margin-bottom:3pt}
+      .rl{margin-bottom:4pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:9.6pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
+      .rrole{margin:5pt 0 2pt}
+      .rrole-h{font-size:11.4pt;break-after:avoid}
+      .rrole-s{font-size:8.16pt;margin:1.5pt 0 4pt}
+      .rnum{font-size:0.88em;letter-spacing:-0.02em}
+      .rinit{margin:4pt 0;break-inside:avoid}
+      .rinit-h{font-size:9.6pt;margin-bottom:2pt}
+      .rp{break-inside:avoid}
+      a{color:inherit;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="../fit.html">Role Fit</a>
+    <a href="../projects.html">AI Projects</a>
+    <a href="../writing.html">Writing</a>
+    <a href="../resume.html">Resume</a>
+    <a href="../comms.html">Comms &amp; Editorial</a>
+    <a href="../work.html">Reel</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../stories.html">Case Files</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<div class="rwrap">
+  <header>
+    <div class="kicker">resume · communications lead / director (ai-native)</div>
+    <h1 class="rname">Mitchell Williams</h1>
+    <div class="rpillars">Head of Communications: Corporate Comms, Earned Media, and Launch Strategy for AI Companies</div>
+    <!-- Reviewer note: this is the candidate's own resume; the contact line is
+     published by design (it is the point of a resume). Same phone comms.html
+     already exposes publicly. -->
+    <div class="rcontact">Seattle, WA (Open to relocation)  |  <span class="pdf-phone">812-219-6077  |  </span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>  |  <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>  |  <a href="https://thestorytellermitch.com">thestorytellermitch.com</a></div>
+    <div class="rtop">
+      <a class="btn solid" href="../assets/resumes/mitchell-williams-comms-manager.pdf"><span>Download PDF</span></a>
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
+      <a class="btn" href="../for-fluidstack.html"><span>The Fluidstack review path</span></a>
+      <a class="btn" href="../fit.html#comms-manager"><span>The fit case</span></a>
+    </div>
+  </header>
+  <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp">I run external communications for technical companies. Media, analysts, launches, and executive voice all come down to the same test: whether a claim holds when it gets challenged, and whether there is a reactive plan for the moment it does.</p>
+<p class="rp">For a decade in national newsrooms I decided which company stories ran: CNN, Al Jazeera's AJ+, Fusion, an ABC and Univision joint venture, and Al Jazeera English. Eight years at Google followed, building and defending corporate arguments in public and to expert audiences, including two years owning communications end to end for Cross-Google Engineering.</p>
+<p class="rp">I also build the systems a modern comms shop runs on: production AI agents for editorial triage, executive voice, and pre-publication claim checking, all shipped and in use. Deepgram's AI-first rhythm is already my operating default.</p></section>
+<section class="rsec"><h2 class="rsec-h">What I Bring to Deepgram</h2><ul class="rl"><li><strong>Earned media from both sides.</strong> Ten years assigning and killing stories, six years pitching into them. I know what a reporter needs at 4 p.m. and what makes an editor pass.</li><li><strong>A live press network.</strong> 112 journalists across 30 national outlets, built as colleagues: CNN, NBC, ABC, CBS, NPR, The New York Times, The Wall Street Journal, Bloomberg, The Washington Post, Reuters, the Associated Press, Politico, Semafor, ProPublica.</li><li><strong>Reactive readiness.</strong> Standing Q&amp;A, escalation paths, and holding statements so a benchmark dispute, an outage, or a competitor claim never becomes the story.</li><li><strong>Launch and moment ownership.</strong> Narrative, executive talking points, briefing books, stage content, and post-event measurement at 600-person scale.</li><li><strong>Executive voice at scale.</strong> Built a production Gemini system encoding a VP's voice rules and banned phrases. Cut review cycles 70%.</li><li><strong>Claim discipline as infrastructure.</strong> My tooling screens drafts for superlatives, unsourced numbers, and competitor comparisons before anything ships.</li><li><strong>AI-first operations.</strong> <a href="../picture-lock.html">PictureLock</a>, Voice AI Production Studio: built on Deepgram Nova-3. Plus Throughline, Content Production Pipeline, scoped to remove 160 hours of annual triage overhead.</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Communications Lead, Cross-Google Engineering (xGE)</div><div class="rrole-s"><strong>Google</strong>  |  June 2024 to present</div><p class="rp">Built the communications function from zero for the horizontal organization driving technical change across Google. Audience: 1,000+ Principal, Distinguished and Fellow Engineers.</p>
+<ul class="rl"><li>Own the org narrative end to end. Every claim gets pressure-tested by the people who built the thing. Nothing ships on prose alone.</li><li>Communications partner to the VP. Talking points, briefings, forum remarks, and stage copy that hold one message across a distributed leadership team.</li><li>Led communications strategy for a 600-person senior technical summit. Narrative, briefing books, stage content, and post-event measurement.</li><li>Built a Gemini executive voice system encoding the VP's rules and banned phrases. Review cycles down 70%.</li><li>Shipped Throughline, Content Production Pipeline, scoped to recapture 160 hours a year of editorial triage.</li></ul></div>
+<div class="rrole"><div class="rrole-h">Senior Communications and Content Strategist</div><div class="rrole-s"><strong>Google</strong>  |  2018 to 2024</div><p class="rp">Built corporate arguments for public and expert audiences across product and policy moments.</p>
+<ul class="rl"><li>Turned engineering and research work into positions that survived outside scrutiny.</li><li>Ran message architecture, briefing materials, and executive content for cross-functional launches.</li><li>Partnered with legal, policy, and product on claims that carried reputational risk.</li></ul></div>
+<div class="rrole"><div class="rrole-h">Producer and Editorial Lead</div><div class="rrole-s"><strong>CNN · Al Jazeera's AJ+ · Fusion, an ABC and Univision joint venture · Al Jazeera English</strong>  |  2010 to 2020</div><p class="rp">A decade in live national news deciding which company stories ran, and which pitches died.</p>
+<ul class="rl"><li>Assigned, produced, and killed stories on deadline across broadcast and digital.</li><li>Built the reporter and editor relationships I still use: 112 journalists, 30 national outlets.</li><li>Produced an AJ+ explainer that reached 50 million views.</li></ul></div></section>
+<section class="rsec"><h2 class="rsec-h">Tools I Built</h2><ul class="rl"><li><strong>PictureLock, Voice AI Production Studio:</strong> built on Deepgram Nova-3. Turns interview tape into a package where every quote carries the second it was said, and uses per-word confidence editorially. Low confidence mid-quote holds the quote until a human relistens.</li><li><strong>Executive voice system (Gemini).</strong> Encodes voice rules and banned phrases. Cut VP review cycles 70%.</li><li><strong>Throughline, Content Production Pipeline.</strong> Editorial intake and routing, scoped to recapture 160 hours a year.</li><li><strong>Claim screener.</strong> Flags superlatives, unsourced numbers, and competitor comparisons pre-publication.</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp">Corporate communications strategy · Earned media and press relations · Executive communications and ghostwriting · Product and model launch comms · Analyst and partner narrative · Crisis and reactive readiness · Message architecture · Agency and team management · Applied AI tooling (Node, Gemini, Deepgram Nova-3)</p></section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="../shared/reveal.js?v=20260715a"></script>
+<script src="../shared/audio.js?v=20260716b"></script>
+</body>
+</html>

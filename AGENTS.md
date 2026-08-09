@@ -1,6 +1,6 @@
 # AGENTS.md - storytellermitch-site
 
-Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine (machine-local doc for the owner's agent fleet; external readers can skip this paragraph). Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. CodeRabbit reviews commits and PRs automatically.
+Read `~/Documents/mission-control/WORKSPACE.md` first: it defines the multi-agent lane rules for this machine (machine-local doc for the owner's agent fleet; external readers can skip this paragraph). Your lane here (Codex) is building; Claude Code reviews your output and owns orchestration/memory. Local gates and review skills are the default. Hosted review services are explicit opt-in only and never run automatically or through metered overage.
 
 ## What this repo is
 
