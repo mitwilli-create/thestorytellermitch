@@ -1,5 +1,12 @@
 # Handover: re-render the explainer videos from $14.20 to the canonical $8.26
 
+> **CHECKPOINT 2 (2026-07-16 late, round-1 punch list):** owner glance findings on
+> Video A all fixed on BOTH cuts + pushed (9c254ec): verdict-stamp cross-hatch killed,
+> consent label solid + raised, +0.5s Mitchell-photo hold, false-start sibilant ducked
+> (B had it too). Rebased twice (main moved: #136/#138/#144/#146). CodeRabbit final:
+> No findings. Cuts now 91.9s / 85.9s — 91s/85s labels still accurate. Remaining
+> unchanged: owner re-glance → KB runbook → merge → deploy + edge-verify.
+>
 > **CHECKPOINT UPDATE (2026-07-16, execution session):** RENDER + LOCKSTEP BATCH DONE.
 > Both cuts re-rendered live (fresh IVC takes 826a/826b, $0.70 total, spend-logged),
 > all ~13 surfaces staged and committed as c549b70 on claude/eager-chandrasekhar-26e644,
