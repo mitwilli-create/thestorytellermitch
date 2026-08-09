@@ -18,36 +18,37 @@ const parsed = {
   }],
 };
 
-test('print resumes use the approved monotonic hierarchy at full size', () => {
+test('print resumes preserve the approved font roles and monotonic hierarchy', () => {
   const html = page(parsed, LANES['mitchell-williams-ai-enablement']);
 
-  assert.match(html, /\.rname\{font-size:22pt/);
-  assert.match(html, /\.rsec-h\{font-size:12\.5pt/);
-  assert.match(html, /\.rrole-h\{font-size:11pt/);
-  assert.match(html, /\.rrole-s\{font-size:9\.5pt/);
-  assert.match(html, /\.rp\{font-size:10pt/);
-  assert.match(html, /\.rl li\{font-size:10pt/);
-  assert.match(html, /\.rpillars\{font-size:10pt/);
-  assert.match(html, /\.rcontact\{font-size:9\.5pt/);
+  assert.match(html, /\.rname\{font-family:'Archivo Print','Archivo',sans-serif;[^}]*font-size:34pt/);
+  assert.match(html, /\.kicker,.rpillars,.rcontact,.rrole-s\{font-family:'Martian Grotesk',sans-serif/);
+  assert.match(html, /\.rpillars\{font-size:12\.48pt;/);
+  assert.match(html, /\.rsec-h\{font-family:'Martian Grotesk',sans-serif;font-size:12\.01pt/);
+  assert.match(html, /\.rrole-h\{font-family:'Martian Grotesk',sans-serif;font-size:11\.07pt/);
+  assert.match(html, /\.rrole-s\{font-family:'Martian Grotesk',sans-serif;font-size:10\.27pt/);
+  assert.match(html, /\.rp\{font-size:9\.75pt;[^}]*font-family:'Martian Grotesk'/);
+  assert.match(html, /\.rl li\{font-size:9\.75pt;[^}]*font-family:'Martian Grotesk'/);
+  assert.match(html, /\.rcontact\{font-size:9\.42pt/);
 });
 
-test('inline metrics inherit the Inter body face in print', () => {
+test('inline metrics use the approved Martian body face in print', () => {
   const html = page(parsed, LANES['mitchell-williams-ai-enablement']);
 
   assert.match(
     html,
-    /@media print\{[\s\S]*\.rnum\{font-family:inherit;/,
+    /@media print\{[\s\S]*\.rnum\{font-family:'Martian Grotesk',sans-serif;/,
   );
 });
 
-test('project headings use the same print hierarchy and color as role headings', () => {
+test('project headings use the approved Martian print hierarchy', () => {
   const html = page(parsed, LANES['mitchell-williams-ai-enablement']);
 
   assert.match(
     html,
-    /\.rproject-h\{font-family:'Archivo',sans-serif;font-size:11pt;[\s\S]*?color:#1b1a1d;/,
+    /\.rproject-h\{font-family:'Martian Grotesk',sans-serif;font-size:11\.07pt;/,
   );
-  assert.match(html, /\.rproject\{margin:8pt 0 3pt;/);
+  assert.match(html, /\.rproject\{margin:5pt 0 2pt;/);
 });
 
 test('projects parse and render as one semantic evidence block', () => {
@@ -82,14 +83,13 @@ Shipped an editorial review system for video teams.
   assert.doesNotMatch(html, /class="rrole-h">picture-lock/);
 });
 
-test('editorial print tokens enforce readable type and restrained accents', () => {
+test('editorial print tokens enforce the approved readable floor and accent', () => {
   const html = page(parsed, LANES['mitchell-williams-ai-enablement']);
 
-  assert.match(html, /\.rp\{font-size:10pt;line-height:1\.375/);
-  assert.match(html, /\.rwrap\{padding:0 0\.58in 0\.05in/);
-  assert.match(html, /\.rsec-h\{font-size:12\.5pt;/);
-  assert.match(html, /\.rsec-h\{font-family:'Archivo'[\s\S]*?text-transform:uppercase;color:#8a3a33/);
-  assert.doesNotMatch(html, /color:#8a3a33 !important/);
+  assert.match(html, /\.rp\{font-size:9\.75pt;line-height:1\.26/);
+  assert.match(html, /\.rwrap\{padding:0 0\.42in 0\.05in/);
+  assert.match(html, /\.rsec-h\{font-family:'Martian Grotesk',sans-serif;font-size:12\.01pt;/);
+  assert.match(html, /\.rwrap section a,.rwrap \.rcontact a\{color:#8a3a33 !important/);
 });
 
 test('resume parser omits horizontal rules and provenance comments', () => {
