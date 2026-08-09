@@ -207,16 +207,22 @@ export function parse(md, file) {
       pushSection('');
       cur.intro = true;
     }
-    if (/^### /.test(t)) { cur.blocks.push({ type: 'role', head: t.slice(4).trim(), sub: '', body: [] }); continue; }
+    if (/^### /.test(t)) {
+      const type = /^(projects|selected work)$/i.test(cur.title) ? 'project' : 'role';
+      cur.blocks.push(type === 'project'
+        ? { type, head: t.slice(4).trim(), body: [] }
+        : { type, head: t.slice(4).trim(), sub: '', body: [] });
+      continue;
+    }
     if (/^#### /.test(t)) {
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
       const target = role ? role.body : cur.blocks;
       target.push({ type: 'initiative', head: t.slice(5).trim(), items: [] });
       continue;
     }
     if (/^- /.test(t)) {
       const item = t.slice(2).trim();
-      const role = [...cur.blocks].reverse().find(b => b.type === 'role');
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
       const init = role ? [...role.body].reverse().find(b => b.type === 'initiative') : [...cur.blocks].reverse().find(b => b.type === 'initiative');
       if (init) { init.items.push(item); continue; }
       const last = (role ? role.body : cur.blocks)[(role ? role.body : cur.blocks).length - 1];
@@ -227,7 +233,7 @@ export function parse(md, file) {
     // paragraph line; org/date line right under a role becomes its sub
     const role = cur.blocks[cur.blocks.length - 1];
     if (role && role.type === 'role' && role.sub === '' && role.body.length === 0) { role.sub = t.trim(); continue; }
-    if (role && role.type === 'role') { role.body.push({ type: 'p', text: t.trim() }); continue; }
+    if (role && (role.type === 'role' || role.type === 'project')) { role.body.push({ type: 'p', text: t.trim() }); continue; }
     cur.blocks.push({ type: 'p', text: t.trim() });
   }
   return { name, pillars, contact, sections };
@@ -238,6 +244,12 @@ function renderBlocks(blocks) {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
     if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
     if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
+    if (b.type === 'project') {
+      const [first, ...rest] = b.body;
+      const proof = first?.type === 'p' ? `<p class="rproject-proof">${inline(first.text)}</p>` : '';
+      const remaining = first?.type === 'p' ? rest : b.body;
+      return `<div class="rproject"><div class="rproject-h">${inline(b.head)}</div>${proof}${renderBlocks(remaining)}</div>`;
+    }
     if (b.type === 'role') return `<div class="rrole"><div class="rrole-h">${inline(b.head)}</div><div class="rrole-s">${inline(b.sub)}</div>${renderBlocks(b.body)}</div>`;
     throw new Error(`unknown block type ${b.type}`);
   }).join('\n');
@@ -399,6 +411,9 @@ export function page({ name, pillars, contact, sections }, lane) {
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:${pt}pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:${rh}pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:${pt}pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
