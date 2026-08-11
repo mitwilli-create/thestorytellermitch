@@ -47,20 +47,29 @@ const TARGET_I = -16.0;    // LUFS integrated, per systems.html
 const TARGET_TP = -1.5;    // dBTP true peak, per systems.html
 const TARGET_LRA = 11.0;
 
-// Every page carrying a .voice-console, in nav order.
-const PAGES = [
-  'about', 'picture-lock', 'voice-os', 'monolith', 'relocation-os',
-  'comms-triage-agent', 'tax-verification-agent', 'content-ops', 'career-ops',
+// Every page carrying a .voice-console, in nav order. Source pages can retain
+// a published narration filename when their page slug changes.
+const NARRATIONS = [
+  { sourceSlug: 'about', assetId: 'about' },
+  { sourceSlug: 'picture-lock', assetId: 'picture-lock' },
+  { sourceSlug: 'voice-os', assetId: 'voice-os' },
+  { sourceSlug: 'monolith', assetId: 'monolith' },
+  { sourceSlug: 'relocation-os', assetId: 'relocation-os' },
+  { sourceSlug: 'comms-triage-agent', assetId: 'comms-triage-agent' },
+  { sourceSlug: 'tax-verification-agent', assetId: 'tax-verification-agent' },
+  { sourceSlug: 'throughline', assetId: 'Throughline' },
+  { sourceSlug: 'career-ops', assetId: 'career-ops' },
 ];
+const SOURCE_SLUGS = NARRATIONS.map(({ sourceSlug }) => sourceSlug);
 
 const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
 const DRY = args.includes('--dry-run');
 const onlyIndex = args.indexOf('--only');
 const ONLY = onlyIndex === -1 ? null : args[onlyIndex + 1];
-if (onlyIndex !== -1 && (!ONLY || ONLY.startsWith('--') || !PAGES.includes(ONLY))) {
+if (onlyIndex !== -1 && (!ONLY || ONLY.startsWith('--') || !SOURCE_SLUGS.includes(ONLY))) {
   // a bare or misspelled --only would silently render (and bill) every page
-  console.error(`--only must name one of: ${PAGES.join(', ')}`);
+  console.error(`--only must name one of: ${SOURCE_SLUGS.join(', ')}`);
   process.exit(2);
 }
 
@@ -149,8 +158,10 @@ function integratedLufs(file) {
 }
 
 const prev = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : { clips: {} };
-mkdirSync(OUT_DIR, { recursive: true });
-mkdirSync(CACHE_DIR, { recursive: true });
+if (!DRY) {
+  mkdirSync(OUT_DIR, { recursive: true });
+  mkdirSync(CACHE_DIR, { recursive: true });
+}
 
 const manifest = { generated: new Date().toISOString().slice(0, 10), voice_id: VOICE_ID,
   voice_name: 'Mitchell retake 2026-07-12 IVC', model_id: MODEL_ID,
@@ -158,35 +169,38 @@ const manifest = { generated: new Date().toISOString().slice(0, 10), voice_id: V
 
 let charsSpent = 0, rendered = 0, skipped = 0, renormed = 0;
 
-for (const slug of PAGES) {
-  if (ONLY && slug !== ONLY) { if (prev.clips[slug]) manifest.clips[slug] = prev.clips[slug]; continue; }
-  const text = scriptFor(slug);
+for (const { sourceSlug, assetId } of NARRATIONS) {
+  if (ONLY && sourceSlug !== ONLY) {
+    if (prev.clips[assetId]) manifest.clips[assetId] = prev.clips[assetId];
+    continue;
+  }
+  const text = scriptFor(sourceSlug);
   const hash = sha(text + MODEL_ID + VOICE_ID + JSON.stringify(VOICE_SETTINGS));
-  const out = join(OUT_DIR, `${slug}.mp3`);
+  const out = join(OUT_DIR, `${assetId}.mp3`);
 
-  const raw = join(CACHE_DIR, `${slug}.raw.mp3`);
+  const raw = join(CACHE_DIR, `${assetId}.raw.mp3`);
 
-  if (!FORCE && existsSync(out) && prev.clips[slug]?.hash === hash
-      && prev.clips[slug]?.normalization_hash === NORM_HASH) {
-    console.log(`skip   ${slug.padEnd(24)} (script unchanged)`);
-    manifest.clips[slug] = prev.clips[slug];
+  if (!FORCE && existsSync(out) && prev.clips[assetId]?.hash === hash
+      && prev.clips[assetId]?.normalization_hash === NORM_HASH) {
+    console.log(`skip   ${assetId.padEnd(24)} (script unchanged)`);
+    manifest.clips[assetId] = prev.clips[assetId];
     skipped++;
     continue;
   }
 
   // Script unchanged but the spec moved (or the mp3 went missing): the paid
   // artifact is already on disk, so re-normalize from cache and bill nothing.
-  if (!FORCE && existsSync(raw) && prev.clips[slug]?.hash === hash) {
+  if (!FORCE && existsSync(raw) && prev.clips[assetId]?.hash === hash) {
     if (DRY) {
-      console.log(`renorm ${slug.padEnd(24)} (dry: would re-normalize from cache)`);
-      manifest.clips[slug] = prev.clips[slug];
+      console.log(`renorm ${assetId.padEnd(24)} (dry: would re-normalize from cache)`);
+      manifest.clips[assetId] = prev.clips[assetId];
       renormed++;
       continue;
     }
-    console.log(`renorm ${slug.padEnd(24)} (from cached take, no API call)`);
+    console.log(`renorm ${assetId.padEnd(24)} (from cached take, no API call)`);
     normalizeToSpec(raw, out);
     const a = integratedLufs(out);
-    manifest.clips[slug] = { ...prev.clips[slug], normalization_hash: NORM_HASH,
+    manifest.clips[assetId] = { ...prev.clips[assetId], normalization_hash: NORM_HASH,
       lufs_out: a.i, peak_out_dbfs: a.peak, duration_s: ffprobeDuration(out) };
     console.log(`       → ${a.i} LUFS  peak ${a.peak} dBFS`);
     renormed++;
@@ -195,15 +209,15 @@ for (const slug of PAGES) {
 
   // Spec moved but the paid raw is gone: refuse to quietly re-bill. The shipped
   // clip and its metadata stand; a re-render is an explicit --force --only <slug>.
-  if (!FORCE && existsSync(out) && prev.clips[slug]?.hash === hash) {
-    console.log(`hold   ${slug.padEnd(24)} (spec changed, no cached raw; re-render is --force --only ${slug})`);
-    manifest.clips[slug] = prev.clips[slug];
+  if (!FORCE && existsSync(out) && prev.clips[assetId]?.hash === hash) {
+    console.log(`hold   ${assetId.padEnd(24)} (spec changed, no cached raw; re-render is --force --only ${sourceSlug})`);
+    manifest.clips[assetId] = prev.clips[assetId];
     skipped++;
     continue;
   }
 
-  console.log(`render ${slug.padEnd(24)} ${String(text.length).padStart(5)} chars`);
-  if (DRY) { manifest.clips[slug] = { hash, chars: text.length, dry: true }; continue; }
+  console.log(`render ${assetId.padEnd(24)} ${String(text.length).padStart(5)} chars`);
+  if (DRY) { manifest.clips[assetId] = { hash, chars: text.length, dry: true }; continue; }
 
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}?output_format=mp3_44100_128`, {
     method: 'POST',
@@ -211,10 +225,10 @@ for (const slug of PAGES) {
     body: JSON.stringify({ text, model_id: MODEL_ID, voice_settings: VOICE_SETTINGS }),
   });
   if (!res.ok) {
-    console.error(`  FAIL ${slug}: HTTP ${res.status} ${(await res.text()).slice(0, 300)}`);
+    console.error(`  FAIL ${assetId}: HTTP ${res.status} ${(await res.text()).slice(0, 300)}`);
     // keep the previous entry: dropping it would orphan the shipped mp3 from
     // its hash and re-bill a render the next run
-    if (prev.clips[slug]) manifest.clips[slug] = prev.clips[slug];
+    if (prev.clips[assetId]) manifest.clips[assetId] = prev.clips[assetId];
     process.exitCode = 1;
     continue;
   }
@@ -225,7 +239,7 @@ for (const slug of PAGES) {
   const before = integratedLufs(raw);
   const after = integratedLufs(out);
   const dur = ffprobeDuration(out);
-  manifest.clips[slug] = {
+  manifest.clips[assetId] = {
     hash, normalization_hash: NORM_HASH, chars: text.length, duration_s: dur,
     lufs_in: before.i, lufs_out: after.i, peak_out_dbfs: after.peak,
   };
