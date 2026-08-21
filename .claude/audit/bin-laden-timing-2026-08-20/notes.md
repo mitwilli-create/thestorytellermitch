@@ -29,3 +29,22 @@ not the source.
 - index-375x812.png
 - stories-1440x900.png
 - stories-375x812.png
+
+## Follow-up pass (same night, after independent site audit)
+An independent read of the live site surfaced three residual "night" strings the
+first pass missed. All three fixed and re-verified:
+
+| Item | Before | After | Where |
+|---|---|---|---|
+| Story prose | "What I carry from that night is more specific." | "What I carry from that rebuild is more specific." | stories.json, rebaked into stories.html |
+| Image alt | "The Stream launch-night broadcast frame" | "The Stream launch broadcast frame" | stories.json, rebaked |
+| Clip label | "Bin Laden night - 45m" | "Bin Laden coverage - 45m" | timeline.html |
+
+The prose one mattered most: it sat inside the section we had just corrected away
+from "night," so the page contradicted itself.
+
+Re-verified: node tools/build-stories.mjs rebaked cleanly (17 stories);
+node tools/verify.mjs all invariants hold, bake-drift ok. Live DOM at 1440x900
+confirms label "Bin Laden coverage - 45m" (238px, visible) and the era paragraph
+opening "Launch day, May 2, 2011". No horizontal overflow.
+Screenshot: timeline-1440x900.png
