@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.01pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.75pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.75pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.75pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -184,7 +190,7 @@
 <p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Forked and extended an open-source job-search pipeline into a multi-agent, cost-governed autonomous system: multi-LLM council with adjudication, regression-guard and bug-resolver pipeline, MCP servers, 52 scheduled agents, live operations dashboard. CI-green, test-covered, public on GitHub.</p>
 <p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Citation-gated verification over a four-layer IRS knowledge base on Claude; caught a ~$19K multi-state error that filing software pre-filled and defended as correct.</p></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2007 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of governance under deadline: intake, sequence, gate, ship, every day at air time.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views) that doubled as a <a href="../stories.html#talent-pipeline">talent pipeline</a>.</li><li><strong>CNN, Writer / Producer, "New Day" (2016):</strong> Morning-show segments through the election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable 2012; Webby 2013).</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (250M households) pivoted the full program to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of <a href="../stories.html#aj-plus-50m-views">explainer line</a> (proof-of-concept: 50M+ views) that doubled as a <a href="../stories.html#talent-pipeline">talent pipeline</a>.</li><li><strong>CNN, Writer / Producer, "New Day" (2016):</strong> Morning-show segments through the election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window (40M households).</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable 2012; Webby 2013).</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer; the launch (250M households) pivoted the full program to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Program, Governance &amp; Communications:</strong> governance gates and approvals frameworks, intake and prioritization, portfolio management, dependency and cross-functional coordination, survey-shaped roadmaps, metrics design, stakeholder management, AI enablement and adoption, internal-comms strategy at engineering scale, executive communications, governance communications, change-management narrative design.</p>

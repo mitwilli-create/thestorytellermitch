@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <title>Case Files · Mitchell Williams</title>
-  <meta name="description" content="The story bank from eighteen years of production: launch night rewritten by breaking news, litigation-shadowed live coverage, a panel that aged into evidence, fifty million views, and a coalition that brought a journalist home.">
+  <meta name="description" content="The story bank from eighteen years of production: a launch rewritten by breaking news, litigation-shadowed live coverage, a panel that aged into evidence, fifty million views, and a coalition that brought a journalist home.">
   <meta property="og:title" content="Stories · Mitchell Williams">
   <meta property="og:description" content="The stories behind the biggest nights, told for people who weren't in the room.">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
@@ -259,7 +259,7 @@
       <nav class="st-index" id="st-index" aria-label="Story index">
         <!-- STINDEX:START -->
         <a href="#bhutto-origin">The Bhutto overnight shift</a>
-        <a href="#stream-launch-night">The bin Laden launch night</a>
+        <a href="#stream-launch-night">The bin Laden launch</a>
         <a href="#trans-navy-panel">A panel that became evidence</a>
         <a href="#kim-k-bahrain">Kim Kardashian and an uprising</a>
         <a href="#prep-origination">PrEP on air, months early</a>
@@ -302,7 +302,7 @@
         <article class="story" id="stream-launch-night">
           <div class="case-band">
             <div class="kick reveal">Al Jazeera English · 2011</div>
-            <h2 class="reveal">The bin Laden launch night</h2>
+            <h2 class="reveal">The bin Laden launch</h2>
           </div>
           <p class="reveal lead-p">The Stream was set to launch on May 2, 2011. A new kind of live program at Al Jazeera English, built to treat Twitter, Skype, SMS, and real-time trending data as first-class journalistic sources. The night before our first broadcast, Osama bin Laden was killed in Abbottabad, Pakistan. Every piece of content we'd prepared was suddenly worthless. We had roughly twelve hours to tear the launch show apart and rebuild it around a story nobody had planned for, on a program that had never aired.</p>
           <figure class="still reveal"><a class="mplay" href="https://customer-bkgfhhvaijyxffgn.cloudflarestream.com/5110494fc9e3e53e73cbd135e77d96de/watch" data-clip-play data-clip="aje-stream-2011-global-reactions-bin-laden-death-bahrain" data-tag="Al Jazeera · The Stream · Live Coverage · 2011" data-title="The night bin Laden's death broke" data-sub="Live global reaction coverage from The Stream's launch era, on a 250M-household network." data-poster="assets/posters/aje-stream-2011-global-reactions-bin-laden-death-bahrain.jpg" data-local="media/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4" data-stream-id="5110494fc9e3e53e73cbd135e77d96de" aria-label="Play: The night bin Laden's death broke"><img src="assets/stills/stream-launch-night.jpg" alt="The Stream launch-night broadcast frame" loading="lazy"><video class="preview" preload="none" muted loop playsinline aria-hidden="true" data-src="assets/previews/aje-stream-2011-global-reactions-bin-laden-death-bahrain.mp4"></video><span class="play-o" aria-hidden="true"></span></a><figcaption class="cap">From the broadcast · The Stream, 2011</figcaption></figure>
@@ -764,6 +764,7 @@ $ launchctl list | grep career-ops | head -8
   addEventListener('load',()=>{requestAnimationFrame(updateBands);setTimeout(updateBands,250);setTimeout(updateBands,1000);});
   updateBands();
 </script>
+<script src="shared/agent.js?v=20260716a" defer></script>
 <script>
   /* clipplay tiles reveal their hover preview only once frames are actually
      playing (prevents a black flash before the lazy src decodes) */
@@ -799,6 +800,5 @@ $ launchctl list | grep career-ops | head -8
   window.addEventListener('hashchange', openFoldForHash); openFoldForHash();
   window.addEventListener('load', openFoldForHash); // re-assert after fonts/images shift layout; smooth scroll gets aborted by load-time reflow
 </script>
-<script src="shared/agent.js?v=20260716a" defer></script>
 </body>
 </html>
