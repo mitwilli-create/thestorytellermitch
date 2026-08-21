@@ -20,3 +20,22 @@ AGENTS.md
 .assetsignore
 wrangler.jsonc
 .wrangler/
+
+# Added 2026-08-21 after a deploy published these publicly (HTTP 200 on the apex).
+# .claude/ was listed but these siblings were not, so agent + editor working
+# directories shipped as site assets. Root cause: the list enumerated known dirs
+# instead of excluding dotfiles as a class.
+.writing-coach/
+.cursor/
+.coderabbit.yaml
+.coderabbit*.yaml
+.vscode/
+.idea/
+.scratch/
+.venv/
+# macOS "Something 2.ext" duplicates. These are stale byte-copies of real pages,
+# so they serve outdated content at a live URL long after the original is fixed.
+* 2.html
+* 2.yaml
+* 2.json
+* 2.md
