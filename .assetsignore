@@ -33,6 +33,10 @@ wrangler.jsonc
 .idea/
 .scratch/
 .venv/
+private/*
+!private/
+!private/for-ambience.html
+!private/ambience-review.css
 # macOS "Something 2.ext" duplicates. These are stale byte-copies of real pages,
 # so they serve outdated content at a live URL long after the original is fixed.
 * 2.html
