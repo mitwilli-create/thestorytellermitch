@@ -36,6 +36,7 @@
 .amb-pitch--selected .tag{color:var(--blood-soft)}
 .amb-pitch--selected .reason{color:var(--bone-soft)}
 .amb-pitch--selected h4{white-space:nowrap}
+.amb-pitch--selected::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--blood-soft);pointer-events:none}
 .pitch-headline-white{color:var(--bone)}
 .pitch-headline-red{color:var(--blood-soft)}
 .amb-voice-bridge{margin:30px 0 10px!important;color:var(--bone)!important;font:700 20px/1.2 Archivo,sans-serif!important;letter-spacing:-.01em}
