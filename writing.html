@@ -61,7 +61,10 @@
     @media(max-width:640px){.wr-skim-go{border-left:0;padding-left:0}}
     section{padding:52px 0}
     .wr-work{border-top:1px solid var(--line);padding-bottom:96px}
-    #essays,#leadership,#script,#redacted-docs{scroll-margin-top:96px}
+    #essays,#leadership,#script,#redacted-docs,.lead-card[id]{scroll-margin-top:96px}
+    .nav{background:rgba(10,10,11,.96);backdrop-filter:blur(10px)}
+    .sma-launch{display:none!important}
+    @media(max-width:900px){.sound-toggle{display:none!important}}
     .cs-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
     .doc-wt{color:#fff}
     /* matches .art-intro type exactly (owner 2026-07-15) */
@@ -123,7 +126,7 @@
     .leadership{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
     .leadership-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(260px,4fr);gap:36px 72px;align-items:end;margin-bottom:30px}
     .leadership-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,4vw,54px);line-height:1.04;color:var(--bone);max-width:760px}
-    .leadership-title .ox-i{display:block}
+    .leadership-title .title-line{display:block}
     .leadership-intro{font-size:16px;color:var(--bone-soft);line-height:1.7;max-width:520px;margin:0}
     .leadership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
     .lead-card{background:var(--surface);padding:28px 30px 26px;min-height:300px;display:flex;flex-direction:column}
@@ -139,6 +142,14 @@
     .lead-boundary{display:grid;grid-template-columns:auto 1fr;gap:16px 22px;align-items:start;margin-top:22px;padding:20px 22px;border-left:2px solid var(--blood-soft);background:rgba(255,255,255,.025)}
     .lead-boundary b{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
     .lead-boundary p{font-size:13.5px;line-height:1.65;color:var(--mute);margin:0;max-width:900px}
+    .lead-proof-details{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+    .lead-proof-details summary{color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+    .lead-proof-details summary:hover,.lead-proof-details summary:focus-visible{color:var(--blood-text)}
+    .lead-proof-details summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:3px}
+    .lead-proof-details blockquote{margin:12px 0 0;padding:12px 14px;border-left:2px solid var(--blood-soft);font-family:Inter,sans-serif;font-size:14px;line-height:1.65;color:var(--bone)}
+    .lead-proof-details small{display:block;margin-top:8px;color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.5}
+    .lead-proof-meta{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);color:var(--bone-soft)}
+    .lead-redaction{color:var(--blood-text);letter-spacing:.06em}
     @media(max-width:900px){
       .leadership-head{grid-template-columns:1fr;gap:18px}
       .leadership-grid{grid-template-columns:1fr}
@@ -265,7 +276,7 @@
     .dc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
     .dc-chips a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;
       text-transform:uppercase;color:var(--bone-soft);border:1px solid var(--line-2);padding:6px 10px;
-      transition:all var(--dur-micro) var(--ease-micro)}
+      transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}
     .dc-chips a:hover{border-color:var(--blood-soft);color:var(--bone)}
     .dc-chips a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     /* Google case-study cards: the internal documents stay inside Google;
@@ -313,12 +324,12 @@
   </figure>
   <div class="wrap">
     <div class="kicker">Real writing · word for word · checkable at the source</div>
-    <p class="fs-return"><a href="for-fluidstack.html">&larr; the Fluidstack review path</a></p>
+    <p class="fs-return"><a href="private/for-ambience.html">&larr; the Ambience review path</a></p>
     <h1 class="display">
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Nothing in this room is invented for display. <strong class="wt">Everything here shipped.</strong> Scripts appear exactly as broadcast. Internal Google work is described with its proof boundary. Public documentation links to the repos. Essays land the day they publish.</p>
+    <p class="wr-sub">A working record of broadcast scripts, published essays, public systems, and internal case studies with their source boundaries stated.</p>
     <nav class="wr-skim" aria-label="Sections and screening skim path">
       <span class="wr-skim-nav">
         <a href="#essays">Essays</a><span class="sp-dot">·</span>
@@ -378,37 +389,37 @@
     <div class="leadership-head reveal">
       <div>
         <span class="cs-k">Leadership communications · Google</span>
-        <h2 class="leadership-title">What I wrote. What I produced. <span class="ox-i">Where the line is.</span></h2>
+        <h2 class="leadership-title"><span class="title-line">What I wrote.</span><span class="title-line">What I produced.</span><span class="title-line ox-i">Where the line is.</span></h2>
       </div>
-      <p class="leadership-intro">Most of my thought leadership at Google did not carry my name. I often wrote the argument. Other times, I built the stage around it. These cards separate ghostwriting, production, coaching, and operational communications because those are different jobs.</p>
+      <p class="leadership-intro">At Google, much of my thought-leadership work carried someone else's name. Sometimes I wrote the argument. Sometimes I produced the setting in which a leader delivered it. The distinction matters: ghostwriting, coaching, production, and operational communications are different jobs.</p>
     </div>
 
     <div class="leadership-grid reveal">
-      <article class="lead-card">
+      <article class="lead-card" id="leadership-megan">
         <span class="lead-role">Ghostwriting · executive voice system</span>
         <span class="lead-name">Megan Kacholia · VP of Engineering</span>
-        <h3>I wrote the voice. Then I built the system behind it.</h3>
+        <h3>I wrote in her voice. Then I encoded how she made decisions.</h3>
         <p>The work covered quarterly organization remarks, rapid-response talking points, and signed emails after high-stakes moments. Then I turned the patterns behind her decisions into a production voice system: honesty markers, anti-spin rules, and separate spoken and written registers.</p>
-        <div class="lead-proof"><strong>Proof on file:</strong> internal remarks, emails, an on-camera organization explainer, authorship records, and recognition for producing an all-hands. The system cut review rounds by 70% <span class="src-t">(internal, self-measured)</span>. <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">Read the public post-mortem &#8599;</a></div>
+        <div class="lead-proof"><details class="lead-proof-details" open><summary>Read the redacted writing</summary><blockquote>“I (probably obviously) did not like how the meeting went, and when something like that happens I feel compelled to address it.”<br><br>“I'm sorry for being visibly frustrated in the discussion.”</blockquote><small>Edited excerpt from a retained email. Internal meeting names, goals, and links removed.</small></details><span class="lead-proof-meta"><strong>Proof on file:</strong> internal remarks, emails, an on-camera organization explainer, authorship records, and recognition for producing an all-hands. The system cut review rounds by 70% <span class="src-t">(internal, self-measured)</span>. <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">Read the public post-mortem &#8599;</a></span></div>
       </article>
 
-      <article class="lead-card">
+      <article class="lead-card" id="leadership-ben">
         <span class="lead-role">Executive ghostwriting · delivery coaching</span>
         <span class="lead-name">Ben Fried · CIO and VP, Corporate Engineering</span>
         <h3>Say what changed. Show the math. Make the call.</h3>
-        <p>I wrote the weekly addresses and talking points, built the decks, and coached delivery. For a Japan committee address, I produced English and Japanese cuts. One retained 2,142-word speech names five time-bound priorities, a 38-person gap, and the choices the organization had to make next.</p>
-        <div class="lead-proof"><strong>Proof on file:</strong> the weekly-address transcript, Japan address captions, interview captions, video updates, and recognition from Ben. The originals remain internal; a reference can confirm the work.</div>
+        <p>I wrote the weekly addresses and talking points, built the decks, and coached delivery. For a Japan committee address, I produced the English cut and Japanese-language version. One retained 2,142-word speech names five time-bound priorities, a quantified staffing gap, and the choices the organization had to make next.</p>
+        <div class="lead-proof"><details class="lead-proof-details" open><summary>Read the redacted writing</summary><blockquote>“Our priorities have changed.”<br><br>“We have less headcount with which to get them done.”<br><br>“We've looked at and determined that there are <span class="lead-redaction">[redacted]</span> essential things ... at risk ... that cannot be delayed.”</blockquote><small>Edited excerpt from a retained CIO address. Project names, organization names, and sensitive operating details removed.</small></details><span class="lead-proof-meta"><strong>Proof on file:</strong> weekly-address transcript, Japan-address captions, interview captions, video updates, and recognition from Ben. Full originals remain internal; a reference can confirm the work.</span></div>
       </article>
 
-      <article class="lead-card">
+      <article class="lead-card" id="leadership-suzanne">
         <span class="lead-role">Operational communications · behavior change</span>
         <span class="lead-name">Suzanne Timmons · Director, Corporate Engineering</span>
         <h3>Teach 75,000 new hires how Google works.</h3>
-        <p>This was not a keynote. It was the harder operational job: turn unfamiliar internal systems into steps a new hire could complete without a specialist beside them. I wrote the Day-One orientation, credential-setup scripts, TechStop self-help videos, and recurring communications.</p>
-        <div class="lead-proof"><strong>Proof on file:</strong> retained scripts and collaboration records. Day-One reached 75,000+ new hires at 88% customer satisfaction. A later content audit in the same estate lifted self-service solvability 9.03% <span class="src-t">(internal, self-measured)</span>.</div>
+        <p>This was not a keynote. It was operational writing: turn unfamiliar internal systems into steps a new hire could complete without a specialist beside them. I wrote the Day-One orientation, credential-setup scripts, TechStop self-help videos, and recurring communications.</p>
+        <div class="lead-proof"><details class="lead-proof-details" open><summary>Read the redacted writing</summary><blockquote>“Since we opened our first help desks in <span class="lead-redaction">[redacted]</span>, TechStop's goal has always been the same: to keep your technology working for you, so you can stay productive.”</blockquote><small>Edited excerpt from a retained orientation script. Internal URLs, service names, and operating details removed.</small></details><span class="lead-proof-meta"><strong>Proof on file:</strong> retained scripts and collaboration records. Day-One reached 75,000+ new hires at 88% customer satisfaction. A separate 2023 content audit in the same content estate was associated with a 9.03% increase in self-service solvability <span class="src-t">(internal, self-measured)</span>.</span></div>
       </article>
 
-      <article class="lead-card">
+      <article class="lead-card" id="leadership-grace">
         <span class="lead-role">Executive production · external conference</span>
         <span class="lead-name">Jen Fitzpatrick and Aparna Pappu · SVP and VP</span>
         <h3>Produced. Not ghostwritten.</h3>
@@ -419,7 +430,7 @@
 
     <div class="lead-boundary reveal">
       <b>Proof boundary</b>
-      <p>Public work links to the source. Google remarks, signed emails, voice instructions, and talking points stay inside Google. This page names the assignment, my role, the available record, and nothing more.</p>
+      <p>Public work links to the source. Full Google documents remain private. The redacted excerpts show the writing without exposing project names, goals, links, or operating details.</p>
     </div>
   </div>
 </section>
@@ -602,10 +613,10 @@
     <div class="wr-col-docs">
     <div class="cs-head reveal" id="redacted-docs">
       <span class="cs-k">Programmatic documentation</span>
-      <h2 class="cs-title">The Google record, as case studies</h2>
+    <h2 class="cs-title">Leadership communications · case studies</h2>
     </div>
     <p class="art-intro reveal"><strong class="wt">Three artifacts from two Google roles.</strong> The documents themselves <span class="doc-wt">stay inside Google</span>: what's published here is the shape of each, what it had to do, how it was written, and what it measured.</p>
-    <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation. The content behind each card can be templatized and provided upon request.</p>
+    <p class="art-intro-sub reveal">Provenance is stated per card, a reference can confirm the work, and the record can be walked through in a live conversation. A live walkthrough can show the structure without exposing the source material.</p>
     <div class="doc-cards">
       <article class="dcard reveal">
         <span class="dc-k">Google xGE · 2026 · operator runbook</span>
@@ -621,8 +632,8 @@
       </article>
       <article class="dcard reveal">
         <span class="dc-k">Google TechStop · self-help article</span>
-        <strong>The self-help rewrite that paid for itself</strong>
-        <span class="dc-b">The unglamorous genre that pays the bills: a self-help article of the kind the 2023 content audit rewrote, lifting self-service solvability 9.03% (about 10,670 fewer tickets a year) <span class="src-t">(internal, self-measured)</span>.</span>
+        <strong>The self-help rewrite that improved solvability</strong>
+        <span class="dc-b">A self-help article from the 2023 content audit, associated with a 9.03% increase in self-service solvability, based on an internal, self-measured result.</span>
         <span class="dc-r">authored by me · original stays internal · reference can confirm</span>
       </article>
       <div class="dcard reveal">
@@ -636,7 +647,7 @@
         </span>
       </div>
     </div>
-    <p class="wr-note reveal">Executive client work stays internal: described on the <a href="comms.html">comms page</a>, <strong class="wt">never excerpted</strong>.</p>
+    <p class="wr-note reveal">Full executive documents remain private. Redacted excerpts appear above. The assignment, role, and source boundary remain visible on the <a href="comms.html">comms page</a>.</p>
     </div>
   </div>
 </section>
