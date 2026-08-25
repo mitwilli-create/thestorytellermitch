@@ -61,7 +61,7 @@
     @media(max-width:640px){.wr-skim-go{border-left:0;padding-left:0}}
     section{padding:52px 0}
     .wr-work{border-top:1px solid var(--line);padding-bottom:96px}
-    #essays,#script,#redacted-docs{scroll-margin-top:96px}
+    #essays,#leadership,#script,#redacted-docs{scroll-margin-top:96px}
     .cs-head{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
     .doc-wt{color:#fff}
     /* matches .art-intro type exactly (owner 2026-07-15) */
@@ -118,6 +118,33 @@
     .essay-more summary:hover{color:var(--bone)}
     .essay-more summary:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
     .essay-more .essay-cards{margin-top:14px}
+    /* leadership communications: public-safe case records, separated by the
+       exact job performed rather than flattened into one broad claim */
+    .leadership{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+    .leadership-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(260px,4fr);gap:36px 72px;align-items:end;margin-bottom:30px}
+    .leadership-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,4vw,54px);line-height:1.04;color:var(--bone);max-width:760px}
+    .leadership-title .ox-i{display:block}
+    .leadership-intro{font-size:16px;color:var(--bone-soft);line-height:1.7;max-width:520px;margin:0}
+    .leadership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+    .lead-card{background:var(--surface);padding:28px 30px 26px;min-height:300px;display:flex;flex-direction:column}
+    .lead-role{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blood-soft);margin-bottom:16px}
+    .lead-name{font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;color:var(--bone-soft);margin-bottom:7px}
+    .lead-card h3{font-family:'Archivo',sans-serif;font-size:clamp(21px,2.4vw,28px);line-height:1.12;color:var(--bone);margin:0 0 15px}
+    .lead-card p{font-size:14px;line-height:1.68;color:var(--mute);margin:0 0 17px}
+    .lead-proof{margin-top:auto;padding-top:17px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.055em;line-height:1.6;color:var(--bone-soft)}
+    .lead-proof strong{color:var(--bone);font-weight:700}
+    .lead-proof a{color:var(--blood-text);border-bottom:1px solid var(--blood-hairline)}
+    .lead-proof a:hover{color:var(--bone)}
+    .lead-proof a:focus-visible{outline:1px solid var(--blood-soft);outline-offset:2px}
+    .lead-boundary{display:grid;grid-template-columns:auto 1fr;gap:16px 22px;align-items:start;margin-top:22px;padding:20px 22px;border-left:2px solid var(--blood-soft);background:rgba(255,255,255,.025)}
+    .lead-boundary b{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blood-soft);white-space:nowrap}
+    .lead-boundary p{font-size:13.5px;line-height:1.65;color:var(--mute);margin:0;max-width:900px}
+    @media(max-width:900px){
+      .leadership-head{grid-template-columns:1fr;gap:18px}
+      .leadership-grid{grid-template-columns:1fr}
+      .lead-card{min-height:0;padding:24px 22px}
+      .lead-boundary{grid-template-columns:1fr;gap:8px}
+    }
     /* writing-01: script left, redacted docs right, tops flush */
     /* owner ruling 2026-07-15: the sticky script/docs juxtaposition scrolled
        clunkily (columns pinned and jumped at different rates); the sections
@@ -291,10 +318,11 @@
       <span class="ln"><span>The writing</span></span>
       <span class="ln"><span class="accent">room.</span></span>
     </h1>
-    <p class="wr-sub">Nothing in this room is invented for display. <strong class="wt">Everything here shipped.</strong> Scripts appear exactly as broadcast. Internal Google documents are published with redaction. Public documentation links to the repos. Essays land the day they publish.</p>
+    <p class="wr-sub">Nothing in this room is invented for display. <strong class="wt">Everything here shipped.</strong> Scripts appear exactly as broadcast. Internal Google work is described with its proof boundary. Public documentation links to the repos. Essays land the day they publish.</p>
     <nav class="wr-skim" aria-label="Sections and screening skim path">
       <span class="wr-skim-nav">
         <a href="#essays">Essays</a><span class="sp-dot">·</span>
+        <a href="#leadership">Leadership</a><span class="sp-dot">·</span>
         <a href="#script">The script</a><span class="sp-dot">·</span>
         <a href="#redacted-docs">Case studies</a>
       </span>
@@ -302,7 +330,7 @@
         <span class="wr-skim-q">Screening for a comms role? Start with these</span>
         <span class="wr-skim-links">
           <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">the VP-voice essay</a><span class="sp-dot">·</span>
-          <a href="#redacted-docs">the Google case studies</a>
+          <a href="#leadership">the Google leadership work</a>
         </span>
       </span>
     </nav>
@@ -341,6 +369,57 @@
     <figure class="es-plate reveal" aria-hidden="true">
       <img src="assets/stills/illo-writing-galley.jpg" alt="" width="1376" height="768" loading="lazy">
     </figure>
+    </div>
+  </div>
+</section>
+
+<section class="leadership" id="leadership">
+  <div class="wrap">
+    <div class="leadership-head reveal">
+      <div>
+        <span class="cs-k">Leadership communications · Google</span>
+        <h2 class="leadership-title">What I wrote. What I produced. <span class="ox-i">Where the line is.</span></h2>
+      </div>
+      <p class="leadership-intro">Most of my thought leadership at Google did not carry my name. I often wrote the argument. Other times, I built the stage around it. These cards separate ghostwriting, production, coaching, and operational communications because those are different jobs.</p>
+    </div>
+
+    <div class="leadership-grid reveal">
+      <article class="lead-card">
+        <span class="lead-role">Ghostwriting · executive voice system</span>
+        <span class="lead-name">Megan Kacholia · VP of Engineering</span>
+        <h3>I wrote the voice. Then I built the system behind it.</h3>
+        <p>The work covered quarterly organization remarks, rapid-response talking points, and signed emails after high-stakes moments. Then I turned the patterns behind her decisions into a production voice system: honesty markers, anti-spin rules, and separate spoken and written registers.</p>
+        <div class="lead-proof"><strong>Proof on file:</strong> internal remarks, emails, an on-camera organization explainer, authorship records, and recognition for producing an all-hands. The system cut review rounds by 70% <span class="src-t">(internal, self-measured)</span>. <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" target="_blank" rel="noopener">Read the public post-mortem &#8599;</a></div>
+      </article>
+
+      <article class="lead-card">
+        <span class="lead-role">Executive ghostwriting · delivery coaching</span>
+        <span class="lead-name">Ben Fried · CIO and VP, Corporate Engineering</span>
+        <h3>Say what changed. Show the math. Make the call.</h3>
+        <p>I wrote the weekly addresses and talking points, built the decks, and coached delivery. For a Japan committee address, I produced English and Japanese cuts. One retained 2,142-word speech names five time-bound priorities, a 38-person gap, and the choices the organization had to make next.</p>
+        <div class="lead-proof"><strong>Proof on file:</strong> the weekly-address transcript, Japan address captions, interview captions, video updates, and recognition from Ben. The originals remain internal; a reference can confirm the work.</div>
+      </article>
+
+      <article class="lead-card">
+        <span class="lead-role">Operational communications · behavior change</span>
+        <span class="lead-name">Suzanne Timmons · Director, Corporate Engineering</span>
+        <h3>Teach 75,000 new hires how Google works.</h3>
+        <p>This was not a keynote. It was the harder operational job: turn unfamiliar internal systems into steps a new hire could complete without a specialist beside them. I wrote the Day-One orientation, credential-setup scripts, TechStop self-help videos, and recurring communications.</p>
+        <div class="lead-proof"><strong>Proof on file:</strong> retained scripts and collaboration records. Day-One reached 75,000+ new hires at 88% customer satisfaction. A later content audit in the same estate lifted self-service solvability 9.03% <span class="src-t">(internal, self-measured)</span>.</div>
+      </article>
+
+      <article class="lead-card">
+        <span class="lead-role">Executive production · external conference</span>
+        <span class="lead-name">Jen Fitzpatrick and Aparna Pappu · SVP and VP</span>
+        <h3>Produced. Not ghostwritten.</h3>
+        <p>I produced the 34-minute “Beyond the Code” session for Grace Hopper Celebration 2020. Jen and Aparna discussed failure, confidence, individual-contributor and management paths, energy, and authenticity with an external industry audience.</p>
+        <div class="lead-proof"><strong>My role:</strong> production. I did not write or coach their words. A full transcript is retained. <a href="work.html#play-google-xge-2023-svp-interview-grace-hopper-conference">Watch the portfolio cut &#8599;</a></div>
+      </article>
+    </div>
+
+    <div class="lead-boundary reveal">
+      <b>Proof boundary</b>
+      <p>Public work links to the source. Google remarks, signed emails, voice instructions, and talking points stay inside Google. This page names the assignment, my role, the available record, and nothing more.</p>
     </div>
   </div>
 </section>
