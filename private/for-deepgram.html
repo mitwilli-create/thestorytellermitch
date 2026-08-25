@@ -37,6 +37,70 @@
   const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-18% 0px -68% 0px',threshold:0});
   sections.forEach(section=>observer.observe(section));
+
+  const fluxSection=document.querySelector('#flux');
+  const testNote=fluxSection?.querySelector('.dg-note');
+  const proofContract=fluxSection?.querySelector('.dg-proof-contract');
+  const audioProof=fluxSection?.querySelector('.dg-audio-proof');
+  if(proofContract) proofContract.remove();
+  if(audioProof) audioProof.remove();
+  if(fluxSection && testNote){
+    const proof=document.createElement('div');
+    proof.className='dg-proof-visual';
+    proof.setAttribute('aria-label','Text comparison for the Flux interruption test');
+    proof.innerHTML='<div class="dg-proof-visual-head"><span class="dg-label">Visual proof before audio</span><p>Show the same interruption two ways. Add the recordings when they are available.</p></div><div class="dg-proof-visual-grid"><article class="dg-proof-path dg-proof-path-good"><span class="dg-proof-path-label">Flux recovery</span><div class="dg-transcript"><span>Agent: Your account ends in 4821...</span><b>Caller: No, it is 4921.</b><span>Agent: 4921. What would you like to change?</span></div><strong>The agent continues from what the caller heard.</strong></article><article class="dg-proof-path dg-proof-path-baseline"><span class="dg-proof-path-label">Baseline failure</span><div class="dg-transcript"><span>Agent: Your account ends in 4821...</span><b>Caller: No, it is 4921.</b><span>Agent: Your account ends in 4821...</span></div><strong>The agent repeats a sentence the caller already heard.</strong></article></div>';
+    testNote.insertAdjacentElement('afterend',proof);
+    const audioMap=[
+      ['agent-opening.mp3','01 Agent speaks','Your account ends in 4821.'],
+      ['caller-correction.mp3','02 Caller corrects','No, it is 4921.'],
+      ['flux-recovery.mp3','03 Flux resumes','4921. What would you like to change?'],
+      ['baseline-replay.mp3','Baseline repeats','Your account ends in 4821.']
+    ];
+    const controls=document.createElement('div');
+    controls.className='dg-audio-controls';
+    controls.setAttribute('aria-label','Play the Flux interruption test');
+    controls.innerHTML='<span class="dg-label">Hear the test</span><div class="dg-audio-buttons"></div><p class="dg-audio-status" aria-live="polite">Choose a moment to hear it.</p>';
+    const buttons=controls.querySelector('.dg-audio-buttons');
+    const audio=document.createElement('audio');
+    audio.preload='metadata';
+    audio.className='dg-audio-element';
+    audio.setAttribute('aria-label','Deepgram Flux interruption test audio');
+    controls.append(audio);
+    audioMap.forEach(([file,label,text])=>{
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='dg-audio-step';
+      button.dataset.file=file;
+      button.innerHTML='<span>'+label+'</span><b>'+text+'</b>';
+      button.addEventListener('click',()=>{
+        audio.src='../assets/audio/deepgram-flux/'+file;
+        audio.play().catch(()=>{});
+        buttons.querySelectorAll('button').forEach(item=>item.classList.toggle('is-playing',item===button));
+        controls.querySelector('.dg-audio-status').textContent='Playing: '+label+'.';
+      });
+      buttons.append(button);
+    });
+    audio.addEventListener('ended',()=>{buttons.querySelectorAll('button').forEach(item=>item.classList.remove('is-playing'));controls.querySelector('.dg-audio-status').textContent='Choose another moment to hear it.'});
+    proof.prepend(controls);
+    proof.querySelector('.dg-proof-visual-head p').textContent='Hear the same interruption two ways. These clips were generated with Deepgram Flux TTS.';
+  }
+  document.querySelector('.dg-audience-strip')?.remove();
+  document.querySelectorAll('.dg-priority').forEach((card,index)=>{
+    const rail=card.querySelector('.dg-priority-rail');
+    if(!rail || rail.querySelector('.dg-audience-tag')) return;
+    const tag=document.createElement('span');
+    tag.className='dg-audience-tag';
+    tag.textContent=['Business leaders first','Builders and press next','Restaurant operators, if access exists'][index];
+    rail.append(tag);
+  });
+  const compare=document.querySelector('.dg-compare');
+  if(compare){
+    compare.classList.add('dg-compare-loud');
+    const marker=document.createElement('div');
+    marker.className='dg-compare-marker';
+    marker.innerHTML='<span>Existing launch</span><i aria-hidden="true"></i><span>Editorial proposal</span>';
+    compare.prepend(marker);
+  }
 </script>
 </body>
 </html>
