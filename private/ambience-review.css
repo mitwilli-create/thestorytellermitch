@@ -30,7 +30,7 @@
 .amb-note p{margin:0;font-size:15px;line-height:1.65}
 .amb-pitch-list{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--line)}
 .amb-pitch{border-bottom:1px solid var(--line);padding:20px 0}
-.amb-pitch--selected{position:relative;margin:10px 0 14px;padding:28px 24px 24px;border:1px solid var(--blood-soft);background:rgba(145,31,48,.09)}
+.amb-pitch--selected{position:relative;margin:10px 0 14px;padding:28px 24px 24px;border:1px solid var(--blood-soft);background:rgba(145,31,48,.09);scroll-margin-top:110px}
 .amb-pitch-choice{display:block;margin:0 0 12px;color:var(--bone);font:10px/1.3 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
 .amb-pitch-choice::before{content:'●';display:inline-block;margin-right:8px;color:var(--blood-soft);font-size:9px}
 .amb-pitch--selected .tag{color:var(--blood-soft)}
