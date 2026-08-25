@@ -102,5 +102,87 @@
     compare.prepend(marker);
   }
 </script>
+<script>
+  const heroTitle=document.querySelector('.dg-hero h1');
+  if(heroTitle) heroTitle.innerHTML='What Flux shipped. <span class="accent">What I would have made.</span>';
+  const heroSub=document.querySelector('.dg-sub');
+  if(heroSub) heroSub.textContent='The launch had the product and the proof points. I would have led with the interruption, let people hear the difference, and sent each audience to a clear next action.';
+  document.querySelector('.dg-beat-diagram')?.remove();
+  document.querySelector('.dg-owner-strip')?.remove();
+
+  const flux=document.querySelector('#flux');
+  const fluxLabel=flux?.querySelector(':scope > .dg-label');
+  const fluxHeading=flux?.querySelector(':scope > h2');
+  const fluxLede=flux?.querySelector(':scope > .dg-lede');
+  const oldTest=flux?.querySelector('.dg-note');
+  const launch=flux?.querySelector('.dg-launch-system');
+  if(fluxLabel) fluxLabel.textContent='01 / The Flux launch audit';
+  if(fluxHeading) fluxHeading.textContent='The launch had the story.';
+  if(fluxLede) fluxLede.textContent='Flux is Deepgram\'s text to speech model for live voice agents. When a caller interrupts, Flux can report what the caller heard and what remains, so the agent can continue without repeating the completed part.';
+  oldTest?.remove();
+  if(fluxLede && launch) fluxLede.insertAdjacentElement('afterend',launch);
+  const proof=flux?.querySelector('.dg-proof-visual');
+  if(launch && proof) launch.insertAdjacentElement('afterend',proof);
+  const sourceRow=flux?.querySelector(':scope > .dg-source-row');
+  if(sourceRow) sourceRow.insertAdjacentHTML('beforebegin','<p class="dg-audit-bridge">The difference is the editorial argument. Hear the test, then compare the launch order with the order I would use.</p>');
+
+  const stories=document.querySelector('#stories');
+  const storyLabel=stories?.querySelector(':scope > .dg-label');
+  const storyHeading=stories?.querySelector(':scope > h2');
+  const storyLede=stories?.querySelector(':scope > .dg-lede');
+  if(storyLabel) storyLabel.textContent='02 / Three editorial bets';
+  if(storyHeading) storyHeading.textContent='Three stories. Three audiences.';
+  if(storyLede) storyLede.textContent='Ship the proof people can hear. Earn the enterprise story from a named source. Hold restaurant proof until a customer agrees to be named.';
+  const priorities=[...document.querySelectorAll('.dg-priority')];
+  const copy=[
+    {status:'Business leaders first',title:'When the caller cuts in',purpose:'Can a voice agent recover before the person on the other end decides it cannot be trusted?',lines:[['Story','A reported feature built around one controlled audio comparison.'],['Audience','Enterprise buyers get the evaluation path. Builders get the test and code. Press gets the human consequence.'],['Package','Audio, short video, an executive brief, and a public builder fixture.'],['Gate','Do not publish if the settings, samples, or losing result cannot be disclosed.']]},
+    {status:'Builders and enterprise buyers',title:'What makes a buyer say yes?',purpose:'What does an enterprise team need to see before putting a voice agent into a real workflow?',lines:[['Story','A reported account from a named customer, partner, or public record.'],['Audience','Business leaders get deployment proof. Builders get the implementation detail.'],['Package','Written feature, deployment diagram, buyer guide, and engineer explanation.'],['Gate','Start only when a source can explain the problem, the decision, and the result.']]},
+    {status:'Restaurant operators, if access exists',title:'Can a restaurant hear every order?',purpose:'What happens when drive-through noise, interruptions, prices, and order changes meet a voice agent?',lines:[['Story','A named operator story with controlled audio, if permission exists.'],['Audience','Restaurant operators get the use case. Builders get the noise fixture. Press gets the customer consequence.'],['Package','Written feature, audio proof, short video, and developer test.'],['Gate','If no customer agrees to be named, publish a clearly labeled noise test instead.']]}
+  ];
+  priorities.forEach((card,index)=>{
+    const item=copy[index]; if(!item) return;
+    const status=card.querySelector('.dg-priority-status'); if(status) status.textContent=item.status;
+    const title=card.querySelector('h3'); if(title) title.textContent=item.title;
+    const purpose=card.querySelector('.dg-purpose'); if(purpose) purpose.textContent=item.purpose;
+    const main=card.querySelector('.dg-priority-main');
+    if(main){
+      const dl=main.querySelector('dl');
+      if(dl) dl.innerHTML=item.lines.map(([label,text])=>'<dt>'+label+'</dt><dd>'+text+'</dd>').join('');
+      main.querySelectorAll('.dg-compact-line').forEach((line,lineIndex)=>{
+        const pair=item.lines[lineIndex+1]; if(!pair) return;
+        const compactPair=lineIndex===0?item.lines[1]:item.lines[3];
+        line.querySelector('b').textContent=compactPair[0]; line.querySelector('span').textContent=compactPair[1];
+      });
+    }
+    const tag=card.querySelector('.dg-audience-tag'); if(tag) tag.textContent=item.status;
+  });
+
+  const calendar=document.querySelector('#calendar');
+  const calendarLabel=calendar?.querySelector(':scope > .dg-label');
+  const calendarHeading=calendar?.querySelector(':scope > h2');
+  const calendarLede=calendar?.querySelector(':scope > .dg-lede');
+  if(calendarLabel) calendarLabel.textContent='03 / The first 90 days';
+  if(calendarHeading) calendarHeading.textContent='How I would run it.';
+  if(calendarLede) calendarLede.textContent='Start with the Flux recovery story. Measure who uses the proof. Repeat only what moves a buyer or builder to act.';
+  const runway=[...document.querySelectorAll('.dg-runway-step')];
+  const phases=[
+    ['Days 1 to 30','Make the proof','Record the interruption test.','Use one script, matched settings, and two runs: clean recovery and a baseline that repeats the completed sentence. Review both before publishing.',[['Ship','A reviewed 60 to 90 second comparison and a public method.'],['Measure','Set baselines for audio completions, qualified evaluation starts, and builder actions.'],['Stop','If we cannot show both runs and explain the setup, keep it internal.']]],
+    ['Days 31 to 60','Publish the first proof','Ship the interruption story.','Turn the comparison into a reported feature, short video, executive brief, and builder fixture. Send business and builder paths separately.',[['Ship','The same facts across every format.'],['Measure','Audio completions, evaluation starts, documentation visits, playground starts, and fixture completions.'],['Stop','Rework or pause any format that does not produce a clear audience action.']]],
+    ['Days 61 to 90','Report from a real decision','Earn the enterprise story.','Interview a named customer or partner who can explain why voice entered a workflow and what happened next. If no one can be named, publish a source-backed enterprise explainer instead.',[['Ship','An enterprise feature, deployment diagram, buyer path, and executive adaptation.'],['Measure','Qualified enterprise conversations, target-account demo requests, and buyer-path completion.'],['Stop','Delay the story if it has no named source, decision, or result.']]]
+  ];
+  runway.forEach((step,index)=>{
+    const phase=phases[index]; if(!phase) return;
+    const rail=step.querySelector('.dg-runway-rail'); if(rail){rail.querySelector('.dg-label').textContent=phase[0];rail.querySelector('.dg-stage-time').textContent=phase[1]}
+    const main=step.querySelector('.dg-runway-main'); if(main){main.querySelector('h3').textContent=phase[2];main.querySelector('p').textContent=phase[3]}
+    const gate=step.querySelector('.dg-runway-gate'); if(gate) gate.innerHTML=phase[4].map(([label,text])=>'<span><b>'+label+'</b>'+text+'</span>').join('');
+  });
+  const after=document.querySelector('.dg-after-90');
+  if(after){after.querySelector('.dg-label').textContent='After day 90 / Repeat what worked';after.querySelector('h3').textContent='Turn the test into a shared method.';after.querySelector('p').textContent='If the first package produces repeat builder use and qualified buyer interest, publish the samples, scoring rules, limitations, and code. Rerun the test across tone, timing, interruption handling, emotional context, and consistency. If the method cannot be rerun or weak results cannot be published, revise or stop.'}
+  const contract=document.querySelector('.dg-decision-contract');
+  if(contract){contract.querySelector('.dg-label').textContent='How I decide what to repeat';contract.querySelector(':scope > p').textContent='Set the baseline, target, analytics source, and review owner before launch. At days 30, 60, and 90, record the result and choose repeat, revise, or stop.';if(!contract.querySelector('.dg-decision-log')) contract.insertAdjacentHTML('beforeend','<p class="dg-decision-log"><b>Decision log</b> Record the hypothesis, asset, audience, baseline, target, result, and next decision for every package.</p>')}
+  const franchise=document.querySelector('.dg-franchise'); if(franchise){franchise.querySelector('.dg-label').textContent='Who owns what';franchise.querySelector('p').textContent='Editorial chooses the story, reports it, edits it, and owns the ship date. Product and Engineering verify technical claims. Developer Relations owns the docs and fixture. Growth and Sales define and track the buyer action. Communications decides whether the evidence clears the press bar.'}
+  const method=document.querySelector('.dg-method-note'); if(method){method.querySelector('.dg-label').textContent='Before we publish';method.querySelector('p').textContent='Confirm which customers can be named, which experts and partners are available, what has already been pitched, which demonstrations can be published, and where each measure will be recorded.'}
+  const sourceHeading=document.querySelector('.dg-source-heading'); if(sourceHeading) sourceHeading.textContent='Sources for the next reporting step';
+</script>
 </body>
 </html>
