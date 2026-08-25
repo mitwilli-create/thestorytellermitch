@@ -52,8 +52,42 @@
       "lastSeen": "2026-07-14",
       "status": "active",
       "supersedes": []
+    },
+    {
+      "id": "8b688d9f31",
+      "text": "Before reviewing or rewriting a page, read the complete file and inspect every user-facing string, including navigation, labels, cards, captions, links, and hidden or lower-page sections. Mitchell explicitly requires whole-page review before copy council work.",
+      "evidenceCount": 4,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-24",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "0d4b7c9a21",
+      "text": "When Mitchell requests a copy council, run the complete named protocol in order, preserve distinct competing rewrites, give proof veto power, and mark proof or voice gaps instead of blending the work into consensus language.",
+      "evidenceCount": 4,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-24",
+      "status": "active",
+      "supersedes": []
+    },
+    {
+      "id": "4f7a2c8e60",
+      "text": "For editorial research and distribution planning, cover the relevant web, Reddit, X, Hacker News, and other accessible social surfaces, distinguish active conversations from saturated ones, cite direct evidence, identify objections, and state whether each proposed placement fits.",
+      "evidenceCount": 3,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-22",
+      "status": "active",
+      "supersedes": []
     }
   ],
   "writeTarget": "AGENTS.md",
-  "writeTargetNote": "Converged 2026-07-20 (Session 9). Render the managed block into AGENTS.md, NOT CLAUDE.md. CLAUDE.md is an @AGENTS.md import bridge; writing here would duplicate the rules into both files."
+  "writeTargetNote": "Converged 2026-07-20 (Session 9). Render the managed block into AGENTS.md, NOT CLAUDE.md. CLAUDE.md is an @AGENTS.md import bridge; writing here would duplicate the rules into both files.",
+  "lastRun": "2026-08-25",
+  "sourceWindow": {
+    "days": 5,
+    "sessionsScanned": 22,
+    "signalCount": 7,
+    "topic": "ambience"
+  }
 }
