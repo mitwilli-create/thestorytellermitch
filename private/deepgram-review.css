@@ -104,3 +104,112 @@
 @media(max-width:900px){.dg-doc{padding:0 24px}.dg-flow,.dg-story-grid,.dg-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.dg-section{padding:60px 0}}
 @media(min-width:641px){.dg-note p{white-space:nowrap}}
 @media(max-width:640px){.dg-hero{padding:132px 0 52px}.dg-hero h1{font-size:clamp(43px,14vw,72px)}.dg-sub{font-size:17px}.dg-doc{padding:0 20px}.dg-section{padding:52px 0}.dg-section p,.dg-section li{font-size:15px}.dg-diff,.dg-audience-grid,.dg-channel-grid,.dg-flow,.dg-story-grid,.dg-timeline{grid-template-columns:1fr}.dg-package{grid-template-columns:1fr;gap:7px}.dg-story{min-height:0}.dg-compare-intro{grid-template-columns:1fr;gap:8px}.dg-compare-intro p{grid-column:1}.dg-compare-grid,.dg-audience-lines{grid-template-columns:1fr}.dg-owner-strip{grid-template-columns:1fr;gap:8px}}
+
+/* Blind-review revision: rank the work, name the proof, show the decision gate. */
+.dg-hero h1{max-width:880px}
+.dg-hero::after{animation:dg-orbit 24s ease-in-out infinite}
+.dg-proof-contract{display:grid;grid-template-columns:160px 1fr;gap:22px;margin-top:12px;padding:18px 22px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
+.dg-proof-contract .dg-label{display:block}
+.dg-proof-contract p{margin:0;max-width:900px;font-size:15px;line-height:1.55}
+.dg-priority-ladder{display:grid;gap:12px;margin-top:28px;counter-reset:priority}
+.dg-priority{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;padding:24px 26px;border:1px solid var(--line-2);background:rgba(255,255,255,.025);position:relative;overflow:hidden}
+.dg-priority::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line-2)}
+.dg-priority-now{border-color:var(--blood-soft);background:rgba(145,31,48,.08)}
+.dg-priority-now::before{background:var(--blood-soft);animation:dg-breathe 3.8s ease-in-out infinite}
+.dg-priority-next::before{background:#d9cdbd}
+.dg-priority-hold{border-style:dashed}
+.dg-priority-rail .dg-label{display:block;margin-bottom:13px}
+.dg-priority-status{display:block;color:var(--blood-soft);font:11px/1.5 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.dg-priority-main h3{margin:0 0 8px;font:700 29px/1.08 Archivo,sans-serif;color:var(--bone)}
+.dg-priority-main>.dg-purpose{margin:0 0 18px;font-size:16px;line-height:1.48;color:var(--bone)}
+.dg-priority dl{display:grid;grid-template-columns:128px 1fr;gap:0 18px;margin:0}
+.dg-priority dt{padding:8px 0;border-top:1px solid var(--line);color:var(--blood-soft);font:10px/1.35 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.dg-priority dd{margin:0;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.48;color:var(--bone-soft)}
+.dg-priority dt:first-of-type,.dg-priority dd:first-of-type{border-top:0;padding-top:0}
+.dg-priority-next .dg-priority-status{color:#d9cdbd}
+.dg-priority-hold .dg-priority-status{color:#d36b5d}
+.dg-audience-strip{margin-top:22px}
+.dg-audience-lines{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dg-audience-lines p{min-height:88px}
+.dg-audience-close{font-size:14px!important}
+.dg-audience-close b{color:var(--bone)}
+.dg-runway-step{transition:border-color var(--dur-micro) var(--ease-micro),background var(--dur-micro) var(--ease-micro),transform var(--dur-micro) var(--ease-micro)}
+.dg-runway-step:hover{transform:translateX(4px);border-color:var(--blood-soft)}
+.dg-runway-gate{gap:10px}
+.dg-runway-gate span{display:block}
+.dg-runway-gate b{margin-bottom:3px}
+.dg-franchise{background:rgba(255,255,255,.018)}
+@keyframes dg-breathe{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes dg-orbit{0%,100%{transform:translate3d(0,0,0) rotate(0deg);opacity:.8}50%{transform:translate3d(-2%,2%,0) rotate(4deg);opacity:1}}
+@media(max-width:900px){
+  .dg-section#calendar h2 .dg-heading-line{white-space:normal}
+  .dg-priority{grid-template-columns:1fr;gap:14px}
+  .dg-priority-rail{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+  .dg-priority-rail .dg-label{margin-bottom:0}
+  .dg-proof-contract{grid-template-columns:1fr;gap:8px}
+}
+@media(max-width:640px){
+  .dg-priority{padding:20px}
+  .dg-priority-rail{display:block}
+  .dg-priority-rail .dg-label{margin-bottom:8px}
+  .dg-priority-main h3{font-size:24px}
+  .dg-priority dl{grid-template-columns:1fr}
+  .dg-priority dt{border-top:1px solid var(--line);padding-bottom:2px}
+  .dg-priority dd{border-top:0;padding-top:0;padding-bottom:9px}
+  .dg-audience-lines{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .dg-priority-now::before{animation:none}
+  .dg-hero::after{animation:none}
+  .dg-runway-step{transition:none}
+  .dg-runway-step:hover{transform:none}
+}
+
+/* Final council pass: literal illustration, compact slate, measurable runway. */
+.dg-hero::after{display:none}
+.dg-beat-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:34px 0 0;border:1px solid var(--line-2);background:rgba(255,255,255,.025);position:relative;overflow:hidden}
+.dg-beat-diagram::before{content:'';position:absolute;left:14%;right:14%;top:34px;border-top:1px solid var(--blood-soft);opacity:.55}
+.dg-beat{position:relative;z-index:1;display:grid;gap:7px;padding:20px 22px;background:rgba(12,12,14,.82)}
+.dg-beat+.dg-beat{border-left:1px solid var(--line-2)}
+.dg-beat .num{color:var(--blood-soft);font:11px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em}
+.dg-beat strong{font:700 20px/1.1 Archivo,sans-serif;color:var(--bone)}
+.dg-beat>span:last-child{font-size:13px;line-height:1.4;color:var(--bone-soft)}
+.dg-audio-proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.dg-audio-proof article{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:16px 18px;border:1px dashed var(--line-2);background:rgba(255,255,255,.018)}
+.dg-audio-proof .dg-label{grid-column:1}
+.dg-audio-proof strong{font:700 18px/1.15 Archivo,sans-serif;color:var(--bone)}
+.dg-audio-button{align-self:center;grid-column:2;grid-row:1 / span 2;padding:8px 10px;border:1px solid var(--line-2);color:var(--dim);font:10px/1.2 'JetBrains Mono',monospace;text-transform:uppercase}
+.dg-audio-proof p{grid-column:1;margin:0!important;font-size:13px;line-height:1.4}
+.dg-story-lede,.dg-note p{white-space:normal!important}
+.dg-compact-line{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.48}
+.dg-compact-line b{color:var(--blood-soft);font:10px/1.35 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.dg-compact-line span{color:var(--bone-soft)}
+.dg-after-90{margin-top:12px;padding:22px 26px;border:1px solid var(--blood-soft);background:rgba(145,31,48,.08)}
+.dg-after-90 h3{margin:8px 0 8px;font:700 25px/1.08 Archivo,sans-serif;color:var(--bone)}
+.dg-after-90 p{margin:0;max-width:900px;font-size:15px;line-height:1.5}
+.dg-decision-contract{margin-top:12px;padding:22px 26px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
+.dg-decision-contract>p{margin:9px 0 16px;font-size:15px;line-height:1.5}
+.dg-contract-grid{display:grid;grid-template-columns:1.05fr 1.6fr 1fr 1fr 1.35fr;font-size:12px;line-height:1.42}
+.dg-contract-grid>*{padding:9px 10px;border-top:1px solid var(--line)}
+.dg-contract-grid>span{color:var(--dim);font:10px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.dg-contract-grid>b{font-weight:600;color:var(--bone)}
+@media(max-width:900px){
+  .dg-beat-diagram{grid-template-columns:1fr}
+  .dg-beat+.dg-beat{border-left:0;border-top:1px solid var(--line-2)}
+  .dg-beat-diagram::before{left:32px;right:auto;top:34px;bottom:34px;border-top:0;border-left:1px solid var(--blood-soft)}
+  .dg-beat{grid-template-columns:28px 1fr;gap:4px 12px}
+  .dg-beat .num{grid-row:1 / span 2}
+  .dg-beat>span:last-child{grid-column:2}
+  .dg-contract-grid{grid-template-columns:1fr 1fr}
+  .dg-contract-grid>*{grid-column:auto!important}
+  .dg-contract-grid>span:first-child,.dg-contract-grid>span:nth-child(2),.dg-contract-grid>span:nth-child(3),.dg-contract-grid>span:nth-child(4),.dg-contract-grid>span:nth-child(5){display:none}
+  .dg-contract-grid>b{border-top:1px solid var(--line)}
+}
+@media(max-width:640px){
+  .dg-audio-proof{grid-template-columns:1fr}
+  .dg-audio-proof article{grid-template-columns:1fr}
+  .dg-audio-button{grid-column:1;grid-row:auto;justify-self:start}
+  .dg-compact-line{grid-template-columns:1fr;gap:4px}
+  .dg-after-90,.dg-decision-contract{padding:20px}
+  .dg-contract-grid{grid-template-columns:1fr}
+}
