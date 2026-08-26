@@ -263,6 +263,15 @@
 .dg-launch-story span{display:block;color:var(--bone-soft);font-size:13px;line-height:1.45}
 @media(max-width:900px){.dg-launch-story-grid{grid-template-columns:1fr}.dg-launch-context{grid-template-columns:1fr}.dg-story-intro{display:block}.dg-story-intro p{margin-top:8px}}
 
+/* Copy-fit rules: keep headline phrases intact and let the colors carry the contrast. */
+.dg-split-heading span{display:inline-block;white-space:nowrap;color:var(--bone)}
+.dg-split-heading span.accent{color:var(--blood-soft)}
+.dg-section#calendar>h2{white-space:nowrap}
+.dg-contract-row-simple{grid-template-columns:1fr 1.7fr 1.2fr 1fr}
+.dg-contract-row-simple>div{font-size:13px}
+@media(max-width:900px){.dg-section#calendar>h2{white-space:normal}.dg-contract-row-simple{grid-template-columns:1fr}}
+@media(max-width:640px){.dg-split-heading span{display:block}.dg-split-heading span.accent{margin-top:3px}}
+
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
 .dg-hero h1{overflow-wrap:anywhere}
