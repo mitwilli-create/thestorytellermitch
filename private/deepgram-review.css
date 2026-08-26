@@ -231,6 +231,21 @@
 @media(max-width:900px){.dg-option-a-track{grid-template-columns:repeat(2,minmax(0,1fr))}.dg-option-a-track .dg-audio-step:nth-child(2){border-right:0}.dg-option-a-track .dg-audio-step:nth-child(n+3){border-top:1px solid var(--line-2)}}
 @media(max-width:640px){.dg-option-a-head{display:block;padding:18px}.dg-option-a-head p{margin-top:10px}.dg-option-a-track{grid-template-columns:1fr}.dg-option-a-track .dg-audio-step{min-height:76px;border-right:0;border-top:1px solid var(--line-2)}.dg-option-a-track .dg-audio-step:first-child{border-top:0}.dg-option-a-footer{display:block;padding:14px 18px}.dg-audio-disclosure{margin-top:8px}}
 
+/* AMBER-to-GREEN revision: red marks the argument, neutral borders carry the system. */
+.dg-option-a,.dg-runway-lead,.dg-after-90{border-color:var(--line-2);background:rgba(255,255,255,.025)}
+.dg-option-a-track .dg-audio-step.is-playing{background:var(--blood)}
+.dg-plain-language{max-width:1000px;margin:0 auto;padding:28px 0 76px}
+.dg-plain-language h2{margin-top:10px}
+.dg-month-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+.dg-month-grid article{padding:20px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
+.dg-month-grid h3{margin:8px 0;font:700 22px/1.1 Archivo,sans-serif;color:var(--bone)}
+.dg-month-grid p,.dg-terms p{margin:0;color:var(--bone-soft);font-size:14px;line-height:1.5}
+.dg-terms{margin-top:12px;padding:18px 20px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.dg-terms .dg-label{display:block;margin-bottom:9px}
+.dg-terms b{color:var(--bone)}
+@media(max-width:900px){.dg-plain-language{padding-left:24px;padding-right:24px}.dg-month-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.dg-plain-language{padding-left:20px;padding-right:20px;padding-bottom:52px}}
+
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
 .dg-hero h1{overflow-wrap:anywhere}
