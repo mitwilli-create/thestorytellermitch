@@ -178,6 +178,22 @@
 .dg-audience-strip{margin-top:22px}
 .dg-audience-lines{grid-template-columns:repeat(2,minmax(0,1fr))}
 .dg-audience-lines p{min-height:88px}
+
+/* Approved Option A: the conversation changes course in the hero. */
+.dg-hero-signal{display:none!important}
+.dg-hero-option-a{position:absolute;top:174px;right:max(24px,calc((100vw - 1180px)/2));z-index:3;width:min(44vw,560px);pointer-events:none}
+.dg-hero-option-a svg{display:block;width:100%;height:auto;overflow:visible}
+.dg-hero-option-a text{fill:var(--dim);font:10px/1 'JetBrains Mono',monospace;letter-spacing:.12em}
+.dg-hero-option-a .dg-hero-red{fill:var(--blood-soft)}
+.dg-hero-guide{fill:none;stroke:rgba(236,232,225,.14);stroke-width:1;stroke-dasharray:2 12}
+.dg-hero-wave{fill:none;stroke:var(--bone);stroke-width:2;stroke-linecap:round;stroke-dasharray:2 8;animation:dg-hero-wave 3.8s linear infinite}
+.dg-hero-wave-after{stroke:var(--blood-soft)}
+.dg-hero-break{fill:none;stroke:var(--blood-soft);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.dg-hero-break-pulse{fill:none;stroke:var(--blood-soft);stroke-width:1;animation:dg-hero-pulse 3.8s ease-in-out infinite}
+.dg-hero-trace{fill:var(--bone);filter:drop-shadow(0 0 7px rgba(211,107,93,.7))}
+@keyframes dg-hero-wave{to{stroke-dashoffset:-50}}@keyframes dg-hero-pulse{0%,55%{r:20px;opacity:.25}70%,100%{r:38px;opacity:0}}
+@media(max-width:900px){.dg-hero-option-a{position:relative;top:auto;right:auto;width:min(100%,560px);margin:-18px auto 14px;padding:0 8px}.dg-hero-option-a text{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.dg-hero-wave,.dg-hero-break-pulse{animation:none!important}}
 .dg-audience-close{font-size:14px!important}
 .dg-audience-close b{color:var(--bone)}
 .dg-runway-step{transition:border-color var(--dur-micro) var(--ease-micro),background var(--dur-micro) var(--ease-micro),transform var(--dur-micro) var(--ease-micro)}
