@@ -479,6 +479,10 @@
 @media(max-width:900px){.dg-launch-diagnosis{padding:18px 20px}.dg-launch-diagnosis-head{display:none}.dg-launch-diagnosis-row{grid-template-columns:1fr;gap:7px}.dg-launch-diagnosis-row>p:first-of-type::before,.dg-launch-diagnosis-row>.dg-diagnosis-source::before{display:block;margin-bottom:4px;color:var(--blood-soft);font:10px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.dg-launch-diagnosis-row>p:first-of-type::before{content:'What I would explicitly add'}.dg-launch-diagnosis-row>.dg-diagnosis-source::before{content:'Source example'}}
 @media(max-width:640px){.dg-launch-diagnosis-head{display:none}.dg-launch-diagnosis-row{display:block}.dg-launch-diagnosis-row strong{display:block;margin-bottom:6px}.dg-launch-diagnosis-row p{font-size:15px}}
 .dg-launch-diagnosis-row .dg-diagnosis-source{color:var(--dim);font-size:13px}
+.dg-section-kicker,.dg-support-kicker{display:block;margin:0 0 16px;color:var(--blood-soft);font:600 15px/1.3 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+@media(min-width:1360px){.dg-jump a{font-size:12px}.dg-jump .num{font-size:11px}}
+@media(max-width:640px){.dg-section-kicker,.dg-support-kicker{font-size:13px;margin-bottom:13px}}
+@media(min-width:1360px){.dg-jump a{width:190px;box-sizing:border-box;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start;justify-content:initial;padding:10px 12px 10px 0;line-height:1.35;text-align:left}.dg-jump .num{text-align:right}.dg-jump .jump-label{display:block}}
 @media(max-width:900px){
   .dg-option-a-scenario{grid-template-columns:1fr;gap:7px}
   .dg-option-a-comparison{grid-template-columns:1fr}
