@@ -212,6 +212,25 @@
   .dg-runway-step:hover{transform:none}
 }
 
+/* Clean source pass: the proof panel is the illustration and the only audio UI. */
+.dg-option-a{margin-top:18px;border:1px solid var(--blood-soft);background:rgba(145,31,48,.08)}
+.dg-option-a-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding:22px;border-bottom:1px solid var(--line-2)}
+.dg-option-a-head .dg-label{display:block;margin-bottom:10px;color:var(--blood-soft)}
+.dg-option-a-head h3{margin:0;font:700 clamp(25px,2.6vw,38px)/1.05 Archivo,sans-serif;color:var(--bone)}
+.dg-option-a-head p{max-width:440px;margin:0;color:var(--bone-soft);font-size:14px;line-height:1.48}
+.dg-option-a-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.dg-option-a-track .dg-audio-step{min-height:108px;border:0;border-right:1px solid var(--line-2);border-radius:0;background:rgba(12,12,14,.8)}
+.dg-option-a-track .dg-audio-step:last-child{border-right:0}
+.dg-option-a-track .dg-audio-step.is-playing{background:var(--blood)}
+.dg-option-a-footer{display:flex;align-items:center;gap:18px;padding:14px 22px;border-top:1px solid var(--line-2)}
+.dg-option-a-footer p{margin:0!important;font-size:12px;line-height:1.4}
+.dg-audio-status{color:var(--bone-soft)}
+.dg-audio-disclosure{margin-left:auto;color:var(--dim)}
+.dg-audit-bridge{padding:14px 18px;border-left:3px solid var(--blood-soft);background:rgba(255,255,255,.025)}
+.dg-audit-bridge b{color:var(--bone)}
+@media(max-width:900px){.dg-option-a-track{grid-template-columns:repeat(2,minmax(0,1fr))}.dg-option-a-track .dg-audio-step:nth-child(2){border-right:0}.dg-option-a-track .dg-audio-step:nth-child(n+3){border-top:1px solid var(--line-2)}}
+@media(max-width:640px){.dg-option-a-head{display:block;padding:18px}.dg-option-a-head p{margin-top:10px}.dg-option-a-track{grid-template-columns:1fr}.dg-option-a-track .dg-audio-step{min-height:76px;border-right:0;border-top:1px solid var(--line-2)}.dg-option-a-track .dg-audio-step:first-child{border-top:0}.dg-option-a-footer{display:block;padding:14px 18px}.dg-audio-disclosure{margin-top:8px}}
+
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
 .dg-hero h1{overflow-wrap:anywhere}
