@@ -252,6 +252,8 @@
 .dg-launch-context .dg-label,.dg-story-intro .dg-label{display:block;margin-bottom:10px}
 .dg-launch-context p,.dg-story-intro p{margin:0;color:var(--bone-soft);font-size:15px;line-height:1.5}
 .dg-story-intro{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin-top:34px}
+.dg-story-intro{padding:0 20px 12px;border-bottom:1px solid var(--line-2)}
+.dg-story-intro .dg-label{margin:0;white-space:nowrap}
 .dg-story-intro p{max-width:650px}
 .dg-launch-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .dg-launch-story{padding:20px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
@@ -272,6 +274,12 @@
 .dg-contract-row-simple>div{font-size:13px}
 @media(max-width:900px){.dg-section#calendar>h2{white-space:normal}.dg-contract-row-simple{grid-template-columns:1fr}}
 @media(max-width:640px){.dg-split-heading span{display:block}.dg-split-heading span.accent{margin-top:3px}}
+
+.dg-launch-system .dg-compare-intro{padding-top:18px}
+.dg-launch-system .dg-compare-copy p{max-width:720px}
+.dg-option-a{margin-top:12px}
+.dg-option-a-head{padding-top:24px}
+.dg-option-a-footer{min-height:48px}
 
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
