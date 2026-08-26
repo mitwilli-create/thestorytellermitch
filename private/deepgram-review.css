@@ -498,6 +498,7 @@
 
 /* Editorial shift: separate the comparison, diagnosis, and action layers. */
 .dg-launch-system{border:0;background:transparent}
+.dg-diagnosis-bridge{max-width:860px;margin:18px 0 0;padding-left:16px;border-left:2px solid var(--blood-soft);color:var(--bone-soft);font-size:16px;line-height:1.5}
 .dg-launch-system .dg-compare-grid{gap:14px}
 .dg-launch-system .dg-compare-grid article{padding:24px 22px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
 .dg-launch-system .dg-compare-grid article:last-child{border:1px solid var(--blood-soft);background:rgba(145,31,48,.07)}
