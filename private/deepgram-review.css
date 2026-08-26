@@ -292,6 +292,7 @@
 .dg-split-heading span{display:inline-block;white-space:nowrap;color:var(--bone)}
 .dg-split-heading span.accent{color:var(--blood-soft)}
 .dg-section#calendar>h2{white-space:nowrap}
+@media(min-width:641px){#launch>h2,#stories .dg-story-intro>h2,#flux-case>h2{max-width:none;font-size:clamp(24px,2.4vw,34px);letter-spacing:.02em;white-space:nowrap}}
 .dg-contract-row-simple{grid-template-columns:1fr 1.7fr 1.2fr 1fr}
 .dg-contract-row-simple>div{font-size:13px}
 @media(max-width:900px){.dg-section#calendar>h2{white-space:normal}.dg-contract-row-simple{grid-template-columns:1fr}}
