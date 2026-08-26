@@ -70,7 +70,7 @@
 .dg-runway-then{border-left:3px solid var(--blood-soft)}
 .dg-runway-later{border-style:dashed}
 .dg-runway-rail .dg-label,.dg-after-90 .dg-label{display:block;margin-bottom:14px}
-.dg-runway-time,.dg-runway-action{display:block;color:var(--bone);font:700 18px/1.15 Archivo,sans-serif;letter-spacing:0;text-transform:none}
+.dg-runway-time,.dg-runway-action{display:block;color:var(--blood-soft);font:600 13px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
 .dg-runway-action{margin-top:7px}
 .dg-stage-time{display:block;color:var(--blood-soft);font:11px/1.5 'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
 .dg-runway-main h3{margin:0 0 9px;font:700 27px/1.08 Archivo,sans-serif;color:var(--bone)}
