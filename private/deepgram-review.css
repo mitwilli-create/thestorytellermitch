@@ -181,10 +181,11 @@
 
 /* Approved Option A: the conversation changes course in the hero. */
 .dg-hero-signal{display:none!important}
-.dg-hero-option-a{position:absolute;top:174px;right:max(24px,calc((100vw - 1180px)/2));z-index:3;width:min(44vw,560px);pointer-events:none}
+.dg-hero-option-a{position:absolute;top:202px;right:max(24px,calc((100vw - 1180px)/2));z-index:3;width:min(36vw,460px);pointer-events:none}
 .dg-hero-option-a svg{display:block;width:100%;height:auto;overflow:visible}
 .dg-hero-option-a text{fill:var(--dim);font:10px/1 'JetBrains Mono',monospace;letter-spacing:.12em}
 .dg-hero-option-a .dg-hero-red{fill:var(--blood-soft)}
+.dg-hero-copy h1{max-width:680px}
 .dg-hero-guide{fill:none;stroke:rgba(236,232,225,.14);stroke-width:1;stroke-dasharray:2 12}
 .dg-hero-wave{fill:none;stroke:var(--bone);stroke-width:2;stroke-linecap:round;stroke-dasharray:2 8;animation:dg-hero-wave 3.8s linear infinite}
 .dg-hero-wave-after{stroke:var(--blood-soft)}
