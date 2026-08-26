@@ -371,3 +371,9 @@
   .dg-after-90,.dg-decision-contract{padding:20px}
   .dg-contract-row>div{grid-template-columns:112px 1fr}
 }
+
+/* Hero headline: keep each sentence intact and accent only the interruption. */
+.dg-hero h1{font-size:clamp(36px,3.75vw,54px)}
+.dg-hero h1 .dg-hero-sentence{display:block;white-space:nowrap}
+.dg-hero h1 .accent{display:inline;color:var(--blood-soft)}
+@media(max-width:640px){.dg-hero h1{font-size:36px}}
