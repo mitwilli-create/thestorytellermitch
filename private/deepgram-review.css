@@ -464,7 +464,7 @@
 @media(max-width:640px){.dg-method-head{display:none}.dg-method-row{display:block;padding:16px 14px}.dg-method-row>div+div{margin-top:12px}.dg-method-row>div+div::before{display:block;margin-bottom:4px;color:var(--blood-soft);font:11px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.dg-method-row>div:nth-child(2)::before{content:'What I would do'}.dg-method-row>div:nth-child(3)::before{content:'What comes out'}.dg-action-plan{padding:20px}.dg-action-card{padding:16px}.dg-plan-lede,.dg-story-pitch-lede{white-space:normal}.dg-story-subline{max-width:100%!important;white-space:normal}}
 
 /* Final visual council pass: use rules for chapter changes, not every section. */
-@media(min-width:1201px){.dg-hero-option-a{top:104px;right:0;width:min(41.667vw,600px)}}
+@media(min-width:1201px){.dg-hero-copy h1{max-width:650px}.dg-hero-option-a{top:104px;right:0;width:min(41.667vw,600px)}}
 @media(min-width:1360px){.dg-jump{top:520px}}
 .dg-hero{border-bottom:1px solid var(--line-2)}
 .dg-section,.dg-story-section{border-bottom:0}
