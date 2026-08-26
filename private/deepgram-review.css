@@ -70,8 +70,8 @@
 .dg-runway-then{border-left:3px solid var(--blood-soft)}
 .dg-runway-later{border-style:dashed}
 .dg-runway-rail .dg-label,.dg-after-90 .dg-label{display:block;margin-bottom:14px}
-.dg-runway-time{display:block;color:var(--blood-soft);font:600 13px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
-.dg-runway-action{display:block;margin-top:7px;color:var(--bone);font:700 18px/1.15 Archivo,sans-serif;letter-spacing:0;text-transform:none}
+.dg-runway-time,.dg-runway-action{display:block;color:var(--bone);font:700 18px/1.15 Archivo,sans-serif;letter-spacing:0;text-transform:none}
+.dg-runway-action{margin-top:7px}
 .dg-stage-time{display:block;color:var(--blood-soft);font:11px/1.5 'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
 .dg-runway-main h3{margin:0 0 9px;font:700 27px/1.08 Archivo,sans-serif;color:var(--bone)}
 .dg-runway-main p{margin:0;font-size:16px;line-height:1.5}
@@ -423,6 +423,7 @@
 .dg-option-a-scenario{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;margin:0 0 18px;padding:16px 18px;border-left:2px solid var(--blood-soft);background:rgba(145,31,48,.06)}
 .dg-option-a-scenario .dg-label{display:block;padding-top:2px}
 .dg-option-a-scenario p{max-width:none;margin:0;color:var(--bone-soft);font-size:14px;line-height:1.5}
+.dg-option-a .dg-label{font-size:13px}
 .dg-option-a-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 .dg-call-card{min-height:150px;padding:18px;border:1px solid var(--line-2);background:rgba(12,12,14,.78)}
 .dg-call-card-flux{border-color:var(--blood-soft);background:rgba(145,31,48,.08)}
@@ -441,7 +442,7 @@
 .dg-launch-system .dg-compare-grid article:last-child h3{color:var(--blood-soft)}
 .dg-method-table{margin-top:24px;border-top:1px solid var(--line-2)}
 .dg-method-head,.dg-method-row{display:grid;grid-template-columns:1.05fr 1.7fr 1.1fr;gap:20px}
-.dg-method-head{padding:11px 16px;color:var(--blood-soft);font:11px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.dg-method-head{padding:11px 16px;color:var(--blood-soft);font:12px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
 .dg-method-row{padding:18px 16px;border-top:1px solid var(--line-2);background:rgba(255,255,255,.025);color:var(--bone-soft);font-size:14px;line-height:1.48}
 .dg-method-row>div:first-child{color:var(--bone)}
 .dg-method-row>div:first-child span{display:block;margin-bottom:7px;color:var(--blood-soft);font:10px/1.2 'JetBrains Mono',monospace;letter-spacing:.08em}
@@ -505,6 +506,7 @@
 .dg-launch-diagnosis{margin-top:18px;padding:0;border:1px solid var(--line-2);background:rgba(0,0,0,.12)}
 .dg-launch-diagnosis-head{padding:14px 20px;background:rgba(255,255,255,.035);border-bottom:1px solid var(--line-2)}
 .dg-launch-diagnosis-head .dg-label{font-size:12px;line-height:1.35;text-align:left}
+.dg-launch-diagnosis-head .dg-label:nth-child(3){padding-left:16px}
 .dg-launch-diagnosis-row{padding:18px 20px;gap:28px;align-items:start}
 .dg-launch-diagnosis-row strong{font-size:17px;line-height:1.3}
 .dg-launch-diagnosis-row p{font-size:15px;line-height:1.48}
