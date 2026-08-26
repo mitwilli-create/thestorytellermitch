@@ -181,7 +181,7 @@
 
 /* Approved Option A: the conversation changes course in the hero. */
 .dg-hero-signal{display:none!important}
-.dg-hero-option-a{position:absolute;top:202px;right:max(24px,calc((100vw - 1180px)/2));z-index:3;width:min(36vw,460px);pointer-events:none}
+.dg-hero-option-a{position:absolute;top:202px;right:24px;z-index:3;width:min(40vw,540px);pointer-events:none}
 .dg-hero-option-a svg{display:block;width:100%;height:auto;overflow:visible}
 .dg-hero-option-a text{fill:var(--dim);font:10px/1 'JetBrains Mono',monospace;letter-spacing:.12em}
 .dg-hero-option-a .dg-hero-red{fill:var(--blood-soft)}
@@ -231,15 +231,15 @@
 
 /* Clean source pass: the proof panel is the illustration and the only audio UI. */
 .dg-option-a{margin-top:18px;border:1px solid var(--blood-soft);background:rgba(145,31,48,.08)}
-.dg-option-a-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding:22px;border-bottom:1px solid var(--line-2)}
+.dg-option-a-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:32px;align-items:start;padding:28px 26px;border-bottom:1px solid var(--line-2)}
 .dg-option-a-head .dg-label{display:block;margin-bottom:10px;color:var(--blood-soft)}
 .dg-option-a-head h3{margin:0;font:700 clamp(25px,2.6vw,38px)/1.05 Archivo,sans-serif;color:var(--bone)}
-.dg-option-a-head p{max-width:440px;margin:0;color:var(--bone-soft);font-size:14px;line-height:1.48}
+.dg-option-a-head p{max-width:380px;margin:4px 0 0;color:var(--bone-soft);font-size:14px;line-height:1.48}
 .dg-option-a-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
 .dg-option-a-track .dg-audio-step{min-height:108px;border:0;border-right:1px solid var(--line-2);border-radius:0;background:rgba(12,12,14,.8)}
 .dg-option-a-track .dg-audio-step:last-child{border-right:0}
 .dg-option-a-track .dg-audio-step.is-playing{background:var(--blood)}
-.dg-option-a-footer{display:flex;align-items:center;gap:18px;padding:14px 22px;border-top:1px solid var(--line-2)}
+.dg-option-a-footer{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,1.3fr);align-items:start;gap:24px;padding:16px 26px;border-top:1px solid var(--line-2)}
 .dg-option-a-footer p{margin:0!important;font-size:12px;line-height:1.4}
 .dg-audio-status{color:var(--bone-soft)}
 .dg-audio-disclosure{margin-left:auto;color:var(--dim)}
@@ -268,14 +268,13 @@
 .dg-launch-context>div{padding:20px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
 .dg-launch-context .dg-label,.dg-story-intro .dg-label{display:block;margin-bottom:10px}
 .dg-launch-context p,.dg-story-intro p{margin:0;color:var(--bone-soft);font-size:15px;line-height:1.5}
-.dg-story-intro{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin-top:34px}
-.dg-story-intro{padding:0 20px 12px;border-bottom:1px solid var(--line-2)}
-.dg-story-intro .dg-label{margin:0;white-space:nowrap}
+.dg-story-intro{display:block;margin-top:34px;padding:0 0 18px;border-bottom:1px solid var(--line-2)}
+.dg-story-intro .dg-label{margin:0;white-space:normal}
 .dg-story-intro .dg-label{font:800 clamp(20px,2.2vw,30px)/1.08 Archivo,sans-serif;letter-spacing:-.025em;text-transform:none;color:var(--bone)}
 .dg-story-intro p{max-width:650px}
 .dg-story-section{padding:34px 0 76px;border-bottom:1px solid var(--line);scroll-margin-top:92px}
 .dg-story-section .dg-story-intro{margin-top:0}
-.dg-launch-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.dg-launch-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
 .dg-launch-story{padding:20px;border:1px solid var(--line-2);background:rgba(255,255,255,.025)}
 .dg-launch-story-primary{border-color:var(--blood-soft);background:rgba(145,31,48,.08)}
 .dg-launch-story h3{margin:10px 0 9px;font:700 24px/1.08 Archivo,sans-serif;color:var(--bone)}
@@ -296,11 +295,23 @@
 @media(max-width:900px){.dg-section#calendar>h2{white-space:normal}.dg-contract-row-simple{grid-template-columns:1fr}}
 @media(max-width:640px){.dg-split-heading span{display:block}.dg-split-heading span.accent{margin-top:3px}.dg-story-intro .dg-label{white-space:normal}}
 
-.dg-launch-system .dg-compare-intro{padding-top:18px}
+.dg-launch-system .dg-compare-intro{padding:22px 26px 0}
 .dg-launch-system .dg-compare-copy p{max-width:720px}
 .dg-option-a{margin-top:12px}
-.dg-option-a-head{padding-top:24px}
 .dg-option-a-footer{min-height:48px}
+
+@media(min-width:901px) and (max-width:1200px){
+  .dg-hero-option-a{width:min(35vw,380px)}
+  .dg-hero h1{max-width:500px}
+}
+
+@media(max-width:640px){
+  .dg-launch-system .dg-compare-intro{padding:18px 20px 0}
+  .dg-option-a-head{display:block;padding:22px 20px}
+  .dg-option-a-head p{max-width:none;margin-top:12px}
+  .dg-option-a-footer{display:block;padding:16px 20px}
+  .dg-audio-disclosure{margin-top:10px}
+}
 
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
