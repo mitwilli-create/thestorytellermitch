@@ -316,6 +316,7 @@
 /* Final council pass: literal illustration, compact slate, measurable runway. */
 .dg-hero::after{display:none}
 .dg-hero h1{overflow-wrap:anywhere}
+.dg-hero h1 .accent{display:block}
 .dg-beat-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:34px 0 0;border:1px solid var(--line-2);background:rgba(255,255,255,.025);position:relative;overflow:hidden}
 .dg-beat-diagram::before{content:'';position:absolute;left:14%;right:14%;top:34px;border-top:1px solid var(--blood-soft);opacity:.55}
 .dg-beat{position:relative;z-index:1;display:grid;gap:7px;padding:20px 22px;background:rgba(12,12,14,.82)}
