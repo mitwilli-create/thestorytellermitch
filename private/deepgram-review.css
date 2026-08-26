@@ -45,7 +45,7 @@
 .dg-guardrails{margin-top:28px;border-top:1px solid var(--line)}.dg-guardrails details{border-bottom:1px solid var(--line)}.dg-guardrails summary{padding:16px 0;cursor:pointer;list-style:none;color:var(--bone-soft);font:12px/1.5 'JetBrains Mono',monospace;letter-spacing:.06em}.dg-guardrails summary::-webkit-details-marker{display:none}.dg-guardrails summary::before{content:'+';display:inline-block;width:24px;color:var(--blood-soft)}.dg-guardrails details[open] summary::before{content:'−'}.dg-guardrails .body{padding:0 24px 18px}.dg-guardrails .body p{font-size:14px;line-height:1.62;margin:0}
 .dg-source-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.dg-source-row a{padding:10px 12px;border:1px solid var(--line-2);color:var(--bone-soft);font:10px/1.4 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:color var(--dur-micro) var(--ease-micro),border-color var(--dur-micro) var(--ease-micro)}.dg-source-row a:hover,.dg-source-row a:focus-visible{color:var(--bone);border-color:var(--blood-soft)}
 .dg-footer{padding:24px 0 44px;border-top:1px solid var(--line);color:var(--dim);font:11px/1.6 'JetBrains Mono',monospace}
-.dg-jump{display:none}@media(min-width:1360px){.dg-jump{display:block;position:fixed;left:max(4px,calc(50% - 724px));top:50%;transform:translateY(-50%);z-index:40}.dg-jump nav{display:flex;flex-direction:column;gap:2px;border-right:2px solid var(--line)}.dg-jump a{display:flex;gap:11px;align-items:baseline;justify-content:flex-end;padding:11px 16px 11px 0;color:var(--mute);font:11px/1.45 'JetBrains Mono',monospace;letter-spacing:.08em;text-align:right;text-transform:uppercase;transition:color var(--dur-micro) var(--ease-micro)}.dg-jump a:hover{color:var(--bone)}.dg-jump .num{color:var(--blood-soft);font-size:10px}}
+.dg-jump{display:none}@media(min-width:1360px){.dg-jump{display:block;position:fixed;left:max(4px,calc(50% - 724px));top:480px;z-index:40}.dg-jump nav{display:flex;flex-direction:column;gap:2px;border-right:2px solid var(--line)}.dg-jump a{display:flex;gap:11px;align-items:baseline;justify-content:flex-end;padding:11px 16px 11px 0;color:var(--mute);font:11px/1.45 'JetBrains Mono',monospace;letter-spacing:.08em;text-align:right;text-transform:uppercase;transition:color var(--dur-micro) var(--ease-micro)}.dg-jump a:hover{color:var(--bone)}.dg-jump .num{color:var(--blood-soft);font-size:10px}}
 
 /* Editorial hierarchy overrides */
 .dg-hero h1{font-size:clamp(50px,6.2vw,88px)}
@@ -270,7 +270,7 @@
 .dg-launch-context p,.dg-story-intro p{margin:0;color:var(--bone-soft);font-size:15px;line-height:1.5}
 .dg-story-intro{display:block;margin-top:34px;padding:0 0 18px;border-bottom:1px solid var(--line-2)}
 .dg-story-intro h2{margin:0}
-.dg-story-subline{max-width:760px!important;margin:10px 0 0!important;color:var(--bone-soft)!important;font-size:18px!important;line-height:1.5!important}
+.dg-story-subline{max-width:none!important;margin:10px 0 0!important;color:var(--bone-soft)!important;font-size:18px!important;line-height:1.5!important;white-space:nowrap}
 .dg-story-intro p{max-width:650px}
 .dg-story-section{padding:34px 0 76px;border-bottom:1px solid var(--line);scroll-margin-top:92px}
 .dg-story-section .dg-story-intro{margin-top:0}
@@ -457,7 +457,25 @@
 .dg-plan-lede{max-width:none!important;font-size:19px!important;white-space:nowrap}
 .dg-story-pitch-lede{max-width:none!important;font-size:19px!important;white-space:nowrap}
 @media(max-width:900px){.dg-method-head,.dg-method-row{grid-template-columns:1fr 1.5fr 1fr;gap:14px}.dg-action-grid{grid-template-columns:1fr}}
-@media(max-width:640px){.dg-method-head{display:none}.dg-method-row{display:block;padding:16px 14px}.dg-method-row>div+div{margin-top:12px}.dg-method-row>div+div::before{display:block;margin-bottom:4px;color:var(--blood-soft);font:11px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.dg-method-row>div:nth-child(2)::before{content:'What I would do'}.dg-method-row>div:nth-child(3)::before{content:'What comes out'}.dg-action-plan{padding:20px}.dg-action-card{padding:16px}.dg-plan-lede,.dg-story-pitch-lede{white-space:normal}}
+@media(max-width:640px){.dg-method-head{display:none}.dg-method-row{display:block;padding:16px 14px}.dg-method-row>div+div{margin-top:12px}.dg-method-row>div+div::before{display:block;margin-bottom:4px;color:var(--blood-soft);font:11px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.dg-method-row>div:nth-child(2)::before{content:'What I would do'}.dg-method-row>div:nth-child(3)::before{content:'What comes out'}.dg-action-plan{padding:20px}.dg-action-card{padding:16px}.dg-plan-lede,.dg-story-pitch-lede{white-space:normal}.dg-story-subline{max-width:100%!important;white-space:normal}}
+
+/* Final visual council pass: use rules for chapter changes, not every section. */
+@media(min-width:1201px){.dg-hero-option-a{top:104px;right:0;width:min(41.667vw,600px)}}
+@media(min-width:1360px){.dg-jump{top:520px}}
+.dg-hero{border-bottom:1px solid var(--line-2)}
+.dg-section,.dg-story-section{border-bottom:0}
+.dg-story-intro{padding-bottom:0;border-bottom:0}
+#stories,#flux-case,#calendar{border-top:1px solid var(--line)}
+.dg-section:last-child{border-bottom:0}
+@media(min-width:1360px) and (max-height:760px){.dg-jump{display:none}}
+.dg-launch-diagnosis{padding:20px 26px 22px;border-top:1px solid var(--line-2);background:rgba(0,0,0,.08)}
+.dg-launch-diagnosis-head,.dg-launch-diagnosis-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px}
+.dg-launch-diagnosis-head{padding-bottom:9px}
+.dg-launch-diagnosis-row{padding:12px 0;border-top:1px solid var(--line)}
+.dg-launch-diagnosis-row strong{font:700 16px/1.35 Archivo,sans-serif;color:var(--bone)}
+.dg-launch-diagnosis-row p{margin:0;color:var(--bone-soft);font-size:14px;line-height:1.5}
+@media(max-width:900px){.dg-launch-diagnosis{padding:18px 20px}.dg-launch-diagnosis-head,.dg-launch-diagnosis-row{grid-template-columns:1fr;gap:7px}}
+@media(max-width:640px){.dg-launch-diagnosis-head{display:none}.dg-launch-diagnosis-row{display:block}.dg-launch-diagnosis-row strong{display:block;margin-bottom:6px}.dg-launch-diagnosis-row p{font-size:15px}}
 @media(max-width:900px){
   .dg-option-a-scenario{grid-template-columns:1fr;gap:7px}
   .dg-option-a-comparison{grid-template-columns:1fr}
