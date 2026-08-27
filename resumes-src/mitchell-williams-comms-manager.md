@@ -25,7 +25,7 @@ Writing portfolio: thestorytellermitch.com/writing
 ## Experience
 
 ### Internal Communications Lead
-**Google · Cross-Google Engineering (xGE)** | June 2024 – Present
+**Google · Cross-Google Engineering (xGE)** | June 2024 – August 2026
 
 Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.
 
