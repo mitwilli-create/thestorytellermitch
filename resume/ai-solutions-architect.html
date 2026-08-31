@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.07pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.8pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.13pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.8pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -176,7 +182,7 @@
 <p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Multi-agent system running my job search daily: multi-LLM council-of-models with adjudication, custom Claude Code skills and MCP servers, 52 scheduled agents, 1,150+ scored role reports, live dashboard under a unified spend cap. CI-green; public on GitHub.</p>
 <p class="rp"><strong><a href="../picture-lock.html">PictureLock</a></strong> · Seven-stage AI video pipeline in Node on the ElevenLabs stack; live demo receipt: a 53-second creative-directed short; the committed run manifest carries $8.26 for the artifacts in the cut, the Spanish dub carries a separately logged $0.42, and every call is logged.</p></section>
 <section class="rsec"><h2 class="rsec-h">Fit for AI Solutions Architecture</h2><ul class="rl"><li><strong>Voice fidelity as a testable primitive.</strong> The executive digital twin measures every draft against a voice "Constitution" and banned-phrase checklist; it cut VP review back-and-forth by about 70% (internal, self-measured).</li><li><strong>Hard guarantees over vibes.</strong> The tax-verification agent is citation-gated by architecture and caught a ~$19K error that commercial software defended as correct. Monolith returns INSUFFICIENT_DATA instead of guessing.</li></ul></section>
-<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – August 2026</div><p class="rp">Communications lead and program manager for xGE, the horizontal org that drives technical change across Google.</p>
 <div class="rinit"><div class="rinit-h"><a href="../comms-triage-agent.html">Communications-triage agent</a></div><ul class="rl"><li><strong>Problem:</strong> High-volume comms intake for the senior-IC community consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed solo (Apps Script + Gemini) a three-prompt pipeline (triage, revise, escalate) with conditional knowledge-base loading and tiered routing; human-in-the-loop authority holds on every High-touch classification.</li><li><strong>Impact:</strong> Documented end-to-end and handed off with a full operator runbook a non-builder can run and extend.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Executive-communications digital twin</div><ul class="rl"><li><strong>Problem:</strong> High-stakes VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built a Gemini agent loaded with a "Constitution" of voice rules, a banned-phrase verification checklist, and engagement-summary generators.</li><li><strong>Impact:</strong> Review cycles with the VP dropped by about 70%.</li></ul></div>
 <div class="rinit"><div class="rinit-h">MEJ (My Engineering Journey), AI mentorship-matching agent</div><ul class="rl"><li><strong>Problem:</strong> Manual mentorship matching across the senior-engineer community capped program capacity.</li><li><strong>Action:</strong> Architected and prototyped the matching agent and app as lead PM and architect: Python matching engine, Gemini prompt-chaining pipelines, agent security guardrails.</li><li><strong>Impact:</strong> Working prototype, framed as exactly that; production numbers wait until the system earns them.</li></ul></div>

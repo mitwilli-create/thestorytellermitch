@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.07pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.8pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.13pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.8pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -173,7 +179,7 @@
 <p class="rp"><strong><a href="../voice-os.html">voice-os</a></strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker. Public.</p>
 <p class="rp"><strong><a href="../tax-verification-agent.html">tax-verification-agent</a></strong> · Provenance discipline, proven where stakes are real: citation-gated verification over a four-layer IRS knowledge base on Claude, no claim without a source. Caught a <span class="rnum">~$19K</span> multi-state error that filing software pre-filled and defended as correct. Public.</p></section>
 <section class="rsec"><h2 class="rsec-h">Highlights</h2><ul class="rl"><li><strong>Calibrate to a principal's standards.</strong> The VP <a href="../stories.html#digital-twin">digital twin</a> (voice "Constitution" plus banned-phrase verification checklist) cut review back-and-forth by about <span class="rnum">70%</span>.</li><li><strong>Teach the team to run it.</strong> The <a href="../comms-triage-agent.html">comms-triage agent</a> shipped with a full operator runbook written for a non-builder operator; PictureLock hands off to customer teams the same way, kit and all. The handoff is what makes the tools stick.</li><li><strong>Enterprise embeds at scale, internal so far.</strong> Mapped and automated production workflows for Google VPs and <span class="rnum">1,000+</span> of its most senior engineers; the loop is the one this role runs (embed, map, ship, runbook, hand off), the hand-offs are public, and the external-client version is the open variable I'm here to close.</li></ul></section>
-<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE, the horizontal org driving technical change across Google, serving its <span class="rnum">1,000+</span> Principal, Distinguished, and Fellow engineers.</p>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – August 2026</div><p class="rp">Communications lead and program manager for xGE, the horizontal org driving technical change across Google, serving its <span class="rnum">1,000+</span> Principal, Distinguished, and Fellow engineers.</p>
 <div class="rinit"><div class="rinit-h">Executive-communications digital twin (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> High-stakes VP communications required long review cycles to hold a consistent voice.</li><li><strong>Action:</strong> Built and deployed solo: a Gemini agent with a voice "Constitution," banned-phrase verification checklist, and engagement-summary generators.</li><li><strong>Impact:</strong> Cut review back-and-forth with the VP by about <span class="rnum">70%</span>.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Communications-triage agent (Apps Script + Gemini)</div><ul class="rl"><li><strong>Problem:</strong> Senior-IC comms intake consumed operator hours on low-complexity requests.</li><li><strong>Action:</strong> Built and deployed solo: a three-prompt pipeline (triage, revise in Smart Brevity, escalate) with conditional knowledge-base loading and tiered routing.</li><li><strong>Impact:</strong> Designed to auto-handle roughly <span class="rnum">60%</span> of inbound without escalation (est.) and projected to recapture <span class="rnum">~160</span> operational hours/year (est.); documented end to end and handed off with a full operator runbook.</li></ul></div>
 <div class="rinit"><div class="rinit-h">xGE Connects, peer-led technical workshop series</div><ul class="rl"><li><strong>Problem:</strong> Senior engineers' expertise was not reaching the tier below repeatably.</li><li><strong>Action:</strong> Designed and ran the peer-led series end to end, survey to stage.</li><li><strong>Impact:</strong> Q1-2026 sessions, hosted by Google DeepMind engineers, drew record attendance.</li></ul></div>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+  <title>Resume · Communications Lead / Director (AI-native) · Mitchell Williams</title>
+  <meta name="description" content="Mitchell Williams resume for Communications Lead / Director (AI-native) roles. Rendered from the same source as the downloadable PDF.">
+  <meta name="robots" content="noindex">
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/martian-bold.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Martian Grotesk';font-weight:400;font-display:swap;src:url('../assets/fonts/martian-regular.woff2') format('woff2')}
+    @font-face{font-family:'Martian Grotesk';font-weight:700 900;font-display:swap;src:url('../assets/fonts/martian-bold.woff2') format('woff2')}
+    /* Print-only static instance of Archivo at the one weight print uses (900,
+       the name). theme.css serves Archivo as a VARIABLE font, and Chromium's
+       PDF backend cannot embed a variable instance as TrueType: it falls back
+       to Type 3 glyph procedures, which most viewers draw as generic paths
+       with no hinting, so the name renders visibly soft next to the Martian
+       body copy. Measured 2026-07-27 via pdffonts on an apply-pack CV:
+       ArchivoRoman-Black came out Type 3, the Martian faces CID TrueType.
+       A static instance embeds properly and is also 61% smaller (13KB vs 35KB)
+       because it carries one weight instead of the whole 400-900 axis.
+       Deliberately a separate family name: the WEB view keeps the variable
+       font, and only the print block below opts into this. */
+    @font-face{font-family:'Archivo Print';font-weight:900;font-display:block;src:url('../assets/fonts/archivo-900-latin.woff2') format('woff2')}
+  </style>
+  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/theme.css?v=20260716a">
+  <style>
+    /* ---- shared structure ---- */
+    .rwrap{max-width:820px;margin:0 auto;padding:150px 24px 80px}
+    .rname{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);
+      letter-spacing:-0.03em;text-transform:uppercase;line-height:1;color:var(--bone)}
+    /* pillars sized to land as two full lines in the 820px column, not one
+       line plus an orphaned word (owner 2026-07-15); balance evens the pair.
+       Screen only: the print block re-sizes pillars, keeping the locked PDFs
+       byte-identical in layout. */
+    .rpillars{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--blood-soft);margin-top:14px;line-height:1.7}
+    @media screen{
+      .rpillars{font-size:clamp(13px,2.44vw,20px);letter-spacing:0.08em;line-height:1.55;text-wrap:balance}
+    }
+    .rcontact{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);
+      margin-top:12px;line-height:1.8}
+    section.rsec{padding:0;margin-top:34px} /* theme.css sets global section padding; kill it here */
+    .rsec-h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;
+      text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
+      padding-bottom:8px;margin-bottom:14px}
+    .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
+    .rp strong,.rl strong{color:var(--bone);font-weight:700}
+    .rl{list-style:none;margin:0 0 10px}
+    .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
+    .rl li::before{content:"·";position:absolute;left:2px;color:var(--blood-soft)}
+    .rnum{font-family:'JetBrains Mono',monospace;font-size:0.92em;font-variant-numeric:tabular-nums}
+    .rrole{margin:16px 0 6px}
+    .rrole-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--bone);letter-spacing:-0.01em}
+    .rrole-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);margin:3px 0 10px}
+    .rrole-s strong{color:var(--bone-soft)}
+    .rinit{margin:10px 0}
+    .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
+    .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+    /* compact buttons so the full row (four on the comms lane) holds one
+       line inside the 820px column at desktop (owner 2026-07-15) */
+    .rtop .btn{padding:13px 18px;font-size:11px;letter-spacing:0.1em;white-space:nowrap}
+    /* silent page: no floating audio control (matches the memo + lane pages) */
+    .sound-toggle{display:none}
+    /* mobile: stack the action row full-width so the buttons never wrap ragged */
+    @media(max-width:640px){
+      .rtop{flex-direction:column}
+      .rtop .btn{width:100%;text-align:center}
+    }
+    /* ---- print: pure white, APPROVED TYPOGRAPHY LOCK (blind-tested + ruled by
+       Mitchell 2026-07-25; supersedes the 2026-07-10 two-face system): Archivo
+       Black carries the NAME only; Martian Grotesk carries every other reading
+       and hierarchy function (deck, section labels, role titles, org/date,
+       contact, body, metrics). Nothing above the name; deck outranks section
+       labels; hierarchy steps down only as one unit toward the 9.75pt floor.
+       No band, no mono, no underlines; links signal by brand red alone. ---- */
+    .rwrap section a,.rwrap .rcontact a{color:var(--blood-soft);text-decoration:none}
+    .rwrap section a:hover,.rwrap .rcontact a:hover{color:var(--bone)}
+    /* page size only; per-page top/bottom margins are passed to Playwright's
+       page.pdf() in tools/export-resume-pdfs.mjs so page 2+ never starts flush */
+    @page{size:letter}
+    @media print{
+      :root{--bg:#fff;--surface:#fff;--bone:#181614;--bone-soft:#2e2a26;
+        --mute:#6b645b;--dim:#8b867d;--line:#d8d2c6;--line-2:#c9c2b4;
+        --blood:#8a3a33;--blood-soft:#8a3a33}
+      html,body{background:#fff !important;color:#2e2a26}
+      .kicker,.rpillars,.rcontact,.rrole-s{font-family:'Martian Grotesk',sans-serif}
+      .kicker{display:none !important} /* nothing appears above the name: the
+        first visible print element is MITCHELL WILLIAMS (typography lock 2026-07-25) */
+      .rsec-h{border-bottom-color:var(--line-2)}
+      .rwrap section a,.rwrap .rcontact a{color:#8a3a33 !important;text-decoration:none}
+      /* theme.css grain overlay (SVG feTurbulence) forces Chromium to rasterize
+         every printed page: 3.4MB PDFs with no extractable text. Kill it and any
+         blend/filter contexts so print stays vector + ATS-parseable. */
+      /* body::before is the fixed 92px nav scrim: position:fixed repeats on
+         every printed page and washes out the first block of page 2+. */
+      body::before,body::after{display:none !important;content:none !important}
+      *{mix-blend-mode:normal !important;filter:none !important}
+      .nav,.rtop,footer,.scrollcue,.skip-link{display:none !important}
+      .rwrap{padding:0 0.42in 0.05in;max-width:none}
+      /* negative tracking shrinks the space glyph's advance below PDF text
+         extractors' word-break threshold ("MITCHELLWILLIAMS"); print pads
+         word gaps back so ATS parsing keeps the spaces. */
+      .rname{font-family:'Archivo Print','Archivo',sans-serif;font-weight:900;font-size:34pt;word-spacing:0.14em;letter-spacing:-0.02em}
+      .rrole-h{word-spacing:0.08em}
+      .rpillars{font-size:12.48pt;font-weight:800;text-transform:uppercase;letter-spacing:0.035em;color:var(--blood);margin-top:8pt;line-height:1.25}
+      .rcontact{font-size:9.42pt;font-weight:400;margin-top:5pt;line-height:1.4}
+      section.rsec{margin-top:6pt;padding:0}
+      .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.01pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
+      .rp{font-size:9.75pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
+      .rl{margin-bottom:4pt}
+      /* screen uses position:relative li + absolute markers; positioned boxes
+         paint after normal flow, so Chromium's PDF text stream emits headings
+         first and list bodies later with detached marker glyphs: garbage
+         order for ATS extraction. Print flattens to normal flow with an
+         inline hanging-indent marker so text extracts linearly. */
+      .rl li{font-size:9.75pt;line-height:1.24;margin-bottom:2pt;padding-left:12pt;break-inside:avoid;position:static;font-family:'Martian Grotesk',sans-serif}
+      .rl li::before{position:static;display:inline-block;width:11pt;margin-left:-11pt}
+      .rrole{margin:5pt 0 2pt}
+      .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:10.27pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
+      .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
+      .rinit{margin:4pt 0;break-inside:avoid}
+      .rinit-h{font-size:9.75pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.75pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
+      .rp{break-inside:avoid}
+      a{color:inherit;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+
+
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="../fit.html">Role Fit</a>
+    <a href="../projects.html">AI Projects</a>
+    <a href="../resume.html">Resume</a>
+    <a href="../comms.html">Comms &amp; Editorial</a>
+    <a href="../work.html">Reel</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../stories.html">Case Files</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+
+<div class="rwrap">
+  <header>
+    <div class="kicker">resume · communications lead / director (ai-native)</div>
+    <h1 class="rname">Mitchell Williams</h1>
+    <div class="rpillars">Comms-Native Applied-AI Builder</div>
+    <!-- Reviewer note: this is the candidate's own resume; the contact line is
+     published by design (it is the point of a resume). Same phone comms.html
+     already exposes publicly. -->
+    <div class="rcontact">Seattle, WA (Open to relocation)  |  <span class="pdf-phone">812-219-6077  |  </span>mitwilli@gmail.com<br><a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>  |  <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>  |  <a href="https://thestorytellermitch.com/">thestorytellermitch.com</a></div>
+    <div class="rtop">
+      <a class="btn" href="../resume.html"><span>&larr; All resumes</span></a>
+      <a class="btn" href="../for-fluidstack.html"><span>The Fluidstack review path</span></a>
+      <a class="btn solid" href="../assets/resumes/mitchell-williams-comms-manager.pdf"><span>Download PDF</span></a>
+      <a class="btn" href="../fit.html#comms-manager"><span>The fit case</span></a>
+    </div>
+  </header>
+  <section class="rsec"><h2 class="rsec-h">Summary</h2><p class="rp"><strong>Communications-native applied-AI builder.</strong> A decade producing news and entertainment across <a href="https://thestorytellermitch.com/timeline#era-wdrb">local and global newsrooms</a>, eight years as a senior communications &amp; content strategist at Google, including the last two years building production LLM agents inside the Office of Cross-Google Engineering (xGE), the org chartered to drive technical change across Google through its 1,000+ most senior engineers.</p>
+<p class="rp"><strong>I engineer the systems that scale the story.</strong> At Google xGE I built and deployed two production agents (an autonomous <a href="../comms-triage-agent.html">comms-triage</a> system and an executive communications "<a href="../stories.html#digital-twin">digital twin</a>") and architected the strategy and platform for the senior-engineer mentorship program. On my own time I built <a href="https://thestorytellermitch.com/picture-lock">PictureLock</a>, a headless AI production studio, and a cost-governed multi-agent job-search system.</p>
+<p class="rp"><strong>The through-line from newsroom to agents:</strong> Translating what different audiences need into what gets built, from local morning news and global digital explainers to 75,000 new hires and 1,000+ Principal, Distinguished and Fellow engineers. Targeting AI-enablement, applied AI, and executive communications roles at AI-native companies where communications depth and production-AI capability are the spec. Open to relocation.</p></section>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">xGE Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong>  |  June 2024 – August 2026</div><p class="rp">Communications Lead for xGE, driving technical change across Google's top engineers.</p>
+<ul class="rl"><li><strong>Autonomous Editorial Systems:</strong> Built and deployed an autonomous <a href="https://thestorytellermitch.com/comms-triage-agent">communications-triage agent</a> (Apps Script and Gemini) for xGE's communications-partnership intake from teams, stakeholders and partner teams. Documented it end to end and handed it off with a full <a href="../writing.html">operator runbook</a>; built to route 60% of inbound requests without escalation and scoped to remove 160 hours of annual triage overhead.</li><li><strong><a href="https://thestorytellermitch.com/stories#digital-twin">Executive Voice Engineering</a>:</strong> Built a production ghostwriting agent for a VP using Gemini, a voice-rule Constitution, and banned-phrase verification. The system cut document review rounds by 70%.</li><li><strong>Componentizing App Prototypes:</strong> Architected and prototyped My Engineering Journey (MEJ), an internal AI mentorship-matching agent and enablement app for the senior-engineer community (lead PM and architect; Python matching engine + Gemini prompt-chaining pipelines), scoped to cut per-match time from 3 hours to 20 minutes and lift half-year capacity from 15 to 50 matches.</li><li><strong>Governance &amp; Approvals:</strong> Overhauled the xGE approvals governance, authoring the Approvals User Guide, the Approvals Matrix, and the Roles &amp; Responsibilities framework. Drove named cross-org mandates (Keystore Rotation, Memory Safety TRR) to approval.</li><li><strong>Communications as a Service:</strong> Designed and operated the org's three-tier communications service model and authored its multi-channel communications strategy, with a single intake point, automatic triage on scope, audience, urgency and cost of failure, and defined deliverables per tier. Authored the operating runbook, the triage criteria and separate guides for the team running the service and the internal teams requesting it. Owned communications for the annual Sr. Tech IC summit (600+ attendees) and quarterly Distinguished / Principal Engineering newsletters.</li><li><strong>Platform Go-to-Market:</strong> Authored a 90-day adoption and go-to-market plan repositioning an internal engineering platform, with a stakeholder influence map, evidence-led pitch scripts and a staged executive sponsorship path.</li><li><strong>Technical Program Go-to-Market:</strong> Authored the engagement playbook and proposed 2026 go-to-market changes for a cross-org technical review program, using engagement analytics (892 active users, 42-second average engagement) to identify a documented drop-off problem and scope its remediation.</li><li><strong>Technical Storytelling and Enablement:</strong> Partnered with Principal, Distinguished and Fellow engineers across Google product areas to shape workshops, presentation content and speaker preparation for xGE Connects, a peer-led career and skills series informed by an annual audience survey, plus the 600+ attendee summit and 300+ person quarterly all-hands forums.</li></ul></div>
+<div class="rrole"><div class="rrole-h">Senior Communications and Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong>  |  April 2018 – June 2024</div><p class="rp">Senior communications strategist for Corporate Engineering and its global help desk.</p>
+<ul class="rl"><li><strong>Executive Ghostwriting &amp; Narrative Strategy:</strong> Wrote executive communications for then-CIO Ben Fried, successfully translating Corporate Engineering's technical priorities into leadership-ready narrative.</li><li><strong>Change Management:</strong> Overhauled Day-One technical orientation into a self-service onboarding curriculum, delivered to 75,000+ new hires with an 88% CSAT score.</li><li><strong>Crisis Communications:</strong> Directed the communications, content, and logistics-support strategy for the Q1-2020 global remote-work shift, driving an 80% increase in global self-provisioning efficiency over the quarter that followed.</li><li><strong>Content Campaigns &amp; Audience Building:</strong> Ran external-facing recruitment and content campaigns to strengthen Google's engineering talent branding, generating 1.7 million YouTube views across the portfolio.</li><li><strong>Enablement Video That Changed Behaviour:</strong> Produced and directed the communications and enablement content for the IT career-launch programs. The new-hire technical orientation video passed 7,400 views after the shift to fully remote, and the equipment self-setup series cut technical credentialing time roughly in half.</li><li><strong>Content Performance:</strong> Video content drew 71.3% of all newsletter clicks (November 2018) and set the all-time single-item click record; Corp Eng hackathon coverage reached 2,500+ engineers through the same channel.</li><li><strong>Content Audits:</strong> A 2023 content audit lifted self-service solvability 9.03% (10,670 fewer tickets per year).</li></ul></div>
+<div class="rrole"><div class="rrole-h">Earlier Career</div><div class="rrole-s"><strong>News and Entertainment Production</strong>  |  2007 – 2018</div><p class="rp">Managed employees across the full 2007-2018 news tenure, on deadline in every shop.</p>
+<ul class="rl"><li><strong>Al Jazeera's AJ+ (Al Jazeera) | Senior Producer (2016 – 2018):</strong> Led an explainer desk of 8-10 producers that reached 500 million weekly viewers. Originated scalable editorial franchises and produced a 50 million-view viral hit. Designed a day-of explainer production line that doubled as a <a href="../stories.html#talent-pipeline">talent pipeline</a>. Three producers I coached became on-camera principals with their own Emmy and Webby wins.</li><li><strong>CNN | Writer &amp; Producer, "New Day" (2016):</strong> Wrote and produced live daily election segments, pre-interviewed guests and mined social signals to sharpen anchor questions during a year when New Day averaged 510,000 viewers, up 41% year over year.</li><li><strong>Fusion, an ABC and Univision joint venture (ABC News / Univision) | Senior Producer (2013 – 2015):</strong> Led a 10-person team across one-hour formats; rebuilt a 44-minute <a href="../stories.html#mandela-special">Mandela</a> special as news broke and field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live | Segment Producer (2012 – 2013):</strong> Produced segments for HuffPost (The Huffington Post's live daily video network) through its Webby-winning launch era. Leveraged high-level interview skills to prep high-profile talent and conduct on-record expert interviews. Handled sensitive crisis communications under an active "attack-the-attacker" litigation posture during sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage.</li><li><strong>CGTN America (China Central Television's U.S. network) | Producer (2011 – 2012):</strong> Managed five writers and producers and line-produced a 30-minute live newscast during the U.S. bureau's launch year.</li><li><strong>Al Jazeera English "The Stream" | Founding Team, Associate Producer (2010 – 2011):</strong> Led the launch of the network's social-first live show the afternoon after the <a href="../stories.html#stream-launch-night">bin Laden</a> raid broke. Pioneered social-data journalism formats that reached 250M households and won a Royal Television Society award.</li><li><strong>WDRB Fox 41 (Louisville) | Line Producer (2007 – 2008):</strong> Called the magnitude 5.2 Wabash Valley earthquake at 5:37 a.m. and restacked the live morning block on air, then line produced roughly three hours of continuous breaking coverage, directing the meteorologist, field crews and traffic while feeding revised U.S. Geological Survey numbers to anchors mid-broadcast.</li></ul></div></section>
+<section class="rsec"><h2 class="rsec-h">Selected Writing &amp; Essays</h2><ul class="rl"><li><strong>Are Chinese Models Cheaper? My Bill Will Decide.</strong> (Substack, July 2026): A hands-on analysis of the open-weight model flood and a deterministic router built to cut API costs.</li><li><strong>I Engineered a VP's Voice. The AI Infrastructure Industry Could Learn a Thing or Two.</strong> (Substack, July 2026): A post-mortem on encoding a leader's decision-making into a multi-agent system.</li><li><strong>What Do AI Employees Know About Using LLMs That I Don't?</strong> (Substack, July 2026): A breakdown of how frontier-model engineers ship code.</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Projects</h2><ul class="rl"><li><strong><a href="https://thestorytellermitch.com/throughline">Throughline</a>:</strong> An automated content factory that turns a single product brief into a multi-channel campaign. For a communications organization, it eliminates drafting bottlenecks, allowing them to instantly scale a core narrative into an essay, podcast, and video without losing message consistency.</li><li><strong><a href="https://thestorytellermitch.com/career-ops">Career Ops</a></strong>, open-source agentic AI pipeline: Forked an open-source AI job-search pipeline and substantially extended it into a multi-agent, cost-governed autonomous system with a multi-LLM council-of-models with dealbreaker adjudication, a persona-review system, an autonomous regression-guard + bug-resolver pipeline, custom Claude Code skills and MCP servers. CI-green and test-covered.</li><li><strong><a href="https://thestorytellermitch.com/second-source">Second Source</a>:</strong> An editorial evidence desk that automatically turns raw executive interviews into checkable, cited packages. For a communications organization, it removes the manual fact-checking bottleneck, guaranteeing that all external messaging is strictly grounded in the original tape to protect corporate reputation.</li><li><strong><a href="https://thestorytellermitch.com/picture-lock">PictureLock</a>:</strong> An AI video pipeline that converts technical text into ready-to-publish visual stories. For a communications organization, it removes the heavy cost and delay of traditional video production, turning complex AI product updates into engaging, consumer-facing narratives overnight.</li><li><strong><a href="../for-elevenlabs.html">MERIDIEM</a></strong>, one script, seven markets: A 35-second spec spot for MERIDIEM produced on the <a href="../picture-lock.html">picture-lock</a> stack. One Spanish master exports to six further markets in the same cloned brand voice, with per-market music beds and compliance-tiered cuts where alcohol rules demand them.</li><li><strong><a href="../voice-os.html">Voice OS</a>:</strong> Six-axis voice scoring, dual-persona routing, and QA gates, calibrated on a multi-million-word corpus of my own writing (codified voice "Constitution" plus banned-phrase checklist).</li><li><strong><a href="../stories.html#freeahmed-coalition">#FreeAhmed</a> producer coalition (April 2026):</strong> Co-organized the producer side of the international coalition for the release of detained journalist Ahmed Shihab-Eldin, coordinating cross-network narrative amplification under OPSEC discipline alongside CPJ, Amnesty, and the UN Special Rapporteur.</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong>  |  Indiana University Bloomington  |  September 2007</p></section>
+<section class="rsec"><h2 class="rsec-h">Certifications</h2><ul class="rl"><li><strong>AI Fluency · Claude 101 · Agent Skills · Model Context Protocol</strong> | Anthropic | March 2026</li></ul></section>
+<section class="rsec"><h2 class="rsec-h">Capabilities</h2><ul class="rl"><li><strong>Communications &amp; Editorial:</strong> Executive essays for engineers, written directly with SMEs to keep the work credible. Executive communications under regulatory and litigation scrutiny, principal-level briefing and ghostwriting, internal-comms strategy at engineering scale.</li><li><strong>People management:</strong> Managed employees through the entire news tenure (2007-2018), from WDRB line producing through AJ+ desk leadership. Named headcounts live on the AJ+, Fusion, and CGTN lines below.</li><li><strong>Audience range:</strong> Local morning news at WDRB, social-first global television on The Stream, bilingual and multicultural digital at Fusion and AJ+, then Google's 75,000+ new hires and 1,000+ most senior engineers. Google audiences were internal workforce, not external product users.</li><li><strong>Press &amp; Media Network:</strong> Working relationships with 131 journalists, editors, anchors, correspondents and news producers across 30 national news outlets, built as colleagues over a decade in live and digital news.</li><li><strong>Technical Fluency &amp; Developer Pulse:</strong> Deeply embedded in the builder communities where AI narratives are actually shaped (HackerNews, r/LocalLLaMA).</li><li><strong>AI / Agent Engineering:</strong> Production agents shipped inside Google on Apps Script and Gemini, and locally via MCP servers. LLM orchestration (LangGraph / LangChain, CrewAI), multi-agent systems, Claude Code skills, RAG + vector stores. Daily power user of Claude, Claude Code and Cowork, which is where the knowledge and drafting workflows run.</li><li><strong>Program &amp; Enablement:</strong> AI enablement and adoption, governance and approvals frameworks, intake protocols, portfolio prioritization, metrics design, stakeholder and vendor management.</li><li><strong>Data visualization:</strong> Tableau and Google Analytics on the AJ+ explainer desk, used to read performance and decide what to scale.</li><li><strong>Build / Stack:</strong> Node.js (.mjs), Playwright, YAML, Typst, Markdown, Apps Script, Gemini API / Gems, Claude Code / MCP, Cowork, Greenhouse / Ashby / Lever portal APIs. Python (read / debug + AI-assisted scripting).</li></ul></section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+<script src="../shared/reveal.js?v=20260715a"></script>
+<script src="../shared/audio.js?v=20260716b"></script>
+</body>
+</html>
