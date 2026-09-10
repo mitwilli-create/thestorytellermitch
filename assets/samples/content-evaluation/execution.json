@@ -1,0 +1,30 @@
+{
+  "executed_at": "2026-09-10T17:54:56.505861+00:00",
+  "source_repository": "https://github.com/mitwilli-create/voice-os",
+  "source_commit": "991d8e8d0c6ec394286a1cc2db01c620db7e50cf",
+  "mode": "offline",
+  "fixture_kind": "synthetic bundled repository fixtures",
+  "inputs": [
+    {
+      "file": "pipeline.py",
+      "sha256": "9564c629021e2a280734c99830adc1bde56b5c7a01ddfcf722daca05478593ca"
+    },
+    {
+      "file": "sample_corpus.txt",
+      "sha256": "b820127da62c8c620da1c54bffec661e4baaaf10f1dc7ec77b94da87151dcf11"
+    },
+    {
+      "file": "sample_draft.txt",
+      "sha256": "8898d193bbcd8738e06082710bda114e43a252a7c9c56e4cd76ff0baa0335190"
+    },
+    {
+      "file": "banned_list.txt",
+      "sha256": "ab0e416b69a413c48fbdbfded549a2574756d56e5cb725b2246e495e48f6d73e"
+    }
+  ],
+  "scorer_exit_code": 0,
+  "pipeline_exit_code": 1,
+  "pipeline_decision": "cycle",
+  "pipeline_output_sha256": "56cfaea668be2f5bc69155eabcaafac4189e296fba8f6c4e47120832b81a6fc1",
+  "limit": "The scorer and bounded rewrite loop ran. The final rewrite did not clear the quality gate. These are deterministic fixture scores, not live model alignment or production outcomes."
+}

@@ -3,3 +3,24 @@
 
 /content-ops /throughline 301
 /content-ops.html /throughline 301
+
+# De-published company courtship pages (2026-09-06). Ambience stays live.
+/for-anthropic / 301
+/for-anthropic.html / 301
+/for-comms-leadership / 301
+/for-comms-leadership.html / 301
+/for-cursor / 301
+/for-cursor.html / 301
+/for-vercel / 301
+/for-vercel.html / 301
+/for-nvidia / 301
+/for-nvidia.html / 301
+/for-sierra / 301
+/for-sierra.html / 301
+/for-fluidstack / 301
+/for-fluidstack.html / 301
+/private/for-deepgram / 301
+/private/for-deepgram.html / 301
+/docs/nvidia-positioning-memo / 301
+/docs/cursor-positioning-memo / 301
+/docs/fluidstack-positioning-memo / 301

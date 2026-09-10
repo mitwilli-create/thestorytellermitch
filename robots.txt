@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /private/
+Disallow: /for-
+Disallow: /docs/
+Allow: /
+
+Sitemap: https://thestorytellermitch.com/sitemap.xml
