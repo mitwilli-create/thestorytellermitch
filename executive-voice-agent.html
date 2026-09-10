@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Executive voice agent · Google xGE · Mitchell Williams</title>
+  <meta name="description" content="A public-safe account of the executive voice agent Mitchell Williams built for a Google engineering vice president, with its architecture, operating rules, and measured result.">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jetbrains-mono-var-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="shared/theme.css?v=20260716b">
+  <link rel="stylesheet" href="shared/case-study.css?v=20260716a">
+</head>
+<body>
+<a class="skip-link" href="#main">skip to content</a>
+<nav class="nav">
+  <a href="index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="fit.html">Role Fit</a><a href="projects.html">AI Projects</a><a href="writing.html">Writing</a><a href="resume.html">Resume</a><a href="comms.html">Comms &amp; Editorial</a><a href="work.html">Reel</a><a href="stories.html">Case Files</a><a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+<header class="cs-hero"><div class="wrap">
+  <div class="kicker">Google xGE · executive communications system · 2024 to 2026</div>
+  <h1 class="cs-title">A VP's voice, built as a system.<span class="mono">executive-voice-agent</span></h1>
+  <p class="cs-standfirst">High-stakes executive drafts were taking too many rounds to sound like the principal they served. I built a private Gemini drafting partner around a written voice constitution, audience modes, risk pressure tests, and a banned-phrase check. The principal kept final sign-off.</p>
+  <div class="cs-tagrow"><span class="cs-tag">Gemini</span><span class="cs-tag">voice constitution</span><span class="cs-tag">audience modes</span><span class="cs-tag">risk pressure test</span><span class="cs-tag">human approval</span></div>
+</div></header>
+<section><div class="wrap"><figure class="cs-illo"><div class="cine" data-cine="assets/cinemagraphs/illo-digital-twin-loop" data-cine-m="assets/cinemagraphs/illo-digital-twin-loop"><img width="1920" height="1072" src="assets/stills/illo-digital-twin-hd.jpg" alt="Abstract system illustration of a voice signal passing through checkable gates before human approval" loading="eager"></div><figcaption>system illustration, generated with Gemini image and Veo motion · no private source material shown</figcaption></figure></div></section>
+<section><div class="wrap"><div class="cs-h2">The brief</div><div class="cs-body"><p>The audience was a community of more than 1,000 senior engineers. The work ranged from recurring updates to high-stakes change communications. The system had to preserve a principal's judgment and cadence while making a first draft faster to review.</p><p>The source material and raw instructions remain private. This page describes the system boundary and the decisions it encoded, with the public <a href="samples/executive-writing.html">email and delivered-address samples</a> as output evidence.</p></div><div class="cs-stat-grid"><div class="cs-stat"><div class="n">~70%</div><div class="l">less review back-and-forth, internal and self-measured</div></div><div class="cs-stat"><div class="n">3</div><div class="l">audience modes: team, senior leader, broadcast</div></div><div class="cs-stat"><div class="n">2</div><div class="l">checks before a draft reached a human reviewer</div></div><div class="cs-stat"><div class="n">1</div><div class="l">principal with final approval on every communication</div></div></div></div></section>
+<section><div class="wrap"><div class="cs-h2">What I built</div><div class="diagram" role="img" aria-label="Flow from request through audience mode, voice constitution, knowledge hierarchy, pressure test, banned phrase check, and human approval.">
+<span class="node">request</span> <span class="arrow">→</span> audience and risk mode
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">voice constitution</span> <span class="prod">cadence · vocabulary · anti-spin rules</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">knowledge hierarchy</span> <span class="prod">current strategy outranks archive</span>
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">draft + pressure test</span> <span class="arrow">→</span> banned phrase check
+   <span class="arrow">│</span>
+   <span class="arrow">▼</span>
+<span class="node">human approval</span> <span class="api">principal signs off</span>
+  </div></div></section>
+<section><div class="wrap"><div class="cs-h2">The operating rules</div><div class="cs-body"><p><strong>Match the audience.</strong> Team updates used direct empathy and addressed the difficult point early. Senior-leader updates used concise narrative logic. Broadcast remarks stayed grounded and moved from structural limits to individual agency.</p><p><strong>Keep the truth visible.</strong> The system favored plain language, named friction, and rejected corporate filler. It treated a qualified answer as stronger than false certainty.</p><p><strong>Make the boundary explicit.</strong> The agent could draft and pressure-test. It could not approve, publish, or invent a commitment. The human principal remained the decision-maker.</p></div><div class="cs-compare"><div class="col"><div class="c-k">Before</div><div class="c-b">Prompt a model with a few examples and hope the voice holds across a difficult subject.</div></div><div class="col after"><div class="c-k">After</div><div class="c-b">Route the request through explicit voice and audience rules, then give the principal a draft with the risks already surfaced.</div></div></div></div></section>
+<section><div class="wrap"><div class="cs-h2">Inspect the evidence</div><div class="cs-body"><p>Read the <a href="samples/executive-writing.html#email">retained email adaptation</a> and <a href="samples/executive-writing.html#speech">delivered-address transcript</a>. They show the kind of executive writing the system supported. Read the <a href="https://storytellermitch.substack.com/p/i-engineered-a-vps-voice-the-ai-infrastructure" rel="noopener">public essay on engineering a VP's voice</a> for the design reasoning. The later <a href="voice-os.html">Voice OS project</a> is my personal successor, rebuilt on my own corpus.</p></div><div class="cs-callout"><p><strong>Privacy note.</strong> The principal's name, private messages, raw source corpus, and production instructions are intentionally omitted. The result is inspectable without turning a former colleague's work into a public training set.</p></div><div class="cs-cta"><a class="btn solid" href="samples/executive-writing.html"><span>Read the output samples</span></a><a class="btn" href="voice-os.html"><span>See the personal successor</span></a></div></div></section>
+</main>
+<footer><div class="wrap"><div class="foot"><div class="big">Let's<br>build.</div><div class="foot-links"><a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a><a href="https://github.com/mitwilli-create">GitHub projects</a><a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a></div></div><div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div></div></footer>
+<script src="shared/reveal.js?v=20260715a"></script><script src="shared/audio.js?v=20260716b"></script><script src="shared/narration.js?v=20260716a"></script><script src="shared/agent.js?v=20260716a" defer></script>
+</body></html>
