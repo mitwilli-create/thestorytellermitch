@@ -88,9 +88,10 @@
   .sma-mail a{color:var(--blood-text,#c4685d);text-decoration:none;border-bottom:1px solid var(--blood-hairline,rgba(196,104,93,0.35))}
   .sma-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
   @media (max-width:600px){
+    .sma-root{position:static;margin:24px 18px 84px}
     .sma-panel{right:0;bottom:0;left:0;top:auto;width:100%;height:100%;border-left:none;border-right:none;border-bottom:none;
       padding-bottom:env(safe-area-inset-bottom)}
-    .sma-launch{bottom:calc(72px + env(safe-area-inset-bottom))}
+    .sma-launch{position:static;display:block;margin-right:auto;min-height:44px}
   }`;
 
   const el = (tag, cls, text) => {

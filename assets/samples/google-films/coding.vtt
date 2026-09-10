@@ -1,0 +1,459 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.080
+[How To Prepare For Your Google Interview
+Coding]
+
+00:00:01.080 --> 00:00:02.025
+You've done it.
+
+00:00:02.025 --> 00:00:04.421
+You've landed an on-site
+interview with Google.
+
+00:00:04.420 --> 00:00:05.800
+Congratulations!
+
+00:00:05.800 --> 00:00:08.325
+My fellow Googlers
+and I would like to share
+
+00:00:08.325 --> 00:00:10.510
+our tips and advice on how to prepare.
+
+00:00:10.510 --> 00:00:14.500
+In this video, we'll cover
+communication and collaboration,
+
+00:00:14.500 --> 00:00:17.525
+creating algorithms
+and using data structures,
+
+00:00:17.520 --> 00:00:21.775
+writing clean and structured code,
+testing and error checking,
+
+00:00:21.775 --> 00:00:24.149
+and overall best practices.
+
+00:00:24.140 --> 00:00:27.425
+Communication and collaboration
+are incredibly important
+
+00:00:27.425 --> 00:00:29.195
+in the work we do here at Google.
+
+00:00:29.190 --> 00:00:32.075
+And that's because it's key
+to how we approach developing
+
+00:00:32.075 --> 00:00:34.034
+and building our products.
+
+00:00:34.034 --> 00:00:37.370
+In your interview, it's important
+to demonstrate those qualities.
+
+00:00:37.370 --> 00:00:40.725
+Understanding a problem,
+designing a solution,
+
+00:00:40.720 --> 00:00:44.825
+and writing code are all
+valuable parts of the interview process.
+
+00:00:44.825 --> 00:00:47.116
+We want you to think out loud.
+
+00:00:47.116 --> 00:00:49.466
+We don't just want to see the final code.
+
+00:00:49.460 --> 00:00:52.550
+We want to understand
+how you arrived at it.
+
+00:00:52.550 --> 00:00:54.700
+Google is a collaborative workplace
+
+00:00:54.700 --> 00:00:57.766
+where projects are planned
+and executed by teams.
+
+00:00:57.760 --> 00:01:01.600
+Those teams have a mission
+to work together to solve big,
+
+00:01:01.600 --> 00:01:04.775
+often ambiguous problems,
+not just write code.
+
+00:01:04.770 --> 00:01:08.400
+And those problems can
+have multiple valid solutions.
+
+00:01:08.400 --> 00:01:11.625
+So, tell us your plan
+on how to solve these problems
+
+00:01:11.620 --> 00:01:13.575
+and be sure to ask questions.
+
+00:01:13.575 --> 00:01:17.243
+And remember, we're not
+looking for one specific answer.
+
+00:01:17.240 --> 00:01:20.075
+Some of the problems you'll
+encounter during your interview
+
+00:01:20.075 --> 00:01:22.582
+will be deliberately underspecified.
+
+00:01:22.580 --> 00:01:24.800
+We leave those questions open ended
+
+00:01:24.800 --> 00:01:28.700
+because real engineering problems
+require you to dig deeper.
+
+00:01:29.435 --> 00:01:31.170
+[2. Algorithms and Data Structures]
+
+00:01:31.170 --> 00:01:36.350
+At Google, we deal with planet-scale data
+and compute systems every day.
+
+00:01:36.350 --> 00:01:39.400
+Simply identifying a solution
+isn't always enough.
+
+00:01:39.400 --> 00:01:43.025
+The code we write needs
+to be fast enough to respond to users
+
+00:01:43.020 --> 00:01:45.300
+and make efficient use
+of our resources.
+
+00:01:45.300 --> 00:01:48.975
+You should have a strong understanding
+of commonly used algorithms
+
+00:01:48.970 --> 00:01:51.850
+and data structures
+to do just that.
+
+00:01:51.850 --> 00:01:55.125
+When you're presented with a problem,
+it's probably a good idea
+
+00:01:55.120 --> 00:01:58.725
+to outline the algorithm
+and discuss it with your interviewer
+
+00:01:58.720 --> 00:02:01.150
+before you jump into the coding.
+
+00:02:01.150 --> 00:02:04.525
+It will give you an opportunity
+to refine and improve your solution
+
+00:02:04.520 --> 00:02:06.875
+collaboratively with your interviewer.
+
+00:02:06.870 --> 00:02:11.775
+Understanding the computational complexity
+of your solution is also important.
+
+00:02:11.770 --> 00:02:15.925
+Remember, you don't have to come up
+with the optimal solution up front.
+
+00:02:15.920 --> 00:02:20.450
+Iterating to improve your solution
+can be a valuable part of the process.
+
+00:02:20.450 --> 00:02:22.200
+You're also going to want to use
+
+00:02:22.200 --> 00:02:24.925
+appropriate algorithms
+and data structures.
+
+00:02:24.920 --> 00:02:27.350
+You should have a strong
+fundamental understanding
+
+00:02:27.350 --> 00:02:29.625
+of commonly used data structures like
+
+00:02:29.620 --> 00:02:33.575
+arrays, linked lists, stacks, and queues.
+
+00:02:33.570 --> 00:02:39.675
+You'll want to know sets, maps,
+trees, heaps, and graphs as well.
+
+00:02:39.670 --> 00:02:42.725
+It's also essential to know
+which algorithms tend to go along
+
+00:02:42.725 --> 00:02:44.475
+with each data structure.
+
+00:02:44.470 --> 00:02:48.175
+Algorithms that are used to
+solve Google problems typically include:
+
+00:02:48.170 --> 00:02:51.100
+sorting, searching, and binary search.
+
+00:02:51.100 --> 00:02:53.775
+You should also be familiar
+with divide-and-conquer,
+
+00:02:53.770 --> 00:02:56.575
+dynamic programming and memorization,
+
+00:02:56.570 --> 00:02:59.125
+greedy algorithms, and recursion.
+
+00:02:59.125 --> 00:03:01.120
+And be sure to brush up on algorithms
+
+00:03:01.120 --> 00:03:04.700
+linked to specific data structures
+like graph traversal.
+
+00:03:04.700 --> 00:03:07.925
+You won't be expected to answer
+questions requiring some obscure
+
+00:03:07.920 --> 00:03:09.995
+and highly domain-specific algorithm.
+
+00:03:09.995 --> 00:03:12.690
+When you're working out
+the requirements of an algorithm,
+
+00:03:12.690 --> 00:03:16.659
+this could also be the perfect time
+to think of good test inputs.
+
+00:03:16.659 --> 00:03:17.820
+[3. Coding]
+
+00:03:17.820 --> 00:03:21.575
+At Google, developers may
+work across different platforms,
+
+00:03:21.570 --> 00:03:26.275
+but the foundational knowledge required
+to perform their job function is the same.
+
+00:03:26.270 --> 00:03:29.425
+Candidates will be expected
+to write idiomatic code
+
+00:03:29.420 --> 00:03:33.000
+in a programming language
+and style they are comfortable with.
+
+00:03:33.000 --> 00:03:36.775
+Common languages candidates
+choose to write code in include
+
+00:03:36.770 --> 00:03:42.030
+C/C++, Java, Python, JavaScript, or Go.
+
+00:03:42.030 --> 00:03:44.150
+Choose the language
+you are comfortable with.
+
+00:03:44.150 --> 00:03:46.900
+We are evaluating you
+on conceptual understanding.
+
+00:03:46.900 --> 00:03:50.825
+And we know that if you're fluent
+in one programming language,
+
+00:03:50.820 --> 00:03:52.225
+you could learn another.
+
+00:03:52.220 --> 00:03:55.650
+We also are not trying to confuse you
+with language trivia.
+
+00:03:55.650 --> 00:04:00.700
+So don't worry too much about
+memorization, syntax or punctuation.
+
+00:04:00.700 --> 00:04:03.050
+We want the substance
+of your code to shine through.
+
+00:04:03.050 --> 00:04:04.130
+[4. Testing and Error Checking]
+
+00:04:04.130 --> 00:04:06.200
+Google's products
+and services are important
+
+00:04:06.200 --> 00:04:09.000
+for billions of people around the world.
+
+00:04:09.000 --> 00:04:11.550
+When we make changes,
+we need to be confident
+
+00:04:11.550 --> 00:04:14.200
+that we're not breaking
+important existing features.
+
+00:04:14.200 --> 00:04:16.450
+After you're finished coding
+in your interview,
+
+00:04:16.450 --> 00:04:20.650
+you'll want to run through at least
+one or two test cases to check your work.
+
+00:04:20.650 --> 00:04:23.975
+Good test inputs should exercise
+the boundary conditions
+
+00:04:23.970 --> 00:04:26.550
+in your inputs and your algorithm.
+
+00:04:26.550 --> 00:04:29.350
+Use simple and compact
+sample inputs first
+
+00:04:29.350 --> 00:04:31.350
+to ensure your code is correct.
+
+00:04:31.350 --> 00:04:35.375
+And lastly, you may also be asked
+to discuss malformed inputs
+
+00:04:35.370 --> 00:04:36.945
+and how your code handles them.
+
+00:04:36.945 --> 00:04:37.970
+[5. Best Practices]
+
+00:04:37.970 --> 00:04:41.425
+Now that you have the focus areas,
+here are some overall best practices
+
+00:04:41.425 --> 00:04:43.340
+to keep in mind
+for your actual interview day.
+
+00:04:43.340 --> 00:04:44.290
+[Explain]
+
+00:04:44.290 --> 00:04:46.225
+We want to understand
+how you think,
+
+00:04:46.220 --> 00:04:49.675
+so it's important to explain your
+thought process during the interview.
+
+00:04:49.670 --> 00:04:52.375
+We're not only evaluating
+your technical ability
+
+00:04:52.375 --> 00:04:54.130
+but also how you solve problems.
+
+00:04:54.130 --> 00:04:55.130
+[Clarify]
+
+00:04:55.130 --> 00:04:57.400
+Many questions will be
+deliberately open-ended
+
+00:04:57.400 --> 00:04:59.675
+to give us an idea
+of how you think.
+
+00:04:59.670 --> 00:05:01.470
+We'd encourage you
+to ask for clarification.
+
+00:05:01.470 --> 00:05:02.300
+[Improve]
+
+00:05:02.300 --> 00:05:05.875
+And we all know that our first
+solution may not be the best one.
+
+00:05:05.870 --> 00:05:08.200
+So, once you've come up
+with an answer to a question,
+
+00:05:08.200 --> 00:05:10.250
+think about ways to improve upon it.
+
+00:05:10.250 --> 00:05:12.525
+Let your interviewer know
+what you're thinking.
+
+00:05:12.520 --> 00:05:15.250
+And lastly, practice
+on paper or a whiteboard.
+
+00:05:15.250 --> 00:05:18.900
+You may have the option to use a computer
+and/or whiteboard during your interviews,
+
+00:05:18.900 --> 00:05:21.775
+so you'll want to make sure
+you practice for both possible options
+
+00:05:21.770 --> 00:05:24.550
+and that your code
+is easily readable if written.
+
+00:05:24.550 --> 00:05:26.825
+And those are our tips
+to help you prepare
+
+00:05:26.820 --> 00:05:28.925
+for a coding interview at Google!
+
+00:05:28.920 --> 00:05:31.625
+If you have any questions
+about your upcoming interview,
+
+00:05:31.620 --> 00:05:33.750
+you can always reach out
+to your recruiter.
+
+00:05:33.750 --> 00:05:35.050
+We're here to help.
+
+00:05:35.050 --> 00:05:39.100
+And we look forward to seeing you at
+one of our offices around the world soon.
+
+00:05:39.100 --> 00:05:40.019
+[Create for everyone]
+
+00:05:40.019 --> 00:05:41.821
+[Design for everyone]
+
+00:05:41.821 --> 00:05:43.523
+[Code for everyone]
+
+00:05:43.523 --> 00:05:44.857
+[Build for everyone]
+
+00:05:44.857 --> 00:05:46.817
+[Google
+careers.google.com]

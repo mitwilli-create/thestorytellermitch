@@ -4,6 +4,7 @@
 # docs/ is intentionally NOT listed: it holds the three public writing samples
 # linked from writing.html and must be served.
 media/
+resume/_cvtmp-*.html
 .git/
 .git
 node_modules/
