@@ -1,0 +1,65 @@
+/* A focused reading surface; shared portfolio typography and palette. */
+.executive-reading::before,.executive-reading::after{display:none}
+.executive-reading{--reading-width:1040px}
+.reading-masthead{max-width:var(--reading-width);margin:auto;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line-2)}
+.reading-brand{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.035em;white-space:nowrap}
+.reading-brand span{color:var(--blood-text)}
+.reading-masthead nav{display:flex;gap:24px;font-size:13px;color:var(--bone-soft)}
+.reading-masthead nav a{padding:8px 0}
+.executive-reading a:focus-visible{outline:2px solid var(--blood-text);outline-offset:5px}
+.executive-reading a:hover{color:var(--blood-text)}
+.reading-page{max-width:var(--reading-width);margin:auto;padding:0 32px}
+.reading-intro{padding:52px 0 34px}
+.reading-eyebrow{font:11px/1.6 'JetBrains Mono',monospace;letter-spacing:.075em;text-transform:uppercase;color:var(--blood-text);margin:0 0 12px}
+.reading-intro h1{font:800 clamp(36px,4vw,48px)/1.08 'Archivo',sans-serif;letter-spacing:-.035em;margin:0 0 20px}
+.reading-deck{font-size:18px;line-height:1.6;color:var(--bone-soft);margin:0;max-width:640px}
+.reading-jumps{display:flex;gap:28px;margin-top:24px;font-size:14px}
+.reading-jumps a{padding:4px 0 8px;border-bottom:1px solid var(--blood-text)}
+.reading-jumps span{color:var(--blood-text);margin-left:12px}
+.executive-reading .reading-piece{display:grid;grid-template-columns:200px minmax(0,680px);gap:48px;padding:42px 0 58px;border-top:1px solid var(--line-2);scroll-margin-top:24px}
+.reading-context{font-size:13px;line-height:1.65;color:var(--bone-soft)}
+.reading-context p{margin-bottom:18px}
+.reading-context .reading-role{font-size:14px;color:var(--bone);font-weight:600}
+.reading-context .reading-source-type{font-size:12px;color:var(--mute);padding-top:12px;border-top:1px solid var(--line)}
+.reading-copy{min-width:0}
+.reading-copy h2{font:700 clamp(25px,3vw,31px)/1.18 'Archivo',sans-serif;letter-spacing:-.025em;margin:0 0 28px}
+.reading-document{font-size:18px;line-height:1.75;color:var(--bone);overflow-wrap:break-word}
+.reading-document p{margin:0 0 22px}
+.reading-document .letter-summary{font-size:15px;line-height:1.7;color:var(--bone-soft);padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.reading-source-note,.reading-editorial-note{font-size:12px;line-height:1.7;color:var(--bone-soft)}
+.reading-editorial-note{margin:0 0 28px;max-width:600px}
+.reading-source-note{margin-top:32px;padding-top:18px;border-top:1px solid var(--line)}
+.reading-source-note strong{font-weight:600;color:var(--bone)}
+.reading-footer{border-top:1px solid var(--line-2);padding:28px 0 56px;display:flex;gap:24px;align-items:center;font-size:13px;flex-wrap:wrap}
+.reading-footer p{color:var(--mute);margin-right:auto}
+.reading-footer a{border-bottom:1px solid var(--line-2);padding:6px 0}
+@media(max-width:760px){
+.reading-masthead{padding:20px;gap:16px;flex-wrap:wrap}
+.reading-masthead nav{gap:20px;font-size:12px}
+.reading-brand{font-size:16px}
+.reading-page{padding:0 20px}
+.reading-intro{padding:32px 0 28px}
+.reading-intro h1{font-size:36px;margin-bottom:16px}
+.reading-deck{font-size:16px}
+.reading-jumps{margin-top:20px}
+.executive-reading .reading-piece{grid-template-columns:minmax(0,1fr);gap:14px;padding:28px 0 36px;scroll-margin-top:16px}
+.reading-context{display:grid;grid-template-columns:1fr;gap:0}
+.reading-context .reading-eyebrow{margin-bottom:6px}
+.reading-context .reading-role{font-size:13px;margin-bottom:8px}
+.reading-context p:not([class]){display:none}
+.reading-context .reading-source-type{border:0;padding:0;margin:0;font-size:11px}
+.reading-copy h2{font-size:25px;margin-bottom:20px}
+.reading-document{font-size:18px;line-height:1.7}
+.reading-document .letter-summary{font-size:14px;margin-bottom:22px;padding-bottom:20px}
+.reading-footer{gap:14px 24px;padding-bottom:36px}
+.reading-footer p{flex-basis:100%}
+}
+@media print{
+.executive-reading{background:#fff;color:#111}
+.reading-masthead,.reading-jumps,.reading-footer,.skip-link{display:none}
+.reading-page{padding:0;max-width:none}
+.reading-intro{padding-top:0}
+.executive-reading .reading-piece{display:block;padding:24px 0;break-before:auto}
+.reading-context,.reading-document,.reading-deck,.reading-source-note,.reading-editorial-note,.reading-eyebrow,.reading-context .reading-role,.reading-context .reading-source-type{color:#111}
+.reading-copy h2{break-after:avoid}
+}
