@@ -3,8 +3,8 @@
   // Site is pre-baked static files at the repo root, served as Workers
   // Assets (exclusions in .assetsignore, same format as .gitignore).
   // As of Phase B (2026-07-15) there's also a Worker script (worker/index.js)
-  // for the chat agent's retrieval API: /api/ask (public, read-only) and
-  // /api/kb-index (secret-gated, local/CI build-time only). No static file
+  // for private knowledge indexing: /api/kb-index (secret-gated, local/CI
+  // build-time only). No static file
   // exists at either path, so both naturally fall through to the Worker;
   // everything else serves as a static asset with no Worker invocation.
   "$schema": "node_modules/wrangler/config-schema.json",
