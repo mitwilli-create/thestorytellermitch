@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A content evaluation run · Mitchell Williams</title>
+<meta name="description" content="Run the Voice OS scorer on synthetic fixtures. Read the actual input, measured output and rejected revision from a local execution.">
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+<link rel="stylesheet" href="../shared/theme.css">
+<link rel="stylesheet" href="../shared/sample.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav">
+  <a href="../index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="../fit.html">Role Fit</a>
+    <a href="../projects.html">AI Projects</a>
+    <a href="../writing.html">Writing</a>
+    <a href="../resume.html">Resume</a>
+    <a href="../comms.html">Comms &amp; Editorial</a>
+    <a href="../work.html">Reel</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../stories.html">Case Files</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main id="main" class="sample-page" tabindex="-1"><div class="wrap">
+<header class="sample-head"><p class="sample-kicker">Runnable demonstration · September 10, 2026</p>
+<h1>A content evaluation run</h1>
+<p class="sample-provenance">Voice OS is Mitchell Williams's content scoring system. This fresh local run uses its bundled synthetic corpus and draft. The text and scores below are actual inputs and outputs. They contain no personal corpus records.</p>
+<p>The scorer ran successfully. The bounded rewrite did not clear its quality gate.</p></header>
+<article class="sample-body">
+<section id="input"><h2>The input draft</h2>
+<p class="sample-note">Unedited synthetic test input from the repository, deliberately written with phrases the system should flag.</p>
+<!-- kb:exclude : exact synthetic fixture and execution output, not Mitchell's prose or a factual claim. -->
+<blockquote><p>I hope this email finds you well. I wanted to reach out to touch base regarding the project timeline. I think we could maybe leverage some synergy between our teams to do a deep dive on the remaining blockers, and perhaps we might be able to circle back on the deliverables at your earliest convenience.</p><p>Please don&#x27;t hesitate to reach out if you have any questions. Moving forward, I just think it would be great to keep the lines of communication open.</p></blockquote>
+<h2>The scoring result</h2>
+<p>The scorer compares six features of the draft with a synthetic writing baseline. Its overall fixture score was <strong>0.407</strong>. These heuristics measure style distance; they do not establish factual accuracy or the quality of a live model.</p>
+<div class="sample-table"><table><caption>Actual scorer output</caption><thead><tr><th scope="col">Feature</th><th scope="col">Draft</th><th scope="col">Baseline mean</th></tr></thead><tbody><tr><th scope="row">rhetorical pace</th><td>0.450</td><td>0.870</td></tr><tr><th scope="row">risk tolerance</th><td>0.390</td><td>0.841</td></tr><tr><th scope="row">sentence rhythm</th><td>0.692</td><td>0.513</td></tr><tr><th scope="row">escalation pattern</th><td>0.500</td><td>0.500</td></tr><tr><th scope="row">hedging behavior</th><td>0.762</td><td>0.160</td></tr><tr><th scope="row">editorial register</th><td>0.483</td><td>0.207</td></tr></tbody></table></div>
+</section>
+<section id="rejected-output"><h2>The revision the gate rejected</h2>
+<blockquote><p>To talk regarding the project timeline. We could use some alignment between our teams to do a closer look on the remaining blockers, and we might be able to follow up on the deliverables when you can. Let me know if you have any questions. From here, it would be great.</p></blockquote>
+<p>After two offline revision cycles, the score was <strong>0.549</strong> and the final decision remained <code>cycle</code>. The command exited with status <code>1</code>, which means this draft did not pass. No banned phrases remained, but sentence rhythm, editorial register and risk tolerance still missed the target.</p>
+<p class="sample-note">The wording above is the rejected output, including its awkward phrasing. Removing flagged words was insufficient to produce good writing. This is evidence that the evaluation and refusal path run, not a finished writing sample or a claim of live voice fidelity.</p>
+<!-- /kb:exclude -->
+</section>
+<section id="run"><h2>Reproduce the run</h2>
+<p>Use Python 3.10 or newer and the source revision below. The scorer uses the standard library. Both commands use the repository's synthetic fixtures.</p>
+<pre><code>git clone https://github.com/mitwilli-create/voice-os.git
+cd voice-os
+git checkout 991d8e8d0c6ec394286a1cc2db01c620db7e50cf
+VOICE_OS_OFFLINE=1 python3 score.py \
+  --corpus data/sample_corpus.txt \
+  --draft data/sample_draft.txt --json
+VOICE_OS_OFFLINE=1 python3 pipeline.py \
+  --corpus data/sample_corpus.txt \
+  --banned-list data/banned_list.txt \
+  --draft data/sample_draft.txt \
+  --output output/scored_draft.json</code></pre>
+<p>The scorer should exit <code>0</code>. The second command should exit <code>1</code> and write the rejected result. Offline mode prevents live model calls. No key or personal corpus is required.</p>
+</section>
+<section id="downloads"><h2>Inspect the files</h2><ul class="sample-links">
+<li><a href="../assets/samples/content-evaluation/sample_draft.txt" download>Download the input draft</a></li>
+<li><a href="../assets/samples/content-evaluation/sample_corpus.txt" download>Download the synthetic corpus</a></li>
+<li><a href="../assets/samples/content-evaluation/banned_list.txt" download>Download the phrase rules</a></li>
+<li><a href="../assets/samples/content-evaluation/scorer-output.json" download>Download the complete scoring result</a></li>
+<li><a href="../assets/samples/content-evaluation/output.json" download>Download the complete revision trace</a></li>
+<li><a href="../assets/samples/content-evaluation/execution.json" download>Download the execution receipt and hashes</a></li></ul>
+<p><a href="../voice-os.html#worked-run">Read the separate retained July 12 run</a>. That historical trace remains unchanged.</p>
+</section></article></div></main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Let's<br>talk.</div>
+      <div class="foot-links">
+        <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
+        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="../assets/mitchell-williams-resume.pdf">resume (PDF)</a>
+      </div>
+    </div>
+    <div class="foot-legal">Mitchell Williams · Seattle · Newsrooms, Google, AI-native systems.</div>
+  </div>
+</footer>
+
+
+<script src="../shared/reveal.js?v=20260715a"></script>
+</body></html>
