@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.01pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.75pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.75pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.75pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -170,7 +176,7 @@
 <p class="rp"><strong>Eight years at Google, the last two at Cross-Google Engineering (xGE), the horizontal org driving technical change across Google:</strong> the approvals governance gate, the intake prioritization sequencing a concurrent-mandate portfolio, the senior-IC program cadence, and production AI agents, including a <a href="../stories.html#digital-twin">digital twin</a> that cut VP review cycles by about 70% (internal, self-measured).</p>
 <p class="rp"><strong>Outside work, I operate an autonomous agent fleet:</strong> 52 scheduled agents, each with a budget cap, a schedule, and a dead-man heartbeat that reports when a job goes quiet, under a unified spend cap with QA gates and a live operations dashboard.</p></section>
 <section class="rsec"><h2 class="rsec-h">Fit for AI Governance Programs</h2><ul class="rl"><li><strong>Run a governance gate:</strong> Owned xGE's governance and gating framework for cross-org technical mandates: intake prioritization across concurrent mandates, named mandates driven to approval; structurally the work of source-of-truth tracking, report pipelines, and cross-functional coordination.</li><li><strong>Write quickly and clearly at senior altitude:</strong> Executive communications for then-CIO Ben Fried; xGE's three-tier operating model for a 1,000+ senior-engineer community.</li><li><strong>Manage a concurrent portfolio in ambiguity:</strong> Approvals intake portfolio plus a standing delivery calendar: the annual Sr. Tech IC Summit, quarterly forums, newsletters, xGE Connects, and the roadmap-shaping annual survey.</li></ul></section>
-<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – Present</div><p class="rp">Communications lead and program manager for xGE.</p>
+<section class="rsec"><h2 class="rsec-h">Experience</h2><div class="rrole"><div class="rrole-h">Internal Communications Lead</div><div class="rrole-s"><strong>Google · Cross-Google Engineering (xGE)</strong> | June 2024 – August 2026</div><p class="rp">Communications lead and program manager for xGE.</p>
 <div class="rinit"><div class="rinit-h">Executive-communications digital twin (Gemini)</div><ul class="rl"><li><strong>Problem:</strong> A VP's high-stakes communications needed to ship fast in a consistent voice.</li><li><strong>Action:</strong> Built and deployed a Gemini agent with a codified voice "Constitution" and banned-phrase verification checklist.</li><li><strong>Impact:</strong> About a 70% reduction in review back-and-forth with the VP.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Approvals governance gate</div><ul class="rl"><li><strong>Problem:</strong> Cross-org technical mandates stalled without a governance and gating framework.</li><li><strong>Action:</strong> Authored the Approvals User Guide (v3), Approvals Matrix, and Roles &amp; Responsibilities framework; ran the recurring intake-prioritization meetings sequencing concurrent mandates; scoped workflow automation (built by partner engineering).</li><li><strong>Impact:</strong> Drove named mandates (Keystore Rotation, Memory Safety TRR) through to approval.</li></ul></div>
 <div class="rinit"><div class="rinit-h">Communications operating model and senior-IC program cadence</div><ul class="rl"><li><strong>Problem:</strong> The community needed a communications system, not ad hoc sends.</li><li><strong>Action:</strong> Designed the three-tier operating model; ran xGE Connects, the peer-led speaker series, and the annual survey that shapes the community's roadmap.</li><li><strong>Impact:</strong> One operating rhythm: the annual Sr. Tech IC Summit (600+ Principal, Distinguished, and Fellow engineers), quarterly forums (300+ each), quarterly newsletters; Q1-2026 Connects sessions drew record attendance.</li></ul></div>
