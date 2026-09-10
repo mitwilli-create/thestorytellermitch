@@ -4,6 +4,7 @@
   letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase;overflow-wrap:break-word}
 .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
   color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+.triage-highlight{color:var(--blood)}
 .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
 .cs-standfirst strong{color:var(--bone);font-weight:700}
 .cs-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
@@ -55,6 +56,7 @@
 .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
 section{padding:72px 0}
 @media(max-width:860px){
+  .cs-title{font-size:clamp(24px,6.8vw,72px);letter-spacing:-0.045em}
   .cs-hero{padding:130px 0 40px}
   .cs-stat-grid{grid-template-columns:1fr}
   .cs-compare{grid-template-columns:1fr}
