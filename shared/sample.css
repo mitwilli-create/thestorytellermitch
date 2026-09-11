@@ -12,7 +12,7 @@ body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset
 .sample-title-accent{color:var(--blood-text)}
 .sample-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.58fr);gap:42px;align-items:center}.sample-header .sample-head-copy{min-width:0}.sample-header .sample-hero-art{margin:0}.sample-header .sample-hero-art video,.sample-header .sample-hero-art img{max-height:280px}
 .sample-page .sample-header.fill-host{display:grid;position:relative;overflow:hidden;padding:170px 0 56px;border-bottom:1px solid var(--line);background:var(--bg)}
-.sample-page .sample-header.fill-host::before{content:'';position:absolute;inset:0 0 0 54%;z-index:0;background:linear-gradient(to right,var(--bg) 4%,rgba(10,10,11,.25) 48%,rgba(10,10,11,0) 88%),linear-gradient(to bottom,rgba(10,10,11,.42),rgba(10,10,11,0) 36%,var(--bg) 100%),url('../assets/stills/fill-ai-projects-hd2.jpg') center/cover no-repeat;opacity:.8;pointer-events:none}
+.sample-page .sample-header.fill-host::before{content:'';position:absolute;inset:0 0 0 54%;z-index:0;background:linear-gradient(to right,var(--bg) 4%,rgba(10,10,11,.25) 48%,rgba(10,10,11,0) 88%),linear-gradient(to bottom,rgba(10,10,11,.42),rgba(10,10,11,0) 36%,var(--bg) 100%);opacity:.8;pointer-events:none}
 .sample-page .sample-header.fill-host>*{position:relative;z-index:1}
 .sample-page h2{font-family:'Archivo',sans-serif;font-size:clamp(23px,3vw,31px);line-height:1.2;margin:32px 0 18px}
 .sample-page h3{font-size:19px;line-height:1.35;margin:24px 0 12px}
