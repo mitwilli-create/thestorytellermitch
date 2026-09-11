@@ -9,6 +9,7 @@ body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset
 .sample-page a:hover,.sample-nav a:hover{color:var(--bone)}
 .sample-page a:focus-visible,.sample-nav a:focus-visible,.sample-page summary:focus-visible{outline:2px solid var(--bone);outline-offset:5px}
 .sample-page h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-.025em;margin:10px 0 20px;max-width:900px}
+.sample-title-accent{color:var(--blood-text)}
 .sample-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.58fr);gap:42px;align-items:center}.sample-header .sample-head-copy{min-width:0}.sample-header .sample-hero-art{margin:0}.sample-header .sample-hero-art video,.sample-header .sample-hero-art img{max-height:280px}
 .sample-page h2{font-family:'Archivo',sans-serif;font-size:clamp(23px,3vw,31px);line-height:1.2;margin:32px 0 18px}
 .sample-page h3{font-size:19px;line-height:1.35;margin:24px 0 12px}

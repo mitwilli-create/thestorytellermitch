@@ -1,6 +1,6 @@
 /* case-study scoped styles on the shared theme tokens */
 .cs-hero{padding:170px 0 48px;border-bottom:1px solid var(--line)}
-.cs-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:24px;align-items:center}.cs-hero-copy{min-width:0}.title-second{display:block}.cs-hero-art{margin:0;border:0;background:transparent;opacity:.86}.cs-hero-art figcaption{display:none}.cs-hero-art .cine{aspect-ratio:16/10}.cs-hero-art .cine img{width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;filter:saturate(.82) contrast(1.06)}
+.cs-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:24px;align-items:start}.cs-hero-copy{min-width:0}.title-second{display:block}.cs-hero-art{margin:42px 0 0;border:0;background:transparent;opacity:.86}.cs-hero-art figcaption{display:none}.cs-hero-art .cine{aspect-ratio:16/10}.cs-hero-art .cine img{width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;filter:saturate(.82) contrast(1.06)}
 .cs-title{font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(30px,5.6vw,72px);
   letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase;overflow-wrap:break-word}
 .cs-hero .cs-title{font-size:clamp(30px,5.2vw,64px)}
@@ -59,7 +59,7 @@
 .cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
 section{padding:72px 0}
 @media(max-width:860px){
-  .cs-hero-grid{grid-template-columns:1fr;gap:28px}.cs-hero-art{order:2}.cs-hero-art .cine{aspect-ratio:16/9}
+  .cs-hero-grid{grid-template-columns:1fr;gap:28px}.cs-hero-art{order:2;margin-top:4px}.cs-hero-art .cine{aspect-ratio:16/9}
   .cs-title{font-size:clamp(24px,6.8vw,72px);letter-spacing:-0.045em}
   .cs-hero .triage-title{font-size:clamp(22px,6vw,64px)}
   .cs-hero{padding:130px 0 40px}

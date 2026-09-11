@@ -75,7 +75,7 @@
 <main id="main" tabindex="-1">
 
 <header class="cs-hero">
-  <div class="wrap">
+  <div class="wrap cs-hero-grid"><div class="cs-hero-copy">
     <div class="kicker">AI Project · internal-comms triage</div>
     <div class="mono cs-route-label">comms-triage-agent</div><h1 class="cs-title triage-title">Judgment at intake, <span class="triage-highlight">before a human</span> reads it.</h1>
     <p class="cs-standfirst">Senior engineers generate a steady stream of comms requests that don't need a human first pass, but do need judgment. This agent applies that judgment at intake: three sequential prompts classify, revise, and escalate every request, with conditional knowledge-base loading at each step. A confidence threshold routes anything the model is unsure about to a human instead of letting it guess.</p>
@@ -87,7 +87,7 @@
       <span class="cs-tag">Conditional KB loading</span>
       <span class="cs-tag">Confidence-gated escalation</span>
     </div>
-  </div>
+  </div><figure class="cs-illo cs-hero-art"><div class="cine" data-cine="assets/cinemagraphs/illo-triage-agent-c-hd" data-cine-m="assets/cinemagraphs/illo-triage-agent-c-loop"><img width="1376" height="768" src="assets/stills/illo-triage-agent-hd.jpg" alt="System illustration: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human." loading="eager"></div></figure></div>
 </header>
 <section style="padding:36px 0 0">
   <div class="wrap">
@@ -106,17 +106,6 @@
       </div>
       <details class="vc-transcript"><summary>read the narration</summary><p>I'm Mitchell Williams, and comms-triage-agent applies judgment at intake, before a human ever reads the request. It was built for a community of about a thousand Principal, Distinguished, and Fellow engineers who generate a steady stream of comms requests that don't need a human first pass, but do need judgment. Three sequential prompts classify, revise, and escalate each request, loading knowledge base documents conditionally so a routine request stays cheap. A confidence threshold does the real work: anything the model isn't sure about routes straight to a human, instead of letting it guess. This is the sanitized public demo of a system built for a large engineering org, and every performance number on it is labeled as a design target, with the math exposed so you can recalculate it for your own organization. The judgment encoded in these prompts is the same judgment I applied by hand as a comms lead, after years of newsroom intake before that.</p></details>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <figure class="cs-illo">
-      <div class="cine" data-cine="assets/cinemagraphs/illo-triage-agent-c-hd" data-cine-m="assets/cinemagraphs/illo-triage-agent-c-loop">
-        <img width="1376" height="768" src="assets/stills/illo-triage-agent-hd.jpg" alt="System illustration: a stream of message envelopes sorted through gates, most routed onward, a few diverted to a human." loading="lazy">
-      </div>
-      <figcaption>system illustration, generated · Gemini image + Veo motion, 2026</figcaption>
-    </figure>
   </div>
 </section>
 
