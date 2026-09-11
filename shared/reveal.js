@@ -16,6 +16,19 @@
 })();
 
 (() => {
+  if (location.pathname.endsWith('/comms-triage-agent') || location.pathname.endsWith('/comms-triage-agent.html')) {
+    const cine = document.querySelector('.cs-hero .cine');
+    const still = cine && cine.querySelector('img');
+    if (cine && still) {
+      const frame = document.createElement('div');
+      frame.className = 'triage-still';
+      frame.appendChild(still.cloneNode(true));
+      cine.replaceWith(frame);
+    }
+  }
+})();
+
+(() => {
   const btn = document.querySelector('.nav-toggle');
   const nav = btn && btn.closest('.nav');
   const links = nav && nav.querySelector('.nav-links');
