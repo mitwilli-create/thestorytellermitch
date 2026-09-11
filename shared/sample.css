@@ -22,6 +22,7 @@ body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset
 .sample-document>section:first-child{border-top:0}
 .sample-document>section>h2,.sample-document>details>summary{border-left:2px solid var(--blood-soft);padding-left:16px}
 .sample-page p{margin:0 0 18px}
+.sample-page section{padding:28px 0}.sample-page article>section{border-top:1px solid var(--line-2)}.sample-page article>section:first-child{border-top:0}.sample-page section h2{margin-top:0;margin-bottom:14px}
 .sample-page ul,.sample-page ol{padding-left:24px;margin:16px 0 22px}
 .sample-page li{margin:7px 0}
 .sample-page blockquote{margin:20px 0;padding:2px 0 2px 20px;border-left:2px solid var(--line-2)}
