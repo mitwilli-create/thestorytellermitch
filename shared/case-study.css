@@ -83,3 +83,7 @@ section{padding:48px 0}
     background-attachment:local,local,scroll,scroll,scroll}
 }
 .cs-hero .cs-hero-art{border:0}
+.triage-mail{position:absolute;left:11%;top:52%;width:7.5%;aspect-ratio:1.45;background:var(--blood-soft);border:1px solid var(--bone-soft);box-shadow:0 0 18px rgba(183,79,69,.65);z-index:2;transform-origin:center;animation:triage-mail-route 8.4s cubic-bezier(.45,.05,.55,.95) infinite}
+.triage-mail::after{content:'';position:absolute;inset:15% 12%;border-top:1px solid var(--bone-soft);transform:skewY(-26deg);opacity:.9}
+@keyframes triage-mail-route{0%{transform:translate3d(0,0,0) rotate(-4deg);opacity:0}8%{opacity:1}28%{transform:translate3d(220%,-56%,0) rotate(4deg)}52%{transform:translate3d(430%,-14%,0) rotate(-3deg)}76%{transform:translate3d(650%,5%,0) rotate(3deg)}92%{opacity:1}100%{transform:translate3d(720%,8%,0) rotate(5deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.triage-mail{animation:none;opacity:.9}}

@@ -23,6 +23,10 @@
       const frame = document.createElement('div');
       frame.className = 'triage-still';
       frame.appendChild(still.cloneNode(true));
+      const mail = document.createElement('span');
+      mail.className = 'triage-mail';
+      mail.setAttribute('aria-hidden', 'true');
+      frame.appendChild(mail);
       cine.replaceWith(frame);
     }
   }
