@@ -20,6 +20,12 @@
   const nav = btn && btn.closest('.nav');
   const links = nav && nav.querySelector('.nav-links');
   if (!btn || !nav || !links) return;
+  if (!links.querySelector('a[href$="timeline.html"]')) {
+    const contact = links.querySelector('.nav-cta');
+    const timeline = document.createElement('a'); timeline.href = 'timeline.html'; timeline.textContent = 'Timeline';
+    const about = document.createElement('a'); about.href = 'about.html'; about.textContent = 'About';
+    links.insertBefore(timeline, contact); links.insertBefore(about, contact);
+  }
   const close = () => { nav.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); };
   btn.addEventListener('click', () => {
     const open = nav.classList.toggle('nav-open');
