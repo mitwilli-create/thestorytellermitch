@@ -1,6 +1,7 @@
 /* Readable source documents, using the portfolio's existing type and colors. */
 .sample-page{max-width:1200px;margin:0 auto;padding:110px 40px 64px}
 .sample-nav{display:flex;flex-wrap:wrap;gap:12px 24px;padding:22px 40px;border-bottom:1px solid var(--line);font-size:14px}
+.sample-nav.site-nav{padding:0;border-bottom:0}
 body>.sample-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px 40px;border-bottom:1px solid var(--line);font-size:14px}
 body>.sample-header a{color:var(--blood-text);text-decoration:underline;text-underline-offset:4px}
 body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset:5px}

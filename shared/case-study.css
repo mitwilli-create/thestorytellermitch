@@ -56,10 +56,10 @@
 .stage-h{font-family:Archivo,sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin-bottom:4px}
 .stage-d{font-size:15px;color:var(--mute);line-height:1.6}
 .stage-d code{font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blood-soft)}
-.cs-callout{max-width:760px;background:var(--surface);border:1px solid var(--line-2);
+.cs-callout{max-width:760px;margin-top:26px;background:var(--surface);border:1px solid var(--line-2);
   border-left:2px solid var(--blood-soft);padding:24px 28px}
 .cs-callout p{font-size:17px;color:var(--bone);line-height:1.6;font-weight:500;margin:0}
-.cs-cta{max-width:760px;display:flex;gap:14px;flex-wrap:wrap}
+.cs-cta{max-width:760px;margin-top:24px;display:flex;gap:14px;flex-wrap:wrap}
 section{padding:48px 0}
 @media(max-width:860px){
   .cs-hero-grid{display:block}.cs-hero-copy{max-width:none}.cs-hero-art{position:relative;top:auto;right:auto;width:auto;height:auto;margin-top:28px;pointer-events:auto}.cs-hero-art .cine{aspect-ratio:16/9}

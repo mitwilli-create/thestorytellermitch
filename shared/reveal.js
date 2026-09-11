@@ -8,6 +8,14 @@
 // Mobile nav toggle: real <button> driving .nav-open on the ancestor .nav,
 // replacing the old checkbox hack that display:none removed from the tab order.
 (() => {
+  if (document.querySelector('.nav') || !document.querySelector('.sample-page')) return;
+  const nav = document.createElement('nav');
+  nav.className = 'nav';
+  nav.innerHTML = '<a href="/index.html" class="mark">MITCHELL<b>.</b>WILLIAMS</a><button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu"><span></span><span></span></button><div class="nav-links" id="nav-links"><a href="/fit.html">Role Fit</a><a href="/projects.html">AI Projects</a><a href="/writing.html">Writing</a><a href="/resume.html">Resume</a><a href="/comms.html">Comms &amp; Editorial</a><a href="/work.html">Reel</a><a href="/timeline.html">Timeline</a><a href="/stories.html">Case Files</a><a href="/about.html">About</a><a href="/contact.html" class="nav-cta">Contact</a></div>';
+  document.body.insertBefore(nav, document.body.firstChild);
+})();
+
+(() => {
   const btn = document.querySelector('.nav-toggle');
   const nav = btn && btn.closest('.nav');
   const links = nav && nav.querySelector('.nav-links');
