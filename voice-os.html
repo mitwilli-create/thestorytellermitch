@@ -78,13 +78,13 @@
   <div class="wrap">
     <div class="kicker">AI Project · a measured voice operating system</div>
     <h1 class="cs-title">Scores a draft against a voice, and blocks what misses.<span class="mono">voice-os</span></h1>
-    <p class="cs-standfirst">Most "sounds like me" tooling is a prompt and a few examples. voice-os is a <strong>measured</strong> system. It ingests a writing corpus with full provenance, mines how a voice actually behaves across contexts, drafts through a generative and an adversarial persona, and scores the result on six stylistic axes against a threshold calibrated to what the author's own writing scores.</p>
-      <p class="cs-standfirst">Below the bar it revises, or it refuses. "Sounds like me" stops being a vibe and becomes a spec. The engine began as the executive voice system I built at Google, a digital twin calibrated on 6.9M+ words of a VP's communications; this is its personal successor.</p>
+    <p class="cs-standfirst">voice-os gives each draft a <strong>measured</strong> voice score. It ingests a writing corpus with full provenance, mines how a voice actually behaves across contexts, drafts through a generative and an adversarial persona, and scores the result on six stylistic axes against a threshold calibrated to what the author's own writing scores.</p>
+      <p class="cs-standfirst">Below the threshold it revises, or it refuses. The engine began as the executive voice system I built at Google, a digital twin calibrated on 6.9M+ words of a vice president's (VP) communications. This is its personal successor.</p>
     <div class="cs-tagrow">
       <span class="cs-tag">Python</span>
       <span class="cs-tag">Built on Claude</span>
       <span class="cs-tag">LangGraph state machine</span>
-      <span class="cs-tag">RAG corpus, provenance-tagged</span>
+      <span class="cs-tag">Corpus retrieval, provenance-tagged</span>
       <span class="cs-tag">Six-axis scoring</span>
       <span class="cs-tag">Deterministic offline mode</span>
       <span class="cs-tag">pytest</span>
@@ -111,6 +111,7 @@
   </div>
 </section>
 
+<section><div class="wrap"><p class="cs-body"><a href="samples/content-evaluation.html">Run the public fixture and inspect its input, scores and rejected output</a>. This September 2026 offline run is separate from the earlier live trace below.</p></div></section>
 <section>
   <div class="wrap">
     <figure class="cs-illo">
@@ -125,7 +126,7 @@
 <section>
   <div class="wrap">
     <div class="cs-h2">What it is</div>
-    <p class="cs-intro">A queryable voice model plus a drafting loop that will not ship a draft the model does not recognize. Every run is checkpointed and stamped with the corpus, artifact, and model that produced it, so a result is auditable, not vibed.</p>
+    <p class="cs-intro">A queryable voice model plus a drafting loop that will not ship a draft the model does not recognize. Every run is checkpointed and stamped with the corpus, artifact, and model that produced it, so a reviewer can trace the result to its sources.</p>
     <div class="cs-stat-grid">
       <div class="cs-stat"><div class="n">6</div><div class="l">stylistic axes scored on every draft</div></div>
       <div class="cs-stat"><div class="n">143k+</div><div class="l">provenance-tagged corpus chunks across 13 source types</div></div>
@@ -151,11 +152,11 @@
     <div class="cs-body">
       <p><strong>Provenance.</strong> The engine began as an executive "Voice DNA" pipeline I built at Google, a digital twin that drafted high-stakes communications for a VP in that leader's own voice, calibrated on 6.9M+ words. This repository is the personal successor: the same architecture, recalibrated and extended on my own corpus of 143,000+ provenance-tagged chunks across 13 source types, from sent email and messages to broadcast scripts, program charters, and on-camera transcripts with pacing signals.</p>
 
-      <p><strong>The six axes catch what vibes miss.</strong> Voice is not one dial. voice-os scores <em>rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register</em> separately, so a draft that is technically fluent but too hedged, or too formal for the context, gets caught instead of waved through. Register is contextual: the target shifts by channel and audience, mined from how the author actually writes in each.</p>
+      <p><strong>Six separate voice measurements.</strong> voice-os scores <em>rhetorical pace, risk tolerance, sentence rhythm, escalation pattern, hedging behavior, and editorial register</em> separately, so a draft that is technically fluent but too hedged, or too formal for the context, gets caught instead of waved through. Register is contextual: the target shifts by channel and audience, mined from how the author actually writes in each.</p>
 
-      <p><strong>A drafting loop, not a single shot.</strong> Drafts route through a LangGraph state machine. A generative persona writes with real exemplars of the author's own messages retrieved in context. An adversarial persona stress-tests the result. A QA gate then decides pass, revise, or reject, and the banned layer combines a curated refusal list with anti-patterns mined statistically from the corpus, so the tics the author never uses stay out.</p>
+      <p><strong>A drafting loop with review.</strong> Drafts route through a LangGraph state machine. A generative persona writes with real exemplars of the author's own messages retrieved in context. An adversarial persona stress-tests the result. A quality-assurance (QA) gate then decides pass, revise, or reject, and the banned layer combines a curated refusal list with anti-patterns mined statistically from the corpus, so the tics the author never uses stay out.</p>
 
-      <p><strong>Measured, not asserted.</strong> The evaluation harness drafts real held-out messages through the full pipeline and scores generated against real, so a change to the model is measured rather than felt. The gate's thresholds are themselves calibrated per context to percentiles of what the author's real text scores. There is a deterministic offline mode for reproducible runs, and the method and a sample corpus are public in the repo.</p>
+      <p><strong>Tested against held-out writing.</strong> The evaluation harness drafts real held-out messages through the full pipeline and scores generated against real, so a change to the model is measured rather than felt. The gate's thresholds are themselves calibrated per context to percentiles of what the author's real text scores. There is a deterministic offline mode for reproducible runs, and the method and a sample corpus are public in the repo.</p>
     </div>
   </div>
 </section>
@@ -264,7 +265,7 @@
       <p>The interesting problem in AI-assisted writing is not generating text, it is keeping the writer's judgment in the loop while the machine does the heavy lifting. voice-os is my answer to that: it lets AI accelerate a draft while a measured gate protects the voice, and it refuses to pretend a near miss is a match. It is the same instinct I bring to every AI tool I build, more velocity and more quality without taking my hand off the wheel.</p>
     </div>
     <div class="cs-callout" style="margin-top:24px;">
-      <p>The taste stays human. The measurement makes "sounds like me" a spec the machine can actually be held to, instead of a vibe it is trusted to approximate.</p>
+      <p>The writer sets the standard. The measured threshold gives reviewers a specific reason to accept a draft or send it back.</p>
       <p style="margin-top:18px"><strong>Against the Forward Deployed Creative posting, this page is evidence of:</strong> "reference content and prototypes that set the standard", a quality bar expressed as numbers a customer can hold their own runs to; "best practices", pass, revise, and reject as explicit logged decisions rather than opinions; "educate and train customer teams", a gate whose reasoning is visible is a gate you can teach; and brand-voice governance, the exact discipline an enterprise asks for before it lets generation near its name.</p>
     </div>
     <div class="cs-cta" style="margin-top:40px;">
@@ -293,8 +294,8 @@
       <div class="big">Let's<br>build.</div>
       <div class="foot-links">
         <a href="mailto:mitwilli@gmail.com">mitwilli@gmail.com</a>
-        <a href="https://github.com/mitwilli-create">github.com/mitwilli-create</a>
-        <a href="https://linkedin.com/in/mitwilli">linkedin.com/in/mitwilli</a>
+        <a href="https://github.com/mitwilli-create">GitHub projects</a>
+        <a href="https://linkedin.com/in/mitwilli">LinkedIn profile</a>
         <a href="assets/mitchell-williams-resume.pdf">resume (PDF)</a>
       </div>
     </div>
