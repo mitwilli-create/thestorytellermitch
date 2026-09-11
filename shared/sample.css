@@ -9,6 +9,7 @@ body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset
 .sample-page a:hover,.sample-nav a:hover{color:var(--bone)}
 .sample-page a:focus-visible,.sample-nav a:focus-visible,.sample-page summary:focus-visible{outline:2px solid var(--bone);outline-offset:5px}
 .sample-page h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-.025em;margin:10px 0 20px;max-width:900px}
+.sample-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.58fr);gap:42px;align-items:center}.sample-header .sample-head-copy{min-width:0}.sample-header .sample-hero-art{margin:0}.sample-header .sample-hero-art video,.sample-header .sample-hero-art img{max-height:280px}
 .sample-page h2{font-family:'Archivo',sans-serif;font-size:clamp(23px,3vw,31px);line-height:1.2;margin:32px 0 18px}
 .sample-page h3{font-size:19px;line-height:1.35;margin:24px 0 12px}
 .sample-kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blood-text);letter-spacing:.08em;text-transform:uppercase}
@@ -47,4 +48,5 @@ body>.sample-header a:focus-visible{outline:2px solid var(--bone);outline-offset
 @media(prefers-reduced-motion:reduce){.sample-hero-art video{display:none}.sample-hero-art img{display:block}}
 @media(max-width:640px){.sample-page{padding:42px 20px}.sample-nav{padding:20px}.sample-document{padding:20px 16px}.sample-page table{font-size:13px}.sample-page th,.sample-page td{padding:10px}.sample-footer{padding:24px 20px}}
 @media(max-width:760px){.evidence-map{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.sample-header{grid-template-columns:1fr;gap:20px}.sample-header .sample-hero-art{order:2}}
 @media print{body{background:white;color:black}body::before,body::after,.sample-nav,.sample-footer{display:none}.sample-page{padding:0;max-width:none}.sample-document,.sample-provenance,.sample-note{background:white;color:black}.sample-page p,.sample-page a,.sample-page td,.sample-page th{color:black}.sample-page tr{break-inside:avoid}}
