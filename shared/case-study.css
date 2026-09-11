@@ -4,6 +4,7 @@
   letter-spacing:-0.03em;line-height:1.0;max-width:980px;text-transform:uppercase;overflow-wrap:break-word}
 .cs-title .mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:0.6em;
   color:var(--blood-soft);letter-spacing:0;text-transform:none;display:block;margin-top:14px}
+.cs-route-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blood-soft);letter-spacing:.04em;margin:18px 0 12px}
 .triage-highlight{color:var(--blood)}
 .cs-standfirst{font-size:19px;color:var(--bone-soft);line-height:1.6;max-width:760px;margin-top:24px}
 .cs-standfirst strong{color:var(--bone);font-weight:700}
