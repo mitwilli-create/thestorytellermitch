@@ -16,6 +16,13 @@ tools/.kb-eval-report.json
 # Private local craft lessons and rejected language.
 .writing-coach/
 
+# Applicant review surface published by explicit path. Keep all other private
+# materials local and untracked.
+private/*
+!private/
+!private/for-ambience.html
+!private/ambience-review.css
+
 # cloud-sync conflict twins (iCloud "name 2.ext" duplicates): never track, never ship
 * 2.*
 * 2

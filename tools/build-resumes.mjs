@@ -230,6 +230,19 @@ export function parse(md, file) {
       else (role ? role.body : cur.blocks).push({ type: 'ul', items: [item] });
       continue;
     }
+    // Markdown list continuation: keep an indented newsroom proof sentence
+    // attached to the preceding capability-led bullet. Without this, the
+    // continuation becomes a standalone paragraph and can break across pages
+    // away from the outlet, role and date it explains.
+    if (/^\s{2,}\S/.test(line)) {
+      const role = [...cur.blocks].reverse().find(b => b.type === 'role' || b.type === 'project');
+      const target = role ? role.body : cur.blocks;
+      const last = target[target.length - 1];
+      if (last?.type === 'ul' && last.items.length > 0) {
+        last.items[last.items.length - 1] += ` ${t.trim()}`;
+        continue;
+      }
+    }
     // paragraph line; org/date line right under a role becomes its sub
     const role = cur.blocks[cur.blocks.length - 1];
     if (role && role.type === 'role' && role.sub === '' && role.body.length === 0) { role.sub = t.trim(); continue; }
