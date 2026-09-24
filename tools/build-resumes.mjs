@@ -239,7 +239,18 @@ export function parse(md, file) {
       const target = role ? role.body : cur.blocks;
       const last = target[target.length - 1];
       if (last?.type === 'ul' && last.items.length > 0) {
-        last.items[last.items.length - 1] += ` ${t.trim()}`;
+        const trimmed = t.trim();
+        // An indented dash is a genuine sub-bullet: attach it as a child of the
+        // preceding capability-led bullet instead of running it onto the same line.
+        if (/^- /.test(trimmed)) {
+          const i = last.items.length - 1;
+          if (typeof last.items[i] === 'string') last.items[i] = { text: last.items[i], children: [] };
+          last.items[i].children.push(trimmed.slice(2).trim());
+          continue;
+        }
+        const i = last.items.length - 1;
+        if (typeof last.items[i] === 'string') last.items[i] += ` ${trimmed}`;
+        else last.items[i].text += ` ${trimmed}`;
         continue;
       }
     }
@@ -255,8 +266,11 @@ export function parse(md, file) {
 function renderBlocks(blocks) {
   return blocks.map(b => {
     if (b.type === 'p') return `<p class="rp">${inline(b.text)}</p>`;
-    if (b.type === 'ul') return `<ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul>`;
-    if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(x => `<li>${inline(x)}</li>`).join('')}</ul></div>`;
+    const item = (x) => (typeof x === 'string'
+      ? `<li>${inline(x)}</li>`
+      : `<li>${inline(x.text)}<ul class="rl rsub">${x.children.map(c => `<li>${inline(c)}</li>`).join('')}</ul></li>`);
+    if (b.type === 'ul') return `<ul class="rl">${b.items.map(item).join('')}</ul>`;
+    if (b.type === 'initiative') return `<div class="rinit"><div class="rinit-h">${inline(b.head)}</div><ul class="rl">${b.items.map(item).join('')}</ul></div>`;
     if (b.type === 'project') {
       const [first, ...rest] = b.body;
       const proof = first?.type === 'p' ? `<p class="rproject-proof">${inline(first.text)}</p>` : '';
@@ -355,6 +369,7 @@ export function page({ name, pillars, contact, sections }, lane) {
     .rrole-h{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;color:var(--bone);letter-spacing:-0.01em}
     .rrole-s{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);margin:3px 0 10px}
     .rrole-s strong{color:var(--bone-soft)}
+    .rsub{margin:3px 0 0 0;padding-left:14px;list-style:none}
     .rinit{margin:10px 0}
     .rinit-h{font-size:13.5px;font-weight:700;color:var(--bone);margin-bottom:6px}
     .rtop{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
@@ -422,6 +437,7 @@ export function page({ name, pillars, contact, sections }, lane) {
       .rrole-h{font-family:'Martian Grotesk',sans-serif;font-size:${rh}pt;font-weight:800;break-after:avoid}
       .rrole-s{font-family:'Martian Grotesk',sans-serif;font-size:${meta}pt;font-weight:700;color:var(--bone-soft);margin:1.5pt 0 4pt}
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
+      .rsub{margin:1pt 0 0 0;padding-left:9pt;list-style:none}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:${pt}pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
       .rproject{margin:5pt 0 2pt;break-inside:avoid}
