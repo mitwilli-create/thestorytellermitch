@@ -63,7 +63,7 @@ export const PRINT_PT = {
 
 // Deep links: first mention per resume of a video / story / project routes to its page.
 // Applied to assembled section HTML only; skips text already inside an <a>.
-const TERM_LINKS = [
+export const TERM_LINKS = [
   ['tax-verification-agent', '../tax-verification-agent.html'],
   ['comms-triage-agent', '../comms-triage-agent.html'],
   ['tax-verification agent', '../tax-verification-agent.html'],
