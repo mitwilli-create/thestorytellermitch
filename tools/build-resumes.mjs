@@ -72,8 +72,13 @@ const TERM_LINKS = [
   ['comms-triage', '../comms-triage-agent.html'],
   ['PictureLock', '../picture-lock.html'],
   ['picture-lock', '../picture-lock.html'],
-  ['MERIDIEM', '../for-elevenlabs.html'],
-  ['Article to Audience', '../for-elevenlabs.html#specwork'],
+  // Both AI-native spec pieces link to their company-neutral work.html tiles. They used to
+  // point at for-elevenlabs.html, a page addressed to one employer, so every resume that
+  // named them sent a different employer's reviewer to that page. The MERIDIEM anchor
+  // matches career-ops lib/project-claims.mjs CANONICAL_PROJECT_URLS. Never point these
+  // at a for-<company>.html page.
+  ['MERIDIEM', '../work.html#play-bundleb-meridiem-es-2026'],
+  ['Article to Audience', '../work.html#play-bundlec-article-to-audience-2026'],
   ['throughline', '../throughline.html'],
   ['voice-os', '../voice-os.html'],
   // Spaced spellings. The tailoring pass in career-ops writes project names as prose
