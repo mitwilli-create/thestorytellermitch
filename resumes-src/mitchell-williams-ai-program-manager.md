@@ -22,7 +22,7 @@ linkedin.com/in/mitwilli | github.com/mitwilli-create | thestorytellermitch.com
 ## Experience
 
 ### Internal Communications Lead
-**Google · Cross-Google Engineering (xGE)** | June 2024 – Present
+**Google · Cross-Google Engineering (xGE)** | June 2024 – August 2026
 
 Communications lead and program manager for xGE.
 
