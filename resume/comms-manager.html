@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.01pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.75pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.75pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.07pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.75pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -187,7 +193,7 @@
 <p class="rp"><strong><a href="../voice-os.html">voice-os</a></strong> · Six-axis voice scoring and QA gates calibrated on a multi-million-word corpus of my own writing; codified voice "Constitution" plus banned-phrase checker.</p>
 <p class="rp"><strong><a href="../career-ops.html">career-ops</a></strong> · Extended an open-source pipeline into a cost-governed multi-agent system: 52 scheduled agents, Claude Code skills and MCP servers, live operations dashboard. CI-green; public on GitHub.</p></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2007 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of product and technical communications: the message lands the first time, under deadline, in the principal's voice.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when <a href="../stories.html#mandela-special">Nelson Mandela</a> died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; launch night (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers on a social-video channel reaching 500M weekly views; designed a day-of explainer line (proof-of-concept: 50M+ views); coached three producers into on-camera principals with Emmy and Webby wins.</li><li><strong>CNN, Writer / Producer, "New Day":</strong> Wrote and produced morning-show segments through the 2016 election cycle.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; when <a href="../stories.html#mandela-special">Nelson Mandela</a> died, rebuilt the rundown overnight and line-produced a 44-minute live breaking-news special.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained <a href="../stories.html#scientology-live-coverage">Scientology</a>-defector coverage under active litigation with no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer on the network's social-first live show; the launch (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>Product, Technical &amp; Editorial Communications:</strong> technical translation, internal-comms strategy at engineering scale, change-management narrative design, stakeholder management, principal-level ghostwriting, live-broadcast editorial under deadline, voice and tone calibration.</p>

@@ -9,7 +9,7 @@
 // data-case, media via data-youtube-id, data-stream-id (customer code from
 // body[data-stream-code], defaulting to the site's), data-local.
 // body[data-theater-bed] opts the page into the theater music bed (the reel).
-// Deep link: #play-<slug> opens the matching tile's theater on load.
+// Deep link: #play-<slug> follows the matching clip through navigation/history.
 (() => {
   const SEL = '.film[data-clip],[data-clip-play]';
   const STREAM_CODE_DEFAULT = 'bkgfhhvaijyxffgn';
@@ -30,6 +30,8 @@
           '<span class="m-tag" id="th-tag"></span>' +
           '<h3 id="th-title"></h3>' +
           '<p id="th-sub"></p>' +
+          '<a class="case-link" id="th-source" hidden>Watch on the original publisher →</a> ' +
+          '<a class="case-link" id="th-companion" hidden></a> ' +
           '<a class="case-link" id="th-case" hidden href="">Read the case study →</a>' +
         '</div>' +
       '</div>';
@@ -44,7 +46,7 @@
     if (d.youtubeId) {
       const f = document.createElement('iframe');
       f.title = (d.title || 'Clip') + ' video player';
-      f.src = 'https://www.youtube-nocookie.com/embed/' + d.youtubeId + '?autoplay=1';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + d.youtubeId + '?autoplay=1&cc_load_policy=1';
       f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true;
       stage.appendChild(f);
       if (window.__sound) __sound.duck(true); // clip audio owns the room
@@ -75,7 +77,21 @@
     theater.querySelector('#th-tag').textContent = d.tag || '';
     theater.querySelector('#th-title').textContent = d.title || '';
     theater.querySelector('#th-sub').textContent = d.sub || '';
+    const source = theater.querySelector('#th-source');
+    source.hidden = !d.youtubeId;
+    source.style.display = d.youtubeId ? '' : 'none';
+    if (d.youtubeId) source.href = 'https://www.youtube.com/watch?v=' + d.youtubeId;
     const cl = theater.querySelector('#th-case');
+    cl.textContent = d.case && d.case.includes('samples/google-films') ? 'Read transcripts and captions →' : 'Read the case study →';
+    const companion = theater.querySelector('#th-companion');
+    const googleFilm = ['google-lifeatgoogle-2019-application-engineer', 'google-lifeatgoogle-2019-interview-prep-coding'].includes(d.clip);
+    companion.hidden = !googleFilm;
+    companion.style.display = googleFilm ? '' : 'none';
+    if (googleFilm) {
+      const isRecruitment = d.clip === 'google-lifeatgoogle-2019-application-engineer';
+      companion.href = '#play-google-lifeatgoogle-2019-' + (isRecruitment ? 'interview-prep-coding' : 'application-engineer');
+      companion.textContent = isRecruitment ? 'Watch the coding-interview companion →' : 'Watch the application-engineer film →';
+    }
     // theme.css sets .case-link{display:inline-block}, which beats the UA
     // [hidden] rule; toggle display explicitly so no phantom link renders
     if (d.case) { cl.hidden = false; cl.style.display = ''; cl.href = d.case; } else { cl.hidden = true; cl.style.display = 'none'; }
@@ -86,7 +102,7 @@
     theater.querySelector('.theater-close').focus();
   }
 
-  function closeTheater() {
+  function closeTheater(clearHash = true, restoreFocus = true) {
     if (!theater || theater.hidden) return;
     const v = stage.querySelector('video'); if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
     stage.replaceChildren();
@@ -98,12 +114,21 @@
       // killing an independent page bed here silenced index.html for the visit
       if (document.body.dataset.theaterBed !== undefined) __sound.score(null);
     }
-    if (lastTile) lastTile.focus();
+    if (clearHash && location.hash.startsWith('#play-')) history.replaceState(null, '', location.pathname + location.search);
+    if (restoreFocus && lastTile) lastTile.focus();
   }
 
   document.addEventListener('click', (e) => {
     const tile = e.target.closest(SEL);
-    if (tile) { e.preventDefault(); openTheater(tile); return; }
+    if (tile) {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      if (tile.dataset.clip) {
+        const hash = '#play-' + encodeURIComponent(tile.dataset.clip);
+        if (location.hash !== hash) history.pushState(null, '', hash);
+      }
+      openTheater(tile); return;
+    }
     if (e.target.closest('[data-close]')) closeTheater();
   });
 
@@ -118,8 +143,7 @@
     if (!theater || theater.hidden) return;
     if (e.key === 'Escape') closeTheater();
     if (e.key === 'Tab') {
-      const cl = theater.querySelector('#th-case');
-      const f = [theater.querySelector('.theater-close'), ...stage.querySelectorAll('video,iframe'), cl && !cl.hidden ? cl : null].filter(Boolean);
+      const f = [...theater.querySelectorAll('button,video,iframe,a')].filter(el => !el.hidden && el.getClientRects().length);
       if (f.length < 2) return;
       const first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -150,14 +174,18 @@
     document.querySelectorAll(SEL).forEach((t) => pauseIO.observe(t));
   }
 
-  /* deep link: #play-<clip> opens the theater directly */
-  (function () {
-    const m = location.hash.match(/^#play-(.+)$/); if (!m) return;
+  /* Keep player identity in sync on load, same-document links and history. */
+  function followHash() {
+    const m = location.hash.match(/^#play-(.+)$/);
+    if (!m) { closeTheater(false, false); return; }
     let slug;
-    try { slug = CSS.escape(decodeURIComponent(m[1])); } catch { return; }
+    try { slug = CSS.escape(decodeURIComponent(m[1])); } catch { closeTheater(false, false); return; }
     const t = document.querySelector('.film[data-clip="' + slug + '"],[data-clip-play][data-clip="' + slug + '"]');
     if (t) { t.scrollIntoView({ block: 'center' }); openTheater(t); }
-  })();
+    else closeTheater(false, false);
+  }
+  addEventListener('hashchange', followHash);
+  followHash();
 
   window.__clipplay = { open: openTheater, close: closeTheater };
 })();

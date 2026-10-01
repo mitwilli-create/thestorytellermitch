@@ -1,0 +1,37 @@
+{
+  "axis_scores": {
+    "rhetorical_pace": 0.45,
+    "risk_tolerance": 0.39,
+    "sentence_rhythm": 0.692,
+    "escalation_pattern": 0.5,
+    "hedging_behavior": 0.762,
+    "editorial_register": 0.483
+  },
+  "baseline": {
+    "mean": {
+      "rhetorical_pace": 0.87,
+      "risk_tolerance": 0.841,
+      "sentence_rhythm": 0.513,
+      "escalation_pattern": 0.5,
+      "hedging_behavior": 0.16,
+      "editorial_register": 0.207
+    },
+    "std": {
+      "rhetorical_pace": 0.095,
+      "risk_tolerance": 0.349,
+      "sentence_rhythm": 0.205,
+      "escalation_pattern": 0.143,
+      "hedging_behavior": 0.356,
+      "editorial_register": 0.219
+    }
+  },
+  "fidelity": 0.407,
+  "per_axis_fidelity": {
+    "rhetorical_pace": 0.0,
+    "risk_tolerance": 0.354,
+    "sentence_rhythm": 0.563,
+    "escalation_pattern": 1.0,
+    "hedging_behavior": 0.154,
+    "editorial_register": 0.37
+  }
+}

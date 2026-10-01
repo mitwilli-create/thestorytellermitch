@@ -52,6 +52,8 @@
       text-transform:uppercase;color:var(--blood-soft);border-bottom:1px solid var(--line);
       padding-bottom:8px;margin-bottom:14px}
     .rp{font-size:14.5px;line-height:1.6;color:var(--bone-soft);margin-bottom:10px}
+    /* A role's summary line is body SIZE, differentiated by italic + muted colour, never by weight. */
+    .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
     .rp strong,.rl strong{color:var(--bone);font-weight:700}
     .rl{list-style:none;margin:0 0 10px}
     .rl li{font-size:14px;line-height:1.55;color:var(--bone-soft);padding-left:16px;position:relative;margin-bottom:7px}
@@ -115,6 +117,7 @@
       section.rsec{margin-top:6pt;padding:0}
       .rsec-h{font-family:'Martian Grotesk',sans-serif;font-size:12.07pt;font-weight:800;text-transform:uppercase;letter-spacing:0.075em;color:var(--blood);padding-bottom:2pt;margin-bottom:4pt;border-bottom:1px solid var(--line-2)}
       .rp{font-size:9.8pt;line-height:1.26;margin-bottom:3pt;font-family:'Martian Grotesk',sans-serif}
+      .rrole > .rp{font-style:italic;font-weight:400;color:var(--mute)}
       .rl{margin-bottom:4pt}
       /* screen uses position:relative li + absolute markers; positioned boxes
          paint after normal flow, so Chromium's PDF text stream emits headings
@@ -129,6 +132,9 @@
       .rnum{font-family:'Martian Grotesk',sans-serif;font-size:0.88em;letter-spacing:-0.02em}
       .rinit{margin:4pt 0;break-inside:avoid}
       .rinit-h{font-size:9.8pt;margin-bottom:2pt;font-family:'Martian Grotesk',sans-serif;font-weight:700}
+      .rproject{margin:5pt 0 2pt;break-inside:avoid}
+      .rproject-h{font-family:'Martian Grotesk',sans-serif;font-size:11.13pt;font-weight:800;break-after:avoid}
+      .rproject-proof{font-size:9.8pt;line-height:1.26;color:var(--bone-soft);margin:0 0 3pt;break-after:avoid}
       .rp{break-inside:avoid}
       a{color:inherit;text-decoration:none}
     }
@@ -184,7 +190,7 @@
 <div class="rrole"><div class="rrole-h">Senior Communications &amp; Content Strategist</div><div class="rrole-s"><strong>Google · Corporate Engineering (TechStop)</strong> | April 2018 – June 2024</div><p class="rp">Owned communications and content enabling technical outcomes for a global, mixed-technical audience across Google's internal IT org and TechStop, its global help desk; directed the Q1-2020 global remote-work shift strategy, driving an 80% increase in self-provisioning efficiency the following quarter.</p>
 <div class="rinit"><div class="rinit-h">2023 self-help content audit</div><ul class="rl"><li><strong>Problem:</strong> Ticket volume included issues users could have solved themselves.</li><li><strong>Action:</strong> Audited the self-help corpus and rewrote the highest-traffic, lowest-solve articles.</li><li><strong>Impact:</strong> Self-service solvability up 9.03%, roughly 10,670 fewer tickets per year.</li></ul></div></div></section>
 <section class="rsec"><h2 class="rsec-h">Earlier Career: Live National News (2007 – 2018)</h2><p class="rp"><strong>The engine of live news is the engine of solutions architecture: messy human requirements translated, live and under deadline, into boundaries a system can hold.</strong></p>
-<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer; launch night (May 2, 2011; 250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
+<ul class="rl"><li><strong>AJ+, Senior Producer (2016 – 2018):</strong> Led 10+ producers; designed a day-of explainer production line (proof-of-concept: 50M+ views) that became a permanent format.</li><li><strong>Fusion (ABC News / Univision), Senior Producer, "America With Jorge Ramos" (2013 – 2015):</strong> Owned daily line-production on the primetime flagship through a 179% viewership-growth window; field-produced live from Hong Kong's <a href="../stories.html#mong-kok-backpack-live">Umbrella Revolution</a>.</li><li><strong>HuffPost Live, Segment Producer (2012 – 2013):</strong> Produced through the award-winning launch era (Mashable "Biggest Innovation in Media," 2012; Webby, 2013); sustained coverage under active litigation posture, no retractions.</li><li><strong>Al Jazeera English "The Stream" · CGTN America (2010 – 2012):</strong> Founding-team Associate Producer; the May 2, 2011 launch (250M households) pivoted to the <a href="../stories.html#stream-launch-night">bin Laden</a> raid and pioneered social-data journalism.</li></ul></section>
 <section class="rsec"><h2 class="rsec-h">Education</h2><p class="rp"><strong>BA, Journalism</strong> | Indiana University Bloomington</p></section>
 <section class="rsec"><h2 class="rsec-h">Certifications</h2><p class="rp">AI Fluency · Claude 101 · Agent Skills · Model Context Protocol · Skill Builder (Opus cohort) | Anthropic | 2026</p></section>
 <section class="rsec"><h2 class="rsec-h">Skills</h2><p class="rp"><strong>AI / Agent Engineering &amp; Build:</strong> multi-provider LLM orchestration (Anthropic, OpenAI, Google, xAI, Perplexity), custom MCP servers, Claude Code skills, eval and regression gates, RAG + vector stores, prompt engineering, LangGraph / LangChain, Node.js, Playwright, launchd fleet operations, Apps Script, Gemini API, Python.</p>

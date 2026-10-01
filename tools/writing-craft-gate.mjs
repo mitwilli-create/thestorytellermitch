@@ -45,7 +45,7 @@ export function gatePortfolioWriting({
       input: JSON.stringify(request),
       encoding: 'utf8',
       maxBuffer: 20 * 1024 * 1024,
-      timeout: 180_000,
+      timeout: 360_000,
     },
   );
   if (result.error || result.signal) {

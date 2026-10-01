@@ -128,11 +128,10 @@ export default {
     if (url.pathname === '/api/kb-index' && request.method === 'GET') {
       return handleIndexStats(request, env);
     }
-    if (url.pathname === '/api/ask' && request.method === 'POST') {
-      return handleAsk(request, env);
-    }
-    if (url.pathname === '/api/chat' && request.method === 'POST') {
-      return handleChat(request, env);
+    // The public site assistant was retired. Keep these paths fail-closed so
+    // stale clients cannot reach the former retrieval or chat handlers.
+    if (url.pathname === '/api/ask' || url.pathname === '/api/chat') {
+      return new Response('Not found', { status: 404 });
     }
     if (url.pathname.startsWith('/api/')) {
       return new Response('Not found', { status: 404 });
