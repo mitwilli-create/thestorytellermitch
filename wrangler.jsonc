@@ -23,9 +23,7 @@
     // every other route keeps the asset-first path and is untouched.
     "run_worker_first": ["/ideas", "/ideas/"]
   },
-  "ai": {
-    "binding": "AI"
-  },
+  // AI binding removed: indefinitely paused by owner on 2026-10-06.
   "vectorize": [
     {
       "binding": "VECTORIZE",
