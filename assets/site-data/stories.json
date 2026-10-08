@@ -50,11 +50,11 @@
     {
       "id": "stream-launch-night",
       "kicker": "Al Jazeera English · 2011",
-      "title": "The bin Laden launch night",
+      "title": "The bin Laden launch",
       "body": [
         "The Stream was set to launch on May 2, 2011. A new kind of live program at Al Jazeera English, built to treat Twitter, Skype, SMS, and real-time trending data as first-class journalistic sources. The night before our first broadcast, Osama bin Laden was killed in Abbottabad, Pakistan. Every piece of content we'd prepared was suddenly worthless. We had roughly twelve hours to tear the launch show apart and rebuild it around a story nobody had planned for, on a program that had never aired.",
         "The infrastructure held. Our team found Sohaib Athar, a software consultant in Abbottabad who'd unknowingly live-tweeted the raid from @ReallyVirtual to a few hundred followers. We had him on Skype by air time. As we broadcast to 250 million households, our digital producer graphed his follower count climbing live, from a few hundred to tens of thousands, on screen. The audience watched the internet decide someone mattered in the exact moment it happened. Nobody had a name for that kind of journalism yet.",
-        "The Royal Television Society gave The Stream its Innovative News Award for that first season's Bahrain coverage, the same season Al Jazeera English was named RTS News Channel of the Year. What I carry from that night is more specific. We'd treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case launch looked structurally like any other show day. The inputs changed. The workflow did not."
+        "The Royal Television Society gave The Stream its Innovative News Award for that first season's Bahrain coverage, the same season Al Jazeera English was named RTS News Channel of the Year. What I carry from that rebuild is more specific. We'd treated the rundown as a hypothesis, permanently open to revision by incoming signal, so the worst-case launch looked structurally like any other show day. The inputs changed. The workflow did not."
       ],
       "pull": "We built the system to kill improvisation. On purpose.",
       "clipSlugs": [
@@ -63,7 +63,7 @@
       "still": {
         "src": "assets/stills/stream-launch-night.jpg",
         "cap": "From the broadcast · The Stream, 2011",
-        "alt": "The Stream launch-night broadcast frame",
+        "alt": "The Stream launch broadcast frame",
         "clip": "aje-stream-2011-global-reactions-bin-laden-death-bahrain"
       },
       "media": [
